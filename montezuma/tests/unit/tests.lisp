@@ -41,16 +41,16 @@
     got-expected-p))
 
 (defun test-failure (name expr value expected-value)
-  (assert (not (assoc name *failed-tests*)))
-  (assert (not (assoc name *passed-tests*)))
+  (assert (not (assoc name *failed-tests*)) nil "There is already a test named ~S." name)
+  (assert (not (assoc name *passed-tests*)) nil "There is already a test named ~S." name)
   (push (cons name (list expr value expected-value)) *failed-tests*)
   (warn "FAILURE: Test ~S: ~S evaluated to ~S instead of ~S."
 	name expr value expected-value)
   nil)
 
 (defun test-success (name expr value expected-value)
-  (assert (not (assoc name *failed-tests*)))
-  (assert (not (assoc name *passed-tests*)))
+  (assert (not (assoc name *failed-tests*)) nil "There is already a test named ~S." name)
+  (assert (not (assoc name *passed-tests*)) nil "There is already a test named ~S." name)
   (push (cons name (list expr value expected-value)) *passed-tests*)
   (format T "~&Test ~S passed.~%" name))
 
