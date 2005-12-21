@@ -50,7 +50,8 @@
 				:depends-on ("tests"))
 		       (:module "analysis"
 				:components ((:file "letter-tokenizer")
-					     (:file "lowercase-filter"))
+					     (:file "lowercase-filter")
+					     (:file "lowercase-tokenizer"))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
