@@ -10,6 +10,3 @@
       (test porter-stem-filter-2 (next-token tokenizer) (make-token "breath" 7 15) #'token=)
       (test porter-stem-filter-3 (next-token tokenizer) (make-token "breath" 16 24) #'token=)
       (test porter-stem-filter-4 (next-token tokenizer) (make-token "breath" 25 34) #'token=))))
-
-      
-	   
