@@ -13,15 +13,22 @@
 
     :depends-on ("cl-ppcre")
 
-    :components ((:file "package")
-		 (:module "document"
-			  :components ((:file "field")
-				       (:file "document"))
-			  :depends-on ("package"))
-		 (:module "analysis"
-			  :components ((:file "token")
-				       (:file "token-stream")
-				       (:file "tokenizers" :depends-on ("token" "token-stream"))))))
+    :components
+    ((:file "package")
+     (:module "util"
+	      :components ((:file "porter-stemmer")
+			   (:file "streams"))
+	      :depends-on ("package"))
+     (:module "document"
+	      :components ((:file "field")
+			   (:file "document"))
+	      :depends-on ("package"))
+     (:module "analysis"
+	      :components ((:file "token")
+			   (:file "token-stream")
+			   (:file "token-filters" :depends-on ("token" "token-stream"))
+			   (:file "tokenizers"    :depends-on ("token" "token-stream")))
+	      :depends-on ("package" "util"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
   (oos 'load-op '#:montezuma-tests)
