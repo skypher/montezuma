@@ -52,7 +52,8 @@
 				:components ((:file "letter-tokenizer")
 					     (:file "lowercase-filter")
 					     (:file "lowercase-tokenizer")
-					     (:file "porter-stem-filter"))
+					     (:file "porter-stem-filter")
+					     (:file "stop-filter"))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
