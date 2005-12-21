@@ -1,6 +1,7 @@
 (in-package #:montezuma)
 
-(defstruct token
+(defstruct (token
+	     (:constructor make-token (image start end &key (increment 1) (type :word))))
   image
   start
   end
