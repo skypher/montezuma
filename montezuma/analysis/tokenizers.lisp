@@ -54,10 +54,10 @@
   ;; FIXME: [a-zA-Z] isn't quite the same as Perl's [[alpha]], is it?
   (cl-ppcre:create-scanner "[a-zA-Z]+" :multi-line-mode T))
 
-(defclass lower-case-tokenizer (tokenizer)
+(defclass lowercase-tokenizer (letter-tokenizer)
   ())
 
-(defmethod normalize ((self lower-case-tokenizer) str)
+(defmethod normalize ((self lowercase-tokenizer) str)
   (string-downcase str))
 
 
