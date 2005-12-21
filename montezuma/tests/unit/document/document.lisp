@@ -1,9 +1,6 @@
 (in-package #:montezuma)
 
-(defun run-document-tests ()
-  (test-document))
-
-(defun test-document ()
+(deftestfun test-document
   (let ((doc (make-document)))
     (let ((f11 (make-field "field1" "value1" :stored T :index NIL))
 	  (f12 (make-field "field1" "value2" :stored T :index NIL))

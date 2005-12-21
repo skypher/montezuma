@@ -38,13 +38,20 @@
 
 (defsystem #:montezuma-tests
   :depends-on (#:montezuma)
-  :components ((:module "tests"
-			:components ((:module "unit"
-					      :components ((:file "tests")
-							   (:module "document"
-								    :components ((:file "field")
-										 (:file "document"))
-								    :depends-on ("tests"))))))))
+  :components
+  ((:module "tests"
+	    :components
+	    ((:module "unit"
+		      :components
+		      ((:file "tests")
+		       (:module "document"
+				:components ((:file "field")
+					     (:file "document"))
+				:depends-on ("tests"))
+		       (:module "analysis"
+				:components ((:file "letter-tokenizer")
+					     (:file "lowercase-filter"))
+				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
   (or (funcall (intern (symbol-name '#:run-tests)

@@ -64,13 +64,31 @@
     (format T "~&-----~&Testing complete, ~S of ~S tests failed (~,2F)"
 	    num-failed
 	    (+ num-failed num-passed)
-	    (/ num-failed (+ num-failed num-passed)))))
+	    (/ num-failed (+ num-failed num-passed)))
+    (= num-failed 0)))
 
+
+(defvar *test-functions* '())
+
+(defun add-test-function (name function)
+  (let ((pair (assoc name *test-functions*)))
+    (if pair
+	(setf (cdr pair) function)
+	(setf *test-functions* (append *test-functions* (list (cons name function))))))
+  *test-functions*)
+
+(defun clear-test-functions ()
+  (setf *test-functions* '()))
+
+(defmacro deftestfun (name &body body)
+  `(add-test-function ',name
+		      #'(lambda () ,@body)))
 
 
 (defun run-tests ()
   (begin-tests)
-  (run-field-tests)
-  (run-document-tests)
-  (end-tests)
-  T)
+  (dolist (pair *test-functions*)
+    (destructuring-bind (name . function) pair
+      (format T "~&;; ~S" name)
+      (funcall function)))
+  (end-tests))

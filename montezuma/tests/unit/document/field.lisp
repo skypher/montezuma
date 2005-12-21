@@ -1,14 +1,6 @@
 (in-package #:montezuma)
 
-(defun run-field-tests ()
-  (test-standard-field)
-  (test-set-store)
-  (test-set-index)
-  (test-set-term-vector)
-  (test-new-binary-field))
-
-
-(defun test-standard-field ()
+(deftestfun test-standard-field
   (let ((f (make-field "name" "value" :stored :compress :index :tokenized)))
     (test standard-field-1 (field-name f) "name")
     (test standard-field-2 (field-data f) "value")
@@ -22,14 +14,14 @@
     (test standard-field-10 (field-omit-norms-p f)  NIL)
     (test standard-field-11 (field-binary-p f)  NIL)))
 
-(defun test-set-store ()
+(deftestfun test-field-set-store
   (let ((f (make-field "name" nil :stored :compress :index :tokenized)))
     (setf (field-stored f) NIL)
     (test set-store-1 (field-stored-p f) NIL)
     (test set-store-2 (field-compressed-p f) NIL)))
 
 
-(defun test-set-index ()
+(deftestfun test-field-set-index
   (let ((f (make-field "name" "value" :stored :compress :index :tokenized)))
     (setf (field-index f) NIL)
     (test set-index-1 (field-indexed-p f) NIL)
@@ -40,14 +32,14 @@
     (test set-index-5 (field-tokenized-p f) NIL)
     (test set-index-6 (field-omit-norms-p f) T)))
 
-(defun test-set-term-vector ()
+(deftestfun test-set-field-term-vector
   (let ((f (make-field "name" "value" :stored :compress :index :tokenized)))
     (setf (field-store-term-vector f) :with-positions-offsets)
     (test set-term-vector-1 (field-store-term-vector-p f) T)
     (test set-term-vector-2 (field-store-offsets-p f) T)
     (test set-term-vector-3 (field-store-positions-p f) T)))
 
-(defun test-new-binary-field ()
+(deftestfun test-field-new-binary-field
   (let ((bin (make-array (list 256) :element-type '(unsigned-byte 8))))
     (dotimes (i 256)
       (setf (aref bin i) i))
