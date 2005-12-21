@@ -49,11 +49,12 @@
 					     (:file "document"))
 				:depends-on ("tests"))
 		       (:module "analysis"
-				:components ((:file "letter-tokenizer")
-					     (:file "lowercase-filter")
-					     (:file "lowercase-tokenizer")
+				:components ((:file "lowercase-filter")
+					     (:file "stop-filter")
 					     (:file "porter-stem-filter")
-					     (:file "stop-filter"))
+					     (:file "letter-tokenizer")
+					     (:file "whitespace-tokenizer")
+					     (:file "lowercase-tokenizer"))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
