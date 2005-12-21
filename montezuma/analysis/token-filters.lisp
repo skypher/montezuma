@@ -20,6 +20,19 @@
 (defclass stop-filter (token-filter)
   ((stop-set :initarg :stop-set :initform '())))
 
+(defmethod initialize-instance :after ((self stop-filter) &key file)
+  (when file
+    (with-slots (stop-set) self
+      (when stop-set
+	(error ":stop-set and :file cannot both be specified for a stop-filter."))
+      (setf stop-set (load-word-list file)))))
+
+(defun load-word-list (path)
+  (with-open-file (in path :direction :input)
+    (loop for line = (read-line in nil)
+	 while line collect line)))
+
+
 (defmethod next-token ((self stop-filter))
   (with-slots (input stop-set) self
     (let ((token (next-token input)))
