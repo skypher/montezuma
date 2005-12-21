@@ -7,10 +7,10 @@
   (with-slots (input) self
     (close-stream input)))
 
-(defclass lower-case-filter (token-filter)
+(defclass lowercase-filter (token-filter)
   ())
 
-(defmethod next-token ((self lower-case-filter))
+(defmethod next-token ((self lowercase-filter))
   (with-slots (input) self
     (let ((token (next-token input)))
       (when token
