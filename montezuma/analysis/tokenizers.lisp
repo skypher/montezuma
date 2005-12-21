@@ -38,9 +38,7 @@
     (multiple-value-bind (term start end)
 	(funcall string-scanner)
       (if term
-	  (make-token :image (normalize self term)
-		      :start start
-		      :end end)
+	  (make-token (normalize self term) start end)
 	  nil))))
 
 (defmethod token-regexp ((self regexp-tokenizer))
@@ -48,6 +46,13 @@
 
 (defmethod normalize ((self regexp-tokenizer) str)
   str)
+
+(defclass letter-tokenizer (regexp-tokenizer)
+  ())
+
+(defmethod token-regexp ((self letter-tokenizer))
+  ;; FIXME: [a-zA-Z] isn't quite the same as Perl's [[alpha]], is it?
+  (cl-ppcre:create-scanner "[a-zA-Z]+" :multi-line-mode T))
 
 (defclass lower-case-tokenizer (tokenizer)
   ())
