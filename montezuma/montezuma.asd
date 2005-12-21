@@ -11,11 +11,17 @@
     :description ""
     :long-description ""
 
+    :depends-on ("cl-ppcre")
+
     :components ((:file "package")
 		 (:module "document"
 			  :components ((:file "field")
 				       (:file "document"))
-			  :depends-on ("package"))))
+			  :depends-on ("package"))
+		 (:module "analysis"
+			  :components ((:file "token")
+				       (:file "token-stream")
+				       (:file "tokenizers" :depends-on ("token" "token-stream"))))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
   (oos 'load-op '#:montezuma-tests)
