@@ -28,7 +28,8 @@
 			   (:file "token-stream")
 			   (:file "token-filters" :depends-on ("token" "token-stream"))
 			   (:file "tokenizers"    :depends-on ("token" "token-stream"))
-			   (:file "standard-tokenizer" :depends-on ("tokenizers")))
+			   (:file "standard-tokenizer" :depends-on ("tokenizers"))
+			   (:file "analyzers" :depends-on ("standard-tokenizer")))
 	      :depends-on ("package" "util"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
@@ -56,7 +57,9 @@
 					     (:file "letter-tokenizer")
 					     (:file "whitespace-tokenizer")
 					     (:file "lowercase-tokenizer")
-					     (:file "standard-tokenizer"))
+					     (:file "standard-tokenizer")
+					     (:file "analyzer")
+					     (:file "standard-analyzer"))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
