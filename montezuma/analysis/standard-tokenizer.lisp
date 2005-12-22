@@ -11,7 +11,8 @@
     (:sequence :start-anchor acronym :end-anchor))
 
 (cl-ppcre:define-parse-tree-synonym apostrophe
-    (:sequence alpha (:greedy-repetition 1 NIL (:sequence "'" alpha))))
+    (:sequence (:greedy-repetition 1 NIL alpha)
+	       (:sequence "'" alpha)))
 
 (cl-ppcre:define-parse-tree-synonym apostrophe-word
     (:sequence :start-anchor apostrophe :end-anchor))
@@ -41,7 +42,7 @@
 
 
 (defparameter *dot-regexp* (cl-ppcre:create-scanner '(:sequence ".")))
-(defparameter *apostrophe-s-regexp (cl-ppcre:create-scanner '(:sequence "'" (:char-class #\s #\S))))
+(defparameter *apostrophe-s-regexp* (cl-ppcre:create-scanner '(:sequence "'" (:char-class #\s #\S))))
 
 (defmethod normalize ((self standard-tokenizer) str)
   (if (cl-ppcre:scan *acronym-word-regexp* str)
@@ -49,7 +50,7 @@
 				  str
 				  "")
       (if (cl-ppcre:scan *apostrophe-word-regexp* str)
-	  (cl-ppcre:regex-replace-all *apostrophe-word-regexp*
+	  (cl-ppcre:regex-replace-all *apostrophe-s-regexp*
 				      str
 				      "")
 	  str)))
