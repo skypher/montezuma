@@ -59,6 +59,8 @@
 					     (:file "lowercase-tokenizer")
 					     (:file "standard-tokenizer")
 					     (:file "analyzer")
+					     (:file "stop-analyzer")
+					     (:file "whitespace-analyzer")
 					     (:file "standard-analyzer"))
 				:depends-on ("tests"))))))))
 
