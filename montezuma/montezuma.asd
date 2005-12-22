@@ -19,6 +19,11 @@
 	      :components ((:file "porter-stemmer")
 			   (:file "streams"))
 	      :depends-on ("package"))
+     (:module "store"
+	      :components ((:file "directory")
+			   (:file "index-io")
+			   (:file "buffered-index-io"))
+	      :depends-on ("package"))
      (:module "document"
 	      :components ((:file "field")
 			   (:file "document"))
