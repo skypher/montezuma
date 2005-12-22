@@ -50,3 +50,12 @@
 				       :input (make-instance 'standard-tokenizer
 							     :input string))))
 
+
+(defclass per-field-analyzer-wrapper (analyzer)
+  ((default-analyzer :initarg :default-analyzer)
+   (analyzers :initform (make-hash-table :test #'equal))))
+
+(defmethod token-stream ((self per-field-analyzer-wrapper) field string)
+  (with-slots (analyzers default-analyzer) self
+    (let ((analyzer (gethash field analyzers default-analyzer)))
+      (token-stream analyzer field string))))
