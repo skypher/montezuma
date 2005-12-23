@@ -154,7 +154,7 @@
 
 (defmacro while (expr &body body)
   `(do ()
-       (,expr)
+       ((not ,expr))
      ,@body))
 
 (defmethod read-internal ((self ram-index-input) b offset length)
