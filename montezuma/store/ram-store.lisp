@@ -110,7 +110,7 @@
 	  (let ((src-offset bytes-to-copy))
 	    (setf bytes-to-copy (- len bytes-to-copy))
 	    (incf buffer-number)
-	    (extend-buffer-if-necessary buffer-number)
+	    (extend-buffer-if-necessary self buffer-number)
 	    (setf buffer (aref (buffers file) buffer-number))
 	    (replace buffer src
 		     :start1 0 :end1 (+ 0 bytes-to-copy)

@@ -47,9 +47,9 @@
 
 (defmethod read-string ((self index-input))
   (let* ((length (read-vint self))
-	 (chars (make-string length)))
+	 (chars (make-array (list length))))
     (read-chars self chars 0 length)
-    (string chars)))
+    (bytes-to-string chars)))
 
 (defmethod read-chars ((self index-input) buffer start length)
   (dotimes (i length)
@@ -105,7 +105,8 @@
 
 (defmethod write-string ((self index-output) s)
   (write-vint self (length s))
-  (write-chars self s 0 (length s)))
+  (let ((chars (string-to-bytes s)))
+  (write-chars self chars 0 (length chars))))
 
 (defmethod write-chars ((self index-output) buffer start length)
   (dotimes (i length)

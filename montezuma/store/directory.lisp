@@ -20,7 +20,7 @@
 
 (defgeneric rename-file (directory from to))
 
-(defgeneric file-length (directory file))
+(defgeneric file-size (directory file))
 
 (defgeneric create-output (directory filename))
 

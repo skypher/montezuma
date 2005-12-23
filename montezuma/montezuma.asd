@@ -11,20 +11,25 @@
     :description ""
     :long-description ""
 
-    :depends-on ("cl-ppcre")
+    :depends-on ("cl-ppcre" "cl-fad")
 
     :components
     ((:file "package")
      (:module "util"
 	      :components ((:file "porter-stemmer")
-			   (:file "streams"))
+			   (:file "streams")
+			   (:file "strings"))
 	      :depends-on ("package"))
      (:module "store"
 	      :components ((:file "directory")
 			   (:file "index-io")
-			   (:file "buffered-index-io")
-			   (:file "ram-store"))
-	      :depends-on ("package"))
+			   (:file "buffered-index-io"
+				  :depends-on ("index-io"))
+			   (:file "ram-store"
+				  :depends-on ("buffered-index-io" "directory"))
+			   (:file "fs-store"
+				  :depends-on ("buffered-index-io" "directory")))
+	      :depends-on ("package" "util"))
      (:module "document"
 	      :components ((:file "field")
 			   (:file "document"))
@@ -55,6 +60,8 @@
 		       (:module "store"
 				:components ((:file "store")
 					     (:file "ram-store"
+						    :depends-on ("store"))
+					     (:file "fs-store"
 						    :depends-on ("store")))
 				:depends-on ("tests"))
 		       (:module "document"
