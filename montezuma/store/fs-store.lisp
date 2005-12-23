@@ -28,7 +28,7 @@
 (defmethod initialize-instance :after ((self fs-directory) &key)
   (with-slots (path) self
     (unless (cl-fad:directory-exists-p path)
-      (error "The directory ~S does not exist."))
+      (error "The directory ~S does not exist." path))
     ;; FIXME: do the locking
     ))
 
@@ -59,7 +59,7 @@
 	;; FIXME: Set file-write-date.
 	nil
 	(with-open-file (f file-path :direction :output :if-does-not-exist :create)
-	  (declare (ignore f))))))
+	  (declare (ignorable f))))))
 
 (defmethod delete-file ((self fs-directory) file)
   (cl:delete-file (full-path-for-file self file)))
@@ -67,7 +67,7 @@
 (defmethod rename-file ((self fs-directory) from to)
   (let ((from-path (full-path-for-file self from))
 	(to-path (full-path-for-file self to)))
-    (cl:rename-file from-path to-path :if-exists :error)))
+    (cl:rename-file from-path to-path)))
 
 (defmethod modified-time ((self fs-directory) file)
   (file-write-date (full-path-for-file self file)))
