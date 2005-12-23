@@ -13,13 +13,12 @@
    :buffer-size *default-buffer-size*))
 
 (defmethod initialize-instance :after ((self buffered-index-output) &key)
-  (print :making-buffer)
   (with-slots (buffer buffer-size) self
     (setf buffer (make-array (list buffer-size)))))
 
 (defmethod write-byte ((self buffered-index-output) b)
   (with-slots (buffer buffer-size buffer-position) self
-    (when (> buffer-position buffer-size)
+    (when (>= buffer-position buffer-size)
       (flush self))
     (setf (aref buffer buffer-position) b)
     (incf buffer-position)))
@@ -61,6 +60,24 @@
 (defmethod initialize-instance :after ((self buffered-index-input) &key)
   (with-slots (buffer buffer-size) self
     (setf buffer (make-array (list buffer-size)))))
+
+
+(defun clone (object)
+  (let ((clone (make-instance (class-of object))))
+    (initialize-copy clone object)
+    clone))
+
+(defmethod initialize-copy (self o)
+  )
+
+(defmethod initialize-copy :after ((self buffered-index-input) o)
+  (with-slots (buffer buffer-size buffer-start buffer-length buffer-position) self
+    (let ((b (slot-value o 'buffer)))
+      (setf buffer (make-array (length b) :initial-contents b)))
+    (setf buffer-size (slot-value o 'buffer-size))
+    (setf buffer-start (slot-value o 'buffer-start))
+    (setf buffer-length (slot-value o 'buffer-length))
+    (setf buffer-position (slot-value o 'buffer-position))))
 
 (defmethod read-byte ((self buffered-index-input))
   (with-slots (buffer-position buffer-length buffer) self

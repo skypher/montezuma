@@ -4,7 +4,19 @@
   (test-basic-file-ops (make-instance 'ram-directory))
   (test-rename (make-instance 'ram-directory))
   (test-modified (make-instance 'ram-directory))
-  (test-rw-bytes (make-instance 'ram-directory)))
+  (test-rw-bytes (make-instance 'ram-directory))
+  (test-rw-ints (make-instance 'ram-directory))
+  (test-rw-longs (make-instance 'ram-directory))
+  (test-rw-uints (make-instance 'ram-directory))
+  (test-rw-ulongs (make-instance 'ram-directory))
+  (test-rw-vints (make-instance 'ram-directory))
+  (test-rw-vlongs (make-instance 'ram-directory))
+  (test-rw-strings (make-instance 'ram-directory))
+  (test-buffer-seek (make-instance 'ram-directory))
+  (test-read-bytes (make-instance 'ram-directory))
+  (test-clone (make-instance 'ram-directory)))
+		    
+		 
 
 
 #|

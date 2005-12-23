@@ -41,11 +41,15 @@
 	 (incf shift 7))
     i))
 
+(defmethod read-vlong ((self index-input))
+  (read-vint self))
+
 
 (defmethod read-string ((self index-input))
   (let* ((length (read-vint self))
 	 (chars (make-string length)))
-    (read-chars self chars 0 length)))
+    (read-chars self chars 0 length)
+    (string chars)))
 
 (defmethod read-chars ((self index-input) buffer start length)
   (dotimes (i length)
@@ -67,7 +71,7 @@
 (defgeneric write-bytes (index-output buffer length))
 
 (defmethod write-int ((self index-output) i)
-  (flet ((sa (i count) (logand (ash i count))))
+  (flet ((sa (i count) (logand (ash i count) #xff)))
     (write-byte self (sa i -24))
     (write-byte self (sa i -16))
     (write-byte self (sa i -8))
@@ -78,11 +82,26 @@
 
 (defmethod write-vint ((self index-output) int)
   (loop for i = int then (ash i -7)
-       while (> i 127) do (write-byte (logior (logand i #x7f) #x80))))
+       while (> i 127) do (write-byte self (logior (logand i #x7f) #x80))
+       finally (write-byte self i)))
+
+#||
+(defmethod write-vint ((self index-output) i)
+  (while (> i 127)
+    (write-byte self (logior (logand i #x7f) #x80))
+    (setf i (ash i -7)))
+  (write-byte self i))
+||#
+
+(defmethod write-vlong ((self index-output) i)
+  (write-vint self i))
 
 (defmethod write-long ((self index-output) i)
   (write-int self (ash i -32))
   (write-int self i))
+
+(defmethod write-ulong ((self index-output) i)
+  (write-long self i))
 
 (defmethod write-string ((self index-output) s)
   (write-vint self (length s))

@@ -147,6 +147,11 @@
   ((file :initarg :file)
    (pointer :initform 0)))
 
+(defmethod initialize-copy :after ((self ram-index-input) o)
+  (with-slots (file pointer) self
+    (setf file (slot-value o 'file))
+    (setf pointer (slot-value o 'pointer))))
+
 (defmethod size ((self ram-index-input))
   (with-slots (file) self
     (size file)))
