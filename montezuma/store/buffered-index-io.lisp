@@ -1,55 +1,66 @@
 (in-package #:montezuma)
 
-(defclass buffered-index-ouput (index-output)
+
+(defparameter *default-buffer-size* 1024)
+
+
+(defclass buffered-index-output (index-output)
   ((buffer)
-   (buffer-size :initarg :buffer-size)
+   (buffer-size :initarg :buffer-size :reader buffer-size)
    (buffer-start :initform 0)
    (buffer-position :initform 0))
   (:default-initargs
-   :buffer-size 1024))
+   :buffer-size *default-buffer-size*))
 
-(defmethod initalize-instance :after ((self buffered-index-ouput))
+(defmethod initialize-instance :after ((self buffered-index-output) &key)
+  (print :making-buffer)
   (with-slots (buffer buffer-size) self
-    (setf buffer (make-string buffer-size))))
+    (setf buffer (make-array (list buffer-size)))))
 
-(defmethod write-byte ((self buffered-index-ouput) b)
+(defmethod write-byte ((self buffered-index-output) b)
   (with-slots (buffer buffer-size buffer-position) self
     (when (> buffer-position buffer-size)
       (flush self))
     (setf (aref buffer buffer-position) b)
     (incf buffer-position)))
 
-(defmethod write-bytes ((self buffered-index-ouput) buffer length)
+(defmethod write-bytes ((self buffered-index-output) buffer length)
   (dotimes (i length)
     (write-byte self (aref buffer i))))
 
-(defmethod flush ((self buffered-index-ouput))
+(defmethod flush ((self buffered-index-output))
   (with-slots (buffer buffer-position buffer-start) self
     (flush-buffer self buffer buffer-position)
     (incf buffer-start buffer-position)
     (setf buffer-position 0)))
 
-(defmethod close ((self buffered-index-ouput))
+(defmethod close ((self buffered-index-output))
   (flush self))
 
-(defmethod pos ((self buffered-index-ouput))
+(defmethod pos ((self buffered-index-output))
   (with-slots (buffer-start buffer-position) self
     (+ buffer-start buffer-position)))
 
-(defmethod seek ((self buffered-index-ouput) pos)
+(defmethod seek ((self buffered-index-output) pos)
   (flush self)
   (with-slots (buffer-start) self
     (setf buffer-start pos)))
 
-(defgeneric flush-buffer (buffered-index-ouput buffer length))
+(defgeneric flush-buffer (buffered-index-output buffer length))
 
 
 (defclass buffered-index-input (index-input)
   ((buffer)
-   (buffer-size :initarg :buffer-size)
+   (buffer-size :initarg :buffer-size :reader buffer-size)
    (buffer-start :initform 0)
    (buffer-length :initform 0)
-   (buffer-position :initform 0)))
+   (buffer-position :initform 0))
+  (:default-initargs
+   :buffer-size *default-buffer-size*))
+
+(defmethod initialize-instance :after ((self buffered-index-input) &key)
+  (with-slots (buffer buffer-size) self
+    (setf buffer (make-array (list buffer-size)))))
 
 (defmethod read-byte ((self buffered-index-input))
   (with-slots (buffer-position buffer-length buffer) self

@@ -22,7 +22,8 @@
      (:module "store"
 	      :components ((:file "directory")
 			   (:file "index-io")
-			   (:file "buffered-index-io"))
+			   (:file "buffered-index-io")
+			   (:file "ram-store"))
 	      :depends-on ("package"))
      (:module "document"
 	      :components ((:file "field")
@@ -51,6 +52,11 @@
 	    ((:module "unit"
 		      :components
 		      ((:file "tests")
+		       (:module "store"
+				:components ((:file "store")
+					     (:file "ram-store"
+						    :depends-on ("store")))
+				:depends-on ("tests"))
 		       (:module "document"
 				:components ((:file "field")
 					     (:file "document"))

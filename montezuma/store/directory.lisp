@@ -7,7 +7,8 @@
 
 (defgeneric files (directory))
 
-(defgeneric file-count (directory))
+(defmethod file-count ((self directory))
+  (length (files self)))
 
 (defgeneric file-exists-p (directory file))
 
@@ -49,12 +50,6 @@
 	    (progn ,@body)
 	 (release ,lock-var)))))
 
-
-	    
-	       
-
-
-  
-  
-
-			  
+(defmacro do-files ((file-var directory) &body body)
+  `(dolist (,file-var (files ,directory))
+     ,@body))
