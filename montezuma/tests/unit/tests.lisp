@@ -10,6 +10,11 @@
   `(unless (test-aux ',name ',expr ,expr ,expected-value ,comparator)
     ,failure-code))
 
+(defmacro atest (prefix expr expected-value &optional (comparator '(function equal))
+		 failure-code)
+  `(unless (test-aux (gensym (string ',prefix)) ',expr ,expr ,expected-value ,comparator)
+     ,failure-code))
+
 (defmacro condition-test (name expr expected-condition &optional (comparator '(function typep))
 			  failure-code)
   (let ((completed-var (gensym "COMPLETED"))
@@ -44,8 +49,8 @@
   (assert (not (assoc name *failed-tests*)) nil "There is already a test named ~S." name)
   (assert (not (assoc name *passed-tests*)) nil "There is already a test named ~S." name)
   (push (cons name (list expr value expected-value)) *failed-tests*)
-;;  (warn "FAILURE: Test ~S: ~S evaluated to ~S instead of ~S."
-;;	name expr value expected-value)
+  (warn "FAILURE: Test ~S: ~S evaluated to ~S instead of ~S."
+	name expr value expected-value)
   (format T "F")
   nil)
 
