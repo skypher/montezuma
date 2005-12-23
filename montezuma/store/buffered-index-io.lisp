@@ -68,7 +68,7 @@
     clone))
 
 (defmethod initialize-copy (self o)
-  )
+  (declare (ignore self) (ignore o)))
 
 (defmethod initialize-copy :after ((self buffered-index-input) o)
   (with-slots (buffer buffer-size buffer-start buffer-length buffer-position) self
