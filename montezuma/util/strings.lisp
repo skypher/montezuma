@@ -16,3 +16,8 @@
     (dotimes (i (length string))
       (setf (elt s i) (char-code (char string i))))
     s))
+
+(defun string-compare (s1 s2)
+  (cond ((string< s1 s2) -1)
+	((string> s1 s2) 1)
+	(T 0)))

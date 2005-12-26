@@ -15,11 +15,7 @@
 	(let ((r (- (token-end t2) (token-end t1))))
 	  (if (not (= r 0))
 	      r
-	      (cond ((string< (token-image t1) (token-image t2))
-		     -1)
-		    ((string> (token-image t1) (token-image t2))
-		     1)
-		    (T 0)))))))
+	      (string-compare (token-image t1) (token-image t2)))))))
 
 (defun token= (t1 t2)
   (= 0 (token-compare t1 t2)))
