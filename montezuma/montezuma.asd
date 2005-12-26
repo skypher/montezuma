@@ -41,7 +41,12 @@
 			   (:file "tokenizers"    :depends-on ("token" "token-stream"))
 			   (:file "standard-tokenizer" :depends-on ("tokenizers"))
 			   (:file "analyzers" :depends-on ("standard-tokenizer")))
-	      :depends-on ("package" "util"))))
+	      :depends-on ("package" "util"))
+     (:module "index"
+	      :components ((:file "index-filenames")
+			   (:file "term")
+			   (:file "term-buffer" :depends-on ("term")))
+	      :depends-on ("analysis"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
   (oos 'load-op '#:montezuma-tests)
@@ -80,6 +85,10 @@
 					     (:file "stop-analyzer")
 					     (:file "whitespace-analyzer")
 					     (:file "standard-analyzer"))
+				:depends-on ("tests"))
+		       (:module "index"
+				:components ((:file "term")
+					     (:file "term-buffer"))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
