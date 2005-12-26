@@ -45,6 +45,7 @@
      (:module "index"
 	      :components ((:file "index-filenames")
 			   (:file "term")
+			   (:file "term-info")
 			   (:file "term-buffer" :depends-on ("term")))
 	      :depends-on ("analysis"))))
 
@@ -88,6 +89,7 @@
 				:depends-on ("tests"))
 		       (:module "index"
 				:components ((:file "term")
+					     (:file "term-info")
 					     (:file "term-buffer"))
 				:depends-on ("tests"))))))))
 
