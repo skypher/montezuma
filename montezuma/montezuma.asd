@@ -47,7 +47,11 @@
 			   (:file "term")
 			   (:file "term-info")
 			   (:file "term-buffer" :depends-on ("term"))
-			   (:file "field-infos"))
+			   (:file "field-infos")
+			   (:file "term-enum")
+			   (:file "term-doc-enum")
+			   (:file "segment-term-enum")
+			   (:file "term-infos-io"))
 	      :depends-on ("analysis"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
@@ -92,7 +96,8 @@
 				:components ((:file "term")
 					     (:file "term-info")
 					     (:file "term-buffer")
-					     (:file "field-infos"))
+					     (:file "field-infos")
+					     (:file "term-infos-io"))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))

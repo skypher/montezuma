@@ -94,7 +94,6 @@
 	  (add-test-function ',name
 		      (function ,name))))
 
-
 (defun run-tests ()
   (begin-tests)
   (dolist (pair *test-functions*)
@@ -102,3 +101,80 @@
       (format T "~&;; ~S" name)
       (funcall function)))
   (end-tests))
+
+
+(defstruct test-fixture
+  name
+  (vars (make-hash-table))
+  setup
+  teardown
+  test-functions)
+
+(defun do-fixture-setup (fixture)
+  (let ((setup-fn (test-fixture-setup fixture)))
+    (when setup-fn
+      (funcall setup-fn fixture))))
+
+(defun do-fixture-teardown (fixture)
+  (let ((teardown-fn (test-fixture-teardown fixture)))
+    (when teardown-fn
+      (funcall teardown-fn fixture))))
+
+(defun do-fixture-tests (fixture)
+  (dolist (fn (test-fixture-test-functions fixture))
+    (funcall fn fixture)))
+
+
+(defmacro deftestfixture (name &rest clauses)
+  (deftextfixture-expr name
+      (cdr (first (collect-clauses :vars clauses)))
+    (cdr (first (collect-clauses :setup clauses)))
+    (cdr (first (collect-clauses :teardown clauses)))
+    (collect-clauses :testfun clauses)))
+
+
+(defun collect-clauses (name clauses)
+  (remove-if-not #'(lambda (clause)
+		     (eq (car clause) name))
+		 clauses))
+
+(defun make-fixture-method (expr)
+  `(function (lambda (fixture)
+     (flet ((fixture-var (name)
+	      (gethash name (test-fixture-vars fixture)))
+	    ((setf fixture-var) (value name)
+	      (setf (gethash name (test-fixture-vars fixture)) value)))
+       ,expr))))
+
+(defun make-test-function-defn (name expr)
+  (let ((fixture-var (gensym "FIXTURE")))
+    `(defun ,name (,fixture-var)
+       (funcall ,(make-fixture-method expr) ,fixture-var))))
+	   
+    
+(defun deftextfixture-expr (name vars setup-exprs teardown-exprs test-case-functions)
+  (let ((fixture-var (gensym "FIXTURE")))
+    `(progn
+       ,@(mapcar #'(lambda (test-case-function)
+		     (make-test-function-defn (second test-case-function)
+					      `(progn ,@(cdr (cdr test-case-function)))))
+		 test-case-functions)
+       (let ((,fixture-var (make-test-fixture
+			    :name ',name
+			    ,@(if setup-exprs
+				  `(:setup ,(make-fixture-method `(progn ,@setup-exprs)))
+				  '())
+			    ,@(if teardown-exprs
+				  `(:teardown ,(make-fixture-method `(progn ,@setup-exprs)))
+				  '())
+			    :test-functions (list ,@(mapcar #'(lambda (test-case-function)
+							      `(function ,(second test-case-function)))
+							  test-case-functions)))))
+	 (add-test-function (intern (format nil "~A~A" ',name '#:setup))
+			    #'(lambda () (do-fixture-setup ,fixture-var)))
+	 (add-test-function (intern (format nil "~A~A" ',name '#:test))
+			    #'(lambda () (do-fixture-tests ,fixture-var)))
+	 (add-test-function (intern (format nil "~A~A" ',name '#:teardown))
+			    #'(lambda () (do-fixture-teardown ,fixture-var)))))))
+       
+       

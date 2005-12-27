@@ -11,7 +11,7 @@
 
 (defgeneric next (term-doc-enum))
 
-(defgeneric read (term-doc-enum docs freqs))
+(defgeneric read-segment-term-doc-enum (term-doc-enum docs freqs &optional start))
 
 (defmethod skip-to ((self term-doc-enum) target)
   (while (> target (doc self))
@@ -29,7 +29,7 @@
    (skip-stream :initform NIL)
    (doc :initform 0)))
 
-(defmethod initialize-instance :after ((self segment-term-doc-enum))
+(defmethod initialize-instance :after ((self segment-term-doc-enum) &key)
   (with-slots (freq-stream deleted-docs skip-interval) self
     (let ((parent (slot-value self 'parent)))
       (setf freq-stream (clone (freq-stream parent))
@@ -40,7 +40,8 @@
 ;; te can be a term, term-enum or term-info object.
 
 (defmethod seek ((self segment-term-doc-enum) (term term))
-  (do-seek self (term-infos parent term)))
+  (with-slots (parent) self
+    (do-seek self (term-infos parent term))))
 
 (defmethod seek ((self segment-term-doc-enum) (term-enum term-enum))
   (do-seek self (term-info term-enum)))
@@ -50,7 +51,7 @@
 
 (defmethod do-seek ((self segment-term-doc-enum) term-info)
   (with-slots (count doc-freq  doc skip-doc skip-count num-skips freq-pointer
-		     prox-pointer skip-pointer freq-stream have-skipped) self
+		     prox-pointer skip-pointer skip-interval freq-stream have-skipped) self
     (setf count 0)
     (if (null term-info)
 	(setf doc-freq 0)
@@ -79,10 +80,10 @@
   )
 
 (defmethod next ((self segment-term-doc-enum))
-  (with-slots (count doc-freq freq-stream) self
+  (with-slots (count doc-freq freq-stream freq deleted-docs doc) self
   (while T
     (when (eql count doc-freq)
-      return NIL)
+      (return-from next NIL))
     (let ((doc-code (read-vint freq-stream)))
       (incf doc (ash doc-code -1))
       (if (logbitp 0 doc-code)
@@ -90,11 +91,11 @@
 	  (setf freq (read-vint freq-stream)))
       (incf count)
       (when (or (null deleted-docs) (not (aref deleted-docs doc)))
-	(return T))
+	(return-from next T))
       (skipping-doc self)))))
 
-(defmethod read ((self segment-term-doc-enum) docs freqs &optional (start 0))
-  (with-slots (doc-freq  freq-stream doc count deleted-docs freq) self
+(defmethod read-segment-term-doc-enum ((self segment-term-doc-enum) docs freqs &optional (start 0))
+  (with-slots (doc-freq freq freq-stream doc count deleted-docs freq) self
     (let ((i start)
 	  (needed (length docs)))
       (while (and (< i needed) (< count doc-freq))
@@ -111,13 +112,14 @@
 	  (skipping-doc)))
       i)))
 
-(defmethod skip-prox ((self segment-term-doc-enum) prox-pointer)
-)
+;;(defmethod skip-prox ((self segment-term-doc-enum) prox-pointer)
+;;)
 
 (defmethod skip-to ((self segment-term-doc-enum) target)
-  (with-slots (doc-freq skip-interval skip-stream have-skipped skip-pointer) self
+  (with-slots (doc-freq count doc skip-interval skip-stream skip-doc freq-pointer freq-stream
+			prox-pointer have-skipped num-skips skip-count skip-pointer) self
     (when (>= doc-freq skip-interval)
-      (when (null skip-sream)
+      (when (null skip-stream)
 	(setf skip-stream (clone freq-stream)))
       (unless have-skipped
 	(seek skip-stream skip-pointer)
@@ -133,8 +135,8 @@
 
 	  (when (and (not (= skip-doc 0)) (>= skip-doc doc))
 	    (incf num-skipped skip-interval))
-	  (when (>= skip-cout num-skips)
-	    (return))
+	  (when (>= skip-count num-skips)
+	    (return-from skip-to))
 	  
 	  (incf skip-doc (read-vint skip-stream))
 	  (incf freq-pointer (read-vint skip-stream))
@@ -156,16 +158,16 @@
 
 
 (defclass segment-term-doc-pos-enum (segment-term-doc-enum)
-  ())
+  ((prox-stream :reader prox-stream)))
 
 (defmethod initialize-instance :after ((self segment-term-doc-pos-enum) &key)
   (with-slots (parent prox-stream) self
     (setf prox-stream (clone (prox-stream parent)))))
 
 (defmethod do-seek :after ((self segment-term-doc-pos-enum) ti)
-  (with-slots (prox-stream prox-count)
-      (unless (null ti)
-	(seek prox-stream (prox-pointer ti)))
+  (with-slots (prox-stream prox-count) self
+    (unless (null ti)
+      (seek prox-stream (prox-pointer ti)))
     (setf prox-count 0)))
 
 (defmethod close :after ((self segment-term-doc-pos-enum))
@@ -183,7 +185,7 @@
       (read-vint prox-stream))))
 
 (defmethod next :around ((self segment-term-doc-pos-enum))
-  (with-slots (prox-count prox-stream position) self
+  (with-slots (prox-count freq prox-stream position) self
     (dotimes (i prox-count)
       (read-vint prox-stream))
     (if (call-next-method)
@@ -193,7 +195,8 @@
 	  T)
 	NIL)))
 
-(defmethod read ((self segment-term-doc-pos-enum) docs freqs)
+(defmethod read-segment-term-doc-enum ((self segment-term-doc-pos-enum) docs freqs &optional start)
+  (declare (ignore docs freqs))
   (error "The class term-doc-pos-enum does not support processing multiple documents in one call.  Use the term-doc-enum class instead."))
 
 (defmethod skip-prox ((self segment-term-doc-pos-enum) prox-pointer)
