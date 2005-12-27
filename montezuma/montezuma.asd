@@ -46,7 +46,8 @@
 	      :components ((:file "index-filenames")
 			   (:file "term")
 			   (:file "term-info")
-			   (:file "term-buffer" :depends-on ("term")))
+			   (:file "term-buffer" :depends-on ("term"))
+			   (:file "field-infos"))
 	      :depends-on ("analysis"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
@@ -90,7 +91,8 @@
 		       (:module "index"
 				:components ((:file "term")
 					     (:file "term-info")
-					     (:file "term-buffer"))
+					     (:file "term-buffer")
+					     (:file "field-infos"))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))

@@ -10,7 +10,7 @@
   (with-slots (text-buf text-length) self
     (subseq text-buf 0 text-length)))
 
-(defmethod read ((self term-buffer) input field-infos)
+(defmethod read-term-buffer ((self term-buffer) input field-infos)
   (with-slots (term text-buf text-length field) self
     (setf term nil)
     (let* ((start (read-vint input))
@@ -38,7 +38,7 @@
       
 
 (defmethod to-term ((self term-buffer))
-  (with-slots (field term text-buf) self
+  (with-slots (field term text-buf text-length) self
     (if (null field)
 	nil
 	(if (not (null term))
