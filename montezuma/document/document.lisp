@@ -63,8 +63,18 @@
   (with-slots (fields) self
     (gethash name fields)))
 
+(defmethod document-binaries ((self document) name)
+  (reduce #'(lambda (a1 &optional a2)
+	      (if (null a2)
+		  a1
+		  (concatenate 'array a1 a2)))
+	  (mapcar #'field-data 
+		  (remove-if-not #'field-binary-p (document-fields self name)))))
+
 (defmethod document-values ((self document) name)
-  (format nil "~{~A~^ ~}" (mapcar #'field-data (document-fields self name))))
+  (format nil "~{~A~^ ~}"
+	  (mapcar #'field-data
+		  (remove-if #'field-binary-p (document-fields self name)))))
 		   
 	     
 
