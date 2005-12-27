@@ -89,8 +89,10 @@
   (setf *test-functions* '()))
 
 (defmacro deftestfun (name &body body)
-  `(add-test-function ',name
-		      #'(lambda () ,@body)))
+  `(progn (defun ,name ()
+	      ,@body)
+	  (add-test-function ',name
+		      (function ,name))))
 
 
 (defun run-tests ()
