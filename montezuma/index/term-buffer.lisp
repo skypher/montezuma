@@ -17,8 +17,17 @@
 	   (length (read-vint input))
 	   (total-length (+ start length)))
       (setf text-length total-length)
-      (read-chars input text-buf start length)
-      (setf field (field-name (elt field-infos (read-vint input)))))))
+      (ensure-text-buf-length self total-length)
+      (let ((buf (string-to-bytes text-buf)))
+	(read-chars input buf start length)
+	(setf text-buf (bytes-to-string buf)))
+      (setf field (field-name (get-field field-infos (read-vint input)))))))
+
+(defmethod ensure-text-buf-length ((self term-buffer) len)
+  (with-slots (text-buf) self
+    (unless (>= (length text-buf) len)
+      (dotimes (i (- len (length text-buf)))
+	(vector-push-extend (code-char 0) text-buf 10)))))
 
 (defmethod reset ((self term-buffer))
   (with-slots (field text-buf text-length term) self
@@ -31,7 +40,11 @@
   (if (null term)
       (progn (reset self) nil)
       (with-slots (text-buf text-length field) self
-	(setf text-buf (copy-seq (term-text term)))
+	(setf text-buf (make-array (list (length (term-text term)))
+				   :element-type 'character
+				   :initial-contents (term-text term)
+				   :fill-pointer T
+				   :adjustable T))
 	(setf text-length (length text-buf))
 	(setf field (term-field term))
 	(setf (slot-value self 'term) term))))
