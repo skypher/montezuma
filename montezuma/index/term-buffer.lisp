@@ -1,9 +1,9 @@
 (in-package #:montezuma)
 
 (defclass term-buffer ()
-  ((text-buf)
-   (text-length :reader text-length)
-   (field :reader field)
+  ((text-buf :initform (make-adjustable-string 0))
+   (text-length :initform -1 :reader text-length)
+   (field :initform nil :reader field)
    (term :initform nil)))
 
 (defmethod text ((self term-buffer))
@@ -20,7 +20,8 @@
       (ensure-text-buf-length self total-length)
       (let ((buf (string-to-bytes text-buf)))
 	(read-chars input buf start length)
-	(setf text-buf (bytes-to-string buf)))
+	(let ((s (bytes-to-string buf)))
+	  (setf text-buf (make-adjustable-string (length s) s))))
       (setf field (field-name (get-field field-infos (read-vint input)))))))
 
 (defmethod ensure-text-buf-length ((self term-buffer) len)
@@ -32,7 +33,7 @@
 (defmethod reset ((self term-buffer))
   (with-slots (field text-buf text-length term) self
     (setf field nil
-	  text-buf ""
+	  text-buf (make-adjustable-string 0)
 	  text-length 0
 	  term nil)))
 
@@ -40,11 +41,7 @@
   (if (null term)
       (progn (reset self) nil)
       (with-slots (text-buf text-length field) self
-	(setf text-buf (make-array (list (length (term-text term)))
-				   :element-type 'character
-				   :initial-contents (term-text term)
-				   :fill-pointer T
-				   :adjustable T))
+	(setf text-buf (make-adjustable-string (length (term-text term)) (term-text term)))
 	(setf text-length (length text-buf))
 	(setf field (term-field term))
 	(setf (slot-value self 'term) term))))
@@ -92,3 +89,13 @@
 	  ((endp tbs) T)
 	(when (not (= (term-buffer-compare tb1 (car tbs)) 0))
 	  (return NIL)))))
+
+(defmethod set-from-term-buffer ((self term-buffer) other)
+  (with-slots (text-length text-buf field term) self
+    (setf text-length (slot-value other 'text-length))
+    (when (slot-value other 'text-buf)
+      (setf text-buf (copy-seq (slot-value other 'text-buf))))
+    (setf field (slot-value other 'field))
+    (setf term (slot-value other 'term))))
+
+    

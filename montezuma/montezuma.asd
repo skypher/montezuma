@@ -18,6 +18,7 @@
      (:module "util"
 	      :components ((:file "porter-stemmer")
 			   (:file "streams")
+			   (:file "mop")
 			   (:file "strings"))
 	      :depends-on ("package"))
      (:module "store"
@@ -50,8 +51,8 @@
 			   (:file "field-infos")
 			   (:file "term-enum")
 			   (:file "term-doc-enum")
-			   (:file "segment-term-enum")
-			   (:file "term-infos-io"))
+			   (:file "term-infos-io")
+			   (:file "segment-term-enum" :depends-on ("term-infos-io")))
 	      :depends-on ("analysis"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))

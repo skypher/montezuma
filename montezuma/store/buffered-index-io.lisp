@@ -17,6 +17,7 @@
     (setf buffer (make-array (list buffer-size)))))
 
 (defmethod write-byte ((self buffered-index-output) b)
+  (assert (typep b '(unsigned-byte 8)))
   (with-slots (buffer buffer-size buffer-position) self
     (when (>= buffer-position buffer-size)
       (flush self))
@@ -63,9 +64,13 @@
 
 
 (defun clone (object)
-  (let ((clone (make-instance (class-of object))))
+  (let ((clone (clone-object object)))
     (initialize-copy clone object)
     clone))
+
+(defmethod clone-object ((object T))
+  (make-instance (class-of object)))
+
 
 (defmethod initialize-copy (self o)
   (declare (ignore self) (ignore o)))

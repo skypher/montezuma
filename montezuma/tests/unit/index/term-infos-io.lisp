@@ -84,6 +84,7 @@
 					     :freq-pointer i
 					     :prox-pointer i
 					     :skip-offset 0)))
+
 		  (do ((i 0 (+ i 1))
 		       (words *test-dict* (cdr words)))
 		      ((endp words))
@@ -94,7 +95,7 @@
 					     :prox-pointer (+ 1000 i)
 					     :skip-offset 0)))
 		  (close tiw)))
-	      (let ((tir (make-instance 'term-info-reader
+	      (let ((tir (make-instance 'term-infos-reader
 					:dir (fixture-var 'dir)
 					:segment (format nil "~AG" *test-segment*)
 					:field-infos fis)))

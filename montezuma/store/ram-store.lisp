@@ -30,15 +30,21 @@
 	       files))
     (reverse file-list)))
 
+(defun normalize-file-name (name)
+  (if (pathnamep name)
+      (namestring name)
+      name))
+
 (defmethod file-exists-p ((self ram-directory) name)
   (with-slots (files) self
-    (gethash name files)))
+    (gethash (normalize-file-name name) files)))
 
 (defmethod modified-time ((self ram-directory) name)
   (with-slots (files) self
-    (mtime (gethash name files))))
+    (mtime (gethash (normalize-file-name name) files))))
 
 (defmethod touch ((self ram-directory) name)
+  (setf name (normalize-file-name name))
   (with-slots (files) self
     (when (null (gethash name files))
       (setf (gethash name files) (make-instance 'ram-file :name name)))
@@ -46,24 +52,28 @@
 
 (defmethod delete-file ((self ram-directory) name)
   (with-slots (files) self
-    (remhash name files)))
+    (remhash (normalize-file-name name) files)))
 
 (defmethod rename-file ((self ram-directory) from to)
+  (setf from (normalize-file-name from)
+	to (normalize-file-name to))
   (with-slots (files) self
     (setf (gethash to files) (gethash from files))
     (remhash from files)))
 
 (defmethod file-size ((self ram-directory) name)
   (with-slots (files) self
-    (size (gethash name files))))
+    (size (gethash (normalize-file-name name) files))))
 
 (defmethod create-output ((self ram-directory) name)
+  (setf name (normalize-file-name name))
   (with-slots (files) self
     (let ((file (make-instance 'ram-file :name name)))
       (setf (gethash name files) file)
       (make-instance 'ram-index-output :file file))))
 
 (defmethod open-input ((self ram-directory) name)
+  (setf name (normalize-file-name name))
   (with-slots (files) self
     (let ((file (gethash name files)))
       (unless file
@@ -72,7 +82,7 @@
 
 (defmethod print-file ((self ram-directory) name)
   (with-slots (files) self
-    (let* ((input (make-instance 'ram-index-input :file (gethash name files)))
+    (let* ((input (make-instance 'ram-index-input :file (gethash (normalize-file-name name) files)))
 	   (buf (make-array (list (size input)))))
       (read-internal input buf 0 (size input))
       (format T "~A" buf))))
@@ -80,7 +90,7 @@
 (defmethod make-lock ((self ram-directory) name)
   (with-slots (lock-prefix) self
     (make-instance 'ram-lock
-		   :name (format nil "~A~A" lock-prefix name)
+		   :name (format nil "~A~A" lock-prefix (normalize-file-name name))
 		   :dir self)))
 
 (defmethod close ((self ram-directory))
@@ -156,11 +166,6 @@
   (with-slots (file) self
     (size file)))
 
-
-(defmacro while (expr &body body)
-  `(do ()
-       ((not ,expr))
-     ,@body))
 
 (defmethod read-internal ((self ram-index-input) b offset length)
   (with-slots (file pointer) self

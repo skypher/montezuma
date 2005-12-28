@@ -1,10 +1,10 @@
 (in-package #:montezuma)
 
 (defclass term-info ()
-  ((doc-freq     :initarg :doc-freq     :reader doc-freq)
-   (freq-pointer :initarg :freq-pointer :reader freq-pointer)
-   (prox-pointer :initarg :prox-pointer :reader prox-pointer)
-   (skip-offset  :initarg :skip-offset  :reader skip-offset))
+  ((doc-freq     :initarg :doc-freq     :accessor doc-freq)
+   (freq-pointer :initarg :freq-pointer :accessor freq-pointer)
+   (prox-pointer :initarg :prox-pointer :accessor prox-pointer)
+   (skip-offset  :initarg :skip-offset  :accessor skip-offset))
   (:default-initargs
    :doc-freq 0
    :freq-pointer 0

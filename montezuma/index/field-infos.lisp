@@ -79,13 +79,13 @@
 (defmethod get-field ((self field-infos) index)
   (if (integerp index)
       (if (or (eql index +not-a-field+) (< index 0))
-	  (make-instance 'field-info (error "FOO"))
+	  (make-instance 'field-info :name "" :indexed-p NIL :number +not-a-field+ :store-term-vector-p NIL)
 	  (aref (slot-value self 'fi-array) index))
       (gethash index (slot-value self 'fi-hash))))
 
 (defmethod name ((self field-infos) index)
   (if (or (eql index +not-a-field+) (< index 0))
-      (make-instance 'field-info (error "FOO"))
+      ""
       (field-name (get-field self index))))
 
 (defmethod size ((self field-infos))

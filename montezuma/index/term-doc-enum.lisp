@@ -23,8 +23,8 @@
 
 (defclass segment-term-doc-enum (term-doc-enum)
   ((parent :initarg :parent)
-   (freq-stream)
-   (deleted-docs)
+   (freq-stream :reader freq-stream)
+   (deleted-docs :reader deleted-docs)
    (skip-interval)
    (skip-stream :initform NIL)
    (doc :initform 0)))
@@ -34,7 +34,7 @@
     (let ((parent (slot-value self 'parent)))
       (setf freq-stream (clone (freq-stream parent))
 	    deleted-docs (deleted-docs parent)
-	    skip-interval (skip-interval (skip-infos parent))))))
+	    skip-interval (skip-interval (term-infos parent))))))
 
 
 ;; te can be a term, term-enum or term-info object.
@@ -196,7 +196,7 @@
 	NIL)))
 
 (defmethod read-segment-term-doc-enum ((self segment-term-doc-pos-enum) docs freqs &optional start)
-  (declare (ignore docs freqs))
+  (declare (ignore docs freqs start))
   (error "The class term-doc-pos-enum does not support processing multiple documents in one call.  Use the term-doc-enum class instead."))
 
 (defmethod skip-prox ((self segment-term-doc-pos-enum) prox-pointer)

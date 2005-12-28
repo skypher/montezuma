@@ -11,7 +11,7 @@
    (size :initform 0 :reader size)
    (is-index :initarg :is-index)
    (field-infos :initarg :field-infos)
-   (out)
+   (out :reader out)
    (other :accessor other))
   (:default-initargs
    :is-index NIL))
@@ -53,7 +53,7 @@
       (when (>= (doc-freq term-info) skip-interval)
 	(write-vint out (skip-offset term-info)))
       (when is-index
-	(write-vlong out (- last-index-pointer (pos (out other))))
+	(write-vlong out (- (pos (out other)) last-index-pointer))
 	(setf last-index-pointer (pos (out other))))
       (set-from-term-info last-term-info term-info)
       (incf size))))
@@ -68,11 +68,13 @@
 
 (defmethod write-term ((self term-infos-writer) term)
   (with-slots (out field-infos last-term) self
-    (let* ((start (mismatch (term-text last-term) (term-text term)))
+    (let* ((start (or (mismatch (term-text last-term) (term-text term))
+		      (min (length (term-text last-term)) (length (term-text term)))))
 	   (length (- (length (term-text term)) start)))
       (write-vint out start)
       (write-vint out length)
-      (write-vint out (field-number field-infos (term-field term)))
+      (write-chars out (string-to-bytes (term-text term)) start length)
+      (write-vint out (get-field-number field-infos (term-field term)))
       (setf last-term term))))
 
 
@@ -82,8 +84,8 @@
    (segment :initarg :segment)
    (field-infos :initarg :field-infos)
    (orig-enum)
-   (size)
-   (skip-interval)
+   (size :reader size)
+   (skip-interval :reader skip-interval)
    (index-enum)
    (index-terms :initform nil)
    (index-infos :initform nil)
@@ -92,17 +94,17 @@
 (defmethod initialize-instance :after ((self term-infos-reader) &key)
   (with-slots (orig-enum size directory segment field-infos index-enum skip-interval) self
     (setf orig-enum (make-instance 'segment-term-enum
-				   :out (open-input directory
-						    (format nil "~A.tis" segment))
+				   :input (open-input directory
+						      (format nil "~A.tis" segment))
 				   :field-infos field-infos
-				   NIL))
+				   :is-index NIL))
     (setf size (size orig-enum))
     (setf skip-interval (skip-interval orig-enum))
     (setf index-enum (make-instance 'segment-term-enum
-				    :out (open-input directory
-						     (format nil "~A.tii" segment))
+				    :input (open-input directory
+						       (format nil "~A.tii" segment))
 				    :field-infos field-infos
-				    NIL))))
+				    :is-index T))))
 
 (defmethod close ((self term-infos-reader))
   (with-slots (orig-enum index-enum) self
@@ -123,7 +125,7 @@
 		(when (or (= (length index-terms) enum-offset)
 			  (term< term (aref index-terms enum-offset)))
 		  (return-from get-term-info (scan-for-term-info term))))))
-	  (seek-enum self (get-index-offset term))
+	  (seek-enum self (get-index-offset self term))
 	  (scan-for-term-info self term)))))
 
 (defmethod get-term ((self term-infos-reader) position)
@@ -145,11 +147,11 @@
 	nil
 	(progn
 	  (ensure-index-is-read self)
-	  (seek-enum self (get-index-offset term))
+	  (seek-enum self (get-index-offset self term))
 	  (let ((e (enum self)))
 	    (while (and (term> term (term e))
 			(next e)))
-	    (if (term= term (term e))
+	    (if (and (term e) (term= term (term e)))
 		(pos e)
 		-1))))))
 
@@ -161,9 +163,13 @@
   (get-term-info self term)
   (clone (enum self)))
 
+(let ((term-enum nil))
+  
 (defmethod enum ((self term-infos-reader))
   ;; FIXME use cached thread-local storage?
-  (terms))
+  (when (null term-enum)
+    (setf term-enum (terms self)))
+  term-enum))
 
 (defmethod ensure-index-is-read ((self term-infos-reader))
   ;; FIXME synchronized?
@@ -188,7 +194,7 @@
 	  (hi (- (length index-terms) 1)))
       (while (>= hi lo)
 	(let* ((mid (floor (+ lo hi) 2))
-	       (delta (- term (aref index-terms mid))))
+	       (delta (term-compare term (aref index-terms mid))))
 	  (cond ((< delta 0)
 		 (setf hi (- mid 1)))
 		((> delta 0)
@@ -199,11 +205,11 @@
 
 (defmethod seek-enum ((self term-infos-reader) ind-offset)
   (with-slots (index-pointers index-terms index-infos) self
-    (seek (enum self)
-	  (aref index-pointers ind-offset)
-	  (- (* ind-offset (index-interval (enum self))) 1)
-	  (aref index-terms ind-offset)
-	  (aref index-infos ind-offset))))
+    (seek-segment-term (enum self)
+		       (aref index-pointers ind-offset)
+		       (- (* ind-offset (index-interval (enum self))) 1)
+		       (aref index-terms ind-offset)
+		       (aref index-infos ind-offset))))
 
 (defmethod scan-for-term-info ((self term-infos-reader) term)
   (let ((e (enum self)))
@@ -231,5 +237,3 @@
 	    (if (term= term (term e))
 		(pos e)
 		-1))))))
-	
-      

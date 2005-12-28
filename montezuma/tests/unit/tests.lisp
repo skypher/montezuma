@@ -170,11 +170,11 @@
 			    :test-functions (list ,@(mapcar #'(lambda (test-case-function)
 							      `(function ,(second test-case-function)))
 							  test-case-functions)))))
-	 (add-test-function (intern (format nil "~A~A" ',name '#:setup))
+	 (add-test-function (intern (format nil "~A-~A" ',name '#:setup))
 			    #'(lambda () (do-fixture-setup ,fixture-var)))
-	 (add-test-function (intern (format nil "~A~A" ',name '#:test))
+	 (add-test-function (intern (format nil "~A-~A" ',name '#:test))
 			    #'(lambda () (do-fixture-tests ,fixture-var)))
-	 (add-test-function (intern (format nil "~A~A" ',name '#:teardown))
+	 (add-test-function (intern (format nil "~A-~A" ',name '#:teardown))
 			    #'(lambda () (do-fixture-teardown ,fixture-var)))))))
        
        

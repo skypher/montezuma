@@ -21,3 +21,22 @@
   (cond ((string< s1 s2) -1)
 	((string> s1 s2) 1)
 	(T 0)))
+
+(defun make-adjustable-string (length &optional s)
+  (if s
+      (make-array (list length)
+		  :element-type 'character
+		  :fill-pointer T
+		  :adjustable T
+		  :initial-contents s)
+      (make-array (list length)
+		  :element-type 'character
+		  :fill-pointer T
+		  :adjustable T)))
+
+
+(defmacro while (expr &body body)
+  `(do ()
+       ((not ,expr))
+     ,@body))
+
