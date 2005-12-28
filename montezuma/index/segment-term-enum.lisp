@@ -88,8 +88,8 @@
 	       
 
 (defmethod scan-to ((self segment-term-enum) term)
-  
-  )
+  (with-slots (term-buffer) self
+    (while (and (term> term (to-term term-buffer)) (next self)))))
 
 (defmethod term ((self segment-term-enum))
   (with-slots (term-buffer) self

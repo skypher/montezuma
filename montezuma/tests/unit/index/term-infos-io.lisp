@@ -111,11 +111,13 @@
 				     :doc-freq 1
 				     :freq-pointer 1005
 				     :prox-pointer 1005
-				     :skip-offset 0))
+				     :skip-offset 0)
+		      #'term-info=)
 		(test term-info-io-5
 		      (get-term-info tir term-rev-dualize)
 		      (make-instance 'term-info
 				     :doc-freq 1
 				     :freq-pointer 70
 				     :prox-pointer 70
-				     :skip-offset 0))))))
+				     :skip-offset 0)
+		      #'term-info=)))))
