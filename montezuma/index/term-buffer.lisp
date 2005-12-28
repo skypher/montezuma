@@ -6,6 +6,15 @@
    (field :initform nil :reader field)
    (term :initform nil)))
 
+(defmethod print-object ((self term-buffer) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (with-slots (field text-buf text-length) self
+      (format stream "field:~S text:~S"
+	      field 
+	      (if (not (< text-length 0))
+		  (subseq text-buf 0 text-length)
+		  nil)))))
+
 (defmethod text ((self term-buffer))
   (with-slots (text-buf text-length) self
     (subseq text-buf 0 text-length)))
@@ -22,7 +31,8 @@
 	(read-chars input buf start length)
 	(let ((s (bytes-to-string buf)))
 	  (setf text-buf (make-adjustable-string (length s) s))))
-      (setf field (field-name (get-field field-infos (read-vint input)))))))
+      (setf field (field-name (get-field field-infos (read-vint input))))))
+  self)
 
 (defmethod ensure-text-buf-length ((self term-buffer) len)
   (with-slots (text-buf) self

@@ -78,6 +78,7 @@
     (let ((file (gethash name files)))
       (unless file
 	(error "File ~S does not exist." name))
+      (assert (string= name (file-name file)))
       (make-instance 'ram-index-input :file file))))
 
 (defmethod print-file ((self ram-directory) name)
@@ -100,6 +101,11 @@
 (defclass ram-index-output (buffered-index-output)
   ((file :initarg :file)
    (pointer :initform 0)))
+
+(defmethod print-object ((self ram-index-output) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (with-slots (file pointer) self
+      (format stream "file:~S pointer:~S" file pointer))))
 
 (defmethod size ((self ram-index-output))
   (with-slots (file) self
@@ -155,7 +161,13 @@
 
 (defclass ram-index-input (buffered-index-input)
   ((file :initarg :file)
-   (pointer :initform 0)))
+   (pointer :initform 0)
+   (closed-p :initform NIL)))
+
+(defmethod print-object ((self ram-index-input) stream)
+  (print-unreadable-object (self stream :identity T :type T)
+    (with-slots (file pointer) self
+      (format stream "file:~S pointer:~S" file pointer))))
 
 (defmethod initialize-copy :after ((self ram-index-input) o)
   (with-slots (file pointer) self
@@ -168,7 +180,9 @@
 
 
 (defmethod read-internal ((self ram-index-input) b offset length)
-  (with-slots (file pointer) self
+  (with-slots (file pointer closed-p) self
+    (when closed-p
+      (error "~S cannot be read from because it has already been closed." self))
     (let ((remainder length)
 	  (start pointer))
       (while (not (= remainder 0))
@@ -194,14 +208,16 @@
     (setf pointer pos)))
 
 (defmethod close ((self ram-index-input))
-  )
-
+  (with-slots (closed-p) self
+    (setf closed-p T)))
 
 
 (defclass ram-file ()
-  ((name :initarg :name)
+  ((name :initarg :name :reader file-name)
    (buffers :accessor buffers :initform (make-array (list 5) :fill-pointer 0 :adjustable T))
    (mtime :accessor mtime :initform (get-universal-time))
    (size :accessor size :initform 0)))
 
-
+(defmethod print-object ((self ram-file) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (format stream "name:~S size:~S" (file-name self) (size self))))

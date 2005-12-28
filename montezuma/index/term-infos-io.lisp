@@ -89,7 +89,8 @@
    (index-enum)
    (index-terms :initform nil)
    (index-infos :initform nil)
-   (index-pointers :initform nil)))
+   (index-pointers :initform nil)
+   (cached-term-enum :initform nil)))
 
 (defmethod initialize-instance :after ((self term-infos-reader) &key)
   (with-slots (orig-enum size directory segment field-infos index-enum skip-interval) self
@@ -163,13 +164,12 @@
   (get-term-info self term)
   (clone (enum self)))
 
-(let ((term-enum nil))
-  
 (defmethod enum ((self term-infos-reader))
   ;; FIXME use cached thread-local storage?
-  (when (null term-enum)
-    (setf term-enum (terms self)))
-  term-enum))
+  (with-slots (cached-term-enum) self
+    (when (null cached-term-enum)
+      (setf cached-term-enum (terms self)))
+    cached-term-enum))
 
 (defmethod ensure-index-is-read ((self term-infos-reader))
   ;; FIXME synchronized?

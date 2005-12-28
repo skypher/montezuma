@@ -102,6 +102,14 @@
       (funcall function)))
   (end-tests))
 
+(defun run-test-named (name)
+  (begin-tests)
+  (let ((test (assoc name *test-functions*)))
+    (if test
+	(destructuring-bind (name . function) test
+	  (format T "~&;; ~S" name)
+	  (funcall function))
+	(error "There is no test named ~S." name))))
 
 (defstruct test-fixture
   name
@@ -172,8 +180,11 @@
 							  test-case-functions)))))
 	 (add-test-function (intern (format nil "~A-~A" ',name '#:setup))
 			    #'(lambda () (do-fixture-setup ,fixture-var)))
-	 (add-test-function (intern (format nil "~A-~A" ',name '#:test))
-			    #'(lambda () (do-fixture-tests ,fixture-var)))
+	 ,@(mapcar #'(lambda (test-case-function)
+		       (let ((fn-name (second test-case-function)))
+			 `(add-test-function ',fn-name
+					     #'(lambda () (,fn-name ,fixture-var)))))
+		   test-case-functions)
 	 (add-test-function (intern (format nil "~A-~A" ',name '#:teardown))
 			    #'(lambda () (do-fixture-teardown ,fixture-var)))))))
        

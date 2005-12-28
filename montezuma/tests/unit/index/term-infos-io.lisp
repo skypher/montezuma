@@ -57,15 +57,12 @@
   (:teardown
    (close (fixture-var 'dir)))
   (:testfun test-two-field-io
-	    (let ((term-dumbly (make-term "word" "dumbly"))
-		  (term-dualize (make-term "word" "dualize"))
+	    (let ((term-dualize (make-term "word" "dualize"))
 		  (term-rev-dualize (make-term "reverse" "ezilaud"))
 		  (fis (make-instance 'field-infos)))
 	      (add-field-info fis "word" :indexed-p T :store-term-vector T)
 	      (add-field-info fis "reverse" :indexed-p T :store-term-vector T)
-	      (let ((terms (vector))
-		    (term-infos (vector))
-		    (tiw (make-instance 'term-infos-writer
+	      (let ((tiw (make-instance 'term-infos-writer
 					:dir (fixture-var 'dir)
 					:segment (format nil "~AG" *test-segment*)
 					:field-infos fis
@@ -78,7 +75,8 @@
 		  (do ((i 0 (+ i 1))
 		       (words reversed-words (cdr words)))
 		      ((endp words))
-		    (add-term tiw (make-term "reverse" (car words))
+		    (add-term tiw
+			      (make-term "reverse" (car words))
 			      (make-instance 'term-info
 					     :doc-freq 1
 					     :freq-pointer i
@@ -99,13 +97,13 @@
 					:dir (fixture-var 'dir)
 					:segment (format nil "~AG" *test-segment*)
 					:field-infos fis)))
-		(test term-info-io-1 (size tir) 564)
-		(test term-info-io-2 (skip-interval tir) 16)
-		(test term-info-io-3
+		(test term-info-two-field-io-1 (size tir) 564)
+		(test term-info-two-field-io-2 (skip-interval tir) 16)
+		(test term-info-two-field-io-3
 		      (get-terms-position tir
 					  (make-term "word" "duvetyne"))
 		      561)
-		(test term-info-io-4
+		(test term-info-two-field-io-4
 		      (get-term-info tir term-dualize)
 		      (make-instance 'term-info
 				     :doc-freq 1
@@ -113,11 +111,84 @@
 				     :prox-pointer 1005
 				     :skip-offset 0)
 		      #'term-info=)
-		(test term-info-io-5
+		(test term-info-two-field-io-5
 		      (get-term-info tir term-rev-dualize)
 		      (make-instance 'term-info
 				     :doc-freq 1
 				     :freq-pointer 70
 				     :prox-pointer 70
 				     :skip-offset 0)
-		      #'term-info=)))))
+		      #'term-info=))))
+  (:testfun test-term-info-io-small
+	    (let ((term-duad (make-term "word" "duad"))
+		  (term-dual (make-term "word" "dual"))
+		  (term-dualist (make-term "word" "dualist"))
+		  (fis (make-instance 'field-infos))
+		  (terms '())
+		  (term-infos '()))
+	      (add-field-info fis "word" :indexed-p T :store-term-vector T)
+	      (let ((tiw (make-instance 'term-infos-writer
+					:dir (fixture-var 'dir)
+					:segment "tiny-test-segment"
+					:field-infos fis
+					:interval 128)))
+		(do ((i 0 (+ i 1))
+		     (words (subseq *test-dict* 0 5) (cdr words)))
+		    ((endp words))
+		  (let ((term (make-term "word" (car words)))
+			(term-info (make-instance 'term-info
+						  :doc-freq 1
+						  :freq-pointer i
+						  :prox-pointer i
+						  :skip-offset 0)))
+		    (push term terms)
+		    (push term-info term-infos)
+		    (add-term tiw term term-info)))
+		(close tiw))
+	      (let ((tir (make-instance 'term-infos-reader
+					:dir (fixture-var 'dir)
+					:segment "tiny-test-segment"
+					:field-infos fis)))
+		(test term-info-io-small-1 (size tir) 5)
+		(test term-info-io-small-2 (skip-interval tir) 16)
+		(test term-info-io-small-3 (get-terms-position tir (make-term "word" "duad")) 0)
+		(test term-info-io-small-4 (get-terms-position tir (make-term "word" "dual")) 1)
+		(test term-info-io-small-5 (get-terms-position tir (make-term "word" "dualist")) 3))))
+(:testfun test-term-info-io-big
+	    (let ((term-duad (make-term "word" "duad"))
+		  (term-dual (make-term "word" "dual"))
+		  (term-dualist (make-term "word" "dualist"))
+		  (fis (make-instance 'field-infos))
+		  (terms '())
+		  (term-infos '()))
+	      (add-field-info fis "word" :indexed-p T :store-term-vector T)
+	      (let ((tiw (make-instance 'term-infos-writer
+					:dir (fixture-var 'dir)
+					:segment "tiny-test-segment"
+					:field-infos fis
+					:interval 128)))
+		(do ((i 0 (+ i 1))
+		     (words *test-dict* (cdr words)))
+		    ((endp words))
+		  (let ((term (make-term "word" (car words)))
+			(term-info (make-instance 'term-info
+						  :doc-freq 1
+						  :freq-pointer i
+						  :prox-pointer i
+						  :skip-offset 0)))
+		    (push term terms)
+		    (push term-info term-infos)
+		    (add-term tiw term term-info)))
+		(close tiw))
+	      (let ((tir (make-instance 'term-infos-reader
+					:dir (fixture-var 'dir)
+					:segment "tiny-test-segment"
+					:field-infos fis)))
+		(test term-info-io-big-1 (size tir) 282)
+		(test term-info-io-big-2 (skip-interval tir) 16)
+		(test term-info-io-big-3 (get-terms-position tir (make-term "word" "duyker")) 281)
+		(test term-info-io-big-4 (get-terms-position tir (make-term "word" "duvetyne")) 279)
+		(test term-info-io-big-5 (get-terms-position tir (make-term "word" "dusting")) 254)
+		(test term-info-io-big-6 (get-terms-position tir (make-term "word" "dustless")) 255)
+		(test term-info-io-big-7 (get-terms-position tir (make-term "word" "dustman")) 256)
+		(test term-info-io-big-8 (get-terms-position tir (make-term "word" "dustmop")) 257)))))
