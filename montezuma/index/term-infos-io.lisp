@@ -125,7 +125,7 @@
 	      (let ((enum-offset (+ (floor (pos e) (index-interval e)) 1)))
 		(when (or (= (length index-terms) enum-offset)
 			  (term< term (aref index-terms enum-offset)))
-		  (return-from get-term-info (scan-for-term-info term))))))
+		  (return-from get-term-info (scan-for-term-info self term))))))
 	  (seek-enum self (get-index-offset self term))
 	  (scan-for-term-info self term)))))
 

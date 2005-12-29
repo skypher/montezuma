@@ -155,9 +155,8 @@
 		(test term-info-io-small-4 (get-terms-position tir (make-term "word" "dual")) 1)
 		(test term-info-io-small-5 (get-terms-position tir (make-term "word" "dualist")) 3))))
 (:testfun test-term-info-io-big
-	    (let ((term-duad (make-term "word" "duad"))
-		  (term-dual (make-term "word" "dual"))
-		  (term-dualist (make-term "word" "dualist"))
+	    (let ((term-dumbly (make-term "word" "dumbly"))
+		  (term-dualize (make-term "word" "dualize"))
 		  (fis (make-instance 'field-infos))
 		  (terms '())
 		  (term-infos '()))
@@ -191,4 +190,19 @@
 		(test term-info-io-big-5 (get-terms-position tir (make-term "word" "dusting")) 254)
 		(test term-info-io-big-6 (get-terms-position tir (make-term "word" "dustless")) 255)
 		(test term-info-io-big-7 (get-terms-position tir (make-term "word" "dustman")) 256)
-		(test term-info-io-big-8 (get-terms-position tir (make-term "word" "dustmop")) 257)))))
+		(test term-info-io-big-8 (get-terms-position tir (make-term "word" "dustmop")) 257)
+		(test term-info-io-big-9
+		      (get-term-info tir term-dualize)
+		      (make-instance 'term-info
+				     :doc-freq 1
+				     :freq-pointer 5
+				     :prox-pointer 5
+				     :skip-offset 0)
+		      #'term-info=)
+		(test term-info-big-10 (get-term tir 127) term-dumbly #'term=)
+		(let ((terms (terms-from tir term-dumbly)))
+		  (test term-info-big-11 (term terms) term-dumbly #'term=)
+		  (test term-info-big-12 (and (next terms) T) T)
+		  (test term-info-big-13 (term terms) (make-term "word" "dumbness") #'term=)
+		  (test term-info-big-14 (and (next terms) T) T)
+		  (test term-info-big-15 (term terms) (make-term "word" "dumbo") #'term=))))))

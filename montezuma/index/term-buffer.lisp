@@ -15,6 +15,13 @@
 		  (subseq text-buf 0 text-length)
 		  nil)))))
 
+(defmethod clone-object ((object term-buffer))
+  (let ((copy (allocate-instance (class-of object))))
+    (loop for slot in (class-slots (class-of object))
+       do (setf (slot-value copy (slot-definition-name slot))
+		(slot-value object (slot-definition-name slot))))
+    copy))
+
 (defmethod text ((self term-buffer))
   (with-slots (text-buf text-length) self
     (subseq text-buf 0 text-length)))
