@@ -25,4 +25,29 @@
     (test priority-queue-15 (queue-pop pq) "dword" #'string=)
     (test priority-queue-16 (size pq) 0)))
 
-    
+(deftestfun test-priority-queue-clear
+  (let ((pq (make-instance 'priority-queue
+			   :max-size 3
+			   :predicate #'string<)))
+    (queue-push pq "word1")
+    (queue-push pq "word2")
+    (queue-push pq "word3")
+    (test priority-queue-clear-1 (size pq) 3)
+    (queue-clear pq)
+    (test priority-queue-clear-2 (size pq) 0)))
+
+(deftestfun test-priority-queue-stress
+  (let ((pq (make-instance 'priority-queue
+			   :max-size 100
+			   :predicate #'<)))
+    (dotimes (i 100)
+      (queue-push pq (random 100)))
+    (let ((prev (queue-pop pq))
+	  (success T))
+      (dotimes (i 99)
+	(let ((curr (queue-pop pq)))
+	  (when (> prev curr)
+	    (setf success NIL))
+	  (setf prev curr)))
+      (test priority-queue-stress-1 success T))))
+
