@@ -95,7 +95,7 @@
       (skipping-doc self)))))
 
 (defmethod read-segment-term-doc-enum ((self segment-term-doc-enum) docs freqs &optional (start 0))
-  (with-slots (doc-freq freq freq-stream doc count deleted-docs freq) self
+  (with-slots (doc-freq freq freq-stream doc count deleted-docs) self
     (let ((i start)
 	  (needed (length docs)))
       (while (and (< i needed) (< count doc-freq))

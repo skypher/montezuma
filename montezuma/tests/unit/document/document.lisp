@@ -36,7 +36,7 @@
 
       (test binary-term-1 (length (document-fields doc "field1")) 4)
       (test binary-term-2 (document-values doc "field1") "value1 value2")
-      (test binary-term-3 (document-binaries doc "field1") (concatenate 'array bin1 bin2) #'equalp))))
+      (test binary-term-3 (document-binaries doc "field1") (concatenate 'vector bin1 bin2) #'equalp))))
 
       
 

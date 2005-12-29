@@ -56,7 +56,7 @@
    (setf (fixture-var 'dir) (make-instance 'ram-directory)))
   (:teardown
    (close (fixture-var 'dir)))
-  (:testfun test-two-field-io
+  (:testfun test-term-infos-two-field-io
 	    (let ((term-dualize (make-term "word" "dualize"))
 		  (term-rev-dualize (make-term "reverse" "ezilaud"))
 		  (fis (make-instance 'field-infos)))
@@ -119,11 +119,8 @@
 				     :prox-pointer 70
 				     :skip-offset 0)
 		      #'term-info=))))
-  (:testfun test-term-info-io-small
-	    (let ((term-duad (make-term "word" "duad"))
-		  (term-dual (make-term "word" "dual"))
-		  (term-dualist (make-term "word" "dualist"))
-		  (fis (make-instance 'field-infos))
+  (:testfun test-term-infos-io-small
+	    (let ((fis (make-instance 'field-infos))
 		  (terms '())
 		  (term-infos '()))
 	      (add-field-info fis "word" :indexed-p T :store-term-vector T)
@@ -154,7 +151,7 @@
 		(test term-info-io-small-3 (get-terms-position tir (make-term "word" "duad")) 0)
 		(test term-info-io-small-4 (get-terms-position tir (make-term "word" "dual")) 1)
 		(test term-info-io-small-5 (get-terms-position tir (make-term "word" "dualist")) 3))))
-(:testfun test-term-info-io-big
+(:testfun test-term-infos-io-big
 	    (let ((term-dumbly (make-term "word" "dumbly"))
 		  (term-dualize (make-term "word" "dualize"))
 		  (fis (make-instance 'field-infos))
@@ -205,4 +202,87 @@
 		  (test term-info-big-12 (and (next terms) T) T)
 		  (test term-info-big-13 (term terms) (make-term "word" "dumbness") #'term=)
 		  (test term-info-big-14 (and (next terms) T) T)
-		  (test term-info-big-15 (term terms) (make-term "word" "dumbo") #'term=))))))
+		  (test term-info-big-15 (term terms) (make-term "word" "dumbo") #'term=)))))
+(:testfun test-term-infos-io-small-writer
+	  (let ((fis (make-instance 'field-infos)))
+	    (add-field-info fis "author" :indexed-p T :store-term-vector T)
+	    (add-field-info fis "title" :indexed-p T :store-term-vector T)
+	    (let ((tiw (make-instance 'term-infos-writer
+				      :dir (fixture-var 'dir)
+				      :segment *test-segment*
+				      :field-infos fis
+				      :interval 128)))
+	      (let ((terms (list (make-term "author" "Martel")
+				 (make-term "title" "Life of Pi")
+				 (make-term "author" "Martin")
+				 (make-term "title" "Life on the edge"))))
+		(setf terms (sort terms #'term<))
+		(let ((term-infos '()))
+		  (dotimes (i 4)
+		    (push (make-instance 'term-info
+					 :doc-freq i
+					 :freq-pointer i
+					 :prox-pointer i
+					 :skip-offset i)
+			  term-infos))
+		  (setf term-infos (nreverse term-infos))
+		  (dotimes (i 4)
+		    (add-term tiw (elt terms i) (elt term-infos i)))
+		  (close tiw))))
+	    (let ((tis-file (open-input (fixture-var 'dir) (format nil "~A.tis" *test-segment*)))
+		  (tii-file (open-input (fixture-var 'dir) (format nil "~A.tii" *test-segment*))))
+	      (test term-infos-small-writer-1 (read-int tis-file) +term-infos-format+)
+	      (test term-infos-small-writer-2 (read-long tis-file)   4)      ;; term count
+	      (test term-infos-small-writer-3 (read-int tis-file)  128)      ;; index interval
+	      (test term-infos-small-writer-4 (read-int tis-file)   16)      ;; skip interval
+	      (test term-infos-small-writer-5 (read-vint tis-file)   0)      ;; string-equal length
+	      (test term-infos-small-writer-6 (read-vint tis-file)   6)      ;; rest of string length
+	      (let ((author (make-array 6)))
+		(read-chars tis-file author 0 6)
+		(test term-infos-small-writer-7 (bytes-to-string author) "Martel" #'string=))
+	      (test term-infos-small-writer-8 (read-vint tis-file)   0)      ;; field number
+	      (test term-infos-small-writer-9 (read-vint tis-file)   0)      ;; doc-freq
+	      (test term-infos-small-writer-10 (read-vlong tis-file) 0)      ;; freq pointer difference
+	      (test term-infos-small-writer-11 (read-vlong tis-file) 0)      ;; prox pointer difference
+	      (test term-infos-small-writer-12 (read-vint tis-file)  4)      ;; string-equal length
+	      (test term-infos-small-writer-13 (read-vint tis-file)  2)      ;; rest of string length
+	      (let ((author (make-array 2)))
+		(read-chars tis-file author 0 2)
+		(test term-infos-small-writer-14 (bytes-to-string author) "in" #'string=))
+	      (test term-infos-small-writer-15 (read-vint tis-file)  0)      ;; field number
+	      (test term-infos-small-writer-16 (read-vint tis-file)  1)      ;; doc-freq
+	      (test term-infos-small-writer-17 (read-vlong tis-file) 1)      ;; freq pointer difference
+	      (test term-infos-small-writer-18 (read-vlong tis-file) 1)      ;; prox pointer difference
+	      (test term-infos-small-writer-19 (read-vint tis-file)  0)      ;; string-equal length
+	      (test term-infos-small-writer-20 (read-vint tis-file) 10)      ;; rest of string length
+	      (let ((title (make-array 10)))
+		(read-chars tis-file title 0 10)
+		(test term-infos-small-writer-21 (bytes-to-string title) "Life of Pi" #'string=))
+	      (test term-infos-small-writer-22 (read-vint tis-file)  1)      ;; field number
+	      (test term-infos-small-writer-23 (read-vint tis-file)  2)      ;; doc-freq
+	      (test term-infos-small-writer-24 (read-vlong tis-file) 1)      ;; freq pointer difference
+	      (test term-infos-small-writer-25 (read-vlong tis-file) 1)      ;; prox pointer difference
+	      (test term-infos-small-writer-26 (read-vint tis-file)  6)      ;; string-equal length
+	      (test term-infos-small-writer-27 (read-vint tis-file) 10)      ;; rest of string length
+	      (let ((title (make-array 10)))
+		(read-chars tis-file title 0 10)
+		(test term-infos-small-writer-28 (bytes-to-string title) "n the edge" #'string=))
+	      (test term-infos-small-writer-29 (read-int tii-file) +term-infos-format+)
+	      (test term-infos-small-writer-30 (read-long tii-file)   1)
+	      (test term-infos-small-writer-31 (read-int tii-file)  128)
+	      (test term-infos-small-writer-32 (read-int tii-file)   16)
+	      (test term-infos-small-writer-33 (read-vint tii-file)   0)     ;; string-equal length
+	      (test term-infos-small-writer-34 (read-vint tii-file)   0)     ;; rest of string length
+	      (test term-infos-small-writer-35 (read-vint tii-file) #xFFFFFFFF) ;; field number
+	      (test term-infos-small-writer-36 (read-vint tii-file)   0)     ;; doc freq
+	      (test term-infos-small-writer-37 (read-vlong tii-file)  0)     ;; freq pointer difference
+	      (test term-infos-small-writer-38 (read-vlong tii-file)  0)     ;; prox pointer difference
+	      (test term-infos-small-writer-39 (read-vlong tii-file) 20))))) ;; pointer to first element in other
+
+
+	      
+
+	      
+	      
+	      
+	      

@@ -11,7 +11,7 @@
 							       *load-pathname*)))
 
 
-(deftestfun stop-filter
+(deftestfun test-stop-filter
   (with-input-from-string (input "The Quick AND the DEAD the and to it there their")
     (let ((filter (make-instance 'stop-filter
 				 :input (make-instance 'lowercase-tokenizer
