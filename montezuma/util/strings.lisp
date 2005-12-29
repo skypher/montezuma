@@ -35,8 +35,3 @@
 		  :adjustable T)))
 
 
-(defmacro while (expr &body body)
-  `(do ()
-       ((not ,expr))
-     ,@body))
-

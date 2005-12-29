@@ -16,9 +16,11 @@
     :components
     ((:file "package")
      (:module "util"
-	      :components ((:file "porter-stemmer")
+	      :components ((:file "while")
+			   (:file "porter-stemmer")
 			   (:file "streams")
 			   (:file "mop")
+			   (:file "priority-queue" :depends-on ("while"))
 			   (:file "strings"))
 	      :depends-on ("package"))
      (:module "store"
@@ -52,6 +54,7 @@
 			   (:file "term-enum")
 			   (:file "term-doc-enum")
 			   (:file "term-infos-io")
+;			   (:file "multiple-term-doc-enum")
 			   (:file "segment-term-enum" :depends-on ("term-infos-io")))
 	      :depends-on ("analysis"))))
 
@@ -69,6 +72,9 @@
 	    ((:module "unit"
 		      :components
 		      ((:file "tests")
+		       (:module "util"
+				:components ((:file "priority-queue"))
+				:depends-on ("tests"))
 		       (:module "store"
 				:components ((:file "store")
 					     (:file "ram-store"
