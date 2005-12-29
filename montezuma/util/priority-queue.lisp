@@ -58,7 +58,7 @@
       (setf (aref heap i) nil))
     (setf size 0)))
 
-(defmethod adjust-heap ((queue priority-queue))
+(defmethod adjust-top ((queue priority-queue))
   (down-heap queue))
 
 (defmethod up-heap ((queue priority-queue))
