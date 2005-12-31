@@ -1,8 +1,24 @@
 (in-package #:montezuma)
 
-(defstruct (term (:constructor make-term (field text)))
+(defgeneric term-field (term))
+(defgeneric term-text (term))
+
+  
+(defstruct (term (:constructor make-term (field text)) (:conc-name %term-))
   field
   text)
+
+(defmethod term-text ((self term))
+  (%term-text self))
+
+(defmethod (setf term-text) (text (self term))
+  (setf (%term-text self) text))
+
+(defmethod term-field ((self term))
+  (%term-field self))
+
+(defmethod (setf term-field) (field (self term))
+  (setf (%term-field self) field))
 
 (defun term-compare (t1 t2)
   (let ((fc (string-compare (term-field t1) (term-field t2))))
