@@ -56,6 +56,7 @@
 			   (:file "term-infos-io")
 			   (:file "multiple-term-doc-pos-enum")
 			   (:file "term-vector-offset-info")
+			   (:file "term-vectors-io")
 			   (:file "segment-term-enum" :depends-on ("term-infos-io")))
 	      :depends-on ("analysis"))))
 
@@ -105,7 +106,8 @@
 					     (:file "term-info")
 					     (:file "term-buffer")
 					     (:file "field-infos")
-					     (:file "term-infos-io"))
+					     (:file "term-infos-io")
+					     (:file "term-vectors-io"))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
