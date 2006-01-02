@@ -300,7 +300,10 @@
     (seek tvf tvf-pointer)
     (let ((num-terms (read-vint tvf)))
       (if (= num-terms 0)
-	  (make-instance 'segment-term-vector (error "FOO") field nil nil)
+	  (make-instance 'segment-term-vector
+			 :field field
+			 :terms nil
+			 :term-frequencies nil)
 	  (let ((store-positions NIL)
 		(store-offsets NIL))
 	    (if (= tvf-format *term-vectors-format-version*)
@@ -311,12 +314,13 @@
 	    (let ((terms (make-array num-terms))
 		  (term-freqs (make-array num-terms)))
 	      (let ((positions (if store-positions (make-array num-terms) nil))
-		    (offsets (if store-offsets (make-array num-terms) nil)))
+		    (offsets (if store-offsets (make-array num-terms) nil))
+		    ;; FIXME: how do we keep the buffer from being too small?
+		    (buffer (make-array 15 :adjustable T :fill-pointer T)))
 		(dotimes (i num-terms)
 		  (let* ((start (read-vint tvf))
 			 (delta-length (read-vint tvf))
-			 (total-length (+ start delta-length))
-			 (buffer (make-array total-length)))
+			 (total-length (+ start delta-length)))
 		    (read-chars tvf buffer start delta-length)
 		    (setf (aref terms i) (subseq (bytes-to-string buffer) 0 total-length))
 		    (let ((freq (read-vint tvf)))
