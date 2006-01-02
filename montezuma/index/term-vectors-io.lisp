@@ -108,6 +108,7 @@
 	  (dotimes (j (size vector))
 	    (add-term-internal self
 			       (aref (terms vector) j)
+			       (aref (term-frequencies vector) j)
 			       (if store-positions (aref (positions vector) j) nil)
 			       (if store-offsets (aref (offsets vector) j) nil)))
 	  (close-field self))))
@@ -205,19 +206,19 @@
    (tvd-format)
    (tvf)
    (tvf-format)
-   (size)))
+   (size :reader size)))
 
-(defmethod initialize-instance :after ((self term-vectors-reader) &key dir segment)
+(defmethod initialize-instance :after ((self term-vectors-reader) &key directory segment)
   (with-slots (tvx tvd tvd-format tvf tvf-format size) self
-    (if (file-exists-p dir (merge-pathnames *tvx-extension* segment))
+    (if (file-exists-p directory (merge-pathnames *tvx-extension* segment))
 	(progn
-	  (setf tvx (open-input dir (merge-pathnames *tvx-extension* segment)))
+	  (setf tvx (open-input directory (merge-pathnames *tvx-extension* segment)))
 	  (check-valid-format self tvx)
-	  (setf tvd (open-input dir (merge-pathnames *tvd-extension* segment)))
+	  (setf tvd (open-input directory (merge-pathnames *tvd-extension* segment)))
 	  (setf tvd-format (check-valid-format self tvd))
-	  (setf tvf (open-input dir (merge-pathnames *tvf-extension* segment)))
+	  (setf tvf (open-input directory (merge-pathnames *tvf-extension* segment)))
 	  (setf tvf-format (check-valid-format self tvf))
-	  (setf size (/ (size tvf) 8)))
+	  (setf size (/ (size tvx) 8)))
 	(setf tvx nil
 	      tvd nil
 	      tvf nil))))
@@ -295,7 +296,7 @@
 
 
 (defmethod read-term-vector ((self term-vectors-reader) field tvf-pointer)
-  (with-slots (tvf) self
+  (with-slots (tvf tvf-format) self
     (seek tvf tvf-pointer)
     (let ((num-terms (read-vint tvf)))
       (if (= num-terms 0)
@@ -304,48 +305,50 @@
 		(store-offsets NIL))
 	    (if (= tvf-format *term-vectors-format-version*)
 		(let ((bits (read-byte tvf)))
-		  (setf store-positions (logbitp +store-positions-with-term-vector+ bits))
-		  (setf store-offsets (logbitp +store-offset-with-term-vector+ bits)))
+		  (setf store-positions (not (zerop (logand +store-positions-with-term-vector+ bits))))
+		  (setf store-offsets (not (zerop (logand +store-offset-with-term-vector+ bits)))))
 		(read-vint tvf))
 	    (let ((terms (make-array num-terms))
 		  (term-freqs (make-array num-terms)))
 	      (let ((positions (if store-positions (make-array num-terms) nil))
 		    (offsets (if store-offsets (make-array num-terms) nil)))
-		(let ((start 0)
-		      (delta-length 0)
-		      (total-length 0)
-		      (buffer "")
-		      (previous-buffer ""))
+		(let ((previous-buffer ""))
 		  (dotimes (i num-terms)
 		    (let* ((start (read-vint tvf))
-			   (delta-length (read-int tvf))
-			   (total-length (+ start delta-length)))
+			   (delta-length (read-vint tvf))
+			   (total-length (+ start delta-length))
+			   (buffer (make-array total-length)))
 		      (read-chars tvf buffer start delta-length)
-		      (setf (aref terms i) (subseq buffer 0 total-length))
+		      (setf (aref terms i) (subseq (bytes-to-string buffer) 0 total-length))
 		      (setf previous-buffer (aref terms i))
-		      (setf freq (read-vint tvf))
-		      (setf (aref term-freqs i) freq)
+		      (let ((freq (read-vint tvf)))
+			(setf (aref term-freqs i) freq)
 
-		      (when store-positions
-			(let ((pos (make-array freq)))
-			  (setf (aref positions i) pos)
-			  (setf prev-position 0)
-			  (dotimes (j freq)
-			    (setf (aref pos j) (+ prev-position (read-vint tvf)))
-			    (setf prev-position (aref pos j)))))
+			(when store-positions
+			  (let ((pos (make-array freq))
+				(prev-position 0))
+			    (setf (aref positions i) pos)
+			    (dotimes (j freq)
+			      (setf (aref pos j) (+ prev-position (read-vint tvf)))
+			      (setf prev-position (aref pos j)))))
 		      
-		      (when store-offsets
-			(let ((offs (make-array freq)))
-			  (setf (aref offsets i) offs)
-			  (setf prev-offset 0)
-			  (dotimes (j freq)
-			    (let* ((start-offset (+ prev-offset (read-vint tvf)))
-				   (end-offset (+ start-offset (read-vint tvf))))
-			      (setf (aref offs j) (make-instance 'term-vector-offset-info
-								 :start-offset start-offset
-								 :end-offset end-offset))
-			      (setf prev-offset end-offset))))))))
-		(make-instance 'segment-term-vector (error "FOO") field terms term-freqs positions offsets))))))))
+			(when store-offsets
+			  (let ((offs (make-array freq))
+				(prev-offset 0))
+			    (setf (aref offsets i) offs)
+			    (dotimes (j freq)
+			      (let* ((start-offset (+ prev-offset (read-vint tvf)))
+				     (end-offset (+ start-offset (read-vint tvf))))
+				(setf (aref offs j) (make-instance 'term-vector-offset-info
+								   :start-offset start-offset
+								   :end-offset end-offset))
+				(setf prev-offset end-offset)))))))))
+		(make-instance 'segment-term-vector
+			       :field field
+			       :terms terms
+			       :term-frequencies term-freqs
+			       :positions positions
+			       :offsets offsets))))))))
 
 (defmethod check-valid-format ((self term-vectors-reader) input-stream)
   (let ((format (read-int input-stream)))

@@ -56,7 +56,8 @@
 			   (:file "term-infos-io")
 			   (:file "multiple-term-doc-pos-enum")
 			   (:file "term-vector-offset-info")
-			   (:file "term-vectors-io")
+			   (:file "segment-term-vector")
+			   (:file "term-vectors-io" :depends-on ("segment-term-vector"))
 			   (:file "segment-term-enum" :depends-on ("term-infos-io")))
 	      :depends-on ("analysis"))))
 
