@@ -83,7 +83,6 @@
 					   :segment "_test"
 					   :field-infos (fixture-var 'fis))))
 		  (let ((tv (get-field-tv tv-r 0 "field1")))
-		    (print tv)
 		    (test term-vector-io-add-documents-1 (size tv) 2)
 		    (test term-vector-io-add-documents-2 (aref (terms tv) 0) "word1" #'string=)
 		    (test term-vector-io-add-documents-3 (aref (term-frequencies tv) 0) 3)
