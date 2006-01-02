@@ -134,7 +134,7 @@
 
 
 (defmacro deftestfixture (name &rest clauses)
-  (deftextfixture-expr name
+  (deftestfixture-expr name
       (cdr (first (collect-clauses :vars clauses)))
     (cdr (first (collect-clauses :setup clauses)))
     (cdr (first (collect-clauses :teardown clauses)))
@@ -160,7 +160,8 @@
        (funcall ,(make-fixture-method expr) ,fixture-var))))
 	   
     
-(defun deftextfixture-expr (name vars setup-exprs teardown-exprs test-case-functions)
+(defun deftestfixture-expr (name vars setup-exprs teardown-exprs test-case-functions)
+  (declare (ignore vars))
   (let ((fixture-var (gensym "FIXTURE")))
     `(progn
        ,@(mapcar #'(lambda (test-case-function)

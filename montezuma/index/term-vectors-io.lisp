@@ -312,37 +312,35 @@
 		  (term-freqs (make-array num-terms)))
 	      (let ((positions (if store-positions (make-array num-terms) nil))
 		    (offsets (if store-offsets (make-array num-terms) nil)))
-		(let ((previous-buffer ""))
-		  (dotimes (i num-terms)
-		    (let* ((start (read-vint tvf))
-			   (delta-length (read-vint tvf))
-			   (total-length (+ start delta-length))
-			   (buffer (make-array total-length)))
-		      (read-chars tvf buffer start delta-length)
-		      (setf (aref terms i) (subseq (bytes-to-string buffer) 0 total-length))
-		      (setf previous-buffer (aref terms i))
-		      (let ((freq (read-vint tvf)))
-			(setf (aref term-freqs i) freq)
-
-			(when store-positions
-			  (let ((pos (make-array freq))
-				(prev-position 0))
-			    (setf (aref positions i) pos)
-			    (dotimes (j freq)
-			      (setf (aref pos j) (+ prev-position (read-vint tvf)))
-			      (setf prev-position (aref pos j)))))
+		(dotimes (i num-terms)
+		  (let* ((start (read-vint tvf))
+			 (delta-length (read-vint tvf))
+			 (total-length (+ start delta-length))
+			 (buffer (make-array total-length)))
+		    (read-chars tvf buffer start delta-length)
+		    (setf (aref terms i) (subseq (bytes-to-string buffer) 0 total-length))
+		    (let ((freq (read-vint tvf)))
+		      (setf (aref term-freqs i) freq)
 		      
-			(when store-offsets
-			  (let ((offs (make-array freq))
-				(prev-offset 0))
-			    (setf (aref offsets i) offs)
-			    (dotimes (j freq)
-			      (let* ((start-offset (+ prev-offset (read-vint tvf)))
-				     (end-offset (+ start-offset (read-vint tvf))))
-				(setf (aref offs j) (make-instance 'term-vector-offset-info
-								   :start-offset start-offset
-								   :end-offset end-offset))
-				(setf prev-offset end-offset)))))))))
+		      (when store-positions
+			(let ((pos (make-array freq))
+			      (prev-position 0))
+			  (setf (aref positions i) pos)
+			  (dotimes (j freq)
+			    (setf (aref pos j) (+ prev-position (read-vint tvf)))
+			    (setf prev-position (aref pos j)))))
+		      
+		      (when store-offsets
+			(let ((offs (make-array freq))
+			      (prev-offset 0))
+			  (setf (aref offsets i) offs)
+			  (dotimes (j freq)
+			    (let* ((start-offset (+ prev-offset (read-vint tvf)))
+				   (end-offset (+ start-offset (read-vint tvf))))
+			      (setf (aref offs j) (make-instance 'term-vector-offset-info
+								 :start-offset start-offset
+								 :end-offset end-offset))
+			      (setf prev-offset end-offset))))))))
 		(make-instance 'segment-term-vector
 			       :field field
 			       :terms terms

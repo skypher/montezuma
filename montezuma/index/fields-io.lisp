@@ -1,5 +1,13 @@
 (in-package #:montezuma)
 
+(defparameter *fdt-extension* (make-pathname :type "fdt"))
+(defparameter *fdx-extension* (make-pathname :type "fdx"))
+
+(defparameter +field-is-tokenized-bit+ 0)
+(defparameter +field-is-binary-bit+ 1)
+(defparameter +field-is-compressed-bit+ 2)
+
+
 (defclass fields-reader ()
   ((field-infos :initarg :field-infos)
    (fields-stream)
@@ -17,7 +25,7 @@
     (close fields-stream)
     (close index-stream)))
 
-(defmethod doc ((self fields-reader) n)
+(defmethod get-doc ((self fields-reader) n)
   (with-slots (index-stream fields-stream field-infos) self
     (seek index-stream (* n 8))
     (let ((position (read-long index-stream)))
@@ -38,35 +46,35 @@
 				 (make-binary-field (name fi)
 						    (uncompress b)
 						    :compress))
-		      (add-field doc (make-binary-field (name fi) b :yes))))
-		(let ((store :yes)
-		      (index (if (field-indexed-p fi)
-				 (if tokenize
-				     :tokenized
-				     (if (field-omit-norms-p fi)
-					 :no-norms
-					 :untokenized))
-				 :no))
-		      (data nil))
-		  (if compressed
-		      (progn
-			(setf store :compress)
-			(setf b (make-array (read-vint fields-stream)))
-			(read-bytes fields-stream b 0 (length b))
-			(setf data (uncompress b)))
-		      (setf data (read-string fields-stream)))
-		  (let ((stv (if (field-store-term-vector-p fi)
-				 (cond ((and (field-store-positions-p fi)
-					     (field-store-offsets-p fi))
-					:with-positions-offsets)
-				       ((field-store-positions-p fi) :with-positions)
-				       ((field-store-offsets-p fi) :with-offsets)
-				       (T :yes))
-				 :no)))
-		    (add-field doc (make-field (name fi) data
-					        :stored store
-						:index index
-						:store-term-vector stv))))))))
+		      (add-field doc (make-binary-field (name fi) b :yes)))
+		  (let ((store :yes)
+			(index (if (field-indexed-p fi)
+				   (if tokenize
+				       :tokenized
+				       (if (field-omit-norms-p fi)
+					   :no-norms
+					   :untokenized))
+				   :no))
+			(data nil))
+		    (if compressed
+			(progn
+			  (setf store :compress)
+			  (setf b (make-array (read-vint fields-stream)))
+			  (read-bytes fields-stream b 0 (length b))
+			  (setf data (uncompress b)))
+			(setf data (read-string fields-stream)))
+		    (let ((stv (if (field-store-term-vector-p fi)
+				   (cond ((and (field-store-positions-p fi)
+					       (field-store-offsets-p fi))
+					  :with-positions-offsets)
+					 ((field-store-positions-p fi) :with-positions)
+					 ((field-store-offsets-p fi) :with-offsets)
+					 (T :yes))
+				   :no)))
+		      (add-field doc (make-field (name fi) data
+						 :stored store
+						 :index index
+						 :store-term-vector stv)))))))))
       doc)))
 
 				     
@@ -82,7 +90,7 @@
 
 
 (defun open-segment-file (directory segment extension direction)
-  (check-type (direction (member :input :output)))
+  (check-type direction (member :input :output))
   (let ((file (merge-pathnames extension segment)))
     (ecase direction
       (:input (open-input directory file))
@@ -100,25 +108,27 @@
     (close index-stream)))
 
 (defmethod add-document ((self fields-writer) document)
-  (with-slots (index-stream fields-stream) self
+  (with-slots (index-stream fields-stream field-infos) self
     (write-long index-stream (pos fields-stream))
-    (let ((stored-count 0))
-      (dolist (field (all-fields doc))
-	(when (field-stored-p field)
-	  (write-vint fields-stream (get-field-number field-infos (name field)))
-	  (let ((bits 0))
-	    (when (field-tokenized-p field) (setf bits (logior bits *field-is-tokenized)))
-	    (when (field-binary-p field) (setf bits (logior bits *field-is-binary*)))
-	    (when (field-compressed-p field) (setf bits (logior bits *field-is-compressed*)))
-	    (write-byte fields-stream bits))
-	  (if (field-compressed-p field)
-	      (let ((data (if (field-binary-p field)
-			      (compress (binary-value field))
-			      (compress (string-value field)))))
-		(save-data self data))
-	      (if (field-binary-p field)
-		  (save-data self (binary-calue field))
-		  (write-string fields-stream (string-value field)))))))))
+    (write-vint fields-stream (count-if #'field-stored-p (all-fields document)))
+    (dolist (field (all-fields document))
+      (when (field-stored-p field)
+	(write-vint fields-stream (get-field-number field-infos (field-name field)))
+	(let ((bits 0))
+	  (flet ((turn-on (bit)
+		   (setf bits (logior bits (expt 2 bit)))))
+	    (when (field-tokenized-p field) (turn-on +field-is-tokenized-bit+))
+	    (when (field-binary-p field) (turn-on +field-is-binary-bit+))
+	    (when (field-compressed-p field) (turn-on +field-is-compressed-bit+)))
+	  (write-byte fields-stream bits))
+	(if (field-compressed-p field)
+	    (let ((data (if (field-binary-p field)
+			    (compress (binary-value field))
+			    (compress (string-value field)))))
+	      (save-data self data))
+	    (if (field-binary-p field)
+		(save-data self (binary-value field))
+		(write-string fields-stream (string-value field))))))))
 
 (defun compress (input)
   ;; FIXME: uh huh.

@@ -86,3 +86,12 @@
   (make-field name value :stored stored :index NIL :store-term-vector NIL :binary-p T))
 
 
+
+(defmethod string-value ((field field))
+  (let ((data (field-data field)))
+    (if (stringp data)
+	data
+	(bytes-to-string data))))
+
+(defmethod binary-value ((field field))
+  (field-data field))

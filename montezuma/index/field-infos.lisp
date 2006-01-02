@@ -26,14 +26,14 @@
 ;; haven't been added already. Or it will update the values.
 	  
 (defmethod add-doc-fields ((self field-infos) doc)
-  (dolist (field (fields doc))
+  (dolist (field (all-fields doc))
     (add-field-info self
 		    (field-name field)
-		    (field-indexed-p field)
-		    (field-store-term-vector-p field)
-		    (field-store-positions-p field)
-		    (field-store-offsets-p field)
-		    (field-omit-norms-p field))))
+		    :indexed-p (field-indexed-p field)
+		    :store-term-vector (field-store-term-vector-p field)
+		    :store-position (field-store-positions-p field)
+		    :store-offset (field-store-offsets-p field)
+		    :omit-norms (field-omit-norms-p field))))
 
 (defmethod add-fields ((self field-infos) names &key (indexed-p T) store-term-vector store-position
 		       store-offset omit-norms)
