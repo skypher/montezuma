@@ -1,6 +1,6 @@
 (in-package #:montezuma)
 
-(deftestfixture compound-file-io
+(deftestfixture compound-file-io-writer
     (:vars dir)
   (:setup
    (setf (fixture-var 'dir) (make-instance 'ram-directory)))
@@ -29,4 +29,32 @@
 		(test compound-file-writer-6 (read-int cfile) 20)
 		(test compound-file-writer-7 (read-string cfile) "this is file2" #'string=)))))
 
-		
+
+(deftestfixture compound-file-io-reader
+    (:vars dir)
+  (:setup
+   (setf (fixture-var 'dir) (make-instance 'ram-directory)))
+  (:teardown
+   (close (fixture-var 'dir)))
+  (:testfun test-compound-file-reader
+	    (let ((dir (fixture-var 'dir)))
+	      (let ((cfile (create-output dir "cfile")))
+		(write-vint cfile 2)
+		(write-long cfile 29)
+		(write-string cfile "file1")
+		(write-long cfile 33)
+		(write-string cfile "file2")
+		(write-int cfile 20)
+		(write-string cfile "this is file 2")
+		(close cfile))
+	      (let ((cfile-reader (make-instance 'compound-file-reader
+						 :directory dir
+						 :file-name "cfile")))
+		(test compound-file-reader-1 (file-size cfile-reader "file1") 4)
+		(test compound-file-reader-2 (file-size cfile-reader "file2") 15)
+		(let ((file1 (open-input cfile-reader "file1"))
+		      (file2 (open-input cfile-reader "file2")))
+		  (test compound-file-reader-3 (read-int file1) 20)
+		  (test compound-file-reader-4 (read-string file2) "this is file 2" #'string=)
+		  (close file1)
+		  (close file2))))))

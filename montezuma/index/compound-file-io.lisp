@@ -9,7 +9,7 @@
   ((directory :initarg :directory)
    (file-name :initarg :file-name)
    (stream)
-   (entries :initform (make-hash-table :test #'string=))))
+   (entries :initform (make-hash-table :test #'equal))))
 
 (defmethod initialize-instance :after ((self compound-file-reader) &key)
   (with-slots (stream directory file-name entries) self
@@ -67,6 +67,10 @@
   (with-slots (entries) self
     (nth-value 1 (gethash name entries))))
 
+(defmethod file-size ((self compound-file-reader) name)
+  (with-slots (entries) self
+    (size (gethash name entries))))
+
 (defmethod modified-time ((self compound-file-reader) name)
   (with-slots (directory) self
     (modified-time directory name)))
@@ -95,7 +99,7 @@
 (defclass cs-index-input (buffered-index-input)
   ((base :initarg :base)
    (file-offset :initarg :file-offset)
-   (size :initarg :size)))
+   (size :initarg :size :reader size)))
 
 (defmethod close ((self cs-index-input))
   )
