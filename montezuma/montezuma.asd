@@ -59,7 +59,8 @@
 			   (:file "segment-term-vector")
 			   (:file "term-vectors-io" :depends-on ("segment-term-vector"))
 			   (:file "segment-term-enum" :depends-on ("term-infos-io"))
-			   (:file "fields-io"))
+			   (:file "fields-io")
+			   (:file "compound-file-io"))
 	      :depends-on ("analysis"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
@@ -108,7 +109,8 @@
 					     (:file "tc-field-infos")
 					     (:file "tc-term-infos-io")
 					     (:file "tc-term-vectors-io")
-					     (:file "tc-fields-io"))
+					     (:file "tc-fields-io")
+					     (:file "tc-compound-file-io"))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
