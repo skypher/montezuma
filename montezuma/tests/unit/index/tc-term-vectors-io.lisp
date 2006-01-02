@@ -45,7 +45,7 @@
 		     (list
 		      (make-instance 'segment-term-vector
 				     :field "field1"
-				     :terms (vector "word1" "word2")
+				     :terms (vector "word1" "woord2")
 				     :term-frequencies (vector 3 2)
 				     :positions (vector (vector 1 5 8)
 							(vector 2 9))
@@ -53,7 +53,7 @@
 						      (vector (t 6 11) (t 51 56))))
 		      (make-instance 'segment-term-vector
 				     :field "field2"
-				     :terms (vector "word3" "word4")
+				     :terms (vector "word3" "woord4")
 				     :term-frequencies (vector 1 5)
 				     :positions (vector (vector 8)
 							(vector 2 9 11 34 56))
@@ -65,7 +65,7 @@
 		     (list
 		      (make-instance 'segment-term-vector
 				     :field "field1"
-				     :terms (vector "word1" "word2")
+				     :terms (vector "word1" "woord2")
 				     :term-frequencies (vector 3 2)
 				     :positions (vector (vector 1 5 8)
 							(vector 2 9))
@@ -83,6 +83,7 @@
 					   :segment "_test"
 					   :field-infos (fixture-var 'fis))))
 		  (let ((tv (get-field-tv tv-r 0 "field1")))
+		    (print tv)
 		    (test term-vector-io-add-documents-1 (size tv) 2)
 		    (test term-vector-io-add-documents-2 (aref (terms tv) 0) "word1" #'string=)
 		    (test term-vector-io-add-documents-3 (aref (term-frequencies tv) 0) 3)
@@ -92,7 +93,7 @@
 		    (test term-vector-io-add-documents-7 (aref (aref (offsets tv) 0) 0) (t 0 5) #'term-vector-offset-info=)
 		    (test term-vector-io-add-documents-8 (aref (aref (offsets tv) 0) 1) (t 34 39) #'term-vector-offset-info=)
 		    (test term-vector-io-add-documents-9 (aref (aref (offsets tv) 0) 2) (t 45 50) #'term-vector-offset-info=)
-		    (test term-vector-io-add-documents-10 (aref (terms tv) 1) "word2" #'string=)
+		    (test term-vector-io-add-documents-10 (aref (terms tv) 1) "woord2" #'string=)
 		    (test term-vector-io-add-documents-11 (aref (term-frequencies tv) 1) 2)
 		    (test term-vector-io-add-documents-12 (aref (aref (positions tv) 1) 0) 2)
 		    (test term-vector-io-add-documents-13 (aref (aref (positions tv) 1) 1) 9)
