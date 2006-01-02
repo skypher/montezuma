@@ -27,7 +27,7 @@
 			(byte1 (read-byte fstream))
 			(data1 (read-string fstream)))
 		    (test field-writer-1 stored 2)
-		    (test field-writer-2 (and (logbitp byte1 +field-is-tokenized-bit+) T) T)
+		    (test field-writer-2 (and (logbitp +field-is-tokenized-bit+ byte1) T) T)
 		    (test field-writer-3 data1 "daily news" #'string=))
 		  (let ((field-num2 (read-vint fstream))
 			(byte2 (read-byte fstream))
