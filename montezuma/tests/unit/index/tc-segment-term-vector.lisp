@@ -12,6 +12,3 @@
     (test test-segment-term-vector-3 (elt (term-frequencies stv) (index-of stv "Apples")) 4)
     (test test-segment-term-vector-4 (indexes-of stv (list "Bananas" "Apples" "Kiwis") 0 3) '(2 0 3) #'equal)
     (test test-segment-term-vector-5 (indexes-of stv (list "Bananas" "Apples" "Kiwis") 1 2) '(0 3) #'equal)))
-
-	 
-	  

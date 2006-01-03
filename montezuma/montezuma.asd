@@ -60,7 +60,9 @@
 			   (:file "term-vectors-io" :depends-on ("segment-term-vector"))
 			   (:file "segment-term-enum" :depends-on ("term-infos-io"))
 			   (:file "fields-io")
-			   (:file "compound-file-io"))
+			   (:file "compound-file-io")
+			   (:file "segment-merge-info")
+			   (:file "segment-merge-queue"))
 	      :depends-on ("analysis"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
