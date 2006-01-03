@@ -58,7 +58,9 @@
   (setf from (normalize-file-name from)
 	to (normalize-file-name to))
   (with-slots (files) self
-    (setf (gethash to files) (gethash from files))
+    (let ((file (gethash from files)))
+      (setf (file-name file) to)
+      (setf (gethash to files) file))
     (remhash from files)))
 
 (defmethod file-size ((self ram-directory) name)
@@ -213,7 +215,7 @@
 
 
 (defclass ram-file ()
-  ((name :initarg :name :reader file-name)
+  ((name :initarg :name :accessor file-name)
    (buffers :accessor buffers :initform (make-array (list 5) :fill-pointer 0 :adjustable T))
    (mtime :accessor mtime :initform (get-universal-time))
    (size :accessor size :initform 0)))
