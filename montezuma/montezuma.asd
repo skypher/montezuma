@@ -62,7 +62,8 @@
 			   (:file "fields-io")
 			   (:file "compound-file-io")
 			   (:file "segment-merge-info")
-			   (:file "segment-merge-queue"))
+			   (:file "segment-merge-queue")
+			   (:file "segment-infos"))
 	      :depends-on ("analysis"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
@@ -114,7 +115,8 @@
 					     (:file "tc-fields-io")
 					     (:file "tc-compound-file-io")
 					     (:file "tc-segment-term-enum")
-					     (:file "tc-segment-term-vector"))
+					     (:file "tc-segment-term-vector")
+					     (:file "tc-segment-infos"))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))

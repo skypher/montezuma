@@ -3,7 +3,7 @@
 (defparameter *test-directory-path*
   (make-pathname :name nil
 		 :type nil
-		 :defaults (merge-pathnames (make-pathname :directory '(:relative "temp" "fsdir"))
+		 :defaults (merge-pathnames (make-pathname :directory '(:relative :up :up "temp" "fsdir"))
 					    *load-pathname*)))
 
 (print *test-directory-path*)
