@@ -110,7 +110,8 @@
 					     (:file "tc-term-infos-io")
 					     (:file "tc-term-vectors-io")
 					     (:file "tc-fields-io")
-					     (:file "tc-compound-file-io"))
+					     (:file "tc-compound-file-io")
+					     (:file "tc-segment-term-enum"))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
