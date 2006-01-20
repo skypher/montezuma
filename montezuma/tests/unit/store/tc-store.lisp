@@ -31,31 +31,31 @@
 
 (defun do-test-rw-bytes (dir)
   (let ((bytes (vector #x34 #x87 #xf9 #xea #x00 #xff)))
-    (rw-test dir bytes "byte" #'write-byte #'read-byte 6)))
+    (do-rw-test dir bytes "byte" #'write-byte #'read-byte 6)))
 
 (defun do-test-rw-ints (dir)
   (let ((ints (vector -2147483648 2147483647 -1 0)))
-    (rw-test dir ints "int" #'write-int #'read-int 16)))
+    (do-rw-test dir ints "int" #'write-int #'read-int 16)))
 
 (defun do-test-rw-longs (dir)
   (let ((longs (vector -9223372036854775808 9223372036854775807 -1 0)))
-    (rw-test dir longs "long" #'write-long #'read-long 32)))
+    (do-rw-test dir longs "long" #'write-long #'read-long 32)))
 
 (defun do-test-rw-uints (dir)
   (let ((uints (vector #xffffffff 100000 0)))
-    (rw-test dir uints "uint" #'write-uint #'read-uint 12)))
+    (do-rw-test dir uints "uint" #'write-uint #'read-uint 12)))
 
 (defun do-test-rw-ulongs (dir)
   (let ((ulongs (vector #xffffffffffffffff 100000000000000 0)))
-    (rw-test dir ulongs "ulong" #'write-ulong #'read-ulong 24)))
+    (do-rw-test dir ulongs "ulong" #'write-ulong #'read-ulong 24)))
 
 (defun do-test-rw-vints (dir)
   (let ((vints (vector 9223372036854775807 #x00 #xFFFFFFFFFFFFFFFF)))
-    (rw-test dir vints "vint" #'write-vint #'read-vint 20)))
+    (do-rw-test dir vints "vint" #'write-vint #'read-vint 20)))
 
 (defun do-test-rw-vlongs (dir)
   (let ((vlongs (vector 9223372036854775807 #x00 #xFFFFFFFFFFFFFFFF)))
-    (rw-test dir vlongs "vlong" #'write-vlong #'read-vlong 20)))
+    (do-rw-test dir vlongs "vlong" #'write-vlong #'read-vlong 20)))
 
 (defun do-test-rw-strings (dir)
   (flet ((string* (str n)

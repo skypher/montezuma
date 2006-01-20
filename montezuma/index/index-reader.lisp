@@ -10,7 +10,7 @@
    (stale :initform NIL)))
 
 
-(defmethd open-index-reader (directory &key (close-directory-p T) (infos nil))
+(defmethod open-index-reader (directory &key (close-directory-p T) (infos nil))
   (if (null directory)
       (setf directory (make-instance 'ram-directory))
       (when (string directory)
@@ -47,7 +47,7 @@
 (defmethod max-doc ((self index-reader))
   (error "~S is not implemented by ~S." 'max-doc self))
 
-(defmethod get-doc ((self index-reader) n))
+(defmethod get-doc ((self index-reader) n)
   (error "~S is not implemented by ~S." 'get-doc self))
 
 (defmethod get-document-with-term ((self index-reader) term)
@@ -90,7 +90,7 @@
 (defmethod terms-from ((self index-reader) tee)
   (error "~S is not implemented by ~S." 'terms-from self))
 
-(defmethod doc-freq ((self index-reader) tee)
+(defmethod term-doc-freq ((self index-reader) term)
   (error "~S is not implemented by ~S." 'doc-freq self))
 
 (defmethod term-docs-for ((self index-reader) term)
@@ -120,7 +120,7 @@
 
 (defmethod delete ((self index-reader) doc-num)
   (do-delete self doc-num)
-  (setf (slot-value self 'has-changes-p T)))
+  (setf (slot-value self 'has-changes-p) T))
 
 (defmethod do-delete ((self index-reader))
   (error "~S is not implemented by ~S." 'do-delete self))

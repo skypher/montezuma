@@ -33,11 +33,10 @@
     :min-merge-docs      *index-writer-default-min-merge-docs*
     :max-merge-docs      *index-writer-default-max-merge-docs*
     :max-field-length    *index-writer-default-max-field-length*
-    :term-index-interval *index-writer-default-term-index-interval*
-    :similarity 
+    :term-index-interval *index-writer-default-term-index-interval*))
 
 (defmethod initialize-instance :after ((self index-writer) &key (create-p NIL))
-  (with-slots (directory create-p segment-infos) self
+  (with-slots (directory segment-infos) self
     (cond ((null directory) (setf directory (make-instance 'ram-directory)))
 	  ((stringp directory) (setf directory (make-fs-directory directory :create-p T))))
     (if create-p
@@ -60,7 +59,7 @@
       (dotimes (i (size segment-infos) count)
 	(incf count (doc-count (segment-info segment-infos i)))))))
 
-(defmethod add-document ((self index-writer) document &optional (analyzer nil analyzer-supplied-p))
+(defmethod add-document-to-index-writer ((self index-writer) document &optional (analyzer nil analyzer-supplied-p))
   (with-slots (ram-directory similarity max-field-length term-index-interval info-stream
 			     segment-infos) self
     (unless analyzer-supplied-p

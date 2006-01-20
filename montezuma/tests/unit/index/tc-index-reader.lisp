@@ -80,3 +80,19 @@
 
 
 	
+(deftestfixture segment-reader-test
+  (:vars dir ir)
+  (:setup
+   (setf (fixture-var 'dir) (make-instance 'ram-directory))
+   (let ((iw (make-instance 'index-writer
+			    :directory (fixture-var 'dir)
+			    :analyzer (make-instance 'whitespace-analyzer)
+			    :create-p T))
+	 (docs (index-test-helper-prepare-ir-test-docs)))
+     (dotimes (i *index-test-helper-ir-test-doc-count*)
+       (add-document iw (aref docs i)))))
+  (:teardown
+   (close (fixture-var 'ir))
+   (close (fixture-var 'dir))))
+
+     

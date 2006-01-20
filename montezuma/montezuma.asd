@@ -45,6 +45,8 @@
 			   (:file "standard-tokenizer" :depends-on ("tokenizers"))
 			   (:file "analyzers" :depends-on ("standard-tokenizer")))
 	      :depends-on ("package" "util"))
+     (:module "search"
+	      :components ((:file "similarity")))
      (:module "index"
 	      :components ((:file "index-filenames")
 			   (:file "term")
@@ -64,8 +66,10 @@
 			   (:file "segment-merge-info")
 			   (:file "segment-merge-queue")
 			   (:file "segment-infos")
-			   (:file "document-writer"))
-	      :depends-on ("analysis"))))
+			   (:file "document-writer")
+			   (:file "index-writer")
+			   (:file "index-reader"))
+	      :depends-on ("analysis" "search"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
   (oos 'load-op '#:montezuma-tests)
@@ -117,7 +121,9 @@
 					     (:file "tc-compound-file-io")
 					     (:file "tc-segment-term-enum")
 					     (:file "tc-segment-term-vector")
-					     (:file "tc-segment-infos"))
+					     (:file "tc-segment-infos")
+					     (:file "th-doc")
+					     (:file "tc-index-reader" :depends-on ("th-doc")))
 				:depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
