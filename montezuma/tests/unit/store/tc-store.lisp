@@ -1,6 +1,6 @@
 (in-package #:montezuma)
 
-(defun test-basic-file-ops (dir)
+(defun do-test-basic-file-ops (dir)
   (atest basic-file-ops (file-count dir) 0)
   (atest basic-file-ops (file-exists-p dir "filename") NIL)
   (touch dir "tmpfile1")
@@ -12,7 +12,7 @@
   (atest basic-file-ops (file-exists-p dir "tmpfile1") NIL)
   (atest basic-file-ops (file-count dir) 1))
 
-(defun test-rename (dir)
+(defun do-test-rename (dir)
   (touch dir "from")
   (atest rename (and (file-exists-p dir "from") T) T)
   (atest rename (file-exists-p dir "to") NIL)
@@ -23,41 +23,41 @@
       (atest rename (and (file-exists-p dir "to") T) T)
       (atest rename (file-exists-p dir "from") NIL))))
 
-(defun test-modified (dir)
+(defun do-test-modified (dir)
   (let ((time (get-universal-time)))
     (touch dir "mtime.test")
     (let ((time-before (modified-time dir "mtime.test")))
       (atest modified-time (< (- time-before time) 3) T))))
 
-(defun test-rw-bytes (dir)
+(defun do-test-rw-bytes (dir)
   (let ((bytes (vector #x34 #x87 #xf9 #xea #x00 #xff)))
     (rw-test dir bytes "byte" #'write-byte #'read-byte 6)))
 
-(defun test-rw-ints (dir)
+(defun do-test-rw-ints (dir)
   (let ((ints (vector -2147483648 2147483647 -1 0)))
     (rw-test dir ints "int" #'write-int #'read-int 16)))
 
-(defun test-rw-longs (dir)
+(defun do-test-rw-longs (dir)
   (let ((longs (vector -9223372036854775808 9223372036854775807 -1 0)))
     (rw-test dir longs "long" #'write-long #'read-long 32)))
 
-(defun test-rw-uints (dir)
+(defun do-test-rw-uints (dir)
   (let ((uints (vector #xffffffff 100000 0)))
     (rw-test dir uints "uint" #'write-uint #'read-uint 12)))
 
-(defun test-rw-ulongs (dir)
+(defun do-test-rw-ulongs (dir)
   (let ((ulongs (vector #xffffffffffffffff 100000000000000 0)))
     (rw-test dir ulongs "ulong" #'write-ulong #'read-ulong 24)))
 
-(defun test-rw-vints (dir)
+(defun do-test-rw-vints (dir)
   (let ((vints (vector 9223372036854775807 #x00 #xFFFFFFFFFFFFFFFF)))
     (rw-test dir vints "vint" #'write-vint #'read-vint 20)))
 
-(defun test-rw-vlongs (dir)
+(defun do-test-rw-vlongs (dir)
   (let ((vlongs (vector 9223372036854775807 #x00 #xFFFFFFFFFFFFFFFF)))
     (rw-test dir vlongs "vlong" #'write-vlong #'read-vlong 20)))
 
-(defun test-rw-strings (dir)
+(defun do-test-rw-strings (dir)
   (flet ((string* (str n)
 	   (with-output-to-string (s)
 	     (dotimes (i n) (format s "~A" str)))))
@@ -72,7 +72,7 @@
 	(close istream))
       (atest rw-strings (file-size dir "rw_strings.test") 6467))))
 
-(defun test-buffer-seek (dir)
+(defun do-test-buffer-seek (dir)
   (let ((ostream (create-output dir "rw_seek.test"))
 	(text "This is another long test string !@#$%#$%&%$*%^&*()(_"))
     (dotimes (i 1000)
@@ -100,7 +100,7 @@
       (atest buffer-seek (read-vint istream) 555)
       (close istream))))
 
-(defun test-read-bytes (dir)
+(defun do-test-read-bytes (dir)
   (let ((str (string-to-bytes "0000000000"))
 	(ostream (create-output dir "rw_read_bytes")))
     (write-bytes ostream (string-to-bytes "how are you doing?") 18)
@@ -112,7 +112,7 @@
       (atest read-bytes str (string-to-bytes "0are you 0") #'equalp)
       (close istream))))
 
-(defun test-clone (dir)
+(defun do-test-clone (dir)
   (let ((ostream (create-output dir "clone_test")))
     (dotimes (i 10)
       (write-long ostream i))
@@ -132,7 +132,7 @@
 
 
     
-(defun rw-test (dir values type write-function read-function expected-length)
+(defun do-rw-test (dir values type write-function read-function expected-length)
   (let ((filename (format nil "rw_~A.test" type)))
   (let ((ostream (create-output dir filename)))
     (dotimes (i (length values))

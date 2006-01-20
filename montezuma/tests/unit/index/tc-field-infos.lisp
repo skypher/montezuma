@@ -40,7 +40,7 @@
       (test field-info-17 (field-omit-norms-p fi-2) NIL))))
 
 
-(defun test-field-info-attrs (fi name number indexed-p store-term-vector-p store-positions-p
+(defun do-test-field-info-attrs (fi name number indexed-p store-term-vector-p store-positions-p
 			      store-offsets-p omit-norms-p)
   (atest test-field-info-attr (field-name fi) name #'string=)
   (atest test-field-info-attr (field-number fi) number)
@@ -53,13 +53,13 @@
 (deftestfun test-field-infos-add
   (let ((fis (make-instance 'field-infos)))
     (let ((fi (add-field-info fis "field1" :indexed-p NIL)))
-      (test-field-info-attrs fi "field1" 0 NIL NIL NIL NIL NIL)
+      (do-test-field-info-attrs fi "field1" 0 NIL NIL NIL NIL NIL)
       (test field-infos-add-1 (size fis) 1))
     (let ((fi (add-field-info fis "field1" :indexed-p T :store-term-vector T)))
-      (test-field-info-attrs fi "field1" 0 T T NIL NIL NIL)
+      (do-test-field-info-attrs fi "field1" 0 T T NIL NIL NIL)
       (test field-infos-add-3 (size fis) 1))
     (let ((fi (add-field-info fis "field2" :indexed-p NIL)))
-      (test-field-info-attrs fi "field2" 1 NIL NIL NIL NIL NIL)
+      (do-test-field-info-attrs fi "field2" 1 NIL NIL NIL NIL NIL)
       (test field-infos-add-4 (size fis) 2))))
 
 (deftestfun test-field-infos-has-vectors
@@ -95,12 +95,12 @@
       (write-to-dir fis dir "fis_rw.test"))
     (let ((fis (make-instance 'field-infos
 			      :dir dir :name "fis_rw.test")))
-      (test-field-info-attrs (get-field fis 0) "field1" 0 NIL NIL NIL NIL T)
-      (test-field-info-attrs (get-field fis 1) "field2" 1 T NIL NIL NIL T)
-      (test-field-info-attrs (get-field fis 2) "field3" 2 T T NIL NIL T)
-      (test-field-info-attrs (get-field fis 3) "field4" 3 T T T NIL T)
-      (test-field-info-attrs (get-field fis 4) "field5" 4 T T T T T)
-      (test-field-info-attrs (get-field fis 5) "field6" 5 T T T T NIL)
+      (do-test-field-info-attrs (get-field fis 0) "field1" 0 NIL NIL NIL NIL T)
+      (do-test-field-info-attrs (get-field fis 1) "field2" 1 T NIL NIL NIL T)
+      (do-test-field-info-attrs (get-field fis 2) "field3" 2 T T NIL NIL T)
+      (do-test-field-info-attrs (get-field fis 3) "field4" 3 T T T NIL T)
+      (do-test-field-info-attrs (get-field fis 4) "field5" 4 T T T T T)
+      (do-test-field-info-attrs (get-field fis 5) "field6" 5 T T T T NIL)
       (test field-infos-rw-1 (size fis) 6))))
 
 
