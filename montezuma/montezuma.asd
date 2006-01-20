@@ -63,7 +63,8 @@
 			   (:file "compound-file-io")
 			   (:file "segment-merge-info")
 			   (:file "segment-merge-queue")
-			   (:file "segment-infos"))
+			   (:file "segment-infos")
+			   (:file "document-writer"))
 	      :depends-on ("analysis"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))

@@ -36,6 +36,15 @@
 	  skip-offset (skip-offset ti))
     self))
 
+(defmethod set-values ((self term-info) doc-f freq-p prox-p skip-o)
+  (with-slots (doc-freq freq-pointer prox-pointer skip-offset) self
+    (setf doc-freq doc-f
+	  freq-pointer freq-p
+	  prox-pointer prox-p
+	  skip-offset skip-o))
+  self)
+
+
 (defun term-info= (ti1 ti2)
   (and (typep ti1 'term-info) (typep ti2 'term-info)
        (= (doc-freq ti1) (doc-freq ti2))
