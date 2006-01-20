@@ -5,9 +5,15 @@
    (analyzer :initarg :analyzer)
    (similarity :initarg :similarity)
    (max-field-length :initarg :max-field-length)
+   (field-infos)
+   (field-lengths)
+   (field-positions)
+   (field-offsets)
+   (field-boosts)
    (term-index-interval :initarg :term-index-interval)
    (posting-table :initform (make-hash-table :test #'eq))
-   (term-buffer :initform (make-term "" "")))
+   (term-buffer :initform (make-term "" ""))
+   (info-stream :initform nil :accessor info-stream))
   (:default-initargs
    :term-index-interval *default-term-index-interval*))
 
@@ -20,7 +26,7 @@
   (with-slots (field-infos directory posting-table field-lengths
 			   field-positions field-offsets field-boosts) self
     (setf field-infos (make-instance 'field-infos))
-    (add-document field-infos document)
+    (add-doc-fields field-infos document)
     (write-to-dir field-infos directory (merge-pathnames *fnm-extension* segment))
     (let ((fields-writer (make-instance 'fields-writer
 					:directory directory
@@ -34,7 +40,7 @@
 	(setf field-lengths (make-array arr-size :initial-element 0))
 	(setf field-positions (make-array arr-size :initial-element 0))
 	(setf field-offsets (make-array arr-size :initial-element 0))
-	(setf field-boosts (make-array arr-size :initial-element (boost document)))
+	(setf field-boosts (make-array arr-size :initial-element (document-boost document)))
 	(invert-document self document)
 	(let ((postings (sort-posting-table self)))
 	  (write-postings self postings segment))
@@ -59,7 +65,8 @@
 		    (let ((string-value (string-value field)))
 		      (if (field-store-offsets-p field)
 			  (progn
-			    (add-position field-name
+			    (add-position self 
+					  field-name
 					  string-value
 					  position
 					  (make-instance 'term-vector-offset-info
@@ -74,19 +81,20 @@
 		      (unwind-protect
 			   (let ((last-token nil)
 				 (token nil))
-			     (while (setf token (next stream))
-			       (incf position (- (token-position-increment token) 1))
+			     (while (setf token (next-token stream))
+			       (incf position (- (token-increment token) 1))
 			       (if (field-store-offsets-p field-info)
 				   (progn
-				     (add-position field-name
-						   (term-text token)
+				     (add-position self
+						   field-name
+						   (token-text token)
 						   position
 						   (make-instance 'term-vector-offset-info
 								  :start-offset (+ offset (token-start token))
 								  :end-offset (+ offset (token-end token))))
 				     (incf position))
 				   (progn
-				     (add-position field-name (term-text token) position nil)
+				     (add-position self field-name (term-text token) position nil)
 				     (incf position)))
 			       (setf last-token token)
 			       (incf length)
@@ -107,7 +115,8 @@
 
 (defmethod add-position ((self document-writer) field text position tv-offset-info)
   (with-slots (term-buffer posting-table) self
-    (setf (term term-buffer) (make-term field text))
+    (print term-buffer)
+    (set-term term-buffer field text)
     (let ((posting (gethash term-buffer posting-table)))
       (if posting
 	  (let ((freq (freq posting)))

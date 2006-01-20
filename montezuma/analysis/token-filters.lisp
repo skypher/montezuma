@@ -3,9 +3,9 @@
 (defclass token-filter (token-stream)
   ((input :initarg :input)))
 
-(defmethod close-stream ((self token-filter))
+(defmethod close ((self token-filter))
   (with-slots (input) self
-    (close-stream input)))
+    (close input)))
 
 (defclass lowercase-filter (token-filter)
   ())

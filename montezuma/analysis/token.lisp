@@ -19,3 +19,6 @@
 
 (defun token= (t1 t2)
   (= 0 (token-compare t1 t2)))
+
+(defmethod term-text ((token token))
+  (token-image token))

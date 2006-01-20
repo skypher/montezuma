@@ -90,7 +90,7 @@
 			    :create-p T))
 	 (docs (index-test-helper-prepare-ir-test-docs)))
      (dotimes (i *index-test-helper-ir-test-doc-count*)
-       (add-document iw (aref docs i)))))
+       (add-document-to-index-writer iw (aref docs i)))))
   (:teardown
    (close (fixture-var 'ir))
    (close (fixture-var 'dir))))

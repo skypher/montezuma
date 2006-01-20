@@ -152,6 +152,7 @@
 	      (gethash name (test-fixture-vars fixture)))
 	    ((setf fixture-var) (value name)
 	      (setf (gethash name (test-fixture-vars fixture)) value)))
+       (declare (ignorable (function fixture-var) (function (setf fixture-var))))
        ,expr))))
 
 (defun make-test-function-defn (name expr)

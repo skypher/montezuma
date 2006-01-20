@@ -95,3 +95,9 @@
 
 (defmethod binary-value ((field field))
   (field-data field))
+
+(defmethod reader-value ((field field))
+  (if (streamp (field-data field))
+      (field-data field)
+      (make-string-input-stream (string-value field))))
+

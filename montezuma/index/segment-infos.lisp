@@ -19,7 +19,7 @@
 (defclass segment-infos ()
   ((format)
    (version :initform (get-universal-time) :reader version)
-   (counter :initform 0)
+   (counter :initform 0 :accessor counter)
    (elements :initform (make-array 0 :adjustable T :fill-pointer T))))
 
 (defmethod size ((self segment-infos))

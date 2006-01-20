@@ -72,7 +72,7 @@
 			     :term-index-interval term-index-interval))
 	  (segment-name (new-segment-name self)))
       (setf (info-stream dw) info-stream)
-      (add-document-to-writer dw segment-name doc)
+      (add-document-to-writer dw segment-name document)
       ;; FIXME synchronize
       (add-segment-info segment-infos
 			(make-instance 'segment-info

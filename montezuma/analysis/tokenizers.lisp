@@ -18,10 +18,10 @@
 (defclass tokenizer (token-stream)
   ((input :initarg :input)))
 
-(defmethod close-stream ((self tokenizer))
+(defmethod close ((self tokenizer))
   (with-slots (input) self
     (when (streamp input)
-      (close input))))
+      (cl:close input))))
 
 
 

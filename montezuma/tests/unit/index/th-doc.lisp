@@ -57,7 +57,7 @@
 			       :analyzer analyzer
 			       :similarity similarity
 			       (error 50))))
-    (add-document-to-writer writer doc)))
+    (add-document-to-index-writer writer doc)))
 
 (defun index-test-helper-prepare-book-list ()
   (let ((books '(("P.H. Newby" "Something To Answer For" "1969")

@@ -20,6 +20,10 @@
 (defmethod (setf term-field) (field (self term))
   (setf (%term-field self) field))
 
+(defmethod set-term ((self term) field text)
+  (setf (%term-text self) text)
+  (setf (%term-field self) field))
+
 (defun term-compare (t1 t2)
   (let ((fc (string-compare (term-field t1) (term-field t2))))
     (if (= fc 0)
