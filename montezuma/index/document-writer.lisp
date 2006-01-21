@@ -87,7 +87,7 @@
 				   (progn
 				     (add-position self
 						   field-name
-						   (token-text token)
+						   (term-text token)
 						   position
 						   (make-instance 'term-vector-offset-info
 								  :start-offset (+ offset (token-start token))
@@ -104,7 +104,7 @@
 					   max-field-length)
 				   (return))))
 			     (when last-token
-			       (incf offset (+ (token-end token) 1))))
+			       (incf offset (+ (token-end last-token) 1))))
 			(close stream)))))
 	    (setf (aref field-lengths field-number) length)
 	    (setf (aref field-positions field-number) position)
@@ -115,7 +115,6 @@
 
 (defmethod add-position ((self document-writer) field text position tv-offset-info)
   (with-slots (term-buffer posting-table) self
-    (print term-buffer)
     (set-term term-buffer field text)
     (let ((posting (gethash term-buffer posting-table)))
       (if posting
@@ -132,14 +131,14 @@
 	    (setf (gethash term posting-table) (make-instance 'posting
 							      :term term
 							      :position position
-							      :tv-offset-info tv-offset-info)))))))
+							      :offset tv-offset-info)))))))
 
 (defmethod sort-posting-table ((self document-writer))
   (with-slots (posting-table) self
     (let ((postings (coerce (loop for posting being the hash-values in posting-table
 				 collect posting)
 			    'vector)))
-      (setf postings (sort postings #'< :key #'term)))))
+      (setf postings (sort postings #'term< :key #'term)))))
 
 (defmethod write-postings ((self document-writer) postings segment)
   (with-slots (directory field-infos term-index-interval) self
@@ -149,15 +148,15 @@
 	  (tv-writer nil))
       (unwind-protect
 	   (let ((tis-writer (make-instance 'term-infos-writer
-					    :directory directory
+					    :dir directory
 					    :segment segment
 					    :field-infos field-infos
-					    :term-index-interval term-index-interval))
+					    :interval term-index-interval))
 		 (ti (make-instance 'term-info))
 		 (current-field nil))
 	     (setf freq (open-segment-file directory segment *frq-extension* :output))
 	     (setf prox (open-segment-file directory segment *prx-extension* :output))
-	     (dolist (posting postings)
+	     (dosequence (posting postings)
 	       (set-values ti 1 (pos freq) (pos prox) -1)
 	       (add-term tis-writer (term posting) ti)
 	       (let ((posting-freq (freq posting)))
@@ -167,10 +166,10 @@
 		       (write-vint freq 0)
 		       (write-vint freq posting-freq)))
 		 (let ((last-position 0))
-		   (dolist (position (positions posting))
+		   (dosequence (position (positions posting))
 		     (write-vint prox (- position last-position))
 		     (setf last-position position)))
-		 (let ((term-field (field (term posting))))
+		 (let ((term-field (term-field (term posting))))
 		   (when (not (equal current-field term-field))
 		     (setf current-field term-field)
 		     (let ((fi (get-field field-infos current-field)))
@@ -186,32 +185,39 @@
 			   (when tv-writer
 			     (close-field tv-writer)))))
 		   (when (and tv-writer (field-open-p tv-writer))
-		     (add-term-to-term-vectors-writer (text (term posting))
+		     (add-term-to-term-vectors-writer tv-writer
+						      (term-text (term posting))
 						      posting-freq
-						      (positions posting)
-						      (offsets posting))))))
+						      :positions (positions posting)
+						      :offsets (offsets posting))))))
 	     (when tv-writer
 	       (close-document tv-writer))))
       (progn
 	;; FIXME raise some exceptions somewhere?
-	(close freq)
-	(close prox)
-	(close tis-writer)
-	(close tv-writer)))))
+	(when freq (close freq))
+	(when prox (close prox))
+	(when tis-writer (close tis-writer))
+	(when tv-writer (close tv-writer))))))
 
 (defmethod write-norms ((self document-writer) segment)
   (with-slots (directory field-infos field-boosts similarity field-lengths) self
-    (dosequence (fi field-infos :index i)
-      (when (and (field-indexed-p fi) (not (field-omit-norms-p fi)))
-	(let ((norm (* (aref field-boosts i)
-		       (length-norm similarity (name fi) (aref field-lengths i))))
-	      (norms (open-segment-file directory segment (format nil ".f~S" i))))
-	  (unwind-protect
-	       (write-byte norms (encode-norm norm))
-	    (close norms)))))))
+    (dotimes (i (size field-infos))
+      (let ((fi (get-field field-infos i)))
+	(when (and (field-indexed-p fi) (not (field-omit-norms-p fi)))
+	  (let ((norm (* (aref field-boosts i)
+			 (length-norm similarity (field-name fi) (aref field-lengths i))))
+		(norms (open-segment-file directory segment (format nil ".f~S" i))))
+	    (unwind-protect
+		 (write-byte norms (encode-norm norm))
+	      (close norms))))))))
 
 (defclass posting ()
-  ((term :initarg term :reader term)
+  ((term :initarg :term :reader term)
    (freq :initform 1 :accessor freq)
-   (positions :initarg :positions :reader positions)
-   (offsets :initarg :offsets :reader offsets)))
+   (positions :reader positions)
+   (offsets :reader offsets)))
+
+(defmethod initialize-instance :after ((self posting) &key position offset)
+  (with-slots (positions offsets) self
+    (setf positions (vector position))
+    (setf offsets (vector offset))))
