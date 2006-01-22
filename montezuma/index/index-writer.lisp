@@ -76,8 +76,8 @@
       ;; FIXME synchronize
       (add-segment-info segment-infos
 			(make-instance 'segment-info
-				       :segment segment-name
-				       :something (error "!")
+				       :name segment-name
+				       :doc-count 1
 				       :directory ram-directory))
       (maybe-merge-segments self))))
 
@@ -183,7 +183,7 @@
 	  (setf target-merge-docs (* target-merge-docs merge-factor)))))))
 
 (defmethod merge-segments ((self index-writer) min-segment &optional (max-segment nil max-segment-supplied-p))
-  (with-slots (segment-infos info-stream term-index-interval) self
+  (with-slots (segment-infos info-stream term-index-interval directory) self
     (unless max-segment-supplied-p
       (setf max-segment (size segment-infos)))
     (let ((segments-to-delete '())

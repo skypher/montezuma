@@ -206,7 +206,7 @@
 	(when (and (field-indexed-p fi) (not (field-omit-norms-p fi)))
 	  (let ((norm (* (aref field-boosts i)
 			 (length-norm similarity (field-name fi) (aref field-lengths i))))
-		(norms (open-segment-file directory segment (format nil ".f~S" i))))
+		(norms (open-segment-file directory segment (format nil ".f~S" i) :output)))
 	    (unwind-protect
 		 (write-byte norms (encode-norm norm))
 	      (close norms))))))))
