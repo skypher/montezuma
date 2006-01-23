@@ -1,5 +1,22 @@
 (in-package #:montezuma)
 
+(defparameter *index-reader-filename-extensions*
+  '("cfs"
+    "fnm"
+    "fdx"
+    "fdt"
+    "tii"
+    "tis"
+    "frq"
+    "prx"
+    "del"
+    "tvx"
+    "tvd"
+    "tvf"
+    "tvp"))
+
+
+  
 
 (defclass index-reader ()
   ((directory :initarg :directory)

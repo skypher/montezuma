@@ -120,8 +120,8 @@
     (with-slots (directory term-index-interval segment-infos) self
     (let ((merge (make-instance 'segment-merger
 				:directory directory
-				:segment merged-name
-				:interval term-index-interval)))
+				:name merged-name
+				:term-index-interval term-index-interval)))
       (when (= (size segment-infos) 1)
 	(let ((s-reader (get-segment-reader (segment-info segment-infos 0))))
 	  (add-segment merger s-reader)
@@ -193,8 +193,8 @@
 		min-segment (- max-segment 1)))
       (let ((merger (make-instance 'segment-merger
 				   :directory directory
-				   :segment merged-name
-				   :interval term-index-interval)))
+				   :name merged-name
+				   :term-index-interval term-index-interval)))
 	(do-range (i min-segment max-segment)
 	  (let ((si (segment-info segment-infos i)))
 	    (when info-stream
