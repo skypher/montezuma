@@ -135,13 +135,13 @@
 
 (defmacro deftestfixture (name &rest clauses)
   (deftestfixture-expr name
-      (cdr (first (collect-clauses :vars clauses)))
-    (cdr (first (collect-clauses :setup clauses)))
-    (cdr (first (collect-clauses :teardown clauses)))
-    (collect-clauses :testfun clauses)))
+    (cdr (first (collect-fixture-clauses :vars clauses)))
+    (cdr (first (collect-fixture-clauses :setup clauses)))
+    (cdr (first (collect-fixture-clauses :teardown clauses)))
+    (collect-fixture-clauses :testfun clauses)))
 
 
-(defun collect-clauses (name clauses)
+(defun collect-fixture-clauses (name clauses)
   (remove-if-not #'(lambda (clause)
 		     (eq (car clause) name))
 		 clauses))

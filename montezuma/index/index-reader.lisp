@@ -139,9 +139,6 @@
   (do-delete self doc-num)
   (setf (slot-value self 'has-changes-p) T))
 
-(defmethod do-delete ((self index-reader))
-  (error "~S is not implemented by ~S." 'do-delete self))
-
 (defmethod delete-docs-with-term ((self index-reader) term)
   (let ((docs (term-docs-for self term)))
     (if (null docs)

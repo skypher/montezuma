@@ -60,52 +60,60 @@
 	    (when (> length 0)
 	      (incf position (position-increment-gap analyzer field-name)))
 
-	    (if (field-indexed-p field)
-		(if (not (field-tokenized-p field))
-		    (let ((string-value (string-value field)))
-		      (if (field-store-offsets-p field)
-			  (progn
-			    (add-position self 
-					  field-name
-					  string-value
-					  position
-					  (make-instance 'term-vector-offset-info
-							 :start-offset offset
-							 :end-offset (+ offset (length string-value))))
-			    (incf position))
-			  (progn
-			    (incf offset (length string-value))
-			    (incf length 1))))
-		    (let* ((reader (reader-value field))
-			   (stream (token-stream analyzer field-name reader)))
-		      (unwind-protect
-			   (let ((last-token nil)
-				 (token nil))
-			     (while (setf token (next-token stream))
-			       (incf position (- (token-increment token) 1))
-			       (if (field-store-offsets-p field-info)
-				   (progn
-				     (add-position self
-						   field-name
-						   (term-text token)
-						   position
-						   (make-instance 'term-vector-offset-info
-								  :start-offset (+ offset (token-start token))
-								  :end-offset (+ offset (token-end token))))
-				     (incf position))
-				   (progn
-				     (add-position self field-name (term-text token) position nil)
-				     (incf position)))
-			       (setf last-token token)
-			       (incf length)
-			       (when (> length max-field-length)
-				 (when info-stream
-				   (format info-stream "max field length ~S reached, ignoring following tokens"
-					   max-field-length)
-				   (return))))
-			     (when last-token
-			       (incf offset (+ (token-end last-token) 1))))
-			(close stream)))))
+	    (format T "~&Inverting field ~S" field)
+	    (when (field-indexed-p field)
+	      (if (not (field-tokenized-p field))
+		  (let ((string-value (string-value field)))
+		    (format T "~&field ~S is indexed but not tokenized" field)
+		    (if (field-store-offsets-p field)
+			(progn
+			  (format T "~&Storing offsets for field ~S" field)
+			  (add-position self 
+					field-name
+					string-value
+					position
+					(make-instance 'term-vector-offset-info
+						       :start-offset offset
+						       :end-offset (+ offset (length string-value))))
+			  (incf position))
+			(progn
+			  (format T "~&Not storing offsets for field ~S" field)
+			  (add-position self field-name string-value position nil)
+			  (incf position)))
+		    (incf offset (length string-value))
+		    (incf length 1))
+		  (let* ((reader (reader-value field))
+			 (stream (token-stream analyzer field-name reader)))
+		    (unwind-protect
+			 (let ((last-token nil)
+			       (token nil))
+			   (while (setf token (next-token stream))
+			     (incf position (- (token-increment token) 1))
+			     (if (field-store-offsets-p field-info)
+				 (progn
+				   (add-position self
+						 field-name
+						 (term-text token)
+						 position
+						 (make-instance 'term-vector-offset-info
+								:start-offset (+ offset (token-start token))
+								:end-offset (+ offset (token-end token))))
+				   (incf position))
+				 (progn
+				   (add-position self field-name (term-text token) position nil)
+				   (incf position)))
+			     (setf last-token token)
+			     (incf length)
+			     (when (> length max-field-length)
+			       (when info-stream
+				 (format info-stream "max field length ~S reached, ignoring following tokens"
+					 max-field-length)
+				 (return))))
+			   (when last-token
+			     (incf offset (+ (token-end last-token) 1))))
+		      (close stream)))))
+	    (format T "~&Field ~S has length ~S, position ~S, boost ~S, offset ~S"
+		    field length position (boost field) offset)
 	    (setf (aref field-lengths field-number) length)
 	    (setf (aref field-positions field-number) position)
 	    (setf (aref field-boosts field-number)

@@ -149,6 +149,10 @@
     :store-offsets-p NIL
     :omit-norms-p NIL))
 
+(defmethod print-object ((self field-info) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (format stream "~S (~S)" (field-name self) (field-number self))))
+
 (defmethod get-field-info-byte ((self field-info))
   (let ((bits #x0))
     (flet ((turn-on (index)

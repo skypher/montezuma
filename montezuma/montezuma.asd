@@ -66,6 +66,7 @@
 			   (:file "segment-merge-info")
 			   (:file "segment-merge-queue")
 			   (:file "segment-infos")
+			   (:file "segment-reader" :depends-on ("index-reader"))
 			   (:file "document-writer")
 			   (:file "segment-merger")
 			   (:file "index-writer")

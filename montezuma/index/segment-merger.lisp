@@ -256,5 +256,3 @@
 		       (unless (deleted-p reader k)
 			 (write-byte output (aref input k))))))
 	      (close output))))))))
-
-      

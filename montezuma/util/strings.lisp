@@ -35,3 +35,6 @@
 		  :adjustable T)))
 
 
+(defun string-begins (string pattern)
+  (let ((m (mismatch string pattern :test #'char=)))
+    (or (null m) (= m (length pattern)))))

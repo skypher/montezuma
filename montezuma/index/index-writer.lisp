@@ -203,10 +203,10 @@
 		      (doc-count si)))
 	    (let ((reader (make-instance 'segment-reader
 					 :directory (directory si)
-					 :segment-info si
-					 :nil nil
-					 :false :false
-					 :false :false)))
+					 :info si
+					 :segment-infos nil
+					 :close-directory-p NIL
+					 :directory-owner NIL)))
 	      (add-segment-reader merger reader)
 	      (when (or (directory= (directory reader) directory)
 			(directory= (directory reader) ram-directory))
