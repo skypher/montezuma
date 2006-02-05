@@ -60,14 +60,11 @@
 	    (when (> length 0)
 	      (incf position (position-increment-gap analyzer field-name)))
 
-	    (format T "~&Inverting field ~S" field)
 	    (when (field-indexed-p field)
 	      (if (not (field-tokenized-p field))
 		  (let ((string-value (string-value field)))
-		    (format T "~&field ~S is indexed but not tokenized" field)
 		    (if (field-store-offsets-p field)
 			(progn
-			  (format T "~&Storing offsets for field ~S" field)
 			  (add-position self 
 					field-name
 					string-value
@@ -77,7 +74,6 @@
 						       :end-offset (+ offset (length string-value))))
 			  (incf position))
 			(progn
-			  (format T "~&Not storing offsets for field ~S" field)
 			  (add-position self field-name string-value position nil)
 			  (incf position)))
 		    (incf offset (length string-value))
@@ -112,8 +108,6 @@
 			   (when last-token
 			     (incf offset (+ (token-end last-token) 1))))
 		      (close stream)))))
-	    (format T "~&Field ~S has length ~S, position ~S, boost ~S, offset ~S"
-		    field length position (boost field) offset)
 	    (setf (aref field-lengths field-number) length)
 	    (setf (aref field-positions field-number) position)
 	    (setf (aref field-boosts field-number)
@@ -156,7 +150,7 @@
 	  (tv-writer nil))
       (unwind-protect
 	   (let ((tis-writer (make-instance 'term-infos-writer
-					    :dir directory
+					    :directory directory
 					    :segment segment
 					    :field-infos field-infos
 					    :interval term-index-interval))

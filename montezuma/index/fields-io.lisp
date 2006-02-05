@@ -91,6 +91,10 @@
 
 (defun open-segment-file (directory segment extension direction)
   (check-type direction (member :input :output))
+  (when (stringp segment)
+    (setf segment (make-pathname :name segment)))
+  (when (stringp extension)
+    (setf extension (make-pathname :type extension)))
   (let ((file (merge-pathnames extension segment)))
     (ecase direction
       (:input (open-input directory file))

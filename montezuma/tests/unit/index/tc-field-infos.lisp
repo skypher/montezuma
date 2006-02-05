@@ -94,7 +94,8 @@
 		      :omit-norms NIL)
       (write-to-dir fis dir "fis_rw.test"))
     (let ((fis (make-instance 'field-infos
-			      :dir dir :name "fis_rw.test")))
+			      :directory dir
+			      :name "fis_rw.test")))
       (do-test-field-info-attrs (get-field fis 0) "field1" 0 NIL NIL NIL NIL T)
       (do-test-field-info-attrs (get-field fis 1) "field2" 1 T NIL NIL NIL T)
       (do-test-field-info-attrs (get-field fis 2) "field3" 2 T T NIL NIL T)

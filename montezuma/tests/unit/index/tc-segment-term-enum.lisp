@@ -24,7 +24,7 @@
 			    (make-term "title" "Life on the edge"))))
 		(setf terms (sort terms #'term<))
 		(let ((tiw (make-instance 'term-infos-writer
-					  :dir dir
+					  :directory dir
 					  :segment "_test"
 					  :field-infos fis
 					  :interval 128)))

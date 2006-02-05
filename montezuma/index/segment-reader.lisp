@@ -31,7 +31,7 @@
 				       :name (add-file-extension segment "fnm")))
       (setf fields-reader (make-instance 'fields-reader
 					 :directory dir
-					 :name egment
+					 :segment segment
 					 :field-infos field-infos))
       (setf term-infos (make-instance 'term-infos-reader
 				      :directory dir
@@ -84,13 +84,13 @@
     (when cfs-reader (close cfs-reader))))
 
 (defmethod has-deletions-p ((si segment-info))
-  (file-exists-p (directory si) (add-file-extension (name si) "del")))
+  (file-exists-p (directory si) (add-file-extension (segment-info-name si) "del")))
 
 (defmethod uses-compound-file-p ((si segment-info))
-  (file-exists-p (directory si) (add-file-extension (name si) "cfs")))
+  (file-exists-p (directory si) (add-file-extension (segment-info-name si) "cfs")))
 
 (defmethod has-separate-norms-p ((si segment-info))
-  (let ((name-pattern (format nil "~A.s" (name si))))
+  (let ((name-pattern (format nil "~A.s" (segment-info-name si))))
     (some #'(lambda (file) (string-begins file name-pattern))
 	  (files (directory si)))))
 

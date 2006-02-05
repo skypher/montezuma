@@ -63,7 +63,7 @@
 	      (add-field-info fis "word" :indexed-p T :store-term-vector T)
 	      (add-field-info fis "reverse" :indexed-p T :store-term-vector T)
 	      (let ((tiw (make-instance 'term-infos-writer
-					:dir (fixture-var 'dir)
+					:directory (fixture-var 'dir)
 					:segment (format nil "~AG" *test-segment*)
 					:field-infos fis
 					:interval 128)))
@@ -94,7 +94,7 @@
 					     :skip-offset 0)))
 		  (close tiw)))
 	      (let ((tir (make-instance 'term-infos-reader
-					:dir (fixture-var 'dir)
+					:directory (fixture-var 'dir)
 					:segment (format nil "~AG" *test-segment*)
 					:field-infos fis)))
 		(test term-info-two-field-io-1 (size tir) 564)
@@ -125,7 +125,7 @@
 		  (term-infos '()))
 	      (add-field-info fis "word" :indexed-p T :store-term-vector T)
 	      (let ((tiw (make-instance 'term-infos-writer
-					:dir (fixture-var 'dir)
+					:directory (fixture-var 'dir)
 					:segment "tiny-test-segment"
 					:field-infos fis
 					:interval 128)))
@@ -143,7 +143,7 @@
 		    (add-term tiw term term-info)))
 		(close tiw))
 	      (let ((tir (make-instance 'term-infos-reader
-					:dir (fixture-var 'dir)
+					:directory (fixture-var 'dir)
 					:segment "tiny-test-segment"
 					:field-infos fis)))
 		(test term-info-io-small-1 (size tir) 5)
@@ -159,7 +159,7 @@
 		  (term-infos '()))
 	      (add-field-info fis "word" :indexed-p T :store-term-vector T)
 	      (let ((tiw (make-instance 'term-infos-writer
-					:dir (fixture-var 'dir)
+					:directory (fixture-var 'dir)
 					:segment "tiny-test-segment"
 					:field-infos fis
 					:interval 128)))
@@ -177,7 +177,7 @@
 		    (add-term tiw term term-info)))
 		(close tiw))
 	      (let ((tir (make-instance 'term-infos-reader
-					:dir (fixture-var 'dir)
+					:directory (fixture-var 'dir)
 					:segment "tiny-test-segment"
 					:field-infos fis)))
 		(test term-info-io-big-1 (size tir) 282)
@@ -208,7 +208,7 @@
 	    (add-field-info fis "author" :indexed-p T :store-term-vector T)
 	    (add-field-info fis "title" :indexed-p T :store-term-vector T)
 	    (let ((tiw (make-instance 'term-infos-writer
-				      :dir (fixture-var 'dir)
+				      :directory (fixture-var 'dir)
 				      :segment *test-segment*
 				      :field-infos fis
 				      :interval 128)))

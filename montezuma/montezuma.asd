@@ -21,7 +21,8 @@
 			   (:file "streams")
 			   (:file "mop")
 			   (:file "priority-queue" :depends-on ("while"))
-			   (:file "strings"))
+			   (:file "strings")
+			   (:file "files"))
 	      :depends-on ("package"))
      (:module "store"
 	      :components ((:file "directory")

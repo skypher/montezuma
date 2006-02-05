@@ -19,7 +19,7 @@
   `(block nil
      (let ((,var nil)
 	   ,@(if index `((,index 0)) nil))
-       (declare (ignorable var))
+       (declare (ignorable ,var))
        (map nil
 	    #'(lambda (,var)
 		,@body

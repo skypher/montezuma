@@ -14,9 +14,9 @@
   ((fi-array :initform (make-array (list 0) :fill-pointer 0 :adjustable T))
    (fi-hash :initform (make-hash-table :test #'equal))))
 
-(defmethod initialize-instance :after ((self field-infos) &key dir name)
-  (when (and dir (file-exists-p dir name))
-    (let ((input (open-input dir name)))
+(defmethod initialize-instance :after ((self field-infos) &key directory name)
+  (when (and directory (file-exists-p directory name))
+    (let ((input (open-input directory name)))
       (unwind-protect
 	   (read self input)
 	(close input)))))

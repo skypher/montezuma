@@ -16,11 +16,11 @@
   (:default-initargs
    :is-index NIL))
 
-(defmethod initialize-instance :after ((self term-infos-writer) &key dir segment)
+(defmethod initialize-instance :after ((self term-infos-writer) &key directory segment)
   (with-slots (out is-index index-interval skip-interval) self
-    (setf out (create-output dir (merge-pathnames
-				  segment
-				  (make-pathname :type (if is-index "tii" "tis")))))
+    (setf out (create-output directory (merge-pathnames
+					segment
+					(make-pathname :type (if is-index "tii" "tis")))))
     (write-int out +term-infos-format+)
     (write-long out 0)
     (write-int out index-interval)
@@ -28,7 +28,7 @@
     (unless is-index
       (with-slots (other field-infos index-interval is-index) self
 	(setf other (make-instance 'term-infos-writer
-				   :dir dir 
+				   :directory directory
 				   :segment segment
 				   :field-infos field-infos
 				   :interval index-interval
@@ -80,7 +80,7 @@
 
 
 (defclass term-infos-reader ()
-  ((directory :initarg :dir)
+  ((directory :initarg :directory)
    (segment :initarg :segment)
    (field-infos :initarg :field-infos)
    (orig-enum)
