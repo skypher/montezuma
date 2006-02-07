@@ -140,7 +140,7 @@
   (make-instance 'segment-term-doc-pos-enum
 		 :thing self))
 
-(defmethod doc-freq ((self segment-reader) term)
+(defmethod segment-doc-freq ((self segment-reader) term)
   (let ((ti (get-term-info (slot-value self 'term-infos) term)))
     (if ti
 	(doc-freq ti)
@@ -223,11 +223,41 @@
 	      (replace bytes (bytes norm)
 		       :start1 offset :end1 max-doc
 		       :start2 0 :end2 max-doc))
-	    (let ((norm-stream (clone (is norm))))
-	      (unwind-protect
-		   (progn
-		     (seek norm-stream 0)
-		     (read-bytes norm-stream bytes offset (max-doc self)))
-		(close norm-stream)))))))
+	    
+	    (with-open-stream (norm-stream (clone (input-stream norm)))
+	      (seek norm-stream 0)
+	      (read-bytes norm-stream bytes offset (max-doc self)))))))
 
-	  
+(defmethod get-norms-into ((self segment-reader) field bytes offset)
+  (check-type field string)
+  (let ((norm (gethash field (slot-value self 'norms)))
+	(max-doc (max-doc self)))
+    (if (null norm)
+	(replace bytes (fake-norms self)
+		 :start1 offset :end1 max-doc
+		 :start2 0 :end2 max-doc)
+	(if (null (bytes norm))
+	    (replace bytes (bytes norm)
+		     :start1 offset :end1 max-doc
+		     :start2 0 :end2 max-doc)
+	    (with-open-stream (norm-stream (clone (input-stream norm)))
+	      (seek norm-stream 0)
+	      (read-bytes norm-stream bytes offset max-doc))))))
+
+(defmethod open-norms ((self segment-reader) cfs-dir)
+  (dosequence (fi (fields (slot-value self 'field-infos)))
+    (when (and (field-indexed-p fi) (not (field-omit-norms-p fi)))
+      (let ((segment (slot-value self 'segment))
+	    (directory (slot-value self 'directory)))
+	(let ((file-name (add-file-extension segment (format nil "s~S" (field-number fi)))))
+	  (when (not (file-exists-p directory file-name))
+	    (setf file-name (add-file-extension segment (format nil "f~S" (field-number fi))))
+	    (setf directory cfs-dir))
+	  (setf (gethash (field-name fi) (slot-value self 'norms))
+		(make-instance 'norm
+			       :input (open-input directory file-name)
+			       :number (field-number fi))))))))
+
+(defmethod close-norms ((self segment-reader))
+  (loop for norm being the hash-values in (slot-value self 'norms)
+       do (close (input-stream norm))))

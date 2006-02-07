@@ -41,7 +41,7 @@
     (add-field-info self name indexed-p store-term-vector store-position store-offset omit-norms)))
 
 (defmethod fields ((self field-infos))
-  (coerce 'list (slot-value self 'fi-array)))
+  (coerce (slot-value self 'fi-array) 'list))
 
 
 ;; FIXME: there seem to be a lot of bugs in the Ferret-equivalent

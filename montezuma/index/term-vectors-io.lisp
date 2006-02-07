@@ -33,11 +33,11 @@
 
 (defmethod initialize-instance :after ((self term-vectors-writer) &key directory segment)
   (with-slots (tvx tvd tvf) self
-    (setf tvx (create-output directory (merge-pathnames *tvx-extension* segment)))
+    (setf tvx (create-output directory (add-file-extension segment *tvx-extension*)))
     (write-int tvx *term-vectors-format-version*)
-    (setf tvd (create-output directory (merge-pathnames *tvd-extension* segment)))
+    (setf tvd (create-output directory (add-file-extension segment *tvd-extension*)))
     (write-int tvd *term-vectors-format-version*)
-    (setf tvf (create-output directory (merge-pathnames *tvf-extension* segment)))
+    (setf tvf (create-output directory (add-file-extension segment *tvf-extension*)))
     (write-int tvf *term-vectors-format-version*)))
 
 (defmethod open-document ((self term-vectors-writer))
@@ -210,13 +210,13 @@
 
 (defmethod initialize-instance :after ((self term-vectors-reader) &key directory segment)
   (with-slots (tvx tvd tvd-format tvf tvf-format size) self
-    (if (file-exists-p directory (merge-pathnames *tvx-extension* segment))
+    (if (file-exists-p directory (add-file-extension segment *tvx-extension*))
 	(progn
-	  (setf tvx (open-input directory (merge-pathnames *tvx-extension* segment)))
+	  (setf tvx (open-input directory (add-file-extension segment *tvx-extension*)))
 	  (check-valid-format self tvx)
-	  (setf tvd (open-input directory (merge-pathnames *tvd-extension* segment)))
+	  (setf tvd (open-input directory (add-file-extension segment *tvd-extension*)))
 	  (setf tvd-format (check-valid-format self tvd))
-	  (setf tvf (open-input directory (merge-pathnames *tvf-extension* segment)))
+	  (setf tvf (open-input directory (add-file-extension segment *tvf-extension*)))
 	  (setf tvf-format (check-valid-format self tvf))
 	  (setf size (/ (size tvx) 8)))
 	(setf tvx nil

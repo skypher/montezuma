@@ -18,9 +18,9 @@
 
 (defmethod initialize-instance :after ((self term-infos-writer) &key directory segment)
   (with-slots (out is-index index-interval skip-interval) self
-    (setf out (create-output directory (merge-pathnames
+    (setf out (create-output directory (add-file-extension
 					segment
-					(make-pathname :type (if is-index "tii" "tis")))))
+					(if is-index "tii" "tis"))))
     (write-int out +term-infos-format+)
     (write-long out 0)
     (write-int out index-interval)

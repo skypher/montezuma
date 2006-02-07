@@ -27,7 +27,7 @@
 			   field-positions field-offsets field-boosts) self
     (setf field-infos (make-instance 'field-infos))
     (add-doc-fields field-infos document)
-    (write-to-dir field-infos directory (merge-pathnames *fnm-extension* segment))
+    (write-to-dir field-infos directory (add-file-extension segment *fnm-extension*))
     (let ((fields-writer (make-instance 'fields-writer
 					:directory directory
 					:segment segment
@@ -208,7 +208,7 @@
 	(when (and (field-indexed-p fi) (not (field-omit-norms-p fi)))
 	  (let ((norm (* (aref field-boosts i)
 			 (length-norm similarity (field-name fi) (aref field-lengths i))))
-		(norms (open-segment-file directory segment (format nil ".f~S" i) :output)))
+		(norms (open-segment-file directory segment (format nil "f~S" i) :output)))
 	    (unwind-protect
 		 (write-byte norms (encode-norm norm))
 	      (close norms))))))))
