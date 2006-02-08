@@ -12,7 +12,7 @@
   ((field-infos :initarg :field-infos)
    (fields-stream)
    (index-stream)
-   (size)))
+   (size :reader size)))
 
 (defmethod initialize-instance :after ((self fields-reader) &key directory segment)
   (with-slots (fields-stream index-stream size) self

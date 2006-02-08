@@ -4,7 +4,7 @@
   ((directory :initarg :directory)
    (segment :initarg :name)
    (term-index-interval :initarg :term-index-interval)
-   (readers :initform (make-array 0 :adjustable T))
+   (readers :initform (make-array 0 :adjustable T :fill-pointer T))
    (field-infos :initform '())
    (freq-output :initform nil)
    (prox-output :initform nil)
@@ -20,7 +20,7 @@
 
 (defmethod add-reader ((self segment-merger) reader)
   (with-slots (readers) self
-    (vector-push-extend readers reader)))
+    (vector-push-extend reader readers)))
 
 (defmethod segment-reader ((self segment-merger) i)
   (with-slots (readers) self
@@ -73,21 +73,21 @@
 
 
 (defmethod merge-fields ((self segment-merger))
-  (with-slots (field-infos readers segment) self
+  (with-slots (field-infos readers segment directory) self
     (setf field-infos (make-instance 'field-infos))
     (let ((doc-count 0))
       (dosequence (reader readers)
-	(add-indexed reader field-infos
-		     (get-field-names reader "TERM_VECTOR_WITH_POSITION_OFFSET") T T T)
-	(add-indexed reader field-infos
-		     (get-field-names reader "TERM_VECTOR_WITH_POSITION") T T NIL)
-	(add-indexed reader field-infos
-		     (get-field-names reader "TERM_VECTOR_WITH_OFFSET") T NIL T)
-	(add-indexed reader field-infos
-		     (get-field-names reader "TERM_VECTOR") T NIL NIL)
-	(add-indexed reader field-infos
-		     (get-field-names reader "INDEXED") NIL NIL NIL)
-	(add-fields field-infos (get-field-names reader "UNINDEXED") :indexed-p NIL))
+	(add-indexed self reader field-infos
+		     (get-field-names reader :term-vector-with-position-offset) T T T)
+	(add-indexed self reader field-infos
+		     (get-field-names reader :term-vector-with-position) T T NIL)
+	(add-indexed self reader field-infos
+		     (get-field-names reader :term-vector-with-offset) T NIL T)
+	(add-indexed self reader field-infos
+		     (get-field-names reader :term-vector) T NIL NIL)
+	(add-indexed self reader field-infos
+		     (get-field-names reader :indexed) NIL NIL NIL)
+	(add-fields field-infos (get-field-names reader :unindexed) :indexed-p NIL))
       (write-to-dir field-infos directory (add-file-extension segment "fnm"))
       (let ((fields-writer (make-instance 'fields-writer
 					  :directory directory
@@ -98,7 +98,7 @@
 	       (let ((max-doc (max-doc reader)))
 		 (dotimes (j max-doc)
 		   (unless (deleted-p reader j)
-		     (add-document fields-wrier (get-document reader j))
+		     (add-document fields-writer (get-document reader j))
 		     (incf doc-count)))))
 	  (close fields-writer))
 	doc-count))))

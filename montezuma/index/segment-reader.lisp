@@ -126,7 +126,7 @@
 (defmethod get-document ((self segment-reader) n)
   (when (deleted-p self n)
     (error "Document ~S in ~S has been deleted." n self))
-  (doc (slot-value self 'fields-reader) n))
+  (get-doc (slot-value self 'fields-reader) n))
 
 (defmethod deleted-p ((self segment-reader) n)
   (let ((deleted-docs (slot-value self 'deleted-docs)))
@@ -161,33 +161,33 @@
 				   :indexed-with-term-vector :term-vector-with-position
 				   :term-vector-with-offset :term-vector-with-position-offset))
   (let ((field-set '()))
-    (dosequence (field (all-fields (slot-value self 'field-infos)))
+    (dosequence (field (fields (slot-value self 'field-infos)))
       (cond ((eq field-option T)
-	     (pushnew (name field) field-set))
+	     (pushnew (field-name field) field-set))
 	    ((and (not (field-indexed-p field)) (eq field-option :unindexed))
-	     (pushnew (name field) field-set))
+	     (pushnew (field-name field) field-set))
 	    ((and (field-indexed-p field) (eq field-option :indexed))
-	     (pushnew (name field) field-set))
+	     (pushnew (field-name field) field-set))
 	    ((and (field-indexed-p field) (not (field-store-term-vector-p field))
 		  (eq field-option :indexed-no-term-vector))
-	     (pushnew (name field) field-set))
+	     (pushnew (field-name field) field-set))
 	    ((and (field-store-term-vector-p field)
 		  (not (field-store-positions-p field))
 		  (not (field-store-offsets-p field))
 		  (eq field-option :term-vector))
-	     (pushnew (name field) field-set))
+	     (pushnew (field-name field) field-set))
 	    ((and (field-indexed-p field) (field-store-term-vector-p field)
 		  (eq field-option :indexed-with-term-vector))
-	     (pushnew (name field) field-set))
+	     (pushnew (field-name field) field-set))
 	    ((and (field-store-positions-p field) (not (field-store-offsets-p field))
 		  (eq field-option :term-vector-with-position))
-	     (pushnew (name field) field-set))
+	     (pushnew (field-name field) field-set))
 	    ((and (field-store-offsets-p field) (not (field-store-positions-p field))
 		  (eq field-option :term-vector-with-offset))
-	     (pushnew (name field) field-set))
+	     (pushnew (field-name field) field-set))
 	    ((and (field-store-offsets-p field) (field-store-positions-p field)
 		  (eq field-option :term-vector-with-position-offset))
-	     (pushnew (name field) field-set))))
+	     (pushnew (field-name field) field-set))))
     field-set))
 
 (defmethod has-norms-p ((self segment-reader) field)
@@ -255,9 +255,51 @@
 	    (setf directory cfs-dir))
 	  (setf (gethash (field-name fi) (slot-value self 'norms))
 		(make-instance 'norm
-			       :input (open-input directory file-name)
+			       :input-stream (open-input directory file-name)
 			       :number (field-number fi))))))))
 
 (defmethod close-norms ((self segment-reader))
   (loop for norm being the hash-values in (slot-value self 'norms)
        do (close (input-stream norm))))
+
+(defmethod get-term-vectors-reader ((self segment-reader))
+  (with-slots (cached-tv-reader tv-reader-orig) self
+    (when (null cached-tv-reader)
+      (setf cached-tv-reader (clone tv-reader-orig)))
+    cached-tv-reader))
+
+(defmethod get-term-vector ((self segment-reader) doc-number field)
+  (with-slots (field-infos tv-reader-orig) self
+    (let ((fi (gethash field field-infos)))
+      (if (or (null fi) (not (field-store-term-vector-p fi)) (null tv-reader-orig))
+	  nil
+	  (let ((term-vectors-reader (get-term-vectors-reader self)))
+	    (if (null term-vectors-reader)
+		nil
+		(get-field-tv term-vectors-reader doc-number field)))))))
+
+(defmethod get-term-vectors ((self segment-reader) doc-number)
+  (with-slots (tv-reader-orig) self
+    (if (null tv-reader-orig)
+	nil
+	(let ((term-vectors-reader (get-term-vectors-reader self)))
+	  (if (null term-vectors-reader)
+	      nil
+	      (get-tv term-vectors-reader doc-number))))))
+
+(defclass norm ()
+  ((input-stream :initarg :input-stream :reader input-stream)
+   (dirty-p :initform NIL :reader dirty-p)
+   (bytes :accessor bytes)
+   (number :initarg :number)))
+
+(defmethod re-write ((self norm) directory segment count cfs-reader)
+  (let ((out (open-segment-file directory segment "tmp" :output)))
+    (unwind-protect
+	 (write-bytes out (bytes self) count)
+      (close out))
+    (let ((filename (if (null cfs-reader)
+			(add-file-extension segment (format nil "f~S" number))
+			(add-file-extension segment (format nil "s~S" number)))))
+      (rename-file directory (add-file-extension segment "tmp") filename)
+      (setf (slot-value self 'dirty-p) NIL))))

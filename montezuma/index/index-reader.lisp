@@ -19,7 +19,7 @@
   
 
 (defclass index-reader ()
-  ((directory :initarg :directory)
+  ((directory :initarg :directory :reader directory)
    (close-directory-p :initarg :close-directory-p :initform NIL)
    (segment-infos :initarg :segment-infos :initform nil)
    (directory-owner :initarg :directory-owner :initform NIL)

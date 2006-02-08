@@ -183,7 +183,7 @@
 	  (setf target-merge-docs (* target-merge-docs merge-factor)))))))
 
 (defmethod merge-segments ((self index-writer) min-segment &optional (max-segment nil max-segment-supplied-p))
-  (with-slots (segment-infos info-stream term-index-interval directory) self
+  (with-slots (segment-infos info-stream term-index-interval directory ram-directory) self
     (unless max-segment-supplied-p
       (setf max-segment (size segment-infos)))
     (let ((segments-to-delete '())
@@ -207,9 +207,9 @@
 					 :segment-infos nil
 					 :close-directory-p NIL
 					 :directory-owner NIL)))
-	      (add-segment-reader merger reader)
-	      (when (or (directory= (directory reader) directory)
-			(directory= (directory reader) ram-directory))
+	      (add-reader merger reader)
+	      (when (or (eq (directory reader) directory)
+			(eq (directory reader) ram-directory))
 		(push reader segments-to-delete)))))
 	(let ((merged-doc-count (merge merger)))
 	  (when info-stream
