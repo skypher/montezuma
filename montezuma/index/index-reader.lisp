@@ -27,7 +27,7 @@
    (stale :initform NIL)))
 
 
-(defmethod open-index-reader (directory &key (close-directory-p T) (infos nil))
+(defmethod open-index-reader (self directory &key (close-directory-p T) (infos nil))
   (if (null directory)
       (setf directory (make-instance 'ram-directory))
       (when (string directory)
@@ -35,7 +35,7 @@
   (when (null infos)
     (setf infos (make-instance 'segment-infos))
     (read-segment-infos infos directory))
-  (if (= (size segment-infos) 1)
+  (if (= (size (slot-value self 'segment-infos)) 1)
       (get-segment-reader (elt infos 0) infos close-directory-p)
       (let ((readers (make-array (size infos))))
 	(dotimes (i (size infos))
@@ -132,7 +132,7 @@
 
 (defmethod latest-p ((self index-reader))
   (with-slots (directory segment-infos) self
-    (eql (segment-infos-read-current-version dir)
+    (eql (segment-infos-read-current-version directory)
 	 (version segment-infos))))
 
 (defmethod delete ((self index-reader) doc-num)
@@ -143,7 +143,7 @@
   (let ((docs (term-docs-for self term)))
     (if (null docs)
 	0
-	(progn
+	(let ((n 0))
 	  (unwind-protect
 	       (while (next docs)
 		 (delete self (doc docs))
@@ -156,7 +156,7 @@
   (setf (slot-value self 'has-changes-p) T))
 
 (defmethod commit ((self index-reader))
-  (with-slots (has-changes-p directory-owner directory) self
+  (with-slots (has-changes-p directory-owner directory segment-infos) self
     (when has-changes-p
       (if directory-owner
 	  (progn
@@ -171,4 +171,3 @@
   (with-slots (directory close-directory-p) self
     (when close-directory-p
       (close directory))))
-

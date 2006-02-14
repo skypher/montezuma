@@ -12,13 +12,13 @@
    (prox-stream)
    (norms :initform (make-hash-table :test #'equal))
    (norms-dirty-p)
-   (tv-reader-orig))
+   (tv-reader-orig :initform nil))
 )
 
 (defmethod initialize-instance :after ((self index-reader) &key info)
   (with-slots (segment directory deleted-docs field-infos fields-reader
-		       term-infos deleted-docs-dirty-p freq-stream
-		       prox-stream norms norms-dirty-p) self
+		       cfs-reader term-infos deleted-docs-dirty-p freq-stream
+		       tv-reader-orig prox-stream norms norms-dirty-p) self
     (setf segment (segment-info-name info))
     (let ((dir directory))
       (when (uses-compound-file-p info)
@@ -45,7 +45,6 @@
       (setf prox-stream (open-segment-file dir segment "prx" :input))
       (setf norms-dirty-p NIL)
       (open-norms self dir)
-      (setf tv-reader-orig NIL)
       (when (has-vectors-p field-infos)
 	(setf tv-reader-orig (make-instance 'term-vectors-reader
 					    :directory dir
@@ -53,8 +52,8 @@
 					    :field-infos field-infos))))))
 
 (defmethod do-commit ((self segment-reader))
-  (with-slots (deleted-docs-dirty-p deleted-docs norms norms-dirty-p segment-reader
-				    undelete-all-p) self
+  (with-slots (segment deleted-docs-dirty-p deleted-docs norms norms-dirty-p segment-reader
+		       undelete-all-p directory cfs-reader) self
     (when deleted-docs-dirty-p
       (write deleted-docs directory (add-file-extension segment "tmp"))
       (rename-file directory (add-file-extension segment "tmp")
@@ -205,28 +204,18 @@
 	nil
 	(progn
 	  (when (null (bytes norm))
-	    (let ((bytes (* " " (max-doc self))))
-	      (get-norms-info self field bytes 0)
+	    (let ((bytes (make-array (max-doc self) :initial-element #\space)))
+	      (get-norms-into self field bytes 0)
 	      (setf (bytes norm) bytes)))
 	  (bytes norm)))))
 
 (defmethod do-set-norm ((self segment-reader) doc field value)
   (check-type field string)
   (let ((norm (gethash field (slot-value self 'norms))))
-    (if (null norm)
-	(let ((max-doc (max-doc self)))
-	  (replace bytes (fake-norms self)
-		   :start1 offset :end1 max-doc
-		   :start2 0 :end2 max-doc))
-	(if (null (bytes norm))
-	    (let ((max-doc (max-doc self)))
-	      (replace bytes (bytes norm)
-		       :start1 offset :end1 max-doc
-		       :start2 0 :end2 max-doc))
-	    
-	    (with-open-stream (norm-stream (clone (input-stream norm)))
-	      (seek norm-stream 0)
-	      (read-bytes norm-stream bytes offset (max-doc self)))))))
+    (when norm
+      (setf (dirty-p norm) T)
+      (setf (slot-value self 'norms-dirty-p) T)
+      (setf (aref (get-norms self field) doc) value))))
 
 (defmethod get-norms-into ((self segment-reader) field bytes offset)
   (check-type field string)
@@ -298,8 +287,9 @@
     (unwind-protect
 	 (write-bytes out (bytes self) count)
       (close out))
-    (let ((filename (if (null cfs-reader)
-			(add-file-extension segment (format nil "f~S" number))
-			(add-file-extension segment (format nil "s~S" number)))))
-      (rename-file directory (add-file-extension segment "tmp") filename)
-      (setf (slot-value self 'dirty-p) NIL))))
+    (with-slots (number) self
+      (let ((filename (if (null cfs-reader)
+			  (add-file-extension segment (format nil "f~S" number))
+			  (add-file-extension segment (format nil "s~S" number)))))
+	(rename-file directory (add-file-extension segment "tmp") filename)
+	(setf (slot-value self 'dirty-p) NIL)))))

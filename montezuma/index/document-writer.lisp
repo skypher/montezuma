@@ -15,7 +15,7 @@
    (term-buffer :initform (make-term "" ""))
    (info-stream :initform nil :accessor info-stream))
   (:default-initargs
-   :term-index-interval *default-term-index-interval*))
+   :term-index-interval *index-writer-default-term-index-interval*))
 
 
 (defparameter *fnm-extension* (make-pathname :type "fnm"))
@@ -146,15 +146,14 @@
   (with-slots (directory field-infos term-index-interval) self
     (let ((freq nil)
 	  (prox nil)
-	  (tis-writer nil)
-	  (tv-writer nil))
+	  (tv-writer nil)
+	  (tis-writer (make-instance 'term-infos-writer
+				     :directory directory
+				     :segment segment
+				     :field-infos field-infos
+				     :interval term-index-interval)))
       (unwind-protect
-	   (let ((tis-writer (make-instance 'term-infos-writer
-					    :directory directory
-					    :segment segment
-					    :field-infos field-infos
-					    :interval term-index-interval))
-		 (ti (make-instance 'term-info))
+	   (let ((ti (make-instance 'term-info))
 		 (current-field nil))
 	     (setf freq (open-segment-file directory segment *frq-extension* :output))
 	     (setf prox (open-segment-file directory segment *prx-extension* :output))

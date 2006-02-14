@@ -104,7 +104,7 @@
 	doc-count))))
 
 (defmethod merge-vectors ((self segment-merger))
-  (with-slots (directory segment field-infos) self
+  (with-slots (directory segment readers field-infos) self
     (let ((term-vectors-writer (make-instance 'term-vectors-writer
 					      :directory directory
 					      :segment segment
@@ -118,7 +118,8 @@
 	(close term-vectors-writer)))))
 
 (defmethod merge-terms ((self segment-merger))
-  (with-slots (freq-output prox-output term-infos-writer skip-interval queue) self
+  (with-slots (directory segment readers freq-output prox-output term-infos-writer
+	       skip-interval queue field-infos term-index-interval) self
     (unwind-protect
 	 (progn
 	   (setf freq-output (create-output directory (add-file-extension segment "frq"))
@@ -130,7 +131,7 @@
 						  :term-index-interval term-index-interval))
 	   (setf skip-interval (skip-interval term-infos-writer)
 		 queue (make-instance 'segment-merge-queue :size (size readers)))
-	   (merge-term-infos))
+	   (merge-term-infos self))
       (close freq-output)
       (close prox-output)
       (close term-infos-writer)
@@ -180,51 +181,53 @@
 	(add term-infos-writer (term (term-buffer (aref smis 0))) term-info)))))
 
 (defmethod append-postings ((self segment-merger) smis n)
-  (let ((last-doc 0)
-	(df 0))
-    (reset-skip self)
-    (dotimes (i n)
-      (let* ((smi (aref smis i))
-	     (postings (positions smi))
-	     (base (base smi))
-	     (doc-map (doc-map smi)))
-	(seek postings (term-enum smi))
-	(while (next postings)
-	  (let ((doc (doc postings)))
-	    (when (not (null doc-map))
-	      (setf doc (aref doc-map doc)))
-	    (incf doc base)
-	    (when (< doc last-doc)
-	      (error "Docs out of order; current doc is ~S and previous doc is ~S" doc last-doc))
-	    (incf df)
-	    (when (= (mod df skip-interval) 0)
-	      (buffer-skip self last-doc))
-	    (let ((doc-code (ash (- doc last-doc) 1)))
-	      (setf last-doc doc)
-	      (let ((freq (freq postings)))
-		(if (= freq 1)
-		    (write-vint freq-output (logior doc-code 1))
-		    (progn
-		      (write-vint freq-output doc-code)
-		      (write-vint freq-output freq)))
-		(let ((last-position 0))
-		  (dotimes (j freq)
-		    (let ((position (next-positions postings)))
-		      (write-vint prox-output (- position last-position))
-		      (setf last-position position))))))))))
-    df))
+  (with-slots (freq-output prox-output skip-interval) self
+    (let ((last-doc 0)
+	  (df 0))
+      (reset-skip self)
+      (dotimes (i n)
+	(let* ((smi (aref smis i))
+	       (postings (positions smi))
+	       (base (base smi))
+	       (doc-map (doc-map smi)))
+	  (seek postings (term-enum smi))
+	  (while (next postings)
+	    (let ((doc (doc postings)))
+	      (when (not (null doc-map))
+		(setf doc (aref doc-map doc)))
+	      (incf doc base)
+	      (when (< doc last-doc)
+		(error "Docs out of order; current doc is ~S and previous doc is ~S" doc last-doc))
+	      (incf df)
+	      (when (= (mod df skip-interval) 0)
+		(buffer-skip self last-doc))
+	      (let ((doc-code (ash (- doc last-doc) 1)))
+		(setf last-doc doc)
+		(let ((freq (freq postings)))
+		  (if (= freq 1)
+		      (write-vint freq-output (logior doc-code 1))
+		      (progn
+			(write-vint freq-output doc-code)
+			(write-vint freq-output freq)))
+		  (let ((last-position 0))
+		    (dotimes (j freq)
+		      (let ((position (next-positions postings)))
+			(write-vint prox-output (- position last-position))
+			(setf last-position position))))))))))
+      df)))
 
 (defmethod reset-skip ((self segment-merger))
   (with-slots (skip-buffer last-skip-doc last-skip-freq-pointer
-			   last-skip-prox-pointer) self
+	       last-skip-prox-pointer freq-output prox-output
+	       skip-buffer) self
     (reset skip-buffer)
     (setf last-skip-doc 0)
     (setf last-skip-freq-pointer (pos freq-output))
     (setf last-skip-prox-pointer (pos prox-output))))
 
 (defmethod buffer-skip ((self segment-merger) doc)
-  (with-slots (freq-output prox-output last-skip-prox-pointer
-			   last-skip-freq-pointer last-skip-doc) self
+  (with-slots (skip-buffer freq-output prox-output last-skip-prox-pointer
+	       last-skip-freq-pointer last-skip-doc) self
     (let ((freq-pointer (pos freq-output))
 	  (prox-pointer (pos prox-output)))
       (write-vint skip-buffer (- doc last-skip-doc))

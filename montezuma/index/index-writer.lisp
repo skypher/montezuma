@@ -117,11 +117,11 @@
   (let ((segments-to-delete '())
 	(merged-name (new-segment-name self)))
     (optimize self)
-    (with-slots (directory term-index-interval segment-infos) self
-    (let ((merge (make-instance 'segment-merger
-				:directory directory
-				:name merged-name
-				:term-index-interval term-index-interval)))
+    (with-slots (directory term-index-interval segment-infos use-compound-file-p) self
+      (let ((merger (make-instance 'segment-merger
+				   :directory directory
+				   :name merged-name
+				   :term-index-interval term-index-interval)))
       (when (= (size segment-infos) 1)
 	(let ((s-reader (get-segment-reader (segment-info segment-infos 0))))
 	  (add-segment merger s-reader)
@@ -166,7 +166,7 @@
 	(merge-segments self min-segment)))))
 
 (defmethod maybe-merge-segments ((self index-writer))
-  (with-slots (min-merge-docs max-merge-docs segment-infos) self
+  (with-slots (min-merge-docs max-merge-docs segment-infos merge-factor) self
     (let ((target-merge-docs min-merge-docs))
       (while (<= target-merge-docs max-merge-docs)
 	(let ((min-segment (- (size segment-infos) 1))
@@ -183,7 +183,7 @@
 	  (setf target-merge-docs (* target-merge-docs merge-factor)))))))
 
 (defmethod merge-segments ((self index-writer) min-segment &optional (max-segment nil max-segment-supplied-p))
-  (with-slots (segment-infos info-stream term-index-interval directory ram-directory) self
+  (with-slots (segment-infos info-stream term-index-interval directory ram-directory use-compound-file-p) self
     (unless max-segment-supplied-p
       (setf max-segment (size segment-infos)))
     (let ((segments-to-delete '())
@@ -241,8 +241,9 @@
       (write-deletable-files deletable))))
 
 (defmethod delete-files-and-write-undeletable ((self index-writer) files)
-  (let ((deletable (append (try-to-delete-files self (read-deletable-files self))
-			   (try-to-delete-files self files deletable))))
+  (let ((deletable '()))
+    (setf deletable (try-to-delete-files self (read-deletable-files self)))
+    (setf deletable (append deletable (try-to-delete-files self files deletable)))
     (write-deletable-files deletable)))
 
 (defmethod delete-files ((self index-writer) filenames dir)
