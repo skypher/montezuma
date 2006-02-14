@@ -151,6 +151,16 @@
   (with-slots (file) self
     (setf (mtime file) (get-universal-time))))
 	   
+(defmethod write-to ((self ram-index-output) output)
+  (flush self)
+  (let ((file (slot-value self 'file))
+	(buffer-size (buffer-size self)))
+    (let ((last-buffer-number (floor (size file) buffer-size))
+	  (last-buffer-offset (mod (size file) buffer-size)))
+      (dosequence (buffer (buffers file) :index i)
+	(let ((len (if (= i last-buffer-number) last-buffer-offset buffer-size)))
+	  (write-bytes output buffer len))))))
+
 (defmethod make-new-buffer ((self ram-index-output))
   (make-array (list (buffer-size self))))
 
