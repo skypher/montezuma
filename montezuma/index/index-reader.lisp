@@ -120,7 +120,7 @@
 
 (defmethod term-positions-for ((self index-reader) term)
   (let ((term-positions (term-positions self)))
-    (seef term-positions term)
+    (seek term-positions term)
     term-positions))
 
 (defmethod term-positions ((self index-reader))
