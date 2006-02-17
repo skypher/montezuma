@@ -35,7 +35,7 @@
 	(atest term-doc-enum (subseq docs 0 1) #(21) #'equal)
 	(atest term-doc-enum (subseq freqs 0 1) #(6) #'equal)
 	(atest term-doc-enum (read tde docs freqs) 0)
-	(test-term-docpos-enum-skip-to ir tde)
+	(do-test-term-docpos-enum-skip-to ir tde)
 	(close tde))
 
       ;; Test term positions

@@ -98,7 +98,7 @@
   (begin-tests)
   (dolist (pair *test-functions*)
     (destructuring-bind (name . function) pair
-      (format T "~&;; ~S" name)
+      (format T "~&;; ~S " name)
       (funcall function)))
   (end-tests))
 
@@ -107,7 +107,7 @@
   (let ((test (assoc name *test-functions*)))
     (if test
 	(destructuring-bind (name . function) test
-	  (format T "~&;; ~S" name)
+	  (format T "~&;; ~S " name)
 	  (funcall function))
 	(error "There is no test named ~S." name))))
 

@@ -56,7 +56,7 @@
 			       :directory dir
 			       :analyzer analyzer
 			       :similarity similarity
-			       (error 50))))
+			       :blahblah 50)))
     (add-document-to-index-writer writer doc)))
 
 (defun index-test-helper-prepare-book-list ()
@@ -263,8 +263,8 @@
 		  (let ((doc (make-instance 'document)))
 		    (setf (boost doc) (incf counter))
 		    (do ((names '("date" "field" "cat") (cdr names))
-			 (values values (cdr values)))
-			((endp name))
+			 (values doc-fields (cdr values)))
+			((endp names))
 		      (add-field doc (make-field (car names) (car values)
 						 :stored T :index :tokenized :store-term-vector NIL)))
 		    doc))

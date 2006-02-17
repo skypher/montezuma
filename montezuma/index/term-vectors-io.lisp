@@ -218,7 +218,7 @@
 	  (setf tvd-format (check-valid-format self tvd))
 	  (setf tvf (open-input directory (add-file-extension segment *tvf-extension*)))
 	  (setf tvf-format (check-valid-format self tvf))
-	  (setf size (/ (size tvx) 8)))
+	  (setf size (floor (size tvx) 8)))
 	(setf tvx nil
 	      tvd nil
 	      tvf nil))))
