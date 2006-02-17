@@ -199,7 +199,7 @@
 	  (let ((si (segment-info segment-infos i)))
 	    (when info-stream
 	      (format info-stream "~&~S (~S docs)"
-		      (name si)
+		      (segment-info-name si)
 		      (doc-count si)))
 	    (let ((reader (make-instance 'segment-reader
 					 :directory (directory si)
@@ -215,7 +215,6 @@
 	  (when info-stream
 	    (format info-stream "~& into ~S (~S docs)"
 		    merged-name merged-doc-count ))
-	  (print segment-infos)
 	  (loop for i from (- max-segment 1) downto min-segment
 	       do (delete-at segment-infos i))
 	  (add-segment-info segment-infos (make-instance 'segment-info
@@ -244,19 +243,19 @@
 (defmethod delete-files-and-write-undeletable ((self index-writer) files)
   (let ((deletable '()))
     (setf deletable (try-to-delete-files self (read-deletable-files self)))
-    (setf deletable (append deletable (try-to-delete-files self files deletable)))
-    (write-deletable-files deletable)))
+    (setf deletable (append deletable (try-to-delete-files self files)))
+    (write-deletable-files self deletable)))
 
 (defmethod delete-files ((self index-writer) filenames dir)
   (dolist (filename filenames)
     (delete-file dir filename)))
 
-(defmethod try-to-delete-files ((self index-writer) filenames deletable)
+(defmethod try-to-delete-files ((self index-writer) filenames)
   (with-slots (directory) self
     (let ((deletions-to-retry '()))
       (dolist (filename filenames)
-	;; FIXME: when can't you delete a file?
-	(delete-file directory filename))
+	(handler-case (delete-file directory filename)
+	  (error (e) (push filename deletions-to-retry))))
       deletions-to-retry)))
     
 (defmethod read-deletable-files ((self index-writer))
