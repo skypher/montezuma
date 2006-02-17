@@ -5,16 +5,42 @@
 (defparameter *passed-tests* '())
 (defparameter *failed-tests* '())
 
-(defmacro test (name expr expected-value &optional (comparator '(function equal))
-		failure-code)
-  `(unless (test-aux ',name ',expr ,expr ,expected-value ,comparator)
-    ,failure-code))
+(defvar *trap-errors* T)
 
-(defmacro atest (prefix expr expected-value &optional (comparator '(function equal))
-		 failure-code)
-  `(unless (test-aux (gensym (string ',prefix)) ',expr ,expr ,expected-value ,comparator)
-     ,failure-code))
 
+(defun fail-test (condition)
+  (invoke-restart 'fail-test condition))
+
+(defun maybe-fail-test (condition)
+  (when *trap-errors*
+    (fail-test condition)))
+
+(defun execute-test-thunk (name expr test-thunk expected-value comparator failure-thunk)
+  (flet ((handle-test-success (value)
+	   (test-success name expr value expected-value))
+	 (handle-test-failure (value condition)
+	   (test-failure name expr value expected-value condition)
+	   (when failure-thunk (funcall failure-thunk))))
+    (restart-case 
+	(handler-bind ((error #'maybe-fail-test))
+	  (let ((value (funcall test-thunk)))
+	    (if (funcall comparator value expected-value)
+		(handle-test-success value)
+		(handle-test-failure value nil))))
+      (fail-test (condition)
+	(handle-test-failure nil condition)))))
+
+(defmacro test (name expr expected-value &optional (comparator '(function equal)) failure-code)
+  `(flet ((test-thunk () ,expr)
+	  (failure-thunk () ,@failure-code))
+     (execute-test-thunk ',name ',expr #'test-thunk ,expected-value ,comparator #'failure-thunk)))
+
+(defmacro atest (prefix expr expected-value &optional (comparator '(function equal)) failure-code)
+  `(flet ((test-thunk () ,expr)
+	  (failure-thunk () ,@failure-code))
+     (execute-test-thunk (gensym (string ',prefix)) ',expr #'test-thunk ,expected-value ,comparator #'failure-thunk)))
+
+#||
 (defmacro condition-test (name expr expected-condition &optional (comparator '(function typep))
 			  failure-code)
   (let ((completed-var (gensym "COMPLETED"))
@@ -44,13 +70,17 @@
 	(test-success name expr value expected-value)
 	(test-failure name expr value expected-value))
     got-expected-p))
+||#
 
-(defun test-failure (name expr value expected-value)
+(defun test-failure (name expr value expected-value condition)
   (assert (not (assoc name *failed-tests*)) nil "There is already a test named ~S." name)
   (assert (not (assoc name *passed-tests*)) nil "There is already a test named ~S." name)
   (push (cons name (list expr value expected-value)) *failed-tests*)
-  (warn "FAILURE: Test ~S: ~S evaluated to ~S instead of ~S."
-	name expr value expected-value)
+  (if (not condition)
+      (warn "FAILURE: Test ~S: ~S evaluated to ~S instead of ~S."
+	    name expr value expected-value)
+      (let ((condition-report-string (format nil "~A" condition)))
+	(warn "FAILURE: Test ~S: ~S signalled ~S (~S) instead of returning ~S" name expr condition condition-report-string expected-value)))
   (format T "F")
   nil)
 
