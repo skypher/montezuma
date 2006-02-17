@@ -215,30 +215,31 @@
 	  (when info-stream
 	    (format info-stream "~& into ~S (~S docs)"
 		    merged-name merged-doc-count ))
+	  (print segment-infos)
 	  (loop for i from (- max-segment 1) downto min-segment
 	       do (delete-at segment-infos i))
 	  (add-segment-info segment-infos (make-instance 'segment-info
-							 :segment merged-name
-							 :count merged-doc-count
+							 :name merged-name
+							 :doc-count merged-doc-count
 							 :directory directory))
 	  (close-readers merger)
 	  (write-segment-infos segment-infos directory)
-	  (delete-segments segments-to-delete)
+	  (delete-segments self segments-to-delete)
 	  (when use-compound-file-p
-	    (let ((files-to-delete (create-compound-file merger (add-extension merged-name "tmp"))))
+	    (let ((files-to-delete (create-compound-file merger (add-file-extension merged-name "tmp"))))
 	      (rename-file directory
-			   (add-extension merged-name "tmp")
-			   (add-extension merged-name "cfs"))
+			   (add-file-extension merged-name "tmp")
+			   (add-file-extension merged-name "cfs"))
 	      (delete-files-and-write-undeletable self files-to-delete))))))))
 
 (defmethod delete-segments ((self index-writer) segment-readers)
   (with-slots (directory) self
     (let ((deletable (try-to-delete-files self (read-deletable-files self))))
       (dolist (segment-reader segment-readers)
-	(if (directory= (directory segment-reader) directory)
+	(if (eql (directory segment-reader) directory)
 	    (setf deletable (append deletable (try-to-delete-files self (file-names segment-reader))))
-	    (delete-files (file-names segment-reader (directory segment-reader)))))
-      (write-deletable-files deletable))))
+	    (delete-files self (file-names segment-reader) (directory segment-reader))))
+      (write-deletable-files self deletable))))
 
 (defmethod delete-files-and-write-undeletable ((self index-writer) files)
   (let ((deletable '()))
@@ -250,7 +251,7 @@
   (dolist (filename filenames)
     (delete-file dir filename)))
 
-(defmethod try-to-delete-files ((self index-writer) filenames)
+(defmethod try-to-delete-files ((self index-writer) filenames deletable)
   (with-slots (directory) self
     (let ((deletions-to-retry '()))
       (dolist (filename filenames)

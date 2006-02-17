@@ -134,7 +134,7 @@
   (with-slots (merged-p ids file-entries) self
     (when merged-p
       (error "Extensions cannot be added after ~S has been merged." self))
-    (if (member file-name ids :test #'string=)
+    (if (member file-name ids :test #'equal)
 	(error "File ~S already added to ~S." file-name self)
 	(push file-name ids))
     (setf file-entries (append file-entries
@@ -156,7 +156,7 @@
 	     (dolist (entry file-entries)
 	       (setf (dir-offset entry) (pos os))
 	       (write-long os 0)
-	       (write-string os (file-name entry)))
+	       (write-string os (namestring (file-name entry))))
 	     (dolist (entry file-entries)
 	       (setf (data-offset entry) (pos os))
 	       (copy-file self entry os))

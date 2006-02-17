@@ -98,7 +98,7 @@
   (with-slots (field-infos) self
     (open-document self)
     (when vectors
-      (dolist (vector vectors)
+      (dosequence (vector vectors)
 	(let ((store-positions (and (> (size vector) 0) (positions vector)))
 	      (store-offsets (and (> (size vector) 0) (offsets vector))))
 	  (create-field self 
@@ -269,7 +269,7 @@
 		  (if (= tvd-format *term-vectors-format-version*)
 		      (setf number (read-vint tvd))
 		      (incf number (read-vint tvd)))
-		  (setf (aref fields i) (name (aref field-infos number))))
+		  (setf (aref fields i) (field-name (get-field field-infos number))))
 		(setf position 0)
 		(let ((tvf-pointers (make-array field-count)))
 		  (dotimes (i field-count)

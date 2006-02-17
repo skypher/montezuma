@@ -167,7 +167,7 @@
 
 (defmethod close ((self index-reader))
   (commit self)
-  (do-close)
+  (do-close self)
   (with-slots (directory close-directory-p) self
     (when close-directory-p
       (close directory))))

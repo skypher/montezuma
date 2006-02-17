@@ -12,6 +12,8 @@
    (prox-stream :reader prox-stream)
    (norms :initform (make-hash-table :test #'equal))
    (norms-dirty-p)
+   (ones :initform nil)
+   (cached-tv-reader :initform nil)
    (tv-reader-orig :initform nil))
 )
 
@@ -199,6 +201,14 @@
     (declare (ignore value))
     has-key-p))
 
+(defun create-fake-norms (size)
+  (make-array size))
+
+(defmethod fake-norms ((self segment-reader))
+  (with-slots (ones) self
+    (if ones
+	ones
+	(setf ones (create-fake-norms (max-doc self))))))
 
 (defmethod get-norms ((self segment-reader) field)
   (check-type field string)
@@ -228,13 +238,16 @@
 	(replace bytes (fake-norms self)
 		 :start1 offset :end1 max-doc
 		 :start2 0 :end2 max-doc)
-	(if (null (bytes norm))
+	(if (not (null (bytes norm)))
 	    (replace bytes (bytes norm)
 		     :start1 offset :end1 max-doc
 		     :start2 0 :end2 max-doc)
-	    (with-open-stream (norm-stream (clone (input-stream norm)))
-	      (seek norm-stream 0)
-	      (read-bytes norm-stream bytes offset max-doc))))))
+	    (let ((norm-stream (clone (input-stream norm))))
+	      (unwind-protect
+		   (progn
+		     (seek norm-stream 0)
+		     (read-bytes norm-stream bytes offset max-doc)))
+	      (close norm-stream))))))
 
 (defmethod open-norms ((self segment-reader) cfs-dir)
   (dosequence (fi (fields (slot-value self 'field-infos)))

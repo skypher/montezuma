@@ -26,6 +26,12 @@
   (with-slots (elements) self
     (length elements)))
 
+(defmethod delete-at ((self segment-infos) index)
+  (with-slots (elements) self
+    ;; FIXME truly atrocious
+    (let ((new-elements (concatenate 'vector (subseq elements 0 index) (subseq elements (+ index 1)))))
+    (setf elements (make-array (length new-elements) :adjustable T :fill-pointer T :initial-contents new-elements)))))
+
 (defmethod add-segment-info ((self segment-infos) si)
   (with-slots (elements) self
     (vector-push-extend si elements)))

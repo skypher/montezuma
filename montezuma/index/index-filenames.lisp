@@ -9,7 +9,7 @@
     "tvx" "tvd" "tvf" "tvp"))
 
 (defparameter *index-compound-extensions*
-  '("fnm" "frq" "prx" "fdx" "fdt" "tiii" "tis"))
+  '("fnm" "frq" "prx" "fdx" "fdt" "tii" "tis"))
 
 (defparameter *index-vector-extensions*
   '("tvx" "tvd" "tvf"))
