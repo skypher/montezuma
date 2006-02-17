@@ -13,7 +13,11 @@
    (term-info :initform (make-instance 'term-info))
    (skip-buffer
     :initform (make-instance 'ram-index-output
-			     :file (make-instance 'ram-file :name ""))))
+			     :file (make-instance 'ram-file :name "")))
+   (skip-interval)
+   (last-skip-doc)
+   (last-skip-freq-pointer)
+   (last-skip-prox-pointer))
   (:default-initargs
    :term-index-interval *index-writer-default-term-index-interval*))
 
@@ -128,14 +132,14 @@
 						  :directory directory
 						  :segment segment
 						  :field-infos field-infos
-						  :term-index-interval term-index-interval))
+						  :interval term-index-interval))
 	   (setf skip-interval (skip-interval term-infos-writer)
-		 queue (make-instance 'segment-merge-queue :size (size readers)))
+		 queue (make-instance 'segment-merge-queue :max-size (length readers)))
 	   (merge-term-infos self))
-      (close freq-output)
-      (close prox-output)
-      (close term-infos-writer)
-      (close queue))))
+      (when freq-output (close freq-output))
+      (when prox-output (close prox-output))
+      (when term-infos-writer (close term-infos-writer))
+      (when queue (close queue)))))
 
 (defmethod merge-term-infos ((self segment-merger))
   (with-slots (readers queue) self
@@ -150,7 +154,7 @@
 	  (if (next smi)
 	      (queue-push queue smi)
 	      (close smi))))
-      (let ((match (make-array (size readers))))
+      (let ((match (make-array (length readers))))
 	(while (> (size queue) 0)
 	  (let ((match-size 0))
 	    (setf (aref match match-size) (queue-pop queue))

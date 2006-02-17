@@ -31,30 +31,31 @@
     (let ((position (read-long index-stream)))
       (seek fields-stream position))
     (let ((doc (make-instance 'document)))
-      (dotimes (i (read-vint fields-stream))
-	(let* ((field-number (read-vint fields-stream))
-	       (fi (get-field field-infos field-number))
-	       (bits (read-byte fields-stream)))
-	  (let ((compressed (logbitp +field-is-compressed-bit+ bits))
-		(tokenize (logbitp +field-is-tokenized-bit+ bits))
-		(binary (logbitp +field-is-binary-bit+ bits)))
-	    (if binary
-		(let ((b (make-array (read-vint fields-stream))))
-		  (read-bytes fields-stream b 0 (length b))
-		  (if compressed
-		      (add-field doc
-				 (make-binary-field (name fi)
-						    (uncompress b)
-						    :compress))
-		      (add-field doc (make-binary-field (name fi) b :yes)))
-		  (let ((store :yes)
+      (let ((num-fields (read-vint fields-stream)))
+	(dotimes (i num-fields)
+	  (let* ((field-number (read-vint fields-stream))
+		 (fi (get-field field-infos field-number))
+		 (bits (read-byte fields-stream)))
+	    (let ((compressed (logbitp +field-is-compressed-bit+ bits))
+		  (tokenize (logbitp +field-is-tokenized-bit+ bits))
+		  (binary (logbitp +field-is-binary-bit+ bits)))
+	      (if binary
+		  (let ((b (make-array (read-vint fields-stream))))
+		    (read-bytes fields-stream b 0 (length b))
+		    (if compressed
+			(add-field doc
+				   (make-binary-field (field-name fi)
+						      (uncompress b)
+						      :compress))
+			(add-field doc (make-binary-field (field-name fi) b T))))
+		  (let ((store T)
 			(index (if (field-indexed-p fi)
 				   (if tokenize
 				       :tokenized
 				       (if (field-omit-norms-p fi)
 					   :no-norms
 					   :untokenized))
-				   :no))
+				   NIL))
 			(data nil))
 		    (if compressed
 			(progn
@@ -69,9 +70,9 @@
 					  :with-positions-offsets)
 					 ((field-store-positions-p fi) :with-positions)
 					 ((field-store-offsets-p fi) :with-offsets)
-					 (T :yes))
-				   :no)))
-		      (add-field doc (make-field (name fi) data
+					 (T T))
+				   NIL)))
+		      (add-field doc (make-field (field-name fi) data
 						 :stored store
 						 :index index
 						 :store-term-vector stv)))))))))

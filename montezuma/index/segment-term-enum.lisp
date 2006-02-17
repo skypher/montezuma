@@ -5,7 +5,7 @@
    (field-infos :initarg :field-infos)
    (is-index :initarg :is-index)
    (position :initform -1 :reader pos)
-   (term-buffer :initform (make-instance 'term-buffer))
+   (term-buffer :initform (make-instance 'term-buffer) :reader term-buffer)
    (prev-buffer :initform (make-instance 'term-buffer))
    (term-info :initform (make-instance 'term-info))
    (index-pointer :initform 0 :reader index-pointer)

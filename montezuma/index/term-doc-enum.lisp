@@ -26,6 +26,15 @@
    (freq-stream :reader freq-stream)
    (deleted-docs :reader deleted-docs)
    (skip-interval)
+   (count)
+   (doc-freq)
+   (skip-doc)
+   (skip-count)
+   (num-skips)
+   (prox-pointer)
+   (freq-pointer)
+   (skip-pointer)
+   (have-skipped)
    (skip-stream :initform NIL)
    (doc :initform 0)))
 
@@ -158,7 +167,10 @@
 
 
 (defclass segment-term-doc-pos-enum (segment-term-doc-enum)
-  ((prox-stream :reader prox-stream)))
+  ((prox-stream :reader prox-stream)
+   (prox-count)
+   (freq)
+   (position)))
 
 (defmethod initialize-instance :after ((self segment-term-doc-pos-enum) &key)
   (with-slots (parent prox-stream) self

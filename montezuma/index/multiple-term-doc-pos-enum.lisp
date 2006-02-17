@@ -45,8 +45,7 @@
 	  (setf freq (length pos-list))))))
 
 (defmethod next-position ((self multiple-term-doc-enum))
-  (with-slots (pos-list) self
-    (pop (slot-value self 'pos-list))))
+  (pop (slot-value self 'pos-list)))
 
 (defmethod skip-to ((self multiple-term-doc-enum) target)
   (with-slots (tps-queue) self

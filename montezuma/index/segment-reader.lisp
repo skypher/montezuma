@@ -3,13 +3,13 @@
 (defclass segment-reader (index-reader)
   ((segment)
    (cfs-reader :initform nil)
-   (deleted-docs)
+   (deleted-docs :reader deleted-docs)
    (deleted-docs-dirty-p)
    (field-infos)
    (fields-reader)
-   (term-infos)
-   (freq-stream)
-   (prox-stream)
+   (term-infos :reader term-infos)
+   (freq-stream :reader freq-stream)
+   (prox-stream :reader prox-stream)
    (norms :initform (make-hash-table :test #'equal))
    (norms-dirty-p)
    (tv-reader-orig :initform nil))
@@ -84,6 +84,9 @@
 (defmethod has-deletions-p ((si segment-info))
   (file-exists-p (directory si) (add-file-extension (segment-info-name si) "del")))
 
+(defmethod has-deletions-p ((self segment-reader))
+  (slot-value self 'deleted-docs))
+
 (defmethod uses-compound-file-p ((si segment-info))
   (file-exists-p (directory si) (add-file-extension (segment-info-name si) "cfs")))
 
@@ -137,7 +140,7 @@
 
 (defmethod term-positions ((self segment-reader))
   (make-instance 'segment-term-doc-pos-enum
-		 :thing self))
+		 :parent self))
 
 (defmethod segment-doc-freq ((self segment-reader) term)
   (let ((ti (get-term-info (slot-value self 'term-infos) term)))

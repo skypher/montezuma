@@ -10,6 +10,6 @@
 
 (defmethod close ((self segment-merge-queue))
   (with-slots (heap) self
-    (dolist (sti heap)
+    (dosequence (sti heap)
       (when sti
 	(close sti)))))

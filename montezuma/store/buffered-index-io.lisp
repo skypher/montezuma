@@ -43,8 +43,10 @@
 
 (defmethod seek ((self buffered-index-output) pos)
   (flush self)
-  (with-slots (buffer-start) self
-    (setf buffer-start pos)))
+  (prog1
+      (with-slots (buffer-start) self
+	(setf buffer-start pos))
+    (assert (eql (pos self) pos))))
 
 (defgeneric flush-buffer (buffered-index-output buffer length))
 
@@ -109,15 +111,17 @@
     (+ buffer-start buffer-position)))
 
 (defmethod seek ((self buffered-index-input) pos)
-  (with-slots (buffer-start buffer-length buffer-position) self
-    (if (and (> pos buffer-start)
-	     (< pos (+ buffer-start buffer-length)))
-	(setf buffer-position (- pos buffer-start))
-	(progn
-	  (setf buffer-start pos)
-	  (setf buffer-position 0)
-	  (setf buffer-length 0)
-	  (seek-internal self pos)))))
+  (prog1
+      (with-slots (buffer-start buffer-length buffer-position) self
+	(if (and (> pos buffer-start)
+		 (< pos (+ buffer-start buffer-length)))
+	    (setf buffer-position (- pos buffer-start))
+	    (progn
+	      (setf buffer-start pos)
+	      (setf buffer-position 0)
+	      (setf buffer-length 0)
+	      (seek-internal self pos))))
+    (assert (eql (pos self) pos))))
 
 (defgeneric read-internal (buffered-index-input buffer offset length))
 

@@ -1,11 +1,12 @@
 (in-package #:montezuma)
 
 (defclass segment-merge-info ()
-  ((base :initarg :base)
-   (term-enum :initarg :term-enum)
+  ((base :initarg :base :reader base)
+   (term-enum :initarg :term-enum :reader term-enum)
    (reader :initarg :reader)
-   (term-buffer)
-   (doc-map)))
+   (postings :initform '())
+   (term-buffer :reader term-buffer)
+   (doc-map :initform nil)))
 
 (defmethod initialize-instance :after ((self segment-merge-info) &key)
   (with-slots (term-enum term-buffer) self
@@ -13,7 +14,10 @@
 
 (defmethod positions ((self segment-merge-info))
   ;; FIXME: what does "@postings ||= @reader.term_positions()" mean?
-)
+  (with-slots (postings reader) self
+    (if postings
+	postings
+	(setf postings (term-positions reader)))))
 
 (defmethod doc-map ((self segment-merge-info))
   (with-slots (doc-map reader) self

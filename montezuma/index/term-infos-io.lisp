@@ -4,7 +4,7 @@
 
 (defclass term-infos-writer ()
   ((index-interval :initarg :interval)
-   (skip-interval :initform 16)
+   (skip-interval :initform 16 :reader skip-interval)
    (last-index-pointer :initform 0)
    (last-term :initform (make-term "" ""))
    (last-term-info :initform (make-instance 'term-info))
