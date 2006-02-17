@@ -151,7 +151,7 @@
 		(test term-info-io-small-3 (get-terms-position tir (make-term "word" "duad")) 0)
 		(test term-info-io-small-4 (get-terms-position tir (make-term "word" "dual")) 1)
 		(test term-info-io-small-5 (get-terms-position tir (make-term "word" "dualist")) 3))))
-(:testfun test-term-infos-io-big
+  (:testfun test-term-infos-io-big
 	    (let ((term-dumbly (make-term "word" "dumbly"))
 		  (term-dualize (make-term "word" "dualize"))
 		  (fis (make-instance 'field-infos))
@@ -203,7 +203,7 @@
 		  (test term-info-big-13 (term terms) (make-term "word" "dumbness") #'term=)
 		  (test term-info-big-14 (and (next terms) T) T)
 		  (test term-info-big-15 (term terms) (make-term "word" "dumbo") #'term=)))))
-(:testfun test-term-infos-io-small-writer
+  (:testfun test-term-infos-io-small-writer
 	  (let ((fis (make-instance 'field-infos)))
 	    (add-field-info fis "author" :indexed-p T :store-term-vector T)
 	    (add-field-info fis "title" :indexed-p T :store-term-vector T)
