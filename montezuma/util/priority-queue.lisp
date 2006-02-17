@@ -4,11 +4,18 @@
   ((size :initform 0 :reader size)
    (heap)
    (predicate :initarg :predicate)
-   (max-size :initarg :max-size)))
+   (max-size :initarg :max-size)
+   (element-type :initform T :initarg :element-type)))
+
+(defmethod check-queue ((self priority-queue))
+  (with-slots (size heap element-type) self
+    (assert (every #'(lambda (elt) (typep elt element-type))
+		   (subseq heap 1 (+ size 1))))))
 
 (defmethod initialize-instance :after ((queue priority-queue) &key)
   (with-slots (heap max-size) queue
-    (setf heap (make-array (+ max-size 1)))))
+    (setf heap (make-array (+ max-size 1))))
+  (check-queue queue))
 
 (defmethod print-object ((self priority-queue) stream)
   (print-unreadable-object (self stream :identity T :type T)
@@ -21,10 +28,11 @@
 
 
 (defmethod queue-push ((queue priority-queue) object)
-  (with-slots (size heap) queue
+  (with-slots (size heap element-type) queue
     (incf size)
     (setf (aref heap size) object)
-    (up-heap queue)))
+    (up-heap queue)
+    (check-queue queue)))
 
 (defmethod queue-insert ((queue priority-queue) object)
   (with-slots (size max-size heap) queue
@@ -35,7 +43,8 @@
 	   (setf (aref heap 1) object)
 	   (down-heap queue)
 	   T)
-	  (T NIL))))
+	  (T NIL)))
+  (check-queue queue))
 
 (defmethod queue-top ((queue priority-queue))
   (with-slots (heap) queue
@@ -49,17 +58,22 @@
 		(aref heap size) nil)
 	  (decf size)
 	  (down-heap queue)
+	  (check-queue queue)
 	  (values result T))
-	(values nil NIL))))
+	(progn
+	  (check-queue queue)
+	  (values nil NIL)))))
 
 (defmethod queue-clear ((queue priority-queue))
   (with-slots (size heap) queue
     (dotimes (i (+ size 1))
       (setf (aref heap i) nil))
-    (setf size 0)))
+    (setf size 0))
+  (check-queue queue))
 
 (defmethod adjust-top ((queue priority-queue))
-  (down-heap queue))
+  (down-heap queue)
+  (check-queue queue))
 
 (defmethod up-heap ((queue priority-queue))
   (with-slots (size heap) queue
@@ -70,7 +84,8 @@
 	(setf (aref heap i) (aref heap j)
 	      i j)
 	(setf j (floor j 2)))
-      (setf (aref heap i) node))))
+      (setf (aref heap i) node)))
+  (check-queue queue))
 
 (defmethod down-heap ((queue priority-queue))
   (with-slots (size heap) queue
@@ -87,7 +102,8 @@
 	(setf k (+ j 1))
 	(when (and (< k size) (less-than queue (aref heap k) (aref heap j)))
 	  (setf j k)))
-      (setf (aref heap i) node))))
+      (setf (aref heap i) node)))
+  (check-queue queue))
 
 
     

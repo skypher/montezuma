@@ -282,7 +282,7 @@
 (defclass norm ()
   ((input-stream :initarg :input-stream :reader input-stream)
    (dirty-p :initform NIL :reader dirty-p)
-   (bytes :accessor bytes)
+   (bytes :accessor bytes :initform nil)
    (number :initarg :number)))
 
 (defmethod re-write ((self norm) directory segment count cfs-reader)
