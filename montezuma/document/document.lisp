@@ -2,17 +2,13 @@
 
 (defclass document ()
   ((boost :initform 1.0 :initarg :boost :accessor document-boost)
-   (fields :initform (make-hash-table :test #'equal))))
+   (fields :initform (make-table :test #'equal))))
 
 (defmethod print-object ((self document) stream)
   (print-unreadable-object (self stream :type T :identity T)
-    (let ((field-names '()))
-      (with-slots (fields) self
-	(maphash #'(lambda (name fields)
-		     (when fields
-		       (push name field-names)))
-		 fields))
-      (format stream "~{~A~^ ~}" (reverse field-names)))))
+    (with-slots (fields) self
+      (let ((field-names (table-keys fields)))
+	(format stream "~{~A~^ ~}" (reverse field-names))))))
 
 
 (defun make-document ()
@@ -20,17 +16,11 @@
 
 (defmethod all-fields ((self document))
   (with-slots (fields) self
-    (let ((all-fields '()))
-      (maphash #'(lambda (name fields)
-		   (declare (ignore name))
-		   (when fields
-		     (setf all-fields (append fields all-fields))))
-	       fields)
-      all-fields)))
+    (reduce #'append (table-values fields))))
 
 (defmethod field-count ((self document))
   (with-slots (fields) self
-    (hash-table-count fields)))
+    (length (table-entries fields))))
 
 (defmethod entry-count ((self document))
   (length (all-fields self)))
@@ -38,22 +28,22 @@
 (defmethod add-field ((self document) (field field))
   (with-slots (fields) self
     (let* ((name (field-name field))
-	   (fields-with-name (gethash name fields '())))
-      (setf (gethash name fields) (append fields-with-name (list field)))))
+	   (fields-with-name (table-value name fields)))
+      (setf (table-value name fields) (append fields-with-name (list field)))))
   self)
 
 (defmethod remove-field ((self document) name)
   (with-slots (fields) self
-    (let ((fields-with-name (gethash name fields '()))
+    (let ((fields-with-name (table-value name fields))
 	  (removed-field nil))
       (when fields-with-name
 	(setf removed-field (car fields-with-name))
-	(setf (gethash name fields) (cdr fields-with-name)))
+	(setf (table-value name fields) (cdr fields-with-name)))
       removed-field)))
 
 (defmethod remove-fields ((self document) name)
   (with-slots (fields) self
-    (remhash name fields))
+    (remtable name fields))
   (values))
 
 (defmethod document-field ((self document) name)
@@ -61,7 +51,7 @@
 
 (defmethod document-fields ((self document) name)
   (with-slots (fields) self
-    (gethash name fields)))
+    (table-value name fields)))
 
 (defmethod document-binaries ((self document) name)
   (reduce #'(lambda (a1 &optional a2)
