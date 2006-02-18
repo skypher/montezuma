@@ -9,7 +9,7 @@
   ((directory :initarg :directory)
    (file-name :initarg :file-name)
    (stream)
-   (entries :initform (make-hash-table :test #'equal))))
+   (entries :initform (make-table :test #'equal))))
 
 (defmethod initialize-instance :after ((self compound-file-reader) &key)
   (with-slots (stream directory file-name entries) self
@@ -26,7 +26,7 @@
 		     (setf (size entry) (- offset (offset entry))))
 		   (setf entry (make-instance 'compound-file-reader-file-entry
 					      :offset offset))
-		   (setf (gethash id entries) entry)))
+		   (setf (table-value id entries) entry)))
 	       (unless (null entry)
 		 (setf (size entry) (- (size stream) (offset entry))))
 	       (setf success T)))
@@ -38,7 +38,7 @@
   (with-slots (stream entries) self
     (when (null stream)
       (error "~S is already closed." self))
-    (clrhash entries)
+    (clrtable entries)
     (close stream)
     (setf stream nil)))
 
@@ -46,9 +46,9 @@
   (with-slots (stream entries) self
     (when (null stream)
       (error "Stream is closed for ~S." self))
-    (let ((entry (gethash id entries)))
+    (let ((entry (table-value id entries)))
       (if (null entry)
-	  (error "No sub-file with id ~S found in ~S." id self)
+	  (error "No sub-file with id ~S found in ~S" id self)
 	  (make-instance 'cs-index-input
 			 :base stream
 			 :file-offset (offset entry)
@@ -56,20 +56,19 @@
 
 (defmethod files ((self compound-file-reader))
   (with-slots (entries) self
-    (loop for id being the hash-keys in entries
-	 collect id)))
+    (table-keys entries)))
 
 (defmethod file-count ((self compound-file-reader))
   (with-slots (entries) self
-    (hash-table-count entries)))
+    (length (table-entries entries))))
 
 (defmethod file-exists-p ((self compound-file-reader) name)
   (with-slots (entries) self
-    (nth-value 1 (gethash name entries))))
+    (in-table-p name entries)))
 
 (defmethod file-size ((self compound-file-reader) name)
   (with-slots (entries) self
-    (size (gethash name entries))))
+    (size (table-value name entries))))
 
 (defmethod modified-time ((self compound-file-reader) name)
   (with-slots (directory) self
@@ -101,6 +100,11 @@
    (file-offset :initarg :file-offset)
    (size :initarg :size :reader size)))
 
+(defmethod initialize-instance :after ((self cs-index-input) &key)
+  (assert (slot-boundp self 'base))
+  (assert (slot-boundp self 'file-offset))
+  (assert (slot-boundp self 'size)))
+  
 (defmethod close ((self cs-index-input))
   )
 

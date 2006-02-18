@@ -1,12 +1,12 @@
 (in-package #:montezuma)
 
-(deftestfixture test-segment-term-enum
+(deftestfixture segment-term-enum
   (:vars dir)
   (:setup
    (setf (fixture-var 'dir) (make-instance 'ram-directory)))
   (:teardown
    (close (fixture-var 'dir)))
-  (:testfun test-initialize
+  (:testfun test-segment-term-enum-initialize
 	    (let ((fis (make-instance 'field-infos))
 		  (dir (fixture-var 'dir)))
 	      (add-field-info fis "author" :indexed-p T :store-term-vector T)

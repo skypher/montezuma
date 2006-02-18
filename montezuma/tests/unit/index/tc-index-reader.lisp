@@ -1,10 +1,13 @@
 (in-package #:montezuma)
 
+(defun test-index-reader (ir)
+  (do-test-term-doc-enum ir))
+
 (defun do-test-term-doc-enum (ir)
   (atest term-doc-enum *index-test-helper-ir-test-doc-count* (num-docs ir))
   (atest term-doc-enum *index-test-helper-ir-test-doc-count* (max-doc ir))
   (let ((term (make-term "body" "Wally")))
-    (atest term-doc-enum (doc-freq ir term) 4)
+    (atest term-doc-enum (term-doc-freq ir term) 4)
     (let ((tde (term-docs-for ir term)))
       (atest term-doc-enum (and (next tde) T) T)
       (atest term-doc-enum (doc tde) 0)
@@ -75,9 +78,11 @@
 	(atest term-doc-enum (next-position tde) 10)
 	(atest term-doc-enum (next tde) NIL)
 	
-	(test-term-docpos-enum-skip-to ir tde)
+	(do-test-term-docpos-enum-skip-to ir tde)
 	(close tde)))))
 
+(defun do-test-term-docpos-enum-skip-to (ir tde)
+  )
 
 	
 (deftestfixture segment-reader-test
@@ -90,9 +95,14 @@
 			    :create-p T))
 	 (docs (index-test-helper-prepare-ir-test-docs)))
      (dotimes (i *index-test-helper-ir-test-doc-count*)
-       (add-document-to-index-writer iw (aref docs i)))))
+       (add-document-to-index-writer iw (aref docs i)))
+     (optimize iw)
+     (close iw)
+     (setf (fixture-var 'ir)
+	   (open-index-reader (fixture-var 'dir) :close-directory-p NIL))))
+  (:testfun test-segment-reader
+   (test-index-reader (fixture-var 'ir)))
   (:teardown
    (close (fixture-var 'ir))
    (close (fixture-var 'dir))))
 
-     

@@ -1,7 +1,7 @@
 (in-package #:montezuma)
 
-(defparameter *fdt-extension* (make-pathname :type "fdt"))
-(defparameter *fdx-extension* (make-pathname :type "fdx"))
+(defparameter *fdt-extension* "fdt")
+(defparameter *fdx-extension* "fdx")
 
 (defparameter +field-is-tokenized-bit+ 0)
 (defparameter +field-is-binary-bit+ 1)

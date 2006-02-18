@@ -22,11 +22,12 @@
 (defgeneric close (term-doc-enum))
 
 (defclass segment-term-doc-enum (term-doc-enum)
-  ((parent :initarg :parent)
+  ((parent :initarg :parent :reader parent)
    (freq-stream :reader freq-stream)
    (deleted-docs :reader deleted-docs)
    (skip-interval)
-   (count)
+   (count :reader count)
+   (freq :reader freq)
    (doc-freq)
    (skip-doc)
    (skip-count)
@@ -50,7 +51,7 @@
 
 (defmethod seek ((self segment-term-doc-enum) (term term))
   (with-slots (parent) self
-    (do-seek self (term-infos parent term))))
+    (do-seek self (get-term-info (term-infos parent) term))))
 
 (defmethod seek ((self segment-term-doc-enum) (term-enum term-enum))
   (do-seek self (term-info term-enum)))

@@ -3,9 +3,9 @@
 (defparameter *term-vectors-format-version* 2)
 (defparameter *term-vectors-format-size* 4)
 
-(defparameter *tvx-extension* (make-pathname :type "tvx"))
-(defparameter *tvd-extension* (make-pathname :type "tvd"))
-(defparameter *tvf-extension* (make-pathname :type "tvf"))
+(defparameter *tvx-extension* "tvx")
+(defparameter *tvd-extension* "tvd")
+(defparameter *tvf-extension* "tvf")
 
 (defparameter +store-positions-with-term-vector+ #x1)
 (defparameter +store-offset-with-term-vector+ #x2)

@@ -1,11 +1,11 @@
 (in-package #:montezuma)
 
 (defclass segment-reader (index-reader)
-  ((segment)
+  ((segment :reader segment)
    (cfs-reader :initform nil)
    (deleted-docs :reader deleted-docs)
    (deleted-docs-dirty-p)
-   (field-infos)
+   (field-infos :reader field-infos)
    (fields-reader)
    (term-infos :reader term-infos)
    (freq-stream :reader freq-stream)
@@ -17,7 +17,7 @@
    (tv-reader-orig :initform nil))
 )
 
-(defmethod initialize-instance :after ((self index-reader) &key info)
+(defmethod initialize-instance :after ((self segment-reader) &key info)
   (with-slots (segment directory deleted-docs field-infos fields-reader
 		       cfs-reader term-infos deleted-docs-dirty-p freq-stream
 		       tv-reader-orig prox-stream norms norms-dirty-p) self
@@ -26,7 +26,7 @@
       (when (uses-compound-file-p info)
 	(setf cfs-reader (make-instance 'compound-file-reader
 					:directory directory
-					:name (add-file-extension segment "cfs")))
+					:file-name (add-file-extension segment "cfs")))
 	(setf dir cfs-reader))
       (setf field-infos (make-instance 'field-infos
 				       :directory dir
@@ -52,6 +52,16 @@
 					    :directory dir
 					    :segment segment
 					    :field-infos field-infos))))))
+
+
+(defun get-segment-reader (segment-info &key infos close-directory-p)
+  (make-instance 'segment-reader
+		 :directory (directory segment-info)
+		 :info segment-info
+		 :segment-infos infos
+		 :close-directory-p close-directory-p
+		 :directory-owner (not (null infos))))
+
 
 (defmethod do-commit ((self segment-reader))
   (with-slots (segment deleted-docs-dirty-p deleted-docs norms norms-dirty-p segment-reader
@@ -138,13 +148,13 @@
 
 (defmethod term-docs ((self segment-reader))
   (make-instance 'segment-term-doc-enum
-		 :thing self))
+		 :parent self))
 
 (defmethod term-positions ((self segment-reader))
   (make-instance 'segment-term-doc-pos-enum
 		 :parent self))
 
-(defmethod segment-doc-freq ((self segment-reader) term)
+(defmethod term-doc-freq ((self segment-reader) term)
   (let ((ti (get-term-info (slot-value self 'term-infos) term)))
     (if ti
 	(doc-freq ti)

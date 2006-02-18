@@ -92,10 +92,11 @@
 		      (or (has-deletions-p si)
 			  (or (not (eq directory (directory si)))
 			      (and use-compound-file-p
-				   (or (uses-compound-file-p si)
+				   (or (not (uses-compound-file-p si))
 				       (has-separate-norms-p si))))))))
 	(let ((min-segment (- (size segment-infos) merge-factor)))
-	  (merge-segments self (max 0 min-segment))))))
+	  (merge-segments self (max 0 min-segment)))
+	(print :WHILE))))
 
 (defmethod add-indexes ((self index-writer) dirs)
   (optimize self)
@@ -154,7 +155,7 @@
     (let ((min-segment (- (size segment-infos) 1))
 	  (doc-count 0))
       (while (and (>= min-segment 0)
-		  (directory= (directory (segment-info segment-infos min-segment)) ram-directory))
+		  (eq (directory (segment-info segment-infos min-segment)) ram-directory))
 	(incf doc-count (doc-count (segment-info segment-infos min-segment)))
 	(decf min-segment))
       (when (or (< min-segment 0)

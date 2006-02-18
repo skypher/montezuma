@@ -18,9 +18,9 @@
    :term-index-interval *index-writer-default-term-index-interval*))
 
 
-(defparameter *fnm-extension* (make-pathname :type "fnm"))
-(defparameter *frq-extension* (make-pathname :type "frq"))
-(defparameter *prx-extension* (make-pathname :type "prx"))
+(defparameter *fnm-extension* "fnm")
+(defparameter *frq-extension* "frq")
+(defparameter *prx-extension* "prx")
 
 (defmethod add-document-to-writer ((self document-writer) segment document)
   (with-slots (field-infos directory posting-table field-lengths
