@@ -22,6 +22,7 @@
 			   (:file "mop")
 			   (:file "priority-queue" :depends-on ("while"))
 			   (:file "strings")
+			   (:file "tables")
 			   (:file "files"))
 	      :depends-on ("package"))
      (:module "store"
