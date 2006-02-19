@@ -122,8 +122,8 @@
 	  (skipping-doc self)))
       i)))
 
-;;(defmethod skip-prox ((self segment-term-doc-enum) prox-pointer)
-;;)
+(defmethod skip-prox ((self segment-term-doc-enum) prox-pointer)
+  )
 
 (defmethod skip-to ((self segment-term-doc-enum) target)
   (with-slots (doc-freq count doc skip-interval skip-stream skip-doc freq-pointer freq-stream
@@ -146,7 +146,7 @@
 	  (when (and (not (= skip-doc 0)) (>= skip-doc doc))
 	    (incf num-skipped skip-interval))
 	  (when (>= skip-count num-skips)
-	    (return-from skip-to))
+	    (return))
 	  
 	  (incf skip-doc (read-vint skip-stream))
 	  (incf freq-pointer (read-vint skip-stream))

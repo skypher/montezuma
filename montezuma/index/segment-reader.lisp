@@ -285,7 +285,7 @@
 
 (defmethod get-term-vector ((self segment-reader) doc-number field)
   (with-slots (field-infos tv-reader-orig) self
-    (let ((fi (gethash field field-infos)))
+    (let ((fi (get-field field-infos field)))
       (if (or (null fi) (not (field-store-term-vector-p fi)) (null tv-reader-orig))
 	  nil
 	  (let ((term-vectors-reader (get-term-vectors-reader self)))
