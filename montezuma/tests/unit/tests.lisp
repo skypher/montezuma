@@ -6,13 +6,16 @@
 (defparameter *failed-tests* '())
 
 (defvar *trap-errors* T)
+(defvar *break-on-failure* T)
 
+(define-condition test-failure (error)
+  ())
 
 (defun fail-test (condition)
   (invoke-restart 'fail-test condition))
 
 (defun maybe-fail-test (condition)
-  (when *trap-errors*
+  (when (and *trap-errors* (not (typep condition 'test-failure)))
     (fail-test condition)))
 
 (defun execute-test-thunk (name expr test-thunk expected-value comparator failure-thunk)
@@ -32,13 +35,13 @@
 
 (defmacro test (name expr expected-value &optional (comparator '(function equal)) failure-code)
   `(flet ((test-thunk () ,expr)
-	  (failure-thunk () ,@failure-code))
+	  (failure-thunk () ,failure-code))
      (execute-test-thunk ',name ',expr #'test-thunk ,expected-value ,comparator #'failure-thunk)))
 
 (defmacro atest (prefix expr expected-value &optional (comparator '(function equal)) failure-code)
   `(flet ((test-thunk () ,expr)
-	  (failure-thunk () ,@failure-code))
-     (execute-test-thunk (gensym (string ',prefix)) ',expr #'test-thunk ,expected-value ,comparator #'failure-thunk)))
+	  (failure-thunk () ,failure-code))
+     (execute-test-thunk (gensym (format nil "-~A" ',prefix)) ',expr #'test-thunk ,expected-value ,comparator #'failure-thunk)))
 
 #||
 (defmacro condition-test (name expr expected-condition &optional (comparator '(function typep))
@@ -82,6 +85,7 @@
       (let ((condition-report-string (format nil "~A" condition)))
 	(warn "FAILURE: Test ~S: ~S signalled ~S (~S) instead of returning ~S" name expr condition condition-report-string expected-value)))
   (format T "F")
+  (when *break-on-failure* (error 'test-failure))
   nil)
 
 (defun test-success (name expr value expected-value)

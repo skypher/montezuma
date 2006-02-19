@@ -70,7 +70,7 @@
 		doc 0
 		skip-doc 0
 		skip-count 0
-		num-skips (/ doc-freq skip-interval)
+		num-skips (floor doc-freq skip-interval)
 		freq-pointer (freq-pointer term-info)
 		prox-pointer (prox-pointer term-info)
 		skip-pointer (+ freq-pointer (skip-offset term-info))
@@ -113,13 +113,13 @@
 	  (incf doc (ash doc-code -1))
 	  (if (logbitp 0 doc-code)
 	      (setf freq 1)
-	      (setf freq (read-vint freq)))
+	      (setf freq (read-vint freq-stream)))
 	  (incf count)
 	  (when (or (null deleted-docs) (not (aref deleted-docs doc)))
 	      (setf (aref docs i) doc
 		    (aref freqs i) freq)
 	      (incf i))
-	  (skipping-doc)))
+	  (skipping-doc self)))
       i)))
 
 ;;(defmethod skip-prox ((self segment-term-doc-enum) prox-pointer)

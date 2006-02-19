@@ -153,7 +153,7 @@
 				 :stored T :index :tokenized :store-term-vector NIL)))
       (let ((d (make-instance 'document)))
 	(setf (aref docs 5) d)
-	(add-field d (make-field body "Some Random Sentence"
+	(add-field d (make-field body "Here's Wally"
 				 :stored T :index :tokenized :store-term-vector :with-positions-offsets)))
       (let ((d (make-instance 'document)))
 	(setf (aref docs 6) d)

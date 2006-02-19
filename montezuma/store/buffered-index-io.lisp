@@ -17,12 +17,20 @@
     (setf buffer (make-array (list buffer-size)))))
 
 (defmethod write-byte ((self buffered-index-output) b)
-  (assert (typep b '(unsigned-byte 8)))
+;;  (assert (typep b '(unsigned-byte 8)))
   (with-slots (buffer buffer-size buffer-position) self
     (when (>= buffer-position buffer-size)
       (flush self))
     (setf (aref buffer buffer-position) b)
     (incf buffer-position)))
+
+(defmethod write-byte ((self buffered-index-output) b)
+;;  (assert (typep b '(unsigned-byte 8)))
+  (when (>= (slot-value self 'buffer-position) (slot-value self 'buffer-size))
+    (flush self))
+  (let ((buffer-position (slot-value self 'buffer-position)))
+    (setf (aref (slot-value self 'buffer) buffer-position) b)
+    (setf (slot-value self 'buffer-position) (+ buffer-position 1))))
 
 (defmethod write-bytes ((self buffered-index-output) buffer length)
   (dotimes (i length)

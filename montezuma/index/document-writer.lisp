@@ -11,7 +11,7 @@
    (field-offsets)
    (field-boosts)
    (term-index-interval :initarg :term-index-interval)
-   (posting-table :initform (make-hash-table :test #'eq))
+   (posting-table :initform (make-hash-table :test #'equal))
    (term-buffer :initform (make-term "" ""))
    (info-stream :initform nil :accessor info-stream))
   (:default-initargs
@@ -118,11 +118,11 @@
 (defmethod add-position ((self document-writer) field text position tv-offset-info)
   (with-slots (term-buffer posting-table) self
     (set-term term-buffer field text)
-    (let ((posting (gethash term-buffer posting-table)))
+    (let ((posting (gethash (posting-key term-buffer) posting-table)))
       (if posting
 	  (let ((freq (freq posting)))
-	    (setf (aref (positions posting) freq) position)
-	    (setf (aref (offsets posting) freq) tv-offset-info)
+	    (vector-push-extend position (positions posting))
+	    (vector-push-extend tv-offset-info (offsets posting))
 	    ;; FIXME: the ferret code is weird here.
 	    #||
 	    (when tv-offset-info
@@ -130,10 +130,11 @@
 	    ||#
 	    (setf (freq posting) (+ freq 1)))
 	  (let ((term (make-term field text)))
-	    (setf (gethash term posting-table) (make-instance 'posting
-							      :term term
-							      :position position
-							      :offset tv-offset-info)))))))
+	    (setf (gethash (posting-key term) posting-table)
+		  (make-instance 'posting
+				 :term term
+				 :position position
+				 :offset tv-offset-info)))))))
 
 (defmethod sort-posting-table ((self document-writer))
   (with-slots (posting-table) self
@@ -212,6 +213,9 @@
 		 (write-byte norms (encode-norm norm))
 	      (close norms))))))))
 
+(defun posting-key (term)
+  (cons (term-field term) (term-text term)))
+
 (defclass posting ()
   ((term :initarg :term :reader term)
    (freq :initform 1 :accessor freq)
@@ -220,5 +224,14 @@
 
 (defmethod initialize-instance :after ((self posting) &key position offset)
   (with-slots (positions offsets) self
-    (setf positions (vector position))
-    (setf offsets (vector offset))))
+    (setf positions (make-array 1 :initial-element position
+				:adjustable T :fill-pointer T))
+    (setf offsets (make-array 1 :initial-element offset
+			      :adjustable T :fill-pointer T))))
+
+(defmethod print-object ((self posting) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (with-slots (term freq positions offsets) self
+      (format stream "term: ~S freq: ~S positions: ~S offsets: ~S"
+	      term freq positions offsets))))
+	    
