@@ -144,9 +144,9 @@
 	(add-field d (make-field author "Leo Tolstoy"
 				 :stored T :index :tokenized :store-term-vector :with-positions))
 	(add-field d (make-field year "1865"
-				 :stored T :index :tokenized :store-term-vector NIL))
+				 :stored T :index NIL :store-term-vector NIL))
 	(add-field d (make-field text "more text which is not stored"
-				 :stored T :index :tokenized :store-term-vector NIL)))
+				 :stored NIL :index :tokenized :store-term-vector NIL)))
       (let ((d (make-instance 'document)))
 	(setf (aref docs 4) d)
 	(add-field d (make-field body "Some Random Sentence"
@@ -215,7 +215,9 @@
       (let ((d (make-instance 'document)))
 	(setf (aref docs 19) d)
 	(add-field d (make-field body "Some Random Sentence"
-				 :stored T :index :tokenized :store-term-vector :with-positions-offsets)))
+				 :stored T :index :tokenized :store-term-vector :with-positions-offsets))
+	(add-field d (make-field changing-field "word3 word4 word1 word2 word1 word3 word4 word1 word3 word3"
+				 :stored T :index :tokenized :store-term-vector :with-offsets)))
       (let ((d (make-instance 'document)))
 	(setf (aref docs 20) d)
 	(add-field d (make-field body "Wally is where Wally usually likes to go. Wally Mart! Wally likes shopping there for Where's Wally books. Wally likes to read"

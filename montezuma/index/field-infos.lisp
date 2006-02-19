@@ -38,7 +38,12 @@
 (defmethod add-fields ((self field-infos) names &key (indexed-p T) store-term-vector store-position
 		       store-offset omit-norms)
   (dolist (name names)
-    (add-field-info self name indexed-p store-term-vector store-position store-offset omit-norms)))
+    (add-field-info self name
+		    :indexed-p indexed-p
+		    :store-term-vector store-term-vector
+		    :store-position store-position
+		    :store-offset store-offset
+		    :omit-norms omit-norms)))
 
 (defmethod fields ((self field-infos))
   (coerce (slot-value self 'fi-array) 'list))
