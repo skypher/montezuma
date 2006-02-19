@@ -41,7 +41,7 @@
 (defmacro atest (prefix expr expected-value &optional (comparator '(function equal)) failure-code)
   `(flet ((test-thunk () ,expr)
 	  (failure-thunk () ,failure-code))
-     (execute-test-thunk (gensym (format nil "-~A" ',prefix)) ',expr #'test-thunk ,expected-value ,comparator #'failure-thunk)))
+     (execute-test-thunk (gensym (format nil "~A-" ',prefix)) ',expr #'test-thunk ,expected-value ,comparator #'failure-thunk)))
 
 #||
 (defmacro condition-test (name expr expected-condition &optional (comparator '(function typep))

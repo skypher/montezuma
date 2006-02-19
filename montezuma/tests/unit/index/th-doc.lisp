@@ -200,7 +200,7 @@
 				 :stored T :index :tokenized :store-term-vector :with-positions-offsets)))
       (let ((d (make-instance 'document)))
 	(setf (aref docs 16) d)
-	(add-field d (make-field body "Some read read Random Sentence"
+	(add-field d (make-field body "Some Random read read Sentence"
 				 :stored T :index :tokenized :store-term-vector :with-positions-offsets)))
       (let ((d (make-instance 'document)))
 	(setf (aref docs 17) d)

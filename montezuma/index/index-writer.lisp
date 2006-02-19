@@ -95,8 +95,7 @@
 				   (or (not (uses-compound-file-p si))
 				       (has-separate-norms-p si))))))))
 	(let ((min-segment (- (size segment-infos) merge-factor)))
-	  (merge-segments self (max 0 min-segment)))
-	(print :WHILE))))
+	  (merge-segments self (max 0 min-segment))))))
 
 (defmethod add-indexes ((self index-writer) dirs)
   (optimize self)
