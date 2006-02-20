@@ -113,7 +113,7 @@
       (setf deleted-docs (make-bit-vector)))
     (setf deleted-docs-dirty-p T)
     (setf undelete-all-p NIL)
-    (setf (bit-aref deleted-docs) doc-num)))
+    (set-bit deleted-docs doc-num)))
 
 (defmethod do-undelete-all ((self segment-reader))
   (with-slots (deleted-docs deleted-docs-dirty-p undelete-all-p) self
@@ -144,7 +144,7 @@
 
 (defmethod deleted-p ((self segment-reader) n)
   (let ((deleted-docs (slot-value self 'deleted-docs)))
-    (and deleted-docs (= (bit-aref deleted-docs n) 1))))
+    (and deleted-docs (bit-set-p deleted-docs n))))
 
 (defmethod term-docs ((self segment-reader))
   (make-instance 'segment-term-doc-enum

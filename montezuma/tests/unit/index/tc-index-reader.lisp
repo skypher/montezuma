@@ -66,17 +66,17 @@
       (atest ir-delete-5 (has-deletions-p ir) T #'bool=)
       (atest ir-delete-6 (max-doc ir) doc-count)
       (atest ir-delete-7 (num-docs ir) (- doc-count 1))
-      (atest ir-delete-8 (delete-p ir 10) T #'bool=)
+      (atest ir-delete-8 (deleted-p ir 10) T #'bool=)
       (delete ir 10)
       (atest ir-delete-9 (has-deletions-p ir) T #'bool=)
       (atest ir-delete-10 (max-doc ir) doc-count)
       (atest ir-delete-11 (num-docs ir) (- doc-count 1))
-      (atest ir-delete-12 (delete-p ir 10) T #'bool=)
+      (atest ir-delete-12 (deleted-p ir 10) T #'bool=)
       (delete ir (- doc-count 1))
       (atest ir-delete-13 (has-deletions-p ir) T #'bool=)
       (atest ir-delete-14 (max-doc ir) doc-count)
       (atest ir-delete-15 (num-docs ir) (- doc-count 2))
-      (atest ir-delete-16 (delete-p ir (- doc-count 1)) T #'bool=))))
+      (atest ir-delete-16 (deleted-p ir (- doc-count 1)) T #'bool=))))
 		     
 (defun do-test-term-doc-enum (ir)
   (atest term-doc-enum-1 *index-test-helper-ir-test-doc-count* (num-docs ir))
@@ -324,14 +324,13 @@
    (test-index-reader (fixture-var 'ir)))
   (:testfun test-segment-reader-norms
    (test-ir-norms (fixture-var 'ir) (fixture-var 'dir)))
-  #|
   (:testfun test-segment-delete
    (test-ir-delete (fixture-var 'ir)))
-  |#
   (:teardown
    (close (fixture-var 'ir))
    (close (fixture-var 'dir))))
 
+#||
 (deftestfixture multi-reader-test
   (:vars dir ir)
   (:setup
@@ -352,11 +351,10 @@
    (test-index-reader (fixture-var 'ir)))
   (:testfun test-multi-reader-norms
    (test-ir-norms (fixture-var 'ir) (fixture-var 'dir)))
-  #|
   (:testfun test-multi-delete
    (test-ir-delete (fixture-var 'ir)))
-  |#
   (:teardown
    (close (fixture-var 'ir))
    (close (fixture-var 'dir))))
+||#
 

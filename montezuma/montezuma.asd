@@ -23,6 +23,7 @@
 			   (:file "priority-queue" :depends-on ("while"))
 			   (:file "strings")
 			   (:file "tables")
+			   (:file "bit-vector")
 			   (:file "files"))
 	      :depends-on ("package"))
      (:module "store"
