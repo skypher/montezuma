@@ -6,6 +6,56 @@
   (do-test-changing-field ir)
   (do-test-get-doc ir))
 
+(defun test-ir-norms (ir dir)
+  (set-norm ir 3 "title" 1)
+  (set-norm ir 3 "body" 12)
+  (set-norm ir 3 "author" 145)
+  (set-norm ir 3 "year" 31)
+  (set-norm ir 3 "text" 202)
+  (set-norm ir 25 "text" 20)
+  (set-norm ir 50 "text" 200)
+  (set-norm ir 63 "text" 155)
+  (let ((norms (get-norms ir "text")))
+    (atest ir-norms-1 (aref norms 3) 202)
+    (atest ir-norms-2 (aref norms 25) 20)
+    (atest ir-norms-3 (aref norms 50) 200)
+    (atest ir-norms-4 (aref norms 63) 155))
+  (let ((norms (get-norms ir "title")))
+    (atest ir-norms-5 (aref norms 3) 1))
+  (let ((norms (get-norms ir "body")))
+    (atest ir-norms-6 (aref norms 3) 12))
+  (let ((norms (get-norms ir "author")))
+    (atest ir-norms-7 (aref norms 3) 145))
+  (let ((norms (get-norms ir "author")))
+    (atest ir-norms-8 (aref norms 3) 145))
+  ;; TODO: this returns two possible results depending on whether it
+  ;; is a multi reader or a segment reader. If it is a multi reader it
+  ;; will always return an empty set of norms, otherwise it will
+  ;; return nil. I'm not sure what to do here just yet or if this is
+  ;; even an issue. assert(norms.nil?)
+  (let ((norms (make-array 164)))
+    (get-norms-into ir "text" norms 100)
+    (atest ir-norms-9 (aref norms 103) 202)
+    (atest ir-norms-10 (aref norms 125) 20)
+    (atest ir-norms-11 (aref norms 150) 200)
+    (atest ir-norms-12 (aref norms 163) 155))
+  (commit ir)
+  (let ((iw (make-instance 'index-writer
+			   :directory dir
+			   :analyzer (make-instance 'whitespace-analyzer))))
+    (optimize iw)
+    (close iw))
+  (let ((ir2 (open-index-reader dir :close-directory-p NIL)))
+    (let ((norms (make-array 164)))
+      (get-norms-into ir2 "text" norms 100)
+      (atest ir-norms-13 (aref norms 103) 202)
+      (atest ir-norms-14 (aref norms 125) 20)
+      (atest ir-norms-15 (aref norms 150) 200)
+      (atest ir-norms-16 (aref norms 163) 155))
+    (close ir2)))
+    
+    
+
 (defun do-test-term-doc-enum (ir)
   (atest term-doc-enum-1 *index-test-helper-ir-test-doc-count* (num-docs ir))
   (atest term-doc-enum-2 *index-test-helper-ir-test-doc-count* (max-doc ir))
@@ -250,6 +300,8 @@
 	   (open-index-reader (fixture-var 'dir) :close-directory-p NIL))))
   (:testfun test-segment-reader
    (test-index-reader (fixture-var 'ir)))
+  (:testfun test-segment-reader-norms
+   (test-ir-norms (fixture-var 'ir) (fixture-var 'dir)))
   (:teardown
    (close (fixture-var 'ir))
    (close (fixture-var 'dir))))

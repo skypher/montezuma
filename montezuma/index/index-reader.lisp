@@ -161,7 +161,7 @@
       (if directory-owner
 	  (progn
 	    (do-commit self)
-	    (write segment-infos directory))
+	    (write-segment-infos segment-infos directory))
 	  (do-commit self)))
     (setf has-changes-p NIL)))
 

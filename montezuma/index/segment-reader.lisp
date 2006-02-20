@@ -5,6 +5,7 @@
    (cfs-reader :initform nil)
    (deleted-docs :reader deleted-docs)
    (deleted-docs-dirty-p)
+   (undelete-all-p :initform NIL)
    (field-infos :reader field-infos)
    (fields-reader)
    (term-infos :reader term-infos)
@@ -14,8 +15,7 @@
    (norms-dirty-p)
    (ones :initform nil)
    (cached-tv-reader :initform nil)
-   (tv-reader-orig :initform nil))
-)
+   (tv-reader-orig :initform nil)))
 
 (defmethod initialize-instance :after ((self segment-reader) &key info)
   (with-slots (segment directory deleted-docs field-infos fields-reader
@@ -244,20 +244,21 @@
   (check-type field string)
   (let ((norm (gethash field (slot-value self 'norms)))
 	(max-doc (max-doc self)))
+    ;; FIXME: this just isn't good.
     (if (null norm)
 	(replace bytes (fake-norms self)
-		 :start1 offset :end1 max-doc
+		 :start1 offset :end1 (+ offset max-doc)
 		 :start2 0 :end2 max-doc)
 	(if (not (null (bytes norm)))
 	    (replace bytes (bytes norm)
-		     :start1 offset :end1 max-doc
+		     :start1 offset :end1 (+ offset max-doc)
 		     :start2 0 :end2 max-doc)
 	    (let ((norm-stream (clone (input-stream norm))))
 	      (unwind-protect
 		   (progn
 		     (seek norm-stream 0)
-		     (read-bytes norm-stream bytes offset max-doc)))
-	      (close norm-stream))))))
+		     (read-bytes norm-stream bytes offset max-doc))
+		(close norm-stream)))))))
 
 (defmethod open-norms ((self segment-reader) cfs-dir)
   (dosequence (fi (fields (slot-value self 'field-infos)))
@@ -304,7 +305,7 @@
 
 (defclass norm ()
   ((input-stream :initarg :input-stream :reader input-stream)
-   (dirty-p :initform NIL :reader dirty-p)
+   (dirty-p :initform NIL :accessor dirty-p)
    (bytes :accessor bytes :initform nil)
    (number :initarg :number)))
 
