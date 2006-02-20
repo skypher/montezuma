@@ -39,7 +39,7 @@
       (get-segment-reader (segment-info infos 0) :infos infos :close-directory-p close-directory-p)
       (let ((readers (make-array (size infos))))
 	(dotimes (i (size infos))
-	  (setf (aref readers i) (get-segment-reader (elt infos i))))
+	  (setf (aref readers i) (get-segment-reader (segment-info infos i))))
 	(make-instance 'multi-reader
 		       :readers readers
 		       :directory directory
