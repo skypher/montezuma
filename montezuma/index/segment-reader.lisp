@@ -67,7 +67,7 @@
   (with-slots (segment deleted-docs-dirty-p deleted-docs norms norms-dirty-p segment-reader
 		       undelete-all-p directory cfs-reader) self
     (when deleted-docs-dirty-p
-      (write deleted-docs directory (add-file-extension segment "tmp"))
+      (write-bit-vector deleted-docs directory (add-file-extension segment "tmp"))
       (rename-file directory (add-file-extension segment "tmp")
 		   (add-file-extension segment "del")))
     (when (and undelete-all-p

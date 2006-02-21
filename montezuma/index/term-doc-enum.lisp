@@ -100,7 +100,7 @@
 	  (setf freq 1)
 	  (setf freq (read-vint freq-stream)))
       (incf count)
-      (when (or (null deleted-docs) (not (aref deleted-docs doc)))
+      (when (or (null deleted-docs) (not (bit-set-p deleted-docs doc)))
 	(return-from next T))
       (skipping-doc self)))))
 
