@@ -13,11 +13,11 @@
   (document< tp1 tp2))
 
 
-(defclass multiple-term-doc-enum (term-doc-enum)
+(defclass multiple-term-doc-pos-enum (term-doc-enum)
   ((tps-queue)
    (pos-list :initform '())))
 
-(defmethod initialize-instance :after ((self multiple-term-doc-enum) &key reader terms)
+(defmethod initialize-instance :after ((self multiple-term-doc-pos-enum) &key reader terms)
   (with-slots (tps-queue pos-list) self
     (let ((term-positions (loop for term in terms
 			       collecting (term-positions-for reader term))))
@@ -25,7 +25,7 @@
       (setf tps-queue (make-instance 'term-positions-queue
 				     :term-positions term-positions)))))
 
-(defmethod next ((self multiple-term-doc-enum))
+(defmethod next ((self multiple-term-doc-pos-enum))
   (with-slots (tps-queue pos-list doc freq) self
     (if (= (size tps-queue) 0)
 	NIL
@@ -44,10 +44,10 @@
 	  (setf pos-list (sort pos-list #'<))
 	  (setf freq (length pos-list))))))
 
-(defmethod next-position ((self multiple-term-doc-enum))
+(defmethod next-position ((self multiple-term-doc-pos-enum))
   (pop (slot-value self 'pos-list)))
 
-(defmethod skip-to ((self multiple-term-doc-enum) target)
+(defmethod skip-to ((self multiple-term-doc-pos-enum) target)
   (with-slots (tps-queue) self
     (while (and (queue-top tps-queue)
 		(> target (doc (queue-top tps-queue))))
@@ -57,16 +57,16 @@
 	    (close tps))))
     (next self)))
 
-(defmethod close ((self multiple-term-doc-enum))
+(defmethod close ((self multiple-term-doc-pos-enum))
   (with-slots (tps-queue) self
     (do ((tps (queue-pop tps-queue) (queue-pop tps-queue)))
 	((null tps))
       (close tps))))
 
-(defmethod seek ((self multiple-term-doc-enum) term)
+(defmethod seek ((self multiple-term-doc-pos-enum) term)
   (declare (ignore term))
   (error "Not implemented"))
 
-(defmethod read-docs ((self multiple-term-doc-enum) docs freqs)
+(defmethod read-docs ((self multiple-term-doc-pos-enum) docs freqs)
   (declare (ignore docs freqs))
   (error "Not implemented."))

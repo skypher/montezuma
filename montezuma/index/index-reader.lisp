@@ -41,9 +41,9 @@
 	(dotimes (i (size infos))
 	  (setf (aref readers i) (get-segment-reader (segment-info infos i))))
 	(make-instance 'multi-reader
-		       :readers readers
+		       :sub-readers readers
 		       :directory directory
-		       :infos infos
+		       :segment-infos infos
 		       :close-directory-p close-directory-p))))
 
 (defmethod get-current-version ((self index-reader) directory)
@@ -116,7 +116,7 @@
     term-docs))
 
 (defmethod term-docs ((self index-reader))
-  (error "~S is not implemented by ~S." 'doc-freq self))
+  (error "~S is not implemented by ~S." 'term-docs self))
 
 (defmethod term-positions-for ((self index-reader) term)
   (let ((term-positions (term-positions self)))

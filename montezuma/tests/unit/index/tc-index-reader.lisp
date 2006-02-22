@@ -393,7 +393,6 @@
    (close (fixture-var 'ir))
    (close (fixture-var 'dir))))
 
-#||
 (deftestfixture multi-reader-test
   (:vars dir ir)
   (:setup
@@ -415,9 +414,7 @@
   (:testfun test-multi-reader-norms
    (test-ir-norms (fixture-var 'ir) (fixture-var 'dir)))
   (:testfun test-multi-delete
-   (test-ir-delete (fixture-var 'ir)))
+   (test-ir-delete (fixture-var 'ir) (fixture-var 'dir)))
   (:teardown
    (close (fixture-var 'ir))
    (close (fixture-var 'dir))))
-||#
-

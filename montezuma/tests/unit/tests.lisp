@@ -124,25 +124,22 @@
 
 (defmacro deftestfun (name &body body)
   `(progn (defun ,name ()
-	      ,@body)
+	    (format T "~&;; ~S " ',name)
+	    ,@body)
 	  (add-test-function ',name
-		      (function ,name))))
+			     (function ,name))))
 
 (defun run-tests ()
   (begin-tests)
   (dolist (pair *test-functions*)
-    (destructuring-bind (name . function) pair
-      (format T "~&;; ~S " name)
-      (funcall function)))
+      (funcall (cdr pair)))
   (end-tests))
 
 (defun run-test-named (name)
   (begin-tests)
   (let ((test (assoc name *test-functions*)))
     (if test
-	(destructuring-bind (name . function) test
-	  (format T "~&;; ~S " name)
-	  (funcall function))
+	(funcall (cdr test))
 	(error "There is no test named ~S." name))))
 
 (defstruct test-fixture
@@ -152,28 +149,30 @@
   teardown
   test-functions)
 
-(defun do-fixture-setup (fixture)
+(defun run-fixture (fixture)
   (let ((setup-fn (test-fixture-setup fixture)))
     (when setup-fn
-      (funcall setup-fn fixture))))
-
-(defun do-fixture-teardown (fixture)
+      (funcall setup-fn fixture)))
+  (dolist (test (test-fixture-test-functions fixture))
+    (funcall (cdr test) fixture))
   (let ((teardown-fn (test-fixture-teardown fixture)))
     (when teardown-fn
       (funcall teardown-fn fixture))))
 
-(defun do-fixture-tests (fixture)
-  (dolist (fn (test-fixture-test-functions fixture))
-    (funcall fn fixture)))
-
 
 (defmacro deftestfixture (name &rest clauses)
-  (deftestfixture-expr name
-    (cdr (first (collect-fixture-clauses :vars clauses)))
-    (cdr (first (collect-fixture-clauses :setup clauses)))
-    (cdr (first (collect-fixture-clauses :teardown clauses)))
-    (collect-fixture-clauses :testfun clauses)))
-
+  (let ((vars (collect-fixture-clauses :vars clauses))
+	(setups (collect-fixture-clauses :setup clauses))
+	(tests (collect-fixture-clauses :testfun clauses))
+	(teardowns (collect-fixture-clauses :teardown clauses)))
+    (assert (<= (length vars) 1))
+    (assert (<= (length setups) 1))
+    (assert (<= (length teardowns) 1))
+    (deftestfixture-expr name
+	(cdr (first vars))
+      (cdr (first setups))
+      (cdr (first teardowns))
+      tests)))
 
 (defun collect-fixture-clauses (name clauses)
   (remove-if-not #'(lambda (clause)
@@ -189,9 +188,10 @@
        (declare (ignorable (function fixture-var) (function (setf fixture-var))))
        ,expr))))
 
-(defun make-test-function-defn (name expr)
+(defun make-fixture-test-function-defn (name expr)
   (let ((fixture-var (gensym "FIXTURE")))
     `(defun ,name (,fixture-var)
+       (format T "~&;; ~S " ',name)
        (funcall ,(make-fixture-method expr) ,fixture-var))))
 	   
     
@@ -200,7 +200,7 @@
   (let ((fixture-var (gensym "FIXTURE")))
     `(progn
        ,@(mapcar #'(lambda (test-case-function)
-		     (make-test-function-defn (second test-case-function)
+		     (make-fixture-test-function-defn (second test-case-function)
 					      `(progn ,@(cdr (cdr test-case-function)))))
 		 test-case-functions)
        (let ((,fixture-var (make-test-fixture
@@ -214,14 +214,7 @@
 			    :test-functions (list ,@(mapcar #'(lambda (test-case-function)
 							      `(function ,(second test-case-function)))
 							  test-case-functions)))))
-	 (add-test-function (intern (format nil "~A-~A" ',name '#:setup))
-			    #'(lambda () (do-fixture-setup ,fixture-var)))
-	 ,@(mapcar #'(lambda (test-case-function)
-		       (let ((fn-name (second test-case-function)))
-			 `(add-test-function ',fn-name
-					     #'(lambda () (,fn-name ,fixture-var)))))
-		   test-case-functions)
-	 (add-test-function (intern (format nil "~A-~A" ',name '#:teardown))
-			    #'(lambda () (do-fixture-teardown ,fixture-var)))))))
+	 (add-test-function (intern (format nil "~A" ',name))
+			    #'(lambda () (run-fixture ,fixture-var)))))))
        
        
