@@ -26,10 +26,8 @@
 			       :stored NIL :index :tokenized :store-term-vector T))
     (add-field doc (make-field "compressed_field" "compressed text"
 			       :stored :compress :index :tokenized :store-term-vector T))
-    (add-field doc (make-field "binary_field" *index-test-helper-binary-data*
-			       :stored T))
-    (add-field doc (make-field "compressed_binary_field" *index-test-helper-compressed-binary-data*
-			       :stored :compress))
+    (add-field doc (make-binary-field "binary_field" *index-test-helper-binary-data* T))
+    (add-field doc (make-binary-field "compressed_binary_field" *index-test-helper-compressed-binary-data* :compress))
     doc))
 
 (defun index-test-helper-prepare-documents ()

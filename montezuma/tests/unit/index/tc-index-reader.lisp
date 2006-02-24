@@ -371,6 +371,7 @@
 (deftestfixture segment-reader-test
   (:vars dir ir)
   (:setup
+   (print :segment-reader-start)
    (setf (fixture-var 'dir) (make-instance 'ram-directory))
    (let ((iw (make-instance 'index-writer
 			    :directory (fixture-var 'dir)
@@ -382,7 +383,8 @@
      (optimize iw)
      (close iw)
      (setf (fixture-var 'ir)
-	   (open-index-reader (fixture-var 'dir) :close-directory-p NIL))))
+	   (open-index-reader (fixture-var 'dir) :close-directory-p NIL)))
+   (format T "~&FILES: ~S" (files (fixture-var 'dir))))
   (:testfun test-segment-reader
    (test-index-reader (fixture-var 'ir)))
   (:testfun test-segment-reader-norms

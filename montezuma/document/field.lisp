@@ -38,7 +38,7 @@
       (when store-positions-p (format stream "tv_position,"))
       (when omit-norms-p (format stream "omit_norms,"))
       (when binary-p (format stream "binary,"))
-      (format stream " ~S:~S" name data))))
+      (format stream " ~S: ~S" name data))))
 	
 
 

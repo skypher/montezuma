@@ -129,6 +129,7 @@
 					     (:file "tc-segment-term-vector")
 					     (:file "tc-segment-infos")
 					     (:file "th-doc")
+					     (:file "tc-index-writer" :depends-on ("th-doc"))
 					     (:file "tc-index-reader" :depends-on ("th-doc")))
 				:depends-on ("tests"))))))))
 

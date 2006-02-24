@@ -5,6 +5,10 @@
    (doc-count :initarg :doc-count :accessor doc-count)
    (directory :initarg :directory :accessor directory)))
 
+(defmethod print-object ((self segment-info) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (format stream "~S" (segment-info-name self))))
+
 (defmethod segment-info= ((self segment-info) other)
   (with-slots (name doc-count) self
     (and (typep other 'segment-info)
@@ -21,6 +25,11 @@
    (version :initform (get-universal-time) :reader version)
    (counter :initform 0 :accessor counter)
    (elements :initform (make-array 0 :adjustable T :fill-pointer T))))
+
+(defmethod print-object ((self segment-infos) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (let ((elements (slot-value self 'elements)))
+    (format stream "~S segment-infos: ~S" (length elements) elements))))
 
 (defmethod size ((self segment-infos))
   (with-slots (elements) self

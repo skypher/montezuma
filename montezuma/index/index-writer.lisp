@@ -15,9 +15,9 @@
    (close-dir-p :initarg :close-dir-p)
    (use-compound-file-p :initarg :use-compound-file-p)
    (analyzer :initarg :analyzer)
-   (merge-factor :initarg :merge-factor)
-   (min-merge-docs :initarg :min-merge-docs)
-   (max-merge-docs :initarg :max-merge-docs)
+   (merge-factor :initarg :merge-factor :accessor merge-factor)
+   (min-merge-docs :initarg :min-merge-docs :accessor min-merge-docs)
+   (max-merge-docs :initarg :max-merge-docs :accessor max-merge-docs)
    (max-field-length :initarg :max-field-length)
    (term-index-interval :initarg :term-index-interval)
    (similarity :initform (make-default-similarity))
@@ -89,7 +89,7 @@
     (while (or (> (size segment-infos) 1)
 	       (and (= (size segment-infos) 1)
 		    (let ((si (segment-info segment-infos 0)))
-		      (or (has-deletions-p si)
+		      (or (segment-has-deletions-p si)
 			  (or (not (eq directory (directory si)))
 			      (and use-compound-file-p
 				   (or (not (uses-compound-file-p si))
@@ -145,7 +145,7 @@
 
 (defmethod new-segment-name ((self index-writer))
   (with-slots (segment-infos) self
-    (let ((seg-name (format nil "_~36R" (counter segment-infos))))
+    (let ((seg-name (string-downcase (format nil "_~36R" (counter segment-infos)))))
       (incf (counter segment-infos))
       seg-name)))
 

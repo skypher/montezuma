@@ -154,7 +154,7 @@
     (when setup-fn
       (funcall setup-fn fixture)))
   (dolist (test (test-fixture-test-functions fixture))
-    (funcall (cdr test) fixture))
+    (funcall test fixture))
   (let ((teardown-fn (test-fixture-teardown fixture)))
     (when teardown-fn
       (funcall teardown-fn fixture))))

@@ -62,7 +62,7 @@
 			  (setf store :compress)
 			  (setf b (make-array (read-vint fields-stream)))
 			  (read-bytes fields-stream b 0 (length b))
-			  (setf data (uncompress b)))
+			  (setf data (coerce (uncompress b) 'string)))
 			(setf data (read-string fields-stream)))
 		    (let ((stv (if (field-store-term-vector-p fi)
 				   (cond ((and (field-store-positions-p fi)
@@ -108,8 +108,8 @@
     (close fields-stream)
     (close index-stream)))
 
-(defmethod add-document ((self fields-writer) document)
-  (with-slots (index-stream fields-stream field-infos) self
+(defmethod add-document ((fields-writer fields-writer) document)
+  (with-slots (index-stream fields-stream field-infos) fields-writer
     (write-long index-stream (pos fields-stream))
     (write-vint fields-stream (count-if #'field-stored-p (all-fields document)))
     (dolist (field (all-fields document))
@@ -126,9 +126,9 @@
 	    (let ((data (if (field-binary-p field)
 			    (compress (binary-value field))
 			    (compress (string-value field)))))
-	      (save-data self data))
+	      (save-data fields-writer data))
 	    (if (field-binary-p field)
-		(save-data self (binary-value field))
+		(save-data fields-writer (binary-value field))
 		(write-string fields-stream (string-value field))))))))
 
 (defun compress (input)

@@ -17,6 +17,12 @@
    (cached-tv-reader :initform nil)
    (tv-reader-orig :initform nil)))
 
+(defmethod print-object ((self segment-reader) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (with-slots (segment deleted-docs field-infos) self
+      (format stream "~S (~S docs, ~S deleted docs, ~S field infos)"
+	      segment (num-docs self) (length deleted-docs) (size field-infos)))))
+
 (defmethod initialize-instance :after ((self segment-reader) &key info)
   (with-slots (segment directory deleted-docs field-infos fields-reader
 		       cfs-reader term-infos deleted-docs-dirty-p freq-stream
@@ -41,7 +47,7 @@
 				      :field-infos field-infos))
       (setf deleted-docs nil)
       (setf deleted-docs-dirty-p NIL)
-      (when (has-deletions-p info)
+      (when (segment-has-deletions-p info)
 	(setf deleted-docs (read-bit-vector directory (add-file-extension segment "del"))))
       (setf freq-stream (open-segment-file dir segment "frq" :input))
       (setf prox-stream (open-segment-file dir segment "prx" :input))
@@ -93,7 +99,7 @@
     (when tv-reader-orig (close tv-reader-orig))
     (when cfs-reader (close cfs-reader))))
 
-(defmethod has-deletions-p ((si segment-info))
+(defmethod segment-has-deletions-p ((si segment-info))
   (file-exists-p (directory si) (add-file-extension (segment-info-name si) "del")))
 
 (defmethod has-deletions-p ((self segment-reader))

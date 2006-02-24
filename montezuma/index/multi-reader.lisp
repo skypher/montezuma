@@ -169,6 +169,10 @@
   (dosequence (reader (slot-value self 'sub-readers))
     (close reader)))
 
+(defmethod get-field-names ((self multi-reader) &optional (field-option T))
+  (remove-duplicates (reduce #'append (slot-value self 'sub-readers) :key #'get-field-names)
+		     :test #'equal))
+
 
 (defclass multi-term-enum (term-enum)
   ((doc-freq :reader doc-freq)
@@ -252,17 +256,6 @@
 	  (T NIL))))
 
 
-(defmethod doc ((self multi-term-doc-enum))
-  (with-slots (base current) self
-    (+ base (doc current))))
-
-(defmethod skip-to ((self multi-term-doc-enum) target)
-  (loop
-     do (when (not (next self))
-	  (return-from skip-to NIL))
-       while (> target (doc self)))
-  T)
-
 (defmethod read-segment-term-doc-enum ((self multi-term-doc-enum) docs freqs &optional fixme)
   (with-slots (current pointer readers base starts) self
     (let ((got 0)
@@ -285,8 +278,12 @@
 		  (return-from read-segment-term-doc-enum got)
 		  (setf last-got got))))))))
 
-	      
-
+(defmethod skip-to ((self multi-term-doc-enum) target)
+  (loop
+     do (when (not (next self))
+	  (return-from skip-to NIL))
+       while (> target (doc self)))
+  T)
 
 (defmethod multi-term-docs ((self multi-term-doc-enum) i)
   (with-slots (term reader-term-docs readers) self
