@@ -1,5 +1,9 @@
 (in-package #:montezuma)
 
+(defun set= (a b &key (test #'eql))
+  (and (null (set-difference a b :test test))
+       (null (set-difference b a :test test))))
+
 (deftestfixture index-writer-test
     (:vars dir ir)
   (:setup
@@ -41,6 +45,10 @@
       (dosequence (doc docs)
 	(add-document-to-index-writer iw doc))
       (atest index-writer-add-documents-1 (document-count iw) 37)
+      (atest index-writer-add-documents-2
+	     (files dir)
+	     '("segments" "_1g.cfs" "_13.cfs" "deletable")
+	     #'set=)
       (close iw))))
 
 
