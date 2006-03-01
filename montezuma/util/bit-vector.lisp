@@ -1,5 +1,6 @@
 (in-package #:montezuma)
 
+;; There may be no reason not to use a standard bit-vector.
 
 (defun make-bit-vector ()
   (list 0))

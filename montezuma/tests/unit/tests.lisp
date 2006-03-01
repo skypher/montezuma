@@ -1,12 +1,32 @@
-(in-package #:montezuma)
+(in-package #:montezuma) ; FIXME: should probably move this to another package.
 
 ;; Some simple unit test utilities
 
-(defparameter *passed-tests* '())
-(defparameter *failed-tests* '())
-
 (defvar *trap-errors* T)
 (defvar *break-on-failure* T)
+
+
+;; --------------------
+;; Simple Tests
+;; --------------------
+
+;; The test macro is used for tests that are only ever run once.
+;; atest is used for tests that may run multiple times in a test suite
+;; (e.g., I might have a test function that runs tests on several
+;; subclasses of some superclass.  Dumb.
+
+(defmacro test (name expr expected-value &optional (comparator '(function equal)) failure-code)
+  `(flet ((test-thunk () ,expr)
+	  (failure-thunk () ,failure-code))
+     (execute-test-thunk ',name ',expr #'test-thunk ,expected-value ,comparator #'failure-thunk)))
+
+(defmacro atest (prefix expr expected-value &optional (comparator '(function equal)) failure-code)
+  `(flet ((test-thunk () ,expr)
+	  (failure-thunk () ,failure-code))
+     (execute-test-thunk (gensym (format nil "~A-" ',prefix)) ',expr #'test-thunk ,expected-value ,comparator #'failure-thunk)))
+
+
+;; ----------
 
 (define-condition test-failure (error)
   ())
@@ -32,16 +52,6 @@
 		(handle-test-failure value nil))))
       (fail-test (condition)
 	(handle-test-failure nil condition)))))
-
-(defmacro test (name expr expected-value &optional (comparator '(function equal)) failure-code)
-  `(flet ((test-thunk () ,expr)
-	  (failure-thunk () ,failure-code))
-     (execute-test-thunk ',name ',expr #'test-thunk ,expected-value ,comparator #'failure-thunk)))
-
-(defmacro atest (prefix expr expected-value &optional (comparator '(function equal)) failure-code)
-  `(flet ((test-thunk () ,expr)
-	  (failure-thunk () ,failure-code))
-     (execute-test-thunk (gensym (format nil "~A-" ',prefix)) ',expr #'test-thunk ,expected-value ,comparator #'failure-thunk)))
 
 #||
 (defmacro condition-test (name expr expected-condition &optional (comparator '(function typep))
@@ -74,6 +84,10 @@
 	(test-failure name expr value expected-value))
     got-expected-p))
 ||#
+
+
+(defparameter *passed-tests* '())
+(defparameter *failed-tests* '())
 
 (defun test-failure (name expr value expected-value condition)
   (assert (not (assoc name *failed-tests*)) nil "There is already a test named ~S." name)
@@ -110,17 +124,14 @@
     (= num-failed 0)))
 
 
-(defvar *test-functions* '())
 
-(defun add-test-function (name function)
-  (let ((pair (assoc name *test-functions*)))
-    (if pair
-	(setf (cdr pair) function)
-	(setf *test-functions* (append *test-functions* (list (cons name function))))))
-  *test-functions*)
+;; --------------------
+;; Test Functions
+;; --------------------
 
-(defun clear-test-functions ()
-  (setf *test-functions* '()))
+;; deftestfun defines a test function that will be called when
+;; (run-tests) is executed (and can be run individually by
+;; run-test-named).
 
 (defmacro deftestfun (name &body body)
   `(progn (defun ,name ()
@@ -142,6 +153,46 @@
 	(funcall (cdr test))
 	(error "There is no test named ~S." name))))
 
+
+;; ----------
+
+(defvar *test-functions* '())
+
+(defun add-test-function (name function)
+  (let ((pair (assoc name *test-functions*)))
+    (if pair
+	(setf (cdr pair) function)
+	(setf *test-functions* (append *test-functions* (list (cons name function))))))
+  *test-functions*)
+
+(defun clear-test-functions ()
+  (setf *test-functions* '()))
+
+
+;; --------------------
+;; Test Fixtures
+;; --------------------
+
+;; Fixtures have state (fixture vars), an optional setup function, an
+;; optional teardown function, and a set of test functions.
+
+(defmacro deftestfixture (name &rest clauses)
+  (let ((vars (collect-fixture-clauses :vars clauses))
+	(setups (collect-fixture-clauses :setup clauses))
+	(tests (collect-fixture-clauses :testfun clauses))
+	(teardowns (collect-fixture-clauses :teardown clauses)))
+    (assert (<= (length vars) 1))
+    (assert (<= (length setups) 1))
+    (assert (<= (length teardowns) 1))
+    (deftestfixture-expr name
+	(cdr (first vars))
+      (cdr (first setups))
+      (cdr (first teardowns))
+      tests)))
+
+
+;; ----------
+
 (defstruct test-fixture
   name
   (vars (make-hash-table))
@@ -159,20 +210,6 @@
     (when teardown-fn
       (funcall teardown-fn fixture))))
 
-
-(defmacro deftestfixture (name &rest clauses)
-  (let ((vars (collect-fixture-clauses :vars clauses))
-	(setups (collect-fixture-clauses :setup clauses))
-	(tests (collect-fixture-clauses :testfun clauses))
-	(teardowns (collect-fixture-clauses :teardown clauses)))
-    (assert (<= (length vars) 1))
-    (assert (<= (length setups) 1))
-    (assert (<= (length teardowns) 1))
-    (deftestfixture-expr name
-	(cdr (first vars))
-      (cdr (first setups))
-      (cdr (first teardowns))
-      tests)))
 
 (defun collect-fixture-clauses (name clauses)
   (remove-if-not #'(lambda (clause)
@@ -216,5 +253,3 @@
 							  test-case-functions)))))
 	 (add-test-function (intern (format nil "~A" ',name))
 			    #'(lambda () (run-fixture ,fixture-var)))))))
-       
-       

@@ -1,5 +1,7 @@
 (in-package #:montezuma)
 
+;; This is basically Chris Riesbeck's implementation.
+
 (defstruct table
   entries
   test)

@@ -1,5 +1,7 @@
 (in-package #:montezuma)
 
+;; Actually this is just kind of the dumping ground for useful macros.
+
 (defmacro while (expr &body body)
   `(do ()
        ((not ,expr))
