@@ -31,6 +31,9 @@
     (let ((elements (slot-value self 'elements)))
     (format stream "~S segment-infos: ~S" (length elements) elements))))
 
+(defmethod clear ((self segment-infos))
+  (setf (slot-value self 'elements) (make-array 0 :adjustable T :fill-pointer T)))
+
 (defmethod size ((self segment-infos))
   (with-slots (elements) self
     (length elements)))
