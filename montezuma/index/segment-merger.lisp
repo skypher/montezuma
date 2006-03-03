@@ -61,7 +61,7 @@
       (dolist (file files)
 	(add-file cfs-writer file))
       (close cfs-writer)
-      files)))
+      (reverse files))))
 
 
 (defmethod add-indexed ((self segment-merger) reader field-infos field-names store-term-vectors
@@ -222,8 +222,7 @@
 
 (defmethod reset-skip ((self segment-merger))
   (with-slots (skip-buffer last-skip-doc last-skip-freq-pointer
-	       last-skip-prox-pointer freq-output prox-output
-	       skip-buffer) self
+	       last-skip-prox-pointer freq-output prox-output) self
     (reset skip-buffer)
     (setf last-skip-doc 0)
     (setf last-skip-freq-pointer (pos freq-output))
