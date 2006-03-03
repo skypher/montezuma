@@ -124,7 +124,7 @@
 				   :term-index-interval term-index-interval)))
       (when (= (size segment-infos) 1)
 	(let ((s-reader (get-segment-reader (segment-info segment-infos 0))))
-	  (add-segment merger s-reader)
+	  (add-reader merger s-reader)
 	  (push segments-to-delete s-reader)))
       (dolist (reader readers)
 	(add-segment merger reader))
@@ -223,7 +223,7 @@
 							 :directory directory))
 	  (close-readers merger)
 	  (write-segment-infos segment-infos directory)
-	  (delete-segments self segments-to-delete)
+	  (delete-segments self (reverse segments-to-delete))
 	  (when use-compound-file-p
 	    (let ((files-to-delete (create-compound-file merger (add-file-extension merged-name "tmp"))))
 	      (rename-file directory
@@ -256,7 +256,7 @@
       (dolist (filename filenames)
 	(handler-case (delete-file directory filename)
 	  (error (e) (push filename deletions-to-retry))))
-      deletions-to-retry)))
+      (reverse deletions-to-retry))))
     
 (defmethod read-deletable-files ((self index-writer))
   (with-slots (directory) self
@@ -269,15 +269,15 @@
 		 (dotimes (i file-count)
 		   (push (read-string input) filenames)))
 	    (close input))
-	  filenames))))
+	  (reverse filenames)))))
 
 (defmethod write-deletable-files ((self index-writer) filenames)
   (with-slots (directory) self
-    (let ((output (create-output directory "deletable.new")))
+    (let ((output (create-output directory "deleteable.new")))
       (unwind-protect
 	   (progn
 	     (write-int output (length filenames))
 	     (dolist (filename filenames)
 	       (write-string output filename)))
 	(close output)))
-    (rename-file directory "deletable.new" "deletable")))
+    (rename-file directory "deleteable.new" "deletable")))
