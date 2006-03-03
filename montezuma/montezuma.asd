@@ -68,9 +68,9 @@
 		    (:file "segment-infos")
 		    (:file "segment-reader"      :depends-on ("index-reader"))
 		    (:file "multi-reader"        :depends-on ("index-reader"))
-		    (:file "index-writer")
+		    (:file "index-writer"        :depends-on ("segment-reader"))
 		    (:file "document-writer")
-		    (:file "segment-merger")
+		    (:file "segment-merger"      :depends-on ("index-filenames" "fields-io" "term-buffer"))
 		    (:file "index-reader"))
        :depends-on ("analysis" "search"))))
 
