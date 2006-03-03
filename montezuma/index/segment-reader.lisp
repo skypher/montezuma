@@ -135,7 +135,7 @@
       (let ((name (add-file-extension segment ext)))
 	(when (file-exists-p directory name)
 	  (push name filenames))))
-    ()))
+    filenames))
 
 (defmethod terms ((self segment-reader))
   (terms (slot-value self 'term-infos)))
