@@ -4,7 +4,7 @@
   ((text-buf :initform (make-adjustable-string 0))
    (text-length :initform -1 :reader text-length)
    (field :initform nil :reader field)
-   (term :initform nil :accessor term)))
+   (term :initform nil)))
 
 (defmethod print-object ((self term-buffer) stream)
   (print-unreadable-object (self stream :type T :identity T)
