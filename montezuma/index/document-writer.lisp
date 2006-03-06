@@ -47,8 +47,8 @@
 	(write-norms self segment)))))
 
 (defmethod invert-document ((self document-writer) doc)
-  (with-slots (field-infos field-offsets field-positions analyzer max-field-length field-offsets
-			   info-stream field-lengths field-boosts) self
+  (with-slots (field-infos field-offsets field-positions analyzer max-field-length
+	       info-stream field-lengths field-boosts) self
     (let ((fields (all-fields doc)))
       (dolist (field fields)
 	(let* ((field-name (field-name field))
