@@ -20,6 +20,7 @@
 	(close iw)
 	(atest index-writer-initialize-2 (file-exists-p dir "segments") T #'bool=))))
   (:testfun test-index-writer-add-document
+    (print :*start-add-document)
     (let* ((dir (fixture-var 'dir))
 	   (iw (make-instance 'index-writer
 			      :directory dir
@@ -30,8 +31,14 @@
       (add-doc-fields infos doc)
       (add-document-to-index-writer iw doc)
       (atest index-writer-add-document-1 (document-count iw) 1)
-      (close iw)))
+      (close iw)
+    (print :*end-add-document)
+      (atest index-writer-add-document-2
+	     (files dir)
+	     '("segments" "_1.cfs" "deletable")
+	     #'(lambda (a b) (set= a b :test #'equal)))))
   (:testfun test-index-writer-add-documents
+    (print :*start-add-documents)
     (let* ((dir (fixture-var 'dir))
 	   (iw (make-instance 'index-writer
 			      :directory dir
@@ -45,11 +52,13 @@
       (dosequence (doc docs)
 	(add-document-to-index-writer iw doc))
       (atest index-writer-add-documents-1 (document-count iw) 37)
-      (atest index-writer-add-documents-2
+      (close iw)
+      (atest index-writer-add-documents-3
 	     (files dir)
-	     '("segments" "_1g.cfs" "_13.cfs" "deletable")
-	     #'set=)
-      (close iw))))
+	     '("segments" "_1i.cfs" "_1g.cfs" "_13.cfs" "deletable")
+	     #'(lambda (a b) (set= a b :test #'equal)))
+      (print :*end-add-documents))))
+
 
 
 

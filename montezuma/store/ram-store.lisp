@@ -51,10 +51,13 @@
     (setf (mtime (gethash name files)) (get-universal-time))))
 
 (defmethod delete-file ((self ram-directory) name)
+;;  (format T "~&~S" (list 'delete name))
+;;  (when (equal name "_3.tvf") (break))
   (with-slots (files) self
     (remhash (normalize-file-name name) files)))
 
 (defmethod rename-file ((self ram-directory) from to)
+;;  (format T "~&~S" (list 'rename from to))
   (setf from (normalize-file-name from)
 	to (normalize-file-name to))
   (with-slots (files) self
@@ -69,6 +72,7 @@
 
 (defmethod create-output ((self ram-directory) name)
   (setf name (normalize-file-name name))
+;;  (format T "~&~S" (list 'create name))
   (with-slots (files) self
     (let ((file (make-instance 'ram-file :name name)))
       (setf (gethash name files) file)
