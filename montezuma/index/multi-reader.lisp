@@ -170,7 +170,8 @@
     (close reader)))
 
 (defmethod get-field-names ((self multi-reader) &optional (field-option T))
-  (remove-duplicates (reduce #'append (slot-value self 'sub-readers) :key #'get-field-names)
+  (remove-duplicates (reduce #'append (slot-value self 'sub-readers)
+			     :key #'(lambda (reader) (get-field-names reader field-option)))
 		     :test #'equal))
 
 
