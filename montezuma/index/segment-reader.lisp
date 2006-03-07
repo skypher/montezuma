@@ -99,19 +99,8 @@
     (when tv-reader-orig (close tv-reader-orig))
     (when cfs-reader (close cfs-reader))))
 
-(defmethod segment-has-deletions-p ((si segment-info))
-  (file-exists-p (directory si) (add-file-extension (segment-info-name si) "del")))
-
 (defmethod has-deletions-p ((self segment-reader))
   (slot-value self 'deleted-docs))
-
-(defmethod uses-compound-file-p ((si segment-info))
-  (file-exists-p (directory si) (add-file-extension (segment-info-name si) "cfs")))
-
-(defmethod has-separate-norms-p ((si segment-info))
-  (let ((name-pattern (format nil "~A.s" (segment-info-name si))))
-    (some #'(lambda (file) (string-begins file name-pattern))
-	  (files (directory si)))))
 
 (defmethod do-delete ((self segment-reader) doc-num)
   (with-slots (deleted-docs deleted-docs-dirty-p undelete-all-p) self

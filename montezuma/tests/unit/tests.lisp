@@ -201,15 +201,14 @@
   test-functions)
 
 (defun run-fixture (fixture)
-  (let ((setup-fn (test-fixture-setup fixture)))
-    (when setup-fn
-      (funcall setup-fn fixture)))
-  (dolist (test (test-fixture-test-functions fixture))
-    (funcall test fixture))
-  (let ((teardown-fn (test-fixture-teardown fixture)))
-    (when teardown-fn
-      (funcall teardown-fn fixture))))
-
+  (let ((setup-fn (test-fixture-setup fixture))
+	(teardown-fn (test-fixture-teardown fixture)))
+    (dolist (test (test-fixture-test-functions fixture))
+      (when setup-fn
+	(funcall setup-fn fixture))
+      (funcall test fixture)
+      (when teardown-fn
+	(funcall teardown-fn fixture)))))
 
 (defun collect-fixture-clauses (name clauses)
   (remove-if-not #'(lambda (clause)

@@ -1,12 +1,19 @@
 (in-package #:montezuma)
 
+;;(defvar *ram-id-counter* 0)
+
 (defclass ram-directory (directory)
   ((dir :initarg :dir)
-   (files :initform (make-hash-table :test #'equal)))
+   (files :initform (make-hash-table :test #'equal))
+;;   (id :initform (incf *ram-id-counter*))
+   )
   (:default-initargs
    :dir nil))
 
+
 (defmethod initialize-instance :after ((self ram-directory) &key (close-dir-p NIL))
+;;  (format T "~&creating dir id ~S" (slot-value self 'id))
+;;  (when (or (= (slot-value self 'id) 3) (= (slot-value self 'id) 2)) (break))
   (with-slots (dir) self
     (when dir
       (do-files (file dir)
@@ -51,13 +58,13 @@
     (setf (mtime (gethash name files)) (get-universal-time))))
 
 (defmethod delete-file ((self ram-directory) name)
-;;  (format T "~&~S" (list 'delete name))
+;;  (format T "~&~S" (list :delete (slot-value self 'id) name))
 ;;  (when (equal name "_3.tvf") (break))
   (with-slots (files) self
     (remhash (normalize-file-name name) files)))
 
 (defmethod rename-file ((self ram-directory) from to)
-;;  (format T "~&~S" (list 'rename from to))
+;;  (format T "~&~S" (list :rename (slot-value self 'id) from to))
   (setf from (normalize-file-name from)
 	to (normalize-file-name to))
   (with-slots (files) self
@@ -72,7 +79,7 @@
 
 (defmethod create-output ((self ram-directory) name)
   (setf name (normalize-file-name name))
-;;  (format T "~&~S" (list 'create name))
+;;  (format T "~&~S" (list :create (slot-value self 'id) name))
   (with-slots (files) self
     (let ((file (make-instance 'ram-file :name name)))
       (setf (gethash name files) file)

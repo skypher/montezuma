@@ -6,10 +6,13 @@
 
 (deftestfixture index-writer-test
     (:vars dir ir)
+
   (:setup
    (setf (fixture-var 'dir) (make-instance 'ram-directory)))
+
   (:teardown
    (close (fixture-var 'dir)))
+
   (:testfun test-index-writer-initialize
     (flet ((bool= (a b) (or (and a b) (and (not a) (not b)))))
       (let* ((dir (fixture-var 'dir))
@@ -19,8 +22,8 @@
 	(atest index-writer-initialize-1 (file-exists-p dir "segments") T #'bool=)
 	(close iw)
 	(atest index-writer-initialize-2 (file-exists-p dir "segments") T #'bool=))))
+
   (:testfun test-index-writer-add-document
-    (print :*start-add-document)
     (let* ((dir (fixture-var 'dir))
 	   (iw (make-instance 'index-writer
 			      :directory dir
@@ -32,13 +35,12 @@
       (add-document-to-index-writer iw doc)
       (atest index-writer-add-document-1 (document-count iw) 1)
       (close iw)
-    (print :*end-add-document)
       (atest index-writer-add-document-2
 	     (files dir)
 	     '("segments" "_1.cfs" "deletable")
 	     #'(lambda (a b) (set= a b :test #'equal)))))
+
   (:testfun test-index-writer-add-documents
-    (print :*start-add-documents)
     (let* ((dir (fixture-var 'dir))
 	   (iw (make-instance 'index-writer
 			      :directory dir
@@ -46,6 +48,7 @@
 			      :create-p T))
 	   (docs (index-test-helper-prepare-book-list))
 	   (infos (make-instance 'field-infos)))
+      ;; (setf (info-stream iw) *standard-output*)
       (setf (merge-factor iw) 3)
       (setf (min-merge-docs iw) 3)
       (add-doc-fields infos (elt docs 0))
@@ -56,10 +59,4 @@
       (atest index-writer-add-documents-3
 	     (files dir)
 	     '("segments" "_1i.cfs" "_1g.cfs" "_13.cfs" "deletable")
-	     #'(lambda (a b) (set= a b :test #'equal)))
-      (print :*end-add-documents))))
-
-
-
-
-	
+	     #'(lambda (a b) (set= a b :test #'equal))))))

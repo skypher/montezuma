@@ -23,8 +23,8 @@
    (similarity :initform (make-default-similarity))
    (segment-infos :initform (make-instance 'segment-infos))
    ;; FIXME write-lock
-   (ram-directory :initform (make-instance 'ram-directory))
-   (info-stream :initform nil))
+   (ram-directory)
+   (info-stream :initform nil :initarg :info-stream :accessor info-stream))
   (:default-initargs
    :close-dir-p          NIL
     :use-compound-file-p T
@@ -36,15 +36,16 @@
     :term-index-interval *index-writer-default-term-index-interval*))
 
 (defmethod initialize-instance :after ((self index-writer) &key (create-p NIL))
-  (with-slots (directory segment-infos) self
-    (cond ((null directory) (setf directory (make-instance 'ram-directory)))
+  (with-slots (directory ram-directory segment-infos) self
+    (cond ((null directory) (break) (setf directory (make-instance 'ram-directory)))
 	  ((stringp directory) (setf directory (make-fs-directory directory :create-p T))))
     (if create-p
 	(write-segment-infos segment-infos directory)
 	(progn
 	  (read-segment-infos segment-infos directory)
 	  ;; FIXME: handle missing segment infos and :create-if-missing-p
-	  ))))
+	  ))
+    (setf ram-directory (make-instance 'ram-directory))))
 
 (defmethod close ((self index-writer))
   (flush-ram-segments self)

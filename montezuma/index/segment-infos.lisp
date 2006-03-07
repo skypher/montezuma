@@ -15,6 +15,18 @@
 	 (string= name (slot-value other 'name))
 	 (eql doc-count (slot-value other 'doc-count)))))
 
+(defmethod segment-has-deletions-p ((si segment-info))
+  (file-exists-p (directory si) (add-file-extension (segment-info-name si) "del")))
+
+(defmethod uses-compound-file-p ((si segment-info))
+  (file-exists-p (directory si) (add-file-extension (segment-info-name si) "cfs")))
+
+(defmethod has-separate-norms-p ((si segment-info))
+  (let ((name-pattern (format nil "~A.s" (segment-info-name si))))
+    (some #'(lambda (file) (string-begins file name-pattern))
+	  (files (directory si)))))
+
+
 (defparameter *segment-format* -1)
 (defparameter *segment-filename* "segments")
 (defparameter *temporary-segment-filename* "segments.new")

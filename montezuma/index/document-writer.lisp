@@ -147,59 +147,61 @@
   (with-slots (directory field-infos term-index-interval) self
     (let ((freq nil)
 	  (prox nil)
-	  (tv-writer nil)
-	  (tis-writer (make-instance 'term-infos-writer
-				     :directory directory
-				     :segment segment
-				     :field-infos field-infos
-				     :interval term-index-interval)))
+	  (tis-writer nil)
+	  (tv-writer nil))
       (unwind-protect
-	   (let ((ti (make-instance 'term-info))
-		 (current-field nil))
+	   (progn
 	     (setf freq (open-segment-file directory segment *frq-extension* :output))
 	     (setf prox (open-segment-file directory segment *prx-extension* :output))
-	     (dosequence (posting postings)
-	       (set-values ti 1 (pos freq) (pos prox) -1)
-	       (add-term tis-writer (term posting) ti)
-	       (let ((posting-freq (freq posting)))
-		 (if (= posting-freq -1)
-		     (write-vint freq 1)
-		     (progn
-		       (write-vint freq 0)
-		       (write-vint freq posting-freq)))
-		 (let ((last-position 0))
-		   (dosequence (position (positions posting))
-		     (write-vint prox (- position last-position))
-		     (setf last-position position)))
-		 (let ((term-field (term-field (term posting))))
-		   (when (not (equal current-field term-field))
-		     (setf current-field term-field)
-		     (let ((fi (get-field field-infos current-field)))
-		       (if (field-store-term-vector-p fi)
-			   (progn
-			     (when (null tv-writer)
-			       (setf tv-writer (make-instance 'term-vectors-writer
-							      :directory directory
-							      :segment segment
-							      :field-infos field-infos))
-			       (open-document tv-writer))
-			     (open-field tv-writer current-field))
-			   (when tv-writer
-			     (close-field tv-writer)))))
-		   (when (and tv-writer (field-open-p tv-writer))
-		     (add-term-to-term-vectors-writer tv-writer
-						      (term-text (term posting))
-						      posting-freq
-						      :positions (positions posting)
-						      :offsets (offsets posting))))))
-	     (when tv-writer
-	       (close-document tv-writer))))
-      (progn
-	;; FIXME raise some exceptions somewhere?
-	(when freq (close freq))
-	(when prox (close prox))
-	(when tis-writer (close tis-writer))
-	(when tv-writer (close tv-writer))))))
+	     (setf tis-writer (make-instance 'term-infos-writer
+					     :directory directory
+					     :segment segment
+					     :field-infos field-infos
+					     :interval term-index-interval))
+	       (let ((ti (make-instance 'term-info))
+		     (current-field nil))
+		 (dosequence (posting postings)
+		   (set-values ti 1 (pos freq) (pos prox) -1)
+		   (add-term tis-writer (term posting) ti)
+		   (let ((posting-freq (freq posting)))
+		     (if (= posting-freq -1)
+			 (write-vint freq 1)
+			 (progn
+			   (write-vint freq 0)
+			   (write-vint freq posting-freq)))
+		     (let ((last-position 0))
+		       (dosequence (position (positions posting))
+			 (write-vint prox (- position last-position))
+			 (setf last-position position)))
+		     (let ((term-field (term-field (term posting))))
+		       (when (not (equal current-field term-field))
+			 (setf current-field term-field)
+			 (let ((fi (get-field field-infos current-field)))
+			   (if (field-store-term-vector-p fi)
+			       (progn
+				 (when (null tv-writer)
+				   (setf tv-writer (make-instance 'term-vectors-writer
+								  :directory directory
+								  :segment segment
+								  :field-infos field-infos))
+				   (open-document tv-writer))
+				 (open-field tv-writer current-field))
+			       (when tv-writer
+				 (close-field tv-writer)))))
+		       (when (and tv-writer (field-open-p tv-writer))
+			 (add-term-to-term-vectors-writer tv-writer
+							  (term-text (term posting))
+							  posting-freq
+							  :positions (positions posting)
+							  :offsets (offsets posting)))))))
+	       (when tv-writer
+		 (close-document tv-writer)))
+	(progn
+	  ;; FIXME raise some exceptions somewhere?
+	  (when freq (close freq))
+	  (when prox (close prox))
+	  (when tis-writer (close tis-writer))
+	  (when tv-writer (close tv-writer)))))))
 
 (defmethod write-norms ((self document-writer) segment)
   (with-slots (directory field-infos field-boosts similarity field-lengths) self
