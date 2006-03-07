@@ -46,6 +46,7 @@
     (remtable name fields))
   (values))
 
+;; FIXME: I don't like this name.
 (defmethod document-field ((self document) name)
   (car (document-fields self name)))
 

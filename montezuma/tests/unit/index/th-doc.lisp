@@ -12,9 +12,9 @@
 
 (defun index-test-helper-prepare-document ()
   (let ((doc (make-instance 'document)))
-    (add-field doc (make-field "test_field1" "field one text"
+    (add-field doc (make-field "text_field1" "field one text"
 			       :stored T :index :tokenized :store-term-vector NIL))
-    (add-field doc (make-field "test_field2" "field field field two text"
+    (add-field doc (make-field "text_field2" "field field field two text"
 			       :stored T :index :tokenized :store-term-vector :with-positions-offsets))
     (add-field doc (make-field "key_field" "keyword"
 			       :stored T :index :untokenized))

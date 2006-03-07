@@ -326,7 +326,6 @@
       (atest ir-delete-28 (max-doc ir) doc-count)
       (atest ir-delete-29 (num-docs ir) (- doc-count 6))
       (commit ir)
-      (format T "~&ir: ~S" ir)
       (let ((ir2 (open-index-reader dir :close-directory-p NIL)))
 	(atest ir-delete-30 (has-deletions-p ir2) T #'bool=)
 	(atest ir-delete-31 (max-doc ir2) doc-count)
@@ -369,7 +368,6 @@
 (deftestfixture segment-reader-test
   (:vars dir ir)
   (:setup
-   (print :*start-setup)
    (setf (fixture-var 'dir) (make-instance 'ram-directory))
    (let ((iw (make-instance 'index-writer
 			    :directory (fixture-var 'dir)
@@ -381,22 +379,13 @@
      (optimize iw)
      (close iw)
      (setf (fixture-var 'ir)
-	   (open-index-reader (fixture-var 'dir) :close-directory-p NIL))
-   (print :*end-setup)))
+	   (open-index-reader (fixture-var 'dir) :close-directory-p NIL))))
   (:testfun test-segment-reader
-   (print :*start-test-segment-reader)
-   (test-index-reader (fixture-var 'ir))
-   (print :*end-test-segment-reader)
-   )
+   (test-index-reader (fixture-var 'ir)))
   (:testfun test-segment-delete
-   (print :*start-test-segment-delete)
-   (test-ir-delete (fixture-var 'ir) (fixture-var 'dir))
-   (print :*end-test-segment-delete))
+   (test-ir-delete (fixture-var 'ir) (fixture-var 'dir)))
   (:testfun test-segment-reader-norms
-   (print :*start-test-segment-reader-norms)
-   (test-ir-norms (fixture-var 'ir) (fixture-var 'dir))
-   (print :*end-test-segment-reader-norms)
-   )
+   (test-ir-norms (fixture-var 'ir) (fixture-var 'dir)))
   (:teardown
    (close (fixture-var 'ir))
    (close (fixture-var 'dir))))
