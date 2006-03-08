@@ -156,7 +156,13 @@
 
 (defmethod print-object ((self field-info) stream)
   (print-unreadable-object (self stream :type T :identity T)
-    (format stream "~S (~S)" (field-name self) (field-number self))))
+    (format stream "~S (~S) :store-term-vector-p ~S :store-offsets-p ~S :store-positions-p ~S :omit-norms-p ~S"
+	    (field-name self)
+	    (field-number self)
+	    (field-store-term-vector-p self)
+	    (field-store-offsets-p self)
+	    (field-store-positions-p self)
+	    (field-omit-norms-p self))))
 
 (defmethod get-field-info-byte ((self field-info))
   (let ((bits #x0))
