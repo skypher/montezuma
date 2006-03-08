@@ -316,13 +316,15 @@
 	      (let ((positions (if store-positions (make-array num-terms) nil))
 		    (offsets (if store-offsets (make-array num-terms) nil))
 		    ;; FIXME: how do we keep the buffer from being too small?
-		    (buffer (make-array 15 :adjustable T :fill-pointer T)))
+		    (buffer (make-array 15)))
 		(dotimes (i num-terms)
 		  (let* ((start (read-vint tvf))
 			 (delta-length (read-vint tvf))
 			 (total-length (+ start delta-length)))
+		    (when (< (length buffer) (+ start delta-length))
+		      (setf buffer (make-array (* (+ start delta-length) 2))))
 		    (read-chars tvf buffer start delta-length)
-		    (setf (aref terms i) (subseq (bytes-to-string buffer) 0 total-length))
+		    (setf (aref terms i) (bytes-to-string buffer :start 0 :end total-length))
 		    (let ((freq (read-vint tvf)))
 		      (setf (aref term-freqs i) freq)
 		      
