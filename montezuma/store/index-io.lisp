@@ -52,6 +52,13 @@
     (bytes-to-string chars)))
 
 (defmethod read-chars ((self index-input) buffer start length)
+  ;; FIXME: the ferret code extends the array here if required, but do
+  ;; we really want to have to force callers to use the return value
+  ;; (in the case where adjust-array can't return the same array?)
+  ;; Let's try forcing callers to call us with a sufficiently-sized
+  ;; array in the first place.
+;;  (when (< (array-dimension buffer 0) (+ start length))
+;;    (adjust-array buffer (+ start length) :fill-pointer T))
   (dotimes (i length)
     (setf (elt buffer (+ i start)) (read-byte self))))
 
