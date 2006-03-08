@@ -64,7 +64,7 @@
 (defmethod max-doc ((self index-reader))
   (error "~S is not implemented by ~S." 'max-doc self))
 
-(defmethod get-doc ((self index-reader) n)
+(defmethod get-document ((self index-reader) n)
   (error "~S is not implemented by ~S." 'get-doc self))
 
 (defmethod get-document-with-term ((self index-reader) term)
