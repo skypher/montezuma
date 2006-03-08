@@ -415,3 +415,51 @@
   (:teardown
    (close (fixture-var 'ir))
    (close (fixture-var 'dir))))
+
+(deftestfixture index-reader-test
+  (:vars dir)
+  (:setup
+   (setf (fixture-var 'dir) (make-instance 'ram-directory)))
+  (:teardown
+   (close (fixture-var 'dir)))
+  (:testfun test-ir-multivalue-fields
+   (flet ((bool= (a b) (or (and a b) (and (not a) (not b)))))
+     (let ((iw (make-instance 'index-writer
+			      :directory (fixture-var 'dir)
+			      :analyzer (make-instance 'whitespace-analyzer)
+			      :create-p T))
+	   (doc (make-instance 'document)))
+       (add-field doc (make-field "tag" "Ruby"
+				  :stored T :index NIL
+				  :store-term-vector NIL))
+       (add-field doc (make-field "tag" "C"
+				  :stored T :index :untokenized
+				  :store-term-vector NIL))
+       (add-field doc (make-field "body" "this is the body Document Field"
+				  :stored T :index :untokenized
+				  :store-term-vector :with-positions-offsets))
+       (add-field doc (make-field "tag" "Lucene"
+				  :stored T :index :tokenized
+				  :store-term-vector :with-positions))
+       (add-field doc (make-field "tag" "Ferret"
+				  :stored T :index :untokenized
+				  :store-term-vector :with-offsets))
+       (add-field doc (make-field "title" "this is the title DocField"
+				  :stored T :index :untokenized
+				  :store-term-vector :with-positions-offsets))
+       (add-field doc (make-field "author" "this is the author field"
+				  :stored T :index :untokenized
+				  :store-term-vector :with-positions-offsets))
+       (let ((fis (make-instance 'field-infos)))
+	 (add-doc-fields fis doc)
+	 (test index-reader-1 (size fis) 4)
+	 (let ((fi (get-field fis "tag")))
+	   (test index-reader-2 (field-indexed-p fi) T #'bool=)
+	   (test index-reader-3 (field-store-term-vector-p fi) T #'bool=)
+	   (test index-reader-4 (field-store-positions-p fi) T #'bool=)
+	   (test index-reader-5 (field-store-offsets-p fi) T #'bool=)
+	   (add-document-to-index-writer iw doc)
+	   (close iw)
+))))))
+	   
+
