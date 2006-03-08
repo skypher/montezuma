@@ -59,11 +59,10 @@
 		(offset (aref field-offsets field-number)))
 	    (when (> length 0)
 	      (incf position (position-increment-gap analyzer field-name)))
-
-	    (when (field-indexed-p field)
+	    (when (field-indexed-p field-info)
 	      (if (not (field-tokenized-p field))
 		  (let ((string-value (string-value field)))
-		    (if (field-store-offsets-p field)
+		    (if (field-store-offsets-p field-info)
 			(progn
 			  (add-position self 
 					field-name
