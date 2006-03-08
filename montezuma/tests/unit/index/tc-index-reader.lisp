@@ -477,9 +477,19 @@
 	     (test index-reader-15 (field-data (document-field doc "tag")) "C" #'equal)
 	     (remove-fields doc "tag")
 	     (test index-reader-16 (field-count doc) 3)
-	     (test index-reader-17 (entry-count doc) 3)))
-	 (delete ir 0)
-	 (close ir)
-)))))
+	     (test index-reader-17 (entry-count doc) 3))
+	   (delete ir 0)
+	   (close ir)
+	   (let ((iw (make-instance 'index-writer
+				    :directory dir
+				    :analyzer (make-instance 'whitespace-analyzer))))
+	     (add-document-to-index-writer iw doc)
+	     (optimize iw)
+	     (close iw))
+	   (let ((ir (open-index-reader dir :close-directory-p NIL)))
+	     (let ((doc (get-document ir 0)))
+	       (test index-reader-18 (field-count doc) 3)
+	       (test index-reader-19 (entry-count doc) 3))
+	     (close ir))))))))
 	   
 
