@@ -424,11 +424,12 @@
    (close (fixture-var 'dir)))
   (:testfun test-ir-multivalue-fields
    (flet ((bool= (a b) (or (and a b) (and (not a) (not b)))))
-     (let ((iw (make-instance 'index-writer
-			      :directory (fixture-var 'dir)
-			      :analyzer (make-instance 'whitespace-analyzer)
-			      :create-p T))
-	   (doc (make-instance 'document)))
+     (let* ((dir (fixture-var 'dir))
+	    (iw (make-instance 'index-writer
+			       :directory dir
+			       :analyzer (make-instance 'whitespace-analyzer)
+			       :create-p T))
+	    (doc (make-instance 'document)))
        (add-field doc (make-field "tag" "Ruby"
 				  :stored T :index NIL
 				  :store-term-vector NIL))
@@ -459,7 +460,26 @@
 	   (test index-reader-4 (field-store-positions-p fi) T #'bool=)
 	   (test index-reader-5 (field-store-offsets-p fi) T #'bool=)
 	   (add-document-to-index-writer iw doc)
-	   (close iw)
-))))))
+	   (close iw)))
+       (let ((ir (open-index-reader dir :close-directory-p NIL)))
+	 (let ((doc (get-document ir 0)))
+	   (test index-reader-6 (field-count doc) 4)
+	   (test index-reader-7 (entry-count doc) 7)
+	   (let ((entries (document-fields doc "tag")))
+	     (test index-reader-8 (length entries) 4)
+	     (test index-reader-9 (field-data (elt entries 0)) "Ruby" #'equal)
+	     (test index-reader-10 (field-data (elt entries 1)) "C" #'equal)
+	     (test index-reader-11 (field-data (elt entries 2)) "Lucene" #'equal)
+	     (test index-reader-12 (field-data (elt entries 3)) "Ferret" #'equal)
+	     (remove-field doc "tag")
+	     (test index-reader-13 (field-count doc) 4)
+	     (test index-reader-14 (entry-count doc) 6)
+	     (test index-reader-15 (field-data (document-field doc "tag")) "C" #'equal)
+	     (remove-fields doc "tag")
+	     (test index-reader-16 (field-count doc) 3)
+	     (test index-reader-17 (entry-count doc) 3)))
+	 (delete ir 0)
+	 (close ir)
+)))))
 	   
 
