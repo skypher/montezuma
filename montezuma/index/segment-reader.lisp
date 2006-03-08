@@ -89,8 +89,9 @@
 
 (defmethod do-close ((self segment-reader))
   (with-slots (fields-reader term-infos freq-stream prox-stream
-			     tv-reader-orig cfs-reader) self
+			     cached-tv-reader tv-reader-orig cfs-reader) self
     ;; FIXME some thread specific cache clearing?
+    (setf cached-tv-reader nil)
     (close fields-reader)
     (close term-infos)
     (when freq-stream (close freq-stream))
@@ -108,7 +109,8 @@
       (setf deleted-docs (make-bit-vector)))
     (setf deleted-docs-dirty-p T)
     (setf undelete-all-p NIL)
-    (set-bit deleted-docs doc-num)))
+    (set-bit deleted-docs doc-num)
+    self))
 
 (defmethod do-undelete-all ((self segment-reader))
   (with-slots (deleted-docs deleted-docs-dirty-p undelete-all-p) self
