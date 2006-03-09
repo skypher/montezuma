@@ -67,6 +67,10 @@
 (defmethod rename-file ((self fs-directory) from to)
   (let ((from-path (full-path-for-file self from))
 	(to-path (full-path-for-file self to)))
+    ;; RENAME-FILE uses the from-path to provide defaults for the
+    ;; to-path.  This is terrible, just terrible:
+    (when (null (pathname-type to-path))
+      (setf to-path (make-pathname :type :unspecific :defaults to-path)))
     (cl:rename-file from-path to-path)))
 
 (defmethod modified-time ((self fs-directory) file)
@@ -83,6 +87,9 @@
 (defmethod open-input ((self fs-directory) file)
   (make-instance 'fs-index-input :path (full-path-for-file self file)))
 
+(defmethod close ((self fs-directory))
+  ;; FIXME: ugh.
+  ())
 
 
 (defclass fs-index-output (buffered-index-output)
@@ -90,7 +97,10 @@
 
 (defmethod initialize-instance :after ((self fs-index-output) &key path)
   (with-slots (file) self
-    (setf file (open path :direction :output :element-type '(unsigned-byte 8)))))
+    (setf file (open path
+		     :direction :output
+		     :element-type '(unsigned-byte 8)
+		     :if-exists :supersede))))
 
 (defmethod close :after ((self fs-index-output))
   (with-slots (file) self
