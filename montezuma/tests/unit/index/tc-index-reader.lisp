@@ -490,6 +490,68 @@
 	     (let ((doc (get-document ir 0)))
 	       (test index-reader-18 (field-count doc) 3)
 	       (test index-reader-19 (entry-count doc) 3))
-	     (close ir))))))))
-	   
-
+	     (close ir)))))))
+  (:testfun test-ir-read-while-optimizing
+   (let ((iw (make-instance 'index-writer
+			    :directory (fixture-var 'dir)
+			    :analyzer (make-instance 'whitespace-analyzer)
+			    :create-p T))
+	 (docs (index-test-helper-prepare-ir-test-docs)))
+     (dotimes (i *index-test-helper-ir-test-doc-count*)
+       (add-document-to-index-writer iw (aref docs i)))
+     (close iw))
+   (let ((ir (open-index-reader (fixture-var 'dir) :close-directory-p NIL)))
+     (do-test-term-vectors ir)
+     (let ((iw (make-instance 'index-writer
+			      :directory (fixture-var 'dir)
+			      :analyzer (make-instance 'whitespace-analyzer))))
+       (optimize iw)
+       (close iw)
+       (do-test-term-vectors ir)
+       (close ir))))
+  (:testfun test-ir-read-while-optimizing-on-disk
+   (let* ((fs-dir (make-fs-directory *test-directory-path* :create-p T))
+	  (iw (make-instance 'index-writer
+			     :directory fs-dir
+			     :analyzer (make-instance 'whitespace-analyzer)
+			     :create-p T))
+	  (docs (index-test-helper-prepare-ir-test-docs)))
+     (dotimes (i *index-test-helper-ir-test-doc-count*)
+       (add-document-to-index-writer iw (elt docs i)))
+     (close iw)
+     (let ((ir (open-index-reader fs-dir :close-directory-p NIL)))
+       (do-test-term-vectors ir)
+       (let ((iw (make-instance 'index-writer
+				:directory fs-dir
+				:analyzer (make-instance 'whitespace-analyzer))))
+	 (optimize iw)
+	 (close iw)
+	 (do-test-term-vectors ir)
+	 (close ir)
+	 (close fs-dir)))))
+  (:testfun test-ir-latest
+   (let* ((fs-dir (make-fs-directory *test-directory-path* :create-p T))
+	  (iw (make-instance 'index-writer
+			     :directory fs-dir
+			     :analyzer (make-instance 'whitespace-analyzer)
+			     :create-p T))
+	  (doc (make-instance 'document)))
+     (add-field doc (make-field "field" "content"
+				:stored T :index :tokenized))
+     (add-document-to-index-writer iw doc)
+     (close iw)
+     (let ((ir (open-index-reader fs-dir :close-directory-p NIL)))
+       (test ir-latest-1 (and (latest-p ir) T) T)
+       (let ((iw (make-instance 'index-writer
+				:directory fs-dir
+				:analyzer (make-instance 'whitespace-analyzer)))
+	     (doc (make-instance 'document)))
+	 (add-field doc (make-field "field" "content2"
+				    :stored T :index :tokenized))
+	 (add-document-to-index-writer iw doc)
+	 (close iw))
+       (test ir-latest-2 (latest-p ir) NIL)
+       (close ir)
+       (let ((ir (open-index-reader fs-dir :close-directory-p NIL)))
+	 (test ir-latest-3 (and (latest-p ir) T) T)
+	 (close ir))))))

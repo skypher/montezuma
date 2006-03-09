@@ -6,8 +6,6 @@
 		 :defaults (merge-pathnames (make-pathname :directory '(:relative :up :up "temp" "fsdir"))
 					    *load-pathname*)))
 
-(print *test-directory-path*)
-
 (deftestfun test-fs-store
   (let ((dir (make-fs-directory *test-directory-path* :create-p T)))
     (do-test-basic-file-ops dir)

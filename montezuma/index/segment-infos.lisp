@@ -73,10 +73,11 @@
   (dotimes (i (size other))
     (setf (segment-info self i) (clone (segment-info other i)))))
 
-(defmethod read-current-version-segment-infos ((self segment-infos) directory)
+(defmethod segment-infos-read-current-version (directory)
   (if (not (file-exists-p directory *segment-filename*))
       0
-      (with-slots (format version) self
+      (let ((format nil)
+	    (version nil))
 	(let ((input (open-input directory *segment-filename*)))
 	  (unwind-protect
 	       (progn
@@ -88,9 +89,11 @@
 		     (error "Unknown format version ~S" format))
 		   (setf version (read-long input))))
 	    (close input)))
-	(let ((sis (make-instance 'segment-infos)))
-	  (read-segment-infos sis directory)
-	  (version sis)))))
+	(if (< format 0)
+	    version
+	    (let ((sis (make-instance 'segment-infos)))
+	      (read-segment-infos sis directory)
+	      (version sis))))))
 	
 (defmethod read-segment-infos ((self segment-infos) directory)
   (let ((input (open-input directory *segment-filename*)))

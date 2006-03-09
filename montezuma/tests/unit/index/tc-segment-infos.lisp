@@ -3,7 +3,7 @@
 (deftestfun test-segment-infos
   (let ((dir (make-instance 'ram-directory)))
     (let ((sis (make-instance 'segment-infos)))
-      (test segment-infos-1 (read-current-version-segment-infos sis dir) 0)
+      (test segment-infos-1 (segment-infos-read-current-version dir) 0)
       (let ((seg0 (make-instance 'segment-info
 				 :name "seg0"
 				 :doc-count 5
@@ -27,7 +27,7 @@
 	(test segment-infos-3 (segment-info sis 0) seg0 #'segment-info=)
 	(test segment-infos-4 (segment-info sis 2) seg2 #'segment-info=)
 	(write-segment-infos sis dir)
-	(let ((version (read-current-version-segment-infos sis dir)))
+	(let ((version (segment-infos-read-current-version dir)))
 	  (test segment-infos-5 (and (file-exists-p dir "segments") T) T)
 	  (let ((sis2 (make-instance 'segment-infos)))
 	    (read-segment-infos sis2 dir)
@@ -36,7 +36,7 @@
 	    (test segment-infos-8 (segment-info sis 2) seg2 #'segment-info=)
 	    (add-segment-info sis2 seg3)
 	    (write-segment-infos sis2 dir)
-	    (test segment-infos-9 (read-current-version-segment-infos sis2 dir) (+ version 1)))
+	    (test segment-infos-9 (segment-infos-read-current-version dir) (+ version 1)))
 	  (let ((sis3 (make-instance 'segment-infos)))
 	    (read-segment-infos sis3 dir)
 	    (test segment-infos-10 (size sis3) 4)
