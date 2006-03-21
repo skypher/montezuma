@@ -269,3 +269,7 @@
 						 :stored T :index :tokenized :store-term-vector NIL)))
 		    doc))
 	      data))))
+
+
+(defun bool= (a b)
+  (or (and a b) (and (not a) (not b))))

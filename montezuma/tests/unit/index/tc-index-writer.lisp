@@ -14,14 +14,13 @@
    (close (fixture-var 'dir)))
 
   (:testfun test-index-writer-initialize
-    (flet ((bool= (a b) (or (and a b) (and (not a) (not b)))))
-      (let* ((dir (fixture-var 'dir))
-	     (iw (make-instance 'index-writer
-				:directory (fixture-var 'dir)
-				:create-p T)))
-	(atest index-writer-initialize-1 (file-exists-p dir "segments") T #'bool=)
-	(close iw)
-	(atest index-writer-initialize-2 (file-exists-p dir "segments") T #'bool=))))
+   (let* ((dir (fixture-var 'dir))
+	  (iw (make-instance 'index-writer
+			     :directory (fixture-var 'dir)
+			     :create-p T)))
+     (atest index-writer-initialize-1 (file-exists-p dir "segments") T #'bool=)
+     (close iw)
+     (atest index-writer-initialize-2 (file-exists-p dir "segments") T #'bool=)))
 
   (:testfun test-index-writer-add-document
     (let* ((dir (fixture-var 'dir))

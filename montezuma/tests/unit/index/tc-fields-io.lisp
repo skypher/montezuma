@@ -142,12 +142,11 @@
 	 
 
 (defun field-values-equal (field values)
-  (flet ((bool= (a b) (or (and a b) (and (not a) (not b)))))
-    (destructuring-bind (value stored indexed tokenized term-vector binary)
-	values
-      (and (equalp (field-data field) value)
-	   (bool= (field-stored-p field) stored)
-	   (bool= (field-indexed-p field) indexed)
-	   (bool= (field-tokenized-p field) tokenized)
-	   (bool= (field-store-term-vector-p field) term-vector)
-	   (bool= (field-binary-p field) binary)))))
+  (destructuring-bind (value stored indexed tokenized term-vector binary)
+      values
+    (and (equalp (field-data field) value)
+	 (bool= (field-stored-p field) stored)
+	 (bool= (field-indexed-p field) indexed)
+	 (bool= (field-tokenized-p field) tokenized)
+	 (bool= (field-store-term-vector-p field) term-vector)
+	 (bool= (field-binary-p field) binary))))
