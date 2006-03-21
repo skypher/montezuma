@@ -1,7 +1,7 @@
 (in-package #:montezuma)
 
 (defclass document ()
-  ((boost :initform 1.0 :initarg :boost :accessor document-boost)
+  ((boost :initform 1.0 :initarg :boost :accessor boost)
    (fields :initform (make-table :test #'equal))))
 
 (defmethod print-object ((self document) stream)

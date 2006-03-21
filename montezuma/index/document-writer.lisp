@@ -40,7 +40,7 @@
 	(setf field-lengths (make-array arr-size :initial-element 0))
 	(setf field-positions (make-array arr-size :initial-element 0))
 	(setf field-offsets (make-array arr-size :initial-element 0))
-	(setf field-boosts (make-array arr-size :initial-element (document-boost document)))
+	(setf field-boosts (make-array arr-size :initial-element (boost document)))
 	(invert-document self document)
 	(let ((postings (sort-posting-table self)))
 	  (write-postings self postings segment))

@@ -126,7 +126,8 @@
 				      (:file "tc-segment-infos")
 				      (:file "th-doc")
 				      (:file "tc-index-writer" :depends-on ("th-doc"))
-				      (:file "tc-index-reader" :depends-on ("th-doc")))
+				      (:file "tc-index-reader" :depends-on ("th-doc"))
+				      (:file "tc-multiple-term-doc-pos-enum" :depends-on ("th-doc")))
 			 :depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
