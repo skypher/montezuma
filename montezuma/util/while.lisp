@@ -55,3 +55,9 @@
 (defmacro with-gensyms ((&rest names) &body body)
   `(let ,(loop for n in names collect `(,n (gensym)))
      ,@body))
+
+(defun inject (sequence base function &key (key #'identity))
+  (let ((result base))
+    (dosequence (element sequence)
+      (setf result (funcall function base (funcall key element))))
+    result))
