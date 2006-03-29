@@ -14,7 +14,7 @@
   ((directory :initarg :directory)
    (close-dir-p :initarg :close-dir-p)
    (use-compound-file-p :initarg :use-compound-file-p)
-   (analyzer :initarg :analyzer)
+   (analyzer :initarg :analyzer :reader analyzer)
    (merge-factor :initarg :merge-factor :accessor merge-factor)
    (min-merge-docs :initarg :min-merge-docs :accessor min-merge-docs)
    (max-merge-docs :initarg :max-merge-docs :accessor max-merge-docs)
