@@ -24,7 +24,8 @@
   (when (null (getf args :create-if-missing))
     (setf (getf args :create-if-missing) T))
   ;; FIXME: I don't flatten the :key option, I'm not sure why Ferret does.
-  (with-slots (key dir options close-dir-p create-p analyzer writer) self
+  (with-slots (key dir options close-dir-p auto-flush-p create-p analyzer writer
+	       default-search-field default-field) self
     (setf key (getf args :key))
     (cond ((getf args :path)
 	   (setf dir (make-fs-directory (getf args :path) (getf options :create)))
@@ -214,6 +215,7 @@
     (let ((results (enumerate (search-each searcher query))))
       (dolist (result results)
 	(destructuring-bind (id score) result
+	  (declare (ignore score))
 	  (let ((document (get-doc self id)))
 	    (cond ((hash-table-p new-val)
 		   (loop for name being the hash-key using (hash-value content) of new-val
