@@ -5,36 +5,54 @@
    (dir)
    (has-writes-p :initform NIL)
    (reader :initform nil)
-   (writer :initform nil)
+   (writer)
    (close-dir-p)
    (auto-flush-p)
    (default-search-field)
    (default-field)
    (analyzer)
-   (open-p)
+   (open-p :initform T)
    (options :initarg :options)
-   (qp))
+   (qp :initform nil))
   (:default-initargs
    :options '()))
    
 
-(defmethod initialize-instance ((self index) &key path)
-  (with-slots (dir close-dir-p create-p analyzer writer) self
-    (cond (path
-	   (assert (not dir))
-	   (setf dir (make-fs-directory path create-p))
-	   (setf close-dir-p T))
-	  (dir
-	   )
+(defmethod initialize-instance ((self index) &rest args)
+  (setf (getf args :default-search-field) (string (getf args :default-search-field))
+	(getf args :default-field) (string (getf args :default-field)))
+  (when (null (getf args :create-if-missing))
+    (setf (getf args :create-if-missing) T))
+  ;; FIXME: I don't flatten the :key option, I'm not sure why Ferret does.
+  (with-slots (key dir options close-dir-p create-p analyzer writer) self
+    (setf key (getf args :key))
+    (cond ((getf args :path)
+	   (setf dir (make-fs-directory (getf args :path) (getf options :create)))
+	   (setf (getf args :close-dir) T))
+	  ((getf args :dir)
+	   (setf dir (getf args :dir)))
 	  (T
-	   (setf create-p T)
+	   (setf (getf args :create) T)
 	   (setf dir (make-instance 'ram-directory))))
+    (setf options args)
     ;; Create the index if need be
     (setf writer (make-instance 'index-writer
 				:directory dir))
-    (setf analyzer (analyzer writer))
+    (setf (getf options :analyzer) (setf analyzer (analyzer writer)))
     (close writer)
-    (setf writer nil)))
+    (setf writer nil)
+    ;; Only want to create the first time, if at all.
+    (setf (getf options :create) NIL)
+    (setf close-dir-p (getf options :close-dir))
+    (setf (getf options :close-dir) NIL)
+    (setf auto-flush-p (getf options :auto-flush))
+    (setf default-search-field (or (getf options :default-search-field)
+				   (getf options :default-field)
+				   "*"))
+    (setf default-field (or (getf options :default-field) ""))
+    (when (not (getf options :handle-parse-errors))
+      (setf (getf options :handle-parse-errors) T))))
+    
 
 (defmethod close ((self index))
   (with-slots (open-p reader writer dir) self
@@ -187,6 +205,80 @@
 	   (error "Cannot update for id ~S" id)))
     (when (slot-value self 'auto-flush-p)
       (flush self))))
+
+(defmethod query-update ((self index) query new-val)
+  (let ((searcher (searcher self))
+	(reader (reader self))
+	(docs-to-add '())
+	(query (process-query self query)))
+    (let ((results (enumerate (search-each searcher query))))
+      (dolist (result results)
+	(destructuring-bind (id score) result
+	  (let ((document (get-doc self id)))
+	    (cond ((hash-table-p new-val)
+		   (loop for name being the hash-key using (hash-value content) of new-val
+		      do (setf (get-field document name) (string content))))
+		  ((typep new-val 'document)
+		   (setf document new-val))
+		  (T
+		   (setf (get-field document (getf (slot-value self 'options) :default-field))
+			 (string new-val))))
+	    (push document docs-to-add)
+	    (delete reader id)))))
+    (let ((writer (writer self)))
+      (dolist (doc (reverse docs-to-add))
+	(add-document writer doc))
+      (when (slot-value self 'auto-flush-p)
+	(flush self)))))
+
+(defmethod has-deletions-p ((self index))
+  (has-deletions-p (reader self)))
+
+(defmethod has-writes ((self index))
+  (slot-value self 'has-writes))
+
+(defmethod flush ((self index))
+  (with-slots (reader writer searcher) self
+    (when reader (close reader))
+    (when writer (close writer))
+    (setf reader nil
+	  writer nil
+	  searcher nil)))
+
+(defmethod optimize ((self index))
+  (optimize (writer self))
+  (flush self))
+
+(defmethod size ((self index))
+  (num-docs (reader self)))
+
+(defmethod add-indexes ((self index) indexes)
+  (when (> (length indexes) 0)
+    (when (typep (elt indexes 0) 'index)
+      (setf indexes (map 'array #'reader indexes)))
+    (cond ((typep (elt indexes 0) 'index-reader)
+	   (let ((reader (reader self)))
+	     (setf indexes (remove reader indexes)))
+	   (add-indexes (writer self) indexes))
+	  ((typep (elt indexes 0) 'directory)
+	   (setf indexes (remove (slot-value self 'dir) indexes))
+	   (add-indexes (writer self) indexes))
+	  (T
+	   (error "Unknown index type ~S when trying to merge indexes." (elt indexes 0))))))
+
+(defmethod persist ((self index) directory &key (create-p T))
+  (flush self)
+  (with-slots (dir options) self
+    (let ((old-dir dir))
+      (cond ((stringp directory)
+	     (setf dir (make-instance 'fs-directory
+				      :path directory
+				      :create-p create-p))
+	     (setf (getf options :close-dir) T))
+	    ((typep directory 'directory)
+	     (setf dir directory)))
+      (add-indexes (writer self) (vector old-dir)))))
+
 
 
 (defmethod ensure-writer-open ((self index))
