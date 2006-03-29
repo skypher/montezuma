@@ -19,6 +19,7 @@
        :components ((:file "while")
 		    (:file "porter-stemmer")
 		    (:file "streams")
+		    (:file "pipes")
 		    (:file "mop")
 		    (:file "priority-queue"      :depends-on ("while"))
 		    (:file "strings")
@@ -71,7 +72,8 @@
 		    (:file "index-writer"        :depends-on ("segment-reader"))
 		    (:file "document-writer")
 		    (:file "segment-merger"      :depends-on ("index-filenames" "fields-io" "term-buffer"))
-		    (:file "index-reader"))
+		    (:file "index-reader")
+		    (:file "index"))
        :depends-on ("analysis" "search"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
