@@ -145,7 +145,7 @@
 		  (list (total-hits hits)))))
 	 
 
-(defmethod get-doc ((self index) id)
+(defmethod get-document ((self index) id)
   (let ((reader (reader self)))
     (cond ((stringp id)
 	   (get-document-with-term reader (make-term "id" id)))
@@ -196,7 +196,7 @@
 			 new-val))
 	  ((integerp id)
 	   (let ((reader (reader self))
-		 (document (get-doc self id)))
+		 (document (get-document self id)))
 	     (when (listp new-val)
 	       (setf new-val (convert-alist-to-table new-val)))
 	     (cond ((table-like-p new-val)
@@ -225,7 +225,7 @@
       (dolist (result results)
 	(destructuring-bind (id score) result
 	  (declare (ignore score))
-	  (let ((document (get-doc self id)))
+	  (let ((document (get-document self id)))
 	    (when (listp new-val)
 	      (setf new-val (convert-alist-to-table new-val)))
 	    (cond ((table-like-p new-val)
