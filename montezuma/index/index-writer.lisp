@@ -41,6 +41,7 @@
 	  ((stringp directory) (setf directory (make-fs-directory directory :create-p create-p))))
     (if create-p
 	(write-segment-infos segment-infos directory)
+	;; FIXME: This really isn't the best way of doing this.
 	(handler-case (read-segment-infos segment-infos directory)
 	  (error (e)
 	    (if create-if-missing-p

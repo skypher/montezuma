@@ -28,22 +28,22 @@
 (defmethod add-field ((self document) (field field))
   (with-slots (fields) self
     (let* ((name (field-name field))
-	   (fields-with-name (table-value name fields)))
-      (setf (table-value name fields) (append fields-with-name (list field)))))
+	   (fields-with-name (table-value fields name)))
+      (setf (table-value fields name) (append fields-with-name (list field)))))
   self)
 
 (defmethod remove-field ((self document) name)
   (with-slots (fields) self
-    (let ((fields-with-name (table-value name fields))
+    (let ((fields-with-name (table-value fields name))
 	  (removed-field nil))
       (when fields-with-name
 	(setf removed-field (car fields-with-name))
-	(setf (table-value name fields) (cdr fields-with-name)))
+	(setf (table-value fields name) (cdr fields-with-name)))
       removed-field)))
 
 (defmethod remove-fields ((self document) name)
   (with-slots (fields) self
-    (remtable name fields))
+    (remtable fields name))
   (values))
 
 ;; FIXME: I don't like this name.
@@ -52,7 +52,7 @@
 
 (defmethod document-fields ((self document) name)
   (with-slots (fields) self
-    (table-value name fields)))
+    (table-value fields name)))
 
 (defmethod document-binaries ((self document) name)
   (reduce #'(lambda (a1 &optional a2)

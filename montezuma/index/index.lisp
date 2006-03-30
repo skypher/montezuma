@@ -82,6 +82,10 @@
 (defmethod add-document-to-index ((self index) doc &optional analyzer)
   (let ((fdoc nil)
 	(default-field (slot-value self 'default-field)))
+    (when (listp doc)
+      ;; Turn association lists into something we can treat like any
+      ;; other table (including hash tables).
+      (setf doc (convert-alist-to-table doc)))
     (cond ((stringp doc)
 	   (setf fdoc (make-instance 'document))
 	   (add-field fdoc (make-field default-field doc
@@ -91,11 +95,12 @@
 	   (dosequence (field doc)
 	     (add-field fdoc (make-field default-field field
 					 :stored T :index :tokenized))))
-	  ((hash-table-p doc)
+	  ((table-like-p doc)
 	   (setf fdoc (make-instance 'document))
-	   (loop for field being the hash-key using (hash-value text) of doc
-		do (add-field doc (make-field (string field) (string text)
-					      :stored T :index :tokenized))))
+	   (dolist (field (table-keys doc))
+	     (let ((text (table-value doc field)))
+	       (add-field fdoc (make-field (string field) (string text)
+					  :stored T :index :tokenized)))))
 	  ((typep doc 'document)
 	   (setf fdoc doc))
 	  (T
@@ -192,10 +197,12 @@
 	  ((integerp id)
 	   (let ((reader (reader self))
 		 (document (get-doc self id)))
-	     ;; FIXME: What about tables and alists?
-	     (cond ((hash-table-p new-val)
-		    (loop for name being the hash-key using (hash-value content) of new-val
-		       do (setf (aref document name) (string content))))
+	     (when (listp new-val)
+	       (setf new-val (convert-alist-to-table new-val)))
+	     (cond ((table-like-p new-val)
+		    (dolist (name (table-keys new-val))
+		      (let ((content (table-value new-val name)))
+			(setf (aref document name) (string content)))))
 		   ((typep new-val 'document)
 		    (setf document new-val))
 		   (T
@@ -219,9 +226,12 @@
 	(destructuring-bind (id score) result
 	  (declare (ignore score))
 	  (let ((document (get-doc self id)))
-	    (cond ((hash-table-p new-val)
-		   (loop for name being the hash-key using (hash-value content) of new-val
-		      do (setf (get-field document name) (string content))))
+	    (when (listp new-val)
+	      (setf new-val (convert-alist-to-table new-val)))
+	    (cond ((table-like-p new-val)
+		   (dolist (name (table-keys new-val))
+		     (let ((content (table-value new-val name)))
+		       (setf (get-field document name) (string content)))))
 		  ((typep new-val 'document)
 		   (setf document new-val))
 		  (T

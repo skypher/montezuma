@@ -90,7 +90,8 @@
       ((:module "unit"
 	  :components ((:file "tests")
 		       (:module "util"
-			 :components ((:file "tc-priority-queue"))
+			 :components ((:file "tc-priority-queue")
+				      (:file "tc-tables"))
 			 :depends-on ("tests"))
 		       (:module "store"
 			 :components ((:file "tc-store")

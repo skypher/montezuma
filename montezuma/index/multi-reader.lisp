@@ -103,7 +103,7 @@
 
 (defmethod get-norms ((self multi-reader) field)
   (with-slots (norms-cache sub-readers starts) self
-    (let ((bytes (table-value field norms-cache)))
+    (let ((bytes (table-value norms-cache field)))
       (if bytes
 	  bytes
 	  (if (not (has-norms-p self field))
@@ -111,11 +111,11 @@
 	      (let ((bytes (make-array (max-doc self))))
 		(dosequence (sub-reader sub-readers :index i)
 		  (get-norms-into sub-reader field bytes (aref starts i)))
-		(setf (table-value field norms-cache) bytes)))))))
+		(setf (table-value norms-cache field) bytes)))))))
 
 (defmethod get-norms-into ((self multi-reader) field buf offset)
   (with-slots (norms-cache max-doc sub-readers starts) self
-    (let ((bytes (table-value field norms-cache)))
+    (let ((bytes (table-value norms-cache field)))
       (when (and (null bytes) (not (has-norms-p self field)))
 	(setf bytes (fake-norms self)))
       (if bytes
@@ -127,7 +127,7 @@
 	    (get-norms-into sub-reader field buf (+ offset (aref starts i))))))))
 
 (defmethod do-set-norm ((self multi-reader) n field value)
-  (remtable field (slot-value self 'norms-cache))
+  (remtable (slot-value self 'norms-cache) field)
   (with-sub-reader (sub-reader start) self n
     (set-norm sub-reader start field value)))
 

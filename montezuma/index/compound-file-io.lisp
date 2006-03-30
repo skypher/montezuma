@@ -26,7 +26,7 @@
 		     (setf (size entry) (- offset (offset entry))))
 		   (setf entry (make-instance 'compound-file-reader-file-entry
 					      :offset offset))
-		   (setf (table-value id entries) entry)))
+		   (setf (table-value entries id) entry)))
 	       (unless (null entry)
 		 (setf (size entry) (- (size stream) (offset entry))))
 	       (setf success T)))
@@ -46,7 +46,7 @@
   (with-slots (stream entries) self
     (when (null stream)
       (error "Stream is closed for ~S." self))
-    (let ((entry (table-value id entries)))
+    (let ((entry (table-value entries id)))
       (if (null entry)
 	  (error "No sub-file with id ~S found in ~S" id self)
 	  (make-instance 'cs-index-input
@@ -64,11 +64,11 @@
 
 (defmethod file-exists-p ((self compound-file-reader) name)
   (with-slots (entries) self
-    (in-table-p name entries)))
+    (in-table-p entries name)))
 
 (defmethod file-size ((self compound-file-reader) name)
   (with-slots (entries) self
-    (size (table-value name entries))))
+    (size (table-value entries name))))
 
 (defmethod modified-time ((self compound-file-reader) name)
   (with-slots (directory) self
