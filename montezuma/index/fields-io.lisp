@@ -60,9 +60,9 @@
 		    (if compressed
 			(progn
 			  (setf store :compress)
-			  (setf b (make-array (read-vint fields-stream)))
-			  (read-bytes fields-stream b 0 (length b))
-			  (setf data (coerce (uncompress b) 'string)))
+			  (let ((b (make-array (read-vint fields-stream))))
+			    (read-bytes fields-stream b 0 (length b))
+			    (setf data (coerce (uncompress b) 'string))))
 			(setf data (read-string fields-stream)))
 		    (let ((stv (if (field-store-term-vector-p fi)
 				   (cond ((and (field-store-positions-p fi)

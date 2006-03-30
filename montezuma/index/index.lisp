@@ -12,47 +12,49 @@
    (default-field)
    (analyzer)
    (open-p :initform T)
-   (options :initarg :options)
-   (qp :initform nil))
-  (:default-initargs
-   :options '()))
+   (options)
+   (qp :initform nil)))
    
 
-(defmethod initialize-instance ((self index) &rest args)
-  (setf (getf args :default-search-field) (string (getf args :default-search-field))
-	(getf args :default-field) (string (getf args :default-field)))
-  (when (null (getf args :create-if-missing))
-    (setf (getf args :create-if-missing) T))
-  ;; FIXME: I don't flatten the :key option, I'm not sure why Ferret does.
-  (with-slots (key dir options close-dir-p auto-flush-p create-p analyzer writer
-	       default-search-field default-field) self
-    (setf key (getf args :key))
-    (cond ((getf args :path)
-	   (setf dir (make-fs-directory (getf args :path) (getf options :create)))
-	   (setf (getf args :close-dir) T))
-	  ((getf args :dir)
-	   (setf dir (getf args :dir)))
-	  (T
-	   (setf (getf args :create) T)
-	   (setf dir (make-instance 'ram-directory))))
-    (setf options args)
-    ;; Create the index if need be
-    (setf writer (make-instance 'index-writer
-				:directory dir))
-    (setf (getf options :analyzer) (setf analyzer (analyzer writer)))
-    (close writer)
-    (setf writer nil)
-    ;; Only want to create the first time, if at all.
-    (setf (getf options :create) NIL)
-    (setf close-dir-p (getf options :close-dir))
-    (setf (getf options :close-dir) NIL)
-    (setf auto-flush-p (getf options :auto-flush))
-    (setf default-search-field (or (getf options :default-search-field)
-				   (getf options :default-field)
-				   "*"))
-    (setf default-field (or (getf options :default-field) ""))
-    (when (not (getf options :handle-parse-errors))
-      (setf (getf options :handle-parse-errors) T))))
+(defmethod initialize-instance :after ((self index) &rest args &key &allow-other-keys)
+  (with-slots (options) self
+    (setf options (copy-list args))
+    (setf (getf options :default-search-field) (getf options :default-search-field)
+	  (getf options :default-field) (getf options :default-field))
+    (when (null (getf options :create-if-missing-p))
+      (setf (getf options :create-if-missing-p) T))
+    ;; FIXME: I don't flatten the :key option, I'm not sure why Ferret does.
+    (with-slots (key dir options close-dir-p auto-flush-p create-p analyzer writer
+		     default-search-field default-field) self
+      (setf key (getf options :key))
+      (cond ((getf options :path)
+	     (setf dir (make-fs-directory (getf options :path)
+					  :create-p (or (getf options :create-p)
+							(getf options :create-if-missing-p))))
+	     (setf (getf options :close-dir-p) T))
+	    ((getf options :dir)
+	     (setf dir (getf options :dir)))
+	    (T
+	     (setf (getf options :create-p) T)
+	     (setf dir (make-instance 'ram-directory))))
+      ;; Create the index if need be
+      (setf writer (apply #'make-instance 'index-writer
+			  :directory dir
+			  options))
+      (setf (getf options :analyzer) (setf analyzer (analyzer writer)))
+      (close writer)
+      (setf writer nil)
+      ;; Only want to create the first time, if at all.
+      (setf (getf options :create-p) NIL)
+      (setf close-dir-p (getf options :close-dir-p))
+      (setf (getf options :close-dir-p) NIL)
+      (setf auto-flush-p (getf options :auto-flush))
+      (setf default-search-field (or (getf options :default-search-field)
+				     (getf options :default-field)
+				     "*"))
+      (setf default-field (or (getf options :default-field) ""))
+      (when (not (getf options :handle-parse-errors-p))
+	(setf (getf options :handle-parse-errors-p) T)))))
     
 
 (defmethod close ((self index))
@@ -109,8 +111,8 @@
 	  (query-delete self query))))
     (let ((writer (writer self)))
       (setf (slot-value self 'has-writes-p) T)
-      (add-document (slot-value self 'writer) doc
-		    (if analyzer analyzer (analyzer writer)))
+      (add-document-to-index-writer (slot-value self 'writer) fdoc
+				    (if analyzer analyzer (analyzer writer)))
       (when (slot-value self 'auto-flush-p)
 	(flush self)))))
 
@@ -201,7 +203,7 @@
 			  (string new-val))))
 	     (delete reader id)
 	     (let ((writer (writer self)))
-	       (add-document writer document))))
+	       (add-document-to-index-writer writer document))))
 	  (T
 	   (error "Cannot update for id ~S" id)))
     (when (slot-value self 'auto-flush-p)
@@ -229,7 +231,7 @@
 	    (delete reader id)))))
     (let ((writer (writer self)))
       (dolist (doc (reverse docs-to-add))
-	(add-document writer doc))
+	(add-document-to-index-writer writer doc))
       (when (slot-value self 'auto-flush-p)
 	(flush self)))))
 
@@ -276,7 +278,7 @@
 	     (setf dir (make-instance 'fs-directory
 				      :path directory
 				      :create-p create-p))
-	     (setf (getf options :close-dir) T))
+	     (setf (getf options :close-dir-p) T))
 	    ((typep directory 'directory)
 	     (setf dir directory)))
       (add-indexes (writer self) (vector old-dir)))))

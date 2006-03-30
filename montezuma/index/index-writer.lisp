@@ -35,16 +35,17 @@
     :max-field-length    *index-writer-default-max-field-length*
     :term-index-interval *index-writer-default-term-index-interval*))
 
-(defmethod initialize-instance :after ((self index-writer) &key (create-p NIL))
+(defmethod initialize-instance :after ((self index-writer) &key (create-p NIL) (create-if-missing-p NIL) &allow-other-keys)
   (with-slots (directory ram-directory segment-infos) self
     (cond ((null directory) (break) (setf directory (make-instance 'ram-directory)))
-	  ((stringp directory) (setf directory (make-fs-directory directory :create-p T))))
+	  ((stringp directory) (setf directory (make-fs-directory directory :create-p create-p))))
     (if create-p
 	(write-segment-infos segment-infos directory)
-	(progn
-	  (read-segment-infos segment-infos directory)
-	  ;; FIXME: handle missing segment infos and :create-if-missing-p
-	  ))
+	(handler-case (read-segment-infos segment-infos directory)
+	  (error (e)
+	    (if create-if-missing-p
+		(write-segment-infos segment-infos directory)
+		(error e)))))
     (setf ram-directory (make-instance 'ram-directory))))
 
 (defmethod close ((self index-writer))
