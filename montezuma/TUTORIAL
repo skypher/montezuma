@@ -9,6 +9,7 @@ Start by including the Ferret module.
 
 | Lisp
   (asdf:oos 'asdf:load-op '#:montezuma)
+  (in-package #:montezuma) ; For now
 
 === Creating an index
 
