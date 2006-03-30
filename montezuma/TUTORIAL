@@ -132,8 +132,8 @@ phrase "quick brown fox" in the content field. We'd write;
     puts "Document #{doc} found with a score of #{score}"
   end
 
-| Lisp
-  (dolist (result (search-each *index* "content:\"quick brown fox\""))
+| Lisp -- doesn't work
+  (dolist (result (enumerate (search-each *index* "content:\"quick brown fox\"")))
     (destructuring-bind (doc score) result
       (format T "~&Document ~S found with score of ~S" doc score)))
 
@@ -146,8 +146,8 @@ there as well. So we could expand our search like this;
     puts "Document #{doc} found with a score of #{score}"
   end
 
-| Lisp
-  (dolist (result (search-each *index* "content:\"quick|fast brown| red box\""))
+| Lisp -- doesn't work
+  (dolist (result (enumerate (search-each *index* "content:\"quick|fast brown| red box\"")))
     (destructuring-bind (doc score) result
       (format T "~&Document ~S found with score of ~S" doc score)))
 
@@ -159,8 +159,8 @@ What if we want to find all documents entered on or after 5th of September,
     puts "Document #{doc} found with a score of #{score}"
   end
 
-| Lisp
-  (dolist (result (search-each *index* "date:( >= 20050905 *:(ruby OR rails)"))
+| Lisp -- doesn't work
+  (dolist (result (enumerate (search-each *index* "date:( >= 20050905 *:(ruby OR rails)")))
     (destructuring-bind (doc score) result
       (format T "~&Document ~S found with score of ~S" doc score)))
 
@@ -249,13 +249,23 @@ Again, we can use the the id field as above. This time though every document
 that matches the id will be deleted. Again, it is probably a good idea if you
 somehow ensure that your *ids* are kept unique.
 
+| Ruby
   id = "23453422"
   index.delete(id)
 
+| Lisp
+  (let ((id "23453422"))
+    (delete *index* id))
+
 Or;
 
+| Ruby
   id = Index::Term.new("key", "23452345")
   index.delete(id)
+
+| Lisp
+  (let ((id (make-term "key" "23452345")))
+    (delete *index* id))
   
 === Onwards
 
