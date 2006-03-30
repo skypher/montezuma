@@ -158,27 +158,46 @@ back. By itself this isn't much use to us. Getting the data from the index is
 very straightforward. For example if we want the title field form the 3rd
 document type;
   
+| Ruby
   index[2]["title"]
+
+| Lisp
+  (document-field (get-doc *index* 2) "title")
 
 NOTE: documents are indexed from 0.
 
 The default field is an empty string when you use the simple string document so
 to access those strings you'll have type;
 
+| Ruby
   index << "This is a document"
   index[0][""]
+
+| Lisp
+  (add-document-to-index *index* "This is a document")
+  (document-field (get-doc *index* 0) "")
 
 Let's go back to the database example above. If we store all of our documents
 with an id then we can access that field using the id. As long as we called
 our id field "id" we can do this
 
+| Ruby
   id = "89721347"
   index[id]["title"]
 
+| Lisp
+  (let ((id "89721347"))
+    (document-field (get-doc *index* id) "title"))
+
 If however we called our id field "key" we'll have to do this;
 
+| Ruby
   id = Index::Term.new("key", "89721347")
   index[id]["title"]
+
+| Lisp
+  (let ((id (make-term "key" "89721347")))
+    (document-field (get-doc *index* id) "title"))
 
 Pretty simple huh? You should note though that if there are more then one
 document with the same *id* or *key* then only the first one will be returned
