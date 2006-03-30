@@ -83,9 +83,9 @@ store the id;
   index << {:id => row.id, :title => row.title, :date => row.date}
 
 | Lisp
-  (add-document-to-index *index* '(("id" . (id row))
-				   ("title" . (title row))
-				   ("date" . (date row))))
+  (add-document-to-index *index* `(("id"    . ,(id row))
+				   ("title" . ,(title row))
+				   ("date"  . ,(date row))))
 
 The methods above while store all of the input data as well tokenizing and
 indexing it. Sometimes we won't want to tokenize (divide the string into
