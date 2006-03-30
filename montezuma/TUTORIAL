@@ -114,7 +114,7 @@ eg;
      (add-field doc (make-field "data"  (data row)  :stored T   :index :tokenized))
      (add-field doc (make-field "image" (image row) :stored T   :index NIL))
      (add-document-to-index *index* doc))
-|#
+
 
 You can also compress the data that you are storing or store term vectors with
 the data. Read more about this in Ferret::Document::Field.
@@ -127,24 +127,42 @@ Index#search_each. The first method returns a Ferret::Index::TopDocs object.
 The second we'll show here. Lets say we wanted to find all documents with the
 phrase "quick brown fox" in the content field. We'd write;
 
+| Ruby
   index.search_each('content:"quick brown fox"') do |doc, score|
     puts "Document #{doc} found with a score of #{score}"
   end
+
+| Lisp
+  (dolist (result (search-each *index* "content:\"quick brown fox\""))
+    (destructuring-bind (doc score) result
+      (format T "~&Document ~S found with score of ~S" doc score)))
 
 But "fast" has a pretty similar meaning to "quick" and we don't mind if the
 fox is a little red. Also, the phrase could be in the title so we'll search
 there as well. So we could expand our search like this;
 
+| Ruby
   index.search_each('title|content:"quick|fast brown|red fox"') do |doc, score|
     puts "Document #{doc} found with a score of #{score}"
   end
 
+| Lisp
+  (dolist (result (search-each *index* "content:\"quick|fast brown| red box\""))
+    (destructuring-bind (doc score) result
+      (format T "~&Document ~S found with score of ~S" doc score)))
+
 What if we want to find all documents entered on or after 5th of September,
 2005 with the words "ruby" or "rails" in any field. We could type something like;
 
+| Ruby
   index.search_each('date:( >= 20050905) *:(ruby OR rails)') do |doc, score|
     puts "Document #{doc} found with a score of #{score}"
   end
+
+| Lisp
+  (dolist (result (search-each *index* "date:( >= 20050905 *:(ruby OR rails)"))
+    (destructuring-bind (doc score) result
+      (format T "~&Document ~S found with score of ~S" doc score)))
 
 Ferret has quite a complex query language. To find out more about Ferret's
 query language, see Ferret::QueryParser. You can also construct even more
