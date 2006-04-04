@@ -40,6 +40,12 @@ here, eg;
   index = Index::Index.new(:path => '/path/to/index',
                            :analyzer => WhiteSpaceAnalyzer.new)
 
+  // GWK - I had to include the :create and the Analysis::
+  index = Index::Index.new(:path => '/Users/gwking/temporary/ferret/test',
+                           :create => true,
+                           :analyzer => Analysis::WhiteSpaceAnalyzer.new)
+
+
 | Lisp
   (defparameter *index* (make-instance 'index
 				       :path "/path/to/index"
@@ -87,7 +93,7 @@ store the id;
 				   ("title" . ,(title row))
 				   ("date"  . ,(date row))))
 
-The methods above while store all of the input data as well tokenizing and
+The methods above will store all of the input data as well tokenizing and
 indexing it. Sometimes we won't want to tokenize (divide the string into
 tokens) the data. For example, we might want to leave the title as a complete
 string and only allow searchs for that complete string. Sometimes we won't
@@ -98,7 +104,11 @@ index it. For example, if we are storing images in the index, we won't want to
 index them. All of this can be done using Ferret's Ferret::Document module.
 eg;
 
+  // Ruby gets an error because it donesn't know what 'row' is
+  // the assumption is that we're iterating over a DB cursor
+
 | Ruby
+
   include Ferret::Document
   doc = Document.new
   doc << Field.new("id",    row.id,    Field::Store::NO,  Field::Index::UNTOKENIZED)
