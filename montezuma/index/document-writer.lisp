@@ -211,7 +211,7 @@
 			 (length-norm similarity (field-name fi) (aref field-lengths i))))
 		(norms (open-segment-file directory segment (format nil "f~S" i) :output)))
 	    (unwind-protect
-		 (write-byte norms (encode-norm norm))
+		 (write-byte norms (similarity-encode-norm norm))
 	      (close norms))))))))
 
 (defun posting-key (term)

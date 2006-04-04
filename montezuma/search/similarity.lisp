@@ -15,22 +15,80 @@
   1)
 |#
 
+;; Verified (for a couple values anyway) to be consistent with
+;; Lucene svn.  I couldn't find enough documentation on the
+;; Ferret/Ruby way to replicate it in Lisp.
+
 (defun similarity-byte-to-float (b)
-  b)
+  (assert (and (>= 255 b 0)))
+  (byte-to-float315 b))
 
 (defun similarity-float-to-byte (f)
-  f)
+  (float-to-byte315 (float f 1.0s0)))
+
+
+;; Corresponds to org.apache.lucene.util.SmallFloat.byte315ToFloat.
+
+(defun byte315-to-float (b)
+  (if (= b 0)
+      0.0
+      (let ((bits (ash (logand b #xff) (- 24 3))))
+	(incf bits (ash (- 63 15) 24))
+	(int-bits-to-float bits))))
+
+
+;; Corresponds to org.apache.lucene.util.SmallFloat.floatToByte315.
+
+(defun float-to-byte315 (f)
+  (let* ((bits (float-to-raw-int-bits f))
+	 (smallfloat (ash bits (- (- 24 3)))))
+    (cond ((< smallfloat (ash (- 63 15) 3))
+	   (if (<= bits)
+	       0
+	       1))
+	  ((>= smallfloat (+ (ash (- 63 15) 3) #x100))
+	   -1)
+	  (T
+	   (- smallfloat (ash (- 63 15) 3))))))
+
+
+;; Uses the algorithm described in
+;; <http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Float.html#intBitsToFloat(int)>
+
+(defun int-bits-to-float (bits)
+  (let* ((s (if (= (ash bits -31) 0) 1 -1))
+	 (e (logand (ash bits -23) #xff))
+	 (m (if (= e 0)
+		(ash (logand bits #x7fffff) 1)
+		(logior (logand bits #x7fffff) #x800000))))
+    (float (* s m (expt 2 (- e 150))))))
+
+
+;; Based on Pascal Bourguignon's description of his gen-ieee-encoding
+;; macro (see <http://paste.lisp.org/display/4371>).  The only
+;; difference is that his macro generated code that added 151 to the
+;; exponent instead of 150, which didn't give results that matched
+;; Java's.  I have only a vague idea of why changing it to add 150 to
+;; the exponent gives us correct results.
+
+(defun float-to-raw-int-bits (f)
+  (multiple-value-bind (mantissa exponent sign)
+      (integer-decode-float f)
+    (dpb (if (minusp sign) 1 0)
+	 (byte 1 31)
+	 (dpb (+ 150 exponent) (byte 8 23) (ldb (byte 23 0) mantissa)))))
+    
 
 (defparameter *norm-table* 
   (make-array 256
               :initial-contents (loop for i from 0 below 256
                                       collecting (similarity-byte-to-float i))))
 
-(defun similarity-encode-norm (b)
-  (aref *norm-table* (logand b #xff)))
-
-(defun similarity-decode-norm (f)
+(defun similarity-encode-norm (f)
   (similarity-float-to-byte f))
+
+(defun similarity-decode-norm (b)
+  (aref *norm-table* (logand b #xff)))
 
 (defclass similarity ()
   ((default-similarity-class :allocation :class :initform 'default-similarity
