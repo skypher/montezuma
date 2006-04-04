@@ -88,6 +88,7 @@
 
 (defparameter *passed-tests* '())
 (defparameter *failed-tests* '())
+(defparameter *skipped-test-count* 0)
 
 (defun test-failure (name expr value expected-value condition)
   (assert (not (assoc name *failed-tests*)) nil "There is already a test named ~S." name)
@@ -112,7 +113,8 @@
 
 (defun begin-tests ()
   (setf *passed-tests* '())
-  (setf *failed-tests* '()))
+  (setf *failed-tests* '())
+  (setf *skipped-test-count* 0))
 
 (defun end-tests ()
   (let ((num-failed (length *failed-tests*))
@@ -121,6 +123,8 @@
 	    num-failed
 	    (+ num-failed num-passed)
 	    (/ num-failed (+ num-failed num-passed)))
+    (when (> *skipped-test-count* 0)
+      (format T "~&(At least ~S test~:P were skipped.)" *skipped-test-count*))
     (= num-failed 0)))
 
 
@@ -143,17 +147,24 @@
 	  (add-test-function ',name
 			     (function ,name))))
 
+(defun run-test-function (test)
+  (restart-case (funcall test)
+    (skip-test ()
+      :report (lambda (stream) (format stream "Skip this test."))
+      (incf *skipped-test-count*)
+      (values nil T))))
+
 (defun run-tests ()
   (begin-tests)
   (dolist (pair *test-functions*)
-      (funcall (cdr pair)))
+    (run-test-function (cdr pair)))
   (end-tests))
 
 (defun run-test-named (name)
   (begin-tests)
   (let ((test (assoc name *test-functions*)))
     (if test
-	(funcall (cdr test))
+	(run-test-function (cdr test))
 	(error "There is no test named ~S." name))))
 
 
