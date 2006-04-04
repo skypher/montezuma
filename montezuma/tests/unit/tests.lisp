@@ -133,6 +133,9 @@
 ;; (run-tests) is executed (and can be run individually by
 ;; run-test-named).
 
+(defvar *test-functions* '()
+  "A place to store our test functions... Needs to appear before #'run-tests, etc.")
+
 (defmacro deftestfun (name &body body)
   `(progn (defun ,name ()
 	    (format T "~&;; ~S " ',name)
@@ -155,8 +158,6 @@
 
 
 ;; ----------
-
-(defvar *test-functions* '())
 
 (defun add-test-function (name function)
   (let ((pair (assoc name *test-functions*)))
