@@ -25,7 +25,8 @@
 		    (:file "strings")
 		    (:file "tables")
 		    (:file "bit-vector")
-		    (:file "files"))
+		    (:file "files")
+                    (:file "comparable"))
        :depends-on ("package"))
      (:module "store"
        :components ((:file "directory")
@@ -47,7 +48,16 @@
 		    (:file "analyzers"           :depends-on ("standard-tokenizer")))
        :depends-on ("package" "util"))
      (:module "search"
-       :components ((:file "similarity")))
+              :components ((:file "api")
+                           (:file "similarity")
+                           (:file "boolean-clause")
+                           (:file "scorer")
+                           (:file "score-doc")
+                           (:file "score-doc-comparator")
+                           (:file "weight")
+                           (:file "query")
+                           (:file "term-query"))
+              :depends-on ("package"))
      (:module "index"
        :components ((:file "index-filenames")
 		    (:file "term")
@@ -115,6 +125,9 @@
 				      (:file "tc-whitespace-analyzer")
 				      (:file "tc-standard-analyzer"))
 			 :depends-on ("tests"))
+                       (:module "search"
+                         :components ((:file "tc-similarity"))
+                         :depends-on ("tests"))
 		       (:module "index"
 			 :components ((:file "tc-term")
 				      (:file "tc-term-info")
