@@ -15,9 +15,6 @@
     "tvf"
     "tvp"))
 
-
-  
-
 (defclass index-reader ()
   ((directory :initarg :directory :reader directory)
    (close-directory-p :initarg :close-directory-p :initform NIL)
@@ -108,7 +105,7 @@
   (error "~S is not implemented by ~S." 'terms-from self))
 
 (defmethod term-doc-freq ((self index-reader) term)
-  (error "~S is not implemented by ~S." 'doc-freq self))
+  (error "~S is not implemented by ~S." 'term-doc-freq self))
 
 (defmethod term-docs-for ((self index-reader) term)
   (let ((term-docs (term-docs self)))
