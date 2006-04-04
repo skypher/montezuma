@@ -71,6 +71,10 @@
     ;; to-path.  This is terrible, just terrible:
     (when (null (pathname-type to-path))
       (setf to-path (make-pathname :type :unspecific :defaults to-path)))
+    ;; cl:rename-file is allowed to throw an error if the to-path
+    ;; already exists--we want to just overwrite it.
+    (when (probe-file to-path)
+      (cl:delete-file to-path))
     (cl:rename-file from-path to-path)))
 
 (defmethod modified-time ((self fs-directory) file)
