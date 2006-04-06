@@ -21,7 +21,7 @@
 
 (defun similarity-byte-to-float (b)
   (assert (and (>= 255 b 0)))
-  (byte-to-float315 b))
+  (byte315-to-float b))
 
 (defun similarity-float-to-byte (f)
   (float-to-byte315 (float f 1.0s0)))
