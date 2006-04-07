@@ -74,13 +74,10 @@
 
 
 (defmethod initialize-copy :after ((self buffered-index-input) o)
-  (with-slots (buffer buffer-size buffer-start buffer-length buffer-position) self
-    (let ((b (slot-value o 'buffer)))
-      (setf buffer (make-array (length b) :initial-contents b)))
-    (setf buffer-size (slot-value o 'buffer-size))
-    (setf buffer-start (slot-value o 'buffer-start))
-    (setf buffer-length (slot-value o 'buffer-length))
-    (setf buffer-position (slot-value o 'buffer-position))))
+  (with-slots (buffer) self
+    (let ((other-buffer (slot-value o 'buffer)))
+    (when other-buffer
+      (setf buffer (clone other-buffer))))))
 
 (defmethod read-byte ((self buffered-index-input))
   (with-slots (buffer-position buffer-length buffer) self

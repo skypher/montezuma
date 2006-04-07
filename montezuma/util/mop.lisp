@@ -32,3 +32,29 @@
 (defmethod initialize-copy (self o)
   (declare (ignore self) (ignore o)))
 
+
+
+(defmethod clone-object ((array array))
+  (multiple-value-bind (displaced-to displaced-index-offset)
+      (array-displacement array)
+    (let ((dimensions (array-dimensions array))
+          (element-type (array-element-type array))
+          (adjustable (adjustable-array-p array))
+          (fill-pointer (when (array-has-fill-pointer-p array)
+                          (fill-pointer array))))
+      (let ((new-array
+             (apply #'make-array
+                    (list* dimensions
+                           :element-type element-type
+                           :adjustable adjustable
+                           :fill-pointer fill-pointer
+                           :displaced-to displaced-to
+                           (if displaced-to
+                               (list :displaced-index-offset
+                                     displaced-index-offset)
+                               nil)))))
+        (unless displaced-to
+          (dotimes (i (array-total-size array))
+            (setf (row-major-aref new-array i)
+                  (row-major-aref array i))))
+        new-array))))

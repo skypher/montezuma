@@ -1,20 +1,26 @@
 (in-package #:montezuma)
 
 (defclass term-positions-queue (priority-queue)
-  ())
+  ()
+  (:default-initargs
+   :max-size 1))
 
-(defmethod initialize-instance :around ((self term-positions-queue) &key term-positions)
-  (call-next-method :size (length term-positions))
+(defmethod initialize-instance :after ((self term-positions-queue) &key term-positions)
+  (with-slots (heap max-size) self
+    (setf max-size (length term-positions))
+    (initialize-heap self))
   (dolist (tp term-positions)
     (when (next tp)
       (queue-push self tp))))
 
 (defmethod less-than ((self term-positions-queue) tp1 tp2)
-  (document< tp1 tp2))
+  (< (doc tp1) (doc tp2)))
 
 
 (defclass multiple-term-doc-pos-enum (term-doc-enum)
-  ((tps-queue)
+  ((doc :reader doc)
+   (freq :reader freq)
+   (tps-queue)
    (pos-list :initform '())))
 
 (defmethod initialize-instance :after ((self multiple-term-doc-pos-enum) &key reader terms)
@@ -30,6 +36,8 @@
     (if (= (size tps-queue) 0)
 	NIL
 	(progn
+	  (setf pos-list '())
+	  (setf doc (doc (queue-top tps-queue)))
 	  (loop
 	     do (let ((tps (queue-top tps-queue)))
 		  (dotimes (i (freq tps))

@@ -136,9 +136,8 @@
       (cl:close file))))
 
 (defmethod initialize-copy :after ((self fs-index-input) o)
-  (with-slots (file is-clone-p size) self
-    (setf file (slot-value o 'file))
-    (setf size (slot-value o 'size))
+  (declare (ignore o))
+  (with-slots (is-clone-p) self
     (setf is-clone-p T)))
 
 (defmethod read-internal ((self fs-index-input) b offset length)

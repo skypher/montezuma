@@ -7,7 +7,7 @@
 	  (iw (make-instance 'index-writer
 			     :directory dir
 			     :analyzer (make-instance 'whitespace-analyzer)
-			     :create-p T))
+			     :create-if-missing-p T))
 	  (documents (index-test-helper-prepare-search-docs)))
      (setf (fixture-var 'dir) dir
 	   (fixture-var 'documents) documents)
@@ -22,8 +22,8 @@
 	 (t2 (make-term "field" "brown"))
 	 (t3 (make-term "field" "hairy")))
      (let ((mtdpe (make-instance 'multiple-term-doc-pos-enum
-				 :asdfasdf (fixture-var 'ir)
-				 :termies (list t1 t2 t3))))
+				 :reader (fixture-var 'ir)
+				 :terms (list t1 t2 t3))))
        (test mtdpe-1 (next mtdpe) T #'bool=)
        (test mtdpe-2 (doc mtdpe) 1)
        (test mtdpe-3 (freq mtdpe) 1)

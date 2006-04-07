@@ -15,12 +15,8 @@
 		  (subseq text-buf 0 text-length)
 		  nil)))))
 
-(defmethod clone-object ((object term-buffer))
-  (let ((copy (allocate-instance (class-of object))))
-    (loop for slot in (class-slots (class-of object))
-       do (setf (slot-value copy (slot-definition-name slot))
-		(slot-value object (slot-definition-name slot))))
-    copy))
+(defmethod initialize-copy :after ((self term-buffer) other)
+  (set-from-term-buffer self other))
 
 (defmethod text ((self term-buffer))
   (with-slots (text-buf text-length) self
@@ -111,7 +107,7 @@
   (with-slots (text-length text-buf field term) self
     (setf text-length (slot-value other 'text-length))
     (when (slot-value other 'text-buf)
-      (setf text-buf (copy-seq (slot-value other 'text-buf))))
+      (setf text-buf (clone (slot-value other 'text-buf))))
     (setf field (slot-value other 'field))
     (setf term (slot-value other 'term))))
 

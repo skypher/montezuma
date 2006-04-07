@@ -278,15 +278,6 @@
 		  (setf result (read-term-vectors self fields tvf-pointers)))))))))
     result))
 
-(defmethod clone-object ((self term-vectors-reader))
-  (with-slots (tvx tvd tvf) self
-    (if (or (null tvx) (null tvd) (null tvf))
-	nil
-	(let ((clone self))
-	  (setf tvx (clone tvx))
-	  (setf tvd (clone tvd))
-	  (setf tvf (clone tvf))
-	  clone))))
 
 (defmethod read-term-vectors ((self term-vectors-reader) fields tvf-pointers)
   (let ((tvs (make-array (length fields))))

@@ -9,13 +9,31 @@
 
 (defmethod check-queue ((self priority-queue))
   (with-slots (size heap element-type) self
-    (assert (every #'(lambda (elt) (typep elt element-type))
-		   (subseq heap 1 (+ size 1))))))
+    (let ((active-elements (subseq heap 1 (+ size 1))))
+      (assert (every #'(lambda (elt) (typep elt element-type))
+		     active-elements))
+      #|
+      (when (> size 0)
+	(let ((min (reduce #'(lambda (&optional a b)
+			       (if (or (null b) (less-than self a b))
+				   a
+				   b))
+			   active-elements)))
+	  (setf *smi-a* min)
+	  (setf *smi-b* (queue-top self))
+	  (assert (not (less-than self min (queue-top self))) ()
+		  "Queue min is ~S, top is ~S" min (queue-top self))))
+      |#
+      )))
+			    			  
 
 (defmethod initialize-instance :after ((queue priority-queue) &key)
-  (with-slots (heap max-size) queue
-    (setf heap (make-array (+ max-size 1))))
+  (initialize-heap queue)
   (check-queue queue))
+
+(defmethod initialize-heap ((queue priority-queue))
+  (with-slots (heap max-size) queue
+    (setf heap (make-array (+ max-size 1)))))
 
 (defmethod print-object ((self priority-queue) stream)
   (print-unreadable-object (self stream :identity T :type T)
@@ -47,8 +65,10 @@
   (check-queue queue))
 
 (defmethod queue-top ((queue priority-queue))
-  (with-slots (heap) queue
-    (aref heap 1)))
+  (with-slots (heap size) queue
+    (if (> size 0)
+	(aref heap 1)
+	nil)))
 
 (defmethod queue-pop ((queue priority-queue))
   (with-slots (size heap) queue
@@ -104,7 +124,3 @@
 	  (setf j k)))
       (setf (aref heap i) node)))
   (check-queue queue))
-
-
-    
-	  

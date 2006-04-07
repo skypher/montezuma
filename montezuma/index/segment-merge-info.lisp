@@ -12,8 +12,11 @@
   (with-slots (term-enum term-buffer) self
     (setf term-buffer (term-buffer term-enum))))
 
+(defmethod print-object ((self segment-merge-info) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (format stream "term-buffer: ~S base: ~S" (term-buffer self) (base self))))
+
 (defmethod positions ((self segment-merge-info))
-  ;; FIXME: what does "@postings ||= @reader.term_positions()" mean?
   (with-slots (postings reader) self
     (if postings
 	postings
