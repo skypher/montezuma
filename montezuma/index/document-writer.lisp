@@ -76,7 +76,7 @@
 			  (add-position self field-name string-value position nil)
 			  (incf position)))
 		    (incf offset (length string-value))
-		    (incf length 1))
+		    (incf length))
 		  (let* ((reader (reader-value field))
 			 (stream (token-stream analyzer field-name reader)))
 		    (unwind-protect
@@ -120,6 +120,7 @@
     (let ((posting (gethash (posting-key term-buffer) posting-table)))
       (if posting
 	  (let ((freq (freq posting)))
+	    (assert (= freq (length (positions posting))))
 	    (vector-push-extend position (positions posting))
 	    (vector-push-extend tv-offset-info (offsets posting))
 	    ;; FIXME: the ferret code is weird here.
@@ -163,7 +164,7 @@
 		   (set-values ti 1 (pos freq) (pos prox) -1)
 		   (add-term tis-writer (term posting) ti)
 		   (let ((posting-freq (freq posting)))
-		     (if (= posting-freq -1)
+		     (if (= posting-freq 1)
 			 (write-vint freq 1)
 			 (progn
 			   (write-vint freq 0)
