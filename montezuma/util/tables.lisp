@@ -15,6 +15,7 @@
   (set-table-value table key value))
 
 (defmethod table-like-p (thing)
+  (declare (ignore thing))
   NIL)
 
 ;; Hash tables
