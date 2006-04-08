@@ -105,22 +105,15 @@
 (defmethod size ((queue priority-queue))
   (length (slot-value queue 'contents)))
 
-(defmethod queue-pop ((queue priority-queue) &key (check T))
-  (when check (check-queue queue :pre-pop))
+(defmethod queue-pop ((queue priority-queue))
   (with-slots (contents) queue
-    priority-queue
     (if (zerop (length contents))
 	nil
-	(let ((result (heap-extract-maximum contents :test #'(lambda (a b) (less-than queue a b)))))
-	  (when check (check-queue queue :post-pop))
-	  result))))
-	  
+	(heap-extract-maximum contents :test #'(lambda (a b) (less-than queue a b))))))
 
 (defmethod queue-push ((queue priority-queue) new-item)
-  (check-queue queue :pre-push)
   (with-slots (contents) queue
-    (heap-insert contents new-item :test #'(lambda (a b) (less-than queue a b))))
-  (check-queue queue :post-push))
+    (heap-insert contents new-item :test #'(lambda (a b) (less-than queue a b)))))
 
 (defmethod queue-top ((queue priority-queue))
   (with-slots (contents) queue
@@ -129,7 +122,7 @@
 	  (heap-maximum contents))))
 
 (defmethod adjust-top ((queue priority-queue))
-  (let ((top (queue-pop queue :check NIL)))
+  (let ((top (queue-pop queue)))
     (queue-push queue top)))
 
 (defmethod queue-clear ((queue priority-queue))
