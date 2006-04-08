@@ -46,23 +46,18 @@
 (defmethod get-current-version ((self index-reader) directory)
   (segment-infos-read-current-version directory))
 
-(defmethod get-term-vectors ((self index-reader) doc-number)
-  (error "~S is not implemented by ~S." 'get-term-vectors self))
+(defgeneric get-term-vectors (index-reader doc-number))
 
-(defmethod get-term-vector ((self index-reader) doc-number field)
-  (error "~S is not implemented by ~S." 'get-term-vector self))
+(defgeneric get-term-vector (index-reader doc-number field))
 
 (defmethod index-reader-index-exists (directory)
   (file-exists-p directory "segments"))
 
-(defmethod num-docs ((self index-reader))
-  (error "~S is not implemented by ~S." 'num-docs self))
+(defgeneric num-docs (index-reader))
 
-(defmethod max-doc ((self index-reader))
-  (error "~S is not implemented by ~S." 'max-doc self))
+(defgeneric max-doc (index-reader))
 
-(defmethod get-document ((self index-reader) n)
-  (error "~S is not implemented by ~S." 'get-doc self))
+(defgeneric get-document (index-reader n))
 
 (defmethod get-document-with-term ((self index-reader) term)
   (let ((docs (term-docs-for self term)))
@@ -74,20 +69,16 @@
 		 nil)
 	  (close docs)))))
 
-(defmethod document-deleted-p ((self index-reader) n)
-  (error "~S is not implemented by ~S." 'document-deleted-p self))
+(defgeneric document-deleted-p (index-reader n))
 
-(defmethod has-deletions-p ((self index-reader))
-  (error "~S is not implemented by ~S." 'has-deletions-p self))
+(defgeneric has-deletions-p (index-reader))
 
 (defmethod has-norms-p ((self index-reader) field)
   (get-norms self field))
 
-(defmethod get-norms ((self index-reader) field)
-  (error "~S is not implemented by ~S." 'get-norms self))
+(defgeneric get-norms (index-reader field))
 
-(defmethod get-norms-info ((self index-reader) field bytes offset)
-  (error "~S is not implemented by ~S." 'get-norms-info self))
+(defgeneric get-norms-info (index-reader field bytes offset))
 
 (defmethod set-norm ((self index-reader) doc field value)
   (when (floatp value)
@@ -95,33 +86,27 @@
   (do-set-norm self doc field value)
   (setf (slot-value self 'has-changes-p) T))
 
-(defmethod do-set-norm ((self index-reader) doc field value)
-  (error "~S is not implemented by ~S." 'do-set-norm self))
+(defgeneric do-set-norm (index-reader doc field value))
 
-(defmethod terms ((self index-reader))
-  (error "~S is not implemented by ~S." 'terms self))
+(defgeneric terms (index-reader))
 
-(defmethod terms-from ((self index-reader) tee)
-  (error "~S is not implemented by ~S." 'terms-from self))
+(defgeneric terms-from (index-reader tee))
 
-(defmethod term-doc-freq ((self index-reader) term)
-  (error "~S is not implemented by ~S." 'term-doc-freq self))
+(defgeneric term-doc-freq (index-reader term))
 
 (defmethod term-docs-for ((self index-reader) term)
   (let ((term-docs (term-docs self)))
     (seek term-docs term)
     term-docs))
 
-(defmethod term-docs ((self index-reader))
-  (error "~S is not implemented by ~S." 'term-docs self))
+(defgeneric term-docs (index-reader))
 
 (defmethod term-positions-for ((self index-reader) term)
   (let ((term-positions (term-positions self)))
     (seek term-positions term)
     term-positions))
 
-(defmethod term-positions ((self index-reader))
-  (error "~S is not implemented by ~S." 'term-positions self))
+(defgeneric term-positions (index-reader))
 
 ;; FIXME: locks.  ugh.
 ;;(defmethod acquire-write-lock ...)

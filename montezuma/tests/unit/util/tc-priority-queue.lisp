@@ -52,7 +52,7 @@
 	(when (> (elt prev 0) (elt curr 0))
 	  (setf success NIL))
 	(setf curr (queue-pop pq)))
-      (test priority-queue-adjust-top-1 T T))))
+      (test priority-queue-adjust-top-1 success T))))
     
 
 (deftestfun test-priority-queue-stress
@@ -82,5 +82,5 @@
 	(when (> prev curr)
 	  (setf success NIL))
 	(setf curr (queue-pop pq)))
-      (test priority-queue-stress-2 T T))))
+      (test priority-queue-stress-2 success T))))
 

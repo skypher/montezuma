@@ -258,7 +258,11 @@
     (let ((deletions-to-retry '()))
       (dolist (filename filenames)
 	(handler-case (delete-file directory filename)
-	  (error (e) (push filename deletions-to-retry))))
+	  (error (e)
+	    (declare (ignore e))
+	    ;; FIXME: Can we do no better than blindly trying again on
+	    ;; any error?
+	    (push filename deletions-to-retry))))
       (reverse deletions-to-retry))))
     
 (defmethod read-deletable-files ((self index-writer))
