@@ -123,7 +123,7 @@
       i)))
 
 (defmethod skip-prox ((self segment-term-doc-enum) prox-pointer)
-  )
+  (declare (ignore prox-pointer) (ignorable self)))
 
 (defmethod skip-to ((self segment-term-doc-enum) target)
   (with-slots (doc-freq count doc skip-interval skip-stream skip-doc freq-pointer freq-stream
