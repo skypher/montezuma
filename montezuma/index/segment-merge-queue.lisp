@@ -11,7 +11,7 @@
       (term-buffer< (term-buffer sti-a) (term-buffer sti-b))))
 
 (defmethod close ((self segment-merge-queue))
-  (with-slots (heap size) self
-    (dosequence (sti (subseq heap 1 (+ size 1)))
-      (when sti
-	(close sti)))))
+  (do ((sti (queue-pop self) (queue-pop self)))
+      ((null sti))
+    (close sti)))
+
