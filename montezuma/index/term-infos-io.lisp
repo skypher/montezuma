@@ -40,12 +40,12 @@
 ;; FIXME: reenable this test.
 ;;    (format T "~&last term: ~A:~A  term: ~A:~A~%" (term-field last-term) (term-text last-term)
 ;;	    (term-field term) (term-text term))
-;    (when (and (not is-index) (term> last-term term))
-;      (error "term out of order: ~S < ~S" term last-term))
-;    (when (< (freq-pointer term-info) (freq-pointer last-term-info))
-;      (error "freq pointer out of order: ~S < ~S."
-;	     (freq-pointer term-info)
-;	     (freq-pointer last-term-info)))
+    (when (and (not is-index) (term> last-term term))
+      (error "term out of order: ~S < ~S" term last-term))
+    (when (< (freq-pointer term-info) (freq-pointer last-term-info))
+      (error "freq pointer out of order: ~S < ~S."
+	     (freq-pointer term-info)
+	     (freq-pointer last-term-info)))
     (when (and (not is-index) (zerop (mod size index-interval)))
       (add-term other last-term last-term-info))
     (with-slots (out) self

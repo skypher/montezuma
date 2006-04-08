@@ -36,6 +36,25 @@
     (queue-clear pq)
     (test priority-queue-clear-2 (size pq) 0)))
 
+(deftestfun test-priority-queue-adjust-top
+  (let ((pq (make-instance 'priority-queue
+			   :max-size 100
+			   :predicate #'(lambda (a b) (< (elt a 0) (elt b 0))))))
+    (dotimes (i 100)
+      (queue-push pq (vector (random 1000))))
+    (dotimes (i 100)
+      (setf (elt (queue-top pq) 0) (random 1000))
+      (adjust-top pq))
+    (let ((prev (queue-pop pq))
+	  (curr (queue-pop pq))
+	  (success T))
+      (while curr
+	(when (> (elt prev 0) (elt curr 0))
+	  (setf success NIL))
+	(setf curr (queue-pop pq)))
+      (test priority-queue-adjust-top-1 T T))))
+    
+
 (deftestfun test-priority-queue-stress
   (let ((pq (make-instance 'priority-queue
 			   :max-size 100
@@ -49,5 +68,19 @@
 	  (when (> prev curr)
 	    (setf success NIL))
 	  (setf prev curr)))
-      (test priority-queue-stress-1 success T))))
+      (test priority-queue-stress-1 success T)))
+  (let ((pq (make-instance 'priority-queue
+			   :max-size 1000
+			   :predicate #'<)))
+    (dotimes (i 100)
+      (dotimes (j 10)
+	(queue-push pq (+ (* i 5) (- j 5)))))
+    (let ((prev (queue-pop pq))
+	  (curr (queue-pop pq))
+	  (success T))
+      (while curr
+	(when (> prev curr)
+	  (setf success NIL))
+	(setf curr (queue-pop pq)))
+      (test priority-queue-stress-2 T T))))
 

@@ -1,126 +1,159 @@
 (in-package #:montezuma)
 
-(defclass priority-queue ()
-  ((size :initform 0 :reader size)
-   (heap)
-   (predicate :initarg :predicate)
-   (max-size :initarg :max-size)
-   (element-type :initform T :initarg :element-type)))
+;;;
+;;; Heap (for the priority queue)
+;;;
 
-(defmethod check-queue ((self priority-queue))
-  (with-slots (size heap element-type) self
-    (let ((active-elements (subseq heap 1 (+ size 1))))
-      (assert (every #'(lambda (elt) (typep elt element-type))
-		     active-elements))
-      #|
-      (when (> size 0)
-	(let ((min (reduce #'(lambda (&optional a b)
-			       (if (or (null b) (less-than self a b))
-				   a
-				   b))
-			   active-elements)))
-	  (setf *smi-a* min)
-	  (setf *smi-b* (queue-top self))
-	  (assert (not (less-than self min (queue-top self))) ()
-		  "Queue min is ~S, top is ~S" min (queue-top self))))
-      |#
-      )))
-			    			  
+(defun heap-parent (i)
+  (ash i -1))
+
+
+(defun heap-left (i)
+  (ash i 1))
+
+
+(defun heap-right (i)
+  (1+ (ash i 1)))
+
+
+(defun heap-size (heap)
+  (1- (length heap)))
+
+
+(defun heapify (heap start &key (key #'identity) (test #'>=))
+  (declare (function key test))
+  (flet ((key (obj) (funcall key obj))
+         (ge (i j) (funcall test i j)))
+    (let ((l (heap-left start))
+          (r (heap-right start))
+          (size (heap-size heap))
+          largest)
+      (setf largest (if (and (<= l size)
+                             (not (ge (key (aref heap start))
+                                      (key (aref heap l)))))
+                        l
+                        start))
+      (when (and (<= r size)
+                 (not (ge (key (aref heap largest))
+                          (key (aref heap r)))))
+        (setf largest r))
+      (when (/= largest start)
+        (rotatef (aref heap largest) (aref heap start))
+        (heapify heap largest :key key :test test)))
+    heap))
+                                    
+
+
+(defun heap-insert (heap new-item &key (key #'identity) (test #'>=))
+  (declare (function key test))
+  (flet ((key (obj) (funcall key obj))
+         (ge (i j) (funcall test i j)))
+    (incf (fill-pointer heap))
+    (loop for i = (heap-size heap) then parent-i
+          for parent-i = (heap-parent i)
+          while (and (> i 0)
+                     (not (ge (key (aref heap parent-i))
+                              (key new-item))))
+          do (setf (aref heap i) (aref heap parent-i))
+          finally (setf (aref heap i) new-item))
+    heap))
+    
+
+
+(defun heap-maximum (heap)
+  (unless (zerop (length heap))
+    (aref heap 0)))
+
+
+(defun heap-extract (heap i &key (key #'identity) (test #'>=))
+  (when (< (length heap) i)
+    (error "Heap underflow"))
+  (prog1
+      (aref heap i)
+    (setf (aref heap i) (aref heap (heap-size heap)))
+    (decf (fill-pointer heap))
+    (heapify heap i :key key :test test)))
+
+
+(defun heap-extract-maximum (heap &key (key #'identity) (test #'>=))
+  (heap-extract heap 0 :key key :test test))
+
+
+;;;
+;;; Priority queue
+;;;
+
+(defclass priority-queue ()
+  ((contents)
+   (max-size :initarg :max-size)
+   (predicate :initarg :predicate)
+   (element-type :initarg :element-type :initform T)))
 
 (defmethod initialize-instance :after ((queue priority-queue) &key)
-  (initialize-heap queue)
-  (check-queue queue))
+  (initialize-heap queue))
 
 (defmethod initialize-heap ((queue priority-queue))
-  (with-slots (heap max-size) queue
-    (setf heap (make-array (+ max-size 1)))))
-
-(defmethod print-object ((self priority-queue) stream)
-  (print-unreadable-object (self stream :identity T :type T)
-    (with-slots (size heap) self
-      (format stream "~W" (subseq heap 1 (+ size 1))))))
+  (with-slots (contents max-size) queue
+    (setf contents (make-array max-size
+			       :adjustable T
+			       :fill-pointer 0))))
 
 (defmethod less-than ((queue priority-queue) a b)
   (with-slots (predicate) queue
     (funcall predicate a b)))
 
+(defmethod size ((queue priority-queue))
+  (length (slot-value queue 'contents)))
 
-(defmethod queue-push ((queue priority-queue) object)
-  (with-slots (size heap element-type) queue
-    (incf size)
-    (setf (aref heap size) object)
-    (up-heap queue)
-    (check-queue queue)))
+(defmethod queue-pop ((queue priority-queue) &key (check T))
+  (when check (check-queue queue :pre-pop))
+  (with-slots (contents) queue
+    priority-queue
+    (if (zerop (length contents))
+	nil
+	(let ((result (heap-extract-maximum contents :test #'(lambda (a b) (less-than queue a b)))))
+	  (when check (check-queue queue :post-pop))
+	  result))))
+	  
 
-(defmethod queue-insert ((queue priority-queue) object)
-  (with-slots (size max-size heap) queue
-    (cond ((< size max-size)
-	   (queue-push queue object)
-	   T)
-	  ((and (> size 0) (less-than queue (queue-top queue) object))
-	   (setf (aref heap 1) object)
-	   (down-heap queue)
-	   T)
-	  (T NIL)))
-  (check-queue queue))
+(defmethod queue-push ((queue priority-queue) new-item)
+  (check-queue queue :pre-push)
+  (with-slots (contents) queue
+    (heap-insert contents new-item :test #'(lambda (a b) (less-than queue a b))))
+  (check-queue queue :post-push))
 
 (defmethod queue-top ((queue priority-queue))
-  (with-slots (heap size) queue
-    (if (> size 0)
-	(aref heap 1)
-	nil)))
-
-(defmethod queue-pop ((queue priority-queue))
-  (with-slots (size heap) queue
-    (if (> size 0)
-	(let ((result (aref heap 1)))
-	  (setf (aref heap 1) (aref heap size)
-		(aref heap size) nil)
-	  (decf size)
-	  (down-heap queue)
-	  (check-queue queue)
-	  (values result T))
-	(progn
-	  (check-queue queue)
-	  (values nil NIL)))))
-
-(defmethod queue-clear ((queue priority-queue))
-  (with-slots (size heap) queue
-    (dotimes (i (+ size 1))
-      (setf (aref heap i) nil))
-    (setf size 0))
-  (check-queue queue))
+  (with-slots (contents) queue
+      (if (zerop (length contents))
+	  nil
+	  (heap-maximum contents))))
 
 (defmethod adjust-top ((queue priority-queue))
-  (down-heap queue)
-  (check-queue queue))
+  (let ((top (queue-pop queue :check NIL)))
+    (queue-push queue top)))
 
-(defmethod up-heap ((queue priority-queue))
-  (with-slots (size heap) queue
-    (let* ((i size)
-	   (node (aref heap i))
-	   (j (floor i 2)))
-      (while (and (> j 0) (less-than queue node (aref heap j)))
-	(setf (aref heap i) (aref heap j)
-	      i j)
-	(setf j (floor j 2)))
-      (setf (aref heap i) node)))
-  (check-queue queue))
+(defmethod queue-clear ((queue priority-queue))
+  (let* ((contents (slot-value queue 'contents))
+	 (size (length contents)))
+    (dotimes (i size)
+      (setf (aref contents i) nil))
+    (setf (fill-pointer contents) 0)))
 
-(defmethod down-heap ((queue priority-queue))
-  (with-slots (size heap) queue
-    (let* ((i 1)
-	   (node (aref heap i))
-	   (j (* i 2))
-	   (k (+ j 1)))
-      (when (and (<= k size) (less-than queue (aref heap k) (aref heap j)))
-	(setf j k))
-      (while (and (<= j size) (less-than queue (aref heap j) node))
-	(setf (aref heap i) (aref heap j)
-	      i j)
-	(setf j (* i 2))
-	(setf k (+ j 1))
-	(when (and (< k size) (less-than queue (aref heap k) (aref heap j)))
-	  (setf j k)))
-      (setf (aref heap i) node)))
-  (check-queue queue))
+
+(defmethod check-queue ((self priority-queue) when)
+  (with-slots (contents element-type) self
+    (assert (every #'(lambda (elt) (typep elt element-type))
+		   contents))
+      (when (> (length contents) 0)
+	(let ((min (reduce #'(lambda (&optional a b)
+			       (if (or (null b) (less-than self a b))
+				   a
+				   b))
+			   contents)))
+	  (assert (not (less-than self min (queue-top self))) ()
+		  "Queue min is ~S, top is ~S [~S ~S] (~S)"
+		  min (queue-top self)
+		  (less-than self min (queue-top self))
+		  (less-than self (queue-top self) min)
+		  when)))))
+		  
