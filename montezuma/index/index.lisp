@@ -273,7 +273,7 @@
     (cond ((typep (elt indexes 0) 'index-reader)
 	   (let ((reader (reader self)))
 	     (setf indexes (remove reader indexes)))
-	   (add-indexes (writer self) indexes))
+	   (add-indexes-readers (writer self) indexes))
 	  ((typep (elt indexes 0) 'directory)
 	   (setf indexes (remove (slot-value self 'dir) indexes))
 	   (add-indexes (writer self) indexes))
