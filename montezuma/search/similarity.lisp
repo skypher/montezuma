@@ -92,7 +92,10 @@
 
 (defclass similarity ()
   ((default-similarity-class :allocation :class :initform 'default-similarity
-     :accessor default-similarity-class)))
+     :accessor default-similarity-class)
+   (coord-function :accessor coord-function :initarg :coord-function))
+  (:default-initargs
+    :coord-function 'coord-function-not-implemented))
 
 (defun make-default-similarity ()
   (make-instance
@@ -107,12 +110,27 @@
       (incf idf (idf-term self term searcher))) 
     (values idf)))
 
+(defmethod coord ((self similarity) overlap max-overlap)
+  ;;-- should not be overridden unless really, really necessary (use coord-function slot instead).
+  ;; I'm using this baroque thang to handle Ruby's singleton construct...
+  (funcall (coord-function self) self overlap max-overlap))
+
+(define-condition coord-function-not-implemented-error ()
+                  ((similarity :initarg :similarity :reader similarity)))
+
+(defun coord-function-not-implemented (similarity overlap max-overlap)
+  (declare (ignore overlap max-overlap))
+  (error 'coord-function-not-implemented-error :similarity similarity))
+
+
 ;;; ---------------------------------------------------------------------------
 ;;; default-similarity
 ;;; ---------------------------------------------------------------------------
 
 (defclass default-similarity (similarity)
-  ())
+  ()
+  (:default-initargs
+    :coord-function 'default-coord-function))
 
 (defmethod length-norm ((self default-similarity) field num-terms)
   (declare (ignore field))
@@ -133,7 +151,8 @@
     (values 0.0)
     (1+ (log (float (/ num-docs (1+ doc-freq)))))))
 
-(defmethod coord ((self default-similarity) overlap max-overlap)
+(defun default-coord-function (similarity overlap max-overlap)
+  (declare (ignore similarity))
   (float (/ overlap max-overlap)))
 
 
