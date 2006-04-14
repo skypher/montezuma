@@ -4,6 +4,20 @@
   (:use #:common-lisp #:montezuma #:lift))
 (in-package montezuma-lift)
 
+#| Symbols to export from montezuma
+
+make-fs-directory
+standard-analyzer
+index-writer
+document
+add-field
+add-document
+optimize
+close
+field
+
+|#
+
 #|
 > Error: Unbound-slot POSITION in #<SEGMENT-TERM-ENUM #x3FFF4A6>.
 > While executing: #<CCL::STANDARD-KERNEL-METHOD SLOT-UNBOUND (T T T)>
@@ -12,6 +26,7 @@ See the Restarts… menu item for further choices.
 2 > 
 
 |#
+
 (let ((index (make-instance 'index
                :path "user-home:temporary;montezuma-test")))
   (add-document-to-index index '(("title" . "Programming Ruby")
@@ -63,7 +78,7 @@ See the Restarts… menu item for further choices.
              document (make-unstored-field "contents" unstored))
             (montezuma::add-field 
              document (make-text-field "city" text))
-            (montezuma::add-document writer document)))
+            (montezuma::add-document-to-index-writer writer document)))
     (montezuma::optimize writer)
     (montezuma::close writer))) 
 
