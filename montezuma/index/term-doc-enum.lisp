@@ -171,7 +171,7 @@
   ((prox-stream :reader prox-stream)
    (prox-count)
    (freq :reader freq)
-   (position)))
+   (position :initform -1)))
 
 (defmethod initialize-instance :after ((self segment-term-doc-pos-enum) &key)
   (with-slots (parent prox-stream) self

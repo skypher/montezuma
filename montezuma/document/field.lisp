@@ -10,17 +10,35 @@
 (defclass field ()
   ((name :initarg :name :reader field-name)
    (data :initarg :data :accessor field-data)
-   (boost :initarg :boost :accessor boost)
-
-   (stored-p :initarg :stored-p :accessor field-stored-p)
-   (indexed-p :initarg :indexed-p :accessor field-indexed-p)
-   (tokenized-p :initarg :tokenized-p :accessor field-tokenized-p)
-   (binary-p :initarg :binary-p :accessor field-binary-p)
-   (compressed-p :initarg :compressed-p :accessor field-compressed-p)
-   (store-term-vector-p :initarg :store-term-vector-p :accessor field-store-term-vector-p)
-   (store-positions-p :initarg :store-positions-p :accessor field-store-positions-p)
-   (store-offsets-p :initarg :store-offsets-p :accessor field-store-offsets-p)
-   (omit-norms-p :initarg :omit-norms-p :accessor field-omit-norms-p)))
+   (boost :initarg :boost 
+          :accessor boost
+          :initform 1.0)
+   (stored-p :initarg :stored-p
+             :accessor field-stored-p
+             :initform nil)
+   (indexed-p :initarg :indexed-p :accessor field-indexed-p
+              :initform t)
+   (tokenized-p :initarg :tokenized-p 
+                :accessor field-tokenized-p
+                :initform t)
+   (binary-p :initarg :binary-p 
+             :accessor field-binary-p
+             :initform nil)
+   (compressed-p :initarg :compressed-p
+                 :accessor field-compressed-p
+                 :initform nil)
+   (store-term-vector-p :initarg :store-term-vector-p 
+                        :accessor field-store-term-vector-p
+                        :initform nil)
+   (store-positions-p :initarg :store-positions-p 
+                      :accessor field-store-positions-p
+                      :initform nil)
+   (store-offsets-p :initarg :store-offsets-p 
+                    :accessor field-store-offsets-p
+                    :initform nil)
+   (omit-norms-p :initarg :omit-norms-p 
+                 :accessor field-omit-norms-p
+                 :initform nil)))
 
 (defmethod print-object ((self field) stream)
   (print-unreadable-object (self stream :type T :identity T)
