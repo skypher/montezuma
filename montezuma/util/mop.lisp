@@ -5,11 +5,11 @@
 ;; should go away.  But it is pretty convenient...
 
 (defun class-slots (class)
-  #+openmcl (ccl:class-slots class)
+  #+(or digitool openmcl) (ccl:class-slots class)
   #+sbcl (sb-mop:class-slots class))
   
 (defun slot-definition-name (slot-defn)
-  #+openmcl (ccl:slot-definition-name slot-defn)
+  #+(or digitool openmcl) (ccl:slot-definition-name slot-defn)
   #+sbcl (sb-mop:slot-definition-name slot-defn))
 
 
@@ -28,11 +28,8 @@
 		(slot-value object (slot-definition-name slot))))
     copy))
 
-
 (defmethod initialize-copy (self o)
   (declare (ignore self) (ignore o)))
-
-
 
 (defmethod clone-object ((array array))
   (multiple-value-bind (displaced-to displaced-index-offset)
