@@ -57,11 +57,47 @@
     (let ((scorer (scorer (weight query self) (reader self))))
       (when (null scorer)
         (return-from search (make-instance 'top-docs)))
-      )))
+      
+      ;;?? ignore filter
+      ;;?? ignore sort
+      (let ((hq (make-instance 'hit-queue))
+            (total-hits 0)
+            (minimum-score 0.0))
+        (each-hit scorer 
+                  (lambda (doc score)
+                    (when (and (plusp score)
+                               ;; bits
+                               )
+                      (incf total-hits)
+                      (when (or (< (size hq) max-size)
+                                (>= score minimum-score))
+                        (queue-push hq (make-instance 'score-doc :doc doc :score score))
+                        (setf minimum-score (score (queue-top hq)))))))
+        
+        (let ((score-docs (make-array 10 :fill-pointer 0 :adjustable t)))
+          (when (> (size hq) first-document)
+            (when (< (- (size hq) first-document) num-documents)
+              (setf num-documents (- (size hq) first-document)))
+            (dotimes (i num-documents)
+              (vector-push-extend (queue-pop hq) score-docs)))
+          (queue-clear hq)
+        
+          (values (make-instance 'top-docs :total-hits total-hits
+                                 :score-docs score-docs)))))))
 
 (defmethod search-each ((self index-searcher) (query query) &optional (options nil))
-  )
-
+  (let ((scorer (scorer (weight query self) (reader self))))
+    (when (null scorer)
+      (return-from search-each nil))
+    
+    ;;?? bits
+    (each-hit scorer
+              (lambda (doc score)
+                (if (and (plusp score)
+                         ;;?? bits
+                         )
+                  (yield doc score))))))
+    
 (defmethod rewrite ((self index-searcher) original)
   (let* ((query original)
          (rewritten-query (rewrite query (reader self))))
