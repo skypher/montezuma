@@ -5,4 +5,17 @@
   (:shadow #:directory #:read-byte #:write-byte #:write-string 
 	   #:close #:delete-file #:rename-file #:count #:search
 	   #:merge #:file-length #:read #:write #:delete #:optimize)
-  (:use #:common-lisp))
+  (:use #:common-lisp)
+  (:export 
+   #:make-fs-directory
+   #:standard-analyzer
+   #:index-writer
+   #:document
+   #:add-field
+   #:add-document
+   #:add-document-to-index-writer
+   #:optimize
+   #:close
+   #:field
+   #:search
+   #:index))

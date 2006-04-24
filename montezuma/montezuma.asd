@@ -56,9 +56,12 @@
                            (:file "score-doc")
                            (:file "score-doc-comparator")
                            (:file "weight")
+                           (:file "hit-queue")
                            (:file "query")
-                           (:file "term-query"))
-              :depends-on ("package"))
+                           (:file "term-query")
+                           (:file "top-docs")
+                           (:file "index-searcher"))
+              :depends-on ("package" "index"))
      (:module "index"
        :components ((:file "index-filenames")
 		    (:file "term")
@@ -85,7 +88,7 @@
 		    (:file "segment-merger"      :depends-on ("index-filenames" "fields-io" "term-buffer"))
 		    (:file "index-reader")
 		    (:file "index"))
-       :depends-on ("analysis" "search"))))
+       :depends-on ("analysis"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
   (oos 'load-op '#:montezuma-tests)

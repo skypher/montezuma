@@ -4,20 +4,6 @@
   (:use #:common-lisp #:montezuma #:lift))
 (in-package montezuma-lift)
 
-#| Symbols to export from montezuma
-
-make-fs-directory
-standard-analyzer
-index-writer
-document
-add-field
-add-document
-optimize
-close
-field
-
-|#
-
 #|
 > Error: Unbound-slot POSITION in #<SEGMENT-TERM-ENUM #x3FFF4A6>.
 > While executing: #<CCL::STANDARD-KERNEL-METHOD SLOT-UNBOUND (T T T)>
@@ -37,7 +23,7 @@ See the Restarts… menu item for further choices.
 (deftestsuite test-indexing ()
   ()
   (:setup (let* ((index-directory "user-home:temporary;montezuma-test")
-                 (dir (montezuma::make-fs-directory index-directory :create-p t)))
+                 (dir (make-fs-directory index-directory :create-p t)))
             (add-test-documents lift::test dir))))
        
 (defmethod documents-keywords ((test test-indexing))
@@ -54,13 +40,13 @@ See the Restarts… menu item for further choices.
   (list "Amsterdam" "Venice"))
 
 (defmethod get-analyzer ((test test-indexing))
-  (make-instance 'montezuma::standard-analyzer))
+  (make-instance 'standard-analyzer))
 
 (defmethod use-compound-index-p ((test test-indexing))
   (values t))
 
 (defmethod add-test-documents ((test test-indexing) directory)
-  (let ((writer (make-instance 'montezuma::index-writer
+  (let ((writer (make-instance 'index-writer
                   :directory directory
                   :create-p t
                   :analyzer (get-analyzer test)
@@ -69,33 +55,33 @@ See the Restarts… menu item for further choices.
           for unindexed in (documents-unindexed test)
           for unstored in (documents-unstored test)
           for text in (documents-text test) do
-          (let ((document (make-instance 'montezuma::document)))
-            (montezuma::add-field 
+          (let ((document (make-instance 'document)))
+            (add-field 
              document (make-keyword-field "id" keyword))
-            (montezuma::add-field 
+            (add-field 
              document (make-unindexed-field "country" unindexed))
-            (montezuma::add-field 
+            (add-field 
              document (make-unstored-field "contents" unstored))
-            (montezuma::add-field 
+            (add-field 
              document (make-text-field "city" text))
-            (montezuma::add-document-to-index-writer writer document)))
-    (montezuma::optimize writer)
-    (montezuma::close writer))) 
+            (add-document-to-index-writer writer document)))
+    (optimize writer)
+    (close writer))) 
 
 (defun make-keyword-field (name data)
-  (make-instance 'montezuma::field 
+  (make-instance 'field 
     :name name :data data :stored-p t :indexed-p t))
 
 (defun make-unindexed-field (name data)
-  (make-instance 'montezuma::field 
+  (make-instance 'field 
     :name name :data data :stored-p t :indexed-p nil))
 
 (defun make-unstored-field (name data)
-  (make-instance 'montezuma::field 
+  (make-instance 'field 
     :name name :data data :stored-p t :indexed-p nil))
 
 (defun make-text-field (name data)
-  (make-instance 'montezuma::field 
+  (make-instance 'field 
     :name name :data data :stored-p nil :indexed-p nil))
 
 (addtest (test-indexing)

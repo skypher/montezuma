@@ -9,12 +9,12 @@
 (defmethod initialize-instance :after ((object scorer) &key)
   )
 
-(defmethod each-hit ((self similarity))
+(defmethod each-hit ((self scorer) block)
   (loop while (next? self) do
-        (yield (doc self) (score self))))
+        (funcall block (document self) (score self))))
 
-(defmethod each-hit-up-to ((self similarity) (max-docs integer))
+(defmethod each-hit-up-to ((self scorer) (max-docs integer) block)
   (loop while (and (next? self)
-                   (< (doc self) max-docs)) do
-        (yield (doc self) (score self)))
-  (values (< (doc self) max-docs)))
+                   (< (document self) max-docs)) do
+        (funcall block (document self) (score self)))
+  (values (< (document self) max-docs)))

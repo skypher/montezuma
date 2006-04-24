@@ -88,6 +88,7 @@
 (defmethod create-output ((self fs-directory) file)
   (make-instance 'fs-index-output :path (full-path-for-file self file)))
 
+
 (defmethod open-input ((self fs-directory) file)
   (make-instance 'fs-index-input :path (full-path-for-file self file)))
 
