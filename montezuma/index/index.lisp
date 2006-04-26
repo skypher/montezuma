@@ -1,5 +1,41 @@
 (in-package #:montezuma)
 
+
+(defvar *valid-index-options*
+  '(:path :create-if-missing-p :create-p :default-field
+    :id-field :default-search-field :analyzer :directory
+    :close-directory-p :occur-default :wild-lower-p :default-slop
+    :key :use-compound-file-p :handle-parse-errors-p :auto-flush-p))
+
+(defun index-options-list-p (list)
+  (do ((options list (cddr options)))
+      ((endp options) T)
+    (when (not (member (car options) *valid-index-options*))
+      (return-from index-options-list-p NIL))))
+
+(deftype index-option () `(member ,@*valid-index-options*))
+(deftype index-options-list () '(satisfies index-options-list-p))
+
+(defun get-index-option (options option)
+  (check-type option index-option)
+  (getf options option))
+
+(define-setf-expander get-index-option (place option &environment env)
+  (multiple-value-bind (vars vals store-vars writer-form reader-form)
+      (get-setf-expansion place env)
+    (declare (ignore writer-form))
+    (let ((goption (gensym "OPTION"))
+	  (gstore (if store-vars (first store-vars) (gensym "STORE"))))
+      (values
+       (list* goption vars)
+       (list* option vals)
+       (list gstore)
+       `(progn
+	  (check-type ,goption index-option)
+	  (setf (getf ,reader-form ,goption) ,(car store-vars)))
+       `(getf ,goption ,reader-form)))))
+
+
 (defclass index ()
   ((key)
    (dir)
@@ -18,43 +54,44 @@
 
 (defmethod initialize-instance :after ((self index) &rest args &key &allow-other-keys)
   (with-slots (options) self
+    (check-type args index-options-list)
     (setf options (copy-list args))
-    (setf (getf options :default-search-field) (getf options :default-search-field)
-	  (getf options :default-field) (getf options :default-field))
-    (when (null (getf options :create-if-missing-p))
-      (setf (getf options :create-if-missing-p) T))
+    (setf (get-index-option options :default-search-field) (if (get-index-option options :default-search-field) (string (get-index-option options :default-search-field)) "")
+	  (get-index-option options :default-field) (if (get-index-option options :default-field) (string (get-index-option options :default-field)) ""))
+    (when (null (get-index-option options :create-if-missing-p))
+      (setf (get-index-option options :create-if-missing-p) T))
     ;; FIXME: I don't flatten the :key option, I'm not sure why Ferret does.
     (with-slots (key dir options close-dir-p auto-flush-p create-p analyzer writer
 		     default-search-field default-field) self
-      (setf key (getf options :key))
-      (cond ((getf options :path)
-	     (setf dir (make-fs-directory (getf options :path)
-					  :create-p (or (getf options :create-p)
-							(getf options :create-if-missing-p))))
-	     (setf (getf options :close-dir-p) T))
-	    ((getf options :dir)
-	     (setf dir (getf options :dir)))
+      (setf key (get-index-option options :key))
+      (cond ((get-index-option options :path)
+	     (setf dir (make-fs-directory (get-index-option options :path)
+					  :create-p (or (get-index-option options :create-p)
+							(get-index-option options :create-if-missing-p))))
+	     (setf (get-index-option options :close-dir-p) T))
+	    ((get-index-option options :directory)
+	     (setf dir (get-index-option options :directory)))
 	    (T
-	     (setf (getf options :create-p) T)
+	     (setf (get-index-option options :create-p) T)
 	     (setf dir (make-instance 'ram-directory))))
       ;; Create the index if need be
       (setf writer (apply #'make-instance 'index-writer
 			  :directory dir
 			  options))
-      (setf (getf options :analyzer) (setf analyzer (analyzer writer)))
+      (setf (get-index-option options :analyzer) (setf analyzer (analyzer writer)))
       (close writer)
       (setf writer nil)
       ;; Only want to create the first time, if at all.
-      (setf (getf options :create-p) NIL)
-      (setf close-dir-p (getf options :close-dir-p))
-      (setf (getf options :close-dir-p) NIL)
-      (setf auto-flush-p (getf options :auto-flush))
-      (setf default-search-field (or (getf options :default-search-field)
-				     (getf options :default-field)
+      (setf (get-index-option options :create-p) NIL)
+      (setf close-dir-p (get-index-option options :close-directory-p))
+      (setf (get-index-option options :close-directory-p) NIL)
+      (setf auto-flush-p (get-index-option options :auto-flush-p))
+      (setf default-search-field (or (get-index-option options :default-search-field)
+				     (get-index-option options :default-field)
 				     "*"))
-      (setf default-field (or (getf options :default-field) ""))
-      (when (not (getf options :handle-parse-errors-p))
-	(setf (getf options :handle-parse-errors-p) T)))))
+      (setf default-field (or (get-index-option options :default-field) ""))
+      (when (not (get-index-option options :handle-parse-errors-p))
+	(setf (get-index-option options :handle-parse-errors-p) T)))))
     
 
 (defmethod close ((self index))
@@ -206,7 +243,7 @@
 		   ((typep new-val 'document)
 		    (setf document new-val))
 		   (T
-		    (setf (aref document (getf options :default-field))
+		    (setf (aref document (get-index-option options :default-field))
 			  (string new-val))))
 	     (delete reader id)
 	     (let ((writer (writer self)))
@@ -235,7 +272,7 @@
 		  ((typep new-val 'document)
 		   (setf document new-val))
 		  (T
-		   (setf (get-field document (getf (slot-value self 'options) :default-field))
+		   (setf (get-field document (get-index-option (slot-value self 'options) :default-field))
 			 (string new-val))))
 	    (push document docs-to-add)
 	    (delete reader id)))))
@@ -288,7 +325,7 @@
 	     (setf dir (make-instance 'fs-directory
 				      :path directory
 				      :create-p create-p))
-	     (setf (getf options :close-dir-p) T))
+	     (setf (get-index-option options :close-directory-p) T))
 	    ((typep directory 'directory)
 	     (setf dir directory)))
       (add-indexes (writer self) (vector old-dir)))))
