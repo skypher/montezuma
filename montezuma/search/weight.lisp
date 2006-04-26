@@ -19,7 +19,7 @@
 (defgeneric scorer (weight reader)
   (:documentation "Constructs a scorer for this. "))
 
-(defgeneric explain (weight reader document-index)
+(defgeneric explain-score (weight reader document-index)
   (:documentation "An explanation of the score computation for the named document. "))
 
 

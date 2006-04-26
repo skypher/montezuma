@@ -28,10 +28,15 @@
 
 (defmethod scorer ((self term-weight) reader)
   (let ((term-docs (term-docs-for reader (term (query self)))))
-    (when term-docs
-      (make-instance 'term-scorer))))
+    (if term-docs
+	(make-instance 'term-scorer
+		       :weight self
+		       :term-docs term-docs
+		       :similarity (similarity self)
+		       :norms (get-norms reader (term-field (term (query self)))))
+	nil)))
 
-(defmethod explain ((self term-weight) reader doc)
+(defmethod explain-score ((self term-weight) reader doc)
   (let ((explanation (make-instance 'explanation 
                        :description (format nil "Weight(~A in ~A), product of:" 
                                             (query self) (doc self))))

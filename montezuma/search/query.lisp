@@ -7,11 +7,12 @@
   ((boost :accessor boost :initform 1.0)))
 
 (defmethod weight ((self query) searcher)
-  (let ((query (rewrite searcher self))
-        (weight (create-weight query searcher))
-        (sum (sum-of-squared-weights weight))
-        (norm (query-norm (similarity searcher) sum)))
-    (values (normalize weight norm))))
+  (let* ((query (rewrite searcher self))
+	 (weight (create-weight query searcher))
+	 (sum (sum-of-squared-weights weight))
+	 (norm (query-norm (similarity searcher) sum)))
+    (normalize-weight weight norm)
+    weight))
 
 (defmethod compare ((self query) queries)
 #|
@@ -45,4 +46,9 @@
 
 
 
+(defmethod rewrite ((self query) reader)
+  (declare (ignore reader))
+  self)
 
+(defmethod similarity-implementation ((self query) searcher)
+  (similarity searcher))

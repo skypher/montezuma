@@ -20,16 +20,16 @@
 
 (defmethod initialize-instance :after ((self term-scorer) &key)
   (setf (slot-value self 'weight-value) 
-        (value weight))
+        (value (slot-value self 'weight)))
   (dotimes (i +score-cache-size+)
-    (setf (aref (score-cache self) i)
+    (setf (aref (slot-value self 'score-cache) i)
           (* (weight-value self) (tf (similarity self) i)))))
 
-(defmethod each-hit ((self term-scorer))
+(defmethod hits ((self term-scorer))
   ;;??
   )
 
-(defmethod each-hit-up-to ((self term-scorer) (max-docs integer))
+(defmethod hits-up-to ((self term-scorer) (max-docs integer))
   ;;??
   )
 
@@ -49,7 +49,7 @@
 (defmethod score ((self term-scorer))
   (let* ((f (aref (freqs self) (pointer self)))
          (raw (if (< f +score-cache-size+)
-                (aref (score-cache self) f)
+                (aref (slot-value self 'score-cache) f)
                 (* (weight-value self) (tf (simularity self) f)))))
     
     ;; normalize for field

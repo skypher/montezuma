@@ -59,6 +59,7 @@
                            (:file "hit-queue")
                            (:file "query")
                            (:file "term-query")
+			   (:file "term-scorer")
                            (:file "top-docs")
                            (:file "index-searcher"))
               :depends-on ("package" "index"))

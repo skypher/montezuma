@@ -169,6 +169,6 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
 (defmethod scorer ((self boolean-weight) reader)
   )
 
-(defmethod explain ((self boolean-weight) reader doc)
+(defmethod explain-score ((self boolean-weight) reader doc)
   )
 

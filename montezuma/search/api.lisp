@@ -30,10 +30,10 @@ Return:: a score factor for the phrase"))
 (defgeneric coord (similarity overlap max-overlap)
   (:documentation ""))
 
-(defgeneric each-hit (similarity block)
+(defgeneric hit (similarity)
   (:documentation "Expert: Iterates over matching all documents, yielding the document number and the score."))
 
-(defgeneric each-hit-up-to (similarity max-docs block)
+(defgeneric hits-up-to (similarity max-docs)
   (:documentation "Expert: Iterates over matching documents in a range.
 max:: Do not score documents past this. Default will search all documents avaliable.
 returns:: true if more matching documents may remain."))
@@ -72,7 +72,7 @@ Behaves as if written:
 Most implementations are considerably more efficient than that."))
 
 
-(defgeneric explain (similarity document-number)
+(defgeneric explain-score (similarity document-number)
   (:documentation "Returns an explanation of the score for a document. When this method is used, the #next?(), #skip_to(int) and #score(HitCollector) methods should not be used.
 doc:: The document number for the explanation.
 "))
