@@ -1,6 +1,9 @@
 (in-package common-lisp-user)
 
 (defpackage #:montezuma-lift
+  (:shadow #:directory #:read-byte #:write-byte #:write-string 
+	   #:close #:delete-file #:rename-file #:count #:search
+	   #:merge #:file-length #:read #:write #:delete #:optimize)
   (:use #:common-lisp #:montezuma #:lift))
 (in-package montezuma-lift)
 
@@ -67,22 +70,6 @@ See the Restarts… menu item for further choices.
             (add-document-to-index-writer writer document)))
     (optimize writer)
     (close writer))) 
-
-(defun make-keyword-field (name data)
-  (make-instance 'field 
-    :name name :data data :stored-p t :indexed-p t))
-
-(defun make-unindexed-field (name data)
-  (make-instance 'field 
-    :name name :data data :stored-p t :indexed-p nil))
-
-(defun make-unstored-field (name data)
-  (make-instance 'field 
-    :name name :data data :stored-p t :indexed-p nil))
-
-(defun make-text-field (name data)
-  (make-instance 'field 
-    :name name :data data :stored-p nil :indexed-p nil))
 
 (addtest (test-indexing)
   noop
