@@ -47,6 +47,7 @@
    (default-search-field)
    (default-field)
    (analyzer)
+   (searcher :initform nil)
    (open-p :initform T)
    (options)
    (qp :initform nil)))
@@ -174,13 +175,11 @@
   (do-search self query options))
 
 
-(defmethod search-each ((self index) query &optional options)
+(defmethod search-each ((self index) query fn &optional options)
   (let ((hits (do-search self query options)))
-    (append-pipes (map-pipe #'(lambda (score-doc)
-				(list (doc score-doc) (score score-doc)))
-			    (score-docs hits))
-		  (list (total-hits hits)))))
-	 
+    (dosequence (score-doc (score-docs hits))
+      (funcall fn (doc score doc) (score score-doc)))
+    (total-hits hits)))
 
 (defmethod get-document ((self index) id)
   (let ((reader (reader self)))
@@ -209,11 +208,10 @@
   (let ((reader (reader self))
 	(searcher (searcher self))
 	(query (process-query self query)))
-    (enumerate (search-each searcher query)
-	       :key #'(lambda (pair)
-			(destructuring-bind (doc score) pair
-			  (declare (ignore score))
-			  (delete reader doc))))
+    (search-each searcher query
+		 #'(lambda (doc score)
+		     (declare (ignore score))
+		     (delete reader doc)))
     (when (slot-value self 'auto-flush-p)
       (flush self))))
 
@@ -258,24 +256,23 @@
 	(reader (reader self))
 	(docs-to-add '())
 	(query (process-query self query)))
-    (let ((results (enumerate (search-each searcher query))))
-      (dolist (result results)
-	(destructuring-bind (id score) result
-	  (declare (ignore score))
-	  (let ((document (get-document self id)))
-	    (when (listp new-val)
-	      (setf new-val (convert-alist-to-table new-val)))
-	    (cond ((table-like-p new-val)
-		   (dolist (name (table-keys new-val))
-		     (let ((content (table-value new-val name)))
-		       (setf (get-field document name) (string content)))))
-		  ((typep new-val 'document)
-		   (setf document new-val))
-		  (T
-		   (setf (get-field document (get-index-option (slot-value self 'options) :default-field))
-			 (string new-val))))
-	    (push document docs-to-add)
-	    (delete reader id)))))
+    (search-each searcher query
+		 #'(lambda (id score)
+		     (declare (ignore score))
+		     (let ((document (get-document self id)))
+		       (when (listp new-val)
+			 (setf new-val (convert-alist-to-table new-val)))
+		       (cond ((table-like-p new-val)
+			      (dolist (name (table-keys new-val))
+				(let ((content (table-value new-val name)))
+				  (setf (get-field document name) (string content)))))
+			     ((typep new-val 'document)
+			      (setf document new-val))
+			     (T
+			      (setf (get-field document (get-index-option (slot-value self 'options) :default-field))
+				    (string new-val))))
+		       (push document docs-to-add)
+		       (delete reader id))))
     (let ((writer (writer self)))
       (dolist (doc (reverse docs-to-add))
 	(add-document-to-index-writer writer doc))
@@ -379,10 +376,10 @@
       (with-slots (qp default-search-field options reader) self
 	(unless qp
 	  (setf qp (make-instance 'query-parser
-				  :field default-search-field
+				  :default-search-field default-search-field
 				  :options options)))
 	;; We need to set this every time, in case a new field has
 	;; been added.
-	(setf (fields qp) (string (get-field-names reader)))
+	(setf (fields qp) (coerce (get-field-names reader) 'array))
 	(parse qp query))
       query))

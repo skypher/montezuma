@@ -25,7 +25,7 @@
     (setf (aref (slot-value self 'score-cache) i)
           (* (weight-value self) (tf (similarity self) i)))))
 
-(defmethod each-hit ((self term-scorer))
+(defmethod each-hit ((self term-scorer) fn)
   (if (next? self) 
     (flet ((compute-score ()
              (let* ((f (aref (freqs self) (pointer self)))
@@ -43,7 +43,7 @@
          empty-pipe)))
       empty-pipe))
 
-(defmethod each-hit-up-to ((self term-scorer) (max-docs integer))
+(defmethod each-hit-up-to ((self term-scorer) (max-docs integer) fn)
   ;;??
   )
 

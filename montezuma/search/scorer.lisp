@@ -13,10 +13,10 @@
   (setf (slot-value self 'pipe)
         (make-pipe nil nil)))          
          
-(defmethod each-hit ((self scorer))
+(defmethod each-hit ((self scorer) fn)
   #+Ignore
   (make-pipe first rest)
   empty-pipe)
 
-(defmethod each-hit-up-to ((self scorer) (max-docs integer))
+(defmethod each-hit-up-to ((self scorer) (max-docs integer) fn)
   (values (< (document self) max-docs)))

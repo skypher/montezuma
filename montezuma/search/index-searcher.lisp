@@ -80,17 +80,17 @@
 				       :max-size max-size))))
 	    (let ((total-hits 0)
 		  (min-score 0.0))
-	      (map-pipe (lambda (doc score)
-                          (when (and (> score 0.0)
-			             (or (null bits)
-				         (bit-set-p bits doc)))
-                            (incf total-hits)
-                            (when (or (< (size hq) max-size)
-                                      (>= score minimum-score))
-                              (queue-push hq (make-instance
-                                               'score-doc :doc doc :score score))
-                              (setf min-score (score (queue-top hq))))))
-		        (each-hit scorer))
+	      (each-hit scorer
+			#'(lambda (doc score)
+			    (when (and (> score 0.0)
+				       (or (null bits)
+					   (bit-set-p bits doc)))
+			      (incf total-hits)
+			      (when (or (< (size hq) max-size)
+					(>= score minimum-score))
+				(queue-push hq (make-instance
+						'score-doc :doc doc :score score))
+				(setf min-score (score (queue-top hq)))))))
 	      (let ((score-docs '()))
 		(when (> (size hq) first-doc)
 		  (when (< (- (size hq) first-doc) num-docs)
@@ -105,7 +105,7 @@
 			       :total-hits total-hits
 			       :score-docs score-docs))))))))
 
-(defmethod search-each ((self index-searcher) (query query) &optional (options nil))
+(defmethod search-each ((self index-searcher) (query query) fn &optional (options nil))
   (let ((scorer (scorer (weight query self) (reader self))))
     (when (null scorer)
       (return-from search-each nil))
@@ -148,7 +148,8 @@
       (let ((hq (make-instance 'hit-queue))
             (total-hits 0)
             (minimum-score 0.0))
-	(map-pipe #'(lambda (doc score)
+	(each-hit scorer
+		  #'(lambda (doc score)
 		      (when (and (plusp score)
 				 ;; bits
 				 )
@@ -156,9 +157,7 @@
 			(when (or (< (size hq) max-size)
 				  (>= score minimum-score))
 			  (queue-push hq (make-instance 'score-doc :doc doc :score score))
-			  (setf minimum-score (score (queue-top hq))))))
-		  (each-hit scorer))
-        
+			  (setf minimum-score (score (queue-top hq)))))))
         (let ((score-docs (make-array 10 :fill-pointer 0 :adjustable t)))
           (when (> (size hq) first-document)
             (when (< (- (size hq) first-document) num-documents)
