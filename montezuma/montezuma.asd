@@ -49,6 +49,8 @@
 		    (:file "standard-tokenizer"  :depends-on ("tokenizers"))
 		    (:file "analyzers"           :depends-on ("standard-tokenizer")))
        :depends-on ("package" "util"))
+     (:module "query-parser"
+	      :components ((:file "query-parser")))
      (:module "search"
               :components ((:file "api")
                            (:file "similarity")
@@ -152,7 +154,8 @@
 				      (:file "th-doc")
 				      (:file "tc-index-writer" :depends-on ("th-doc"))
 				      (:file "tc-index-reader" :depends-on ("th-doc"))
-				      (:file "tc-multiple-term-doc-pos-enum" :depends-on ("th-doc")))
+				      (:file "tc-multiple-term-doc-pos-enum" :depends-on ("th-doc"))
+				      (:file "tc-index"))
 			 :depends-on ("tests"))))))))
 
 (defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
