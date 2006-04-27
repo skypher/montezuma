@@ -120,6 +120,8 @@
     (make-pipe start (integers (+ start 1) end))
     nil))
 
+(enumerate (integers 0 5))
+
           
 
                  
