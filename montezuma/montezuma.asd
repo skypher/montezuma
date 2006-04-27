@@ -11,10 +11,11 @@
     :description "Montezuma is a port of the Lucene text search engine library."
     :long-description ""
 
-    :depends-on ("cl-ppcre" "cl-fad" "metacopy")
+    :depends-on ("cl-ppcre" "cl-fad" "moptilities")
 
     :components
     ((:file "package")
+     (:static-file "TUTORIAL")
      (:module "util"
        :components ((:file "while")
 		    (:file "porter-stemmer")
@@ -55,13 +56,16 @@
                            (:file "scorer")
                            (:file "score-doc")
                            (:file "score-doc-comparator")
+                           (:file "filter")
                            (:file "weight")
                            (:file "hit-queue")
                            (:file "query")
                            (:file "term-query")
 			   (:file "term-scorer")
                            (:file "top-docs")
-                           (:file "index-searcher"))
+                           (:file "index-searcher")
+                           (:file "sort")
+                           (:file "sort-field"))
               :depends-on ("package" "index"))
      (:module "index"
        :components ((:file "index-filenames")
