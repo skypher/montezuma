@@ -1,21 +1,22 @@
 (in-package montezuma)
 
-;;?? implementation of yield
 (defparameter +max-docs+ #x7FFFFFF)
 
 (defclass scorer ()
-  ((similarity :initarg :similarity :reader similarity)))
+  ((similarity :initarg :similarity :reader similarity)
+   (pipe)))
 
 (defmethod initialize-instance :after ((object scorer) &key)
   )
 
-(defmethod hits ((self scorer))
-  ;;(loop while (next? self) do
-  ;;(funcall block (document self) (score self)))
-  )
+(defmethod setup-pipe ((self scorer))
+  (setf (slot-value self 'pipe)
+        (make-pipe nil nil)))          
+         
+(defmethod each-hit ((self scorer))
+  #+Ignore
+  (make-pipe first rest)
+  empty-pipe)
 
-(defmethod hits-up-to ((self scorer) (max-docs integer))
-  (loop while (and (next? self)
-                   (< (document self) max-docs)) do
-        (funcall block (document self) (score self)))
+(defmethod each-hit-up-to ((self scorer) (max-docs integer))
   (values (< (document self) max-docs)))

@@ -7,14 +7,17 @@
   (:default-initargs
     :similarity (make-default-similarity)))
 
-(defmethod initialize-instance :after ((self index-searcher) &key reader)
-  (setf (slot-value self 'reader) (initialize-reader self reader)))
+(defmethod initialize-instance :after ((self index-searcher) &key 
+                                       directory reader)
+  (setf (slot-value self 'reader) 
+        (initialize-reader self (or directory reader))))
 
 (defmethod initialize-reader ((self index-searcher) (reader index-reader))
   (values reader))
 
-(defmethod initialize-reader ((self index-searcher) (reader directory))
-  (open-index-reader reader :close-directory-p NIL))
+(defmethod initialize-reader ((self index-searcher) (directory directory))
+  (setf (directory self) directory)
+  (open-index-reader directory :close-directory-p nil))
 
 (defmethod initialize-reader ((self index-searcher) (reader string))
   (setf (directory self) (make-fs-directory reader))
@@ -46,7 +49,88 @@
 (defmethod create-weight ((self index-searcher) (query query))
   (weight query self))
 
-#|
+(defmethod search ((self index-searcher) query &optional options)
+  (let* ((filter (getf options :filter))
+	 (first-doc (or (getf options :first-doc) 0))
+	 (num-docs (or (getf options :num-docs) 10))
+	 (max-size (+ first-doc num-docs))
+	 (sort (getf options :sort)))
+    (when (and sort (not (typep sort 'sort)))
+      (setf sort (make-instance 'sort :sort sort)))
+    (when (<= num-docs 0)
+      (error ":num-docs must be greater then zero to run a search."))
+    (when (< first-doc 0)
+      (error "first-doc must be greater than or equal to zero to run a search."))
+    (let ((scorer (scorer (weight query self) (reader self))))
+      (if (null scorer)
+	  (make-instance 'top-docs
+			 :thing 0
+			 :other-thing '())
+	  (let ((bits (unless (null filter)
+                        (bits filter (reader self))))
+		(hq (if sort
+			(let ((fields (if (typep sort 'sort)
+					  (fields sort)
+					  sort)))
+			  (make-instance 'field-sorted-hit-queue
+					 :reader (reader self)
+					 :fields fields
+					 :max-size max-size))
+			(make-instance 'hit-queue
+				       :max-size max-size))))
+	    (let ((total-hits 0)
+		  (min-score 0.0))
+	      (map-pipe (lambda (doc score)
+                          (when (and (> score 0.0)
+			             (or (null bits)
+				         (bit-set-p bits doc)))
+                            (incf total-hits)
+                            (when (or (< (size hq) max-size)
+                                      (>= score minimum-score))
+                              (queue-push hq (make-instance
+                                               'score-doc :doc doc :score score))
+                              (setf min-score (score (queue-top hq))))))
+		        (each-hit scorer))
+	      (let ((score-docs '()))
+		(when (> (size hq) first-doc)
+		  (when (< (- (size hq) first-doc) num-docs)
+		    (setf num-docs (- (size hq) first-doc)))
+		  (dotimes (i num-docs)
+		    (declare (ignorable i))
+		    (queue-push (queue-pop hq) score-docs)))
+                
+                ;;?? why bother... 
+		(queue-clear hq)
+		(make-instance 'top-docs
+			       :total-hits total-hits
+			       :score-docs score-docs))))))))
+
+(defmethod search-each ((self index-searcher) (query query) &optional (options nil))
+  (let ((scorer (scorer (weight query self) (reader self))))
+    (when (null scorer)
+      (return-from search-each nil))
+    
+    (map-pipe #'(lambda (doc score)
+		  (if (and (plusp score)
+			   ;;?? bits
+			   )
+		      (yield doc score)))
+	      (hits scorer))))
+    
+(defmethod rewrite ((self index-searcher) original)
+  (let* ((query original)
+         (rewritten-query (rewrite query (reader self))))
+    (while (not (equal query rewritten-query))
+      (setf query rewritten-query
+            rewritten-query (rewrite query (reader self))))
+    (values query)))
+
+(defmethod explain-score ((self index-searcher) (query query) index)
+  (explain (weight query self) (reader self) index))
+
+
+#| old stuff
+
 (defmethod search ((self index-searcher) (query query) 
                    &optional options)
   (destructuring-bind (&key (filter nil) (first-document 0) (num-documents 10)
@@ -86,85 +170,3 @@
           (values (make-instance 'top-docs :total-hits total-hits
                                  :score-docs score-docs)))))))
 |#
-
-(defmethod search ((self index-searcher) query &optional options)
-  (let* ((filter (getf options :filter))
-	 (first-doc (or (getf options :first-doc) 0))
-	 (num-docs (or (getf options :num-docs) 10))
-	 (max-size (+ first-doc num-docs))
-	 (sort (getf options :sort)))
-    (when (and sort (not (typep sort 'sort)))
-      (setf sort (make-instance 'sort :sort sort)))
-    (when (<= num-docs 0)
-      (error ":num-docs must be greater then zero to run a search."))
-    (when (< first-doc 0)
-      (error "first-doc must be greater than or equal to zero to run a search."))
-    (let ((scorer (scorer (weight query self) (reader self))))
-      (if (null scorer)
-	  (make-instance 'top-docs
-			 :thing 0
-			 :other-thing '())
-	  (let ((bits (if (null filter)
-			  nil
-			  (bits filter (reader self))))
-		(hq (if sort
-			(let ((fields (if (typep sort 'sort)
-					  (fields sort)
-					  sort)))
-			  (make-instance 'field-sorted-hit-queue
-					 :reader (reader self)
-					 :fields fields
-					 :max-size max-size))
-			(make-instance 'hit-queue
-				       :max-size max-size))))
-	    (let ((total-hits 0)
-		  (min-score 0.0))
-	      (dolist (hit (hits scorer))
-		(destructuring-bind (doc score) hit
-		  (when (and (> score 0.0)
-			     (or (null bits)
-				 (bit-set-p bits doc)))
-		    (incf total-hits)
-		    (when (or (< (size hq) max-size)
-			      (>= score min-score))
-		      (queue-insert hq (make-instance 'score-doc
-						      :doc doc
-						      :score score))
-		      (setf min-score (score (queue-top hq)))))))
-	      (let ((score-docs '()))
-		(when (> (size hq) first-doc)
-		  (when (< (- (size hq) first-doc) num-docs)
-		    (setf num-docs (- (size hq) first-doc)))
-		  (dotimes (i num-docs)
-		    (declare (ignorable i))
-		    (queue-push (queue-pop hq) score-docs)))
-		(queue-clear hq)
-		(make-instance 'top-docs
-			       :total-hits total-hits
-			       :score-docs score-docs))))))))
-
-
-(defmethod search-each ((self index-searcher) (query query) &optional (options nil))
-  (let ((scorer (scorer (weight query self) (reader self))))
-    (when (null scorer)
-      (return-from search-each nil))
-    
-    ;;?? bits
-    (map-pipe #'(lambda (doc score)
-		  (if (and (plusp score)
-			   ;;?? bits
-			   )
-		      (yield doc score)))
-	      (hits scorer))))
-    
-(defmethod rewrite ((self index-searcher) original)
-  (let* ((query original)
-         (rewritten-query (rewrite query (reader self))))
-    (while (not (equal query rewritten-query))
-      (setf query rewritten-query
-            rewritten-query (rewrite query (reader self))))
-    (values query)))
-
-(defmethod explain-score ((self index-searcher) (query query) index)
-  ;; not implemented
-  (error "not yet implemented"))
