@@ -2,6 +2,8 @@
 
 (defgeneric flush (index-output))
 
+(defgeneric flush-buffer (buffered-index-output buffer length))
+
 (defgeneric close (index-output))
 
 (defgeneric pos (index-output))
@@ -43,6 +45,10 @@
 (defgeneric write-byte (index-output byte))
 
 (defgeneric write-bytes (index-output buffer length))
+
+(defgeneric read-internal (buffered-index-input buffer offset length))
+
+(defgeneric seek-internal (buffered-index-input pos))
 
 
 

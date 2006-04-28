@@ -56,9 +56,6 @@
 	(setf buffer-start pos))
     (assert (eql (pos self) pos))))
 
-(defgeneric flush-buffer (buffered-index-output buffer length))
-
-
 (defclass buffered-index-input (index-input)
   ((buffer)
    (buffer-size :initarg :buffer-size :reader buffer-size)
@@ -115,10 +112,6 @@
 	      (setf buffer-length 0)
 	      (seek-internal self pos))))
     (assert (eql (pos self) pos))))
-
-(defgeneric read-internal (buffered-index-input buffer offset length))
-
-(defgeneric seek-internal (buffered-index-input pos))
 
 (defmethod refill ((self buffered-index-input))
   (with-slots (buffer-start buffer-position buffer-size buffer-length buffer)

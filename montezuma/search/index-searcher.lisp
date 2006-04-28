@@ -97,8 +97,7 @@
 		    (setf num-docs (- (size hq) first-doc)))
 		  (dotimes (i num-docs)
 		    (declare (ignorable i))
-		    (queue-push (queue-pop hq) score-docs)))
-                
+		    (push (queue-pop hq) score-docs)))
                 ;;?? why bother... 
 		(queue-clear hq)
 		(make-instance 'top-docs

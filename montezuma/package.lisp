@@ -28,6 +28,12 @@
    #:weight
    #:scorer
    #:reader 
+   #:each-hit
+   #:each
+   #:doc
+   #:score
+   #:size
+   #:get-document
    
    #:term-query
    #:index-searcher))

@@ -92,12 +92,13 @@
 	(return-from next T))
       (skipping-doc self)))))
 
-(defmethod read-segment-term-doc-enum ((self segment-term-doc-enum) docs freqs &optional (start 0))
+(defmethod read-segment-term-doc-enum ((self segment-term-doc-enum) docs freqs 
+                                       &optional (start 0))
   (with-slots (doc-freq freq freq-stream doc count deleted-docs) self
     (let ((i start)
 	  (needed (length docs)))
       (while (and (< i needed) (< count doc-freq))
-	(let ((doc-code (read-vint freq-stream)))
+        (let ((doc-code (read-vint freq-stream)))
 	  (incf doc (ash doc-code -1))
 	  (if (logbitp 0 doc-code)
 	      (setf freq 1)

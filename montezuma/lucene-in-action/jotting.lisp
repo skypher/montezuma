@@ -24,10 +24,11 @@
                   :analyzer (get-analyzer test)
                   :use-compound-file-p (use-compound-index-p test))))
     (loop for (id title text) in
-          `(("1" "Big Sleep, the" "Rock a bye baby")
-            ("2" "Black Sheep" "Baa Baa Black Sheep, have you any wool")
-            ("3" "Dance all Day" "Rock yourself to sleep")
-            ("4" "Unconquerable World, the" "Power to the people. Black and white"))
+          `(("1" "RFID in depth" "Radio frequencies tie up my brain")
+            ("3" "Big Sleep, the" "Rock a bye baby")
+            ("5" "Black Sheep" "Baa Baa Black Sheep, have you any wool")
+            ("7" "Dance all Day" "Rock yourself to sleep")
+            ("9" "Unconquerable World, the" "Power to the people. I am Black and white"))
           do
           (let ((document (make-instance 'document)))
             (add-field 
@@ -37,21 +38,51 @@
             (add-field 
              document (make-text-field "text" text))
             (add-document-to-index-writer writer document)))
-    ;;(optimize writer)
+    (optimize writer)
     (close writer))) 
 
 (addtest (test-term-search)
-  test-1
-  (ensure-same (max-doc searcher) 4))
+  test-max-doc
+  (ensure-same (max-doc searcher) 5))
+
+#+Notyet
+(addtest (test-term-search)
+  test-sleep
+  (let* ((term (make-term "text" "sleep"))
+         (query (make-instance 'term-query :term term)) 
+         (hits (search searcher query)))
+    (ensure-same (size hits) 1)
+    (let ((docs
+           ;;?? ought to be a function for this already somewhere...
+           (let ((result nil))
+             (each hits (lambda (hit) 
+                          (push (list (get-document searcher (doc hit))
+                                      (score hit)) result)))
+             (nreverse result))))
+      (ensure-same (first (first docs)) 4))))
+
+#+test
+(addtest (test-term-search)
+  test-Black
+  (let* ((term (make-term "text" "black"))
+         (query (make-instance 'term-query :term term)) 
+         (hits (search searcher query)))
+    (inspect hits)
+    (break)))
 
 (addtest (test-term-search)
-  test-2
-  (let* ((term (make-term "text" "sleep"))
-         (query (make-instance 'term-query :term term)))
-    ;(inspect (weight query searcher))
-    ;(inspect (search searcher query))
-    (inspect (scorer (weight query searcher) (reader searcher)))
-    ))
+  test-Black
+  (let* ((term (make-term "text" "black"))
+         (query (make-instance 'term-query :term term)) 
+         (hits (search searcher query)))
+    (ensure-same (size hits) 2)
+    (let ((score-docs
+           ;;?? ought to be a function for this already somewhere...
+           (let ((result nil))
+             (each hits (lambda (hit) (push hit result)))
+             (nreverse result))))
+      (ensure-same (doc (first score-docs)) 2)
+      (ensure-same (doc (second score-docs)) 4))))
     
 
 #|

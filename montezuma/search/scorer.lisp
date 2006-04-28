@@ -3,20 +3,14 @@
 (defparameter +max-docs+ #x7FFFFFF)
 
 (defclass scorer ()
-  ((similarity :initarg :similarity :reader similarity)
-   (pipe)))
+  ((similarity :initarg :similarity :reader similarity)))
 
 (defmethod initialize-instance :after ((object scorer) &key)
   )
 
-(defmethod setup-pipe ((self scorer))
-  (setf (slot-value self 'pipe)
-        (make-pipe nil nil)))          
-         
+          
 (defmethod each-hit ((self scorer) fn)
-  #+Ignore
-  (make-pipe first rest)
-  empty-pipe)
+  (loop while (next? self) do (funcall fn (document self) (score self))))
 
 (defmethod each-hit-up-to ((self scorer) (max-docs integer) fn)
   (values (< (document self) max-docs)))
