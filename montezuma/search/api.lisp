@@ -44,9 +44,9 @@ returns:: true iff there is another document matching the query.
 When this method is used the #explain(int) method should not be used.
 "))
 
-(defgeneric doc (similarity)
-  (:documentation "Returns the current document number matching the query. Initially invalid, until #next?() is called the first time.
-"))
+#+Ignore
+;; defined in index's api
+(defgeneric doc (similarity))
 
 (defgeneric score (similarity)
   (:documentation "Returns the score for the current document matching the query. Initially invalid, until #next?() is called the first time.
@@ -72,9 +72,11 @@ Behaves as if written:
 Most implementations are considerably more efficient than that."))
 
 
-(defgeneric explain-score (similarity document-number)
+(defgeneric explain-score (similarity reader document-number)
   (:documentation "Returns an explanation of the score for a document. When this method is used, the #next?(), #skip_to(int) and #score(HitCollector) methods should not be used.
 doc:: The document number for the explanation.
+
+An explanation of the score computation for the named document.
 "))
 
 ;;; ---------------------------------------------------------------------------
@@ -89,7 +91,14 @@ doc:: The document number for the explanation.
   (:documentation " Expert: called to re-write queries into primitive queries."))
 
 (defgeneric compare (query queries)
-  (:documentation "Expert: called when re-writing queries under MultiSearcher. Only implemented by derived queries, with no #create_weight() implementatation."))
+  (:documentation "Expert: called when re-writing queries under MultiSearcher. Only implemented by derived queries, with no #create_weight() implementatation.
+
+Compares two ScoreDoc objects and returns a result indicating their sort order.
+
+returns:: +-1+ if +i+ should come before +j+
++1+  if +i+ should come after +j+
++0+  if they are equal
+"))
 
 (defgeneric extract-terms (qyery terms)
   (:documentation "Expert: adds all terms occuring in this query to the terms set"))
@@ -100,5 +109,18 @@ doc:: The document number for the explanation.
 (defgeneric similarity-implementation (query searcher)
   (:documentation "Expert: Returns the Similarity implementation to be used for this query.  Subclasses may override this method to specify their own Similarity implementation, perhaps one that delegates through that of the Searcher.  By default the Searcher's Similarity implementation is returned."))
 
-(defgeneric term-doc-freq (searcher term)
-  (:documentation ""))
+
+(defgeneric query (weight)
+  (:documentation "The query that this concerns. "))
+
+(defgeneric value (weight)
+  (:documentation "The weight for this query."))
+
+(defgeneric sum-of-squared-weights (weight)
+  (:documentation "The sum of squared weights of contained query clauses. "))
+
+(defgeneric normalize-weight (weight norm)
+  (:documentation "Assigns the query normalization factor to this."))
+
+(defgeneric scorer (weight reader)
+  (:documentation "Constructs a scorer for this. "))

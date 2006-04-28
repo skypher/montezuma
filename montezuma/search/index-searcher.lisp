@@ -87,7 +87,7 @@
 					   (bit-set-p bits doc)))
 			      (incf total-hits)
 			      (when (or (< (size hq) max-size)
-					(>= score minimum-score))
+					(>= score min-score))
 				(queue-push hq (make-instance
 						'score-doc :doc doc :score score))
 				(setf min-score (score (queue-top hq)))))))

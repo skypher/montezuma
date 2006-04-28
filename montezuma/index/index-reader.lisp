@@ -23,6 +23,8 @@
    (has-changes-p :initform NIL)
    (stale :initform NIL)))
 
+(defmethod initialize-instance :after ((self index-reader) &key)
+  (care-when-finalized self))
 
 (defun open-index-reader (directory &key (close-directory-p T) (infos nil))
   (if (null directory)
@@ -147,9 +149,15 @@
 	  (do-commit self)))
     (setf has-changes-p NIL)))
 
+(defmethod when-finalized ((self index-reader))
+  (close self))
+
 (defmethod close ((self index-reader))
+  (ignore-finalization self)
   (commit self)
   (do-close self)
   (with-slots (directory close-directory-p) self
     (when close-directory-p
       (close directory))))
+
+

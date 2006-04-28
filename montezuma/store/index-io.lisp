@@ -3,10 +3,6 @@
 (defclass index-input ()
   ())
 
-(defgeneric read-byte (index-input))
-
-(defgeneric read-bytes (index-input buffer offset length))
-
 (defmethod read-int ((self index-input))
   (let ((i1 (read-byte self))
 	(i2 (read-byte self))
@@ -62,20 +58,8 @@
   (dotimes (i length)
     (setf (elt buffer (+ i start)) (read-byte self))))
 
-(defgeneric pos (index-input))
-
-(defgeneric seek (index-input pos))
-
-(defgeneric size (index-input))
-
-
-
 (defclass index-output ()
   ())
-
-(defgeneric write-byte (index-output byte))
-
-(defgeneric write-bytes (index-output buffer length))
 
 (defmethod write-int ((self index-output) i)
   (flet ((sa (i count) (logand (ash i count) #xff)))
@@ -119,12 +103,4 @@
   (dotimes (i length)
     (write-byte self (aref buffer (+ i start)))))
 
-(defgeneric flush (index-output))
 
-(defgeneric close (index-output))
-
-(defgeneric pos (index-output))
-
-(defgeneric seek (index-output pos))
-
-(defgeneric size (index-output))

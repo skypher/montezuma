@@ -3,23 +3,11 @@
 (defclass term-doc-enum ()
   ())
 
-(defgeneric seek (term-doc-enum pos))
-
-(defgeneric doc (term-doc-enum))
-
-(defgeneric freq (term-doc-enum))
-
-(defgeneric next (term-doc-enum))
-
-(defgeneric read-segment-term-doc-enum (term-doc-enum docs freqs &optional start))
-
 (defmethod skip-to ((self term-doc-enum) target)
   (while (> target (doc self))
     (unless (next self)
       (return-from skip-to NIL)))
   T)
-
-(defgeneric close (term-doc-enum))
 
 (defclass segment-term-doc-enum (term-doc-enum)
   ((parent :initarg :parent :reader parent)

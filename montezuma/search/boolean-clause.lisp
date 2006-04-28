@@ -14,7 +14,7 @@
           :documentation "See BooleanQuery::Occur for values for this attribute.")))
 
 (defmethod initialize-instance :after ((self boolean-clause) &key)
-  (set-fields object (occur self)))
+  (set-fields self (occur self)))
 
 (defmethod print-object ((self boolean-clause) stream)
   (print-unreadable-object (self stream :identity t :type t)

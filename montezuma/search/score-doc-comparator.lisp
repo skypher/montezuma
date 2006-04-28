@@ -3,15 +3,6 @@
 (defclass score-doc-comparator ()
   ())
 
-
-(defgeneric compare (score-doc-1 score-doc-2)
-  (:documentation "Compares two ScoreDoc objects and returns a result indicating their sort order.
-
-returns:: +-1+ if +i+ should come before +j+
-+1+  if +i+ should come after +j+
-+0+  if they are equal
-"))
-
 (defgeneric sort-value (score-doc document-index)
   (:documentation ""))
 

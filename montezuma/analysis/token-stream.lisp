@@ -5,4 +5,4 @@
 
 (defgeneric next-token (token-stream))
 
-(defgeneric close (token-stream))
+
