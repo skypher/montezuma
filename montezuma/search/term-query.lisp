@@ -3,6 +3,11 @@
 (defclass term-query (query)
   ((term :reader term :initarg :term)))
 
+(defmethod print-object ((self term-query) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (let ((term (term self)))
+      (format stream "~S:~S" (term-field term) (term-text term)))))
+
 (defclass term-weight (weight)
   ((value :accessor value :initform 0)
    (query :reader query :initarg :query)

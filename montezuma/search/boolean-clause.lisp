@@ -17,7 +17,7 @@
   (set-fields self (occur self)))
 
 (defmethod print-object ((self boolean-clause) stream)
-  (print-unreadable-object (self stream :identity t :type t)
+  (print-unreadable-object (self stream :type T)
     (format stream "~A: ~A" (occur self) (query self))))
 
 (defmethod (setf occur) :after (value (self boolean-clause))
@@ -31,13 +31,13 @@
 
 (defmethod set-fields ((self boolean-clause) occur)
   (ecase (occur self)
-    (:must 
+    (:must-occur
      (required t self)
      (prohibited nil self))
-    (:must-not
+    (:must-not-occur
      (required nil self) 
      (prohibited t self))
-    (:should
+    (:should-occur
      (required nil self)
      (prohibited nil self))))
 

@@ -24,7 +24,8 @@
    (stale :initform NIL)))
 
 (defmethod initialize-instance :after ((self index-reader) &key)
-  (care-when-finalized self))
+  ;;(care-when-finalized self)
+  )
 
 (defun open-index-reader (directory &key (close-directory-p T) (infos nil))
   (if (null directory)
@@ -153,7 +154,7 @@
   (close self))
 
 (defmethod close ((self index-reader))
-  (ignore-finalization self)
+;  (ignore-finalization self)
   (commit self)
   (do-close self)
   (with-slots (directory close-directory-p) self

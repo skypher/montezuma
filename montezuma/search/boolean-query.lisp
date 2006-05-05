@@ -17,6 +17,11 @@
   (:default-initargs 
     :max-clause-count +default-max-clause-count+))
 
+
+(defmethod print-object ((self boolean-query) stream)
+  (print-unreadable-object (self stream :type T)
+    (format stream "~{~A~^ ~}" (clauses self))))
+
 (define-condition too-many-clauses-error (error)
                   ()
   (:documentation "Thrown when an attempt is made to add more than #max_clause_count() clauses. This typically happens if a PrefixQuery, FuzzyQuery, WildcardQuery, or RangeQuery is expanded to many terms during search."))
@@ -34,9 +39,9 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
   (declare (ignore similarity overlap max-overlap))
   (values 1.0))
 
-(defmethod query-similarity ((self boolean-query) searcher)
+(defmethod similarity-implementation ((self boolean-query) searcher)
   ;;?? should this be a copy of sim?
-  (let ((sim (when (next-method-p) (call-next-method))))
+  (let ((sim (call-next-method)))
     (when (coord-disabled? self)
       (setf (slot-value sim 'coord-function) 'coord-disabled-function))
     sim))
@@ -73,7 +78,14 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
           (return-from rewrite query)))))
   
   (let ((clone nil))
-    ;;?? iterate
+    (dosequence (clause (clauses self) :index i)
+      (let ((query (rewrite (query clause) reader)))
+	(when (not (eq query (query clause)))
+	  (setf clone (or clone (clone self)))
+	  (setf (aref (clauses clone) i)
+		(make-instance 'boolean-clause
+			       :query query
+			       :occur (occur clause))))))
     (if (not (null clone))
       ;; we did some re-writing
       (values clone)
@@ -81,11 +93,9 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
       (values self))))
 
 (defmethod extract-terms ((self boolean-query) terms)
-#|
-      @clauses.each do |clause|
-        clause.query.extract_terms(terms)
-      end
-|#  )
+  (dosequence (clause (clauses self))
+    (extract-terms (query clause) terms)))
+
 
 (defmethod combine ((self boolean-query) queries)
   )
@@ -102,12 +112,18 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
 
 (defclass boolean-weight (weight)
   ((similarity :accessor similarity)
-   (weights :accessor weights :initform nil)
-   (query :reader query :initform :query)
-   (searcher :reader searcher :initform :searcher)))
+   (weights :accessor weights :initform '())
+   (query :initarg :query :reader query)
+   (searcher :initarg :searcher :reader searcher)))
 
 (defmethod initialize-instance :after ((self boolean-weight) &key)
-  (setf (similarity self) (query-similarity query searcher))
+  (setf (similarity self) (similarity-implementation (query self) (searcher self)))
+  (let ((weights '())
+	(searcher (searcher self)))
+    (dosequence (clause (clauses (query self)))
+      (push (create-weight (query clause) searcher)
+	    weights))
+    (setf (weights self) (reverse weights))))
 
 
 #|
@@ -118,35 +134,28 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
         end
 
 
-|#  )
+|#
 
 (defmethod value ((self boolean-weight))
   (values (boost (query self))))
 
 (defmethod sum-of-squared-weights ((self boolean-weight))
-  (let ((sum 0))
-    #|
-        @weights.each_with_index do |weight, i|
+  (let ((sum 0)
+	(query (query self)))
+    (dosequence (weight (weights self) :index i)
+      (let ((clause (elt (clauses query) i)))
+	(unless (prohibited? clause)
+	  (incf sum (sum-of-squared-weights weight)))))
+    (setf sum (* sum (boost query) (boost query)))))
 
-          clause = @query.clauses[i]
+(defmethod normalize-weight ((self boolean-weight) norm)
+  (let ((query (query self)))
+    (setf norm (* norm (boost query)))
+    (dosequence (weight (weights self) :index i)
+      (let ((clause (elt (clauses query) i)))
+	(unless (prohibited? clause)
+	  (normalize-weight weight norm))))))
 
-          if not clause.prohibited?
-
-            sum += weight.sum_of_squared_weights()         # sum sub weights
-
-          end
-
-        end
-
-
-
-        sum *= @query.boost() * @query.boost()             # boost each sub-weight
-
-
-|#
-    (values sum)))
-
-(defmethod normalize ((self boolean-weight) norm)
   #|
         norm *= @query.boost()
 
@@ -164,10 +173,21 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
 
 
 |#
-  )
+
 
 (defmethod scorer ((self boolean-weight) reader)
-  )
+  (let ((result (make-instance 'boolean-scorer
+			       :similarity (similarity self)))
+	(query (query self)))
+    (dosequence (weight (weights self) :index i)
+      (let* ((clause (elt (clauses query) i))
+	     (sub-scorer (scorer weight reader)))
+	(if sub-scorer
+	    (add-scorer result sub-scorer (occur clause))
+	    (when (required? clause)
+	      (return-from scorer nil)))))
+    result))
+	
 
 (defmethod explain-score ((self boolean-weight) reader doc)
   )

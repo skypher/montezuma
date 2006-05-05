@@ -57,8 +57,14 @@
   (with-slots (options) self
     (check-type args index-options-list)
     (setf options (copy-list args))
-    (setf (get-index-option options :default-search-field) (if (get-index-option options :default-search-field) (string (get-index-option options :default-search-field)) "")
-	  (get-index-option options :default-field) (if (get-index-option options :default-field) (string (get-index-option options :default-field)) ""))
+    (setf (get-index-option options :default-field)
+	  (if (get-index-option options :default-field)
+	      (string (get-index-option options :default-field))
+	      ""))
+    (setf (get-index-option options :default-search-field)
+	  (or (get-index-option options :default-search-field)
+	      (get-index-option options :default-field)
+	      "*"))
     (when (null (get-index-option options :create-if-missing-p))
       (setf (get-index-option options :create-if-missing-p) T))
     ;; FIXME: I don't flatten the :key option, I'm not sure why Ferret does.
@@ -178,7 +184,7 @@
 (defmethod search-each ((self index) query fn &optional options)
   (let ((hits (do-search self query options)))
     (dosequence (score-doc (score-docs hits))
-      (funcall fn (doc score doc) (score score-doc)))
+      (funcall fn (doc score-doc) (score score-doc)))
     (total-hits hits)))
 
 (defmethod get-document ((self index) id)

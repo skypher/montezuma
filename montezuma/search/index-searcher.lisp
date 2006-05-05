@@ -64,8 +64,8 @@
     (let ((scorer (scorer (weight query self) (reader self))))
       (if (null scorer)
 	  (make-instance 'top-docs
-			 :thing 0
-			 :other-thing '())
+			 :total-hits 0
+			 :score-docs '())
 	  (let ((bits (unless (null filter)
                         (bits filter (reader self))))
 		(hq (if sort
@@ -79,7 +79,7 @@
 			(make-instance 'hit-queue
 				       :max-size max-size))))
 	    (let ((total-hits 0)
-		  (min-score 0.0))
+		  (minimum-score 0.0))
 	      (each-hit scorer
 			#'(lambda (doc score)
 			    (when (and (> score 0.0)
@@ -90,7 +90,7 @@
 					(>= score min-score))
 				(queue-push hq (make-instance
 						'score-doc :doc doc :score score))
-				(setf min-score (score (queue-top hq)))))))
+				(setf minimum-score (score (queue-top hq)))))))
 	      (let ((score-docs '()))
 		(when (> (size hq) first-doc)
 		  (when (< (- (size hq) first-doc) num-docs)

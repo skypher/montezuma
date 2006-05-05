@@ -28,7 +28,6 @@
 
 
 ;; Corresponds to org.apache.lucene.util.SmallFloat.byte315ToFloat.
-
 (defun byte315-to-float (b)
   (if (= b 0)
       0.0
