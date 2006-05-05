@@ -67,7 +67,9 @@
 			   (:file "boolean-query" :depends-on ("query"))
 			   (:file "term-scorer"  :depends-on ("scorer"))
 			   (:file "disjunction-sum-scorer" :depends-on ("scorer"))
-			   (:file "boolean-scorer" :depends-on ("disjunction-sum-scorer"))
+			   (:file "conjunction-scorer" :depends-on ("scorer"))
+			   (:file "boolean-scorer" :depends-on ("disjunction-sum-scorer"
+								"conjunction-scorer"))
                            (:file "top-docs")
                            (:file "index-searcher")
                            (:file "sort")

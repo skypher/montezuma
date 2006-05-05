@@ -1,11 +1,12 @@
 (in-package #:montezuma)
 
 
-(defvar *valid-index-options*
-  '(:path :create-if-missing-p :create-p :default-field
-    :id-field :default-search-field :analyzer :directory
-    :close-directory-p :occur-default :wild-lower-p :default-slop
-    :key :use-compound-file-p :handle-parse-errors-p :auto-flush-p))
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (defvar *valid-index-options*
+    '(:path :create-if-missing-p :create-p :default-field
+      :id-field :default-search-field :analyzer :directory
+      :close-directory-p :occur-default :wild-lower-p :default-slop
+      :key :use-compound-file-p :handle-parse-errors-p :auto-flush-p)))
 
 (defun index-options-list-p (list)
   (do ((options list (cddr options)))
@@ -25,7 +26,7 @@
       (get-setf-expansion place env)
     (declare (ignore writer-form))
     (let ((goption (gensym "OPTION"))
-	  (gstore (if store-vars (first store-vars) (gensym "STORE"))))
+	  (gstore (if store-vars (car store-vars) (gensym "STORE"))))
       (values
        (list* goption vars)
        (list* option vals)

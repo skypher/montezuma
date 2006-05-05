@@ -1,9 +1,9 @@
 (in-package #:montezuma)
 
 (defclass coordinator ()
-  ((max-coord :initform 0)
+  ((max-coord :initform 0 :accessor max-coord)
    (coord-factors :initform nil)
-   (num-matchers)
+   (num-matchers :accessor num-matchers)
    (similarity :initarg :similarity)))
 
 (defmethod init ((self coordinator))
@@ -24,10 +24,10 @@
 
 (defclass boolean-scorer (scorer)
   ((counting-sum-scorer :initform nil)
-   (required-scorers :initform (make-array 0 :adjustable T :fill-pointer T))
+   (required-scorers :initform (make-array 0 :adjustable T :fill-pointer T) :reader required-scorers)
    (optional-scorers :initform (make-array 0 :adjustable T :fill-pointer T))
    (prohibited-scorers :initform (make-array 0 :adjustable T :fill-pointer T))
-   (coordinator)))
+   (coordinator :reader coordinator)))
 
 
 (defmethod initialize-instance :after ((self boolean-scorer) &key)
@@ -79,7 +79,7 @@
 				      optional-scorers))
 	  (T
 	   (make-counting-sum-scorer2 self
-				      (counting-disjunction-sum-scorer self required-scorers)
+				      (counting-conjunction-sum-scorer self required-scorers)
 				      optional-scorers)))))
 
 
@@ -128,3 +128,33 @@
   (with-slots (coordinator counting-sum-scorer) self
     (init-doc coordinator)
     (* (score counting-sum-scorer) (coord-factor coordinator))))
+
+
+(defmethod counting-conjunction-sum-scorer ((self boolean-scorer) required-scorers)
+  (let ((required-num-matchers (length required-scorers))
+	(ccs (make-instance 'counting-conjunction-scorer
+			    :parent-scorer self
+			    :similarity (make-instance 'default-similarity))))
+    (dosequence (scorer required-scorers)
+      (add ccs scorer))
+    ccs))
+
+
+
+(defclass counting-conjunction-scorer (conjunction-scorer)
+  ((parent-scorer :initarg :parent-scorer)
+   (required-num-matchers)
+   (last-scored-doc :initform -1)))
+
+(defmethod initialize-instance :after ((self counting-conjunction-scorer) &key)
+  (setf (slot-value self 'required-num-matchers)
+	(length (required-scorers (slot-value self 'parent-scorer)))))
+
+(defmethod score :around ((self counting-conjunction-scorer))
+  (with-slots (parent-scorer last-scored-doc required-num-matchers) self
+    (when (> (document parent-scorer) last-scored-doc)
+      (setf last-scored-doc (document parent-scorer))
+      (incf (num-matchers (coordinator parent-scorer))
+	    required-num-matchers))
+    (call-next-method)))
+

@@ -26,7 +26,6 @@
 		#("two" "three" "four" "five"))))
     (dolist (doc data)
       (add-document-to-index index doc))
-    (describe index)
     (atest index-with-array-1 (size index) 8)
     
     ;; FIXME: We don't have a query language parser to handle these
@@ -54,7 +53,7 @@
 	(add-query query (term-query "five") :should-occur)
 	(check-query-results index query '(0 1 3 4 6 7))))
     (atest index-with-array-2
-	   (get-field (get-doc index 7) "def_field")
+	   (document-values (get-document index 7) "def_field")
 	   "two three four five"
 	   #'string=)))
 
