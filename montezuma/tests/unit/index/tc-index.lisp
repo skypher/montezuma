@@ -58,11 +58,9 @@
 	   "two three four five"
 	   #'string=)))
 
-#|
 (deftestfixture index-test
   (:testfun test-ram-index
     (let ((index (make-instance 'index
 				:default-field "def_field")))
       (do-test-index-with-array index)
       (close index))))
-|#
