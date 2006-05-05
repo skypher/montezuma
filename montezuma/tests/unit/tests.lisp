@@ -95,10 +95,10 @@
   (assert (not (assoc name *passed-tests*)) nil "There is already a test named ~S." name)
   (push (cons name (list expr value expected-value)) *failed-tests*)
   (if (not condition)
-      (warn "FAILURE: Test ~S: ~S evaluated to ~S instead of ~S."
+      (warn "FAILURE: ~:_Test ~S: ~:_~S evaluated to ~S ~:_instead of ~:_~S."
 	    name expr value expected-value)
       (let ((condition-report-string (format nil "~A" condition)))
-	(warn "FAILURE: Test ~S: ~S signalled ~S (~S) instead of returning ~S" name expr condition condition-report-string expected-value)))
+	(warn "FAILURE: ~:_Test ~S: ~:_~S signalled ~S (~S) ~:_instead of returning ~:_~S" name expr condition condition-report-string expected-value)))
   (format T "F")
   (when *break-on-failure* (error 'test-failure))
   nil)

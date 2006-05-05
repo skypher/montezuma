@@ -1,22 +1,26 @@
 (in-package #:montezuma)
 
+(defun set= (a b &key (test #'eql))
+  (let ((al (coerce a 'list))
+	(bl (coerce b 'list)))
+    (and (null (set-difference al bl :test test))
+	 (null (set-difference bl al :test test)))))
+
 (defun check-query-results (index query expected)
   (let ((count 0))
     (format T "~&Query: ~S" query)
-    (search-each index query
-		 #'(lambda (doc score)
-		     (format T "~&doc: ~S  score: ~S" doc score)
-		     (atest search-result-got-expected
-			    (find doc expected)
-			    T
-			    #'bool=)
-		     (incf count)))
-    (atest search-result-count-correct
-	   count
-	   (length expected))))
+    (let ((results '()))
+      (search-each index query
+		   #'(lambda (doc score)
+		       (format T "~&doc: ~S  score: ~S" doc score)
+		       (push doc results)))
+      (atest search-results-correct
+	     (reverse results)
+	     expected
+	     #'set=))))
 
 (defun do-test-index-with-array (index)
-  (let ((data '(#("one" "two")
+  (let ((data '(#("one two")
 		#("one" "three")
 		#("two")
 		#("one" "four")
@@ -48,6 +52,11 @@
 	(add-query query (term-query "one") :must-occur)
 	(add-query query (term-query "two") :must-occur)
 	(check-query-results index query '(0 4)))
+      (let ((query (make-instance 'boolean-query)))
+	(add-query query (term-query "two") :must-occur)
+	(add-query query (term-query "three") :must-occur)
+	(add-query query (term-query "four") :must-occur)
+	(check-query-results index query '(5 7)))
       (let ((query (make-instance 'boolean-query)))
 	(add-query query (term-query "one") :should-occur)
 	(add-query query (term-query "five") :should-occur)
