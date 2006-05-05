@@ -24,21 +24,26 @@
 (defclass standard-tokenizer (regexp-tokenizer)
   ())
 
+
+(let ((cached-scanner nil))
 (defmethod token-regexp ((self standard-tokenizer))
-  (let ((alpha "[a-zA-Z]")
-	(p "[_\\/.,-]")
-	(hasdigit "\\w*\\d\\w*"))
-    (let ((re (concatenate 'string
-			   alpha "+"
-			   "(('" alpha "+)+"
-			   "|\\.(" alpha "\\.)+"
-			   "|(@|\\&)\\w+([-.]\\w+)*"
-			   ")"
-			   "|\\w+(([\\-._]\\w+)*\\@\\w+([-.]\\w+)+"
-			   "|" p hasdigit "(" p "\\w+" p hasdigit ")*(" p "\\w+)?"
-			   "|(\\.\\w+)+"
-			   "|)")))
-      (cl-ppcre:create-scanner re))))
+  (if cached-scanner
+      cached-scanner
+      (setf cached-scanner
+	    (let ((alpha "[a-zA-Z]")
+		  (p "[_\\/.,-]")
+		  (hasdigit "\\w*\\d\\w*"))
+	      (let ((re (concatenate 'string
+				     alpha "+"
+				     "(('" alpha "+)+"
+				     "|\\.(" alpha "\\.)+"
+				     "|(@|\\&)\\w+([-.]\\w+)*"
+				     ")"
+				     "|\\w+(([\\-._]\\w+)*\\@\\w+([-.]\\w+)+"
+				     "|" p hasdigit "(" p "\\w+" p hasdigit ")*(" p "\\w+)?"
+				     "|(\\.\\w+)+"
+				     "|)")))
+		(cl-ppcre:create-scanner re)))))))
 
 
 (defparameter *dot-regexp* (cl-ppcre:create-scanner '(:sequence ".")))

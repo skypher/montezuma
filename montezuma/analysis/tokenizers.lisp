@@ -34,12 +34,11 @@
       (setf string-scanner (string-scanner (token-regexp self) input-string)))))
 
 (defmethod next-token ((self regexp-tokenizer))
-  (with-slots (string-scanner) self
-    (multiple-value-bind (term start end)
-	(funcall string-scanner)
-      (if term
-	  (make-token (normalize self term) start end)
-	  nil))))
+  (multiple-value-bind (term start end)
+      (funcall (slot-value self 'string-scanner))
+    (if term
+	(make-token (normalize self term) start end)
+	nil)))
 
 (defmethod token-regexp ((self regexp-tokenizer))
   (cl-ppcre:create-scanner "\\w+" :multi-line-mode T))
