@@ -5,6 +5,7 @@
    (max-doc :initform 0 :reader max-doc)
    (num-docs :initform -1)
    (starts)
+   (ones)
    (norms-cache :initform (make-table :test #'equal))
    (has-deletions-p :initform NIL)))
    
