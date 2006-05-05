@@ -66,10 +66,25 @@
     (values (* raw (similarity-decode-norm (aref (norms self) (document self)))))))
 
 (defmethod skip-to ((self term-scorer) target)
+  ;; First scan in cache.
   (while (< (incf (pointer self)) (pointer-max self))
     (when (>= (aref (documents self) (pointer self)) target)
       (setf (slot-value self 'document) (aref (documents self) (pointer self)))
-      (values t))))
+      (return-from skip-to T)))
+  ;; Not found in cache, seek underlying stream.
+  (with-slots (term-docs document documents freqs pointer-max pointer) self
+    (let ((result (skip-to term-docs target)))
+      (if result
+	  (progn
+	    (setf pointer-max 1)
+	    (setf pointer 0)
+	    (setf document (doc term-docs))
+	    (setf (aref documents pointer) document)
+	    (setf (aref freqs pointer) (freq term-docs)))
+	  (setf document +max-docs+))
+      result)))
+
+
   
 (defmethod explain (document)
   ;;??

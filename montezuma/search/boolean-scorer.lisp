@@ -22,11 +22,12 @@
   (with-slots (coord-factors num-matchers) self
     (aref coord-factors num-matchers)))
 
+
 (defclass boolean-scorer (scorer)
   ((counting-sum-scorer :initform nil)
-   (required-scorers :initform (make-array 0 :adjustable T :fill-pointer T) :reader required-scorers)
-   (optional-scorers :initform (make-array 0 :adjustable T :fill-pointer T))
-   (prohibited-scorers :initform (make-array 0 :adjustable T :fill-pointer T))
+   (required-scorers :initform (make-scorers-array) :reader required-scorers)
+   (optional-scorers :initform (make-scorers-array))
+   (prohibited-scorers :initform (make-scorers-array))
    (coordinator :reader coordinator)))
 
 
@@ -36,7 +37,7 @@
 
 (defmethod add-scorer ((self boolean-scorer) scorer occur)
   (unless (eq occur :must-not-occur)
-    (incf (slot-value (slot-value self 'coordinator) 'max-coord)))
+    (incf (slot-value (coordinator self) 'max-coord)))
   (ecase occur
     ((:must-occur)
      (vector-push-extend scorer (slot-value self 'required-scorers)))
@@ -45,16 +46,24 @@
     ((:must-not-occur)
      (vector-push-extend scorer (slot-value self 'prohibited-scorers)))))
 
-(defmethod next? ((self boolean-scorer))
-  (with-slots (counting-sum-scorer) self
-    (when (null counting-sum-scorer)
-      (setf counting-sum-scorer (init-counting-sum-scorer self)))
-    (next? counting-sum-scorer)))
-
 (defmethod init-counting-sum-scorer ((self boolean-scorer))
   (with-slots (coordinator counting-sum-scorer) self
     (init coordinator)
     (setf counting-sum-scorer (make-counting-sum-scorer self))))
+
+(defmethod next? ((self boolean-scorer))
+  (with-slots (counting-sum-scorer) self
+    (when (null counting-sum-scorer)
+      (init-counting-sum-scorer self))
+    (next? counting-sum-scorer)))
+
+(defmethod each-hit ((self boolean-scorer) fn)
+  (with-slots (counting-sum-scorer) self
+    (when (null counting-sum-scorer)
+      (init-counting-sum-scorer self))
+    (loop while (next? counting-sum-scorer)
+	 do (funcall fn (document counting-sum-scorer) (score self)))))
+
 
 (defmethod make-counting-sum-scorer ((self boolean-scorer))
   (with-slots (required-scorers optional-scorers) self
@@ -127,7 +136,8 @@
 (defmethod score ((self boolean-scorer))
   (with-slots (coordinator counting-sum-scorer) self
     (init-doc coordinator)
-    (* (score counting-sum-scorer) (coord-factor coordinator))))
+    (let ((sum (score counting-sum-scorer)))
+      (* sum (coord-factor coordinator)))))
 
 
 (defmethod counting-conjunction-sum-scorer ((self boolean-scorer) required-scorers)

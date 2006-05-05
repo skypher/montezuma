@@ -5,13 +5,13 @@
 
 
 (defclass conjunction-scorer (scorer)
-  ((scorers :initform (make-scorers-array) :reader scorers)
-   (first-time-p :initform t :reader first-time-p)
-   (more-p :initform t :reader more-p)
+  ((scorers      :initform (make-scorers-array) :reader scorers)
+   (first-time-p :initform T                    :reader first-time-p)
+   (more-p       :initform T                    :reader more-p)
    (coord)))
 
 (defun make-scorers-array ()
-  (make-array 10 :adjustable t :fill-pointer 0))
+  (make-array 10 :adjustable T :fill-pointer 0))
 
 (defmethod add ((self conjunction-scorer) scorer)
   (vector-push-extend scorer (scorers self))
@@ -40,8 +40,10 @@
 			       (document (last-scorer self))))
 	 do
 	 (setf more-p (skip-to (first-scorer self) (document (last-scorer self))))
-	 (rotatef (aref scorers 0)
-		  (aref scorers (- (length scorers) 1))))
+	 ;; FIXME: in Ruby: @scorers << @scorers.shift()
+	 (let ((new-scorers (coerce scorers 'list)))
+	   (let ((first-scorer (pop new-scorers)))
+	     (setf scorers (coerce (append new-scorers (list first-scorer)) 'vector)))))
     more-p))
 
 
