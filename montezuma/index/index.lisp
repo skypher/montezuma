@@ -76,7 +76,7 @@
 	     (setf dir (make-fs-directory (get-index-option options :path)
 					  :create-p (or (get-index-option options :create-p)
 							(get-index-option options :create-if-missing-p))))
-	     (setf (get-index-option options :close-dir-p) T))
+	     (setf (get-index-option options :close-directory-p) T))
 	    ((get-index-option options :directory)
 	     (setf dir (get-index-option options :directory)))
 	    (T
