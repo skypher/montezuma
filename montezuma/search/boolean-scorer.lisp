@@ -115,7 +115,7 @@
     (cond ((= (length optional-scorers) 0)
 	   (cond ((= (length prohibited-scorers) 0)
 		  required-counting-sum-scorer)
-		 ((= (length prohibited-scorers 1))
+		 ((= (length prohibited-scorers) 1)
 		  (error "FOO"))
 		 (T
 		  (error "FOO!"))))
