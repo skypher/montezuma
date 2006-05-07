@@ -8,11 +8,9 @@
 
 (defun check-query-results (index query expected)
   (let ((count 0))
-    (format T "~&Query: ~S" query)
     (let ((results '()))
       (search-each index query
 		   #'(lambda (doc score)
-		       (format T "~&doc: ~S  score: ~S" doc score)
 		       (push doc results)))
       (atest search-results-correct
 	     (reverse results)
@@ -66,9 +64,57 @@
 	   "two three four five"
 	   #'string=)))
 
+(defun do-test-index-with-table (index)
+  (let ((data '((("def_field" . "one two"))
+		(("def_field" . "one") ("field2" . "three"))
+		(("def_field" . "two"))
+		(("def_field" . "one") ("field2" . "four"))
+		(("def_field" . "one two"))
+		(("def_field" . "two") ("field2" . "three") ("field3" . "four"))
+		(("def_field" . "one"))
+		(("def_field" . "two") ("field2" . "three") ("field3" . "five")))))
+    (dolist (doc data)
+      (add-document-to-index index doc))
+    (flet ((term-query (term &optional field)
+	     (make-instance 'term-query
+			    :term (make-term (or field
+						 (slot-value index 'default-search-field))
+					     term))))
+      (check-query-results index (term-query "one") '(0 1 3 4 6))
+      (let ((query (make-instance 'boolean-query)))
+	(add-query query (term-query "one") :must-occur)
+	(add-query query (term-query "two") :must-occur)
+	(check-query-results index query '(0 4)))
+      (let ((query (make-instance 'boolean-query)))
+	(add-query query (term-query "one") :should-occur)
+	(add-query query (term-query "five") :should-occur)
+	(check-query-results index query '(0 1 3 4 6)))
+      (let ((query (make-instance 'boolean-query)))
+	(add-query query (term-query "one") :should-occur)
+	(add-query query (term-query "five" "field3") :should-occur)
+	(check-query-results index query '(0 1 3 4 6 7)))
+      ;; FIXME: We don't have wildcard queries, so we can't test
+      ;; queries like "field3:f*" or "two AND field3:f*".
+      )
+    (atest index-with-table-1
+	   (document-values (get-document index 7) "field3")
+	   "five"
+	   #'string=)
+    (atest index-with-table-2
+	   (document-values (get-document index 7) "def_field")
+	   "two"
+	   #'string=)))
+
+
 (deftestfixture index-test
   (:testfun test-ram-index
     (let ((index (make-instance 'index
 				:default-field "def_field")))
       (do-test-index-with-array index)
+      (close index))
+    (let ((index (make-instance 'index
+				:default-field "def_field")))
+      (do-test-index-with-table index)
       (close index))))
+
+
