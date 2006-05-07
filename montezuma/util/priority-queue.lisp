@@ -115,6 +115,20 @@
   (with-slots (contents) queue
     (heap-insert contents new-item :test #'(lambda (a b) (less-than queue a b)))))
 
+(defmethod queue-insert ((queue priority-queue) new-item)
+  (let ((size (length (slot-value queue 'contents)))
+	(max-size (slot-value queue 'max-size)))
+    (cond ((< size max-size)
+	   (queue-push queue new-item)
+	   T)
+	  ((and (> size 0) (less-than queue (queue-top queue) new-item))
+	   (queue-pop queue)
+	   (queue-push queue new-item)
+	   T)
+	  (T
+	   NIL))))
+
+
 (defmethod queue-top ((queue priority-queue))
   (with-slots (contents) queue
       (if (zerop (length contents))

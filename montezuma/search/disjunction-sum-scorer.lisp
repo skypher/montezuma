@@ -24,7 +24,7 @@
 				      :max-size num-scorers))
     (dosequence (sub-scorer sub-scorers)
       (when (next? sub-scorer)
-	(queue-push scorer-queue sub-scorer)))))
+	(queue-insert scorer-queue sub-scorer)))))
 
 (defmethod next? ((self disjunction-sum-scorer))
   (with-slots (scorer-queue minimum-num-matchers) self
