@@ -52,7 +52,7 @@ When this method is used the #explain(int) method should not be used.
   (:documentation "Returns the score for the current document matching the query. Initially invalid, until #next?() is called the first time.
 "))
 
-(defgeneric skip-to (similarit target)
+(defgeneric skip-to (similarity target)
   (:documentation "Skips to the first match beyond the current whose document number is greater than or equal to a given target.
 
 When this method is used the #explain(int) method should not be used.

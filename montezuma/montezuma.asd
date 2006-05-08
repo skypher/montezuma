@@ -77,7 +77,10 @@
                            (:file "top-docs")
                            (:file "index-searcher")
                            (:file "sort")
-                           (:file "sort-field"))
+                           (:file "sort-field")
+                           (:file "phrase-positions")
+                           (:file "phrase-scorer" :depends-on ("phrase-positions"))
+                           (:file "exact-phrase-scorer" :depends-on ("phrase-scorer")))
               :depends-on ("package" "index"))
      (:module "index"
        :components ((:file "api")
