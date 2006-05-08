@@ -37,9 +37,9 @@
 		  (incf j)))))))
     doc-map))
 
-(defmethod next ((self segment-merge-info))
+(defmethod next? ((self segment-merge-info))
   (with-slots (term-enum) self
-    (next term-enum)))
+    (next? term-enum)))
 
 (defmethod close ((self segment-merge-info))
   (with-slots (term-enum postings reader) self

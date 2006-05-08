@@ -151,7 +151,7 @@
 				   :term-enum term-enum
 				   :reader reader)))
 	  (incf base (num-docs reader))
-	  (if (next smi)
+	  (if (next? smi)
 	      (queue-push queue smi)
 	      (close smi))))
       (let ((match (make-array (length readers))))
@@ -170,7 +170,7 @@
 	      (while (> match-size 0)
 		(decf match-size)
 		(let ((smi (aref match match-size)))
-		  (if (next smi)
+		  (if (next? smi)
 		      (queue-push queue smi)
 		      (close smi)))))))))))
 
@@ -195,7 +195,7 @@
 	       (base (base smi))
 	       (doc-map (doc-map smi)))
 	  (seek postings (term-enum smi))
-	  (while (next postings)
+	  (while (next? postings)
 	    (let ((doc (doc postings)))
 	      (when (not (null doc-map))
 		(setf doc (aref doc-map doc)))

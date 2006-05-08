@@ -55,7 +55,7 @@
     (reset prev-buffer)
     (set-from-term-info (slot-value self 'term-info) term-info)))
 
-(defmethod next ((self segment-term-enum))
+(defmethod next? ((self segment-term-enum))
   (with-slots (position field-infos term-buffer prev-buffer term-info format is-index index-pointer size
 			format-mlskip-interval skip-interval input) self
     (incf position)
@@ -82,7 +82,7 @@
 
 (defmethod scan-to ((self segment-term-enum) term)
   (with-slots (term-buffer) self
-    (while (and (term> term (to-term term-buffer)) (next self)))))
+    (while (and (term> term (to-term term-buffer)) (next? self)))))
 
 (defmethod term ((self segment-term-enum))
   (with-slots (term-buffer) self

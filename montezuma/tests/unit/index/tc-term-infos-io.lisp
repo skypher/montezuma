@@ -199,9 +199,9 @@
 		(test term-info-big-10 (get-term tir 127) term-dumbly #'term=)
 		(let ((terms (terms-from tir term-dumbly)))
 		  (test term-info-big-11 (term terms) term-dumbly #'term=)
-		  (test term-info-big-12 (and (next terms) T) T)
+		  (test term-info-big-12 (and (next? terms) T) T)
 		  (test term-info-big-13 (term terms) (make-term "word" "dumbness") #'term=)
-		  (test term-info-big-14 (and (next terms) T) T)
+		  (test term-info-big-14 (and (next? terms) T) T)
 		  (test term-info-big-15 (term terms) (make-term "word" "dumbo") #'term=)))))
   (:testfun test-term-infos-io-small-writer
 	  (let ((fis (make-instance 'field-infos)))
