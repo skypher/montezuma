@@ -10,7 +10,7 @@
     (setf max-size (length term-positions))
     (initialize-heap self))
   (dolist (tp term-positions)
-    (when (next tp)
+    (when (next? tp)
       (queue-push self tp))))
 
 (defmethod less-than ((self term-positions-queue) tp1 tp2)
@@ -31,7 +31,7 @@
       (setf tps-queue (make-instance 'term-positions-queue
 				     :term-positions term-positions)))))
 
-(defmethod next ((self multiple-term-doc-pos-enum))
+(defmethod next? ((self multiple-term-doc-pos-enum))
   (with-slots (tps-queue pos-list doc freq) self
     (if (= (size tps-queue) 0)
 	NIL
@@ -42,7 +42,7 @@
 	     do (let ((tps (queue-top tps-queue)))
 		  (dotimes (i (freq tps))
 		    (setf pos-list (append pos-list (list (next-position tps)))))
-		  (if (next tps)
+		  (if (next? tps)
 		      (adjust-top tps-queue)
 		      (progn
 			(queue-pop tps-queue)
@@ -63,7 +63,7 @@
 	(if (skip-to tps target)
 	    (queue-push tps-queue tps)
 	    (close tps))))
-    (next self)))
+    (next? self)))
 
 (defmethod close ((self multiple-term-doc-pos-enum))
   (with-slots (tps-queue) self

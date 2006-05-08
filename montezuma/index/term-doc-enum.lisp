@@ -5,7 +5,7 @@
 
 (defmethod skip-to ((self term-doc-enum) target)
   (while (> target (doc self))
-    (unless (next self)
+    (unless (next? self)
       (return-from skip-to NIL)))
   T)
 
@@ -77,11 +77,11 @@
 (defmethod skipping-doc ((self segment-term-doc-enum))
   )
 
-(defmethod next ((self segment-term-doc-enum))
+(defmethod next? ((self segment-term-doc-enum))
   (with-slots (count doc-freq freq-stream freq deleted-docs doc) self
   (while T
     (when (eql count doc-freq)
-      (return-from next NIL))
+      (return-from next? NIL))
     (let ((doc-code (read-vint freq-stream)))
       (incf doc (ash doc-code -1))
       (if (logbitp 0 doc-code)
@@ -89,7 +89,7 @@
 	  (setf freq (read-vint freq-stream)))
       (incf count)
       (when (or (null deleted-docs) (not (bit-set-p deleted-docs doc)))
-	(return-from next T))
+	(return-from next? T))
       (skipping-doc self)))))
 
 (defmethod read-segment-term-doc-enum ((self segment-term-doc-enum) docs freqs 
@@ -149,7 +149,7 @@
 	  (setf doc last-skip-doc)
 	  (incf count num-skipped))))
     ;; Done skipping, now just scan.
-    (do ((next (next self) (next self)))
+    (do ((next (next? self) (next? self)))
 	((or (null next) (>= doc target))
 	 (if (null next)
 	     NIL
@@ -186,7 +186,7 @@
     (dotimes (i freq)
       (read-vint prox-stream))))
 
-(defmethod next :around ((self segment-term-doc-pos-enum))
+(defmethod next? :around ((self segment-term-doc-pos-enum))
   (with-slots (prox-count freq prox-stream position) self
     (dotimes (i prox-count)
       (read-vint prox-stream))

@@ -70,6 +70,10 @@
 			   (:file "conjunction-scorer" :depends-on ("scorer"))
 			   (:file "boolean-scorer" :depends-on ("disjunction-sum-scorer"
 								"conjunction-scorer"))
+			   (:file "filtered-term-enum")
+			   (:file "multi-term-query" :depends-on ("query"))
+			   (:file "wildcard-query" :depends-on ("multi-term-query"))
+			   (:file "wildcard-term-enum" :depends-on ("filtered-term-enum"))
                            (:file "top-docs")
                            (:file "index-searcher")
                            (:file "sort")

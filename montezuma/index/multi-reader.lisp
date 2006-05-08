@@ -135,14 +135,14 @@
 (defmethod terms ((self multi-reader))
   (with-slots (sub-readers starts) self
     (make-instance 'multi-term-enum
-		   :sub-readers sub-readers
+		   :readers sub-readers
 		   :starts starts
 		   :term nil)))
 
 (defmethod terms-from ((self multi-reader) term)
   (with-slots (sub-readers starts) self
     (make-instance 'multi-term-enum
-		   :sub-readers sub-readers
+		   :readers sub-readers
 		   :starts starts
 		   :term term)))
 
@@ -184,20 +184,20 @@
 (defmethod initialize-instance :after ((self multi-term-enum) &key readers starts term)
   (with-slots (queue) self
     (setf queue (make-instance 'segment-merge-queue
-			       :length (length readers)))
+			       :max-size (length readers)))
     (dosequence (reader readers :index i)
       (let* ((term-enum (if term (terms-from reader term) (terms reader)))
 	     (smi (make-instance 'segment-merge-info
-				 :start (aref starts i)
+				 :base (aref starts i)
 				 :term-enum term-enum
 				 :reader reader)))
-	(if (or (and (null term) (next smi)) (term term-enum))
+	(if (or (and (null term) (next? smi)) (term term-enum))
 	    (queue-push queue smi)
 	    (close smi))))
     (when (and term (> (size queue) 0))
-      (next self))))
+      (next? self))))
 
-(defmethod next ((self multi-term-enum))
+(defmethod next? ((self multi-term-enum))
   (with-slots (queue term-buffer term doc-freq) self
     (let ((top (queue-top queue)))
     (if (null top)
@@ -208,7 +208,7 @@
 	  (while (and top (term= term (term-buffer top)))
 	    (queue-pop queue)
 	    (incf doc-freq (doc-freq (term-enum top)))
-	    (if (next top)
+	    (if (next? top)
 		(queue-push queue top)
 		(close top))
 	    (setf top (queue-top queue)))
@@ -246,15 +246,15 @@
 	  pointer 0
 	  current nil)))
 
-(defmethod next ((self multi-term-doc-enum))
+(defmethod next? ((self multi-term-doc-enum))
   (with-slots (current pointer readers base starts) self
-    (cond ((and current (next current))
+    (cond ((and current (next? current))
 	   T)
 	  ((< pointer (length readers))
 	   (setf base (aref starts pointer)
 		 current (multi-term-docs self pointer)
 		 pointer (1+ pointer))
-	   (next self))
+	   (next? self))
 	  (T NIL))))
 
 
@@ -282,7 +282,7 @@
 
 (defmethod skip-to ((self multi-term-doc-enum) target)
   (loop
-     do (when (not (next self))
+     do (when (not (next? self))
 	  (return-from skip-to NIL))
        while (> target (doc self)))
   T)

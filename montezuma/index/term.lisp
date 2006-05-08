@@ -24,7 +24,7 @@
   (setf (%term-text self) text)
   (setf (%term-field self) field))
 
-(defun term-compare (t1 t2)
+(defmethod term-compare ((t1 term) (t2 term))
   (let ((fc (string-compare (term-field t1) (term-field t2))))
     (if (= fc 0)
 	(string-compare (term-text t1) (term-text t2))
