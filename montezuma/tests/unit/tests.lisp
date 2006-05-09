@@ -43,7 +43,8 @@
 	   (test-success name expr value expected-value))
 	 (handle-test-failure (value condition)
 	   (test-failure name expr value expected-value condition)
-	   (when failure-thunk (funcall failure-thunk))))
+	   (when failure-thunk
+	     (funcall failure-thunk))))
     (restart-case 
 	(handler-bind ((error #'maybe-fail-test))
 	  (let ((value (funcall test-thunk)))
@@ -51,6 +52,7 @@
 		(handle-test-success value)
 		(handle-test-failure value nil))))
       (fail-test (condition)
+	:report "Fail this test."
 	(handle-test-failure nil condition)))))
 
 #||
