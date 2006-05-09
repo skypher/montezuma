@@ -6,7 +6,8 @@
    (enum :initform nil)
    (reader :initform nil)))
 
-(defmethod enum= ((self filtered-term-enum) enum)
+
+(defmethod (setf enum) (enum (self filtered-term-enum))
   (setf (slot-value self 'enum) enum)
   (let ((term (term enum)))
     (if (and term (term-compare self term))

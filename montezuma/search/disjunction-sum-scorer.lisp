@@ -78,3 +78,23 @@
 
 (defmethod score ((self disjunction-sum-scorer))
   (slot-value self 'current-score))
+
+(defmethod skip-to ((self disjunction-sum-scorer) target)
+  (with-slots (scorer-queue minimum-num-matchers current-doc) self
+    (when (null scorer-queue)
+      (init-scorer-queue self))
+    (if (< (size scorer-queue) minimum-num-matchers)
+	NIL
+	(progn
+	  (when (<= target current-doc)
+	    (setf target (+ current-doc 1)))
+	  (loop do
+	       (let ((top (queue-top scorer-queue)))
+		 (cond ((>= (document top) target)
+			(return-from skip-to (advance-after-current self)))
+		       ((skip-to top target)
+			(adjust-top scorer-queue))
+		       (T
+			(queue-pop scorer-queue)
+			(when (< (size scorer-queue) minimum-num-matchers)
+			  (return-from skip-to NIL))))))))))

@@ -3,6 +3,12 @@
 (defclass multi-term-query (query)
   ((term :initarg :term :reader term)))
 
+(defmethod print-object ((self multi-term-query) stream)
+  (print-unreadable-object (self stream :type T)
+    (if (slot-boundp self 'term)
+      (format stream "~S:~S" (term-field (term self)) (term-text (term self)))
+      (format stream "[no term]"))))
+
 (defmethod rewrite ((self multi-term-query) reader)
   (let ((enumerator (get-term-enum self reader))
 	(bq (make-instance 'boolean-query)))
@@ -17,4 +23,3 @@
 	    while (next? enumerator))
       (close enumerator))
     bq))
-

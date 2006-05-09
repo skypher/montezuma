@@ -149,6 +149,11 @@
       (add ccs scorer))
     ccs))
 
+(defmethod skip-to ((self boolean-scorer) target)
+  (with-slots (counting-sum-scorer) self
+    (when (null counting-sum-scorer)
+      (init-counting-sum-scorer self))
+    (skip-to counting-sum-scorer target)))
 
 
 (defclass counting-conjunction-scorer (conjunction-scorer)

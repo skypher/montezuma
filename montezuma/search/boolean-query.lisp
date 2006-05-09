@@ -8,7 +8,7 @@
 (defparameter +default-max-clause-count+ 1024)
 
 (defclass boolean-query (query)
-  ((clauses :initform nil :accessor clauses)
+  ((clauses :initform (make-array 10 :adjustable T :fill-pointer 0) :accessor clauses)
    (coord-disabled :initform T :initarg :coord-disabled
                    :reader coord-disabled?)
    (max-clause-count :initarg :max-clause-count
@@ -20,7 +20,7 @@
 
 (defmethod print-object ((self boolean-query) stream)
   (print-unreadable-object (self stream :type T)
-    (format stream "~{~A~^ ~}" (clauses self))))
+    (format stream "~{~A~^ ~}" (coerce (clauses self) 'list))))
 
 (define-condition too-many-clauses-error (error)
                   ()
@@ -56,16 +56,14 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
   (when (> (length (clauses self)) (max-clause-count self))
     (error 'too-many-clauses-error))
   
-  (setf (clauses self) (nreverse (clauses self)))
-  (push clause (clauses self))
-  (setf (clauses self) (nreverse (clauses self))))
+  (vector-push-extend clause (clauses self)))
 
 (defmethod create-weight ((self boolean-query) searcher)
   (make-instance 'boolean-weight :query self :searcher searcher))
 
 (defmethod rewrite ((self boolean-query) reader)
-  (when (length-1-list-p (clauses self))
-    (let ((clause (first (clauses self))))
+  (when (= (length (clauses self)) 1)
+    (let ((clause (aref (clauses self) 0)))
       (unless (prohibited? clause)
         (let ((query (rewrite (query clause) reader)))
           (when (/= (boost self) 1.0)
@@ -101,7 +99,7 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
   )
 
 (defmethod initialize-copy :after ((copy boolean-query) original)
-  (setf (clauses copy) (copy-list (clauses original))))
+  (setf (clauses copy) (clone (clauses original))))
 
 
 
