@@ -111,4 +111,6 @@
     (setf field (slot-value other 'field))
     (setf term (slot-value other 'term))))
 
-    
+
+(defmethod term-compare ((t1 term) (t2 term-buffer))
+  (term-compare t1 (to-term t2)))
