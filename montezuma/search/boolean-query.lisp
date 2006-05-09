@@ -9,7 +9,7 @@
 
 (defclass boolean-query (query)
   ((clauses :initform nil :accessor clauses)
-   (coord-disabled :initform nil :initarg :coord-disabled
+   (coord-disabled :initform T :initarg :coord-disabled
                    :reader coord-disabled?)
    (max-clause-count :initarg :max-clause-count
                      :accessor max-clause-count

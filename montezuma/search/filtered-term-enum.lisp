@@ -27,7 +27,7 @@
 	  (setf (slot-value self 'term) nil)
 	  (loop while (null (slot-value self 'term))
 	       do
-	       (when (or (end-enum self) (next? enum))
+	       (when (or (end-enum self) (not (next? enum)))
 		 (return-from next? NIL))
 	       (let ((term (term enum)))
 		 (when (term-compare self term)

@@ -9,8 +9,8 @@
    (pattern)))
 
 
-(defparameter +wildcard-string+ "*")
-(defparameter +wildcard-char+ "?")
+(defparameter +wildcard-string+ #\*)
+(defparameter +wildcard-char+ #\?)
 
 (defmethod initialize-instance :after ((self wildcard-term-enum) &key reader)
   (with-slots (field search-term pre pre-len pattern) self
@@ -33,7 +33,7 @@
 
 (defmethod term-compare ((self wildcard-term-enum) term)
   (with-slots (field pre-len pre pattern enum-enum end-enum) self
-    (when (field= field (term-field term))
+    (when (string= field (term-field term))
       (let ((search-text (term-text term)))
 	(when (string= pre search-text :start2 0 :end2 pre-len)
 	  (return-from term-compare
