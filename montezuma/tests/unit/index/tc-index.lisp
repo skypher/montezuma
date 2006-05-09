@@ -93,6 +93,14 @@
 	(add-query query (term-query "one") :should-occur)
 	(add-query query (term-query "five" "field3") :should-occur)
 	(check-query-results index query '(0 1 3 4 6 7)))
+      (let ((query (make-instance 'wildcard-query
+				  :term (make-term "field3" "f*"))))
+	(check-query-results index query '(5 7)))
+      (let ((query (make-instance 'boolean-query)))
+	(add-query query (term-query "two") :should-occur)
+	(add-query query (make-instance 'wildcard-query
+					:term (make-term "field3" "f*")))
+	(check-query-results index query '(5 7)))
       ;; FIXME: We don't have wildcard queries, so we can't test
       ;; queries like "field3:f*" or "two AND field3:f*".
       )

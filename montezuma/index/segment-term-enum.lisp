@@ -77,7 +77,7 @@
 		(setf (skip-offset term-info) (read-vint input))))
 	  (when is-index
 	    (incf index-pointer (read-vlong input)))
-	  T))))
+	  term-buffer))))
 	       
 
 (defmethod scan-to ((self segment-term-enum) term)

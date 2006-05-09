@@ -89,7 +89,7 @@
 	  (setf freq (read-vint freq-stream)))
       (incf count)
       (when (or (null deleted-docs) (not (bit-set-p deleted-docs doc)))
-	(return-from next? T))
+	(return-from next? doc))
       (skipping-doc self)))))
 
 (defmethod read-segment-term-doc-enum ((self segment-term-doc-enum) docs freqs 
@@ -194,7 +194,7 @@
 	(progn
 	  (setf prox-count freq
 		position 0)
-	  T)
+	  (doc self))
 	NIL)))
 
 (defmethod read-segment-term-doc-enum ((self segment-term-doc-pos-enum) docs freqs &optional start)

@@ -24,9 +24,13 @@
 	  (setf pre-len idx)
 	  ;; FIXME: I don't understand the point of the Ferret code's
 	  ;; gsub at this point.
-	  (setf pattern (cl-ppcre:quote-meta-chars (if (< idx len)
-						       (subseq text idx (- len 1))
-						       "")))
+	  (print pre)
+	  (setf pattern (cl-ppcre:regex-replace-all
+			 "\\\\([?*])"
+			 (cl-ppcre:quote-meta-chars (if (< idx len)
+							(subseq text idx len)
+							""))
+			 ".\\1"))
 	  (setf (slot-value self 'enum) (terms-from reader
 						    (make-term (term-field search-term)
 							       pre))))))))

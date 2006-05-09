@@ -32,7 +32,7 @@
 	       (let ((term (term enum)))
 		 (when (term-compare self term)
 		   (setf (slot-value self 'term) term)
-		   (return-from next? T))))
+		   (return-from next? term))))
 	  (setf (slot-value self 'term) nil)
 	  NIL))))
 

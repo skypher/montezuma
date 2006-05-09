@@ -51,10 +51,10 @@
            (close (term-docs self))
            (setf (slot-value self 'document) +max-docs+)
            (return-from next? nil))
-          (t
+          (T
            (setf (pointer self) 0))))
-  (setf (slot-value self 'document) (aref (documents self) (pointer self)))
-  (values t))
+  (setf (slot-value self 'document) (aref (documents self) (pointer self))))
+
 
 (defmethod score ((self term-scorer))
   (let* ((f (aref (freqs self) (pointer self)))
