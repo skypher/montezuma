@@ -102,10 +102,7 @@
 		   (make-instance 'wildcard-query
 				  :term (make-term "field3" "f*"))
 		   :must-occur)
-	(check-query-results index query '(5 7)))
-      ;; FIXME: We don't have wildcard queries, so we can't test
-      ;; queries like "field3:f*" or "two AND field3:f*".
-      )
+	(check-query-results index query '(5 7))))
     (atest index-with-table-1
 	   (document-values (get-document index 7) "field3")
 	   "five"

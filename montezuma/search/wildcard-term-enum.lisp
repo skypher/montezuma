@@ -22,14 +22,18 @@
 	(let ((idx (min sidx cidx)))
 	  (setf pre (subseq text 0 idx))
 	  (setf pre-len idx)
-	  ;; FIXME: I don't understand the point of the Ferret code's
-	  ;; gsub at this point.
-	  (setf pattern (cl-ppcre:regex-replace-all
-			 "\\\\([?*])"
-			 (cl-ppcre:quote-meta-chars (if (< idx len)
-							(subseq text idx len)
-							""))
-			 ".\\1"))
+	  ;; FIXME: is this really correct?
+	  (setf pattern (cl-ppcre:create-scanner
+			 (format nil "^~A$"
+				 (cl-ppcre:regex-replace-all
+				  "\\\\([?])"
+				  (cl-ppcre:regex-replace-all
+				   "\\\\([*])"
+				   (cl-ppcre:quote-meta-chars (if (< idx len)
+								  (subseq text idx len)
+								  ""))
+				   ".\\1")
+				  "."))))
 	  (setf (enum self) (terms-from reader
 					(make-term (term-field search-term)
 						   pre))))))))
@@ -40,7 +44,7 @@
       (let ((search-text (term-text term)))
 	(when (string= pre search-text :start2 0 :end2 pre-len)
 	  (return-from term-compare
-	    (cl-ppcre:scan pattern search-text :start pre-len :end (- (length search-text) 1))))))
+	    (cl-ppcre:scan pattern search-text :start pre-len :end (length search-text))))))
     (setf end-enum T)
     NIL))
 
