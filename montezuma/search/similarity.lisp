@@ -24,7 +24,16 @@
   (byte315-to-float b))
 
 (defun similarity-float-to-byte (f)
-  (float-to-byte315 (float f 1.0s0)))
+  (cond ((<= f 0.0)
+	 0)
+	;; Ferret encodes positive infinity as 255; 255 decodes as
+	;; 7.516193e9, so we could use that as our boundary, but
+	;; really we just need to catch infinity, which causes
+	;; float-to-raw-int-bits to die in float-to-byte315.
+	((> f 10e10)
+	 255)
+	(T
+	 (float-to-byte315 (float f 1.0s0)))))
 
 
 ;; Corresponds to org.apache.lucene.util.SmallFloat.byte315ToFloat.
