@@ -102,16 +102,27 @@
 		   (make-instance 'wildcard-query
 				  :term (make-term "field3" "f*"))
 		   :must-occur)
-	(check-query-results index query '(5 7))))
-    (atest index-with-table-1
-	   (document-values (get-document index 7) "field3")
-	   "five"
-	   #'string=)
-    (atest index-with-table-2
-	   (document-values (get-document index 7) "def_field")
-	   "two"
-	   #'string=)))
+	(check-query-results index query '(5 7)))
+      (atest index-with-table-1
+	     (document-values (get-document index 7) "field3")
+	     "five"
+	     #'string=)
+      (atest index-with-table-2
+	     (document-values (get-document index 7) "def_field")
+	     "two"
+	     #'string=)
+      (atest index-with-table-3 (has-deletions-p index) NIL)
+      (atest index-with-table-4 (deleted-p index 5) NIL)
+      (atest index-with-table-5 (size index) 8)
+      (delete index 5)
+      (atest index-with-table-6 (has-deletions-p index) T #'bool=)
+      (atest index-with-table-7 (deleted-p index 5) T #'bool=)
+      (atest index-with-table-8 (size index) 7)
+      (let ((query (make-instance 'wildcard-query
+				  :term (make-term "field3" "f*"))))
+	(check-query-results index query '(7)))
 
+)))
 
 (deftestfixture index-test
   (:testfun test-ram-index
@@ -122,6 +133,34 @@
     (let ((index (make-instance 'index
 				:default-field "def_field")))
       (do-test-index-with-table index)
-      (close index))))
+      (close index)))
+  (:testfun test-fs-index
+    (let ((path *test-directory-path*))
+      (flet ((delete-test-index ()
+	       (dolist (file (cl-fad:delete-directory-and-files path :if-does-not-exist :ignore)))))
+	(delete-test-index)
+	(condition-test
+	 fs-index-1
+	 (make-instance 'index
+			:path path
+			:create-if-missing-p NIL
+			:default-field "def_field")
+	 'error)
+	(delete-test-index)
+	(let ((index (make-instance 'index
+				    :path path
+				    :create-p T
+				    :default-field "def_field")))
+	  (do-test-index-with-array index)
+	  (close index))
+	(delete-test-index)
+	(let ((index (make-instance 'index
+				    :path path
+				    :create-p T
+				    :default-field "def_field")))
+	  (do-test-index-with-table index)
+	  (close index))))))
 
 
+
+	    
