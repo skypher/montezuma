@@ -42,7 +42,7 @@
   (flet ((handle-test-success (value)
 	   (test-success name expr value expected-value))
 	 (handle-test-failure (value condition)
-	   (test-failure name expr value expected-value condition)
+	   (test-failure name expr value expected-value condition nil)
 	   (when failure-thunk
 	     (funcall failure-thunk))))
     (restart-case 
@@ -55,21 +55,28 @@
 	:report "Fail this test."
 	(handle-test-failure nil condition)))))
 
-#||
+
+(defun execute-condition-test-thunk (name expr test-thunk expected-condition comparator failure-thunk)
+  (flet ((handle-test-success (condition)
+	   (test-success name expr condition expected-condition))
+	 (handle-test-failure (condition)
+	   (test-failure name expr nil nil condition expected-condition)
+	   (when failure-thunk
+	     (funcall failure-thunk))))
+    (multiple-value-bind (value condition)
+	(ignore-errors (funcall test-thunk))
+      (if (funcall comparator condition expected-condition)
+	  (handle-test-success condition)
+	  (handle-test-failure condition)))))
+
 (defmacro condition-test (name expr expected-condition &optional (comparator '(function typep))
 			  failure-code)
-  (let ((completed-var (gensym "COMPLETED"))
-	(condition-var (gensym "CONDITION"))
-	(value-var (gensym "VALUE")))
-    `(let ((,completed-var NIL))
-       (multiple-value-bind (,value-var ,condition-var)
-	   (ignore-errors
-	     ,expr
-	     (setf ,completed-var T))
-	 (unless (condition-test-aux ',name ',expr ,value-var (not ,completed-var)
-				     ,condition-var ,expected-condition ,comparator)
-	   ,failure-code)))))
+  `(flet ((test-thunk () ,expr)
+	  (failure-thunk () ,failure-code))
+     (execute-condition-test-thunk ',name ',expr #'test-thunk ,expected-condition
+				   ,comparator #'failure-thunk)))
 
+#||
 (defun condition-test-aux (name expr value error-p error expected-error comparator)
   (if error-p
       (let ((got-expected-p (funcall comparator error expected-error)))
@@ -92,15 +99,18 @@
 (defparameter *failed-tests* '())
 (defparameter *skipped-test-count* 0)
 
-(defun test-failure (name expr value expected-value condition)
+(defun test-failure (name expr value expected-value condition expected-condition)
   (assert (not (assoc name *failed-tests*)) nil "There is already a test named ~S." name)
   (assert (not (assoc name *passed-tests*)) nil "There is already a test named ~S." name)
   (push (cons name (list expr value expected-value)) *failed-tests*)
-  (if (not condition)
-      (warn "FAILURE: ~:_Test ~S: ~:_~S evaluated to ~S ~:_instead of ~:_~S."
-	    name expr value expected-value)
-      (let ((condition-report-string (format nil "~A" condition)))
-	(warn "FAILURE: ~:_Test ~S: ~:_~S signalled ~S (~S) ~:_instead of returning ~:_~S" name expr condition condition-report-string expected-value)))
+  (cond ((and expected-condition condition)
+	 (let ((condition-report-string (format nil "~A" condition)))
+	   (warn "FAILURE: ~:_Test ~S: ~:_~S signalled ~S (~S) ~:_instead of signalling ~:_~S" name expr condition condition-report-string expected-condition)))
+	((and expected-condition (null condition))
+	 (warn "FAILURE: ~:_Test ~S: ~:_~S evaluated to ~S ~:_instead of signalling ~:_~S" name expr value expected-condition))
+	(T
+	 (warn "FAILURE: ~:_Test ~S: ~:_~S evaluated to ~S ~:_instead of ~:_~S."
+	       name expr value expected-value)))
   (format T "F")
   (when *break-on-failure* (error 'test-failure))
   nil)
