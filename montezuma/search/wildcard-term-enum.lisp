@@ -42,7 +42,8 @@
   (with-slots (field pre-len pre pattern enum-enum end-enum) self
     (when (string= field (term-field term))
       (let ((search-text (term-text term)))
-	(when (string= pre search-text :start2 0 :end2 pre-len)
+	(when (and (>= (length search-text) pre-len)
+		   (string= pre search-text :start2 0 :end2 pre-len))
 	  (return-from term-compare
 	    (cl-ppcre:scan pattern search-text :start pre-len :end (length search-text))))))
     (setf end-enum T)
