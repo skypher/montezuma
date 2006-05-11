@@ -17,9 +17,9 @@
 (deftype index-option () `(member ,@*valid-index-options*))
 (deftype index-options-list () '(satisfies index-options-list-p))
 
-(defun get-index-option (options option)
+(defun get-index-option (options option &optional default)
   (check-type option index-option)
-  (getf options option))
+  (getf options option default))
 
 (define-setf-expander get-index-option (place option &environment env)
   (multiple-value-bind (vars vals store-vars writer-form reader-form)
@@ -66,8 +66,8 @@
 	  (or (get-index-option options :default-search-field)
 	      (get-index-option options :default-field)
 	      "*"))
-    (when (null (get-index-option options :create-if-missing-p))
-      (setf (get-index-option options :create-if-missing-p) T))
+    (setf (get-index-option options :create-if-missing-p)
+	  (get-index-option options :create-if-missing-p T))
     ;; FIXME: I don't flatten the :key option, I'm not sure why Ferret does.
     (with-slots (key dir options close-dir-p auto-flush-p create-p analyzer writer
 		     default-search-field default-field) self

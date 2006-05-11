@@ -178,7 +178,8 @@
 
 (defclass multi-term-enum (term-enum)
   ((doc-freq :reader doc-freq)
-   (term :reader term)
+   (term :initform nil :reader term)
+   (term-buffer)
    (queue)))
 
 (defmethod initialize-instance :after ((self multi-term-enum) &key readers starts term)
