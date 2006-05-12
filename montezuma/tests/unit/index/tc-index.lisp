@@ -120,9 +120,20 @@
       (atest index-with-table-8 (size index) 7)
       (let ((query (make-instance 'wildcard-query
 				  :term (make-term "field3" "f*"))))
-	(check-query-results index query '(7)))
+	(check-query-results index query '(7))
+	(add-document-to-index index
+			       '(("field3" . "fool")))
+	(check-query-results index query '(6 7))
+	(atest index-with-table-9 (size index) 8)
+	(atest index-with-table-10
+	       (document-values (get-document index 7)
+				"field3")
+	       "fool"
+	       #'string=)
+	(optimize index)
+	(check-query-results index query '(6 7))
 
-)))
+))))
 
 (deftestfixture index-test
   (:testfun test-ram-index
