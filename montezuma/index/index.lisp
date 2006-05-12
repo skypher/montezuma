@@ -206,7 +206,7 @@
 		       ((integerp id)
 			(delete reader id))
 		       (T
-			(error "Cann't delete for id ~S" id)))))
+			(error "Can't delete for id ~S" id)))))
       (when (slot-value self 'auto-flush-p)
 	(flush self))
       count)))
