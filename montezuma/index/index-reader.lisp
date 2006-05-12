@@ -130,7 +130,7 @@
 	0
 	(let ((n 0))
 	  (unwind-protect
-	       (while (next docs)
+	       (while (next? docs)
 		 (delete self (doc docs))
 		 (incf n))
 	    (close docs))
