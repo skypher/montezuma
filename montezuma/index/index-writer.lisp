@@ -37,8 +37,10 @@
 
 (defmethod initialize-instance :after ((self index-writer) &key (create-p NIL) (create-if-missing-p NIL) &allow-other-keys)
   (with-slots (directory ram-directory segment-infos) self
-    (cond ((null directory) (break) (setf directory (make-instance 'ram-directory)))
-	  ((stringp directory) (setf directory (make-fs-directory directory :create-p create-p))))
+    (if (null directory)
+	(setf directory (make-instance 'ram-directory))
+	(when (not (typep directory 'directory))
+	  (setf directory (make-fs-directory directory :create-p create-p))))
     (if create-p
 	(write-segment-infos segment-infos directory)
 	;; FIXME: This really isn't the best way of doing this.
@@ -100,7 +102,7 @@
 	(let ((min-segment (- (size segment-infos) merge-factor)))
 	  (merge-segments self (max 0 min-segment))))))
 
-(defmethod add-indexes ((self index-writer) dirs)
+(defmethod add-indexes ((self index-writer) &rest dirs)
   (optimize self)
   (with-slots (segment-infos merge-factor) self
     (let ((start (size segment-infos)))
@@ -129,15 +131,15 @@
 	(let ((s-reader (get-segment-reader (segment-info segment-infos 0))))
 	  (add-reader merger s-reader)
 	  (push segments-to-delete s-reader)))
-      (dolist (reader readers)
-	(add-segment merger reader))
+      (dosequence (reader readers)
+	(add-reader merger reader))
       (let ((doc-count (merge merger)))
 	(clear segment-infos)
 	(add-segment-info segment-infos (make-instance 'segment-info
-						       :segment merged-name
+						       :name merged-name
 						       :doc-count doc-count
 						       :directory directory))
-	(write segment-infos directory)
+	(write-segment-infos segment-infos directory)
 	(delete-segments self segments-to-delete)
 	(when use-compound-file-p
 	  (let ((files-to-delete (create-compound-file merger (format nil "~A.tmp" merged-name))))

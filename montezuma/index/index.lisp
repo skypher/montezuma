@@ -73,9 +73,11 @@
 		     default-search-field default-field) self
       (setf key (get-index-option options :key))
       (cond ((get-index-option options :path)
-	     (setf dir (make-fs-directory (get-index-option options :path)
-					  :create-p (or (get-index-option options :create-p)
-							(get-index-option options :create-if-missing-p))))
+	     (handler-case
+		 (setf dir (make-fs-directory (get-index-option options :path)
+					      :create-p (get-index-option options :create-p)))
+	       (error () (setf dir (make-fs-directory (get-index-option options :path)
+						      :create-p (get-index-option options :create-if-missing-p)))))
 	     (setf (get-index-option options :close-directory-p) T))
 	    ((get-index-option options :directory)
 	     (setf dir (get-index-option options :directory)))
@@ -155,9 +157,10 @@
       (when key
 	(let ((query (inject key (make-instance 'boolean-query)
 			     #'(lambda (query field)
-				 (add-query query (make-instance 'term-query
-								 :term (make-term field (get-field fdoc field))
-								 :options :must))))))
+				 (add-query query
+					    (make-instance 'term-query
+							   :term (make-term field (get-field fdoc field)))
+					    :must-occur)))))
 	  (query-delete self query))))
     (let ((writer (writer self)))
       (setf (slot-value self 'has-writes-p) T)
@@ -307,7 +310,7 @@
 (defmethod size ((self index))
   (num-docs (reader self)))
 
-(defmethod add-indexes ((self index) indexes)
+(defmethod add-indexes ((self index) &rest indexes)
   (when (> (length indexes) 0)
     (when (typep (elt indexes 0) 'index)
       (setf indexes (map 'array #'reader indexes)))
@@ -317,7 +320,7 @@
 	   (add-indexes-readers (writer self) indexes))
 	  ((typep (elt indexes 0) 'directory)
 	   (setf indexes (remove (slot-value self 'dir) indexes))
-	   (add-indexes (writer self) indexes))
+	   (apply #'add-indexes (writer self) indexes))
 	  (T
 	   (error "Unknown index type ~S when trying to merge indexes." (elt indexes 0))))))
 
@@ -325,14 +328,14 @@
   (flush self)
   (with-slots (dir options) self
     (let ((old-dir dir))
-      (cond ((stringp directory)
-	     (setf dir (make-instance 'fs-directory
-				      :path directory
-				      :create-p create-p))
-	     (setf (get-index-option options :close-directory-p) T))
-	    ((typep directory 'directory)
-	     (setf dir directory)))
-      (add-indexes (writer self) (vector old-dir)))))
+      (etypecase directory
+	((or string pathname)
+	 (setf dir (make-fs-directory directory :create-p create-p))
+	 (setf (get-index-option options :close-directory-p) T))
+	(directory
+	 (setf dir directory)))
+      (ensure-writer-open self)
+      (add-indexes (writer self) old-dir))))
 
 
 
@@ -345,9 +348,9 @@
 	(close reader)
 	(setf reader nil
 	      searcher nil))
-      (setf writer (make-instance 'index-writer
+      (setf writer (apply #'make-instance 'index-writer
 				  :directory dir
-				  :options options)))))
+				  options)))))
 
 (defmethod ensure-reader-open ((self index))
   (with-slots (open-p writer reader dir) self
