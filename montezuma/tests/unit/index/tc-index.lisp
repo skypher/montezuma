@@ -389,6 +389,7 @@
 	      (test index-auto-update-when-externally-modified-6
 		    (size top-docs)
 		    1)))))))
+#||
   (:testfun test-delete
     (let ((data '(((:id . 0) (:cat "/cat1/subcat1"))
 		  ((:id . 1) (:cat "/cat1/subcat2"))
@@ -403,5 +404,7 @@
 	  (index (make-instance 'index
 				:analyzer (make-instance 'whitespace-analyzer))))
       (dolist (doc data)
-	(add-document-to-index index doc))
+	(add-document-to-index index doc))))
+||#
+)
       
