@@ -30,7 +30,7 @@
             (equal (prohibited? self) (prohibited? other)))))
 
 (defmethod set-fields ((self boolean-clause) occur)
-  (ecase (occur self)
+  (ecase occur
     (:must-occur
      (required t self)
      (prohibited nil self))
