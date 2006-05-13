@@ -108,6 +108,9 @@
 	   (warn "FAILURE: ~:_Test ~S: ~:_~S signalled ~S (~S) ~:_instead of signalling ~:_~S" name expr condition condition-report-string expected-condition)))
 	((and expected-condition (null condition))
 	 (warn "FAILURE: ~:_Test ~S: ~:_~S evaluated to ~S ~:_instead of signalling ~:_~S" name expr value expected-condition))
+	(condition
+	 (let ((condition-report-string (format nil "~A" condition)))
+	   (warn "FAILURE: ~:_Test ~S: ~:_~S signalled ~S (~S) ~:_instead of evaluating to ~:_~S" name expr condition condition-report-string expected-value)))
 	(T
 	 (warn "FAILURE: ~:_Test ~S: ~:_~S evaluated to ~S ~:_instead of ~:_~S."
 	       name expr value expected-value)))
