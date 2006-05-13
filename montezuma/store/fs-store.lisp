@@ -24,6 +24,11 @@
 (defclass fs-directory (directory)
   ((path :initarg :path)))
 
+(defmethod print-object ((self fs-directory) stream)
+  (print-unreadable-object (self stream :type T)
+    (if (slot-boundp self 'path)
+	(format stream "~S" (slot-value self 'path))
+	(format stream "[path unbound]"))))
 
 (defmethod initialize-instance :after ((self fs-directory) &key)
   (with-slots (path) self
