@@ -33,6 +33,7 @@
   self)
 
 (defmethod remove-field ((self document) name)
+  (setf name (string name))
   (with-slots (fields) self
     (let ((fields-with-name (table-value fields name))
 	  (removed-field nil))
@@ -42,17 +43,18 @@
       removed-field)))
 
 (defmethod remove-fields ((self document) name)
+  (setf name (string name))
   (with-slots (fields) self
     (remtable fields name))
   (values))
 
 ;; FIXME: I don't like this name.
 (defmethod document-field ((self document) name)
-  (car (document-fields self name)))
+  (car (document-fields self (string name))))
 
 (defmethod document-fields ((self document) name)
   (with-slots (fields) self
-    (table-value fields name)))
+    (table-value fields (string name))))
 
 (defmethod document-binaries ((self document) name)
   (reduce #'(lambda (a1 &optional a2)
@@ -63,9 +65,18 @@
 		  (remove-if-not #'field-binary-p (document-fields self name)))))
 
 (defmethod document-values ((self document) name)
-  (format nil "~{~A~^ ~}"
-	  (mapcar #'field-data
-		  (remove-if #'field-binary-p (document-fields self name)))))
-		   
+  (let ((fields (remove-if #'field-binary-p (document-fields self name))))
+    (if fields
+	(format nil "~{~A~^ ~}" (mapcar #'field-data fields))
+	nil)))
+
+(defmethod (setf document-values) (value (document document) field-name)
+  (with-slots (fields) document
+    (let ((field (document-field document field-name)))
+      (if field
+	  (setf (field-data field) value)
+	  (add-field document (make-field field-name value))))))
+
 	     
+
 

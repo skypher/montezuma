@@ -89,7 +89,7 @@
   (when (and (eq index NIL) (not (eq store-term-vector NIL)))
     (error "Cannot store term vector information for a field that is not indexed."))
   (let ((f (make-instance 'field
-			  :name name
+			  :name (string name)
 			  :data value
 			  :binary-p binary-p
 			  :boost boost)))
@@ -118,4 +118,3 @@
   (if (streamp (field-data field))
       (field-data field)
       (make-string-input-stream (string-value field))))
-
