@@ -67,7 +67,7 @@
     (if (null docs)
 	nil
 	(unwind-protect
-	     (if (next docs)
+	     (if (next? docs)
 		 (get-document self (doc docs))
 		 nil)
 	  (close docs)))))

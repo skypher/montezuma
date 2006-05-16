@@ -104,17 +104,16 @@
 			       :total-hits total-hits
 			       :score-docs score-docs))))))))
 
-(defmethod search-each ((self index-searcher) (query query) fn &optional (options nil))
+(defmethod search-each ((self index-searcher) (query query) fn &optional (filter nil))
   (let ((scorer (scorer (weight query self) (reader self))))
     (when (null scorer)
       (return-from search-each nil))
-    
-    (map-pipe #'(lambda (doc score)
-		  (if (and (plusp score)
-			   ;;?? bits
-			   )
-		      (yield doc score)))
-	      (hits scorer))))
+    (let ((bits (if (null filter) nil (bits filter (reader self)))))
+      (each-hit scorer
+		#'(lambda (doc score)
+		    (when (and (> score 0.0)
+			       (or (null bits) (bit-set-p bits doc)))
+		      (funcall fn doc score)))))))
     
 (defmethod rewrite ((self index-searcher) original)
   (let* ((query original)
@@ -125,7 +124,7 @@
     (values query)))
 
 (defmethod explain-score ((self index-searcher) (query query) index)
-  (explain (weight query self) (reader self) index))
+  (explain-score (weight query self) (reader self) index))
 
 
 #| old stuff

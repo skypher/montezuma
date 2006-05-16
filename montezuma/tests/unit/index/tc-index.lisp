@@ -389,22 +389,103 @@
 	      (test index-auto-update-when-externally-modified-6
 		    (size top-docs)
 		    1)))))))
-#||
-  (:testfun test-delete
-    (let ((data '(((:id . 0) (:cat "/cat1/subcat1"))
-		  ((:id . 1) (:cat "/cat1/subcat2"))
-		  ((:id . 2) (:cat "/cat1/subcat2"))
-		  ((:id . 3) (:cat "/cat1/subcat3"))
-		  ((:id . 4) (:cat "/cat1/subcat4"))
-		  ((:id . 5) (:cat "/cat2/subcat1"))
-		  ((:id . 6) (:cat "/cat2/subcat2"))
-		  ((:id . 7) (:cat "/cat2/subcat3"))
-		  ((:id . 8) (:cat "/cat2/subcat4"))
-		  ((:id . 9) (:cat "/cat2/subcat5"))))
-	  (index (make-instance 'index
-				:analyzer (make-instance 'whitespace-analyzer))))
-      (dolist (doc data)
-	(add-document-to-index index doc))))
-||#
+  (:testfun test-index-delete
+    (flet ((q (field value) (make-instance 'term-query
+					   :term (make-term (string field) value)))
+	   (qw (field value) (make-instance 'wildcard-query
+					    :term (make-term (string field) value))))
+      (let ((data '(((:|id| . 0) (:|cat| . "/cat1/subcat1"))
+		    ((:|id| . 1) (:|cat| . "/cat1/subcat2"))
+		    ((:|id| . 2) (:|cat| . "/cat1/subcat2"))
+		    ((:|id| . 3) (:|cat| . "/cat1/subcat3"))
+		    ((:|id| . 4) (:|cat| . "/cat1/subcat4"))
+		    ((:|id| . 5) (:|cat| . "/cat2/subcat1"))
+		    ((:|id| . 6) (:|cat| . "/cat2/subcat2"))
+		    ((:|id| . 7) (:|cat| . "/cat2/subcat3"))
+		    ((:|id| . 8) (:|cat| . "/cat2/subcat4"))
+		    ((:|id| . 9) (:|cat| . "/cat2/subcat5"))))
+	    (index (make-instance 'index
+				  :analyzer (make-instance 'whitespace-analyzer))))
+	(dolist (doc data)
+	  (add-document-to-index index doc))
+	(test index-delete-1 (size index) 10)
+	;; FIXME: use query strings in addition to query objects once
+	;; we have a query parser.
+	(test index-delete-2 (size (search index (q :|id| "9"))) 1)
+	(delete index 9)
+	(test index-delete-3 (size (search index (q :|id| "9"))) 0)
+	(test index-delete-4 (size (search index (q :|id| "8"))) 1)
+	(delete index "8")
+	(test index-delete-5 (size index) 8)
+	(test index-delete-6 (size (search index (q :|id| "8"))) 0)
+	(test index-delete-7 (size (search index (qw :|cat| "/cat1*"))) 5)
+	(query-delete index (qw :|cat| "/cat1*"))
+	(test index-delete-8 (size index) 3)
+	(test index-delete-9 (size (search index (qw :|cat| "/cat1*"))) 0)
+	(close index))))
+  (:testfun test-index-update
+    (flet ((q (field value) (make-instance 'term-query
+					   :term (make-term (string field) value)))
+	   (qw (field value) (make-instance 'wildcard-query
+					    :term (make-term (string field) value))))
+      (let ((data '(((:|id| . 0) (:|cat| . "/cat1/subcat1") (:|content| . "content0"))
+		    ((:|id| . 1) (:|cat| . "/cat1/subcat2") (:|content| . "content1"))
+		    ((:|id| . 2) (:|cat| . "/cat1/subcat2") (:|content| . "content2"))
+		    ((:|id| . 3) (:|cat| . "/cat1/subcat3") (:|content| . "content3"))
+		    ((:|id| . 4) (:|cat| . "/cat1/subcat4") (:|content| . "content4"))
+		    ((:|id| . 5) (:|cat| . "/cat2/subcat1") (:|content| . "content5"))
+		    ((:|id| . 6) (:|cat| . "/cat2/subcat2") (:|content| . "content6"))
+		    ((:|id| . 7) (:|cat| . "/cat2/subcat3") (:|content| . "content7"))
+		    ((:|id| . 8) (:|cat| . "/cat2/subcat4") (:|content| . "content8"))
+		    ((:|id| . 9) (:|cat| . "/cat2/subcat5") (:|content| . "content9"))))
+	    (index (make-instance 'index
+				  :analyzer (make-instance 'whitespace-analyzer)
+				  :default-field :|content|)))
+	(dolist (doc data)
+	  (add-document-to-index index doc))
+	(test index-update-1 (size index) 10)
+	(test index-update-2
+	      (document-values (get-document index "5") :|content|)
+	      "content5"
+	      #'string=)
+	(update index 5 "content five")
+	(test index-update-3
+	      (document-values (get-document index "5") :|content|)
+	      "content five"
+	      #'string=)
+	(test index-update-3.5
+	      (document-values (get-document index "5") :|extra-content|)
+	      nil)
+	;; FIXME: Also check just passing a string as the second
+	;; argument to update.
+	;;	(update index "5"
+	;;		'((:|cat| . "/cat1/subcat6")
+	;;		  (:|content| . "high five")
+	;;		  (:|extra-content| . "hello")))
+	(update index (make-term "id" "5")
+		'((:|cat| . "/cat1/subcat6")
+		  (:|content| . "high five")
+		  (:|extra-content| . "hello")))
+	(test index-update-4
+	      (document-values (get-document index "5") :|extra-content|)
+	      "hello"
+	      #'string=)
+	(test index-update-5
+	      (document-values (get-document index "5") :|content|)
+	      "high five"
+	      #'string=)
+	(test index-update-6
+	      (document-values (get-document index "5") :|cat|)
+	      "/cat1/subcat6"
+	      #'string=)
+	(test index-update-7
+	      (document-values (get-document index "9") :|content|)
+	      "content9"
+	      #'string=)
+	(update index (make-term "content" "content9")
+		'((:|content| . "content nine")))
+	(test index-update-8
+	      (document-values (get-document index "9") :|content|)
+	      "content nine"
+	      #'string=))))
 )
-      

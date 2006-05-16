@@ -44,9 +44,9 @@
 (defmethod explain-score ((self term-weight) reader doc)
   (let ((explanation (make-instance 'explanation 
                        :description (format nil "Weight(~A in ~A), product of:" 
-                                            (query self) (doc self))))
+                                            (query self) doc)))
         (idf-explanation (make-instance 'explanation
-                           :idf (idf self)
+					:value (term-idf self)
                            :description (format nil "idf(doc-freq=~A)" 
                                                 (doc-freq reader)
                                                 (term (query self)))))

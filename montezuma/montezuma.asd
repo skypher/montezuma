@@ -62,6 +62,7 @@
                            (:file "filter")
                            (:file "weight")
                            (:file "hit-queue")
+			   (:file "explanation")
                            (:file "query")
                            (:file "term-query" :depends-on ("query"))
 			   (:file "boolean-query" :depends-on ("query"))
@@ -154,7 +155,8 @@
 				      (:file "tc-standard-analyzer"))
 			 :depends-on ("tests"))
                        (:module "search"
-                         :components ((:file "tc-similarity"))
+                         :components ((:file "tc-similarity")
+				      (:file "tc-index-searcher"))
                          :depends-on ("tests"))
 		       (:module "index"
 			 :components ((:file "tc-term")

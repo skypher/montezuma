@@ -20,7 +20,7 @@
 
 (defmethod print-object ((self boolean-query) stream)
   (print-unreadable-object (self stream :type T)
-    (format stream "~{~A~^ ~}" (coerce (clauses self) 'list))))
+    (format stream "~S clauses: ~{~A~^ ~}" (length (clauses self)) (coerce (clauses self) 'list))))
 
 (define-condition too-many-clauses-error (error)
                   ()
