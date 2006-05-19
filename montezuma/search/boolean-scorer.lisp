@@ -51,6 +51,32 @@
     (init coordinator)
     (setf counting-sum-scorer (make-counting-sum-scorer self))))
 
+(defclass single-match-scorer (scorer)
+  ((parent-scorer :initarg :parent-scorer)
+   (scorer :initarg :scorer)))
+
+(defmethod initialize-instance :after ((self single-match-scorer) &key)
+  (setf (slot-value self 'similarity) (similarity (slot-value self 'scorer))))
+
+(defmethod score ((self single-match-scorer))
+  (with-slots (parent-scorer scorer) self
+      (incf (num-matchers (coordinator parent-scorer)))
+    (score scorer)))
+
+(defmethod document ((self single-match-scorer))
+  (document (slot-value self 'scorer)))
+
+(defmethod next? ((self single-match-scorer))
+  (next? (slot-value self 'scorer)))
+
+(defmethod skip-to ((self single-match-scorer) doc-num)
+  (skip-to (slot-value self 'scorer) doc-num))
+
+#|
+(defmethod explain-score ((self single-match-scorer) doc-num)
+  (explain-score (slot-value self 'scorer) doc-num))
+|#
+
 (defmethod next? ((self boolean-scorer))
   (with-slots (counting-sum-scorer) self
     (when (null counting-sum-scorer)
@@ -73,8 +99,8 @@
 		 ((= (length optional-scorers) 1)
 		  (make-counting-sum-scorer2 self
 					     (make-instance 'single-match-scorer
-							    :self self
-							    :scorers (aref optional-scorers 0))
+							    :parent-scorer self
+							    :scorer (aref optional-scorers 0))
 					     '()))
 		 ((> (length optional-scorers) 1)
 		  (make-counting-sum-scorer2 self
@@ -84,7 +110,7 @@
 	   (make-counting-sum-scorer2 self
 				      (make-instance 'single-match-scorer
 						     :parent-scorer self
-						     :scorers (aref required-scorers 0))
+						     :scorer (aref required-scorers 0))
 				      optional-scorers))
 	  (T
 	   (make-counting-sum-scorer2 self
@@ -116,18 +142,42 @@
 	   (cond ((= (length prohibited-scorers) 0)
 		  required-counting-sum-scorer)
 		 ((= (length prohibited-scorers) 1)
-		  (error "FOO"))
+		  (make-instance 'req-excl-scorer
+				 :req-scorer required-counting-sum-scorer
+				 :excl-scorer (aref prohibited-scorers 0)))
 		 (T
-		  (error "FOO!"))))
+		  (make-instance 'req-excl-scorer
+				 :req-scorer required-counting-sum-scorer
+				 :excl-scorer (make-instance 'disjunction-sum-scorer
+							     :scorer prohibited-scorers)))))
 	  ((= (length optional-scorers) 1)
 	   (make-counting-sum-scorer3 self
 				      required-counting-sum-scorer
 				      (make-instance 'single-match-scorer
-						     :parent self
-						     :thing (aref optional-scorers 0))))
+						     :parent-scorer self
+						     :scorer (aref optional-scorers 0))))
 	  (T
 	   (error "OFO")))))
 
+(defmethod make-counting-sum-scorer3 ((self boolean-scorer) required-counting-sum-scorer optional-counting-sum-scorer)
+  (with-slots (prohibited-scorers) self
+    (cond ((= (length prohibited-scorers) 0)
+	  (make-instance 'req-opt-sum-scorer
+			 :req-scorer required-counting-sum-scorer
+			 :opt-scorer optional-counting-sum-scorer))
+	  ((= (length prohibited-scorers) 1)
+	   (make-instance 'req-opt-sum-scorer
+			  :req-scorer (make-instance 'req-excl-scorer
+						     :req-scorer required-counting-sum-scorer
+						     :excl-scorer (aref prohibited-scorers 0))
+			  :opt-scorer optional-counting-sum-scorer))
+	  (T
+	   (make-instance 'req-opt-sum-scorer
+			  :req-scorer (make-instance 'req-excl-scorer
+						     :req-scorer required-counting-sum-scorer
+						     :excl-scorer (make-instance 'disjunction-sum-scorer
+											:tasfasdf prohibited-scorers))
+			  :opt-scorer optional-counting-sum-scorer)))))
 
 (defmethod document ((self boolean-scorer))
   (document (slot-value self 'counting-sum-scorer)))

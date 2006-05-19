@@ -5,9 +5,6 @@
 (defclass scorer ()
   ((similarity :initarg :similarity :reader similarity)))
 
-(defmethod initialize-instance :after ((object scorer) &key)
-  )
-
           
 (defmethod each-hit ((self scorer) fn)
   (loop while (next? self) do (funcall fn (document self) (score self))))

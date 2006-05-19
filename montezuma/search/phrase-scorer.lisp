@@ -55,8 +55,8 @@
 
 
 |#
-(defmethod doc ((self phrase-scorer))
-  (values (doc (first-index self))))
+(defmethod document ((self phrase-scorer))
+  (values (document (first-index self))))
 
 (defmethod next? ((self phrase-scorer))
   (cond ((first-time-p self)

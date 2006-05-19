@@ -69,6 +69,8 @@
 			   (:file "term-scorer"  :depends-on ("scorer"))
 			   (:file "disjunction-sum-scorer" :depends-on ("scorer"))
 			   (:file "conjunction-scorer" :depends-on ("scorer"))
+			   (:file "req-opt-sum-scorer" :depends-on ("scorer"))
+			   (:file "req-excl-scorer" :depends-on ("scorer"))
 			   (:file "non-matching-scorer")
 			   (:file "boolean-scorer" :depends-on ("disjunction-sum-scorer"
 								"conjunction-scorer"))

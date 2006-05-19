@@ -13,5 +13,5 @@
     (format stream "~a = ~a" (value self) (description self))))
 
 (defmethod add-detail ((explanation explanation) detail)
-  (vector-push-extend detail (details self)))
+  (vector-push-extend detail (details explanation)))
 
