@@ -17,44 +17,29 @@
 
 (defclass phrase-scorer (scorer)
   ((first :reader first-index)
-   (last :reader last-index)
+   (last :initform nil :reader last-index)
    (norms :initarg :norms)
    (weight :initarg :weight)
    (value :accessor value)
-   (first-time-p :accessor first-time-p :initform t)
-   (more-p :accessor more-p :initform t)
+   (first-time-p :accessor first-time-p :initform T)
+   (more-p :accessor more-p :initform T)
+   (pq)
    (freq :accessor freq)))
 
-#|
-(defmethod initialize-instance :after ((self phrase-scorer) &key tps)
-  ;; convert tps to a list
-  (dotimes (i (length (times tps)))
-    (phrase-positions 
-    tps.length.times do |i|
 
-        pp = PhrasePositions.new(tps[i], positions[i])
+(defmethod initialize-instance :after ((self phrase-scorer) &key term-positions positions)
+  (with-slots (value first last pq) self
+    (dotimes (i (length term-positions))
+      (let ((pp (make-instance 'phrase-positions
+			       :tp-enum (elt term-positions i)
+			       :offset (elt positions i))))
+	(if last
+	    (setf (next last) pp)
+	    (setf first pp))
+	(setf last pp)))
+    (setf pq (print (make-instance 'phrase-queue
+			    :max-size (length term-positions))))))
 
-        if (@last != nil) # add next to end of list
-
-          @last.next = pp
-
-        else
-
-          @first = pp
-
-        end
-
-        @last = pp
-
-      end
-
-
-
-      @pq = PhraseQueue .new(tps.length)  # construct empty pq
-  )
-
-
-|#
 (defmethod document ((self phrase-scorer))
   (values (document (first-index self))))
 
@@ -72,7 +57,7 @@
     (while (and (more-p self)
                 (< (doc (first-index self)) (doc (last-index self)))) 
             
-      (setf (more-p self) (skip-to self (first-index self) (doc (last-index self))))
+      (setf (more-p self) (skip-to (first-index self) (doc (last-index self))))
       (first-to-last self))
 
     (more-p self)
@@ -87,7 +72,10 @@
   (values nil))
 
 (defmethod each ((self phrase-scorer) fn)
-  (each (first-index self) fn))
+  (let ((pp (slot-value self 'first)))
+    (loop while pp do
+	 (funcall fn pp)
+	 (setf pp (next pp)))))
 
 (defmethod score ((self phrase-scorer))
   (let ((raw (* (tf (similarity self) (freq self)) (value self))))
@@ -107,31 +95,37 @@
   (values (do-next self)))
 
 (defmethod init ((self phrase-scorer))
-  (block nil (each self (lambda (pp) (unless (= (more-p self) (next? pp)) (return)))))
+  (block nil (each self (lambda (pp) (unless (and (and (more-p self) T) (next? pp)) (return)))))
   (when (more-p self)
     (do-sort self)))
 
 (defmethod do-sort ((self phrase-scorer))
-  (queue-clear (pq self))
-  (each self (lambda (pp) (queue-push (pq self) pp)))
-  (pq-to-list self))
+  (with-slots (pq) self
+    (queue-clear pq)
+    (each self (lambda (pp) (queue-push pq pp)))
+    (pq->list self)))
 
 (defmethod pq->list ((self phrase-scorer))
-  (setf (last-index self) nil
-        (first-index self) nil)
-  (while (queue-top (pq self))
-    (let* ((pp (cons (queue-pop (pq self)) nil)))
-      (if (last-index self)
-        ;; add next to end of list
-        (setf (cdr (last-index self)) pp)
-        (setf (first-index self) pp))
-      (setf (last-index self) pp))))
+  (with-slots (first last pq) self
+    (format T "~&PQ -> LIST: ~S" pq)
+    (setf last nil
+	  first nil)
+    (while (queue-top pq)
+      (format T "~&1: ~S" pq)
+      (let ((pp (queue-pop pq)))
+	(if last
+	    ;; add next to end of list
+	    (setf (next last) pp)
+	    (setf first pp))
+	(setf last pp)
+	(setf (next pp) nil)))))
 
 (defmethod first-to-last ((self phrase-scorer))
-  (setf (cdr (last-index self)) (first-index self)
-        (index-index self) (first-index self)
-        (first-index self) (cdr (first-index self))
-        (cdr (last-index self)) nil))
+  (with-slots (last first) self
+    (setf (next last) first)
+    (setf last first)
+    (setf first (next first))
+    (setf (next last) nil)))
 
 
 #|

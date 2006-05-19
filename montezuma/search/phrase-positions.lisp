@@ -8,6 +8,7 @@
    (next :accessor next :initform nil)
    (tp-enum :initarg :tp-enum :reader tp-enum)
    (offset :initarg :offset)
+   (position)
    (phrase-count :initform -1 :reader phrase-count)))
 
 (defmethod next? ((self phrase-positions))
@@ -34,20 +35,9 @@
 
 (defmethod next-position ((self phrase-positions))
   (decf (slot-value self 'phrase-count))
-  (when (>= (phrase-count self) 0)
-    (setf (slot-value self 'phrase-position)
-          (- (next-position (tp-enum self)) (offset self)))
-    (return-from next-position t))
-  (values nil))
-
-
-
-#|
-    def to_s
-
-      "pp->(doc => #{@doc}, position => #{position})"
-
-    end
-
-|#
-
+  (if (>= (phrase-count self) 0)
+      (progn
+	(setf (slot-value self 'phrase-position)
+	      (- (next-position (tp-enum self)) (slot-value self 'offset)))
+	T)
+      NIL))

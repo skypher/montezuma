@@ -23,7 +23,6 @@
 (defun check-docs (is query expected &rest options)
   (let* ((top-docs (apply #'search is query options))
 	 (docs (score-docs top-docs)))
-    (format T "~&expected: ~S  docs: ~S~%" expected docs)
     (atest check-docs-1 (length docs) (length expected))
     (dotimes (i (length docs))
       (atest check-docs-2 (doc (elt docs i)) (elt expected i)))))
@@ -116,7 +115,20 @@
 	 (add-query bq tq2 :should-occur)
 	 (add-query bq tq3 :should-occur)
 	 (check-hits (fixture-var 'is) bq '(1 2 3 4 6 8 11 14))))))
-
-
-       
+  (:testfun test-phrase-query
+   (let ((pq (make-instance 'phrase-query))
+	 (t1 (make-term "field" "quick"))
+	 (t2 (make-term "field" "brown"))
+	 (t3 (make-term "field" "fox")))
+     (add-term-to-query pq t1)
+     (add-term-to-query pq t2)
+     (add-term-to-query pq t3)
+     (check-hits (fixture-var 'is) pq '(1))
+     (setf pq (make-instance 'phrase-query))
+     (add-term-to-query pq t1 2)
+     (check-hits (fixture-var 'is) pq '(1 11 14))
+     (setf (slop pq) 1)
+     (check-hits (fixture-var 'is) pq '(1 11 14 16))
+     (setf (slop pq) 4)
+     (check-hits (fixture-var 'is) pq '(1 11 14 16 17))))
 )
