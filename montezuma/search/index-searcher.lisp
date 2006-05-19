@@ -49,7 +49,7 @@
 (defmethod create-weight ((self index-searcher) (query query))
   (weight query self))
 
-(defmethod search ((self index-searcher) query &optional options)
+(defmethod search ((self index-searcher) query &rest options)
   (let* ((filter (getf options :filter))
 	 (first-doc (or (getf options :first-doc) 0))
 	 (num-docs (or (getf options :num-docs) 10))
@@ -58,7 +58,7 @@
     (when (and sort (not (typep sort 'sort)))
       (setf sort (make-instance 'sort :sort sort)))
     (when (<= num-docs 0)
-      (error ":num-docs must be greater then zero to run a search."))
+      (error ":num-docs must be greater than zero to run a search."))
     (when (< first-doc 0)
       (error "first-doc must be greater than or equal to zero to run a search."))
     (let ((scorer (scorer (weight query self) (reader self))))

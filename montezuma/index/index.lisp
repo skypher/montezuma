@@ -181,7 +181,7 @@
 ;; num_docs::   The number of results returned. Default is 10
 ;; sort::       An array of SortFields describing how to sort the results.
 
-(defmethod search ((self index) query &optional options)
+(defmethod search ((self index) query &rest options)
   (do-search self query options))
 
 
@@ -378,7 +378,7 @@
 (defmethod do-search ((self index) query options)
   (let ((searcher (searcher self))
 	(query (process-query self query)))
-    (search searcher query options)))
+    (apply #'search searcher query options)))
 
 
 (defmethod process-query ((self index) query)
