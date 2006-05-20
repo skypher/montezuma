@@ -136,4 +136,14 @@
      (check-hits (fixture-var 'is) pq '(1 11 14 16))
      (setf (slop pq) 4)
      (check-hits (fixture-var 'is) pq '(1 11 14 16 17))))
+  (:testfun test-wildcard-query
+    (let ((term (make-term "cat" "cat1*")))
+      (let ((wq (make-instance 'wildcard-query
+			       :term term)))
+	(check-hits (fixture-var 'is) wq '(0 1 2 3 4 13 14 15 16 17))
+	(setf (term-text term) "cat1*/su??ub2"))
+      (let ((wq (make-instance 'wildcard-query
+			       :term term)))
+	(check-hits (fixture-var 'is) wq '(4 16)))))
+
 )
