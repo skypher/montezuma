@@ -1,10 +1,21 @@
 (in-package #:montezuma)
 
+;; A phrase-query is a query that matches documents containing a
+;; particular sequence of terms.
+
 (defclass phrase-query (query)
   ((slop :initform 0 :accessor slop)
    (terms :initform (make-array 3 :adjustable T :fill-pointer 0) :reader terms)
    (positions :initform (make-array 3 :adjustable T :fill-pointer 0) :reader positions)
    (field :initform nil :reader field)))
+
+(defmethod print-object ((self phrase-query) stream)
+  (print-unreadable-object (self stream :type T)
+    (format stream "field:~S terms: " (field self))
+    (dosequence (term (terms self) :index i)
+      (let ((position (aref (positions self) i)))
+	(format stream "~S:~S " (term-text term) position)))))
+
 
 (defmethod add-term-to-query ((self phrase-query) term &optional position (pos-inc 1))
   (with-slots (positions terms field) self
@@ -50,12 +61,12 @@
   (with-slots (query similarity) self
     (if (= (length (terms query)) 0)
 	nil
-	(let ((tps '()))
-	  (dosequence (term (terms query))
-	    (let ((tp (term-positions-for reader term)))
-	      (if (null tp)
-		  (return-from scorer nil)
-		  (push tp tps))))
+	(let ((tps (loop for term across (terms query)
+			collecting
+			(let ((tp (term-positions-for reader term)))
+			  (if (null tp)
+			      (return-from scorer nil)
+			      tp)))))
 	  (if (= (slop query) 0)
 	      (make-instance 'exact-phrase-scorer
 			     :weight self
@@ -64,11 +75,12 @@
 			     :similarity similarity
 			     :norms (get-norms reader (field query)))
 	      (make-instance 'sloppy-phrase-scorer
-			     :blah self
-			     :blah2 tps
-			     :blah3 (positions query)
-			     :blah4 similarity
-			     :blah5 (get-norms reader (field query))))))))
+			     :weight self
+			     :term-positions tps
+			     :positions (positions query)
+			     :similarity similarity
+			     :slop (slop query)
+			     :norms (get-norms reader (field query))))))))
 
 
 (defmethod create-weight ((self phrase-query) searcher)

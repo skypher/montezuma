@@ -229,6 +229,11 @@
    (reader-term-docs)
    (current :reader current)))
 
+(defmethod print-object ((self multi-term-doc-enum) stream)
+  (print-unreadable-object (self stream :type T)
+    (let ((term (term self)))
+      (format stream "~S:~S" (term-field term) (term-text term)))))
+
 (defmethod initialize-instance :after ((self multi-term-doc-enum) &key)
   (with-slots (reader-term-docs readers) self
     (setf reader-term-docs (make-array (length readers) :initial-element nil))))

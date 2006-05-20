@@ -9,9 +9,9 @@
   ())
 
 (defmethod less-than ((queue phrase-queue) a b)
-  (if (= (doc a) (doc b))
+  (if (= (document a) (document b))
     (< (phrase-position a) (phrase-position b))
-    (< (doc a) (doc b))))
+    (< (document a) (document b))))
 
 ;;?? renamed first and last to first-index and last-index
 
@@ -28,7 +28,8 @@
 
 
 (defmethod initialize-instance :after ((self phrase-scorer) &key term-positions positions)
-  (with-slots (value first last pq) self
+  (with-slots (value first last pq weight) self
+    (setf value (value weight))
     (dotimes (i (length term-positions))
       (let ((pp (make-instance 'phrase-positions
 			       :tp-enum (elt term-positions i)
@@ -37,8 +38,8 @@
 	    (setf (next last) pp)
 	    (setf first pp))
 	(setf last pp)))
-    (setf pq (print (make-instance 'phrase-queue
-			    :max-size (length term-positions))))))
+    (setf pq (make-instance 'phrase-queue
+			    :max-size (length term-positions)))))
 
 (defmethod document ((self phrase-scorer))
   (values (document (first-index self))))
@@ -55,9 +56,9 @@
   (while (more-p self)
     ;; find doc with all the terms
     (while (and (more-p self)
-                (< (doc (first-index self)) (doc (last-index self)))) 
+                (< (document (first-index self)) (document (last-index self)))) 
             
-      (setf (more-p self) (skip-to (first-index self) (doc (last-index self))))
+      (setf (more-p self) (skip-to (first-index self) (document (last-index self))))
       (first-to-last self))
 
     (more-p self)
@@ -80,8 +81,8 @@
 (defmethod score ((self phrase-scorer))
   (let ((raw (* (tf (similarity self) (freq self)) (value self))))
     ;; normalize
-    (values (* raw (similarity-decode-norm 
-                    (aref (norms self) (doc (first-index self))))))))
+    (* raw (similarity-decode-norm 
+	    (aref (slot-value self 'norms) (document (first-index self)))))))
 
 (defmethod skip-to ((self phrase-scorer) target)
   (block each
@@ -107,11 +108,9 @@
 
 (defmethod pq->list ((self phrase-scorer))
   (with-slots (first last pq) self
-    (format T "~&PQ -> LIST: ~S" pq)
     (setf last nil
 	  first nil)
     (while (queue-top pq)
-      (format T "~&1: ~S" pq)
       (let ((pp (queue-pop pq)))
 	(if last
 	    ;; add next to end of list

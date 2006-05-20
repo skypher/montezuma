@@ -85,6 +85,7 @@
                            (:file "sort-field")
                            (:file "phrase-positions")
                            (:file "phrase-scorer" :depends-on ("phrase-positions"))
+			   (:file "sloppy-phrase-scorer" :depends-on ("phrase-scorer"))
                            (:file "exact-phrase-scorer" :depends-on ("phrase-scorer")))
               :depends-on ("package" "index"))
      (:module "index"
