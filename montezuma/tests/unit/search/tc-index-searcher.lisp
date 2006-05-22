@@ -136,6 +136,47 @@
      (check-hits (fixture-var 'is) pq '(1 11 14 16))
      (setf (slop pq) 4)
      (check-hits (fixture-var 'is) pq '(1 11 14 16 17))))
+  (:testfun test-range-query
+   (let ((rq (make-instance 'range-query
+			    :field "date"
+			    :lower-term "20051006"
+			    :upper-term "20051010"
+			    :include-lower-p T
+			    :include-upper-p T)))
+     (check-hits (fixture-var 'is) rq '(6 7 8 9 10)))
+   (let ((rq (make-instance 'range-query
+			    :field "date"
+			    :lower-term "20051006"
+			    :upper-term "20051010"
+			    :include-lower-p NIL
+			    :include-upper-p T)))
+     (check-hits (fixture-var 'is) rq '(7 8 9 10)))
+   (let ((rq (make-instance 'range-query
+			    :field "date"
+			    :lower-term "20051006"
+			    :upper-term "20051010"
+			    :include-lower-p T
+			    :include-upper-p NIL)))
+     (check-hits (fixture-var 'is) rq '(6 7 8 9)))
+   (let ((rq (make-instance 'range-query
+			    :field "date"
+			    :lower-term "20051006"
+			    :upper-term "20051010"
+			    :include-lower-p NIL
+			    :include-upper-p NIL)))
+     (check-hits (fixture-var 'is) rq '(7 8 9)))
+   (let ((rq (make-instance 'range-query
+			    :field "date"
+			    :upper-term "20051003"
+			    :include-lower-p NIL
+			    :include-upper-p T)))
+     (check-hits (fixture-var 'is) rq '(0 1 2 3)))
+   (let ((rq (make-instance 'range-query
+			    :field "date"
+			    :upper-term "20051003"
+			    :include-lower-p NIL
+			    :include-upper-p NIL)))
+     (check-hits (fixture-var 'is) rq '(0 1 2))))
   (:testfun test-wildcard-query
     (let ((term (make-term "cat" "cat1*")))
       (let ((wq (make-instance 'wildcard-query
@@ -145,5 +186,22 @@
       (let ((wq (make-instance 'wildcard-query
 			       :term term)))
 	(check-hits (fixture-var 'is) wq '(4 16)))))
+  #||
+  (:testfun test-multi-phrase-query
+   (let ((t11 (make-term "field" "quick"))
+	 (t12 (make-term "field" "fast"))
+	 (t21 (make-term "field" "brown"))
+	 (t22 (make-term "field" "red"))
+	 (t23 (make-term "field" "hairy"))
+	 (t3 (make-term "field" "fox")))
+     (let ((mpq (make-instance 'multi-phrase-query)))
+       (add-term-to-query mpq (list t11 t12))
+       (add-term-to-query mpq (list t21 t22 t23))
+       (add-term-to-query mpq t3)
+       (setf (slop mpq) 4)
+       (check-hits (fixture-var 'is) mpq '(1 8 11 14 16 17)))))
+||#
+			       
+
 
 )

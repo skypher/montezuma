@@ -4,7 +4,7 @@
 ;;?? merge-boolean-queries
 
 (defclass query ()
-  ((boost :accessor boost :initform 1.0)))
+  ((boost :accessor boost :initform 1.0 :initarg :boost)))
 
 (defmethod weight ((self query) searcher)
   (let* ((query (rewrite searcher self))

@@ -79,6 +79,7 @@
 			   (:file "wildcard-query" :depends-on ("multi-term-query"))
 			   (:file "wildcard-term-enum" :depends-on ("filtered-term-enum"))
 			   (:file "phrase-query" :depends-on ("query"))
+			   (:file "range-query" :depends-on ("query"))
                            (:file "top-docs")
                            (:file "index-searcher")
                            (:file "sort")
