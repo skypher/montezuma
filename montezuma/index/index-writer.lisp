@@ -7,7 +7,7 @@
 (defparameter *index-writer-default-merge-factor* 10)
 (defparameter *index-writer-default-min-merge-docs* 10)
 (defparameter *index-writer-default-max-merge-docs* #x7fffffff)
-(defparameter *index-writer-default-max-field-length* 1000)
+(defparameter *index-writer-default-max-field-length* 10000)
 (defparameter *index-writer-default-term-index-interval* 128)
 
 (defclass index-writer ()
