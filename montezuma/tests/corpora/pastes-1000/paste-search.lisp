@@ -99,7 +99,6 @@
       (add-field doc channel)
       (add-field doc title)
       (add-field doc contents)
-      (format T "~&Indexing paste ~A" (paste-number paste))
       (add-document-to-index *paste-index* doc))))
 
 (defun search-pastes (field query &optional options)
