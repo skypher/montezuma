@@ -40,8 +40,9 @@
 (defmethod ensure-text-buf-length ((self term-buffer) len)
   (with-slots (text-buf) self
     (unless (>= (length text-buf) len)
-      (dotimes (i (- len (length text-buf)))
-	(vector-push-extend (code-char 0) text-buf 10)))))
+      (let ((new-buf (make-adjustable-string (+ len 10))))
+	(replace new-buf text-buf :start2 0 :end2 (length text-buf))
+	(setf text-buf new-buf)))))
 
 (defmethod reset ((self term-buffer))
   (with-slots (field text-buf text-length term) self
