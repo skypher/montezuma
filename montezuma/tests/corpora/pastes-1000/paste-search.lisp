@@ -1,21 +1,32 @@
 (in-package #:montezuma)
 
+(defparameter *corpus-path* (make-pathname :name nil
+					   :type nil
+					   :defaults *load-pathname*))
+
 (defvar *paste-index* nil)
 (defvar *pastes* nil)
 
 (defun load-pastes ()
-  (with-open-file (f "/users/wiseman/src/montezuma/pastes.db" :direction :input)
+  (with-open-file (f (make-pathname :name "pastes" :type "db" :defaults *corpus-path*)
+		     :direction :input)
     (setf *pastes* (cl:read f)))
   (length *pastes*))
 
 (defun save-pastes ()
-  (with-open-file (f "/users/wiseman/src/montezuma/pastes.db"
+  (with-open-file (f (make-pathname :name "pastes" :type "db" :defaults *corpus-path*)
 		     :direction :output
 		     :if-exists :supersede)
     (with-standard-io-syntax
       (let ((*print-readably* T))
 	(print *pastes* f))))
   (length *pastes*))
+
+(defun load-paste-index ()
+  (setf *paste-index* (make-instance 'index
+				     :path (merge-pathnames
+					    (make-pathname :directory '(:relative "pasteindex"))
+					    *corpus-path*))))
 
 (defstruct paste
   number
@@ -57,9 +68,10 @@
 
 (defun index-pastes (&key (pastes *pastes*))
   (setf *paste-index* (make-instance 'index
-				     :path "/users/wiseman/src/montezuma/pasteindex"
+				     :path (merge-pathnames
+					    (make-pathname :directory '(:relative "pasteindex"))
+					    *corpus-path*)
 				     :default-field "contents"
-				     :info-stream *standard-output*
 				     :min-merge-docs 5000))
   (dolist (paste pastes)
     (index-paste *paste-index* paste))
@@ -91,26 +103,47 @@
       (add-document-to-index *paste-index* doc))))
 
 (defun search-pastes (field query &optional options)
-  (unless (typep query 'query)
-    (let ((words query))
-      (setf query (make-instance 'boolean-query))
-      (dolist (word words)
-	(add-query query
-		   (make-instance 'wildcard-query
-				  :term (make-term field word))
-		   :must-occur))
-      (search-each *paste-index* query
-		   #'(lambda (doc score)
-		       (let ((paste (get-document *paste-index* doc)))
-			 (format T "~&~5,2F ~A ~A: ~A"
-				 score
-				 (multiple-value-bind (second minute hour date month year)
-				     (decode-universal-time (parse-integer (document-values paste "date")))
-				   (format nil "~4D-~2,'0D-~2,'0D" year month date))
-				 (field-data (document-field paste "number"))
-				 (field-data (document-field paste "title")))))
-		   options))))
+  (etypecase query
+    (list
+     ;; Make a boolean query where each clause is a wildcard query
+     ;; that MUST occur.
+     (let ((words query))
+       (setf query (make-instance 'boolean-query))
+       (dolist (word words)
+	 (add-query query
+		    (make-instance 'wildcard-query
+				   :term (make-term field word))
+		    :must-occur))))
+    (string
+     ;; Make a single-term wildcard query.
+     (let ((word query))
+       (setf query (make-instance 'wildcard-query
+				  :term (make-term field word)))))
+    (query
+     ;; Don't need to do anything, use it as-is.
+     ))
+  ;; Perform the search
+  (let ((num-results 0))
+    (search-each *paste-index* query
+		 #'(lambda (doc score)
+		     (when (= num-results 0)
+		       (format T "~&~5A ~10A ~5A ~15A ~A" "Score" "Date" "#" "User" "Title")
+		       (format T "~&---------------------------------------------------------------------------"))
+		     (incf num-results)
+		     (print-result doc score))
+		 options)
+    (format T "~&~%~S results displayed." num-results)))
 
+(defun print-result (doc score)
+  (let ((paste (get-document *paste-index* doc)))
+    (format T "~&~5,2F ~A ~A ~15A ~A"
+	    score
+	    (multiple-value-bind (second minute hour date month year)
+		(decode-universal-time (parse-integer (document-values paste "date")))
+	      (format nil "~4D-~2,'0D-~2,'0D" year month date))
+	    (field-data (document-field paste "number"))
+	    (field-data (document-field paste "user"))
+	    (field-data (document-field paste "title")))))
 
 (defun find-pastes (field words)
   (flet ((check (s)
