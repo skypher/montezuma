@@ -29,8 +29,10 @@ See SortField."))
 (defmethod compare ((a simple-field-comparator) (b simple-field-comparator))
   (values (<=> (index (doc  a)) (index (doc b)))))
 
+#||
 (defmethod sort-value ((self simple-field-comparator) document-index)
   (values (index (doc ))))
+||#
 
 ;;; ---------------------------------------------------------------------------
 ;;; special-field-comparator
@@ -52,8 +54,10 @@ See SortField."))
 (defmethod compare ((a string-field-comparator) (b string-field-comparator))
   (values (<=> (index (doc  a)) (index (doc b)))))
 
+#||
 (defmethod sort-value ((self string-field-comparator) document-index)
   (values (index (doc ))))
+||#
 
 (defmethod sort-type ((self string-field-comparator))
   )

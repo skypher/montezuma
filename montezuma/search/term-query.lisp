@@ -47,14 +47,14 @@
                                             (query self) doc)))
         (idf-explanation (make-instance 'explanation
 					:value (term-idf self)
-                           :description (format nil "idf(doc-freq=~A)" 
+                           :description (format nil "idf(doc-freq=~A) ~S" 
                                                 (doc-freq reader)
                                                 (term (query self)))))
         (query-explanation (make-instance 'explanation
                              :description (format nil "query-weight(~A), product of:" 
                                                 (query self))))
         (boost-explanation (make-instance 'explanation
-                             (boost (query self))
+                             :value (boost (query self))
                              :description "boost")))
     (unless (= (boost (query self)) 1.0)
       (<< query-explanation boost-explanation))

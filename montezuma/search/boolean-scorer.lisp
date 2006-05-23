@@ -191,8 +191,7 @@
 
 
 (defmethod counting-conjunction-sum-scorer ((self boolean-scorer) required-scorers)
-  (let ((required-num-matchers (length required-scorers))
-	(ccs (make-instance 'counting-conjunction-scorer
+  (let ((ccs (make-instance 'counting-conjunction-scorer
 			    :parent-scorer self
 			    :similarity (make-instance 'default-similarity))))
     (dosequence (scorer required-scorers)

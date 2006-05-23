@@ -23,8 +23,7 @@
     (let ((bq (make-instance 'boolean-query))
 	  (term-enum (terms-from reader (make-term field (or lower-term "")))))
       (unwind-protect
-	   (let ((check-lower-p (not include-lower-p))
-		 (test-field (field self)))
+	   (let ((check-lower-p (not include-lower-p)))
 	     (loop do
 		  (let ((term (term term-enum)))
 		    (when (or (null term) (not (string= (term-field term) field)))
