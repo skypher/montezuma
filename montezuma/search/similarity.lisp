@@ -142,10 +142,15 @@
 
 (defmethod length-norm ((self default-similarity) field num-terms)
   (declare (ignore field))
-  (/ 1.0 (sqrt num-terms)))
+  (if (= num-terms 0)
+      most-positive-single-float
+      (/ 1.0 (sqrt num-terms))))
 
 (defmethod query-norm ((self default-similarity) sum-of-squared-weights)
-  (/ 1.0 (sqrt sum-of-squared-weights)))
+  (let ((quotient (sqrt sum-of-squared-weights)))
+    (if (= quotient 0.0)
+	most-positive-single-float
+	(/ 1.0 quotient))))
 
 (defmethod tf ((self default-similarity) freq)
   (float (sqrt freq)))
