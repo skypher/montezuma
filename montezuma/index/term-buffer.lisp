@@ -30,7 +30,7 @@
 	   (total-length (+ start length)))
       (setf text-length total-length)
       (ensure-text-buf-length self total-length)
-      (let ((buf (string-to-bytes text-buf)))
+      (let ((buf (string-to-bytes text-buf :start 0 :end total-length)))
 	(read-chars input buf start length)
 	(let ((s (bytes-to-string buf)))
 	  (setf text-buf (make-adjustable-string (length s) s))))

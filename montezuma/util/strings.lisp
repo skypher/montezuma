@@ -9,12 +9,12 @@
     s))
 
 
-(defun string-to-bytes (string)
+(defun string-to-bytes (string &key (start 0) (end (length string)))
   "Converts a string to a sequence of bytes (unsigned-byte 8) using
    the implementation's default character encoding."
-  (let ((s (make-array (list (length string)))))
-    (dotimes (i (length string))
-      (setf (elt s i) (char-code (char string i))))
+  (let ((s (make-array (list (- end start)))))
+    (dotimes (i (- end start))
+      (setf (elt s i) (char-code (char string (+ i start)))))
     s))
 
 (defun string-compare (s1 s2)
