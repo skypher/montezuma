@@ -88,6 +88,7 @@
 			:start2 0 :end2 (slot-value tb2 'text-length))
 	fc)))
 
+#||
 (defun term-buffer> (tb1 &rest more)
   (if (null more)
       T
@@ -113,6 +114,32 @@
 	  ((endp tbs) T)
 	(when (not (= (term-buffer-compare tb1 (car tbs)) 0))
 	  (return NIL)))))
+||#
+
+(defun term-buffer> (tb1 tb2)
+  (let ((fc (string-compare (field tb1) (field tb2))))
+    (if (= fc 0)
+	(string> (slot-value tb1 'text-buf)
+		 (slot-value tb2 'text-buf)
+		 :start1 0 :end1 (slot-value tb1 'text-length)
+		 :start2 0 :end2 (slot-value tb2 'text-length))
+	(> fc 0))))
+
+(defun term-buffer< (tb1 tb2)
+  (let ((fc (string-compare (field tb1) (field tb2))))
+    (if (= fc 0)
+	(string< (slot-value tb1 'text-buf)
+		 (slot-value tb2 'text-buf)
+		 :start1 0 :end1 (slot-value tb1 'text-length)
+		 :start2 0 :end2 (slot-value tb2 'text-length))
+	(< fc 0))))
+
+(defun term-buffer= (tb1 tb2)
+  (and (string= (field tb1) (field tb2))
+       (string= (slot-value tb1 'text-buf)
+		(slot-value tb2 'text-buf)
+		:start1 0 :end1 (slot-value tb1 'text-length)
+		:start2 0 :end2 (slot-value tb2 'text-length))))
 
 (defmethod set-from-term-buffer ((self term-buffer) other)
   (with-slots (text-length text-buf text-cache field term) self
