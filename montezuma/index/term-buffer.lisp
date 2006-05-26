@@ -4,7 +4,8 @@
   ((text-buf :initform (make-adjustable-string 0))
    (text-length :initform -1 :reader text-length)
    (field :initform nil :reader field)
-   (term :initform nil)))
+   (term :initform nil)
+   (text-cache :initform nil)))
 
 (defmethod print-object ((self term-buffer) stream)
   (print-unreadable-object (self stream :type T :identity T)
@@ -19,11 +20,13 @@
   (set-from-term-buffer self other))
 
 (defmethod text ((self term-buffer))
-  (with-slots (text-buf text-length) self
-    (subseq text-buf 0 text-length)))
+  (with-slots (text-cache text-buf text-length) self
+    (if text-cache
+	text-cache
+	(setf text-cache (subseq text-buf 0 text-length)))))
 
 (defmethod read-term-buffer ((self term-buffer) input field-infos)
-  (with-slots (term text-buf text-length field) self
+  (with-slots (term text-buf text-cache text-length field) self
     (setf term nil)
     (let* ((start (read-vint input))
 	   (length (read-vint input))
@@ -34,29 +37,33 @@
 	(read-chars input buf start length)
 	(let ((s (bytes-to-string buf)))
 	  (setf text-buf (make-adjustable-string (length s) s))))
-      (setf field (field-name (get-field field-infos (read-vint input))))))
+      (setf field (field-name (get-field field-infos (read-vint input)))))
+    (setf text-cache nil))
   self)
 
 (defmethod ensure-text-buf-length ((self term-buffer) len)
-  (with-slots (text-buf) self
+  (with-slots (text-buf text-cache) self
     (unless (>= (length text-buf) len)
       (let ((new-buf (make-adjustable-string (+ len 10))))
 	(replace new-buf text-buf :start2 0 :end2 (length text-buf))
+	(setf text-cache nil)
 	(setf text-buf new-buf)))))
 
 (defmethod reset ((self term-buffer))
-  (with-slots (field text-buf text-length term) self
+  (with-slots (field text-buf text-cache text-length term) self
     (setf field nil
 	  text-buf (make-adjustable-string 0)
 	  text-length 0
+	  text-cache nil
 	  term nil)))
 
 (defmethod (setf term) (term (self term-buffer))
   (if (null term)
       (progn (reset self) nil)
-      (with-slots (text-buf text-length field) self
+      (with-slots (text-buf text-cache text-length field) self
 	(setf text-buf (make-adjustable-string (length (term-text term)) (term-text term)))
 	(setf text-length (length text-buf))
+	(setf text-cache nil)
 	(setf field (term-field term))
 	(setf (slot-value self 'term) term))))
       
@@ -75,7 +82,10 @@
 (defun term-buffer-compare (tb1 tb2)
   (let ((fc (string-compare (field tb1) (field tb2))))
     (if (= fc 0)
-	(string-compare (text tb1) (text tb2))
+	(string-compare (slot-value tb1 'text-buf)
+			(slot-value tb2 'text-buf)
+			:start1 0 :end1 (slot-value tb1 'text-length)
+			:start2 0 :end2 (slot-value tb2 'text-length))
 	fc)))
 
 (defun term-buffer> (tb1 &rest more)
@@ -105,8 +115,9 @@
 	  (return NIL)))))
 
 (defmethod set-from-term-buffer ((self term-buffer) other)
-  (with-slots (text-length text-buf field term) self
+  (with-slots (text-length text-buf text-cache field term) self
     (setf text-length (slot-value other 'text-length))
+    (setf text-cache nil)
     (when (slot-value other 'text-buf)
       (setf text-buf (clone (slot-value other 'text-buf))))
     (setf field (slot-value other 'field))

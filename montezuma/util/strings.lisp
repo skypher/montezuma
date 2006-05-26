@@ -17,9 +17,16 @@
       (setf (elt s i) (char-code (char string (+ i start)))))
     s))
 
+#|
 (defun string-compare (s1 s2)
   (cond ((string< s1 s2) -1)
 	((string> s1 s2) 1)
+	(T 0)))
+|#
+
+(defun string-compare (s1 s2  &key (start1 0) (end1 (length s1)) (start2 0) (end2 (length s2)))
+  (cond ((string< s1 s2 :start1 start1 :end1 end1 :start2 start2 :end2 end2) -1)
+	((string> s1 s2 :start1 start1 :end1 end1 :start2 start2 :end2 end2) 1)
 	(T 0)))
 
 (defun make-adjustable-string (length &optional s)
