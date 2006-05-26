@@ -77,15 +77,22 @@
     (index-paste *paste-index* paste))
   (optimize *paste-index*))
 
+(defun date-string (universal-time)
+  (multiple-value-bind (second minute hour date month year)
+      (decode-universal-time universal-time)
+    (format nil "~D-~2,'0D-~2,'0D ~2,'0D:~2,'0D:~2,'0D"
+	    year month date hour minute second)))
+
+
 (defun index-paste (index paste)
   (let ((doc (make-instance 'document)))
     ;; I'm just using the paste format as returned by
     ;; paste.lisp.org's XML-RPC API.
-    (let ((number   (make-field "number"   (format nil "~S" (paste-number paste))
+    (let ((number   (make-field "id"   (format nil "~S" (paste-number paste))
 				:index :untokenized :stored T))
 	  (user     (make-field "user"     (paste-user paste)
 				:index :untokenized :stored T))
-	  (date     (make-field "date"     (format nil "~S" (paste-date paste))
+	  (date     (make-field "date"     (date-string (paste-date paste))
 				:index :untokenized :stored T))
 	  (channel  (make-field "channel"  (paste-channel paste)
 				:index :untokenized :stored T))
@@ -126,8 +133,8 @@
     (search-each *paste-index* query
 		 #'(lambda (doc score)
 		     (when (= num-results 0)
-		       (format T "~&~5A ~10A ~5A ~15A ~A" "Score" "Date" "#" "User" "Title")
-		       (format T "~&---------------------------------------------------------------------------"))
+		       (format T "~&~5A ~19A ~5A ~15A" "Score" "Date" "#" "User")
+		       (format T "~&-------------------------------------------"))
 		     (incf num-results)
 		     (print-result doc score))
 		 options)
@@ -135,13 +142,12 @@
 
 (defun print-result (doc score)
   (let ((paste (get-document *paste-index* doc)))
-    (format T "~&~5,2F ~A ~A ~15A ~A"
+    (format T "~&~5,2F ~A ~A ~15A~&~vt~A"
 	    score
-	    (multiple-value-bind (second minute hour date month year)
-		(decode-universal-time (parse-integer (document-values paste "date")))
-	      (format nil "~4D-~2,'0D-~2,'0D" year month date))
-	    (field-data (document-field paste "number"))
+	    (field-data (document-field paste "date"))
+	    (field-data (document-field paste "id"))
 	    (field-data (document-field paste "user"))
+	    10
 	    (field-data (document-field paste "title")))))
 
 (defun find-pastes (field words)
@@ -163,3 +169,24 @@
 	  (push token tokens)
 	  (setf token (next-token ts)))
 	(reverse tokens)))))
+
+
+(require :json)
+
+(use-package :json)
+
+(defmethod encode-json ((p paste) stream)
+  (let ((props `((:number . ,(paste-number p))
+		 (:user . ,(paste-user p))
+		 (:date . ,(paste-date p))
+		 (:channel . ,(paste-channel p))
+		 (:title . ,( paste-title p))
+		 (:contents . ,(paste-contents p)))))
+    (encode-json-alist props stream)))
+
+(defun write-json-pastes ()
+  (with-open-file (f (make-pathname :name "pastes" :type "json" :defaults *corpus-path*)
+		     :direction :output
+		     :if-exists :supersede)
+    (encode-json *pastes* f)))
+
