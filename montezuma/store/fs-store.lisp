@@ -103,7 +103,9 @@
 
 
 (defclass fs-index-output (buffered-index-output)
-  ((file)))
+  ((file))
+  (:default-initargs
+      :buffer-size 4096))
 
 (defmethod initialize-instance :after ((self fs-index-output) &key path)
   (with-slots (file) self
@@ -151,12 +153,10 @@
     (let ((position (pos self)))
       (when (not (= position (file-position file)))
 	(file-position file position)))
-    (let* ((bytes (make-array (list length)))
-	   (num-bytes-read (read-sequence bytes file)))
+    (let ((num-bytes-read (read-sequence b file :start offset :end (+ offset length))))
       (unless (= num-bytes-read length)
-	(error "End of file error while reading ~S" file))
-      (replace b bytes
-	       :start1 offset :end1 (+ offset num-bytes-read)))))
+	(error "End of file error while reading ~S" file))))
+  (values))
 
 (defmethod seek-internal ((self fs-index-input) pos)
   (with-slots (file) self

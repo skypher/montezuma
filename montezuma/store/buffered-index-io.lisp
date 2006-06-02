@@ -1,7 +1,7 @@
 (in-package #:montezuma)
 
 
-(defparameter *default-buffer-size* 10)
+(defparameter *default-buffer-size* 128)
 
 
 (defclass buffered-index-output (index-output)
@@ -33,8 +33,28 @@
     (setf (slot-value self 'buffer-position) (+ buffer-position 1))))
 
 (defmethod write-bytes ((self buffered-index-output) buffer length)
-  (dotimes (i length)
-    (write-byte self (aref buffer i))))
+;;  (format T "~&write-bytes len: ~S  buf-size: ~S buf-pos: ~S"
+;;	  length (slot-value self 'buffer-size) (slot-value self 'buffer-position))
+  (labels ((write-bytes-aux (start)
+	     (when (< start length)
+;;	       (format T "~&  aux: ~S" start)
+	       (let* ((buffer-position (slot-value self 'buffer-position))
+		      (free-len (- (slot-value self 'buffer-size) buffer-position)))
+		 (if (not (> free-len 0))
+		     (progn
+;;		       (format T "~&  flushing")
+		       (flush self)
+		       (write-bytes-aux start))
+		     (let ((num-bytes-to-copy (min free-len (- length start))))
+		       (replace (slot-value self 'buffer) buffer
+				:start1 buffer-position
+				:end1 (+ buffer-position num-bytes-to-copy)
+				:start2 start
+				:end2 (+ start num-bytes-to-copy))
+		       (incf (slot-value self 'buffer-position) num-bytes-to-copy)
+		       (write-bytes-aux (+ start num-bytes-to-copy))))))))
+    (write-bytes-aux 0)))
+
 
 (defmethod flush ((self buffered-index-output))
   (with-slots (buffer buffer-position buffer-start) self
