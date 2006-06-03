@@ -20,12 +20,12 @@ public class PasteIndexer {
         JSONObject p = (JSONObject) pastes.get(pasteNum);
         Document doc = new Document();
 
-        doc.add(Field.Text("number", (String) p.get("number")));
-        doc.add(Field.Text("user", (String) p.get("user")));
-        doc.add(Field.Text("date", (String) p.get("date")));
-        doc.add(Field.Text("channel", (String) p.get("channel")));
-        doc.add(Field.Text("title", (String) p.get("title")));
-        doc.add(Field.Text("contents", (String) p.get("contents")));
+        doc.add(new Field("id", (String) p.get("number"), true, true, false));
+        doc.add(new Field("user", (String) p.get("user"), true, true, false));
+        doc.add(new Field("date", (String) p.get("date"), true, true, false));
+        doc.add(new Field("channel", (String) p.get("channel"), true, true, false));
+        doc.add(new Field("title", (String) p.get("title"), true, true, true));
+        doc.add(new Field("contents", (String) p.get("contents"), false, true, true));
 
         return doc;
     }
@@ -48,18 +48,23 @@ public class PasteIndexer {
         try {
             writer = new IndexWriter(indexFile, new StandardAnalyzer(), create);
             writer.minMergeDocs = 5000;
+            writer.maxFieldLength = 1000000;
             
+            long start, end;
+
             System.out.println("Indexing...");
-            System.out.println(System.currentTimeMillis());
+            start = System.currentTimeMillis();
             for (int i = 0; i < pastes.size(); i++) {
                 indexPaste(writer, i);
             }
-            System.out.println(System.currentTimeMillis());
+            end = System.currentTimeMillis();
+            System.out.println("Indexing took " + ((end - start) / 1000.0) + " seconds.");
 
             System.out.println("\nOptimizing...");
-            System.out.println(System.currentTimeMillis());
+            start = System.currentTimeMillis();
             writer.optimize();
-            System.out.println(System.currentTimeMillis());
+            end = System.currentTimeMillis();
+            System.out.println("Optimizing took " + ((end - start) / 1000.0) + " seconds.");
         } finally {
             if (writer != null) 
                 writer.close();
