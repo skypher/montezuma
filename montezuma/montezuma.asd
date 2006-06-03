@@ -120,9 +120,12 @@
 		    (:file "index"               :depends-on ("api")))
        :depends-on ("analysis"))))
 
-(defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
+(defmethod asdf:perform ((o test-op) (c (eql (find-system '#:montezuma))))
   (oos 'load-op '#:montezuma-tests)
   (oos 'test-op '#:montezuma-tests :force t))
+
+(defmethod asdf:operation-done-p ((o asdf:test-op) (c (eql (find-system '#:montezuma))))
+  (values nil))
 
 
 
@@ -186,3 +189,6 @@
   (or (funcall (intern (symbol-name '#:run-tests)
                        (find-package '#:montezuma)))
       (error "test-op failed")))
+
+(defmethod asdf:operation-done-p ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
+  (values nil))
