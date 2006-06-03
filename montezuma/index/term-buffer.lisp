@@ -134,12 +134,25 @@
 		 :start2 0 :end2 (slot-value tb2 'text-length))
 	(< fc 0))))
 
+(defun term-buffer< (tb1 tb2)
+  (let ((f1 (field tb1))
+	(f2 (field tb2)))
+  (if (string= f1 f2)
+      (string< (slot-value tb1 'text-buf)
+	       (slot-value tb2 'text-buf)
+	       :start1 0 :end1 (slot-value tb1 'text-length)
+	       :start2 0 :end2 (slot-value tb2 'text-length))
+      (< (string-compare f1 f2) 0))))
+
 (defun term-buffer= (tb1 tb2)
-  (and (string= (field tb1) (field tb2))
-       (string= (slot-value tb1 'text-buf)
-		(slot-value tb2 'text-buf)
-		:start1 0 :end1 (slot-value tb1 'text-length)
-		:start2 0 :end2 (slot-value tb2 'text-length))))
+  (let ((len1 (slot-value tb1 'text-length))
+	(len2 (slot-value tb2 'text-length)))
+    (and (= len1 len2)
+	 (string= (slot-value tb1 'text-buf)
+		  (slot-value tb2 'text-buf)
+		  :start1 0 :end1 len1
+		  :start2 0 :end2 len2)
+	 (string= (field tb1) (field tb2)))))
 
 (defmethod set-from-term-buffer ((self term-buffer) other)
   (with-slots (text-length text-buf text-cache field term) self
