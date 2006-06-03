@@ -65,6 +65,18 @@
 		  :contents contents))))
 ||#  
 
+(defun time-thunk (thunk)
+  (let* ((start (get-internal-run-time))
+	 (result (funcall thunk))
+	 (end (get-internal-run-time)))
+    (values result (/ (- end start) internal-time-units-per-second))))
+
+(defmacro time-form (format form)
+  `(multiple-value-bind (result time)
+    (time-thunk #'(lambda () ,form))
+    (format T ,format time)
+    result))
+
 
 (defun index-pastes (&key (pastes *pastes*))
   (setf *paste-index* (make-instance 'index
@@ -73,9 +85,13 @@
 					    *corpus-path*)
 				     :default-field "contents"
 				     :min-merge-docs 5000))
-  (dolist (paste pastes)
-    (index-paste *paste-index* paste))
-  (optimize *paste-index*))
+  (format T "~&Indexing ~S pastes..." (length pastes))
+  (time-form "Indexing took ~,3F seconds."
+	     (dolist (paste pastes)
+	       (index-paste *paste-index* paste)))
+  (format T "~&Optimizing ~S pastes..." (length pastes))
+  (time-form "~&Optimizing took ~,3F seconds."
+	     (optimize *paste-index*)))
 
 (defun date-string (universal-time)
   (multiple-value-bind (second minute hour date month year)
@@ -88,11 +104,11 @@
   (let ((doc (make-instance 'document)))
     ;; I'm just using the paste format as returned by
     ;; paste.lisp.org's XML-RPC API.
-    (let ((number   (make-field "id"   (format nil "~S" (paste-number paste))
+    (let ((number   (make-field "id"       (format nil "~S" (paste-number paste))
 				:index :untokenized :stored T))
 	  (user     (make-field "user"     (paste-user paste)
 				:index :untokenized :stored T))
-	  (date     (make-field "date"     (date-string (paste-date paste))
+	  (date     (make-field "date"     (format nil "~A" (paste-date paste))
 				:index :untokenized :stored T))
 	  (channel  (make-field "channel"  (paste-channel paste)
 				:index :untokenized :stored T))
@@ -170,6 +186,7 @@
 	  (setf token (next-token ts)))
 	(reverse tokens)))))
 
+#|
 (require :json)
 
 (use-package :json)
@@ -191,5 +208,5 @@
 
 (defun stringify (s)
   (format nil "~A" s))
-
+|#
 
