@@ -170,15 +170,14 @@
 	  (setf token (next-token ts)))
 	(reverse tokens)))))
 
-#||
 (require :json)
 
 (use-package :json)
 
 (defmethod encode-json ((p paste) stream)
-  (let ((props `((:number . ,(paste-number p))
+  (let ((props `((:number . ,(stringify (paste-number p)))
 		 (:user . ,(paste-user p))
-		 (:date . ,(paste-date p))
+		 (:date . ,(stringify (paste-date p)))
 		 (:channel . ,(paste-channel p))
 		 (:title . ,( paste-title p))
 		 (:contents . ,(paste-contents p)))))
@@ -190,4 +189,7 @@
 		     :if-exists :supersede)
     (encode-json *pastes* f)))
 
-||#
+(defun stringify (s)
+  (format nil "~A" s))
+
+
