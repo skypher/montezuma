@@ -1,2 +1,8 @@
 #!/bin/sh
-javac -d build -classpath lib/json_simple.jar:lib/lucene-1.4.3.jar src/PasteIndexer.java
+
+BASE_DIR=`dirname $0`
+BUILD=${BASE_DIR}/build
+LIB=${BASE_DIR}/lib
+SRC=${BASE_DIR}/src
+
+javac -d ${BUILD} -classpath ${LIB}/json_simple.jar:${LIB}/lucene-1.4.3.jar ${SRC}/PasteIndexer.java

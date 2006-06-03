@@ -30,11 +30,9 @@ public class PasteIndexer {
         return doc;
     }
                 
-    public void indexPastes()
+    public void indexPastes(String indexFile)
         throws InterruptedException, IOException {
 
-        String indexFile = "pasteindex.luc";
-        
         IndexWriter writer = null;
         File f;
         boolean create = true;
@@ -78,11 +76,22 @@ public class PasteIndexer {
 
     public static void main (String args[]) {
         try{
+            if (args.length != 2)
+            {
+                System.err.println("Usage: PasteIndexer <pastes.json> <pasteindex>");
+                System.err.println("E.g., PasteIndexer ../pastes.json pasteindex.lucene");
+                System.exit(1);
+            }
+            
+            String pasteFile = args[0];
+            String pasteIndexDir = args[1];
+
             PasteIndexer indexer = new PasteIndexer();
             System.out.println("Loading...");
-            indexer.loadPastes(new File("../pastes.json"));
+            indexer.loadPastes(new File(pasteFile));
             System.out.println("Indexing " + indexer.pastes.size() + " pastes.");
-            indexer.indexPastes();
+            indexer.indexPastes(pasteIndexDir);
+
         } catch (Exception e) {
             System.err.println("Got exception " + e);
             e.printStackTrace();
