@@ -1,2 +1,2 @@
 #!/bin/sh
-javac -d build -classpath json_simple.jar:lucene-1.4.3.jar PasteIndexer.java
+javac -d build -classpath lib/json_simple.jar:lib/lucene-1.4.3.jar src/PasteIndexer.java
