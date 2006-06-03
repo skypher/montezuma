@@ -23,9 +23,10 @@
 (defmethod clone-object ((object T))
   (let ((copy (allocate-instance (class-of object))))
     (loop for slot in (class-slots (class-of object))
-       when (slot-boundp object (slot-definition-name slot))
-       do (setf (slot-value copy (slot-definition-name slot))
-		(slot-value object (slot-definition-name slot))))
+	  do (let ((name (slot-definition-name slot)))
+	       (when (slot-boundp object name)
+		 (setf (slot-value copy name)
+		       (slot-value object name)))))
     copy))
 
 (defmethod initialize-copy (self o)
