@@ -96,12 +96,25 @@
     (when other-buffer
       (setf buffer (clone other-buffer))))))
 
+
+#|
 (defmethod read-byte ((self buffered-index-input))
   (with-slots (buffer-position buffer-length buffer) self
     (when (>= buffer-position buffer-length)
       (refill self))
     (prog1 (aref buffer buffer-position)
       (incf buffer-position))))
+|#
+
+(defmethod read-byte ((self buffered-index-input))
+  (let ((buffer-position (slot-value self 'buffer-position))
+	(buffer-length (slot-value self 'buffer-length)))
+    (when (>= buffer-position buffer-length)
+      (refill self)
+      (setf buffer-position (slot-value self 'buffer-position)))
+    (setf (slot-value self 'buffer-position)
+	  (1+ buffer-position))
+    (aref (slot-value self 'buffer) buffer-position)))
 
 (defmethod read-bytes ((self buffered-index-input) buffer offset length)
   (with-slots (buffer-size buffer-start buffer-position buffer-length) self
