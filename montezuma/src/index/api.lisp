@@ -20,3 +20,19 @@
 
 (defgeneric (setf term-text) (text term))
 (defgeneric (setf term-field) (field term))
+
+
+(defgeneric do-commit (reader))
+(defgeneric do-close (reader))
+(defgeneric do-delete (reader doc-number))
+(defgeneric do-undelete-all (reader))
+
+(defgeneric deleted-p (reader doc-num))
+
+(defgeneric get-field-names (reader &optional field-option))
+(defgeneric fake-norms (reader))
+(defgeneric get-norms-into (reader field buffer offset))
+(defgeneric optimize (index-writer))
+
+(defgeneric add-indexes (index-writer &rest dirs))
+(defgeneric add-indexes-readers (index-writer readers))

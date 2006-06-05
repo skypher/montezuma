@@ -118,6 +118,8 @@
 	  deleted-docs-dirty-p NIL
 	  undelete-all-p T)))
 
+(defgeneric file-names (reader))
+
 (defmethod file-names ((self segment-reader))
   (let ((filenames '())
 	(segment (slot-value self 'segment))
@@ -265,6 +267,8 @@
 		     (read-bytes norm-stream bytes offset max-doc))
 		(close norm-stream)))))))
 
+(defgeneric open-norms (reader cfs-dir))
+
 (defmethod open-norms ((self segment-reader) cfs-dir)
   (dosequence (fi (fields (slot-value self 'field-infos)))
     (when (and (field-indexed-p fi) (not (field-omit-norms-p fi)))
@@ -279,9 +283,13 @@
 			       :input-stream (open-input directory file-name)
 			       :number (field-number fi))))))))
 
+(defgeneric close-norms (reader))
+
 (defmethod close-norms ((self segment-reader))
   (loop for norm being the hash-values in (slot-value self 'norms)
        do (close (input-stream norm))))
+
+(defgeneric get-term-vectors-reader (segment-reader))
 
 (defmethod get-term-vectors-reader ((self segment-reader))
   (with-slots (cached-tv-reader tv-reader-orig) self
@@ -313,6 +321,8 @@
    (dirty-p :initform NIL :accessor dirty-p)
    (bytes :accessor bytes :initform nil)
    (number :initarg :number)))
+
+(defgeneric re-write (norm directory segment count cfs-reader))
 
 (defmethod re-write ((self norm) directory segment count cfs-reader)
   (let ((out (open-segment-file directory segment "tmp" :output)))

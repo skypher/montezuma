@@ -58,11 +58,15 @@
     (when close-dir-p
       (close directory))))
 
+(defgeneric document-count (index-writer))
+
 (defmethod document-count ((self index-writer))
   (with-slots (segment-infos) self
     (let ((count 0))
       (dotimes (i (size segment-infos) count)
 	(incf count (doc-count (segment-info segment-infos i)))))))
+
+(defgeneric add-document-to-index-writer (index-writer document &optional analyzer))
 
 (defmethod add-document-to-index-writer ((self index-writer) document &optional (analyzer nil analyzer-supplied-p))
   (with-slots (ram-directory similarity max-field-length term-index-interval info-stream

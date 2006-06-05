@@ -15,7 +15,6 @@
     :pathname (make-pathname :directory '(:relative "src"))
     :components
     ((:file "package")
-     (:static-file "TUTORIAL")
      (:module "util"
        :components ((:file "while")
 		    (:file "porter-stemmer")
@@ -120,11 +119,11 @@
 		    (:file "index"               :depends-on ("api")))
        :depends-on ("analysis"))))
 
-(defmethod asdf:perform ((o test-op) (c (eql (find-system '#:montezuma))))
+(defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
   (oos 'load-op '#:montezuma-tests)
   (oos 'test-op '#:montezuma-tests :force t))
 
-(defmethod asdf:operation-done-p ((o asdf:test-op) (c (eql (find-system '#:montezuma))))
+(defmethod operation-done-p ((o asdf:test-op) (c (eql (find-system '#:montezuma))))
   (values nil))
 
 
@@ -185,10 +184,10 @@
 				      (:file "tc-index"))
 			 :depends-on ("tests"))))))))
 
-(defmethod asdf:perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
+(defmethod perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
   (or (funcall (intern (symbol-name '#:run-tests)
                        (find-package '#:montezuma)))
       (error "test-op failed")))
 
-(defmethod asdf:operation-done-p ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
+(defmethod operation-done-p ((o test-op) (c (eql (find-system '#:montezuma-tests))))
   (values nil))
