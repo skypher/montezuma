@@ -89,6 +89,16 @@
    (predicate :initarg :predicate)
    (element-type :initarg :element-type :initform T)))
 
+(defgeneric initialize-heap (queue))
+(defgeneric less-than (queue a b))
+(defgeneric queue-pop (queue))
+(defgeneric queue-push (queue new-item))
+(defgeneric queue-insert (queue new-item))
+(defgeneric queue-top (queue))
+(defgeneric adjust-top (queue))
+(defgeneric queue-clear (queue))
+
+
 (defmethod initialize-instance :after ((queue priority-queue) &key)
   (initialize-heap queue))
 
@@ -146,7 +156,7 @@
       (setf (aref contents i) nil))
     (setf (fill-pointer contents) 0)))
 
-
+#||
 (defmethod check-queue ((self priority-queue) when)
   (with-slots (contents element-type) self
     (assert (every #'(lambda (elt) (typep elt element-type))
@@ -163,4 +173,4 @@
 		  (less-than self min (queue-top self))
 		  (less-than self (queue-top self) min)
 		  when)))))
-		  
+||#

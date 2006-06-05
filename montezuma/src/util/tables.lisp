@@ -10,6 +10,7 @@
 (defgeneric remtable (table key))
 (defgeneric clrtable (table))
 (defgeneric table-like-p (thing))
+(defgeneric table-entry (table key))
 
 (defmethod (setf table-value) (value table key)
   (set-table-value table key value))

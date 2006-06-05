@@ -18,14 +18,6 @@
 
 (defmethod write-byte ((self buffered-index-output) b)
 ;;  (assert (typep b '(unsigned-byte 8)))
-  (with-slots (buffer buffer-size buffer-position) self
-    (when (>= buffer-position buffer-size)
-      (flush self))
-    (setf (aref buffer buffer-position) b)
-    (incf buffer-position)))
-
-(defmethod write-byte ((self buffered-index-output) b)
-;;  (assert (typep b '(unsigned-byte 8)))
   (when (>= (slot-value self 'buffer-position) (slot-value self 'buffer-size))
     (flush self))
   (let ((buffer-position (slot-value self 'buffer-position)))
@@ -145,6 +137,9 @@
 	      (setf buffer-length 0)
 	      (seek-internal self pos))))
     (assert (eql (pos self) pos))))
+
+
+(defgeneric refill (buffered-index-input))
 
 (defmethod refill ((self buffered-index-input))
   (with-slots (buffer-start buffer-position buffer-size buffer-length buffer)

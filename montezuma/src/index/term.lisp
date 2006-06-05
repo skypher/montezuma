@@ -20,9 +20,14 @@
 (defmethod (setf term-field) (field (self term))
   (setf (%term-field self) field))
 
+(defgeneric set-term (term field text))
+
 (defmethod set-term ((self term) field text)
   (setf (%term-text self) text)
   (setf (%term-field self) field))
+
+(defgeneric term-compare (term1 term2))
+(defgeneric term= (term1 term2))
 
 (defmethod term-compare ((t1 term) (t2 term))
   (let ((f1 (term-field t1))
@@ -48,6 +53,8 @@
     (if (string= f1 f2)
 	(string> (term-text t1) (term-text t2))
 	(string> f1 f2))))
+
+(defgeneric to-string (term))
 
 (defmethod to-string ((self term))
   (format nil "~A:~A" (term-field self) (term-text self)))

@@ -9,5 +9,7 @@
 ;;; each method
 ;;; ---------------------------------------------------------------------------
 
+(defgeneric each (sequence function))
+
 (defmethod each ((self list) block)
   (mapc block self))

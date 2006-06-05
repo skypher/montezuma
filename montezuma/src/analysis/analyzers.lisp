@@ -3,9 +3,13 @@
 (defclass analyzer ()
   ())
 
+(defgeneric token-stream (tokenizer field string))
+
 (defmethod token-stream ((self analyzer) field string)
   (declare (ignore field))
   (make-instance 'lowercase-tokenizer :input string))
+
+(defgeneric position-increment-gap (analyzer field-name))
 
 (defmethod position-increment-gap ((self analyzer) field-name)
   (declare (ignore field-name))

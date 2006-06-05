@@ -35,6 +35,8 @@
 				   :is-index T))
 	(setf (other other) self)))))
 
+(defgeneric add-term (term-infos-writer term term-info))
+
 (defmethod add-term ((self term-infos-writer) term term-info)
   (with-slots (is-index last-term last-term-info index-interval last-index-pointer skip-interval size other) self
 ;; FIXME: reenable this test.
@@ -68,6 +70,8 @@
     (close out)
     (unless is-index
       (close other))))
+
+(defgeneric write-term (term-infos-writer term))
 
 (defmethod write-term ((self term-infos-writer) term)
   (with-slots (out field-infos last-term) self
@@ -119,6 +123,8 @@
     (when index-enum
       (close index-enum))))
 
+(defgeneric get-term-info (term-infos-reader term))
+
 (defmethod get-term-info ((self term-infos-reader) term)
   (with-slots (size index-terms) self
     (if (= size 0)
@@ -134,6 +140,8 @@
 	  (seek-enum self (get-index-offset self term))
 	  (scan-for-term-info self term)))))
 
+(defgeneric get-term (term-infos-reader position))
+
 (defmethod get-term ((self term-infos-reader) position)
   (with-slots (size) self
     (if (= size 0)
@@ -146,6 +154,8 @@
 	      (progn
 		(seek-enum self (floor position (index-interval e)))
 		(scan-for-term self position)))))))
+
+(defgeneric get-terms-position (term-infos-reader term))
 
 (defmethod get-terms-position ((self term-infos-reader) term)
   (with-slots (size) self
@@ -165,9 +175,13 @@
   (with-slots (orig-enum) self
     (clone orig-enum)))
 
+(defgeneric terms-from (term-infos-reader term))
+
 (defmethod terms-from ((self term-infos-reader) term)
   (get-term-info self term)
   (clone (enum self)))
+
+(defgeneric enum (term-infos-reader))
 
 (defmethod enum ((self term-infos-reader))
   ;; FIXME use cached thread-local storage?
@@ -175,6 +189,8 @@
     (when (null cached-term-enum)
       (setf cached-term-enum (terms self)))
     cached-term-enum))
+
+(defgeneric ensure-index-is-read (term-infos-reader))
 
 (defmethod ensure-index-is-read ((self term-infos-reader))
   ;; FIXME synchronized?
@@ -193,6 +209,8 @@
 	(close index-enum)
 	(setf index-enum nil)))))
 
+(defgeneric get-index-offset (term-infos-reader term))
+
 (defmethod get-index-offset ((self term-infos-reader) term)
   (with-slots (index-terms index-infos index-pointers) self
     (let ((lo 0)
@@ -208,6 +226,8 @@
 		 (return-from get-index-offset mid)))))
       hi)))
 
+(defgeneric seek-enum (term-infos-reader ind-offset))
+
 (defmethod seek-enum ((self term-infos-reader) ind-offset)
   (with-slots (index-pointers index-terms index-infos) self
     (seek-segment-term (enum self)
@@ -216,12 +236,16 @@
 		       (aref index-terms ind-offset)
 		       (aref index-infos ind-offset))))
 
+(defgeneric scan-for-term-info (term-infos-reader term))
+
 (defmethod scan-for-term-info ((self term-infos-reader) term)
   (let ((e (enum self)))
     (scan-to e term)
     (if (and (term e) (term= term (term e)))
 	(term-info e)
 	nil)))
+
+(defgeneric scan-for-term (term-infos-reader position))
 
 (defmethod scan-for-term ((self term-infos-reader) position)
   (let ((e (enum self)))
@@ -230,7 +254,9 @@
 	(return-from scan-for-term nil)))
     (term e)))
 
-(defmethod get-position (self term)
+(defgeneric get-position (term-infos-reader term))
+
+(defmethod get-position ((self term-infos-reader) term)
   (with-slots (size) self
     (if (= size 0)
 	-1

@@ -17,3 +17,6 @@
 (defgeneric term (enum))
 
 (defgeneric doc-freq (enum))
+
+(defgeneric (setf term-text) (text term))
+(defgeneric (setf term-field) (field term))

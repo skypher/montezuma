@@ -22,6 +22,9 @@
     (initialize-copy clone object)
     clone))
 
+(defgeneric clone-object (object))
+(defgeneric initialize-copy (object clonee))
+
 (defmethod clone-object ((object T))
   (let ((copy (allocate-instance (class-of object))))
     (loop for slot in (class-slots (class-of object))

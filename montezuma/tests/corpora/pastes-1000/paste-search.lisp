@@ -83,6 +83,7 @@
 				     :path (merge-pathnames
 					    (make-pathname :directory '(:relative "pasteindex"))
 					    *corpus-path*)
+				     :create-p T
 				     :default-field "contents"
 				     :min-merge-docs 5000))
   (format T "~&Indexing ~S pastes..." (length pastes))
@@ -91,7 +92,8 @@
 	       (index-paste *paste-index* paste)))
   (format T "~&Optimizing ~S pastes..." (length pastes))
   (time-form "~&Optimizing took ~,3F seconds."
-	     (optimize *paste-index*)))
+	     (optimize *paste-index*))
+  )
 
 (defun date-string (universal-time)
   (multiple-value-bind (second minute hour date month year)

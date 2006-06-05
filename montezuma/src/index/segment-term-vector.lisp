@@ -17,9 +17,13 @@
   (with-slots (terms) self
     (length terms)))
 
+(defgeneric index-of (segment-term-vector term))
+
 (defmethod index-of ((self segment-term-vector) term)
   (with-slots (terms) self
     (position term terms :test #'string=)))
+
+(defgeneric indexes-of (segment-term-vector terms start len))
 
 (defmethod indexes-of ((self segment-term-vector) terms start len)
   (mapcar #'(lambda (term)

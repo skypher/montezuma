@@ -40,8 +40,12 @@
 	(make-token (normalize self term) start end)
 	nil)))
 
+(defgeneric token-regexp (tokenizer))
+
 (defmethod token-regexp ((self regexp-tokenizer))
   (cl-ppcre:create-scanner "\\w+" :multi-line-mode T))
+
+(defgeneric normalize (tokenizer string))
 
 (defmethod normalize ((self regexp-tokenizer) str)
   str)

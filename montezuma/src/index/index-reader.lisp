@@ -46,6 +46,8 @@
 		       :segment-infos infos
 		       :close-directory-p close-directory-p))))
 
+(defgeneric get-current-version (index-reader directory))
+
 (defmethod get-current-version ((self index-reader) directory)
   (segment-infos-read-current-version directory))
 
@@ -53,6 +55,7 @@
 
 (defgeneric get-term-vector (index-reader doc-number field))
 
+(defgeneric index-reader-index-exists (directory))
 (defmethod index-reader-index-exists (directory)
   (file-exists-p directory "segments"))
 
@@ -62,6 +65,7 @@
 
 (defgeneric get-document (index-reader n))
 
+(defgeneric get-document-with-term (index-reader term))
 (defmethod get-document-with-term ((self index-reader) term)
   (let ((docs (term-docs-for self term)))
     (if (null docs)
@@ -76,12 +80,16 @@
 
 (defgeneric has-deletions-p (index-reader))
 
+(defgeneric has-norms-p (index-reader field))
+
 (defmethod has-norms-p ((self index-reader) field)
   (get-norms self field))
 
 (defgeneric get-norms (index-reader field))
 
 (defgeneric get-norms-info (index-reader field bytes offset))
+
+(defgeneric set-norm (index-reader doc field value))
 
 (defmethod set-norm ((self index-reader) doc field value)
   (when (floatp value)
@@ -97,12 +105,16 @@
 
 (defgeneric term-doc-freq (index-reader term))
 
+(defgeneric term-docs-for (index-reader term))
+
 (defmethod term-docs-for ((self index-reader) term)
   (let ((term-docs (term-docs self)))
     (seek term-docs term)
     term-docs))
 
 (defgeneric term-docs (index-reader))
+
+(defgeneric term-positions-for (index-reader term))
 
 (defmethod term-positions-for ((self index-reader) term)
   (let ((term-positions (term-positions self)))
@@ -115,14 +127,20 @@
 ;;(defmethod acquire-write-lock ...)
 
 
+(defgeneric latest-p (index-reader))
+
 (defmethod latest-p ((self index-reader))
   (with-slots (directory segment-infos) self
     (eql (segment-infos-read-current-version directory)
 	 (version segment-infos))))
 
+(defgeneric delete (index-reader doc-number))
+
 (defmethod delete ((self index-reader) doc-num)
   (do-delete self doc-num)
   (setf (slot-value self 'has-changes-p) T))
+
+(defgeneric delete-docs-with-term (index-reader term))
 
 (defmethod delete-docs-with-term ((self index-reader) term)
   (let ((docs (term-docs-for self term)))
@@ -136,9 +154,13 @@
 	    (close docs))
 	  n))))
 
+(defgeneric undelete-all (index-reader))
+
 (defmethod undelete-all ((self index-reader))
   (do-undelete-all self)
   (setf (slot-value self 'has-changes-p) T))
+
+(defgeneric commit (index-reader))
 
 (defmethod commit ((self index-reader))
   (with-slots (has-changes-p directory-owner directory segment-infos) self
@@ -150,8 +172,8 @@
 	  (do-commit self)))
     (setf has-changes-p NIL)))
 
-(defmethod when-finalized ((self index-reader))
-  (close self))
+;;(defmethod when-finalized ((self index-reader))
+;;  (close self))
 
 (defmethod close ((self index-reader))
 ;  (ignore-finalization self)
