@@ -12,7 +12,7 @@
     :long-description ""
 
     :depends-on ("cl-ppcre" "cl-fad")
-
+    :pathname (make-pathname :directory '(:relative "src"))
     :components
     ((:file "package")
      (:static-file "TUTORIAL")
