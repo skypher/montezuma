@@ -6,11 +6,13 @@
 
 (defun class-slots (class)
   #+(or digitool openmcl) (ccl:class-slots class)
-  #+sbcl (sb-mop:class-slots class))
+  #+sbcl (sb-mop:class-slots class)
+  #+allegro (mop:class-slots class))
   
 (defun slot-definition-name (slot-defn)
   #+(or digitool openmcl) (ccl:slot-definition-name slot-defn)
-  #+sbcl (sb-mop:slot-definition-name slot-defn))
+  #+sbcl (sb-mop:slot-definition-name slot-defn)
+  #+allegro (mop:slot-definition-name slot-defn))
 
 
 ;; Something approximating the Ruby clone protocol.
@@ -23,10 +25,9 @@
 (defmethod clone-object ((object T))
   (let ((copy (allocate-instance (class-of object))))
     (loop for slot in (class-slots (class-of object))
-	  do (let ((name (slot-definition-name slot)))
-	       (when (slot-boundp object name)
-		 (setf (slot-value copy name)
-		       (slot-value object name)))))
+       when (slot-boundp object (slot-definition-name slot))
+       do (setf (slot-value copy (slot-definition-name slot))
+		(slot-value object (slot-definition-name slot))))
     copy))
 
 (defmethod initialize-copy (self o)
