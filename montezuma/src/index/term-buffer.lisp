@@ -80,59 +80,24 @@
   (to-term self))
 
 (defun term-buffer-compare (tb1 tb2)
-  (let ((fc (string-compare (field tb1) (field tb2))))
-    (if (= fc 0)
+  (let ((f1 (field tb1))
+	(f2 (field tb2)))
+    (if (string= f1 f2)
 	(string-compare (slot-value tb1 'text-buf)
 			(slot-value tb2 'text-buf)
 			:start1 0 :end1 (slot-value tb1 'text-length)
 			:start2 0 :end2 (slot-value tb2 'text-length))
-	fc)))
-
-#||
-(defun term-buffer> (tb1 &rest more)
-  (if (null more)
-      T
-      (do ((tbs more (cdr tbs))
-	   (previous-tb tb1 (car tbs)))
-	  ((endp tbs) T)
-	(when (not (> (term-buffer-compare previous-tb (car tbs)) 0))
-	  (return NIL)))))
-
-(defun term-buffer< (tb1 &rest more)
-  (if (null more)
-      T
-      (do ((tbs more (cdr tbs))
-	   (previous-tb tb1 (car tbs)))
-	  ((endp tbs) T)
-	(when (not (< (term-buffer-compare previous-tb (car tbs)) 0))
-	  (return NIL)))))
-
-(defun term-buffer= (tb1 &rest more)
-  (if (null more)
-      T
-      (do ((tbs more (cdr tbs)))
-	  ((endp tbs) T)
-	(when (not (= (term-buffer-compare tb1 (car tbs)) 0))
-	  (return NIL)))))
-||#
+	(string-compare f1 f2))))
 
 (defun term-buffer> (tb1 tb2)
-  (let ((fc (string-compare (field tb1) (field tb2))))
-    (if (= fc 0)
+  (let ((f1 (field tb1))
+	(f2 (field tb2)))
+    (if (string= f1 f2)
 	(string> (slot-value tb1 'text-buf)
 		 (slot-value tb2 'text-buf)
 		 :start1 0 :end1 (slot-value tb1 'text-length)
 		 :start2 0 :end2 (slot-value tb2 'text-length))
-	(> fc 0))))
-
-(defun term-buffer< (tb1 tb2)
-  (let ((fc (string-compare (field tb1) (field tb2))))
-    (if (= fc 0)
-	(string< (slot-value tb1 'text-buf)
-		 (slot-value tb2 'text-buf)
-		 :start1 0 :end1 (slot-value tb1 'text-length)
-		 :start2 0 :end2 (slot-value tb2 'text-length))
-	(< fc 0))))
+	(string> f1 f2))))
 
 (defun term-buffer< (tb1 tb2)
   (let ((f1 (field tb1))
@@ -142,7 +107,7 @@
 	       (slot-value tb2 'text-buf)
 	       :start1 0 :end1 (slot-value tb1 'text-length)
 	       :start2 0 :end2 (slot-value tb2 'text-length))
-      (< (string-compare f1 f2) 0))))
+      (string< f1 f2))))
 
 (defun term-buffer= (tb1 tb2)
   (let ((len1 (slot-value tb1 'text-length))
@@ -166,3 +131,9 @@
 
 (defmethod term-compare ((t1 term) (t2 term-buffer))
   (term-compare t1 (to-term t2)))
+
+(defmethod term= ((t1 term) (t2 term-buffer))
+  (and (string= (term-text t1) (slot-value t2 'text-buf)
+		:start2 0 :end2 (slot-value t2 'text-length))
+       (string= (term-field t1) (field t2))))
+		  

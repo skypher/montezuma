@@ -120,7 +120,6 @@
     (let ((posting (gethash (posting-key term-buffer) posting-table)))
       (if posting
 	  (let ((freq (freq posting)))
-	    (assert (= freq (length (positions posting))))
 	    (vector-push-extend position (positions posting))
 	    (vector-push-extend tv-offset-info (offsets posting))
 	    ;; FIXME: the ferret code is weird here.
