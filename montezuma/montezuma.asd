@@ -11,7 +11,7 @@
     :description "Montezuma is a port of the Lucene text search engine library."
     :long-description ""
 
-    :depends-on ("cl-ppcre" "cl-fad" "moptilities")
+    :depends-on ("cl-ppcre" "cl-fad")
 
     :components
     ((:file "package")
