@@ -98,7 +98,7 @@
     (while (or (> (size segment-infos) 1)
 	       (and (= (size segment-infos) 1)
 		    (let ((si (segment-info segment-infos 0)))
-		      (or (segment-has-deletions-p si)
+		      (or (has-deletions-p si)
 			  (or (not (eq directory (directory si)))
 			      (and use-compound-file-p
 				   (or (not (uses-compound-file-p si))

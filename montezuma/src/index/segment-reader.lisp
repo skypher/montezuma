@@ -47,7 +47,7 @@
 				      :field-infos field-infos))
       (setf deleted-docs nil)
       (setf deleted-docs-dirty-p NIL)
-      (when (segment-has-deletions-p info)
+      (when (has-deletions-p info)
 	(setf deleted-docs (read-bit-vector directory (add-file-extension segment "del"))))
       (setf freq-stream (open-segment-file dir segment "frq" :input))
       (setf prox-stream (open-segment-file dir segment "prx" :input))
@@ -305,7 +305,7 @@
 	  (let ((term-vectors-reader (get-term-vectors-reader self)))
 	    (if (null term-vectors-reader)
 		nil
-		(get-field-tv term-vectors-reader doc-number field)))))))
+		(get-field-term-vector term-vectors-reader doc-number field)))))))
 
 (defmethod get-term-vectors ((self segment-reader) doc-number)
   (with-slots (tv-reader-orig) self

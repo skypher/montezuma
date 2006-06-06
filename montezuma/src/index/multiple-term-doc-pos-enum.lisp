@@ -75,6 +75,4 @@
   (declare (ignore term))
   (error "Not implemented"))
 
-(defmethod read-docs ((self multiple-term-doc-pos-enum) docs freqs)
-  (declare (ignore docs freqs))
-  (error "Not implemented."))
+(defgeneric read-docs (multiple-term-doc-pos-enum docs freqs))

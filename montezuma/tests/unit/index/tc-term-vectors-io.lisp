@@ -31,7 +31,7 @@
 					 :segment "_test"
 					 :field-infos (fixture-var 'fis))))
 		(test term-vector-io-add-fields-2 (size tv-r) 1)
-		(let ((tv (get-field-tv tv-r 0 "field1")))
+		(let ((tv (get-field-term-vector tv-r 0 "field1")))
 		  (test term-vector-io-add-fields-3 (size tv) 2)
 		  (test term-vector-io-add-fields-4 (aref (terms tv) 0) "text1" #'string=)
 		  (test term-vector-io-add-fields-5 (aref (term-frequencies tv) 0) 1)
@@ -82,7 +82,7 @@
 					   :directory (fixture-var 'dir)
 					   :segment "_test"
 					   :field-infos (fixture-var 'fis))))
-		  (let ((tv (get-field-tv tv-r 0 "field1")))
+		  (let ((tv (get-field-term-vector tv-r 0 "field1")))
 		    (test term-vector-io-add-documents-1 (size tv) 2)
 		    (test term-vector-io-add-documents-2 (aref (terms tv) 0) "word1" #'string=)
 		    (test term-vector-io-add-documents-3 (aref (term-frequencies tv) 0) 3)
@@ -99,10 +99,10 @@
 		    (test term-vector-io-add-documents-14 (aref (aref (offsets tv) 1) 0) (t 6 11) #'term-vector-offset-info=)
 		    (test term-vector-io-add-documents-15 (aref (aref (offsets tv) 1) 1) (t 51 56) #'term-vector-offset-info=)
 		    (test term-vector-io-add-documents-16 (aref (aref (offsets tv) 0) 2) (t 45 50) #'term-vector-offset-info=))
-		  (let ((tv (get-field-tv tv-r 0 "field2")))
+		  (let ((tv (get-field-term-vector tv-r 0 "field2")))
 		    (test term-vector-io-add-documents-17 (size tv) 2)
 		    (test term-vector-io-add-documents-18 (aref (terms tv) 0) "word3" #'string=))
-		  (let ((tv (get-field-tv tv-r 1 "field1")))
+		  (let ((tv (get-field-term-vector tv-r 1 "field1")))
 		    (test term-vector-io-add-documents-19 (size tv) 2)
 		    (test term-vector-io-add-documents-20 (aref (terms tv) 0) "word1" #'string=)))))))
 

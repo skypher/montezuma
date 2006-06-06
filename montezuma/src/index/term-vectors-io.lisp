@@ -40,10 +40,14 @@
     (setf tvf (create-output directory (add-file-extension segment *tvf-extension*)))
     (write-int tvf *term-vectors-format-version*)))
 
+(defgeneric open-document (term-vectors-writer))
+
 (defmethod open-document ((self term-vectors-writer))
   (with-slots (current-doc-pointer tvd) self
     (close-document self)
     (setf current-doc-pointer (pos tvd))))
+
+(defgeneric close-document (term-vectors-writer))
 
 (defmethod close-document ((self term-vectors-writer))
   (with-slots (fields current-doc-pointer) self
@@ -53,10 +57,14 @@
       (setf fields (make-array 0 :adjustable T :fill-pointer T))
       (setf current-doc-pointer -1))))
 
+(defgeneric document-open-p (term-vectors-writer))
+
 (defmethod document-open-p ((self term-vectors-writer))
   (with-slots (current-doc-pointer) self
     (not (= current-doc-pointer -1))))
 
+
+(defgeneric open-field (term-vectors-writer field))
 
 (defmethod open-field ((self term-vectors-writer) field)
   (with-slots (field-infos) self
@@ -66,6 +74,8 @@
 		    (field-store-positions-p field-info)
 		    (field-store-offsets-p field-info)))))
 
+(defgeneric close-field (term-vectors-writer))
+
 (defmethod close-field ((self term-vectors-writer))
   (when (field-open-p self)
     (with-slots (fields terms current-field) self
@@ -74,9 +84,13 @@
       (setf terms (make-array 0 :adjustable T :fill-pointer T))
       (setf current-field nil))))
 
+(defgeneric field-open-p (term-vectors-writer))
+
 (defmethod field-open-p ((self term-vectors-writer))
   (with-slots (current-field) self
     (not (null current-field))))
+
+(defgeneric add-term-to-term-vectors-writer (term-vectors-writer term-text freq &key positions offsets))
 
 (defmethod add-term-to-term-vectors-writer ((self term-vectors-writer) term-text freq &key positions offsets)
   (unless (document-open-p self)
@@ -84,6 +98,8 @@
   (unless (field-open-p self)
     (error "Cannot add terms when field is not open."))
   (add-term-internal self term-text freq positions offsets))
+
+(defgeneric add-term-internal (term-vectors-writer term-text freq positions offsets))
 
 (defmethod add-term-internal ((self term-vectors-writer) term-text freq positions offsets)
   (with-slots (terms) self
@@ -93,6 +109,8 @@
 				       :positions positions
 				       :offsets offsets)
 			terms)))
+
+(defgeneric add-all-doc-vectors (term-vectors-writer vectors))
 
 (defmethod add-all-doc-vectors ((self term-vectors-writer) vectors)
   (with-slots (field-infos) self
@@ -122,6 +140,8 @@
     (close tvd)
     (close tvf)))
 
+
+(defgeneric write-field (term-vectors-writer))
 
 (defmethod write-field ((self term-vectors-writer))
   (with-slots (current-field tvf terms) self
@@ -164,6 +184,8 @@
 				     (start-offset (aref (offsets term) j))))
 		  (setf position (end-offset (aref (offsets term) j))))))))))))
 
+(defgeneric write-doc (term-vectors-writer))
+
 (defmethod write-doc ((self term-vectors-writer))
   (when (field-open-p self)
     (error "Field is still open while writing document"))
@@ -179,6 +201,8 @@
 	  (let ((field (aref fields i)))
 	    (write-vlong tvd (- (tv-field-tvf-pointer field) last-field-pointer))
 	    (setf last-field-pointer (tv-field-tvf-pointer field))))))))
+
+(defgeneric create-field (term-vectors-writer field-number store-position store-offset))
 
 (defmethod create-field ((self term-vectors-writer) field-number store-position store-offset)
   (unless (document-open-p self)
@@ -230,7 +254,9 @@
     (close tvd)
     (close tvf)))
 
-(defmethod get-field-tv ((self term-vectors-reader) doc-num field)
+(defgeneric get-field-term-vector (term-vectors-reader doc-num field))
+
+(defmethod get-field-term-vector ((self term-vectors-reader) doc-num field)
   (with-slots (field-infos tvx tvd-format tvd) self
     (let ((field-number (get-field-number field-infos field))
 	  (result nil))
@@ -253,6 +279,8 @@
 		(incf position (read-vlong tvd)))
 	      (setf result (read-term-vector self field position))))))
       result)))
+
+(defgeneric get-tv (term-vectors-reader doc-num))
 
 (defmethod get-tv ((self term-vectors-reader) doc-num)
   (let ((result nil))
@@ -279,12 +307,16 @@
     result))
 
 
+(defgeneric read-term-vectors (term-vectors-reader fields tvf-pointers))
+
 (defmethod read-term-vectors ((self term-vectors-reader) fields tvf-pointers)
   (let ((tvs (make-array (length fields))))
     (dotimes (i (length fields))
       (setf (aref tvs i) (read-term-vector self (aref fields i) (aref tvf-pointers i))))
     tvs))
 
+
+(defgeneric read-term-vector (term-vectors-reader field tvf-pointer))
 
 (defmethod read-term-vector ((self term-vectors-reader) field tvf-pointer)
   (with-slots (tvf tvf-format) self
@@ -344,6 +376,8 @@
 			       :term-frequencies term-freqs
 			       :positions positions
 			       :offsets offsets))))))))
+
+(defgeneric check-valid-format (term-vectors-reader input-stream))
 
 (defmethod check-valid-format ((self term-vectors-reader) input-stream)
   (let ((format (read-int input-stream)))

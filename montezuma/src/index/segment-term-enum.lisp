@@ -47,6 +47,8 @@
 	  term-buffer (clone (slot-value other 'term-buffer))
 	  prev-buffer (clone (slot-value other 'prev-buffer)))))
 
+(defgeneric seek-segment-term (segment-term-enum pointer position term term-info))
+
 (defmethod seek-segment-term ((self segment-term-enum) pointer position term term-info)
   (with-slots (input term-buffer prev-buffer) self
     (seek input pointer)
@@ -80,6 +82,8 @@
 	  term-buffer))))
 	       
 
+(defgeneric scan-to (segment-term-enum term))
+
 (defmethod scan-to ((self segment-term-enum) term)
   (with-slots (term-buffer) self
     (while (and (term> term (to-term term-buffer)) (next? self)))))
@@ -88,13 +92,19 @@
   (with-slots (term-buffer) self
     (to-term term-buffer)))
 
-(defmethod prev ((self segment-term-enum))
+(defgeneric previous (segment-term-enum))
+
+(defmethod previous ((self segment-term-enum))
   (with-slots (prev-buffer) self
     (to-term prev-buffer)))
+
+(defgeneric term-info (segment-term-enum))
 
 (defmethod term-info ((self segment-term-enum))
   (with-slots (term-info) self
     (clone term-info)))
+
+(defgeneric (setf term-info) (term-info segment-term-enum))
 
 (defmethod (setf term-info) (term-info (self segment-term-enum))
   (setf (slot-value self 'term-info) term-info))

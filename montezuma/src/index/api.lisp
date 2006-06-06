@@ -36,3 +36,7 @@
 
 (defgeneric add-indexes (index-writer &rest dirs))
 (defgeneric add-indexes-readers (index-writer readers))
+
+(defgeneric skip-to (enum target))
+(defgeneric next? (enum))
+(defgeneric next-position (enum))

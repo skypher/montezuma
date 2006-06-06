@@ -9,17 +9,23 @@
   (print-unreadable-object (self stream :type T :identity T)
     (format stream "~S" (segment-info-name self))))
 
+(defgeneric segment-info= (segment-info other))
+
 (defmethod segment-info= ((self segment-info) other)
   (with-slots (name doc-count) self
     (and (typep other 'segment-info)
 	 (string= name (slot-value other 'name))
 	 (eql doc-count (slot-value other 'doc-count)))))
 
-(defmethod segment-has-deletions-p ((si segment-info))
+(defmethod has-deletions-p ((si segment-info))
   (file-exists-p (directory si) (add-file-extension (segment-info-name si) "del")))
+
+(defgeneric uses-compound-file-p (segment-info))
 
 (defmethod uses-compound-file-p ((si segment-info))
   (file-exists-p (directory si) (add-file-extension (segment-info-name si) "cfs")))
+
+(defgeneric has-separate-norms-p (segment-info))
 
 (defmethod has-separate-norms-p ((si segment-info))
   (let ((name-pattern (format nil "~A.s" (segment-info-name si))))
@@ -43,12 +49,16 @@
     (let ((elements (slot-value self 'elements)))
     (format stream "~S segment-infos: ~S" (length elements) elements))))
 
+(defgeneric clear (segment-infos))
+
 (defmethod clear ((self segment-infos))
   (setf (slot-value self 'elements) (make-array 0 :adjustable T :fill-pointer T)))
 
 (defmethod size ((self segment-infos))
   (with-slots (elements) self
     (length elements)))
+
+(defgeneric delete-at (segment-infos index))
 
 (defmethod delete-at ((self segment-infos) index)
   (with-slots (elements) self
@@ -60,9 +70,13 @@
   (with-slots (elements) self
     (vector-push-extend si elements)))
 
+(defgeneric segment-info (segment-infos index))
+
 (defmethod segment-info ((self segment-infos) index)
   (with-slots (elements) self
     (elt elements index)))
+
+(defgeneric (setf segment-info) (value segment-infos index))
 
 (defmethod (setf segment-info) (value (self segment-infos) index)
   (with-slots (elements) self
@@ -73,7 +87,7 @@
   (dotimes (i (size other))
     (setf (segment-info self i) (clone (segment-info other i)))))
 
-(defmethod segment-infos-read-current-version (directory)
+(defun segment-infos-read-current-version (directory)
   (if (not (file-exists-p directory *segment-filename*))
       0
       (let ((format nil)
@@ -95,6 +109,8 @@
 	      (read-segment-infos sis directory)
 	      (version sis))))))
 	
+(defgeneric read-segment-infos (segment-infos directory))
+
 (defmethod read-segment-infos ((self segment-infos) directory)
   (let ((input (open-input directory *segment-filename*)))
     (unwind-protect
@@ -119,6 +135,9 @@
 		 (setf version 0)
 		 (setf version (read-long input)))))
       (close input))))
+
+(defgeneric write-segment-infos (segment-infos directory))
+
 
 (defmethod write-segment-infos ((self segment-infos) directory)
   (let ((output (create-output directory *temporary-segment-filename*)))

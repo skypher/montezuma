@@ -22,6 +22,8 @@
 	postings
 	(setf postings (term-positions reader)))))
 
+(defgeneric doc-map (segment-merge-info))
+
 (defmethod doc-map ((self segment-merge-info))
   (with-slots (doc-map reader) self
     (when (null doc-map)

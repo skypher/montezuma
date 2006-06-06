@@ -134,6 +134,8 @@
    (merged-p :initform NIL)))
 
 
+(defgeneric add-file (compound-file-writer file-name))
+
 (defmethod add-file ((self compound-file-writer) file-name)
   (with-slots (merged-p ids file-entries) self
     (when merged-p
@@ -168,6 +170,8 @@
 	       (seek os (dir-offset entry))
 	       (write-long os (data-offset entry))))
 	(close os)))))
+
+(defgeneric copy-file (compound-file-writer source os))
 
 (defmethod copy-file ((self compound-file-writer) source os)
   (with-slots (directory) self

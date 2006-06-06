@@ -47,6 +47,8 @@
 (defmethod seek ((self segment-term-doc-enum) (term-info term-info))
   (do-seek self term-info))
 
+(defgeneric do-seek (segment-term-doc-enum term-info))
+
 (defmethod do-seek ((self segment-term-doc-enum) term-info)
   (with-slots (count doc-freq  doc skip-doc skip-count num-skips freq-pointer
 		     prox-pointer skip-pointer skip-interval freq-stream have-skipped) self
@@ -73,6 +75,8 @@
       (close skip-stream)
       (setf skip-stream nil))
     (setf parent nil)))
+
+(defgeneric skipping-doc (enum))
 
 (defmethod skipping-doc ((self segment-term-doc-enum))
   )
@@ -110,6 +114,8 @@
 	      (incf i))
 	  (skipping-doc self)))
       i)))
+
+(defgeneric skip-prox (segment-term-doc-enum prox-pointer))
 
 (defmethod skip-prox ((self segment-term-doc-enum) prox-pointer)
   (declare (ignore prox-pointer) (ignorable self)))
