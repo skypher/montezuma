@@ -28,6 +28,8 @@
 	  skip-offset (skip-offset other))))
 	    
 					       
+(defgeneric set-from-term-info (term-info ti))
+
 (defmethod set-from-term-info ((self term-info) ti)
   (with-slots (doc-freq freq-pointer prox-pointer skip-offset) self
     (setf doc-freq (doc-freq ti)
@@ -35,6 +37,8 @@
 	  prox-pointer (prox-pointer ti)
 	  skip-offset (skip-offset ti))
     self))
+
+(defgeneric set-values (term-info doc-f freq-p prox-p skip-o))
 
 (defmethod set-values ((self term-info) doc-f freq-p prox-p skip-o)
   (with-slots (doc-freq freq-pointer prox-pointer skip-offset) self

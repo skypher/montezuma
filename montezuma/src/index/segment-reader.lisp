@@ -147,7 +147,7 @@
 (defmethod get-document ((self segment-reader) n)
   (when (deleted-p self n)
     (error "Document ~S in ~S has been deleted." n self))
-  (get-doc (slot-value self 'fields-reader) n))
+  (get-document (slot-value self 'fields-reader) n))
 
 (defmethod deleted-p ((self segment-reader) n)
   (let ((deleted-docs (slot-value self 'deleted-docs)))

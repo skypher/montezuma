@@ -25,7 +25,7 @@
     (close fields-stream)
     (close index-stream)))
 
-(defmethod get-doc ((self fields-reader) n)
+(defmethod get-document ((self fields-reader) n)
   (with-slots (index-stream fields-stream field-infos) self
     (seek index-stream (* n 8))
     (let ((position (read-long index-stream)))
@@ -108,6 +108,8 @@
     (close fields-stream)
     (close index-stream)))
 
+(defgeneric add-document (fields-writer document))
+
 (defmethod add-document ((fields-writer fields-writer) document)
   (with-slots (index-stream fields-stream field-infos) fields-writer
     (write-long index-stream (pos fields-stream))
@@ -134,6 +136,8 @@
 (defun compress (input)
   ;; FIXME: uh huh.
   input)
+
+(defgeneric save-data (fields-writer data))
 
 (defmethod save-data ((self fields-writer) data)
   (with-slots (fields-stream) self

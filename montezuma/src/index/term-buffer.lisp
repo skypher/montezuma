@@ -19,11 +19,16 @@
 (defmethod initialize-copy :after ((self term-buffer) other)
   (set-from-term-buffer self other))
 
+
+(defgeneric text (term-buffer))
+
 (defmethod text ((self term-buffer))
   (with-slots (text-cache text-buf text-length) self
     (if text-cache
 	text-cache
 	(setf text-cache (subseq text-buf 0 text-length)))))
+
+(defgeneric read-term-buffer (term-buffer input field-infos))
 
 (defmethod read-term-buffer ((self term-buffer) input field-infos)
   (with-slots (term text-buf text-cache text-length field) self
@@ -41,6 +46,8 @@
     (setf text-cache nil))
   self)
 
+(defgeneric ensure-text-buf-length (term-buffer len))
+
 (defmethod ensure-text-buf-length ((self term-buffer) len)
   (with-slots (text-buf text-cache) self
     (unless (>= (length text-buf) len)
@@ -49,6 +56,7 @@
 	(setf text-cache nil)
 	(setf text-buf new-buf)))))
 
+(defgeneric reset (term-buffer))
 (defmethod reset ((self term-buffer))
   (with-slots (field text-buf text-cache text-length term) self
     (setf field nil
@@ -57,6 +65,7 @@
 	  text-cache nil
 	  term nil)))
 
+(defgeneric (setf term) (term term-buffer))
 (defmethod (setf term) (term (self term-buffer))
   (if (null term)
       (progn (reset self) nil)
@@ -67,6 +76,8 @@
 	(setf field (term-field term))
 	(setf (slot-value self 'term) term))))
       
+
+(defgeneric to-term (term-buffer))
 
 (defmethod to-term ((self term-buffer))
   (with-slots (field term text-buf text-length) self
@@ -119,6 +130,7 @@
 		  :start2 0 :end2 len2)
 	 (string= (field tb1) (field tb2)))))
 
+(defgeneric set-from-term-buffer (term-buffer other))
 (defmethod set-from-term-buffer ((self term-buffer) other)
   (with-slots (text-length text-buf text-cache field term) self
     (setf text-length (slot-value other 'text-length))

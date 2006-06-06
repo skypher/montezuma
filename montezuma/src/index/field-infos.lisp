@@ -25,6 +25,8 @@
 ;; Automatically adds all of the fields from the document if they
 ;; haven't been added already. Or it will update the values.
 	  
+(defgeneric add-doc-fields (field-infos doc))
+
 (defmethod add-doc-fields ((self field-infos) doc)
   (dolist (field (all-fields doc))
     (add-field-info self
@@ -34,6 +36,8 @@
 		    :store-position (field-store-positions-p field)
 		    :store-offset (field-store-offsets-p field)
 		    :omit-norms (field-omit-norms-p field))))
+
+(defgeneric add-fields (field-infos names &key indexed-p store-term-vector store-position store-offset omit-norms))
 
 (defmethod add-fields ((self field-infos) names &key (indexed-p T) store-term-vector store-position
 		       store-offset omit-norms)
@@ -45,6 +49,8 @@
 		    :store-offset store-offset
 		    :omit-norms omit-norms)))
 
+(defgeneric fields (field-infos))
+
 (defmethod fields ((self field-infos))
   (coerce (slot-value self 'fi-array) 'list))
 
@@ -54,6 +60,9 @@
 ;; <http://ferret.davebalmain.com/trac/browser/trunk/lib/ferret/index/field_infos.rb#L67>
 ;;
 ;; Or maybe I'm misunderstanding.
+
+(defgeneric add-field-info (field-infos name &key indexed-p store-term-vector store-position
+					store-offset omit-norms))
 
 (defmethod add-field-info ((self field-infos) name &key (indexed-p T) store-term-vector store-position
 			   store-offset omit-norms)
@@ -73,6 +82,8 @@
 	(setf (field-omit-norms-p fi) NIL))
       fi)))
 
+(defgeneric get-field-number (field-infos name))
+
 (defmethod get-field-number ((self field-infos) name)
   (with-slots (fi-hash) self
     (let ((fi (gethash name fi-hash)))
@@ -81,12 +92,16 @@
 	  +not-a-field+))))
 
 
+(defgeneric get-field (field-infos index))
+
 (defmethod get-field ((self field-infos) index)
   (if (integerp index)
       (if (or (eql index +not-a-field+) (< index 0))
 	  (make-instance 'field-info :name "" :indexed-p NIL :number +not-a-field+ :store-term-vector-p NIL)
 	  (aref (slot-value self 'fi-array) index))
       (gethash index (slot-value self 'fi-hash))))
+
+(defgeneric name (field-infos index))
 
 (defmethod name ((self field-infos) index)
   (if (or (eql index +not-a-field+) (< index 0))
@@ -96,8 +111,12 @@
 (defmethod size ((self field-infos))
   (length (slot-value self 'fi-array)))
 
+(defgeneric has-vectors-p (field-infos))
+
 (defmethod has-vectors-p ((self field-infos))
   (some #'field-store-term-vector-p (slot-value self 'fi-array)))
+
+(defgeneric write-to-dir (field-infos dir name))
 
 (defmethod write-to-dir ((self field-infos) dir name)
   (let ((output (create-output dir name)))
@@ -105,12 +124,16 @@
 	 (write self output)
       (close output))))
 
+(defgeneric write (field-infos output))
+
 (defmethod write ((self field-infos) output)
   (write-vint output (size self))
   (dotimes (i (size self))
     (let ((fi (get-field self i)))
       (write-string output (field-name fi))
       (write-byte output (get-field-info-byte fi)))))
+
+(defgeneric read (field-infos input))
 
 (defmethod read ((self field-infos) input)
   (let ((size (read-vint input)))
@@ -125,6 +148,8 @@
 	(add-field-internal self name indexed store-term-vector store-position
 			    store-offset omit-norms)))))
 
+
+(defgeneric add-field-internal (field-infos name indexed store-term-vector store-position store-offset omit-norms))
 
 (defmethod add-field-internal ((self field-infos) name indexed store-term-vector store-position store-offset omit-norms)
   (let ((fi (make-instance 'field-info
@@ -163,6 +188,8 @@
 	    (field-store-offsets-p self)
 	    (field-store-positions-p self)
 	    (field-omit-norms-p self))))
+
+(defgeneric get-field-info-byte (field-info))
 
 (defmethod get-field-info-byte ((self field-info))
   (let ((bits #x0))

@@ -62,7 +62,7 @@
 				    :directory dir
 				    :segment "fieldsreadertest"
 				    :field-infos infos)))
-	 (let ((docres (get-doc reader 0)))
+	 (let ((docres (get-document reader 0)))
 	   (test field-reader-1 (field-data (document-field docres "name")) "daily news" #'equal)
 	   (test field-reader-2 (field-data (document-field docres "content")) "Nothing happened today." #'equal)))))))
 
@@ -85,7 +85,7 @@
 				    :directory dir
 				    :segment "field_types"
 				    :field-infos infos)))
-	 (setf (fixture-var 'docres) (get-doc reader 0))))))
+	 (setf (fixture-var 'docres) (get-document reader 0))))))
   (:teardown
    (close (fixture-var 'dir)))
   (:testfun test-text-field-no-term-vector

@@ -152,11 +152,16 @@
 			 (add-file-extension merged-name "cfs"))
 	    (delete-files-and-write-undeletable self files-to-delete))))))))
 
+
+(defgeneric new-segment-name (index-writer))
+
 (defmethod new-segment-name ((self index-writer))
   (with-slots (segment-infos) self
     (let ((seg-name (string-downcase (format nil "_~36R" (counter segment-infos)))))
       (incf (counter segment-infos))
       seg-name)))
+
+(defgeneric flush-ram-segments (index-writer))
 
 (defmethod flush-ram-segments ((self index-writer))
   (with-slots (segment-infos ram-directory merge-factor) self
@@ -174,6 +179,8 @@
       (when (< min-segment (size segment-infos))
 	(merge-segments self min-segment)))))
 
+(defgeneric maybe-merge-segments (index-writer))
+
 (defmethod maybe-merge-segments ((self index-writer))
   (with-slots (min-merge-docs max-merge-docs segment-infos merge-factor) self
     (let ((target-merge-docs min-merge-docs))
@@ -190,6 +197,8 @@
 	      (merge-segments self (+ min-segment 1))
 	      (return))
 	  (setf target-merge-docs (* target-merge-docs merge-factor)))))))
+
+(defgeneric merge-segments (index-writer min-segment &optional max-segment))
 
 (defmethod merge-segments ((self index-writer) min-segment &optional (max-segment nil max-segment-supplied-p))
   (with-slots (segment-infos info-stream term-index-interval directory ram-directory use-compound-file-p) self
@@ -240,6 +249,7 @@
 			   (add-file-extension merged-name "cfs"))
 	      (delete-files-and-write-undeletable self files-to-delete))))))))
 
+(defgeneric delete-segments (index-writer segment-readers))
 (defmethod delete-segments ((self index-writer) segment-readers)
   (with-slots (directory) self
     (let ((deletable (try-to-delete-files self (read-deletable-files self))))
@@ -249,15 +259,21 @@
 	    (delete-files self (file-names segment-reader) (directory segment-reader))))
       (write-deletable-files self deletable))))
 
+(defgeneric delete-files-and-write-undeletable (index-writer files))
+
 (defmethod delete-files-and-write-undeletable ((self index-writer) files)
   (let ((deletable '()))
     (setf deletable (try-to-delete-files self (read-deletable-files self)))
     (setf deletable (append deletable (try-to-delete-files self files)))
     (write-deletable-files self deletable)))
 
+(defgeneric delete-files (index-writer filenames dir))
+
 (defmethod delete-files ((self index-writer) filenames dir)
   (dolist (filename filenames)
     (delete-file dir filename)))
+
+(defgeneric try-to-delete-files (index-writer filenames))
 
 (defmethod try-to-delete-files ((self index-writer) filenames)
   (with-slots (directory) self
@@ -271,6 +287,8 @@
 	    (push filename deletions-to-retry))))
       (reverse deletions-to-retry))))
     
+(defgeneric read-deletable-files (index-writer))
+
 (defmethod read-deletable-files ((self index-writer))
   (with-slots (directory) self
     (if (not (file-exists-p directory "deletable"))
@@ -283,6 +301,8 @@
 		   (push (read-string input) filenames)))
 	    (close input))
 	  (reverse filenames)))))
+
+(defgeneric write-deletable-files (index-writer filenames))
 
 (defmethod write-deletable-files ((self index-writer) filenames)
   (with-slots (directory) self
