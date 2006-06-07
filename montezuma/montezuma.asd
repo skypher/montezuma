@@ -50,7 +50,8 @@
 		    (:file "analyzers"           :depends-on ("standard-tokenizer")))
        :depends-on ("package" "util"))
      (:module "query-parser"
-	      :components ((:file "query-parser")))
+	      :components ((:file "query-parser"))
+	      :depends-on ("package" "search"))
      (:module "search"
               :components ((:file "api")
                            (:file "similarity")
@@ -87,7 +88,7 @@
                            (:file "phrase-scorer" :depends-on ("phrase-positions"))
 			   (:file "sloppy-phrase-scorer" :depends-on ("phrase-scorer"))
                            (:file "exact-phrase-scorer" :depends-on ("phrase-scorer")))
-              :depends-on ("package" "index"))
+              :depends-on ("package" "index" "store" "util"))
      (:module "index"
        :components ((:file "api")
                     (:file "index-filenames")
