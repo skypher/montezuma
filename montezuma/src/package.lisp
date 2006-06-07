@@ -5,7 +5,7 @@
   (:shadow #:directory #:read-byte #:write-byte #:write-string 
 	   #:close #:delete-file #:rename-file #:count #:search
 	   #:merge #:file-length #:read #:write #:delete #:optimize)
-  (:use #:common-lisp)
+  (:use #:common-lisp #:com.gigamonkeys.parser)
   (:export 
    #:make-fs-directory
    #:standard-analyzer

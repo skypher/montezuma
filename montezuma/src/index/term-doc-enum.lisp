@@ -69,7 +69,8 @@
 
 (defmethod close ((self segment-term-doc-enum))
   (with-slots (freq-stream skip-stream parent) self
-    (close freq-stream)
+    (when freq-stream
+      (close freq-stream))
     (setf freq-stream nil)
     (when skip-stream
       (close skip-stream)
