@@ -26,16 +26,50 @@
 (defprod top-query ()
   (^ bool-query
      (get-boolean-query bool-query)))
+     
 
 (defprod bool-query ()
-  (/ (^ ((^ bool-clause) (* white-space) and-op (* white-space) (^ bool-query))
-	(add-and-clause bool-query bool-clause))
+  (^ (/ and-bool-query
+	implied-and-bool-query
+	single-bool-clause)))
+	
+
+#||
+   ((^ bool-clause)
+      (* (^ ((* white-space) and-op (* white-space) bool-clause)
+	    (add-and-clause bool-query bool-clause))))
+     ((^ bool-clause)
+      (* (^ ((* white-space) bool-clause)
+	    (add-default-clause bool-query bool-clause))))
+     (^ bool-clause
+	(list bool-clause))))
+||#
+
+
+(defprod and-bool-query ()
+  ((^ bool-clause)
+   (+ (^ ((* white-space) and-op (* white-space) bool-clause)
+	 (add-and-clause and-bool-query bool-clause)))))
+
+(defprod implied-and-bool-query ()
+  ((^ bool-clause)
+   (+ (^ ((* white-space) bool-clause)
+	 (add-and-clause implied-and-bool-query bool-clause)))))
+
+(defprod single-bool-clause ()
+  (^ bool-clause
+     (list bool-clause)))
+
+#||
+  ((^ bool-clause) (* white-space) and-op (* white-space) (^ bool-query
+							     (add-and-clause bool-query bool-clause))))
      (^ (bool-clause (* white-space) or-op (* white-space) bool-query)
 	(add-or-clause bool-query bool-clause))
      (^ (bool-clause (* white-space) bool-query)
 	(add-default-clause bool-query bool-clause))
      (^ bool-clause
 	(list bool-clause))))
+||#
 
 (defprod bool-clause ()
   (^ (/ (^ (req-op query)
@@ -47,20 +81,18 @@
 
 (defprod boosted-query ()
   (^ (/ (^ (query "^" word)
-	   (progn (setf (boost query) (parse-integer word))
-		  query))
-	(^ query))))
+	   (set-query-boost query (parse-integer word)))
+	query)))
 
 (defprod query ()
-  (^ (/ (^ ("(" (* white-space) bool-query (* white-space) ")")
-	   (get-boolean-query bool-query))
-	(^ wild-query)
-	(^ term-query))))
+  (^ (/ ("(" (* white-space) (^ bool-query (get-boolean-query bool-query)) (* white-space) ")")
+	wild-query
+	term-query)))
      
 
 (defprod term-query ()
-  (^ (/ (^ word
-	   (get-term-query word)))))
+  (^ word
+     (get-term-query word)))
 
 (defprod wild-query ()
   (^ wild-word
@@ -85,6 +117,7 @@
 (defun default-field ()
   "contents")
 
+#||
 (defun get-term-query (word)
   (make-instance 'term-query
 		 :term (make-term (default-field) word)))
@@ -96,61 +129,31 @@
 
 (defun get-boolean-query (clauses)
   (let ((q (make-instance 'boolean-query)))
-    (dolist (clause clauses)
-      (add-clause q clause))
+    (if (listp clauses)
+	(dolist (clause clauses)
+	  (add-clause q clause))
+	(add-clause q clauses))
     q))
-
-(defun add-and-clause (clauses clause)
-  (cons clause clauses))
-
-(defun add-default-clause (clauses clause)
-  (cons clause clauses))
 
 (defun get-wild-query (&rest args)
   (list :wild-query args))
+||#
 
-#|
-(defchartype double-quote '(member #\"))
+(defun add-and-clause (clauses clause)
+  (cons clause (if (listp (car clauses)) clauses (list clauses))))
 
-(defprod query () (^ (/ implicit-boolean-query
-			term-query
-			phrase-query)))
+(defun add-default-clause (clauses clause)
+  (cons clause (if (listp (car clauses)) clauses (list clauses))))
 
-(defprod term-query () (^ word
-			  (if (some #'wildcard-char-p word)
-			      (make-instance 'wildcard-query
-					     :term (make-term "contents" word))
-			      (make-instance 'term-query
-					     :term (make-term "contents" word)))))
-
-(defprod words () (+ (^ (word (? white-space))
-			 (reverse (cons word words)))))
- 
-(defprod phrase-query () (^ (double-quote (? white-space) words (? white-space) double-quote)
-			    (let ((q (make-instance 'phrase-query)))
-			      (dolist (word words)
-				(add-term-to-query q (make-term "contents" word)))
-			      q)))
-
-(defprod implicit-boolean-query ()
-  (+ (^ (term-query (? white-space))
-	(if (not implicit-boolean-query)
-	    (let ((q (make-instance 'boolean-query)))
-	      (add-query q term-query :must-occur)
-	      q)
-	    (progn
-	      (add-query implicit-boolean-query term-query :must-occur)
-	      implicit-boolean-query)))))
-
-
-(defprod word () (letter-or-wildcard (* letter-or-wildcard)))
-
-(defchartype letter '(satisfies alpha-char-p))
-(defchartype letter-or-wildcard '(or letter (satisfies wildcard-char-p)))
-
-(defparser query-parser (^ query))
-|#
- 
+(defun get-term-query (word)
+  (list :term-query word))
+(defun get-boolean-clause (query occur)
+  (list :boolean-clause occur query))
+(defun get-boolean-query (clauses)
+  (list :boolean-query (if (listp clauses) clauses (list clauses))))
+(defun set-query-boost (query boost)
+  (list :boost boost query))
+      
 
 (defmethod parse ((self query-parser) query)
   (parselet ((parser (^ top-query)))
