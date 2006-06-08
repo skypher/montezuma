@@ -166,6 +166,9 @@
                          :components ((:file "tc-similarity")
 				      (:file "tc-index-searcher"))
                          :depends-on ("tests"))
+		       (:module "query-parser"
+			 :components ((:file "tc-query-parser"))
+			 :depends-on ("tests"))
 		       (:module "index"
 			 :components ((:file "tc-term")
 				      (:file "tc-term-info")

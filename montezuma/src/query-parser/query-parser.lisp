@@ -18,51 +18,54 @@
     (check-type options index-options-list)))
 
 
+;; Note that the following grammar rules must be used in a parser
+;; created with a parselet form, with a lexical context that includes
+;; a "parser" binding.
+
 (defprod req-op () "+")
 (defprod not-op () "!")
 
 (defprod top-query ()
   (^ bool-query
-     (get-boolean-query bool-query)))
+     (get-boolean-query parser bool-query)))
      
 
 (defprod bool-query ()
   ((^ bool-clause)
    (* (^ ((* white-space) bool-clause)
-	 (add-default-clause bool-query bool-clause)))))
+	 (add-default-clause parser bool-query bool-clause)))))
 
 (defprod bool-clause ()
   (/ (^ (req-op query)
-	(get-boolean-clause query :must-occur))
+	(get-boolean-clause parser query :must-occur))
      (^ (not-op query)
-	(get-boolean-clause query :must-not-occur))
+	(get-boolean-clause parser query :must-not-occur))
      (^ query 
-	(get-boolean-clause query :should-occur))))
+	(get-boolean-clause parser query :should-occur))))
 
 (defprod query ()
   (/ (^ wild-query)
      (^ field-query)
      (^ term-query)
      (^ phrase-query
-	(get-phrase-query phrase-query))
-     ))
+	(get-phrase-query parser phrase-query))))
 
 (defprod term-query ()
-  (^ word (get-term-query word)))
+  (^ word (get-term-query parser word)))
 
 (defprod phrase-query ()
   ("\""
    (^ word)
    (* (^ ((* white-space) word)
-	 (add-word-to-phrase phrase-query word)))
+	 (add-word-to-phrase parser phrase-query word)))
    "\""))
 
 (defprod field-query ()
   (^ (word ":" query)
-     (list :field word query)))
+     (set-query-field parser query word)))
 
 (defprod wild-query ()
-  (^ wild-word (get-wild-query wild-word)))
+  (^ wild-word (get-wild-query parser wild-word)))
 
 (defprod white-space () (/ #\space #\tab #\page))
 
@@ -105,29 +108,13 @@
   (list :wild-query args))
 ||#
 
-(defun add-and-clause (clauses clause)
-  (cons clause (if (listp (car clauses)) clauses (list clauses))))
+(defmethod parse ((parser query-parser) query)
+  (parselet ((query-parser (^ top-query)))
+      (multiple-value-bind (success-p result)
+	  (query-parser query)
+	(if success-p
+	    result
+	    nil))))
 
-(defun add-default-clause (clauses clause)
-  (cons clause (if (listp (car clauses)) clauses (list clauses))))
 
-(defun get-term-query (word)
-  (list :term-query word))
-(defun get-boolean-clause (query occur)
-  (list :boolean-clause occur query))
-(defun get-boolean-query (clauses)
-  (list :boolean-query (if (listp clauses) clauses (list clauses))))
-(defun add-word-to-phrase (phrase word)
-  (append (if (listp phrase) phrase (list phrase)) (list word)))
-(defun get-phrase-query (words)
-  (cons :phrase-query words))
-(defun get-wild-query (word)
-  (list :wild-query word))
 
-(defmethod parse ((self query-parser) query)
-  (parselet ((parser (^ top-query)))
-    (multiple-value-bind (success-p result)
-	(parser query)
-      (if success-p
-	  result
-	  nil))))
