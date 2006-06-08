@@ -68,13 +68,13 @@
 
 (defprod word () (non-wild-letter (* non-wild-letter)))
 (defprod any-word () (any-letter (* any-letter)))
-(defprod wild-word () (/ (wild-letter (? any-word))
-			 (word wild-letter (? any-word))))
+(defprod wild-word () (+ (/ (wild-letter (? any-word))
+			    (word wild-letter (? any-word)))))
 
 
 (defchartype any-letter '(satisfies alphanumericp))
 (defchartype non-wild-letter '(and (satisfies alphanumericp) (satisfies not-wildcard-char-p)))
-(defchartype wild-letter '(and (satisfies wildcard-char-p)))
+(defchartype wild-letter '(satisfies wildcard-char-p))
 
 (defun wildcard-char-p (char) (member char '(#\* #\?)))
 (defun not-wildcard-char-p (char) (not (member char '(#\* #\?))))
