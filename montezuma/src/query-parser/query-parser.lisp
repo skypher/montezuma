@@ -20,8 +20,6 @@
 
 (defprod req-op () "+")
 (defprod not-op () "!")
-(defprod and-op () (/ "AND" "&&"))
-(defprod or-op () (/ "OR" "||"))
 
 (defprod top-query ()
   (^ bool-query
@@ -29,74 +27,32 @@
      
 
 (defprod bool-query ()
-  (^ (/ and-bool-query
-	implied-and-bool-query
-	single-bool-clause)))
-	
-
-#||
-   ((^ bool-clause)
-      (* (^ ((* white-space) and-op (* white-space) bool-clause)
-	    (add-and-clause bool-query bool-clause))))
-     ((^ bool-clause)
-      (* (^ ((* white-space) bool-clause)
-	    (add-default-clause bool-query bool-clause))))
-     (^ bool-clause
-	(list bool-clause))))
-||#
-
-
-(defprod and-bool-query ()
   ((^ bool-clause)
-   (+ (^ ((* white-space) and-op (* white-space) bool-clause)
-	 (add-and-clause and-bool-query bool-clause)))))
-
-(defprod implied-and-bool-query ()
-  ((^ bool-clause)
-   (+ (^ ((* white-space) bool-clause)
-	 (add-and-clause implied-and-bool-query bool-clause)))))
-
-(defprod single-bool-clause ()
-  (^ bool-clause
-     (list bool-clause)))
-
-#||
-  ((^ bool-clause) (* white-space) and-op (* white-space) (^ bool-query
-							     (add-and-clause bool-query bool-clause))))
-     (^ (bool-clause (* white-space) or-op (* white-space) bool-query)
-	(add-or-clause bool-query bool-clause))
-     (^ (bool-clause (* white-space) bool-query)
-	(add-default-clause bool-query bool-clause))
-     (^ bool-clause
-	(list bool-clause))))
-||#
+   (* (^ ((* white-space) bool-clause)
+	 (add-default-clause bool-query bool-clause)))))
 
 (defprod bool-clause ()
-  (^ (/ (^ (req-op query)
-	   (get-boolean-clause query :must-occur))
-	(^ (not-op query)
-	   (get-boolean-clause query :must-not-occur))
-	(^ boosted-query
-	   (get-boolean-clause boosted-query :should-occur)))))
-
-(defprod boosted-query ()
-  (^ (/ (^ (query "^" word)
-	   (set-query-boost query (parse-integer word)))
-	query)))
+  (/ (^ (req-op query)
+	(get-boolean-clause query :must-occur))
+     (^ (not-op query)
+	(get-boolean-clause query :must-not-occur))
+     (^ query 
+	(get-boolean-clause query :should-occur))))
 
 (defprod query ()
-  (^ (/ ("(" (* white-space) (^ bool-query (get-boolean-query bool-query)) (* white-space) ")")
-	wild-query
-	term-query)))
-     
+  (/ (^ term-query)
+     (^ phrase-query
+	(get-phrase-query phrase-query))))
 
 (defprod term-query ()
-  (^ word
-     (get-term-query word)))
+  (^ word (get-term-query word)))
 
-(defprod wild-query ()
-  (^ wild-word
-     (get-wild-query wild-word)))
+(defprod phrase-query ()
+  ("\""
+   (^ word)
+   (* (^ ((* white-space) word)
+	 (add-word-to-phrase phrase-query word)))
+   "\""))
 
 (defprod white-space () (/ #\space #\tab #\page))
 
@@ -151,8 +107,10 @@
   (list :boolean-clause occur query))
 (defun get-boolean-query (clauses)
   (list :boolean-query (if (listp clauses) clauses (list clauses))))
-(defun set-query-boost (query boost)
-  (list :boost boost query))
+(defun add-word-to-phrase (phrase word)
+  (append (if (listp phrase) phrase (list phrase)) (list word)))
+(defun get-phrase-query (words)
+  (cons :phrase-query words))
       
 
 (defmethod parse ((self query-parser) query)
