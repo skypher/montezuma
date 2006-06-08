@@ -52,7 +52,7 @@
       (* w w))))
 
 (defmethod normalize-weight ((self phrase-weight) query-norm)
-  (with-slots ( query-weight value idf) self
+  (with-slots (query-weight value idf) self
     (setf (slot-value self 'query-norm) query-norm)
     (setf query-weight (* query-weight query-norm))
     (setf value (* query-weight idf))))

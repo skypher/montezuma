@@ -87,7 +87,7 @@
 (defmethod skip-to ((self phrase-scorer) target)
   (block each
     (each self (lambda (pp)
-                 (unless (= (more-p self) (skip-to pp target))
+                 (unless (setf (more-p self) (skip-to pp target))
                    (return-from each)))))
   (when (more-p self) 
     ;;?? fixme: better name

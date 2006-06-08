@@ -5,7 +5,7 @@
 ;;?? to-s
 ;;?? eql?
 
-(defparameter +default-max-clause-count+ 1024)
+(defparameter +default-max-clause-count+ (expt 2 20))
 
 (defclass boolean-query (query)
   ((clauses :initform (make-array 10 :adjustable T :fill-pointer 0) :accessor clauses)

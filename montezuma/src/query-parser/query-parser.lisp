@@ -37,7 +37,7 @@
 (defmethod get-boolean-query ((parser query-parser) clauses)
   (let ((q (make-instance 'boolean-query)))
     (dolist (clause (if (listp clauses) clauses (list clauses)))
-      (add-clause q clauses))
+      (add-clause q clause))
     q))
 
 (defmethod add-word-to-phrase ((parser query-parser) phrase word)
@@ -124,7 +124,7 @@
 
 
 (defchartype any-letter '(satisfies alphanumericp))
-(defchartype non-wild-letter '(and (satisfies alphanumericp) (satisfies not-wildcard-char-p)))
+(defchartype non-wild-letter '(or (and (satisfies alphanumericp) (satisfies not-wildcard-char-p)) (member #\-)))
 (defchartype wild-letter '(satisfies wildcard-char-p))
 
 (defun wildcard-char-p (char) (member char '(#\* #\?)))

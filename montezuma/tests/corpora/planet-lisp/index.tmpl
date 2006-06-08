@@ -1,0 +1,91 @@
+<html>
+
+<head>
+<title>Montezuma Test: Planet Lisp Archives</title>
+<style>
+<!--
+body,td,a,p,.h{font-family:arial,sans-serif; font-size: 12pt;}
+.h{font-size: 20px;}
+.q{color:#0000cc;}
+h1 { text-align: center; font-size: 48pt; font-family: Georgia }
+h2 { text-align: left; font-size: 12pt;}
+td { padding-right: 20px; }
+.error { color: rgb(200,0,0); }
+.resultdate {font-size: 10pt;}
+.resultlink {font-size: 10pt; color:rgb(100,200,100);}
+.meta a {font-size: 10pt; color:rgb(200,200,255);}
+.score {font-size: 10pt;}
+pre { font: 10px monaco, "andale mono", "courier new", courier;}
+-->
+</style>
+
+</head>
+
+<body bgcolor=#ffffff text=#000000 link=#0000cc vlink=#551a8b alink=#ff0000 onLoad=sf() topmargin=3 marginheight=3><center>
+
+<h1>Planet Lisp</h1>
+
+<form action="/index.html" name="f">
+<input maxlength=2048 size=55 name=q value="<!-- TMPL_VAR query-string -->" title="Search"><br><input type=submit value="Planet Lisp Search" name=btn>
+</form>
+
+</center>
+
+<!-- TMPL_UNLESS query-string -->
+<h2>Example Queries:</h2>
+
+<div style="margin-left: 10px;">
+<table>
+<tr>
+<td>
+<a href="/index.html?q=tbnl+edi">tbnl edi</a><br>
+<a href="/index.html?q=%22edi+weitz%22+tbnl">"edi weitz" tbnl</a><br>
+<a href="/index.html?q=tbnl+%21araneida">tbnl !araneida</a><br>
+</td>
+<td>
+<a href="/index.html?q=tbnl+%2Bapache">tbnl +apache</a><br>
+<a href="/index.html?q=html+template+%21%22edi+weitz%22">html template !"edi weitz"</a><br>
+<a href="/index.html?q=paris+hilt*">paris hilt*</a><br>
+</td>
+<td>
+<a href="/index.html?q=lindse%3F+*ohan">lindse? *ohan</a><br>
+<a href="/index.html?q=title%3Asbcl+performance">title:sbcl performance</a><br>
+<a href="/index.html?q=%2Bdate%3A2005%3F12*+%2Blink%3A*lispmeister%3Fcom*">+date:2005?12* +link:*lispmeister?com*</a><br>
+</td>
+</tr>
+</table>
+
+
+</div>
+
+<!-- /TMPL_UNLESS -->
+
+<!-- TMPL_IF query-parse-tree -->
+<h2>Query Parse Tree:</h2>
+<!-- TMPL_VAR query-parse-tree -->
+<h2>Query Object:</h2>
+<!-- TMPL_VAR query-object -->
+<!-- /TMPL_IF -->
+
+<!-- TMPL_IF query-parse-tree -->
+<hr>
+<h2>Results:</h2>
+<!-- TMPL_LOOP results -->
+<p><a href="<!-- TMPL_VAR link -->"><!-- TMPL_VAR title --></a><br>
+<span class="resultlink"><!-- TMPL_VAR link --></span> -
+<span class="meta"><a href="/cache.html?id=<!-- TMPL_VAR id -->">Cached</a></span> -
+<span class="resultdate"><!-- TMPL_VAR date --></span>
+<span class="score">(<!-- TMPL_VAR score -->)</span>
+<!-- <!-- TMPL_VAR id --> -->
+</p>
+<!-- /TMPL_LOOP -->
+
+<p>
+<!-- TMPL_VAR num-results --> results in <!-- TMPL_VAR query-time --> seconds.
+</p>
+
+<!-- /TMPL_IF -->
+
+</body>
+
+</html>
