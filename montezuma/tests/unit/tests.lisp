@@ -42,9 +42,7 @@
   (flet ((handle-test-success (value)
 	   (test-success name expr value expected-value))
 	 (handle-test-failure (value condition)
-	   (test-failure name expr value expected-value condition nil)
-	   (when failure-thunk
-	     (funcall failure-thunk))))
+	   (test-failure name expr value expected-value condition nil failure-thunk)))
     (restart-case 
 	(handler-bind ((error #'maybe-fail-test))
 	  (let ((value (funcall test-thunk)))
@@ -60,9 +58,7 @@
   (flet ((handle-test-success (condition)
 	   (test-success name expr condition expected-condition))
 	 (handle-test-failure (condition)
-	   (test-failure name expr nil nil condition expected-condition)
-	   (when failure-thunk
-	     (funcall failure-thunk))))
+	   (test-failure name expr nil nil condition expected-condition failure-thunk)))
     (multiple-value-bind (value condition)
 	(ignore-errors (funcall test-thunk))
       (if (funcall comparator condition expected-condition)
@@ -99,7 +95,7 @@
 (defparameter *failed-tests* '())
 (defparameter *skipped-test-count* 0)
 
-(defun test-failure (name expr value expected-value condition expected-condition)
+(defun test-failure (name expr value expected-value condition expected-condition failure-thunk)
   (assert (not (assoc name *failed-tests*)) nil "There is already a test named ~S." name)
   (assert (not (assoc name *passed-tests*)) nil "There is already a test named ~S." name)
   (push (cons name (list expr value expected-value)) *failed-tests*)
@@ -115,6 +111,8 @@
 	 (warn "FAILURE: ~:_Test ~S: ~:_~S evaluated to ~S ~:_instead of ~:_~S."
 	       name expr value expected-value)))
   (format T "F")
+  (when failure-thunk
+    (funcall failure-thunk))
   (when *break-on-failure* (error 'test-failure))
   nil)
 
