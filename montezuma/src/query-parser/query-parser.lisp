@@ -5,7 +5,7 @@
 
 
 (defclass query-parser ()
-  ((field)
+  ((field :initform nil)
    (default-search-field :initarg :default-search-field)
    (analyzer)
    (fields :accessor fields)
@@ -16,6 +16,54 @@
 (defmethod initialize-instance :after ((self query-parser) &key)
   (with-slots (options) self
     (check-type options index-options-list)))
+
+
+(defmethod add-and-clause ((parser query-parser) clauses clause)
+  (cons clause (if (listp (car clauses)) clauses (list clauses))))
+
+(defmethod add-default-clause ((parser query-parser) clauses clause)
+  (cons clause (if (listp (car clauses)) clauses (list clauses))))
+
+(defmethod get-term-query ((parser query-parser) word)
+  (make-instance 'term-query
+		 :term (make-term (get-active-field parser)
+				  word)))
+
+(defmethod get-boolean-clause ((parser query-parser) query occur)
+  (make-instance 'boolean-clause
+		 :query query
+		 :occur occur))
+
+(defmethod get-boolean-query ((parser query-parser) clauses)
+  (let ((q (make-instance 'boolean-query)))
+    (dolist (clause (if (listp clauses) clauses (list clauses)))
+      (add-clause q clauses))
+    q))
+
+(defmethod add-word-to-phrase ((parser query-parser) phrase word)
+  (append (if (listp phrase) phrase (list phrase)) (list word)))
+
+(defmethod get-phrase-query ((parser query-parser) words)
+  (let ((q (make-instance 'phrase-query)))
+    (dolist (word (if (listp words) words (list words)))
+      (add-term-to-query q (make-term (get-active-field parser)
+				      word)))
+    q))
+
+(defmethod get-wild-query ((parser query-parser) word)
+  (make-instance 'wildcard-query
+		 :term (make-term (get-active-field parser)
+				  word)))
+
+(defmethod set-query-field ((parser query-parser) field)
+  (setf (slot-value parser 'field) field))
+
+(defmethod get-active-field ((parser query-parser))
+  (if (slot-value parser 'field)
+      (prog1 (slot-value parser 'field)
+	(setf (slot-value parser 'field) nil))
+      (slot-value parser 'default-search-field)))
+
 
 
 ;; Note that the following grammar rules must be used in a parser
@@ -61,8 +109,8 @@
    "\""))
 
 (defprod field-query ()
-  (^ (word ":" query)
-     (set-query-field parser query word)))
+  (^ ((@ (word ":") (set-query-field parser word)) query)
+     query))
 
 (defprod wild-query ()
   (^ wild-word (get-wild-query parser wild-word)))
