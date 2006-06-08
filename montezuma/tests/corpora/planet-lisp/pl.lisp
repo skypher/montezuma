@@ -79,4 +79,45 @@
     index))
 
 						   
-						   
+(defun search-posts (index field query &optional options)
+  (etypecase query
+    (list
+     ;; Make a boolean query where each clause is a wildcard query
+     ;; that MUST occur.
+     (let ((words query))
+       (setf query (make-instance 'boolean-query))
+       (dolist (word words)
+	 (add-query query
+		    (make-instance 'wildcard-query
+				   :term (make-term field word))
+		    :must-occur))))
+    (string
+     ;; Make a single-term wildcard query.
+     (let ((word query))
+       (setf query (make-instance 'wildcard-query
+				  :term (make-term field word)))))
+    (query
+     ;; Don't need to do anything, use it as-is.
+     ))
+  ;; Perform the search
+  (let ((num-results 0))
+    (search-each index query
+		 #'(lambda (doc score)
+		     (when (= num-results 0)
+		       (format T "~&~5A ~19A ~5A ~15A" "Score" "Date" "#" "User")
+		       (format T "~&-------------------------------------------"))
+		     (incf num-results)
+		     (print-result index doc score))
+		 options)
+    (format T "~&~%~S results displayed." num-results)))
+
+(defun print-result (index doc score)
+  (let ((paste (get-document index doc)))
+    (format T "~&~5,2F ~A ~A ~15A~&~vt~A"
+	    score
+	    (field-data (document-field paste "date"))
+	    (field-data (document-field paste "md5"))
+	    (field-data (document-field paste "id"))
+	    10
+	    (field-data (document-field paste "title")))))
+
