@@ -12,7 +12,7 @@
   (cons clause (if (listp (car clauses)) clauses (list clauses))))
 
 (defmethod get-term-query ((parser test-query-parser) word)
-  (list :term-query (get-active-field parser) word))
+  (list :term-query (use-active-field parser) word))
 
 (defmethod get-boolean-clause ((parser test-query-parser) query occur)
   (list :boolean-clause occur query))
@@ -24,10 +24,10 @@
   (append (if (listp phrase) phrase (list phrase)) (list word)))
 
 (defmethod get-phrase-query ((parser test-query-parser) words)
-  (list :phrase-query (get-active-field parser) (if (listp words) words (list words))))
+  (list :phrase-query (use-active-field parser) (if (listp words) words (list words))))
 
 (defmethod get-wild-query ((parser test-query-parser) word)
-  (list :wild-query (get-active-field parser) word))
+  (list :wild-query (use-active-field parser) word))
 
 
 (defun check-query-parse (query-string expected-parse-tree)
@@ -36,6 +36,12 @@
 		query-string)
 	 expected-parse-tree
 	 #'(lambda (a b) (tree-equal a b :test #'equal))
+	 (format T "~&Query string was ~S" query-string))
+  (atest check-real-query-parse
+	 (parse (make-instance 'query-parser)
+		query-string)
+	 'query
+	 #'typep
 	 (format T "~&Query string was ~S" query-string)))
 
 (deftestfun query-parser
