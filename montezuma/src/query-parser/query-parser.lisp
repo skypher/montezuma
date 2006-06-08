@@ -40,9 +40,12 @@
 	(get-boolean-clause query :should-occur))))
 
 (defprod query ()
-  (/ (^ term-query)
+  (/ (^ wild-query)
+     (^ field-query)
+     (^ term-query)
      (^ phrase-query
-	(get-phrase-query phrase-query))))
+	(get-phrase-query phrase-query))
+     ))
 
 (defprod term-query ()
   (^ word (get-term-query word)))
@@ -54,12 +57,19 @@
 	 (add-word-to-phrase phrase-query word)))
    "\""))
 
+(defprod field-query ()
+  (^ (word ":" query)
+     (list :field word query)))
+
+(defprod wild-query ()
+  (^ wild-word (get-wild-query wild-word)))
+
 (defprod white-space () (/ #\space #\tab #\page))
 
 (defprod word () (non-wild-letter (* non-wild-letter)))
 (defprod any-word () (any-letter (* any-letter)))
 (defprod wild-word () (/ (wild-letter (? any-word))
-			 (word wild-letter (* any-letter))))
+			 (word wild-letter (? any-word))))
 
 
 (defchartype any-letter '(satisfies alphanumericp))
@@ -111,7 +121,8 @@
   (append (if (listp phrase) phrase (list phrase)) (list word)))
 (defun get-phrase-query (words)
   (cons :phrase-query words))
-      
+(defun get-wild-query (word)
+  (list :wild-query word))
 
 (defmethod parse ((self query-parser) query)
   (parselet ((parser (^ top-query)))
