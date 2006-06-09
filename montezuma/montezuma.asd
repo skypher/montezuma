@@ -11,7 +11,7 @@
     :description "Montezuma is a port of the Lucene text search engine library."
     :long-description ""
 
-    :depends-on ("cl-ppcre" "cl-fad" :com.gigamonkeys.parser)
+    :depends-on ("cl-ppcre" "cl-fad")
     :pathname (make-pathname :directory '(:relative "src"))
     :components
     ((:file "package")
@@ -27,6 +27,7 @@
 		    (:file "bit-vector")
 		    (:file "files")
                     (:file "comparable")
+		    (:file "parser")
                     (:file "utilities"))
        :depends-on ("package"))
      (:module "store"
