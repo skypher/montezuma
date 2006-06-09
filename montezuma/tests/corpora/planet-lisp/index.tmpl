@@ -32,9 +32,19 @@ pre { font: 10px monaco, "andale mono", "courier new", courier;}
 </center>
 
 <!-- TMPL_UNLESS query-string -->
-<h2>Example Queries:</h2>
 
-<div style="margin-left: 10px;">
+<center>
+<p>
+<font size=-1><!-- TMPL_VAR index-size --> posts indexed</font>
+</p>
+</center>
+<center>
+
+<div style="margin-top: 1in;">
+<p>
+<b>Example Queries:</b>
+</p>
+
 <table>
 <tr>
 <td>
@@ -50,14 +60,14 @@ pre { font: 10px monaco, "andale mono", "courier new", courier;}
 <td>
 <a href="/index.html?q=lindse%3F+*ohan">lindse? *ohan</a><br>
 <a href="/index.html?q=title%3Asbcl+performance">title:sbcl performance</a><br>
-<a href="/index.html?q=%2Bdate%3A2005%3F12*+%2Blink%3A*lispmeister%3Fcom*">+date:2005?12* +link:*lispmeister?com*</a><br>
+<a href="/index.html?q=%2Blink%3A*lispmeister%3Fcom*+%2Bdate%3A2005%3F12*">+link:*lispmeister?com* +date:2005?12*</a><br>
 </td>
 </tr>
 </table>
 
 
+</center>
 </div>
-
 <!-- /TMPL_UNLESS -->
 
 <!-- TMPL_IF query-parse-tree -->

@@ -51,6 +51,12 @@
       (setf post (list* :md5 (pathname-name file) (cdr post)))
       (index-post index post))))
 
+(defun read-post-file (file)
+  (with-open-file (in file :direction :input :external-format :latin-1)
+    (let ((post (cl:read in)))
+      (setf post (list* :md5 (pathname-name file) (cdr post)))
+      post)))
+
 
 (defun date-string (universal-time)
   (multiple-value-bind (second minute hour date month year)
@@ -66,15 +72,25 @@
 						   :defaults *pl-directory*)
 			      :create-p T
 			      :default-field "contents"
-			      :min-merge-docs 5000)))
-    (let ((files (post-files)))
-      (format T "~&Indexing ~S posts... " (length files))
-      (time-form "Indexing took ~,3F seconds."
-		 (dolist (file files)
-		   (index-post-file index file)))
-      (format T "~&Optimizing... ")
-      (time-form "Optimizing took ~,3F seconds."
-		 (optimize index)))
+			      :min-merge-docs 5000))
+	(files (post-files))
+	(ids (make-hash-table :test #'equal)))
+    (format T "~&Indexing ~S posts... " (length files))
+    (time-form
+     "Indexing took ~,3F seconds."
+     (dolist (file files)
+       (let* ((post (read-post-file file))
+	      (id (getf post :id)))
+	 (if (gethash id ids)
+	     (warn "Skipping post with duplicate ID ~S" id)
+	     (progn
+	       (setf (gethash id ids) T)
+	       (index-post index post))))))
+    
+    (format T "~&Indexed ~S unique posts." (hash-table-count ids))
+    (format T "~&Optimizing... ")
+    (time-form "Optimizing took ~,3F seconds."
+	       (optimize index))
     (close index)
     index))
 

@@ -1,5 +1,7 @@
-(cl:require :tbnl)
-(cl:require :html-template)
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (cl:require :tbnl)
+  (cl:require :cl-who)
+  (cl:require :html-template))
 
 (defpackage :pl-search
   (:use :tbnl :common-lisp :html-template))
@@ -8,7 +10,7 @@
 
 (setq tbnl:*show-lisp-errors-p* T)
 (setq tbnl:*show-lisp-backtraces-p* T)
-
+(setq tbnl:*use-apache-log* NIL)
 
 (setq tbnl:*dispatch-table*
       (list
@@ -22,9 +24,9 @@
 					   :defaults *load-pathname*))
 
 (defparameter *main-query-parser* (make-instance 'montezuma::query-parser
-						 :default-search-field "contents"))
+						 :default-field "contents"))
 (defparameter *test-query-parser* (make-instance 'montezuma::test-query-parser
-						 :default-search-field "contents"))
+						 :default-field "contents"))
 
 (defun parse-query (q)
   (montezuma::parse *main-query-parser* q))
@@ -69,6 +71,7 @@
 	   (num-results nil)
 	   (query-time nil))
       (when query-string
+	(setf query-string (string-trim '(#\space #\tab) query-string))
 	(setf query-parse-tree
 	      (let ((tree (query-parse-tree query-string)))
 		(if tree
@@ -105,7 +108,6 @@
 	       '(:num-docs 50))
 	      (setf query-time (format nil "~,3F" (/ (- (get-internal-real-time) start-time)
 						    internal-time-units-per-second))))
-	    (setf results (remove-duplicates results :test #'equalp))
 	    (setf num-results (format nil "~A" (length results)))
 	    (setf results (reverse results)))))
       (format T "~&Results: ~S" results)
@@ -117,6 +119,7 @@
 	   :query-parse-tree ,query-parse-tree
 	   :num-results ,num-results
 	   :query-time ,query-time
+	   :index-size ,(format nil "~A" (montezuma::size *pl-index*))
 	   :results ,results)
 	 :stream s)))))
 

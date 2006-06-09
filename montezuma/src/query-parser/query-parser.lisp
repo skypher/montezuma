@@ -9,7 +9,7 @@
    (default-field :initarg :default-field)
    (analyzer :initarg :analyzer)
    (wild-lower :initarg :wild-lower)
-   (occur-default :initarg :occur-default)
+   (default-occur :initarg :default-occur)
    (default-slop :initarg :default-slop)
    (fields :accessor fields)
    (handle-parse-errors :initarg :handle-parse-errors))
@@ -17,7 +17,7 @@
    :default-field "*"
     :analyzer (make-instance 'analyzer)
     :wild-lower T
-    :occur-default :should-occur
+    :default-occur :should-occur
     :default-slop 0
     :handle-parse-errors NIL))
 
@@ -44,7 +44,7 @@
   (cons clause (if (listp clauses) clauses (list clauses))))
 
 (defmethod add-default-clause ((parser query-parser) clauses clause)
-  (if (eq (slot-value parser 'occur-default) :must-occur)
+  (if (eq (slot-value parser 'default-occur) :must-occur)
       (add-and-clause parser clauses clause)
       (add-or-clause parser clauses clause)))
 
