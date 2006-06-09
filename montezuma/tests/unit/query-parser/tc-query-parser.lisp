@@ -6,10 +6,24 @@
 
 
 (defmethod add-and-clause ((parser test-query-parser) clauses clause)
-  (cons clause (if (listp (car clauses)) clauses (list clauses))))
+  (setf clauses (if (listp (car clauses)) clauses (list clauses)))
+  (setf clauses (remove nil clauses))
+  (when (= (length clauses) 1)
+    (let ((last-clause (first clauses)))
+      (let ((occur (second last-clause)))
+	(when (not (eq occur :must-not-occur))
+	  (setf (second last-clause) :must-occur)))))
+  (if clause
+      (progn
+	(unless (eq (second clause) :must-not-occur)
+	  (setf (second clause) :must-occur))
+	(cons clause clauses))
+      clauses))
 
-(defmethod add-default-clause ((parser test-query-parser) clauses clause)
-  (cons clause (if (listp (car clauses)) clauses (list clauses))))
+(defmethod add-or-clause :around ((parser test-query-parser) clauses clause)
+  (if (listp (car clauses))
+      (call-next-method)
+      (call-next-method parser (list clauses) clause)))
 
 (defmethod get-term-query ((parser test-query-parser) word)
   (list :term-query (use-active-field parser) word))
@@ -103,7 +117,13 @@
 	       (:BOOLEAN-CLAUSE :MUST-OCCUR (:TERM-QUERY "field" "abc"))))
 	     ("field:\"1 2 3\""
 	      (:BOOLEAN-QUERY
-	       (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "field" ("1" "2" "3"))))))))
+	       (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "field" ("1" "2" "3")))))
+	     ("!\"ha ha\" !\"ha ha\" !\"ha ha\" \"ha ha\""
+	      (:BOOLEAN-QUERY
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" ("ha" "ha")))
+		(:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" ("ha" "ha")))
+		(:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" ("ha" "ha")))
+		(:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" ("ha" "ha")))))))))
       (dolist (test tests)
 	(check-query-parse (first test) (second test)))))
 

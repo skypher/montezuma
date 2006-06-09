@@ -6,23 +6,47 @@
 
 (defclass query-parser ()
   ((field :initform nil)
-   (default-search-field :initarg :default-search-field)
-   (analyzer)
+   (default-field :initarg :default-field)
+   (analyzer :initarg :analyzer)
+   (wild-lower :initarg :wild-lower)
+   (occur-default :initarg :occur-default)
+   (default-slop :initarg :default-slop)
    (fields :accessor fields)
-   (options :initarg :options))
+   (handle-parse-errors :initarg :handle-parse-errors))
   (:default-initargs
-   :default-search-field "*" :options '()))
+   :default-field "*"
+    :analyzer (make-instance 'analyzer)
+    :wild-lower T
+    :occur-default :should-occur
+    :default-slop 0
+    :handle-parse-errors NIL))
 
 (defmethod initialize-instance :after ((self query-parser) &key)
-  (with-slots (options) self
-    (check-type options index-options-list)))
-
+  (with-slots (field default-field) self
+    (when (null field)
+      (setf field default-field))))
 
 (defmethod add-and-clause ((parser query-parser) clauses clause)
+  (setf clauses (if (listp clauses) clauses (list clauses)))
+  (setf clauses (remove nil clauses))
+  (when (= (length clauses) 1)
+    (let ((last-clause (first clauses)))
+      (when (not (prohibited? last-clause))
+	(setf (occur last-clause) :must-occur))))
+  (if clause
+      (progn
+	(unless (prohibited? clause)
+	  (setf (occur clause) :must-occur))
+	(cons clause clauses))
+      clauses))
+
+(defmethod add-or-clause ((parser query-parser) clauses clause)
   (cons clause (if (listp clauses) clauses (list clauses))))
 
 (defmethod add-default-clause ((parser query-parser) clauses clause)
-  (cons clause (if (listp clauses) clauses (list clauses))))
+  (if (eq (slot-value parser 'occur-default) :must-occur)
+      (add-and-clause parser clauses clause)
+      (add-or-clause parser clauses clause)))
 
 (defmethod get-term-query ((parser query-parser) word)
   (make-instance 'term-query
@@ -62,7 +86,7 @@
   (if (slot-value parser 'field)
       (prog1 (slot-value parser 'field)
 	(setf (slot-value parser 'field) nil))
-      (slot-value parser 'default-search-field)))
+      (slot-value parser 'default-field)))
 
 
 
