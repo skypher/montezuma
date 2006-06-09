@@ -6,9 +6,11 @@
 
 (defun check-hits (is query expected &optional top total-hits)
 ;;  (format T "~&query: ~S expected: ~S~%" query expected)
-  (let ((top-docs (search is query)))
+  (let ((top-docs (search is query :num-docs 50)))
 ;;    (format T "~&got: ~S~%" (score-docs top-docs))
-    (atest check-hits-0 (length (score-docs top-docs)) (length expected))
+    (atest check-hits-0 (length (score-docs top-docs)) (length expected)
+	   #'=
+	   (format T "~&Query: ~S~&Expected docs: ~S~&Actual docs: ~S" query expected (score-docs top-docs)))
     (when top
       (atest check-hits-1 top (doc (elt (score-docs top-docs) 0))))
     (if total-hits
@@ -116,7 +118,12 @@
        (let ((bq (make-instance 'boolean-query)))
 	 (add-query bq tq2 :should-occur)
 	 (add-query bq tq3 :should-occur)
-	 (check-hits (fixture-var 'is) bq '(1 2 3 4 6 8 11 14))))))
+	 (check-hits (fixture-var 'is) bq '(1 2 3 4 6 8 11 14)))
+       (let ((bq (make-instance 'boolean-query)))
+	 (add-query bq tq1 :must-occur)
+	 (add-query bq tq2 :should-occur)
+	 (add-query bq tq3 :should-occur)
+	 (check-hits (fixture-var 'is) bq '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17))))))
   (:testfun test-phrase-query
    (let ((pq (make-instance 'phrase-query))
 	 (t1 (make-term "field" "quick"))

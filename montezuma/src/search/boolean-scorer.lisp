@@ -157,7 +157,9 @@
 						     :parent-scorer self
 						     :scorer (aref optional-scorers 0))))
 	  (T
-	   (error "OFO")))))
+	   (make-counting-sum-scorer3 self
+				      required-counting-sum-scorer
+				      (counting-disjunction-sum-scorer self optional-scorers))))))
 
 (defmethod make-counting-sum-scorer3 ((self boolean-scorer) required-counting-sum-scorer optional-counting-sum-scorer)
   (with-slots (prohibited-scorers) self
