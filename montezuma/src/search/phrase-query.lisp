@@ -38,7 +38,7 @@
    (idf)
    (query-weight)
    (query-norm)
-   (value :reader value)))
+   (value :initform nil :reader value)))
 
 (defmethod initialize-instance :after ((self phrase-weight) &key searcher)
   (with-slots (similarity idf query) self

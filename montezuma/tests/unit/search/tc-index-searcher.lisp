@@ -17,7 +17,8 @@
 	(atest check-hits-2 (total-hits top-docs) total-hits)
 	(atest check-hits-3 (total-hits top-docs) (length expected)))
     (dosequence (score-doc (score-docs top-docs))
-      (atest check-hits-4 (member (doc score-doc) expected) T #'bool=)
+      (atest check-hits-4 (member (doc score-doc) expected) T #'bool=
+	     (format T "~&Resulting doc ~S was not expected." (doc score-doc)))
       ;; FIXME: Once we implement explain, add back the explain-based
       ;; tests.
       ;;      (atest check-hits-5 (value (explain-score is query (doc score-doc)))
@@ -143,6 +144,18 @@
      (check-hits (fixture-var 'is) pq '(1 11 14 16))
      (setf (slop pq) 4)
      (check-hits (fixture-var 'is) pq '(1 11 14 16 17))))
+  (:testfun test-phrase-boolean-query
+   (let ((pq (make-instance 'phrase-query))
+	 (t1 (make-term "field" "brown"))
+	 (t2 (make-term "field" "fox")))
+     (add-term-to-query pq t1)
+     (add-term-to-query pq t2)
+     (let ((bq (make-instance 'boolean-query)))
+       (add-query bq pq :must-not-occur)
+       (add-query bq (make-instance 'term-query
+				    :term (make-term "field" "word1"))
+		  :should-occur)
+       (check-hits (fixture-var 'is) bq '(0 2 3 4 5 6 7 9 10 11 12 13 14 15 16)))))
   (:testfun test-range-query
    (let ((rq (make-instance 'range-query
 			    :field "date"
