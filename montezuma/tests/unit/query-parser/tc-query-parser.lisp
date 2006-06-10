@@ -5,7 +5,7 @@
   ())
 
 
-(defmethod add-and-clause ((parser test-query-parser) clauses clause)
+(defmethod $add-and-clause ((parser test-query-parser) clauses clause)
   (setf clauses (if (listp (car clauses)) clauses (list clauses)))
   (setf clauses (remove nil clauses))
   (when (= (length clauses) 1)
@@ -20,27 +20,49 @@
 	(cons clause clauses))
       clauses))
 
-(defmethod add-or-clause :around ((parser test-query-parser) clauses clause)
+(defmethod $add-or-clause :around ((parser test-query-parser) clauses clause)
   (if (listp (car clauses))
       (call-next-method)
       (call-next-method parser (list clauses) clause)))
 
-(defmethod get-term-query ((parser test-query-parser) word)
-  (list :term-query (use-active-field parser) word))
+(defmethod $get-term-query ((parser test-query-parser) word)
+  (let* ((field (use-active-field parser))
+	 (tokens (all-tokens (slot-value parser 'analyzer) field word)))
+    (cond ((= (length tokens) 0)
+	   (list :term-query field ""))
+	  ((= (length tokens) 1)
+	   (list :term-query field (term-text (car tokens))))
+	  (T
+	   (list :phrase-query field (mapcar #'(lambda (token)
+						 (cons (term-text token) (token-increment token)))
+					     tokens))))))
 
-(defmethod get-boolean-clause ((parser test-query-parser) query occur)
+(defmethod $get-boolean-clause ((parser test-query-parser) query occur)
   (list :boolean-clause occur query))
 
-(defmethod get-boolean-query ((parser test-query-parser) clauses)
-  (list :boolean-query (if (listp clauses) clauses (list clauses))))
+(defmethod $get-boolean-query ((parser test-query-parser) clauses)
+  (setf clauses (if (listp (car clauses)) clauses (list clauses)))
+  (list :boolean-query (reverse clauses)))
 
-(defmethod add-word-to-phrase ((parser test-query-parser) phrase word)
+(defmethod $add-word-to-phrase ((parser test-query-parser) phrase word)
   (append (if (listp phrase) phrase (list phrase)) (list word)))
 
-(defmethod get-phrase-query ((parser test-query-parser) words)
-  (list :phrase-query (use-active-field parser) (if (listp words) words (list words))))
+(defmethod get-normal-phrase-query ((parser test-query-parser) words)
+  (let ((pos-inc 0)
+	(field (use-active-field parser)))
+    (list :phrase-query field
+	  (mapcan
+	   #'(lambda (word)
+	       (if (null word)
+		   (progn (incf pos-inc) '())
+		   (let ((tokens (all-tokens (slot-value parser 'analyzer) field word)))
+		     (mapcar #'(lambda (token)
+				 (prog1 (cons (term-text token) (+ pos-inc (token-increment token)))
+				   (setf pos-inc 0)))
+			     tokens))))
+	   words))))
 
-(defmethod get-wild-query ((parser test-query-parser) word)
+(defmethod $get-wild-query ((parser test-query-parser) word)
   (list :wild-query (use-active-field parser) word))
 
 
@@ -61,69 +83,79 @@
 (deftestfun query-parser
     (let ((tests
 	   '(("abc"
-	      (:BOOLEAN-QUERY (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "abc")))) 
+	      (:BOOLEAN-QUERY ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "abc")))) )
 	     ("abc def"
 	      (:BOOLEAN-QUERY
-	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "def"))
-		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "abc"))))) 
-	     ("+abc" (:BOOLEAN-QUERY (:BOOLEAN-CLAUSE :MUST-OCCUR (:TERM-QUERY "*" "abc")))) 
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "abc"))
+		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "def"))))) 
+	     ("john's"
+	      (:BOOLEAN-QUERY ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "john")))))
+	     ("john's email is jjwiseman@yahoo.com mail-to"
+	      (:BOOLEAN-QUERY
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "john"))
+		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "email"))
+		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "is"))
+		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "jjwiseman@yahoo.com"))
+		(:BOOLEAN-CLAUSE :SHOULD-OCCUR
+				 (:PHRASE-QUERY "*" (("mail" . 1) ("to" . 1)))))))
+	     ("+abc" (:BOOLEAN-QUERY ((:BOOLEAN-CLAUSE :MUST-OCCUR (:TERM-QUERY "*" "abc")))))
 	     ("abc +def ghi"
 	      (:BOOLEAN-QUERY
-	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "ghi"))
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "abc"))
 		(:BOOLEAN-CLAUSE :MUST-OCCUR (:TERM-QUERY "*" "def"))
-		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "abc"))))) 
+		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "ghi"))))) 
 	     ("foo*"
-	      (:BOOLEAN-QUERY (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "foo*")))) 
+	      (:BOOLEAN-QUERY ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "foo*")))) )
 	     ("foo?bar"
-	      (:BOOLEAN-QUERY (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "foo?bar")))) 
+	      (:BOOLEAN-QUERY ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "foo?bar")))) )
 	     ("*foo*"
-	      (:BOOLEAN-QUERY (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "*foo*")))) 
+	      (:BOOLEAN-QUERY ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "*foo*")))) )
 	     ("*foo"
-	      (:BOOLEAN-QUERY (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "*foo")))) 
+	      (:BOOLEAN-QUERY ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "*foo")))) )
 	     ("*foo*bar"
-	      (:BOOLEAN-QUERY (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "*foo*bar")))) 
+	      (:BOOLEAN-QUERY ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "*foo*bar")))) )
 	     ("+*foo"
-	      (:BOOLEAN-QUERY (:BOOLEAN-CLAUSE :MUST-OCCUR (:WILD-QUERY "*" "*foo")))) 
+	      (:BOOLEAN-QUERY ((:BOOLEAN-CLAUSE :MUST-OCCUR (:WILD-QUERY "*" "*foo")))) )
 	     ("!abc"
-	      (:BOOLEAN-QUERY (:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:TERM-QUERY "*" "abc")))) 
+	      (:BOOLEAN-QUERY ((:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:TERM-QUERY "*" "abc")))) )
 	     ("abc !def"
 	      (:BOOLEAN-QUERY
-	       ((:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:TERM-QUERY "*" "def"))
-		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "abc"))))) 
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "abc"))
+		(:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:TERM-QUERY "*" "def")))))
 	     ("\"abc\""
-	      (:BOOLEAN-QUERY (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" ("abc")))))
+	      (:BOOLEAN-QUERY ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "abc")))))
 	     ("\"abc def\""
 	      (:BOOLEAN-QUERY
-	       (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" ("abc" "def")))))
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" (("abc" . 1) ("def" . 1)))))))
 	     ("abc \"def hij\""
 	      (:BOOLEAN-QUERY
-	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" ("def" "hij")))
-		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "abc"))))) 
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "abc"))
+		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" (("def" . 1) ("hij" . 1))))))) 
 	     ("foo* \"bad dog\""
 	      (:BOOLEAN-QUERY
-	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" ("bad" "dog")))
-		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "foo*"))))) 
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "*" "foo*"))
+		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" (("bad" . 1) ("dog" . 1))))))) 
 	     ("field:value"
 	      (:BOOLEAN-QUERY
-	       (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "field" "value"))))
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "field" "value")))))
 	     ("field:foo*"
 	      (:BOOLEAN-QUERY
-	       (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "field" "foo*"))))
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "field" "foo*")))))
 	     ("field:*foo"
 	      (:BOOLEAN-QUERY
-	       (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "field" "*foo"))))
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:WILD-QUERY "field" "*foo")))))
 	     ("+field:abc"
 	      (:BOOLEAN-QUERY
-	       (:BOOLEAN-CLAUSE :MUST-OCCUR (:TERM-QUERY "field" "abc"))))
+	       ((:BOOLEAN-CLAUSE :MUST-OCCUR (:TERM-QUERY "field" "abc")))))
 	     ("field:\"1 2 3\""
 	      (:BOOLEAN-QUERY
-	       (:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "field" ("1" "2" "3")))))
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "field" (("1" . 1) ("2" . 1) ("3" . 1)))))))
 	     ("!\"ha ha\" !\"ha ha\" !\"ha ha\" \"ha ha\""
 	      (:BOOLEAN-QUERY
-	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" ("ha" "ha")))
-		(:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" ("ha" "ha")))
-		(:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" ("ha" "ha")))
-		(:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" ("ha" "ha")))))))))
+	       ((:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" (("ha" . 1) ("ha" . 1))))
+		(:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" (("ha" . 1) ("ha" . 1))))
+		(:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" (("ha" . 1) ("ha" . 1))))
+		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" (("ha" . 1) ("ha" . 1))))))))))
       (dolist (test tests)
 	(check-query-parse (first test) (second test)))))
 

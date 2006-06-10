@@ -15,7 +15,7 @@
    (handle-parse-errors :initarg :handle-parse-errors))
   (:default-initargs
    :default-field "*"
-    :analyzer (make-instance 'analyzer)
+    :analyzer (make-instance 'standard-analyzer)
     :wild-lower T
     :default-occur :should-occur
     :default-slop 0
@@ -26,7 +26,7 @@
     (when (null field)
       (setf field default-field))))
 
-(defmethod add-and-clause ((parser query-parser) clauses clause)
+(defmethod $add-and-clause ((parser query-parser) clauses clause)
   (setf clauses (if (listp clauses) clauses (list clauses)))
   (setf clauses (remove nil clauses))
   (when (= (length clauses) 1)
@@ -40,46 +40,70 @@
 	(cons clause clauses))
       clauses))
 
-(defmethod add-or-clause ((parser query-parser) clauses clause)
+(defmethod $add-or-clause ((parser query-parser) clauses clause)
   (cons clause (if (listp clauses) clauses (list clauses))))
 
-(defmethod add-default-clause ((parser query-parser) clauses clause)
+(defmethod $add-default-clause ((parser query-parser) clauses clause)
   (if (eq (slot-value parser 'default-occur) :must-occur)
-      (add-and-clause parser clauses clause)
-      (add-or-clause parser clauses clause)))
+      ($add-and-clause parser clauses clause)
+      ($add-or-clause parser clauses clause)))
 
-(defmethod get-term-query ((parser query-parser) word)
-  (make-instance 'term-query
-		 :term (make-term (use-active-field parser)
-				  word)))
+(defmethod $get-term-query ((parser query-parser) word)
+  (let* ((field (use-active-field parser))
+	 (tokens (all-tokens (slot-value parser 'analyzer) field word)))
+    (cond ((= (length tokens) 0)
+	   (make-instance 'term-query
+			  :term (make-term field "")))
+	  ((= (length tokens) 1)
+	   (make-instance 'term-query
+			  :term (make-term field (term-text (car tokens)))))
+	  (T
+	   (let ((pq (make-instance 'phrase-query)))
+	     (dolist (token tokens)
+	       (add-term-to-query pq (make-term field (term-text token)) nil (token-increment token)))
+	     pq)))))
 
-(defmethod get-boolean-clause ((parser query-parser) query occur)
+(defmethod $get-boolean-clause ((parser query-parser) query occur)
   (make-instance 'boolean-clause
 		 :query query
 		 :occur occur))
 
-(defmethod get-boolean-query ((parser query-parser) clauses)
+(defmethod $get-boolean-query ((parser query-parser) clauses)
   (let ((q (make-instance 'boolean-query)))
     (dolist (clause (if (listp clauses) clauses (list clauses)))
       (add-clause q clause))
     q))
 
-(defmethod add-word-to-phrase ((parser query-parser) phrase word)
+(defmethod $add-word-to-phrase ((parser query-parser) phrase word)
   (append (if (listp phrase) phrase (list phrase)) (list word)))
 
-(defmethod get-phrase-query ((parser query-parser) words)
-  (let ((q (make-instance 'phrase-query))
-	(field (use-active-field parser)))
-    (dolist (word (if (listp words) words (list words)))
-      (add-term-to-query q (make-term field word)))
-    q))
+(defmethod $get-phrase-query ((parser query-parser) words)
+  (setf words (if (listp words) words (list words)))
+  (if (= (length words) 1)
+      ($get-term-query parser (car words))
+      (get-normal-phrase-query parser words)))
 
-(defmethod get-wild-query ((parser query-parser) word)
+(defmethod get-normal-phrase-query ((parser query-parser) words)
+  (let ((pq (make-instance 'phrase-query))
+	(field (use-active-field parser)))
+    (setf (slop pq) (slot-value parser 'default-slop))
+    (let ((pos-inc 0))
+      (dolist (word words)
+	(if (null word)
+	    (incf pos-inc)
+	    (let ((tokens (all-tokens (slot-value parser 'analyzer) field word)))
+	      (dolist (token tokens)
+		(add-term-to-query pq (make-term field (term-text token))
+				   nil (+ pos-inc (token-increment token)))
+		(setf pos-inc 0))))))
+    pq))
+
+(defmethod $get-wild-query ((parser query-parser) word)
   (make-instance 'wildcard-query
 		 :term (make-term (use-active-field parser)
 				  word)))
 
-(defmethod set-query-field ((parser query-parser) field)
+(defmethod $set-query-field ((parser query-parser) field)
   (setf (slot-value parser 'field) field))
 
 (defmethod use-active-field ((parser query-parser))
@@ -99,47 +123,47 @@
 
 (defprod top-query ()
   (^ bool-query
-     (get-boolean-query parser bool-query)))
+     ($get-boolean-query parser bool-query)))
      
 
 (defprod bool-query ()
   ((^ bool-clause)
    (* (^ ((* white-space) bool-clause)
-	 (add-default-clause parser bool-query bool-clause)))))
+	 ($add-default-clause parser bool-query bool-clause)))))
 
 (defprod bool-clause ()
   (/ (^ (req-op query)
-	(get-boolean-clause parser query :must-occur))
+	($get-boolean-clause parser query :must-occur))
      (^ (not-op query)
-	(get-boolean-clause parser query :must-not-occur))
+	($get-boolean-clause parser query :must-not-occur))
      (^ query 
-	(get-boolean-clause parser query :should-occur))))
+	($get-boolean-clause parser query :should-occur))))
 
 (defprod query ()
   (/ (^ wild-query)
      (^ field-query)
      (^ term-query)
      (^ phrase-query
-	(get-phrase-query parser phrase-query))))
+	($get-phrase-query parser phrase-query))))
 
 (defprod term-query ()
-  (^ word (get-term-query parser word)))
+  (^ word ($get-term-query parser word)))
 
 (defprod phrase-query ()
   ("\""
    (^ word)
    (* (^ ((* white-space) word)
-	 (add-word-to-phrase parser phrase-query word)))
+	 ($add-word-to-phrase parser phrase-query word)))
    "\""))
 
 (defprod field-query ()
-  (^ ((@ (word ":") (set-query-field parser word)) query)
+  (^ ((@ (word ":") ($set-query-field parser word)) query)
      query))
 
 (defprod wild-query ()
-  (^ wild-word (get-wild-query parser wild-word)))
+  (^ wild-word ($get-wild-query parser wild-word)))
 
-(defprod white-space () (/ #\space #\tab #\page))
+(defchartype white-space () '(satisfies white-space-p))
 
 (defprod word () (non-wild-letter (* non-wild-letter)))
 (defprod any-word () (any-letter (* any-letter)))
@@ -147,38 +171,15 @@
 			    (word wild-letter (? any-word)))))
 
 
-(defchartype any-letter '(satisfies alphanumericp))
-(defchartype non-wild-letter '(or (and (satisfies alphanumericp) (satisfies not-wildcard-char-p)) (member #\-)))
+(defchartype any-letter '(and (satisfies graphic-char-p) (not (satisfies white-space-p)) (not (satisfies disallowed-punctuation-p))))
+(defchartype non-wild-letter '(and (satisfies graphic-char-p) (not (satisfies white-space-p)) (not (satisfies disallowed-punctuation-p)) (satisfies not-wildcard-char-p)))
 (defchartype wild-letter '(satisfies wildcard-char-p))
 
 (defun wildcard-char-p (char) (member char '(#\* #\?)))
 (defun not-wildcard-char-p (char) (not (member char '(#\* #\?))))
+(defun white-space-p (char) (member char '(#\space #\tab #\page #\newline)))
 
-
-(defun default-field ()
-  "contents")
-
-#||
-(defun get-term-query (word)
-  (make-instance 'term-query
-		 :term (make-term (default-field) word)))
-
-(defun get-boolean-clause (query occur)
-  (make-instance 'boolean-clause
-		 :query query
-		 :occur occur))
-
-(defun get-boolean-query (clauses)
-  (let ((q (make-instance 'boolean-query)))
-    (if (listp clauses)
-	(dolist (clause clauses)
-	  (add-clause q clause))
-	(add-clause q clauses))
-    q))
-
-(defun get-wild-query (&rest args)
-  (list :wild-query args))
-||#
+(defun disallowed-punctuation-p (char) (member char '(#\" #\* #\? #\:)))
 
 (defmethod parse ((parser query-parser) query)
   (parselet ((query-parser (^ top-query)))

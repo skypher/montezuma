@@ -15,6 +15,12 @@
   (declare (ignore field-name))
   0)
 
+(defmethod all-tokens ((self analyzer) field string)
+  (let ((token-stream (token-stream self field string)))
+    (do ((token (next-token token-stream) (next-token token-stream))
+	 (tokens '() (cons token tokens)))
+	((null token) (reverse tokens)))))
+
 
 (defclass whitespace-analyzer (analyzer)
   ())
