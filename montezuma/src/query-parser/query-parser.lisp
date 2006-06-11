@@ -140,12 +140,21 @@
 	($get-boolean-clause parser query :should-occur))))
 
 (defprod query ()
-  (/ (^ wild-query)
-     (^ field-query)
-     (^ term-query)
-     (^ phrase-query
-	($get-phrase-query parser phrase-query))))
+  (/ (^ boosted-query)
+     (^ unboosted-query)))
 
+(defprod unboosted-query ()
+ (/ (^ phrase-query
+       ($get-phrase-query parser phrase-query))
+    (^ wild-query)
+    (^ field-query)
+    (^ term-query)))
+
+(defprod boosted-query ()
+  (^ (unboosted-query "^" word)
+     (progn (setf (boost unboosted-query) (parse-integer word))
+	    unboosted-query)))
+ 
 (defprod term-query ()
   (^ word ($get-term-query parser word)))
 
@@ -157,8 +166,8 @@
    "\""))
 
 (defprod field-query ()
-  (^ ((@ (word ":") ($set-query-field parser word)) query)
-     query))
+  (^ ((@ (word ":") ($set-query-field parser word)) unboosted-query)
+     unboosted-query))
 
 (defprod wild-query ()
   (^ wild-word ($get-wild-query parser wild-word)))
@@ -179,7 +188,7 @@
 (defun not-wildcard-char-p (char) (not (member char '(#\* #\?))))
 (defun white-space-p (char) (member char '(#\space #\tab #\page #\newline)))
 
-(defun disallowed-punctuation-p (char) (member char '(#\" #\* #\? #\:)))
+(defun disallowed-punctuation-p (char) (member char '(#\" #\* #\? #\: #\^)))
 
 (defmethod parse ((parser query-parser) query)
   (parselet ((query-parser (^ top-query)))
