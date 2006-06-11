@@ -3,11 +3,26 @@
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defparameter *valid-index-options*
-    '(:path :create-if-missing-p :create-p :default-field
-      :id-field :default-search-field :analyzer :directory
-      :close-directory-p :occur-default :wild-lower-p :default-slop
-      :key :use-compound-file-p :handle-parse-errors-p :auto-flush-p
-      :merge-factor :min-merge-docs :max-merge-docs :info-stream)))
+    '(:path
+      :create-if-missing-p
+      :create-p
+      :default-field
+      :id-field
+      :default-search-field
+      :analyzer
+      :directory
+      :close-directory-p
+      :occur-default
+      :wild-lower-p
+      :default-slop
+      :key
+      :use-compound-file-p
+      :handle-parse-errors-p
+      :auto-flush-p
+      :merge-factor
+      :min-merge-docs
+      :max-merge-docs
+      :info-stream)))
 
 (defun index-options-list-p (list)
   (do ((options list (cddr options)))
@@ -386,9 +401,10 @@
   (if (stringp query)
       (with-slots (qp default-search-field options reader) self
 	(unless qp
-	  (setf qp (make-instance 'query-parser
-				  :default-search-field default-search-field
-				  :options options)))
+	  (setf qp (apply #'make-instance 'query-parser
+			  :allow-other-keys T
+			  :default-field default-search-field
+			  options)))
 	;; We need to set this every time, in case a new field has
 	;; been added.
 	(setf (fields qp) (coerce (get-field-names reader) 'vector))
