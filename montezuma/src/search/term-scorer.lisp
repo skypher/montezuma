@@ -14,6 +14,10 @@
    (norms :initarg :norms :reader norms)
    (weight-value :reader weight-value)))
 
+(defmethod print-object ((self term-scorer) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (format stream "weight: ~S" (slot-value self 'weight))))
+
 (defun make-term-scorer-array ()
   (make-array +score-cache-size+ :adjustable t
               :initial-element 0))

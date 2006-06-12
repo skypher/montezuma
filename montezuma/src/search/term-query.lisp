@@ -16,6 +16,10 @@
    (term-idf :accessor term-idf)
    (term-query-norm :accessor term-query-norm)))
 
+(defmethod print-object ((self term-weight) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (format stream "query: ~S" (query self))))
+
 (defmethod initialize-instance :after ((self term-weight) &key query searcher)
   (setf (similarity self) (similarity-implementation query searcher)
         (term-idf self) (idf (similarity self)

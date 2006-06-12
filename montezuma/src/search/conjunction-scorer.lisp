@@ -41,11 +41,28 @@
 	 do
 	 (setf more-p (skip-to (first-scorer self) (document (last-scorer self))))
 	 ;; FIXME: in Ruby: @scorers << @scorers.shift()
-	 (let ((new-scorers (coerce scorers 'list)))
-	   (let ((first-scorer (pop new-scorers)))
-	     (setf scorers (coerce (append new-scorers (list first-scorer)) 'vector)))))
+;	 (let ((new-scorers (coerce scorers 'list)))
+;	   (let ((first-scorer (pop new-scorers)))
+;	     (setf scorers (coerce (append new-scorers (list first-scorer)) 'vector))))
+	 (let ((first (aref scorers 0)))
+	   (replace scorers scorers
+		    :end1 (- (length scorers) 1)
+		    :start2 1)
+	   (setf (aref scorers (1- (length scorers))) first)))
     more-p))
 
+
+(defmethod skip-to ((self conjunction-scorer) target)
+  (with-slots (first-time-p more-p scorers) self
+    (when first-time-p
+      (do-init self NIL))
+    (dosequence (scorer scorers)
+      (when (not more-p)
+	(return))
+      (setf more-p (skip-to scorer target)))
+    (when more-p
+      (sort-scorers self))
+    (do-next self)))
 
 (defmethod score ((self conjunction-scorer))
   (let ((score (reduce #'+ (slot-value self 'scorers) :key #'score)))
@@ -66,4 +83,7 @@
     (setf first-time-p NIL)))
 
 (defmethod sort-scorers ((self conjunction-scorer))
-  )
+  (with-slots (scorers) self
+    (setf scorers (sort scorers
+			#'(lambda (a b)
+			    (< (document a) (document b)))))))

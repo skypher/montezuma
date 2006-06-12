@@ -178,7 +178,7 @@
 			  :req-scorer (make-instance 'req-excl-scorer
 						     :req-scorer required-counting-sum-scorer
 						     :excl-scorer (make-instance 'disjunction-sum-scorer
-											:tasfasdf prohibited-scorers))
+											:sub-scorers prohibited-scorers))
 			  :opt-scorer optional-counting-sum-scorer)))))
 
 (defmethod document ((self boolean-scorer))
