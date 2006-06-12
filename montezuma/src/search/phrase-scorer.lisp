@@ -60,15 +60,13 @@
             
       (setf (more-p self) (skip-to (first-index self) (document (last-index self))))
       (first-to-last self))
-
-    (more-p self)
-    (setf (freq self) (phrase-freq self))
-    (if (= (freq self) 0.0)
-      ;; no match so trigger further scanning
-      (setf (more-p self) (next? (last-index self)))
-      ;; found a match
-      (return-from do-next t)))
-  
+    (when (more-p self)
+      (setf (freq self) (phrase-freq self))
+      (if (= (freq self) 0.0)
+	  ;; no match so trigger further scanning
+	  (setf (more-p self) (next? (last-index self)))
+	  ;; found a match
+	  (return-from do-next t))))
   ;; no more matches
   (values nil))
 
