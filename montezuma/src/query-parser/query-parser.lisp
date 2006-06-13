@@ -87,7 +87,7 @@
 
 (defmethod $get-boolean-query ((parser query-parser) clauses)
   (let ((q (make-instance 'boolean-query)))
-    (dolist (clause (if (listp clauses) clauses (list clauses)))
+    (dolist (clause (reverse (if (listp clauses) clauses (list clauses))))
       (add-clause q clause))
     q))
 
