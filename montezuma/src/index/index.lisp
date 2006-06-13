@@ -355,6 +355,8 @@
 
 
 
+(defgeneric ensure-writer-open (index))
+
 (defmethod ensure-writer-open ((self index))
   (with-slots (open-p writer reader dir options searcher) self
     (unless open-p
@@ -367,6 +369,8 @@
       (setf writer (apply #'make-instance 'index-writer
 				  :directory dir
 				  options)))))
+
+(defgeneric ensure-reader-open (index))
 
 (defmethod ensure-reader-open ((self index))
   (with-slots (open-p writer reader dir) self
@@ -381,6 +385,8 @@
 	    (close writer)
 	    (setf writer nil))
 	  (setf reader (open-index-reader dir :close-directory-p NIL))))))
+
+(defgeneric ensure-searcher-open (index))
 
 (defmethod ensure-searcher-open ((self index))
   (with-slots (open-p searcher reader) self

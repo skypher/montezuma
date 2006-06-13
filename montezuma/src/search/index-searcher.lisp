@@ -12,6 +12,8 @@
   (setf (slot-value self 'reader) 
         (initialize-reader self (or directory reader))))
 
+(defgeneric initialize-reader (index-searcher reader))
+
 (defmethod initialize-reader ((self index-searcher) (reader index-reader))
   (values reader))
 
@@ -30,6 +32,8 @@
 (defmethod term-doc-freq ((self index-searcher) (term term))
   ;; delegate
   (term-doc-freq (reader self) term))
+
+(defgeneric term-doc-freqs (index-searcher terms))
 
 (defmethod term-doc-freqs ((self index-searcher) (terms sequence))
   (let ((result (make-array (length terms))))

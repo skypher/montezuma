@@ -14,16 +14,24 @@
 (defun make-document ()
   (make-instance 'document))
 
+(defgeneric all-fields (document))
+
 (defmethod all-fields ((self document))
   (with-slots (fields) self
     (reduce #'append (table-values fields))))
+
+(defgeneric field-count (document))
 
 (defmethod field-count ((self document))
   (with-slots (fields) self
     (length (table-entries fields))))
 
+(defgeneric entry-count (document))
+
 (defmethod entry-count ((self document))
   (length (all-fields self)))
+
+(defgeneric add-field (document field))
 
 (defmethod add-field ((self document) (field field))
   (with-slots (fields) self
@@ -31,6 +39,8 @@
 	   (fields-with-name (table-value fields name)))
       (setf (table-value fields name) (append fields-with-name (list field)))))
   self)
+
+(defgeneric remove-field (document name))
 
 (defmethod remove-field ((self document) name)
   (setf name (string name))
@@ -42,6 +52,8 @@
 	(setf (table-value fields name) (cdr fields-with-name)))
       removed-field)))
 
+(defgeneric remove-fields (document name))
+
 (defmethod remove-fields ((self document) name)
   (setf name (string name))
   (with-slots (fields) self
@@ -49,12 +61,18 @@
   (values))
 
 ;; FIXME: I don't like this name.
+(defgeneric document-field (document name))
+
 (defmethod document-field ((self document) name)
   (car (document-fields self (string name))))
+
+(defgeneric document-fields (document name))
 
 (defmethod document-fields ((self document) name)
   (with-slots (fields) self
     (table-value fields (string name))))
+
+(defgeneric document-binaries (document name))
 
 (defmethod document-binaries ((self document) name)
   (reduce #'(lambda (a1 &optional a2)
@@ -63,6 +81,8 @@
 		  (concatenate 'vector a1 a2)))
 	  (mapcar #'field-data 
 		  (remove-if-not #'field-binary-p (document-fields self name)))))
+
+(defgeneric document-values (document name))
 
 (defmethod document-values ((self document) name)
   (let ((fields (remove-if #'field-binary-p (document-fields self name))))

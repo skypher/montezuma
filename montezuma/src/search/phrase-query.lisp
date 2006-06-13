@@ -17,6 +17,8 @@
 	(format stream "~S:~S " (term-text term) position)))))
 
 
+(defgeneric add-term-to-query (phrase-query term &optional position pos-inc))
+
 (defmethod add-term-to-query ((self phrase-query) term &optional position (pos-inc 1))
   (with-slots (positions terms field) self
     (when (null position)

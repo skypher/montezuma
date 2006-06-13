@@ -105,14 +105,20 @@
 
 
 
+(defgeneric string-value (field))
+
 (defmethod string-value ((field field))
   (let ((data (field-data field)))
     (if (stringp data)
 	data
 	(bytes-to-string data))))
 
+(defgeneric binary-value (field))
+
 (defmethod binary-value ((field field))
   (field-data field))
+
+(defgeneric reader-value (field))
 
 (defmethod reader-value ((field field))
   (if (streamp (field-data field))

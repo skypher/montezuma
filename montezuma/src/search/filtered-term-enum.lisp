@@ -43,6 +43,4 @@
     (setf term nil)
     (setf enum nil)))
 
-
-
-
+(defgeneric difference (enum))

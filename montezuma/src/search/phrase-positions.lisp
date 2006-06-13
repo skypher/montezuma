@@ -37,6 +37,8 @@
         (slot-value self 'position) 0)
   (slot-value self 'document))
 
+(defgeneric first-position (phrase-positions))
+
 (defmethod first-position ((self phrase-positions))
   (setf (slot-value self 'phrase-count) (freq (tp-enum self)))
   (next-position self))

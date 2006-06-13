@@ -23,3 +23,5 @@
 	    while (next? enumerator))
       (close enumerator))
     bq))
+
+(defgeneric get-term-enum (query reader))

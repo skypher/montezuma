@@ -98,11 +98,15 @@
   (when (more-p self)
     (do-sort self)))
 
+(defgeneric do-sort (phrase-scorer))
+
 (defmethod do-sort ((self phrase-scorer))
   (with-slots (pq) self
     (queue-clear pq)
     (each self (lambda (pp) (queue-push pq pp)))
     (pq->list self)))
+
+(defgeneric pq->list (phrase-scorer))
 
 (defmethod pq->list ((self phrase-scorer))
   (with-slots (first last pq) self
@@ -116,6 +120,8 @@
 	    (setf first pp))
 	(setf last pp)
 	(setf (next pp) nil)))))
+
+(defgeneric first-to-last (phrase-scorer))
 
 (defmethod first-to-last ((self phrase-scorer))
   (with-slots (last first) self

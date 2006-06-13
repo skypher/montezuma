@@ -18,6 +18,8 @@
   (with-slots (num-matchers) self
     (setf num-matchers 0)))
 
+(defgeneric coord-factor (coordinator))
+
 (defmethod coord-factor ((self coordinator))
   (with-slots (coord-factors num-matchers) self
     (aref coord-factors num-matchers)))
@@ -35,6 +37,8 @@
   (with-slots (coordinator similarity) self
     (setf coordinator (make-instance 'coordinator :similarity similarity))))
 
+(defgeneric add-scorer (boolean-scorer scorer occur))
+
 (defmethod add-scorer ((self boolean-scorer) scorer occur)
   (unless (eq occur :must-not-occur)
     (incf (slot-value (coordinator self) 'max-coord)))
@@ -45,6 +49,8 @@
      (vector-push-extend scorer (slot-value self 'optional-scorers)))
     ((:must-not-occur)
      (vector-push-extend scorer (slot-value self 'prohibited-scorers)))))
+
+(defgeneric init-counting-sum-scorer (boolean-scorer))
 
 (defmethod init-counting-sum-scorer ((self boolean-scorer))
   (with-slots (coordinator counting-sum-scorer) self
@@ -91,6 +97,8 @@
 	 do (funcall fn (document counting-sum-scorer) (score self)))))
 
 
+(defgeneric make-counting-sum-scorer (boolean-scorer))
+
 (defmethod make-counting-sum-scorer ((self boolean-scorer))
   (with-slots (required-scorers optional-scorers) self
     (cond ((= (length required-scorers) 0)
@@ -118,6 +126,8 @@
 				      optional-scorers)))))
 
 
+(defgeneric counting-disjunction-sum-scorer (boolean-scorer scorers))
+
 (defmethod counting-disjunction-sum-scorer ((self boolean-scorer) scorers)
   (make-instance 'counting-disjunction-sum-scorer
 		 :parent-scorer self
@@ -135,6 +145,8 @@
   (call-next-method))
   
   
+
+(defgeneric make-counting-sum-scorer2 (boolean-scorer required-counting-sum-scorer optional-scorers))
 
 (defmethod make-counting-sum-scorer2 ((self boolean-scorer) required-counting-sum-scorer optional-scorers)
   (with-slots (prohibited-scorers) self
@@ -160,6 +172,8 @@
 	   (make-counting-sum-scorer3 self
 				      required-counting-sum-scorer
 				      (counting-disjunction-sum-scorer self optional-scorers))))))
+
+(defgeneric make-counting-sum-scorer3 (boolean-scorer required-counting-sum-scorer optional-counting-sum-scorer))
 
 (defmethod make-counting-sum-scorer3 ((self boolean-scorer) required-counting-sum-scorer optional-counting-sum-scorer)
   (with-slots (prohibited-scorers) self
@@ -191,6 +205,8 @@
     (let ((sum (score counting-sum-scorer)))
       (* sum (coord-factor coordinator)))))
 
+
+(defgeneric counting-conjunction-sum-scorer (boolean-scorer required-scorers))
 
 (defmethod counting-conjunction-sum-scorer ((self boolean-scorer) required-scorers)
   (let ((ccs (make-instance 'counting-conjunction-scorer
