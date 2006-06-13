@@ -21,6 +21,23 @@
     :default-slop 0
     :handle-parse-errors NIL))
 
+
+(defgeneric $add-and-clause (parser clauses clause))
+(defgeneric $add-or-clause (parser clauses clause))
+(defgeneric $add-default-clause (parser clauses clause))
+(defgeneric $get-term-query (parser word))
+(defgeneric $get-boolean-clause (parser query occur))
+(defgeneric $get-boolean-query (parser clauses))
+(defgeneric $add-word-to-phrase (parser phrase word))
+(defgeneric $get-phrase-query (parser
+(defgeneric get-normal-phrase-query (parser words))
+(defgeneric $get-wild-query (parser word))
+(defgeneric $set-query-field (parser field))
+(defgeneric use-active-field (parser words))
+(defgeneric parse (parser query-string))
+
+
+
 (defmethod initialize-instance :after ((self query-parser) &key)
   (with-slots (field default-field) self
     (when (null field)
