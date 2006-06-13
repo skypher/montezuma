@@ -101,8 +101,6 @@
 
 (defgeneric terms (index-reader))
 
-(defgeneric terms-from (index-reader tee))
-
 (defgeneric term-doc-freq (index-reader term))
 
 (defgeneric term-docs-for (index-reader term))

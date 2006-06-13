@@ -29,11 +29,11 @@
 (defgeneric $get-boolean-clause (parser query occur))
 (defgeneric $get-boolean-query (parser clauses))
 (defgeneric $add-word-to-phrase (parser phrase word))
-(defgeneric $get-phrase-query (parser
+(defgeneric $get-phrase-query (parser words))
 (defgeneric get-normal-phrase-query (parser words))
 (defgeneric $get-wild-query (parser word))
 (defgeneric $set-query-field (parser field))
-(defgeneric use-active-field (parser words))
+(defgeneric use-active-field (parser))
 (defgeneric parse (parser query-string))
 
 

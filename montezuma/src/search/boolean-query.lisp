@@ -40,6 +40,7 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
   (values 1.0))
 
 (defmethod similarity-implementation ((self boolean-query) searcher)
+  (declare (ignore searcher))
   ;;?? should this be a copy of sim?
   (let ((sim (call-next-method)))
     (when (coord-disabled? self)

@@ -38,12 +38,6 @@ Return:: a score factor for the phrase"))
 max:: Do not score documents past this. Default will search all documents avaliable.
 returns:: true if more matching documents may remain."))
 
-(defgeneric next? (similarity)
-  (:documentation "Advances to the next document matching the query.
-returns:: true iff there is another document matching the query.
-When this method is used the #explain(int) method should not be used.
-"))
-
 #+Ignore
 ;; defined in index's api
 (defgeneric doc (similarity))
@@ -51,26 +45,6 @@ When this method is used the #explain(int) method should not be used.
 (defgeneric score (similarity)
   (:documentation "Returns the score for the current document matching the query. Initially invalid, until #next?() is called the first time.
 "))
-
-(defgeneric skip-to (similarity target)
-  (:documentation "Skips to the first match beyond the current whose document number is greater than or equal to a given target.
-
-When this method is used the #explain(int) method should not be used.
-
-target:: The target document number.
-returns:: true iff there is such a match.
-
-Behaves as if written:
-
-  def skip_to(target) 
-    begin 
-      return false if not next?()
-    end while (target > doc())
-    return true
-  end
-
-Most implementations are considerably more efficient than that."))
-
 
 (defgeneric explain-score (similarity reader document-number)
   (:documentation "Returns an explanation of the score for a document. When this method is used, the #next?(), #skip_to(int) and #score(HitCollector) methods should not be used.

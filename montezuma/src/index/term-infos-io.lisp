@@ -175,8 +175,6 @@
   (with-slots (orig-enum) self
     (clone orig-enum)))
 
-(defgeneric terms-from (term-infos-reader term))
-
 (defmethod terms-from ((self term-infos-reader) term)
   (get-term-info self term)
   (clone (enum self)))

@@ -40,3 +40,5 @@
 (defgeneric skip-to (enum target))
 (defgeneric next? (enum))
 (defgeneric next-position (enum))
+
+(defgeneric terms-from (source term))
