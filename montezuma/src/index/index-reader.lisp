@@ -63,8 +63,6 @@
 
 (defgeneric max-doc (index-reader))
 
-(defgeneric get-document (index-reader n))
-
 (defgeneric get-document-with-term (index-reader term))
 (defmethod get-document-with-term ((self index-reader) term)
   (let ((docs (term-docs-for self term)))
@@ -77,8 +75,6 @@
 	  (close docs)))))
 
 (defgeneric document-deleted-p (index-reader n))
-
-(defgeneric has-deletions-p (index-reader))
 
 (defgeneric has-norms-p (index-reader field))
 
@@ -98,8 +94,6 @@
   (setf (slot-value self 'has-changes-p) T))
 
 (defgeneric do-set-norm (index-reader doc field value))
-
-;;(defgeneric terms (index-reader))
 
 (defgeneric term-doc-freq (index-reader term))
 

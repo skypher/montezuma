@@ -42,3 +42,8 @@
 (defgeneric next-position (enum))
 
 (defgeneric terms-from (source term))
+(defgeneric terms (term-infos-reader))
+
+(defgeneric get-document (index-reader n))
+
+(defgeneric has-deletions-p (index-reader))

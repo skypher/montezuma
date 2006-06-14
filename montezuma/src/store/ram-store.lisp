@@ -151,6 +151,8 @@
 	  (setf (size file) pointer))
 	(setf (mtime file) (get-universal-time))))))
 
+(defgeneric reset (ram-index-output))
+
 (defmethod reset ((self ram-index-output))
   (seek self 0)
   (with-slots (file) self

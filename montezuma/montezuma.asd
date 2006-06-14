@@ -49,7 +49,7 @@
 		    (:file "tokenizers"          :depends-on ("token" "token-stream"))
 		    (:file "standard-tokenizer"  :depends-on ("tokenizers"))
 		    (:file "analyzers"           :depends-on ("standard-tokenizer")))
-       :depends-on ("package" "util"))
+       :depends-on ("package" "store" "util"))
      (:module "query-parser"
 	      :components ((:file "query-parser"))
 	      :depends-on ("package" "search"))
@@ -119,7 +119,7 @@
                                                               "fields-io" "term-buffer"))
 		    (:file "index-reader"        :depends-on ("api"))
 		    (:file "index"               :depends-on ("api")))
-       :depends-on ("analysis"))))
+       :depends-on ("analysis" "store" "util"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
   (oos 'load-op '#:montezuma-tests)

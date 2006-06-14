@@ -77,8 +77,6 @@
 		 (return-from advance-after-current NIL)))))))
 
 
-(defgeneric document (disjunction-sum-scorer))
-
 (defmethod document ((self disjunction-sum-scorer))
   (slot-value self 'current-doc))
 

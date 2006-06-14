@@ -56,7 +56,6 @@
 	(setf text-cache nil)
 	(setf text-buf new-buf)))))
 
-(defgeneric reset (term-buffer))
 (defmethod reset ((self term-buffer))
   (with-slots (field text-buf text-cache text-length term) self
     (setf field nil
