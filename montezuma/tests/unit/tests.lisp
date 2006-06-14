@@ -61,6 +61,7 @@
 	   (test-failure name expr nil nil condition expected-condition failure-thunk)))
     (multiple-value-bind (value condition)
 	(ignore-errors (funcall test-thunk))
+      (declare (ignore value))
       (if (funcall comparator condition expected-condition)
 	  (handle-test-success condition)
 	  (handle-test-failure condition)))))

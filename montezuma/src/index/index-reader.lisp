@@ -99,7 +99,7 @@
 
 (defgeneric do-set-norm (index-reader doc field value))
 
-(defgeneric terms (index-reader))
+;;(defgeneric terms (index-reader))
 
 (defgeneric term-doc-freq (index-reader term))
 

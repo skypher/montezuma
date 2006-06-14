@@ -266,7 +266,8 @@
 	  (T NIL))))
 
 
-(defmethod read-segment-term-doc-enum ((self multi-term-doc-enum) docs freqs &optional fixme)
+(defmethod read-segment-term-doc-enum ((self multi-term-doc-enum) docs freqs &optional start)
+  (declare (ignore start))
   (with-slots (current pointer readers base starts) self
     (let ((got 0)
 	  (last-got 0)

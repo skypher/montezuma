@@ -54,8 +54,8 @@
 			       :directory dir
 			       :analyzer analyzer
 			       :similarity similarity
-			       :blahblah 50)))
-    (add-document-to-index-writer writer doc)))
+			       :max-field-length 50)))
+    (add-document-to-writer writer segment doc)))
 
 (defun index-test-helper-prepare-book-list ()
   (let ((books '(("P.H. Newby" "Something To Answer For" "1969")

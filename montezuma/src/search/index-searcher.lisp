@@ -57,10 +57,12 @@
   (let* ((filter (getf options :filter))
 	 (first-doc (or (getf options :first-doc) 0))
 	 (num-docs (or (getf options :num-docs) 10))
-	 (max-size (+ first-doc num-docs))
+	 (max-size (+ first-doc num-docs)))
+    #||
 	 (sort (getf options :sort)))
     (when (and sort (not (typep sort 'sort)))
       (setf sort (make-instance 'sort :sort sort)))
+    ||#
     (when (<= num-docs 0)
       (error ":num-docs must be greater than zero to run a search."))
     (when (< first-doc 0)
@@ -72,16 +74,17 @@
 			 :score-docs '())
 	  (let ((bits (unless (null filter)
                         (bits filter (reader self))))
-		(hq (if sort
+		(hq #||(if sort
 			(let ((fields (if (typep sort 'sort)
 					  (fields sort)
 					  sort)))
 			  (make-instance 'field-sorted-hit-queue
 					 :reader (reader self)
 					 :fields fields
-					 :max-size max-size))
+					 :max-size max-size))||#
 			(make-instance 'hit-queue
-				       :max-size max-size))))
+				       :max-size max-size)))
+		 
 	    (let ((total-hits 0)
 		  (minimum-score 0.0))
 	      (each-hit scorer

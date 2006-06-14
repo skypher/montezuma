@@ -24,12 +24,14 @@
 	       (field-num1 (read-vint fstream))
 	       (byte1 (read-byte fstream))
 	       (data1 (read-string fstream)))
+	   (declare (ignore field-num1))
 	   (test field-writer-1 stored 2)
 	   (test field-writer-2 (and (logbitp +field-is-tokenized-bit+ byte1) T) T)
 	   (test field-writer-3 data1 "daily news" #'string=))
 	 (let ((field-num2 (read-vint fstream))
 	       (byte2 (read-byte fstream))
 	       (data2 (read-string fstream)))
+	   (declare (ignore field-num2))
 	   (test field-writer-4 (logbitp byte2 +field-is-tokenized-bit+) NIL)
 	   (test field-writer-5 data2 "Nothing happened today." #'string=)))))))
 
@@ -127,13 +129,13 @@
    (let ((field (document-field (fixture-var 'docres) "binary_field")))
      (test binary-field-1
 	   field
-	   `(,*index-test-helper-binary-data* T NIL NIL NIL T)
+	   (list *index-test-helper-binary-data* T NIL NIL NIL T)
 	   #'field-values-equal)))
   (:testfun test-compressed-binary-field
    (let ((field (document-field (fixture-var 'docres) "compressed_binary_field")))
      (test compressed-binary-field-1
 	   field
-	   `(,*index-test-helper-compressed-binary-data* T NIL NIL NIL T)
+	   (list *index-test-helper-compressed-binary-data* T NIL NIL NIL T)
 	   #'field-values-equal))))
 
   

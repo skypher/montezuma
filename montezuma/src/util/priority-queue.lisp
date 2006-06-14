@@ -112,6 +112,8 @@
   (with-slots (predicate) queue
     (funcall predicate a b)))
 
+(defgeneric size (container))
+
 (defmethod size ((queue priority-queue))
   (length (slot-value queue 'contents)))
 
