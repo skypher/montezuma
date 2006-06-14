@@ -129,18 +129,26 @@
     (close dir)
     (setf open-p NIL)))
 
+(defgeneric reader (index))
+
 (defmethod reader ((self index))
   (ensure-reader-open self)
   (slot-value self 'reader))
+
+(defgeneric searcher (index))
 
 (defmethod searcher ((self index))
   (ensure-searcher-open self)
   (slot-value self 'searcher))
 
+(defgeneric writer (index))
+
 (defmethod writer ((self index))
   (ensure-writer-open self)
   (slot-value self 'writer))
 
+
+(defgeneric add-document-to-index (index doc &optional analyzer))
 
 (defmethod add-document-to-index ((self index) doc &optional analyzer)
   (let ((fdoc nil)
@@ -197,9 +205,13 @@
 ;; num_docs::   The number of results returned. Default is 10
 ;; sort::       An array of SortFields describing how to sort the results.
 
+(defgeneric search (index query &rest options))
+
 (defmethod search ((self index) query &rest options)
   (do-search self query options))
 
+
+(defgeneric search-each (index query fn &optional options))
 
 (defmethod search-each ((self index) query fn &optional options)
   (let ((hits (do-search self query options)))
@@ -230,6 +242,8 @@
 	(flush self))
       count)))
 
+(defgeneric query-delete (index query))
+
 (defmethod query-delete ((self index) query)
   (let ((reader (reader self))
 	(searcher (searcher self))
@@ -244,6 +258,8 @@
 (defmethod deleted-p ((self index) n)
   (deleted-p (reader self) n))
 
+
+(defgeneric update (index id new-val))
 
 (defmethod update ((self index) id new-val)
   (with-slots (options) self
@@ -277,6 +293,8 @@
     (when (slot-value self 'auto-flush-p)
       (flush self))))
 
+(defgeneric query-update (index query new-val))
+
 (defmethod query-update ((self index) query new-val)
   (let ((searcher (searcher self))
 	(reader (reader self))
@@ -307,6 +325,8 @@
 
 (defmethod has-deletions-p ((self index))
   (has-deletions-p (reader self)))
+
+(defgeneric has-writes (index))
 
 (defmethod has-writes ((self index))
   (slot-value self 'has-writes))
@@ -339,6 +359,8 @@
 	   (apply #'add-indexes (writer self) indexes))
 	  (T
 	   (error "Unknown index type ~S when trying to merge indexes." (elt indexes 0))))))
+
+(defgeneric persist (index directory &key create-p))
 
 (defmethod persist ((self index) directory &key (create-p T))
   (flush self)
@@ -397,11 +419,15 @@
 				    :reader reader)))))
 
 
+(defgeneric do-search (index query options))
+
 (defmethod do-search ((self index) query options)
   (let ((searcher (searcher self))
 	(query (process-query self query)))
     (apply #'search searcher query options)))
 
+
+(defgeneric process-query (index query))
 
 (defmethod process-query ((self index) query)
   (if (stringp query)

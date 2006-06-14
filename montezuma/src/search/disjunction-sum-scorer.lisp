@@ -18,6 +18,8 @@
   (when (<= (slot-value self 'num-scorers) 1)
     (error "There must be at least two sub-scorers.")))
 
+(defgeneric init-scorer-queue (disjunction-sum-scorer))
+
 (defmethod init-scorer-queue ((self disjunction-sum-scorer))
   (with-slots (scorer-queue sub-scorers num-scorers) self
     (setf scorer-queue (make-instance 'scorer-queue
@@ -41,6 +43,8 @@
 (defmethod less-than ((self scorer-queue) scorer1 scorer2)
   (< (document scorer1) (document scorer2)))
 
+
+(defgeneric advance-after-current (disjunction-sum-scorer))
 
 (defmethod advance-after-current ((self disjunction-sum-scorer))
   (with-slots (scorer-queue current-doc current-score minimum-num-matchers num-matchers num-scorers) self
@@ -72,6 +76,8 @@
 	       (when (< (size scorer-queue) minimum-num-matchers)
 		 (return-from advance-after-current NIL)))))))
 
+
+(defgeneric document (disjunction-sum-scorer))
 
 (defmethod document ((self disjunction-sum-scorer))
   (slot-value self 'current-doc))

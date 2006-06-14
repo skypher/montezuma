@@ -75,6 +75,8 @@
       (undelete-all sub-reader))
     (setf has-deletions-p NIL)))
 
+(defgeneric reader-index (multi-reader n))
+
 (defmethod reader-index ((self multi-reader) n)
   (with-slots (sub-readers starts) self
     (let ((lo 0)
@@ -293,6 +295,8 @@
        while (> target (doc self)))
   T)
 
+(defgeneric multi-term-docs (multi-term-doc-enum i))
+
 (defmethod multi-term-docs ((self multi-term-doc-enum) i)
   (with-slots (term reader-term-docs readers) self
     (if (null term)
@@ -302,6 +306,8 @@
 	    (setf result (setf (aref reader-term-docs i) (term-docs-from-reader self (aref readers i)))))
 	  (seek result term)
 	  result))))
+
+(defgeneric term-docs-from-reader (multi-term-doc-enum reader))
 
 (defmethod term-docs-from-reader ((self multi-term-doc-enum) reader)
   (term-docs reader))

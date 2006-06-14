@@ -21,6 +21,8 @@
 	  (T
 	   (to-non-excluded self)))))
 
+(defgeneric to-non-excluded (req-excl-scorer))
+
 (defmethod to-non-excluded ((self req-excl-scorer))
   (with-slots (excl-scorer req-scorer) self
     (let ((excl-doc (document excl-scorer)))

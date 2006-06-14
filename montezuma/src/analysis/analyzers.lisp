@@ -15,6 +15,8 @@
   (declare (ignore field-name))
   0)
 
+(defgeneric all-tokens (analyzer field string))
+
 (defmethod all-tokens ((self analyzer) field string)
   (let ((token-stream (token-stream self field string)))
     (do ((token (next-token token-stream) (next-token token-stream))

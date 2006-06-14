@@ -97,6 +97,7 @@
 		       :query self
 		       :searcher searcher))))
 
+#||
 (defmethod extract-terms ((self phrase-query) query-terms)
   (add-all query-terms (slot-value self 'terms)))
-
+||#

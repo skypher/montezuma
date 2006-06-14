@@ -16,10 +16,12 @@
 (defmethod document ((self match-all-scorer))
   (slot-value self 'count))
 
+#||
 (defmethod explain ((self match-all-scorer))
   (make-instance 'explanation
 		 :thing 1.0
 		 :thing2 "match-all-query"))
+||#
 
 (defmethod next? ((self match-all-scorer))
   (with-slots (count max-doc reader) self

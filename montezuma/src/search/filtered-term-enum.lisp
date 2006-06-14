@@ -7,6 +7,8 @@
    (reader :initform nil)))
 
 
+(defgeneric (setf enum) (enum filtered-term-enum))
+
 (defmethod (setf enum) (enum (self filtered-term-enum))
   (setf (slot-value self 'enum) enum)
   (let ((term (term enum)))

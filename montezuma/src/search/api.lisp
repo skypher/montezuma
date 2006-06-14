@@ -98,3 +98,7 @@ returns:: +-1+ if +i+ should come before +j+
 
 (defgeneric scorer (weight reader)
   (:documentation "Constructs a scorer for this. "))
+
+(defgeneric each-hit (scorer fn))
+
+(defgeneric each-hit-up-to (scorer max-docs fn))

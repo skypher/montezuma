@@ -23,11 +23,15 @@
 (defmethod (setf occur) :after (value (self boolean-clause))
   (set-fields self value))
 
+#||
 (defmethod eql? ((self boolean-clause) (other t))
   (and (typep other 'boolean-clause)
        (and (equal (query self) (query other))
             (equal (required? self) (required? other))
             (equal (prohibited? self) (prohibited? other)))))
+||#
+
+(defgeneric set-fields (boolean-clause occur))
 
 (defmethod set-fields ((self boolean-clause) occur)
   (ecase occur

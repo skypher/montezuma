@@ -53,6 +53,8 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
 (defmethod add-query ((self boolean-query) query occur)
   (add-clause self (make-instance 'boolean-clause :query query :occur occur)))
 
+(defgeneric add-clause  (boolean-query clause))
+
 (defmethod add-clause  ((self boolean-query) clause)
   (when (> (length (clauses self)) (max-clause-count self))
     (error 'too-many-clauses-error))
@@ -96,8 +98,7 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
     (extract-terms (query clause) terms)))
 
 
-(defmethod combine ((self boolean-query) queries)
-  )
+(defgeneric combine (boolean-query queries))
 
 (defmethod initialize-copy :after ((copy boolean-query) original)
   (setf (clauses copy) (clone (clauses original))))

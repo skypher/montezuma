@@ -60,11 +60,15 @@
 	
 
 
+(defgeneric (setf field-stored) (stored field))
+
 (defmethod (setf field-stored) (stored (self field))
   (check-type stored (member NIL T :compress))
   (setf (field-stored-p self) (and stored T))
   (setf (field-compressed-p self) (eq stored :compress))
   stored)
+
+(defgeneric (setf field-index) (index field))
 
 (defmethod (setf field-index) (index (self field))
   (check-type index (member NIL :tokenized :untokenized :no-norms))
@@ -72,6 +76,8 @@
   (setf (field-tokenized-p self) (eq index :tokenized))
   (setf (field-omit-norms-p self) (eq index :no-norms))
   index)
+
+(defgeneric (setf field-store-term-vector) (store-term-vector field))
 
 (defmethod (setf field-store-term-vector) (store-term-vector (self field))
   (check-type store-term-vector (member NIL T :with-positions :with-offsets :with-positions-offsets))

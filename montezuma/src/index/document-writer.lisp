@@ -22,6 +22,8 @@
 (defparameter *frq-extension* "frq")
 (defparameter *prx-extension* "prx")
 
+(defgeneric add-document-to-writer (document-writer segment document))
+
 (defmethod add-document-to-writer ((self document-writer) segment document)
   (with-slots (field-infos directory posting-table field-lengths
 			   field-positions field-offsets field-boosts) self
@@ -45,6 +47,8 @@
 	(let ((postings (sort-posting-table self)))
 	  (write-postings self postings segment))
 	(write-norms self segment)))))
+
+(defgeneric invert-document (document-writer doc))
 
 (defmethod invert-document ((self document-writer) doc)
   (with-slots (field-infos field-offsets field-positions analyzer max-field-length
@@ -114,6 +118,8 @@
 	    (setf (aref field-offsets field-number) offset)))))))
 
 
+(defgeneric add-position (document-writer field text position tv-offset-info))
+
 (defmethod add-position ((self document-writer) field text position tv-offset-info)
   (with-slots (term-buffer posting-table) self
     (set-term term-buffer field text)
@@ -135,12 +141,16 @@
 				 :position position
 				 :offset tv-offset-info)))))))
 
+(defgeneric sort-posting-table (document-writer))
+
 (defmethod sort-posting-table ((self document-writer))
   (with-slots (posting-table) self
     (let ((postings (coerce (loop for posting being the hash-values in posting-table
 				 collect posting)
 			    'vector)))
       (setf postings (sort postings #'term< :key #'term)))))
+
+(defgeneric write-postings (document-writer postings segment))
 
 (defmethod write-postings ((self document-writer) postings segment)
   (with-slots (directory field-infos term-index-interval) self
@@ -201,6 +211,8 @@
 	  (when prox (close prox))
 	  (when tis-writer (close tis-writer))
 	  (when tv-writer (close tv-writer)))))))
+
+(defgeneric write-norms (document-writer segment))
 
 (defmethod write-norms ((self document-writer) segment)
   (with-slots (directory field-infos field-boosts similarity field-lengths) self

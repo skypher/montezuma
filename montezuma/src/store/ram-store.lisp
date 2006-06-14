@@ -94,6 +94,8 @@
       (assert (string= name (file-name file)))
       (make-instance 'ram-index-input :file file))))
 
+(defgeneric print-file (ram-directory name))
+
 (defmethod print-file ((self ram-directory) name)
   (with-slots (files) self
     (let* ((input (make-instance 'ram-index-input :file (gethash (normalize-file-name name) files)))
@@ -162,6 +164,8 @@
   (with-slots (file) self
     (setf (mtime file) (get-universal-time))))
 	   
+(defgeneric write-to (ram-index-output output))
+
 (defmethod write-to ((self ram-index-output) output)
   (flush self)
   (let ((file (slot-value self 'file))
@@ -172,8 +176,12 @@
 	(let ((len (if (= i last-buffer-number) last-buffer-offset buffer-size)))
 	  (write-bytes output buffer len))))))
 
+(defgeneric make-new-buffer (ram-index-output))
+
 (defmethod make-new-buffer ((self ram-index-output))
   (make-array (list (buffer-size self))))
+
+(defgeneric extend-buffer-if-necessary (ram-index-output buffer-number))
 
 (defmethod extend-buffer-if-necessary ((self ram-index-output) buffer-number)
   (with-slots (file) self

@@ -1,8 +1,6 @@
 (in-package #:montezuma)
 
 (defgeneric term-field (term))
-(defgeneric term-text (term))
-
   
 (defstruct (term (:constructor make-term (field text)) (:conc-name %term-))
   field

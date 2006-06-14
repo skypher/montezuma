@@ -38,9 +38,13 @@
     ))
 
 
+(defgeneric full-path-for-file (fs-directory file))
+
 (defmethod full-path-for-file ((self fs-directory) file)
   (with-slots (path) self
     (merge-pathnames (pathname file) path)))
+
+(defgeneric refresh (fs-directory))
 
 (defmethod refresh ((self fs-directory))
   ;; Delete all files

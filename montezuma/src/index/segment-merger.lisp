@@ -22,13 +22,19 @@
    :term-index-interval *index-writer-default-term-index-interval*))
 
 
+(defgeneric add-reader (segment-merger reader))
+
 (defmethod add-reader ((self segment-merger) reader)
   (with-slots (readers) self
     (vector-push-extend reader readers)))
 
+(defgeneric segment-reader (segment-merger i))
+
 (defmethod segment-reader ((self segment-merger) i)
   (with-slots (readers) self
     (aref readers i)))
+
+(defgeneric merge (segment-merger))
 
 (defmethod merge ((self segment-merger))
   (with-slots (field-infos) self
@@ -39,9 +45,13 @@
 	(merge-vectors self))
     value)))
 
+(defgeneric close-readers (segment-merger))
+
 (defmethod close-readers ((self segment-merger))
   (dosequence (reader (slot-value self 'readers))
     (close reader)))
+
+(defgeneric create-compound-file (segment-merger filename))
 
 (defmethod create-compound-file ((self segment-merger) filename)
   (with-slots (directory segment field-infos) self
@@ -64,6 +74,9 @@
       (reverse files))))
 
 
+(defgeneric add-indexed (segment-merger reader field-infos field-names store-term-vectors
+					store-position-with-term-vector store-offset-with-term-vector))
+
 (defmethod add-indexed ((self segment-merger) reader field-infos field-names store-term-vectors
 			store-position-with-term-vector store-offset-with-term-vector)
   (dosequence (field field-names)
@@ -75,6 +88,8 @@
 		    :store-offset store-offset-with-term-vector
 		    :omit-norms (not (has-norms-p reader field)))))
 
+
+(defgeneric merge-fields (segment-merger))
 
 (defmethod merge-fields ((self segment-merger))
   (with-slots (field-infos readers segment directory) self
@@ -107,6 +122,8 @@
 	  (close fields-writer))
 	doc-count))))
 
+(defgeneric merge-vectors (segment-merger))
+
 (defmethod merge-vectors ((self segment-merger))
   (with-slots (directory segment readers field-infos) self
     (let ((term-vectors-writer (make-instance 'term-vectors-writer
@@ -120,6 +137,8 @@
 		 (unless (deleted-p reader doc-num)
 		   (add-all-doc-vectors term-vectors-writer (get-term-vectors reader doc-num))))))
 	(close term-vectors-writer)))))
+
+(defgeneric merge-terms (segment-merger))
 
 (defmethod merge-terms ((self segment-merger))
   (with-slots (directory segment readers freq-output prox-output term-infos-writer
@@ -140,6 +159,8 @@
       (when prox-output (close prox-output))
       (when term-infos-writer (close term-infos-writer))
       (when queue (close queue)))))
+
+(defgeneric merge-term-infos (segment-merger))
 
 (defmethod merge-term-infos ((self segment-merger))
   (with-slots (readers queue) self
@@ -174,6 +195,8 @@
 		      (queue-push queue smi)
 		      (close smi)))))))))))
 
+(defgeneric merge-term-info (segment-merger smis n))
+
 (defmethod merge-term-info ((self segment-merger) smis n)
   (with-slots (freq-output prox-output term-info term-infos-writer) self
     (let ((freq-pointer (pos freq-output))
@@ -183,6 +206,8 @@
       (when (> df 0)
 	(set-values term-info df freq-pointer prox-pointer (- skip-pointer freq-pointer))
 	(add-term term-infos-writer (term (term-buffer (aref smis 0))) term-info)))))
+
+(defgeneric append-postings (segment-merger smis n))
 
 (defmethod append-postings ((self segment-merger) smis n)
   (with-slots (freq-output prox-output skip-interval) self
@@ -220,6 +245,8 @@
 			(setf last-position position))))))))))
       df)))
 
+(defgeneric reset-skip (segment-merger))
+
 (defmethod reset-skip ((self segment-merger))
   (with-slots (skip-buffer last-skip-doc last-skip-freq-pointer
 	       last-skip-prox-pointer freq-output prox-output) self
@@ -227,6 +254,8 @@
     (setf last-skip-doc 0)
     (setf last-skip-freq-pointer (pos freq-output))
     (setf last-skip-prox-pointer (pos prox-output))))
+
+(defgeneric buffer-skip (segment-merger doc))
 
 (defmethod buffer-skip ((self segment-merger) doc)
   (with-slots (skip-buffer freq-output prox-output last-skip-prox-pointer
@@ -240,11 +269,15 @@
 	    last-skip-freq-pointer freq-pointer
 	    last-skip-prox-pointer prox-pointer))))
 
+(defgeneric write-skip (segment-merger))
+
 (defmethod write-skip ((self segment-merger))
   (with-slots (freq-output skip-buffer) self
     (let ((skip-pointer (pos freq-output)))
       (write-to skip-buffer freq-output)
       skip-pointer)))
+
+(defgeneric merge-norms (segment-merger))
 
 (defmethod merge-norms ((self segment-merger))
   (with-slots (field-infos readers segment directory) self

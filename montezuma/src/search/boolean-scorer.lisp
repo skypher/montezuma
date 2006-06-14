@@ -6,6 +6,8 @@
    (num-matchers :accessor num-matchers)
    (similarity :initarg :similarity)))
 
+(defgeneric init (coordinator))
+
 (defmethod init ((self coordinator))
   (let* ((max-coord (slot-value self 'max-coord))
 	 (coord-factors (make-array (+ max-coord 1)))
@@ -13,6 +15,8 @@
     (dotimes (i (+ max-coord 1))
       (setf (aref coord-factors i) (coord similarity i max-coord)))
     (setf (slot-value self 'coord-factors) coord-factors)))
+
+(defgeneric init-doc (coordinator))
 
 (defmethod init-doc ((self coordinator))
   (with-slots (num-matchers) self

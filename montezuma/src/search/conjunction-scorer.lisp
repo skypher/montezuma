@@ -13,12 +13,18 @@
 (defun make-scorers-array ()
   (make-array 10 :adjustable T :fill-pointer 0))
 
+(defgeneric add (conjunction-scorer scorer))
+
 (defmethod add ((self conjunction-scorer) scorer)
   (vector-push-extend scorer (scorers self))
   (scorers self))
 
+(defgeneric first-scorer (conjunction-scorer))
+
 (defmethod first-scorer ((self conjunction-scorer))
   (aref (scorers self) 0))
+
+(defgeneric last-scorer (conjunction-scorer))
 
 (defmethod last-scorer ((self conjunction-scorer))
   (aref (scorers self) (1- (length (scorers self)))))
@@ -33,6 +39,8 @@
 	  (more-p
 	   (setf more-p (next? (last-scorer self)))))
     (do-next self)))
+
+(defgeneric do-next (conjunction-scorer))
 
 (defmethod do-next ((self conjunction-scorer))
   (with-slots (more-p scorers) self
@@ -69,6 +77,8 @@
     (* score (slot-value self 'coord))))
 
 
+(defgeneric do-init (conjunction-scorer init-scorers-p))
+
 (defmethod do-init ((self conjunction-scorer) init-scorers-p)
   (with-slots (coord more-p scorers first-time-p) self
     (setf coord (coord (similarity self) (length scorers) (length scorers)))
@@ -81,6 +91,8 @@
       (when more-p
 	(sort-scorers self)))
     (setf first-time-p NIL)))
+
+(defgeneric sort-scorers (conjunction-scorer))
 
 (defmethod sort-scorers ((self conjunction-scorer))
   (with-slots (scorers) self

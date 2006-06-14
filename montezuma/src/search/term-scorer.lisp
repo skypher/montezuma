@@ -90,6 +90,8 @@
 
 
   
+#||
 (defmethod explain (document)
   ;;??
   )
+||#

@@ -21,5 +21,7 @@
   (= 0 (token-compare t1 t2)))
 
 
+(defgeneric term-text (token))
+
 (defmethod term-text ((token token))
   (token-image token))
