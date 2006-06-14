@@ -93,12 +93,9 @@
 (defgeneric (setf document-values) (value document field-name))
 
 (defmethod (setf document-values) (value (document document) field-name)
-  (with-slots (fields) document
-    (let ((field (document-field document field-name)))
-      (if field
-	  (setf (field-data field) value)
-	  (add-field document (make-field field-name value))))))
-
-	     
+  (let ((field (document-field document field-name)))
+    (if field
+	(setf (field-data field) value)
+	(add-field document (make-field field-name value)))))
 
 

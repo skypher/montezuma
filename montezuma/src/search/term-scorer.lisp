@@ -41,9 +41,11 @@
                                 (aref (norms self) (document self)))))
           (funcall fn (document self) score))))
 
+#||
 (defmethod each-hit-up-to ((self term-scorer) (max-docs integer) fn)
   ;;??
   )
+||#
 
 (defmethod next? ((self term-scorer))
   (incf (pointer self))

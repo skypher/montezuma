@@ -45,6 +45,7 @@
 		       :norms (get-norms reader (term-field (term (query self)))))
 	nil)))
 
+#||
 (defmethod explain-score ((self term-weight) reader doc)
   (let ((explanation (make-instance 'explanation 
                        :description (format nil "Weight(~A in ~A), product of:" 
@@ -66,14 +67,18 @@
     
     
     (values explanation)))
+||#
+
 
 (defmethod create-weight ((self term-query) searcher)
   (make-instance 'term-weight
     :searcher searcher
     :query self))
 
+#||
 (defmethod extract-terms ((self term-query) terms)
   (<< terms (term self)))
+||#
 
 ;;?? to-s
 ;;?? eql?

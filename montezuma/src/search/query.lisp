@@ -14,8 +14,8 @@
     (normalize-weight weight norm)
     weight))
 
-(defmethod compare ((self query) queries)
 #|
+(defmethod compare ((self query) queries)
       queries.each do |query|
         if self != query
           raise ArgumentError
@@ -23,11 +23,11 @@
       end
       return self
 
-|#
   )
+|#
 
-(defmethod merge-boolean-queries ((self query) queries)
 #|
+(defmethod merge-boolean-queries ((self query) queries)
       all_clauses = Set.new
       queries.each do |query|
         query.clauses.each do |clause|
@@ -41,8 +41,8 @@
         result << clause
       end
       return result
-|#  
   )
+|#  
 
 
 
