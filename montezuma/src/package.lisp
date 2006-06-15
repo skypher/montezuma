@@ -35,12 +35,15 @@
    #:index-writer
    #:document
    #:add-field
+   #:make-field
    #:add-document
    #:add-document-to-index
    #:add-document-to-index-writer
+   #:search-each
    #:optimize
    #:close
    #:field
+   #:field-data
    #:search
    #:index
    #:writer
@@ -57,6 +60,6 @@
    #:score
    #:size
    #:get-document
-   
+   #:document-field
    #:term-query
    #:index-searcher))
