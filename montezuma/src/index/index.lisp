@@ -14,6 +14,7 @@
       :close-directory-p
       :occur-default
       :wild-lower-p
+      :fields
       :default-slop
       :key
       :use-compound-file-p
@@ -439,7 +440,8 @@
 			  options)))
 	;; We need to set this every time, in case a new field has
 	;; been added.
-	(setf (fields qp) (coerce (get-field-names reader) 'vector))
+	(unless (get-index-option options :fields)
+	  (setf (fields qp) (coerce (get-field-names reader) 'vector)))
 	(parse qp query))
       query))
 

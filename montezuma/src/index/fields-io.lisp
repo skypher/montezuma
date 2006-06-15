@@ -62,7 +62,7 @@
 			  (setf store :compress)
 			  (let ((b (make-array (read-vint fields-stream))))
 			    (read-bytes fields-stream b 0 (length b))
-			    (setf data (coerce (uncompress b) 'string))))
+			    (setf data (bytes-to-string (uncompress b)))))
 			(setf data (read-string fields-stream)))
 		    (let ((stv (if (field-store-term-vector-p fi)
 				   (cond ((and (field-store-positions-p fi)
@@ -127,7 +127,7 @@
 	(if (field-compressed-p field)
 	    (let ((data (if (field-binary-p field)
 			    (compress (binary-value field))
-			    (compress (string-value field)))))
+			    (compress (string-to-bytes (string-value field))))))
 	      (save-data fields-writer data))
 	    (if (field-binary-p field)
 		(save-data fields-writer (binary-value field))
@@ -135,7 +135,9 @@
 
 (defun compress (input)
   ;; FIXME: uh huh.
-  input)
+  (let ((output (make-array (list (length input)))))
+    (cl:replace output input)
+    output))
 
 (defgeneric save-data (fields-writer data))
 

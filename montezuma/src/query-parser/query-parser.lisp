@@ -11,7 +11,7 @@
    (wild-lower :initarg :wild-lower)
    (default-occur :initarg :default-occur)
    (default-slop :initarg :default-slop)
-   (fields :accessor fields)
+   (fields :initform '() :accessor fields :initarg :fields)
    (handle-parse-errors :initarg :handle-parse-errors))
   (:default-initargs
    :default-field "*"
@@ -35,6 +35,13 @@
 (defgeneric $set-query-field (parser field))
 (defgeneric use-active-field (parser))
 (defgeneric parse (parser query-string))
+
+
+(defmacro do-multiple-fields ((field-var parser field-spec) &body body)
+  `(combine-multiple-fields (map 'list
+			     #'(lambda (,field-var)
+				 ,@body)
+			     (compute-multiple-fields ,parser ,field-spec))))
 
 
 
@@ -66,8 +73,8 @@
       ($add-or-clause parser clauses clause)))
 
 (defmethod $get-term-query ((parser query-parser) word)
-  (let* ((field (use-active-field parser))
-	 (tokens (all-tokens (slot-value parser 'analyzer) field word)))
+  (do-multiple-fields (field parser (use-active-field parser))
+  (let ((tokens (all-tokens (slot-value parser 'analyzer) field word)))
     (cond ((= (length tokens) 0)
 	   (make-instance 'term-query
 			  :term (make-term field "")))
@@ -78,7 +85,7 @@
 	   (let ((pq (make-instance 'phrase-query)))
 	     (dolist (token tokens)
 	       (add-term-to-query pq (make-term field (term-text token)) nil (token-increment token)))
-	     pq)))))
+	     pq))))))
 
 (defmethod $get-boolean-clause ((parser query-parser) query occur)
   (make-instance 'boolean-clause
@@ -101,24 +108,24 @@
       (get-normal-phrase-query parser words)))
 
 (defmethod get-normal-phrase-query ((parser query-parser) words)
-  (let ((pq (make-instance 'phrase-query))
-	(field (use-active-field parser)))
-    (setf (slop pq) (slot-value parser 'default-slop))
-    (let ((pos-inc 0))
-      (dolist (word words)
-	(if (null word)
-	    (incf pos-inc)
-	    (let ((tokens (all-tokens (slot-value parser 'analyzer) field word)))
-	      (dolist (token tokens)
-		(add-term-to-query pq (make-term field (term-text token))
-				   nil (+ pos-inc (token-increment token)))
-		(setf pos-inc 0))))))
-    pq))
+  (do-multiple-fields (field parser (use-active-field parser))
+    (let ((pq (make-instance 'phrase-query)))
+      (setf (slop pq) (slot-value parser 'default-slop))
+      (let ((pos-inc 0))
+	(dolist (word words)
+	  (if (null word)
+	      (incf pos-inc)
+	      (let ((tokens (all-tokens (slot-value parser 'analyzer) field word)))
+		(dolist (token tokens)
+		  (add-term-to-query pq (make-term field (term-text token))
+				     nil (+ pos-inc (token-increment token)))
+		  (setf pos-inc 0))))))
+      pq)))
 
 (defmethod $get-wild-query ((parser query-parser) word)
-  (make-instance 'wildcard-query
-		 :term (make-term (use-active-field parser)
-				  word)))
+  (do-multiple-fields (field parser (use-active-field parser))
+    (make-instance 'wildcard-query
+		   :term (make-term field word))))
 
 (defmethod $set-query-field ((parser query-parser) field)
   (setf (slot-value parser 'field) field))
@@ -129,7 +136,20 @@
 	(setf (slot-value parser 'field) nil))
       (slot-value parser 'default-field)))
 
+(defmethod combine-multiple-fields (queries)
+  (if (= (length queries) 1)
+      (first queries)
+      (let ((bq (make-instance 'boolean-query)))
+	(dolist (q queries)
+	  (add-clause bq (make-instance 'boolean-clause
+					:query q
+					:occur :should-occur)))
+	bq)))
 
+(defmethod compute-multiple-fields ((parser query-parser) field-spec)
+  (if (string= field-spec "*")
+      (fields parser)
+      (list field-spec)))
 
 ;; Note that the following grammar rules must be used in a parser
 ;; created with a parselet form, with a lexical context that includes
@@ -185,6 +205,10 @@
 (defprod field-query ()
   (^ ((@ (word ":") ($set-query-field parser word)) unboosted-query)
      unboosted-query))
+
+
+(defprod field-name ()
+  (/ wild-word word))
 
 (defprod wild-query ()
   (^ wild-word ($get-wild-query parser wild-word)))

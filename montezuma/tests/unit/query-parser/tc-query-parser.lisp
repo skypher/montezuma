@@ -68,7 +68,8 @@
 
 (defun check-query-parse (query-string expected-parse-tree)
   (atest check-query-parse
-	 (parse (make-instance 'test-query-parser)
+	 (parse (make-instance 'test-query-parser
+			       :fields '("f1" "f2"))
 		query-string)
 	 expected-parse-tree
 	 #'(lambda (a b) (tree-equal a b :test #'equal))
