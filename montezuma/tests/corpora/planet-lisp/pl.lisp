@@ -110,10 +110,12 @@
       ;; in a database, say, the cached version could be retrieved from there
       ;; instead of from the Montezuma index.
       (montezuma:add-field doc (montezuma:make-field "description" description :index :tokenized :stored T))
-      ;; To avoid the problem of, e.g, a phrase query like "OS X sucks" not
-      ;; matching HTML like "OS X <b>sucks</b>", we index a text-only version of
-      ;; the post.  We don't need to store a copy of this.
-      (montezuma:add-field doc (montezuma:make-field "text" (strip-html description) :index :tokenized :stored NIL))
+      ;; To avoid the problem of, e.g, a phrase query like "OS X
+      ;; sucks" not matching HTML like "OS X <b>sucks</b>", we index a
+      ;; text-only version of the post.  We don't need to store a copy
+      ;; of this unless we want to try the experimental similar-posts
+      ;; function.
+      (montezuma:add-field doc (montezuma:make-field "text" (strip-html description) :index :tokenized :stored T))
       ;; Finally, add the document to the index.
       (montezuma:add-document-to-index index doc))))
   
@@ -156,34 +158,65 @@
 			       :create-if-missing-p NIL
 			       :fields '("title" "date" "description" "text"))))
 
-(defun search-posts (query &optional options)
+(defun search-posts (query &optional options count-only-p)
   (unless *index*
     (load-index))
-  (let ((num-results 0))
-    (montezuma:search-each *index* query
-			   #'(lambda (doc score)
-			       (when (= num-results 0)
-				 (format T "~&~5A ~19A ~5A ~15A" "Score" "Date" "#" "User")
-				 (format T "~&-------------------------------------------"))
-			       (incf num-results)
-			       (print-result *index* doc score))
-			   options)
-    (format T "~&~%~S results displayed." num-results)))
+  (let ((results '()))
+    (multiple-value-bind (value time)
+	(time-thunk #'(lambda ()
+			(montezuma:search-each *index* query
+					       #'(lambda (doc score)
+						   (push (cons doc score) results))
+					       options)))
+      (declare (ignore value))
+      (unless count-only-p
+	(dolist (result (reverse results))
+	  (print-result (car result) (cdr result))))
+      (format T "~&~S results in ~,3F seconds." (length results) time))))
 
-(defun print-result (index doc score)
-  (let ((paste (montezuma:get-document index doc)))
+
+(defun print-result (doc score)
+  (let ((paste (montezuma:get-document *index* doc)))
     (flet ((get-field (name) 
 	     (montezuma:field-data (montezuma:document-field paste name))))
       (let ((title (get-field "title")))
 	(when (= (length title) 0)
 	  (setf title "[untitled]"))
-	(format T "~&~5,2F - ~A~&  ~A~&  ~A~&  ~A~&~%"
+	(format T "~&~5,2F - ~A~&  ~A~&  link: ~A~&  id: ~A~&~%"
 		score
 		title
 		(get-field "displaydate")
 		(get-field "link")
 		(get-field "id"))))))
 
+
+;; -- Similar posts (experimental)
+
+(defmethod similar-posts (id &optional (field "text"))
+  (let* ((doc (montezuma:get-document *index* (montezuma:make-term "id" id)))
+	 (query (document-similarity-query field doc)))
+    (search-posts query)))
+
+(defun tokens-to-similarity-query (field tokens)
+  (let ((bq (make-instance 'montezuma:boolean-query)))
+    (dolist (token tokens)
+      (montezuma:add-query
+       bq
+       (make-instance 'montezuma:term-query
+		      :term (montezuma:make-term field
+						 (montezuma:token-image token)))
+       :should-occur))
+    bq))
+
+(defun document-similarity-query (field document)
+  (let* ((field-value (montezuma:field-data (montezuma:document-field document field)))
+	 (tokens (montezuma:all-tokens (montezuma:analyzer *index*)
+				       field 
+				       field-value)))
+    (tokens-to-similarity-query field tokens)))
+	
+
+;; -- Misc.
 
 (defun strip-html (string)
   "Removes HTML tags from a string.  e.g., \"foo <b>bar</b>\" becomes \"foo bar\"."
@@ -206,12 +239,14 @@
 		 (setf in-tag-p NIL))))))))
 
 (defun date-string (universal-time)
+  "Turns a universal time into a string like \"2006-06-06\"."
   (multiple-value-bind (second minute hour date month year)
       (decode-universal-time universal-time)
     (declare (ignore second minute hour))
     (format nil "~D-~2,'0D-~2,'0D" year month date)))
 
 (defun timestamp-string (universal-time)
+  "Turns a universal time into a string like \"2006-06-06 23:59:59\"."
   (multiple-value-bind (second minute hour date month year)
       (decode-universal-time universal-time)
     (format nil "~D-~2,'0D-~2,'0D ~2,'0D:~2,'0D:~2,'0D"
