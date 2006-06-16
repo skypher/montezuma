@@ -110,12 +110,10 @@
       ;; in a database, say, the cached version could be retrieved from there
       ;; instead of from the Montezuma index.
       (montezuma:add-field doc (montezuma:make-field "description" description :index :tokenized :stored T))
-      ;; To avoid the problem of, e.g, a phrase query like "OS X
-      ;; sucks" not matching HTML like "OS X <b>sucks</b>", we index a
-      ;; text-only version of the post.  We don't need to store a copy
-      ;; of this unless we want to try the experimental similar-posts
-      ;; function.
-      (montezuma:add-field doc (montezuma:make-field "text" (strip-html description) :index :tokenized :stored T))
+      ;; To avoid the problem of, e.g, a phrase query like "OS X sucks" not
+      ;; matching HTML like "OS X <b>sucks</b>", we index a text-only version of
+      ;; the post.  We don't need to store a copy of this field.
+      (montezuma:add-field doc (montezuma:make-field "text" (strip-html description) :index :tokenized :stored NIL))
       ;; Finally, add the document to the index.
       (montezuma:add-document-to-index index doc))))
   
@@ -142,8 +140,7 @@
       (let ((post (cl:read in)))
 	  ;; Add an :md5 property (taken from the filename,
 	  ;; e.g. "a4cadb7008415fe24a6b0585523900dd.sexp") just to keep track of
-	  ;; it.  I don't know if it's possible for the MD5 to differ from the
-	  ;; :id in the post.
+	  ;; it.
 	(setf post (list* :md5 (pathname-name file) (cdr post)))
 	post))))
 
@@ -153,10 +150,20 @@
 (defun load-index ()
   (setf *index* (make-instance 'montezuma:index
 			       :path *index-path*
-			       :default-field "*"
 			       :create-p NIL
 			       :create-if-missing-p NIL
-			       :fields '("title" "date" "description" "text"))))
+			       ;; Unless otherwise specified, queries will
+			       ;; search all these fields simultaneously.
+			       :default-field "*"
+			       :fields '("title" "description" "text"))))
+
+;; Example searches:
+;;
+;; (search-posts "uav")
+;; (search-posts "+title:robot embedded lisp")
+;; (search-posts "prodigy" '(:num-docs 30))
+;; (search-posts "bug*" '(:num-docs 10 :start-doc 10))
+;; (search-posts "bug*" '(:num-docs 10000) T)
 
 (defun search-posts (query &optional options count-only-p)
   (unless *index*
@@ -190,32 +197,6 @@
 		(get-field "id"))))))
 
 
-;; -- Similar posts (experimental)
-
-(defmethod similar-posts (id &optional (field "text"))
-  (let* ((doc (montezuma:get-document *index* (montezuma:make-term "id" id)))
-	 (query (document-similarity-query field doc)))
-    (search-posts query)))
-
-(defun tokens-to-similarity-query (field tokens)
-  (let ((bq (make-instance 'montezuma:boolean-query)))
-    (dolist (token tokens)
-      (montezuma:add-query
-       bq
-       (make-instance 'montezuma:term-query
-		      :term (montezuma:make-term field
-						 (montezuma:token-image token)))
-       :should-occur))
-    bq))
-
-(defun document-similarity-query (field document)
-  (let* ((field-value (montezuma:field-data (montezuma:document-field document field)))
-	 (tokens (montezuma:all-tokens (montezuma:analyzer *index*)
-				       field 
-				       field-value)))
-    (tokens-to-similarity-query field tokens)))
-	
-
 ;; -- Misc.
 
 (defun strip-html (string)
@@ -238,6 +219,7 @@
 		 ;; Close tag
 		 (setf in-tag-p NIL))))))))
 
+
 (defun date-string (universal-time)
   "Turns a universal time into a string like \"2006-06-06\"."
   (multiple-value-bind (second minute hour date month year)
@@ -245,12 +227,10 @@
     (declare (ignore second minute hour))
     (format nil "~D-~2,'0D-~2,'0D" year month date)))
 
+
 (defun timestamp-string (universal-time)
   "Turns a universal time into a string like \"2006-06-06 23:59:59\"."
   (multiple-value-bind (second minute hour date month year)
       (decode-universal-time universal-time)
     (format nil "~D-~2,'0D-~2,'0D ~2,'0D:~2,'0D:~2,'0D"
 	    year month date hour minute second)))
-
-		 
-
