@@ -88,32 +88,33 @@
       ;; retrieve them from the index, but they should not be tokenized.  (MD5
       ;; is the md5 hash of the post, which is actually taken from the archive
       ;; filename.)
-      (montezuma:add-field doc (montezuma:make-field "md5" md5 :index :untokenized :stored T))
-      (montezuma:add-field doc (montezuma:make-field "id" id :index :untokenized :stored T))
-      (montezuma:add-field doc (montezuma:make-field "link" link :index :untokenized :stored T))
-      ;; The title should be tokenized.  And while it's not super clear in RSS
+      (montezuma:add-field doc (montezuma:make-field "md5" md5 :index :untokenized))
+      (montezuma:add-field doc (montezuma:make-field "id" id :index :untokenized))
+      (montezuma:add-field doc (montezuma:make-field "link" link :index :untokenized))
+      ;; The TITLE should be tokenized.  And while it's not super clear in RSS
       ;; at least, titles are often HTML.
-      (montezuma:add-field doc (montezuma:make-field "title" (strip-html title) :index :tokenized :stored T))
+      (montezuma:add-field doc (montezuma:make-field "title" (strip-html title) :index :tokenized))
       ;; Convert dates from universal times to strings like "2006-06-06".
-      ;; Because of the way Montezuma does date queries (the secret is that
+      ;; Because of the way Montezuma does DATE queries (the secret is that
       ;; they're no different from any other query), there is some advantage in
       ;; decreasing the number of unique terms, so we limit the resolution to
       ;; one day.
-      (montezuma:add-field doc (montezuma:make-field "date" (date-string date) :index :untokenized :stored T))
-      ;; The datedisplay field is not meant to be queried, it exists only to
+      (montezuma:add-field doc (montezuma:make-field "date" (date-string date) :index :untokenized))
+      ;; The DATEDISPLAY field is not meant to be queried, it exists only to
       ;; show search results with timestamps of a nice 1 second resolution, like
       ;; "2006-06-06 23:59:59".
-      (montezuma:add-field doc (montezuma:make-field "displaydate" (timestamp-string date) :index NIL :stored T))
-      ;; The description (the HTML contents of the post) should be tokenized.  I
+      (montezuma:add-field doc (montezuma:make-field "displaydate" (timestamp-string date) :index NIL))
+      ;; The DESCRIPTION (the HTML contents of the post) should be tokenized.  I
       ;; also store it in the index so that the web search interface can offer
       ;; "Cached" links that display the entire post.  If Planet Lisp kept posts
       ;; in a database, say, the cached version could be retrieved from there
       ;; instead of from the Montezuma index.
-      (montezuma:add-field doc (montezuma:make-field "description" description :index :tokenized :stored T))
+      (montezuma:add-field doc (montezuma:make-field "description" description :index :tokenized))
       ;; To avoid the problem of, e.g, a phrase query like "OS X sucks" not
-      ;; matching HTML like "OS X <b>sucks</b>", we index a text-only version of
+      ;; matching HTML like "OS X <b>sucks</b>", we index a TEXT-only version of
       ;; the post.  We don't need to store a copy of this field.
-      (montezuma:add-field doc (montezuma:make-field "text" (strip-html description) :index :tokenized :stored NIL))
+      (montezuma:add-field doc (montezuma:make-field "text" (strip-html description)
+						     :index :tokenized :stored NIL))
       ;; Finally, add the document to the index.
       (montezuma:add-document-to-index index doc))))
   
