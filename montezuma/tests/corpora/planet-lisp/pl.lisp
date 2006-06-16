@@ -161,9 +161,10 @@
 ;;
 ;; (search-posts "uav")
 ;; (search-posts "+title:robot embedded lisp")
-;; (search-posts "prodigy" '(:num-docs 30))
+;; (search-posts "opeth" '(:num-docs 30))
 ;; (search-posts "bug*" '(:num-docs 10 :start-doc 10))
 ;; (search-posts "bug*" '(:num-docs 10000) T)
+;; (search-posts "date:2005-12*")
 
 (defun search-posts (query &optional options count-only-p)
   (unless *index*
