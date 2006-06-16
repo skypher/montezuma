@@ -136,7 +136,7 @@
 	(setf (slot-value parser 'field) nil))
       (slot-value parser 'default-field)))
 
-(defmethod combine-multiple-fields (queries)
+(defun combine-multiple-fields (queries)
   (if (= (length queries) 1)
       (first queries)
       (let ((bq (make-instance 'boolean-query)))
