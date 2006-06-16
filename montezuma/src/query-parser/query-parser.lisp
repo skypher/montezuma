@@ -146,6 +146,8 @@
 					:occur :should-occur)))
 	bq)))
 
+(defgeneric compute-multiple-fields (parser field-spec))
+
 (defmethod compute-multiple-fields ((parser query-parser) field-spec)
   (if (string= field-spec "*")
       (fields parser)
