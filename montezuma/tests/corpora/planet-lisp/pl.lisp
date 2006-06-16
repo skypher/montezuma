@@ -1,5 +1,12 @@
 (cl:defpackage #:planet-lisp-search
-  (:use #:common-lisp))
+  (:use #:common-lisp)
+  (:export #:*posts-path*
+	   #:*index-path*
+	   #:index-posts
+	   #:search-posts))
+
+(in-package #:planet-lisp-search)
+
 
 ;; -- Variables
 
@@ -44,9 +51,9 @@
   (let ((index (make-instance 'montezuma:index
 			      :path *index-path*
 			      :create-p T
-			      :default-field "text"
 			      ;; Setting :min-merge-docs to 5000 helps keep most
-			      ;; of the indexing in RAM.
+			      ;; of the indexing in RAM.  You might want to
+			      ;; decrease this if you're RAM-starved.
 			      :min-merge-docs 5000))
 	(files (all-post-files))
 	(ids (make-hash-table :test #'equal)))
@@ -67,7 +74,7 @@
     ;; Once all the posts have been added to the index, optimize it for queries.
     (time-form "Optimizing took ~,3F seconds."
 	       (montezuma:optimize index))
-    (close index)
+    (montezuma:close index)
     (values)))
 
 						   
@@ -102,11 +109,7 @@
       ;; "Cached" links that display the entire post.  If Planet Lisp kept posts
       ;; in a database, say, the cached version could be retrieved from there
       ;; instead of from the Montezuma index.
-      ;;
-      ;; I compress the description to save some space, assuming that people
-      ;; won't really be viewing the cached versions too often.  (Also,
-      ;; currently Montezuma doesn't support compression so it's a no-op.)
-      (montezuma:add-field doc (montezuma:make-field "description" description :index :tokenized :stored :compress))
+      (montezuma:add-field doc (montezuma:make-field "description" description :index :tokenized :stored T))
       ;; To avoid the problem of, e.g, a phrase query like "OS X sucks" not
       ;; matching HTML like "OS X <b>sucks</b>", we index a text-only version of
       ;; the post.  We don't need to store a copy of this.
@@ -148,8 +151,10 @@
 (defun load-index ()
   (setf *index* (make-instance 'montezuma:index
 			       :path *index-path*
+			       :default-field "*"
 			       :create-p NIL
-			       :create-if-missing-p NIL)))
+			       :create-if-missing-p NIL
+			       :fields '("title" "date" "description" "text"))))
 
 (defun search-posts (query &optional options)
   (unless *index*
@@ -167,14 +172,17 @@
 
 (defun print-result (index doc score)
   (let ((paste (montezuma:get-document index doc)))
-    (format T "~&~5,2F ~A ~A ~15A~&~vt~A"
-	    score
-	    (montezuma:field-data (montezuma:document-field paste "displaydate"))
-	    (montezuma:field-data (montezuma:document-field paste "md5"))
-	    (montezuma:field-data (montezuma:document-field paste "id"))
-	    10
-	    (montezuma:field-data (montezuma:document-field paste "title")))))
-
+    (flet ((get-field (name) 
+	     (montezuma:field-data (montezuma:document-field paste name))))
+      (let ((title (get-field "title")))
+	(when (= (length title) 0)
+	  (setf title "[untitled]"))
+	(format T "~&~5,2F - ~A~&  ~A~&  ~A~&  ~A~&~%"
+		score
+		title
+		(get-field "displaydate")
+		(get-field "link")
+		(get-field "id"))))))
 
 
 (defun strip-html (string)

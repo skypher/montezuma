@@ -1,6 +1,10 @@
-(in-package #:montezuma)
+(cl:defpackage #:paste-search
+  (:use #:common-lisp))
 
-(defparameter *corpus-path* (make-pathname :name nil
+(in-package #:paste-search)
+
+
+(defparameter *pastes-path* (make-pathname :name nil
 					   :type nil
 					   :defaults *load-pathname*))
 
@@ -8,13 +12,13 @@
 (defvar *pastes* nil)
 
 (defun load-pastes ()
-  (with-open-file (f (make-pathname :name "pastes" :type "db" :defaults *corpus-path*)
+  (with-open-file (f (make-pathname :name "pastes" :type "db" :defaults *pastes-path*)
 		     :direction :input)
     (setf *pastes* (cl:read f)))
   (length *pastes*))
 
 (defun save-pastes ()
-  (with-open-file (f (make-pathname :name "pastes" :type "db" :defaults *corpus-path*)
+  (with-open-file (f (make-pathname :name "pastes" :type "db" :defaults *pastes-path*)
 		     :direction :output
 		     :if-exists :supersede)
     (with-standard-io-syntax
@@ -26,7 +30,7 @@
   (setf *paste-index* (make-instance 'index
 				     :path (merge-pathnames
 					    (make-pathname :directory '(:relative "pasteindex"))
-					    *corpus-path*))))
+					    *pastes-path*))))
 
 (defstruct paste
   number
@@ -82,7 +86,7 @@
   (setf *paste-index* (make-instance 'index
 				     :path (merge-pathnames
 					    (make-pathname :directory '(:relative "pasteindex"))
-					    *corpus-path*)
+					    *pastes-path*)
 				     :create-p T
 				     :default-field "contents"
 				     :min-merge-docs 5000))
@@ -203,7 +207,7 @@
     (encode-json-alist props stream)))
 
 (defun write-json-pastes ()
-  (with-open-file (f (make-pathname :name "pastes" :type "json" :defaults *corpus-path*)
+  (with-open-file (f (make-pathname :name "pastes" :type "json" :defaults *pastes-path*)
 		     :direction :output
 		     :if-exists :supersede)
     (encode-json *pastes* f)))
