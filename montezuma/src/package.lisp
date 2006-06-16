@@ -62,4 +62,13 @@
    #:get-document
    #:document-field
    #:term-query
-   #:index-searcher))
+   #:index-searcher
+
+   #:token-image
+   #:all-tokens
+
+   #:analyzer
+
+   #:boolean-query
+   #:boolean-clause
+   #:add-query))

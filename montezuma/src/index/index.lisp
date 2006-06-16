@@ -64,7 +64,7 @@
    (auto-flush-p)
    (default-search-field)
    (default-field)
-   (analyzer)
+   (analyzer :reader analyzer)
    (searcher :initform nil)
    (open-p :initform T)
    (options)
