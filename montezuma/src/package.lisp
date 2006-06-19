@@ -27,7 +27,8 @@
 (defpackage #:montezuma
   (:shadow #:directory #:read-byte #:write-byte #:write-string 
 	   #:close #:delete-file #:rename-file #:count #:search
-	   #:merge #:file-length #:read #:write #:delete #:optimize)
+	   #:merge #:file-length #:read #:write #:delete #:optimize
+	   #:sort)
   (:use #:common-lisp #:montezuma.parser)
   (:export 
    #:make-fs-directory
