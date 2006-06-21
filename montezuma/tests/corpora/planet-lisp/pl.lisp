@@ -163,7 +163,7 @@
 ;; (search-posts "uav")
 ;; (search-posts "+title:robot embedded lisp")
 ;; (search-posts "opeth" '(:num-docs 30))
-;; (search-posts "bug*" '(:num-docs 10 :start-doc 10))
+;; (search-posts "bug*" '(:num-docs 10 :first-doc 10))
 ;; (search-posts "bug*" '(:num-docs 10000) T)
 ;; (search-posts "date:2005-12*")
 
@@ -185,9 +185,9 @@
 
 
 (defun print-result (doc score)
-  (let ((paste (montezuma:get-document *index* doc)))
+  (let ((post (montezuma:get-document *index* doc)))
     (flet ((get-field (name) 
-	     (montezuma:field-data (montezuma:document-field paste name))))
+	     (montezuma:field-data (montezuma:document-field post name))))
       (let ((title (get-field "title")))
 	(when (= (length title) 0)
 	  (setf title "[untitled]"))

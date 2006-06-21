@@ -64,6 +64,10 @@
    #:document-field
    #:term-query
    #:index-searcher
+   
+   #:commit
+   #:flush
+   #:delete
 
    #:token-image
    #:all-tokens
