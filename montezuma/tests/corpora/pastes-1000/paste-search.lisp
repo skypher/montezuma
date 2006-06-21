@@ -1,3 +1,34 @@
+;; Example code showing how to use Montezuma to index and search
+;; Lisppastes.
+;;
+;; I grabbed 1000 pastes from <http://paste.lisp.org> and saved them
+;; in pastes.sexp.
+;;
+;; Example usage:
+;;
+;;   CL-USER> (use-package '#:paste-search)
+;;   T
+;;   CL-USER> (index-pastes)
+;;   Indexing 1000 pastes... Indexing took 55.638 seconds.
+;;   Optimizing... Optimizing took 30.613 seconds.
+;;   ; No value
+;;   CL-USER> (search-pastes "public class")
+;;   Score  Date                 #      User             Title
+;;   -----  -------------------  -----  ---------------  -----
+;;    1.36  2006-05-01 11:35:55  19570  davidhouse       my ssh public key
+;;    1.22  2006-04-10 22:42:12  18846  RyanT5000        Skin class
+;;    1.10  2006-04-25 17:54:59  19366  lnostdal         calling constructor of base class
+;;    1.03  2006-04-21 15:55:12  19232  Cale             Fst and Snd class
+;;    0.93  2006-05-08 20:47:41  19820  Zarutian         part of SEXPparser class
+;;    0.93  2006-05-08 20:43:10  19819  Zarutian         part of SEXPparser class
+;;    0.93  2006-05-04 16:07:26  19685  kombinator       no class functions
+;;    0.41  2006-05-02 12:34:28  19619  b42              error: looser throw specifier for ...
+;;    0.41  2006-05-02 12:14:46  19618  b42              error: looser throw specifier for ...
+;;    0.35  2006-04-19 15:18:20  19156  vampire0         Test.java
+;;   10 results in 0.088 seconds.
+;;
+;; See the search-posts function below for more query examples.
+
 (cl:defpackage #:paste-search
   (:use #:common-lisp)
   (:export #:*pastes-path*
@@ -134,6 +165,7 @@
 ;; (search-pastes "date:2006-05*" '(:num-docs 10000) T)
 
 (defun search-pastes (query &optional options count-only-p)
+  "Searches the paste index."
   (unless *index*
     (load-index))
   (let ((results '()))
