@@ -25,7 +25,7 @@ pre { font: 10px monaco, "andale mono", "courier new", courier;}
 
 <h1>Planet Lisp</h1>
 
-<form action="/index.html" name="f">
+<form action="/" name="f">
 <input maxlength=2048 size=55 name=q value="<!-- TMPL_VAR query-string -->" title="Search"><br><input type=submit value="Planet Lisp Search" name=btn>
 </form>
 
@@ -48,19 +48,19 @@ pre { font: 10px monaco, "andale mono", "courier new", courier;}
 <table>
 <tr>
 <td>
-<a href="/index.html?q=tbnl+edi">tbnl edi</a><br>
-<a href="/index.html?q=%22edi+weitz%22+tbnl">"edi weitz" tbnl</a><br>
-<a href="/index.html?q=tbnl+%21araneida">tbnl !araneida</a><br>
+<a href="/?q=tbnl+edi">tbnl edi</a><br>
+<a href="/?q=%22edi+weitz%22+tbnl">"edi weitz" tbnl</a><br>
+<a href="/?q=tbnl+%21araneida">tbnl !araneida</a><br>
 </td>
 <td>
-<a href="/index.html?q=tbnl+%2Bapache">tbnl +apache</a><br>
-<a href="/index.html?q=html-template+%21%22edi+weitz%22">html-template !"edi weitz"</a><br>
-<a href="/index.html?q=paris+hilt*">paris hilt*</a><br>
+<a href="/?q=tbnl+%2Bapache">tbnl +apache</a><br>
+<a href="/?q=html-template+%21%22edi+weitz%22">html-template !"edi weitz"</a><br>
+<a href="/?q=paris+hilt*">paris hilt*</a><br>
 </td>
 <td>
-<a href="/index.html?q=lindse%3F+*ohan">lindse? *ohan</a><br>
-<a href="/index.html?q=title%3Asbcl+performance">title:sbcl performance</a><br>
-<a href="/index.html?q=%2Blink%3A*lispmeister.com*+%2Bdate%3A2005*+%2Bilc">+link:*lispmeister.com* +date:2005* +ilc</a><br>
+<a href="/?q=lindse%3F+*ohan">lindse? *ohan</a><br>
+<a href="/?q=title%3Asbcl+performance">title:sbcl performance</a><br>
+<a href="/?q=%2Blink%3A*lispmeister.com*+%2Bdate%3A2005*+%2Bilc">+link:*lispmeister.com* +date:2005* +ilc</a><br>
 </td>
 </tr>
 </table>
@@ -70,14 +70,12 @@ pre { font: 10px monaco, "andale mono", "courier new", courier;}
 </div>
 <!-- /TMPL_UNLESS -->
 
-<!-- TMPL_IF query-parse-tree -->
-<h2>Query Parse Tree:</h2>
-<!-- TMPL_VAR query-parse-tree -->
+<!-- TMPL_IF query-object -->
 <h2>Query Object:</h2>
 <!-- TMPL_VAR query-object -->
 <!-- /TMPL_IF -->
 
-<!-- TMPL_IF query-parse-tree -->
+<!-- TMPL_IF query-object -->
 <hr>
 <h2>Results:</h2>
 <!-- TMPL_LOOP results -->
@@ -94,6 +92,10 @@ pre { font: 10px monaco, "andale mono", "courier new", courier;}
 <!-- TMPL_VAR num-results --> results in <!-- TMPL_VAR query-time --> seconds.
 </p>
 
+<p>
+<!-- TMPL_VAR result-span -->
+<a href="/?q=<!-- TMPL_VAR query-string -->&start=<!-- TMPL_VAR start-doc -->">Next page</a>
+</p>
 <!-- /TMPL_IF -->
 
 </body>
