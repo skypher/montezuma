@@ -280,10 +280,11 @@
   "Returns the contents of the specified paste."
   (unless *index*
     (load-index))
-  (montezuma:field-data
-   (montezuma:document-field
-    (montezuma:get-document *index* (montezuma:make-term "number" (format nil "~A" number)))
-    "contents")))
+  (let ((doc (montezuma:get-document *index*
+				     (montezuma:make-term "number" (format nil "~A" number)))))
+    (if doc
+	(montezuma:field-data (montezuma:document-field doc "contents"))
+	(error "Paste #~S could not be found." number))))
 
 
 ;; -- Misc.
