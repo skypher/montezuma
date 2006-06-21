@@ -166,7 +166,7 @@
   (let ((doc (make-instance 'montezuma:document)))
     ;; We want to be able to search on the ID field, but it should not
     ;; be tokenized.
-    (montezuma:add-field doc (montezuma:make-field "id" (format nil "~S" (paste-number paste))
+    (montezuma:add-field doc (montezuma:make-field "number" (format nil "~S" (paste-number paste))
 						   :index :untokenized))
     ;; The USER field is stored and tokenized.
     (montezuma:add-field doc (montezuma:make-field "user" (paste-user paste)
@@ -198,7 +198,7 @@
   "Deletes the specified paste from the index."
   (unless *index*
     (load-index))
-  (montezuma:delete *index* (montezuma:make-term "id" (format nil "~A" number)))
+  (montezuma:delete *index* (montezuma:make-term "number" (format nil "~A" number)))
   (montezuma:flush *index*))
 
 
@@ -270,7 +270,7 @@
 	  (format T "~&~5,2F  ~A  ~A  ~10A  ~15A  ~A"
 		  score
 		  (get-field "displaydate")
-		  (get-field "id")
+		  (get-field "number")
 		  (get-field "channel")
 		  (get-field "user")
 		  (get-field "title")))))))
@@ -282,7 +282,7 @@
     (load-index))
   (montezuma:field-data
    (montezuma:document-field
-    (montezuma:get-document *index* (montezuma:make-term "id" (format nil "~A" number)))
+    (montezuma:get-document *index* (montezuma:make-term "number" (format nil "~A" number)))
     "contents")))
 
 
