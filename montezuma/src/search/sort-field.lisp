@@ -11,7 +11,7 @@
 (defclass sort-type ()
   ((name :initform nil :initarg :name)
    (parser :initarg :parser)
-   (comparator :reader comparator :initarg :comparator)
+   (comparator :initform nil :reader comparator :initarg :comparator)
    (reverse-p :initform nil :reader reverse-p))
   (:default-initargs
    :parser #'string))
@@ -42,14 +42,14 @@
     :reverse-p NIL))
 
 (defmethod initialize-instance :after ((self sort-field) &key)
-  (when (slot-boundp self 'name)
-    (setf (slot-value self 'name) (string (slot-value self 'name))))
-  (unless (slot-boundp self 'comparator)
-    (setf (slot-value self 'comparator) (comparator (slot-value self 'sort-type))))
-  (when (and (null name)
-	     (not (eq sort-type *doc-sorter*))
-	     (not (eq sort-type *score-sorter*)))
-    (error "You must supply a field name for your sort field.")))
+  (with-slots (name) self
+    (setf name (string name))
+    (unless (slot-boundp self 'comparator)
+      (setf (slot-value self 'comparator) (comparator (slot-value self 'sort-type))))
+    (when (and (null name)
+	       (not (eq sort-type *doc-sorter*))
+	       (not (eq sort-type *score-sorter*)))
+      (error "You must supply a field name for your sort field."))))
 
 
 (defparameter *field-score* (make-instance 'sort-field

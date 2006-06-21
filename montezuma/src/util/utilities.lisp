@@ -13,3 +13,8 @@
 
 (defmethod each ((self list) block)
   (mapc block self))
+
+
+(defun parse-float (string)
+  (with-standard-io-syntax
+    (read-from-string string)))
