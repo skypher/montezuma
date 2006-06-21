@@ -22,7 +22,7 @@
 			    (make-term "title" "Life of Pi")
 			    (make-term "author" "Martin")
 			    (make-term "title" "Life on the edge"))))
-		(setf terms (sort terms #'term<))
+		(setf terms (cl:sort terms #'term<))
 		(let ((tiw (make-instance 'term-infos-writer
 					  :directory dir
 					  :segment "_test"

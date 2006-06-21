@@ -68,10 +68,10 @@
 					:field-infos fis
 					:interval 128)))
 		(let ((reversed-words
-		       (sort (mapcar #'(lambda (word)
-					 (reverse word))
-				     *test-dict*)
-			     #'string<)))
+		       (cl:sort (mapcar #'(lambda (word)
+					    (reverse word))
+					*test-dict*)
+				#'string<)))
 		  (do ((i 0 (+ i 1))
 		       (words reversed-words (cdr words)))
 		      ((endp words))
@@ -216,7 +216,7 @@
 				 (make-term "title" "Life of Pi")
 				 (make-term "author" "Martin")
 				 (make-term "title" "Life on the edge"))))
-		(setf terms (sort terms #'term<))
+		(setf terms (cl:sort terms #'term<))
 		(let ((term-infos '()))
 		  (dotimes (i 4)
 		    (push (make-instance 'term-info

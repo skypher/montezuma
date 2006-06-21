@@ -148,7 +148,7 @@
     (let ((postings (coerce (loop for posting being the hash-values in posting-table
 				 collect posting)
 			    'vector)))
-      (setf postings (sort postings #'term< :key #'term)))))
+      (setf postings (cl:sort postings #'term< :key #'term)))))
 
 (defgeneric write-postings (document-writer postings segment))
 

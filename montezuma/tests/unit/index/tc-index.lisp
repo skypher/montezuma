@@ -1,11 +1,5 @@
 (in-package #:montezuma)
 
-(defun set= (a b &key (test #'eql))
-  (let ((al (coerce a 'list))
-	(bl (coerce b 'list)))
-    (and (null (set-difference al bl :test test))
-	 (null (set-difference bl al :test test)))))
-
 (defun check-query-results (index query expected)
   (let ((results '()))
     (search-each index query
@@ -190,7 +184,7 @@
   (:testfun test-fs-index-is-persistent
     (let ((path *test-directory-path*))
       (flet ((delete-test-index ()
-	       (dolist (file (cl-fad:delete-directory-and-files path :if-does-not-exist :ignore)))))
+	       (cl-fad:delete-directory-and-files path :if-does-not-exist :ignore)))
 	(delete-test-index)
 	(let ((data '((("def_field" . "one two") (:id . "me"))
 		      (("def_field" . "one") (:field2 . "three"))
@@ -421,20 +415,16 @@
 	(test index-delete-2 (size (search index (q :|id| "9"))) 1)
 	(delete index 9)
 	(test index-delete-3 (size (search index (q :|id| "9"))) 0)
-	(test index-delete-4 (size (search index (q :|id| "8"))) 1)
+	(test index-delete-4 (size (search index "id:8")) 1)
 	(delete index "8")
 	(test index-delete-5 (size index) 8)
 	(test index-delete-6 (size (search index (q :|id| "8"))) 0)
 	(test index-delete-7 (size (search index (qw :|cat| "/cat1*"))) 5)
 	(query-delete index (qw :|cat| "/cat1*"))
 	(test index-delete-8 (size index) 3)
-	(test index-delete-9 (size (search index (qw :|cat| "/cat1*"))) 0)
+	(test index-delete-9 (size (search index "cat:/cat1*")) 0)
 	(close index))))
   (:testfun test-index-update
-    (flet ((q (field value) (make-instance 'term-query
-					   :term (make-term (string field) value)))
-	   (qw (field value) (make-instance 'wildcard-query
-					    :term (make-term (string field) value))))
       (let ((data '(((:|id| . 0) (:|cat| . "/cat1/subcat1") (:|content| . "content0"))
 		    ((:|id| . 1) (:|cat| . "/cat1/subcat2") (:|content| . "content1"))
 		    ((:|id| . 2) (:|cat| . "/cat1/subcat2") (:|content| . "content2"))
@@ -463,16 +453,14 @@
 	(test index-update-3.5
 	      (document-values (get-document index "5") :|extra-content|)
 	      nil)
-	;; FIXME: Also check just passing a string as the second
-	;; argument to update.
-	;;	(update index "5"
-	;;		'((:|cat| . "/cat1/subcat6")
-	;;		  (:|content| . "high five")
-	;;		  (:|extra-content| . "hello")))
-	(update index (make-term "id" "5")
+	(update index "5"
 		'((:|cat| . "/cat1/subcat6")
 		  (:|content| . "high five")
 		  (:|extra-content| . "hello")))
+	;;(update index (make-term "id" "5")
+	;;	'((:|cat| . "/cat1/subcat6")
+	;;	  (:|content| . "high five")
+	;;	  (:|extra-content| . "hello")))
 	(test index-update-4
 	      (document-values (get-document index "5") :|extra-content|)
 	      "hello"
@@ -495,4 +483,3 @@
 	      (document-values (get-document index "9") :|content|)
 	      "content nine"
 	      #'string=))))
-)

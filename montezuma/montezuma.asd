@@ -122,10 +122,12 @@
        :depends-on ("analysis" "store" "util"))))
 
 (defmethod perform ((o test-op) (c (eql (find-system '#:montezuma))))
+  (declare (ignore o) (ignore c))
   (oos 'load-op '#:montezuma-tests)
   (oos 'test-op '#:montezuma-tests :force t))
 
 (defmethod operation-done-p ((o asdf:test-op) (c (eql (find-system '#:montezuma))))
+  (declare (ignore o) (ignore c))
   (values nil))
 
 
@@ -190,9 +192,11 @@
 			 :depends-on ("tests"))))))))
 
 (defmethod perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
+  (declare (ignore o) (ignore c))
   (or (funcall (intern (symbol-name '#:run-tests)
                        (find-package '#:montezuma)))
       (error "test-op failed")))
 
 (defmethod operation-done-p ((o test-op) (c (eql (find-system '#:montezuma-tests))))
+  (declare (ignore o) (ignore c))
   (values nil))

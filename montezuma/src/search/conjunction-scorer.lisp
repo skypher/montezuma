@@ -96,6 +96,6 @@
 
 (defmethod sort-scorers ((self conjunction-scorer))
   (with-slots (scorers) self
-    (setf scorers (sort scorers
-			#'(lambda (a b)
-			    (< (document a) (document b)))))))
+    (setf scorers (cl:sort scorers
+			   #'(lambda (a b)
+			       (< (document a) (document b)))))))

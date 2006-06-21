@@ -49,7 +49,7 @@
 			(close tps))))
 	     while (and (> (size tps-queue) 0)
 			(= (doc (queue-top tps-queue)) doc)))
-	  (setf pos-list (sort pos-list #'<))
+	  (setf pos-list (cl:sort pos-list #'<))
 	  (setf freq (length pos-list))))))
 
 (defmethod next-position ((self multiple-term-doc-pos-enum))
