@@ -7,7 +7,7 @@
 (defclass query-parser ()
   ((field :initform nil)
    (default-field :initarg :default-field)
-   (analyzer :initarg :analyzer)
+   (analyzer :initarg :analyzer :reader analyzer)
    (wild-lower :initarg :wild-lower)
    (default-occur :initarg :default-occur)
    (default-slop :initarg :default-slop)
@@ -74,7 +74,7 @@
 
 (defmethod $get-term-query ((parser query-parser) word)
   (do-multiple-fields (field parser (use-active-field parser))
-  (let ((tokens (all-tokens (slot-value parser 'analyzer) field word)))
+  (let ((tokens (all-tokens (analyzer parser) field word)))
     (cond ((= (length tokens) 0)
 	   (make-instance 'term-query
 			  :term (make-term field "")))
@@ -233,13 +233,32 @@
 
 (defun disallowed-punctuation-p (char) (member char '(#\" #\* #\? #\: #\^)))
 
-(defmethod parse ((parser query-parser) query)
+(defmethod parse ((parser query-parser) query-string)
   (parselet ((query-parser (^ top-query)))
       (multiple-value-bind (success-p result)
-	  (query-parser query)
+	  (query-parser query-string)
 	(if success-p
 	    result
-	    nil))))
+	    (get-bad-parse parser query-string)))))
 
 
 
+(defgeneric get-bad-parse (parser query-string))
+
+(defmethod get-bad-parse ((parser query-parser) query-string)
+  (do-multiple-fields (field parser (slot-value parser 'default-field))
+    (let ((tokens (all-tokens (analyzer parser) field query-string)))
+      (cond ((= (length tokens) 0)
+	     (make-instance 'term-query
+			    :term (make-term field "")))
+	    ((= (length tokens) 1)
+	     (make-instance 'term-query
+			    :term (make-term field (term-text (elt tokens 0)))))
+	    (T
+	     (let ((bq (make-instance 'boolean-query)))
+	       (dosequence (token tokens)
+		 (add-clause bq
+			     (make-instance 'boolean-clause
+					    :query (make-instance 'term-query
+								  :term (make-term field (term-text token))))))
+	       bq))))))

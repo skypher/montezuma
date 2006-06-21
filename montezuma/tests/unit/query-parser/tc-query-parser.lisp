@@ -65,6 +65,19 @@
 (defmethod $get-wild-query ((parser test-query-parser) word)
   (list :wild-query (use-active-field parser) word))
 
+(defmethod get-bad-parse ((parser test-query-parser) query-string)
+  (let* ((field (use-active-field parser))
+	 (tokens (all-tokens (analyzer parser) field query-string)))
+    (cond ((= (length tokens) 0)
+	   (list :term-query field ""))
+	  ((= (length tokens) 1)
+	   (list :term-query field (term-text (elt tokens 0))))
+	  (T
+	   (list :boolean-query (mapcar #'(lambda (token)
+					    (list :boolean-clause :should-occur
+						  (list :term-query field (term-text token))))
+					tokens))))))
+
 
 (defun check-query-parse (query-string expected-parse-tree)
   (atest check-query-parse
@@ -156,7 +169,16 @@
 	       ((:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" (("ha" . 1) ("ha" . 1))))
 		(:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" (("ha" . 1) ("ha" . 1))))
 		(:BOOLEAN-CLAUSE :MUST-NOT-OCCUR (:PHRASE-QUERY "*" (("ha" . 1) ("ha" . 1))))
-		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" (("ha" . 1) ("ha" . 1))))))))))
+		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:PHRASE-QUERY "*" (("ha" . 1) ("ha" . 1)))))))
+	     ;; The point of this test is to trigger query-parser's
+	     ;; get-bad-parse method by giving it a string that
+	     ;; doesn't parse.  At the moment (revision 331) this
+	     ;; string won't parse, but it probably will in the
+	     ;; future.
+	     ("  blah:blah  "
+	      (:BOOLEAN-QUERY
+	       ((:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "blah"))
+		(:BOOLEAN-CLAUSE :SHOULD-OCCUR (:TERM-QUERY "*" "blah"))))))))
       (dolist (test tests)
 	(check-query-parse (first test) (second test)))))
 
