@@ -1,3 +1,62 @@
+;; Example code showing how to use Montezuma to index and search
+;; Planet Lisp archives.
+;;
+;; Example usage:
+;;
+;;   CL-USER> (use-package '#:planet-lisp-search)
+;;   T
+;;   CL-USER> (index-posts)
+;;   Indexing 3819 posts... 
+;;   WARNING:
+;;      Skipping post with duplicate ID "http://www.iki.fi/jsnell/blog/archive/2005-10-31b.html"
+;;   WARNING:
+;;      Skipping post with duplicate ID "http://www.advogato.org/person/crhodes/diary.html?start=73"
+;;   Indexing took 83.475 seconds.
+;;   Indexed 3497 unique posts.
+;;   Optimizing... Optimizing took 251.696 seconds.
+;;   ; No value
+;;   CL-USER> (search-posts "biggie")
+;;    0.33 - Vancouver Lisp Meeting?
+;;     2006-02-12 17:50:54
+;;     link: http://bc.tech.coop/blog/060211.html
+;;     id: http://bc.tech.coop/blog/060211.html
+;;   
+;;   1 results in 1.049 seconds.
+;;   NIL
+;;
+;; The Planet Lisp corpus is not supplied with Montezuma; This is
+;; intended as an example of how to index and search your own
+;; information.
+;;
+;; To build or rebuild the index of all posts from scratch:
+;;
+;;   CL-USER> (index-posts)
+;;
+;; To add a single new post to the index:
+;;
+;;   
+;;   CL-USER> (add-post (list :md5 "12345"
+;;                            :id "12345"
+;;                            :title "Today I Had a Biggie"
+;;                            :description "Today I had a Biggie. Usually I just have a small, and refill."
+;;                            :date (get-universal-time)
+;;                            :link "http://heavymeta.org/~wiseman/audio/today-i-had-a-biggie.mp3"))
+;;
+;; To delete a post from the index:
+;;
+;;    CL-USER> (delete-post "12345")
+;;
+;; To optimize the index for maximum query performance after a large
+;; number of additions, deletions or other updates to the index:
+;;
+;;   CL-USER> (time (optimize-index))
+;;   Evaluation took:
+;;     107.857 seconds of real time
+;;     83.62229 seconds of user run time
+;;     9.101616 seconds of system run time
+;;     0 page faults and
+;;     187,015,672 bytes consed.
+
 (cl:defpackage #:planet-lisp-search
   (:use #:common-lisp)
   (:export #:*posts-path*
@@ -195,6 +254,7 @@
 ;; (search-posts "date:2005-12*")
 
 (defun search-posts (query &optional options count-only-p)
+  "Searches the Planet Lisp index."
   (unless *index*
     (load-index))
   (let ((results '()))
