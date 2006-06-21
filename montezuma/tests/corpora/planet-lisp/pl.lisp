@@ -3,6 +3,9 @@
   (:export #:*posts-path*
 	   #:*index-path*
 	   #:index-posts
+	   #:delete-post
+	   #:add-post
+	   #:optimize-index
 	   #:search-posts))
 
 (in-package #:planet-lisp-search)
@@ -146,7 +149,28 @@
 	post))))
 
 
-;; -- Searching
+(defun delete-post (id)
+  "Deletes the specified post from the index."
+  (unless *index*
+    (load-index))
+  (montezuma:delete *index* (montezuma:make-term "id" (format nil "~A" id)))
+  (montezuma:flush *index*))
+
+
+(defun add-post (post)
+  "Adds a post to the index."
+  (unless *index*
+    (load-index))
+  (index-post *index* post)
+  (montezuma:flush *index*))
+
+
+(defun optimize-index ()
+  "Optimizes the index for best query performance."
+  (unless *index*
+    (load-index))
+  (montezuma:optimize *index*))
+
 
 (defun load-index ()
   (setf *index* (make-instance 'montezuma:index
@@ -157,6 +181,9 @@
 			       ;; search all these fields simultaneously.
 			       :default-field "*"
 			       :fields '("title" "description" "text"))))
+
+
+;; -- Searching
 
 ;; Example searches:
 ;;
