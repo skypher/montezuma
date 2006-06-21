@@ -26,6 +26,23 @@
 ;;    0.41  2006-05-02 12:14:46  19618  b42              error: looser throw specifier for ...
 ;;    0.35  2006-04-19 15:18:20  19156  vampire0         Test.java
 ;;   10 results in 0.088 seconds.
+;;   NIL
+;;   CL-USER> (get-paste-contents 19156)
+;;   "public class Test {
+;;      public static void testMethod(String test) {
+;;          System.out.println(\"void: \"+test);
+;;      }
+;;        public static String testMethod(String test) {
+;;          System.out.println(\"String: \"+test);
+;;          return test;
+;;      }
+;;        public static void main(String[] args) {
+;;          testMethod(\"testVoid\");
+;;          String test = testMethod(\"testString\");
+;;          System.out.println(\"main: \"+test);
+;;      }
+;;   }
+;;   "
 ;;
 ;; See the search-posts function below for more query examples.
 
@@ -34,7 +51,8 @@
   (:export #:*pastes-path*
 	   #:*index-path*
 	   #:index-pastes
-	   #:search-pastes))
+	   #:search-pastes
+	   #:get-paste-contents))
 
 (in-package #:paste-search)
 
@@ -195,6 +213,16 @@
 	    (get-field "user")
 	    10
 	    (get-field "title")))))
+
+(defun get-paste-contents (number)
+  "Returns the contents of the specified paste."
+  (unless *index*
+    (load-index))
+  (montezuma:field-data
+   (montezuma:document-field
+    (montezuma:get-document *index* (montezuma:make-term "id" (format nil "~A" number)))
+    "contents")))
+
 
 
 ;; -- Misc.
