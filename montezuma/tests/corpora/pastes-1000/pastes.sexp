@@ -1,5 +1,5 @@
 
-(#S(MONTEZUMA::PASTE :NUMBER 19837 :USER "andersca" :DATE 3356207759 :CHANNEL "#webkit" :TITLE "Crash fix" :CONTENTS "Index: ChangeLog
+(#S(PASTE-SEARCH::PASTE :NUMBER 19837 :USER "andersca" :DATE 3356207759 :CHANNEL "#webkit" :TITLE "Crash fix" :CONTENTS "Index: ChangeLog
 ===================================================================
 --- ChangeLog   (revision 14258)
 +++ ChangeLog   (working copy)
@@ -30,14 +30,14 @@ Index: loader/TextDocument.cpp
          
          m_preElement = preElement.get();
      } 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19836 :USER "roconnor" :DATE 3356205308 :CHANNEL "#haskell" :TITLE "SML/NJ continuation code" :CONTENTS "open SMLofNJ.Cont ;
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19836 :USER "roconnor" :DATE 3356205308 :CHANNEL "#haskell" :TITLE "SML/NJ continuation code" :CONTENTS "open SMLofNJ.Cont ;
 fun m f x =
   let
     fun search n =
       callcc (fn k => (f (fn j => if j < n then x j else throw k (search (n+1))) ; n))
   in
     search 0
-  end" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19835 :USER "zedek" :DATE 3356200454 :CHANNEL "#emacs" :TITLE "Take all between the two []" :CONTENTS "Say I have this:
+  end" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19835 :USER "zedek" :DATE 3356200454 :CHANNEL "#emacs" :TITLE "Take all between the two []" :CONTENTS "Say I have this:
 
 # Following line added by [More code cleanup                                                                                                     
 # zedek@gnu-rox.org**20060417203615                                                                                                              
@@ -51,7 +51,7 @@ How can I get all the part between [].
 
 I ended with that, but it is ugly:
 
- \"^#[ \\t]Following line added by[ \\t]\\\\[.+[ \\t\\n][^\\]]+\"" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19834 :USER "evoli" :DATE 3356200425 :CHANNEL "None" :TITLE "pivot" :CONTENTS "
+ \"^#[ \\t]Following line added by[ \\t]\\\\[.+[ \\t\\n][^\\]]+\"" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19834 :USER "evoli" :DATE 3356200425 :CHANNEL "None" :TITLE "pivot" :CONTENTS "
 (define (pivot L)
   (let ((first-L-elt (car L)))
     (define (iter L1 L2 L3 acc)
@@ -60,7 +60,7 @@ I ended with that, but it is ugly:
 	    ((= first-L-elt (car acc)) (iter L1 (cons (car acc) L2) L3 (cdr acc)))
 	    ((> first-L-elt (car acc)) (iter L1 L2 (cons (car acc) L3) (cdr acc)))
 	    (else (iter L1 L2 L3 (cdr L)))))
-    (iter '() '() '() L)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19833 :USER "ezu5t" :DATE 3356198621 :CHANNEL "#jedit" :TITLE "run()" :CONTENTS "public void run()
+    (iter '() '() '() L)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19833 :USER "ezu5t" :DATE 3356198621 :CHANNEL "#jedit" :TITLE "run()" :CONTENTS "public void run()
 	{
 		try {
 			InputStreamReader isr = new InputStreamReader(in, jEdit.getProperty(\"console.encoding\") );
@@ -114,7 +114,7 @@ I ended with that, but it is ugly:
 			process.threadDone();
 		}
 	} // }}}
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19832 :USER "tritchey" :DATE 3356195793 :CHANNEL "#lisp" :TITLE "this is from a clean build" :CONTENTS "This is experimental prerelease support for the Windows platform: use
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19832 :USER "tritchey" :DATE 3356195793 :CHANNEL "#lisp" :TITLE "this is from a clean build" :CONTENTS "This is experimental prerelease support for the Windows platform: use
 at your own risk.  \"Your Kitten of Death awaits!\"
 ; loading system definition from
 ; C:\\lisp\\lib\\sbcl\\sb-bsd-sockets\\sb-bsd-sockets.asd into #<PACKAGE \"ASDF0\">
@@ -174,7 +174,7 @@ contrib/sb-bsd-sockets/CVS/Entries:/win32-constants.lisp/1.2/Fri May  5 13:47:13
 
 tritchey@OIN /lisp/sbcl
 $ 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19831 :USER "spia ogame uni 5" :DATE 3356184400 :CHANNEL "None" :TITLE "ally" :CONTENTS "Lista membri (Numero: 52) 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19831 :USER "spia ogame uni 5" :DATE 3356184400 :CHANNEL "None" :TITLE "ally" :CONTENTS "Lista membri (Numero: 52) 
 Num. Nome  Stato Punti Coordinate Data di associazione Online 
 1 Lord Severius  Poltergeist 116627 2:421:7 2006-02-24 16:21:55 on 
 2 Axel  Fantasma 236672 3:410:7 2006-02-24 08:14:43 off 
@@ -228,7 +228,7 @@ Num. Nome  Stato Punti Coordinate Data di associazione Online
 50 Nik  La leggenda dei cargo fantasma 410051 1:63:4 2006-02-28 19:55:19 off 
 51 Thrawn  Spettro 194262 1:4:12 2006-02-24 17:32:53 off 
 52 SonGoku  Fantasma 636150 1:3:5 2006-02-24 14:58:09 on 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19830 :USER "spia ogame uni5" :DATE 3356183992 :CHANNEL "None" :TITLE "spiate varie" :CONTENTS "Risorse su GAMMA [4:184:6] in data 05-09 06:34:09 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19830 :USER "spia ogame uni5" :DATE 3356183992 :CHANNEL "None" :TITLE "spiate varie" :CONTENTS "Risorse su GAMMA [4:184:6] in data 05-09 06:34:09 
 Metallo: 5118782 Cristallo: 2231460 
 Deuterio: 920506 Energia: 10198 
 Flotte  
@@ -638,7 +638,7 @@ Tecnologia dei laser 13 Tecnologia ionica 10
 Tecnologia dei plasmi 8 Rete interplanetaria di ricerca 2 
 
 Probabilità di controspionaggio:100% 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19829 :USER "Xof" :DATE 3356180559 :CHANNEL "#lisp" :TITLE "patch for (most of) text cursor brokenness" :CONTENTS "Index: clim-area.lisp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19829 :USER "Xof" :DATE 3356180559 :CHANNEL "#lisp" :TITLE "patch for (most of) text cursor brokenness" :CONTENTS "Index: clim-area.lisp
 ===================================================================
 RCS file: /project/mcclim/cvsroot/mcclim/Goatee/clim-area.lisp,v
 retrieving revision 1.33
@@ -659,13 +659,13 @@ diff -u -r1.33 clim-area.lisp
                    (max y2 (+ y1 (climi::cursor-height cursor)))
                    y2)))))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19828 :USER "masm" :DATE 3356180069 :CHANNEL "#lisp" :TITLE "display-func (pró luis)" :CONTENTS "(defmacro display-func (callback)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19828 :USER "masm" :DATE 3356180069 :CHANNEL "#lisp" :TITLE "display-func (pró luis)" :CONTENTS "(defmacro display-func (callback)
   (let ((sym (gensym)))
     `(progn
       (defcallback ,sym :void ()
 	(funcall ,callback))
       (%display-func (callback ,sym)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19827 :USER "Tobin" :DATE 3356178615 :CHANNEL "None" :TITLE "OpenTTD /branch/bridge build" :CONTENTS "[i386] Compiling ai/default/default.c
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19827 :USER "Tobin" :DATE 3356178615 :CHANNEL "None" :TITLE "OpenTTD /branch/bridge build" :CONTENTS "[i386] Compiling ai/default/default.c
 ai/default/default.c: In function 'AiRemoveTileAndGoForward':
 ai/default/default.c:2153: error: 'MP_TUNNEL' undeclared (first use in this function)
 ai/default/default.c:2153: error: (Each undeclared identifier is reported only once
@@ -675,7 +675,7 @@ ai/default/default.c:2159: error: 'MP_RAILWAY_BRIDGE' undeclared (first use in t
 ai/default/default.c: In function 'AiRemovePlayerRailOrRoad':
 ai/default/default.c:3686: error: 'MP_TUNNEL' undeclared (first use in this function)
 ai/default/default.c:3688: error: 'MP_RAILWAY_BRIDGE' undeclared (first use in this function)
-make: *** [.OSX/ai/default/default.o.i386] Error 1" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19826 :USER "lord_rob" :DATE 3356172393 :CHANNEL "None" :TITLE "predicate" :CONTENTS "moves([], config(R, MG, CG, MD, CD),
+make: *** [.OSX/ai/default/default.o.i386] Error 1" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19826 :USER "lord_rob" :DATE 3356172393 :CHANNEL "None" :TITLE "predicate" :CONTENTS "moves([], config(R, MG, CG, MD, CD),
           config(R, MG, CG, MD, CD), _P).
 
 moves([config(R3, MG3, CG3, MD3, CD3)|Ms], config(R1, MG1, CG1, MD1, CD1), 
@@ -684,7 +684,7 @@ moves([config(R3, MG3, CG3, MD3, CD3)|Ms], config(R1, MG1, CG1, MD1, CD1),
                         config(R3, MG3, CG3, MD3, CD3), P),
          moves(Ms, config(R3, MG3, CG3, MD3, CD3), 
                    config(R2, MG2, CG2, MD2, CD2), P).
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19825 :USER "jsnell" :DATE 3356169297 :CHANNEL "None" :TITLE "possible fix for sb-sprof (LAMBDA ()) problem" :CONTENTS "(in-package sb-sprof)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19825 :USER "jsnell" :DATE 3356169297 :CHANNEL "None" :TITLE "possible fix for sb-sprof (LAMBDA ()) problem" :CONTENTS "(in-package sb-sprof)
 
 (defun lookup-node (pc)
   (declare (type address pc))
@@ -704,7 +704,7 @@ moves([config(R3, MG3, CG3, MD3, CD3)|Ms], config(R1, MG1, CG1, MD1, CD1),
                   (t
                    (setf (gethash key *name->node*) new)
                    (tree-insert new)
-                   new)))))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19824 :USER "othermaciej" :DATE 3356157052 :CHANNEL "#webkit" :TITLE "also this little one needs review" :CONTENTS "Index: Scripts/extract-localizable-strings
+                   new)))))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19824 :USER "othermaciej" :DATE 3356157052 :CHANNEL "#webkit" :TITLE "also this little one needs review" :CONTENTS "Index: Scripts/extract-localizable-strings
 ===================================================================
 --- Scripts/extract-localizable-strings (revision 14249)
 +++ Scripts/extract-localizable-strings (working copy)
@@ -733,7 +733,7 @@ Index: ChangeLog
  2006-05-08  Darin Adler  <darin@apple.com>
  
          * Scripts/do-webcore-rename: Add another rename.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19823 :USER "andersca" :DATE 3356155783 :CHANNEL "#webkit" :TITLE "update check-dom-results" :CONTENTS "Index: Scripts/check-dom-results
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19823 :USER "andersca" :DATE 3356155783 :CHANNEL "#webkit" :TITLE "update check-dom-results" :CONTENTS "Index: Scripts/check-dom-results
 ===================================================================
 --- Scripts/check-dom-results   (revision 14249)
 +++ Scripts/check-dom-results   (working copy)
@@ -747,7 +747,7 @@ Index: ChangeLog
  
  my $totalCount = 0;
  my $totalSuccesses = 0;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19822 :USER "Ikana" :DATE 3356148310 :CHANNEL "#scheme" :TITLE "primes" :CONTENTS "(define (square x) (* x x))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19822 :USER "Ikana" :DATE 3356148310 :CHANNEL "#scheme" :TITLE "primes" :CONTENTS "(define (square x) (* x x))
 
 (define (genlist x y)
   (if (< y 1)
@@ -783,7 +783,7 @@ Index: ChangeLog
 (define (chooser plist a x y)
   (if (> a x)
       plist
-      (chooser (scratch a x plist) (+ a y) x y)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19821 :USER "technomancy" :DATE 3356140871 :CHANNEL "#emacs" :TITLE "macro problem" :CONTENTS "(defmacro case-string (expr &rest choices)
+      (chooser (scratch a x plist) (+ a y) x y)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19821 :USER "technomancy" :DATE 3356140871 :CHANNEL "#emacs" :TITLE "macro problem" :CONTENTS "(defmacro case-string (expr &rest choices)
   `(cond ,(mapcar (lambda (c)
                     `((equal expr ,(car c)) ,(cdr c)))
                     choices)))
@@ -797,7 +797,7 @@ Index: ChangeLog
 (cond ((funcall (function (equal expr \"blah\")) (funcall (function (+ 1 4))))
        (funcall (function (equal expr \"sploosh\")) (nil))
        (funcall (function (equal expr t)) (\"no\"))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19820 :USER "Zarutian" :DATE 3356135261 :CHANNEL "None" :TITLE "part of SEXPparser class" :CONTENTS "eliminateParentRefs: aTree
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19820 :USER "Zarutian" :DATE 3356135261 :CHANNEL "None" :TITLE "part of SEXPparser class" :CONTENTS "eliminateParentRefs: aTree
 	\"because the first element of each OrderedCollection is used as a reference to its parent\"
 	\"they must be eliminated before returining the tree\"
 
@@ -871,7 +871,7 @@ parse: aBytestring
 		ifTrue: [ self error: 'missing a closing brace ) some where in the inputed SEXP'. ].\"
 	\"tree add: aBytestring.\"
 	^(self eliminateParentRefs: tree).
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19819 :USER "Zarutian" :DATE 3356134990 :CHANNEL "None" :TITLE "part of SEXPparser class" :CONTENTS "eliminateParentRefs: aTree
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19819 :USER "Zarutian" :DATE 3356134990 :CHANNEL "None" :TITLE "part of SEXPparser class" :CONTENTS "eliminateParentRefs: aTree
 	\"because the first element of each OrderedCollection is used as a reference to its parent\"
 	\"they must be eliminated before returining the tree\"
 
@@ -882,7 +882,7 @@ parse: aBytestring
 				self eliminateParentRefs: item.
 			].
 	].
-	^aTree." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19818 :USER "spclfx" :DATE 3356132480 :CHANNEL "#svn" :TITLE "To FRB - lspci printout" :CONTENTS "00:00.0 Host bridge: Intel Corporation Mobile Memory Controller Hub (rev 03)
+	^aTree." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19818 :USER "spclfx" :DATE 3356132480 :CHANNEL "#svn" :TITLE "To FRB - lspci printout" :CONTENTS "00:00.0 Host bridge: Intel Corporation Mobile Memory Controller Hub (rev 03)
 00:02.0 VGA compatible controller: Intel Corporation Mobile Integrated Graphics
 Controller (rev 03)
 00:02.1 Display controller: Intel Corporation Mobile Integrated Graphics Control
@@ -909,7 +909,7 @@ ev 01)
 03:01.2 System peripheral: Ricoh Co Ltd: Unknown device 0843 (rev 01)
 03:01.3 System peripheral: Ricoh Co Ltd R5C592 Memory Stick Bus Host Adapter (re                                           v 0a)
 03:01.4 System peripheral: Ricoh Co Ltd xD-Picture Card Controller (rev 05)
-0b:00.0 Network controller: Broadcom Corporation: Unknown device 4311 (rev 01)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19817 :USER "lemonodor" :DATE 3356128383 :CHANNEL "#lisp" :TITLE "opaque sbcl warning" :CONTENTS "(defmethod score :around ((self counting-disjunction-sum-scorer))
+0b:00.0 Network controller: Broadcom Corporation: Unknown device 4311 (rev 01)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19817 :USER "lemonodor" :DATE 3356128383 :CHANNEL "#lisp" :TITLE "opaque sbcl warning" :CONTENTS "(defmethod score :around ((self counting-disjunction-sum-scorer))
   (incf (slot-value (slot-value (slot-value self 'parent-scorer) 'coordinator)
 		    'num-matchers)
 	(slot-value self 'num-matchers))
@@ -932,7 +932,7 @@ results in
  |     (AREF (THE SIMPLE-VECTOR SB-PCL::SLOTS) SB-INT:INDEX)
  |   Asserted type (MOD 536870911) conflicts with derived type
  |   (VALUES (OR FUNCTION SB-PCL::METHOD-CALL SB-PCL::FAST-METHOD-CALL) &OPTIONAL).
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19816 :USER "nyef" :DATE 3356122169 :CHANNEL "#lisp" :TITLE "Ugh. Don't even know -why- it's doing this." :CONTENTS "#0  0xffffe402 in ?? ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19816 :USER "nyef" :DATE 3356122169 :CHANNEL "#lisp" :TITLE "Ugh. Don't even know -why- it's doing this." :CONTENTS "#0  0xffffe402 in ?? ()
 #1  0xb7fd1bbb in pthread_sigmask () from /lib/tls/libpthread.so.0
 #2  0x08054cd2 in low_level_unblock_me_trampoline (signal=8, info=0x0,
     void_context=0x0) at interrupt.c:1166
@@ -946,13 +946,13 @@ results in
 #9  0x0805d60c in sigsegv_handler (signal=0, info=0x0) at linux-os.c:353
 #10 0x08054cea in low_level_unblock_me_trampoline (signal=11, info=0x0,
     void_context=0x0) at interrupt.c:1167
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19815 :USER "dfeuer" :DATE 3356121393 :CHANNEL "#scheme" :TITLE "Broken macro" :CONTENTS "(define-syntax broken
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19815 :USER "dfeuer" :DATE 3356121393 :CHANNEL "#scheme" :TITLE "Broken macro" :CONTENTS "(define-syntax broken
   (syntax-rules ()
     ((broken w)
      (let-syntax ((breaks
                    (syntax-rules ()
                      ((breaks q) (begin (define q 3))))))
-       (breaks w)))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19814 :USER "housel" :DATE 3356120210 :CHANNEL "#dylan" :TITLE "DTD for *.dlp" :CONTENTS "<!-- Document type for Dylan Library Pack specification files -->
+       (breaks w)))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19814 :USER "housel" :DATE 3356120210 :CHANNEL "#dylan" :TITLE "DTD for *.dlp" :CONTENTS "<!-- Document type for Dylan Library Pack specification files -->
 
 <!ELEMENT library-pack  (description?, author?, copyright?, company?,
                          libraries?, examples?, test-suites?)>
@@ -974,7 +974,7 @@ results in
 
 <!ELEMENT category      (#PCDATA)*>
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19813 :USER "tritchey" :DATE 3356117335 :CHANNEL "#lisp" :TITLE "I don't get this" :CONTENTS "debugger invoked on a SIMPLE-ERROR:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19813 :USER "tritchey" :DATE 3356117335 :CHANNEL "#lisp" :TITLE "I don't get this" :CONTENTS "debugger invoked on a SIMPLE-ERROR:
   Error during processing of --eval option (LOAD #P\"..\\\\asdf-stub.lisp\"):
 
   The file \"SYS:CONTRIB;SB-BSD-SOCKETS;WIN32-CONSTANTS.LISP.NEWEST\" does not exist.
@@ -1027,7 +1027,7 @@ $ grep -r WIN32-CONSTANTS *
 
 tritchey@OIN /lisp/sbcl
 $ 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19812 :USER "cfThetized" :DATE 3356116302 :CHANNEL "#macdev" :TITLE "sharedColorPanel" :CONTENTS "//----------------------------- main.cpp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19812 :USER "cfThetized" :DATE 3356116302 :CHANNEL "#macdev" :TITLE "sharedColorPanel" :CONTENTS "//----------------------------- main.cpp
 #include <Carbon/Carbon.h>
 #include \"PickColor.h\"
 
@@ -1067,14 +1067,14 @@ void MakeKeyAndOrderFront()
 	[pool release];
 }
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19811 :USER "davidhouse" :DATE 3356113357 :CHANNEL "#haskell" :TITLE "vincenz: something like this" :CONTENTS "      let action :: ErrorT String YourMonad ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19811 :USER "davidhouse" :DATE 3356113357 :CHANNEL "#haskell" :TITLE "vincenz: something like this" :CONTENTS "      let action :: ErrorT String YourMonad ()
           action = do (IsEnd b) <- maybeToEither $ Map.lookup \"isend\" ruleSet
                       ... other stuff
                       guard b
                       lift $ do consumeAction
                                 incrementAction
                                 incrementO
-                                action" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19810 :USER "zedek" :DATE 3356111013 :CHANNEL "#emacs" :TITLE "xml parsing" :CONTENTS "(let* ((xml \"<test>                                                                                                                              
+                                action" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19810 :USER "zedek" :DATE 3356111013 :CHANNEL "#emacs" :TITLE "xml parsing" :CONTENTS "(let* ((xml \"<test>                                                                                                                              
              <normal_line>                                                                                                                       
                <added_by>                                                                                                                        
                  <patch author='zedek@gnu-rox.org' date='20060414160659' local_date='Fri Apr 14 18:06:59 CEST 2006' inverted='False' hash='20060\\
@@ -1106,7 +1106,7 @@ void MakeKeyAndOrderFront()
            (date (cdr (assq 'local_date attrs)))                                                                                                 
            (hash (cdr (assq 'hash attrs)))                                                                                                       
            (text (car (xml-node-children msg))))                                                                                                 
-      (message \"author: %s time: %s hash: %s \\n\" author date hash)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19809 :USER "smithzv" :DATE 3356109833 :CHANNEL "#fink" :TITLE "fink list output" :CONTENTS "duan145-101-dhcp:/Users/smithzv root# fink list x11
+      (message \"author: %s time: %s hash: %s \\n\" author date hash)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19809 :USER "smithzv" :DATE 3356109833 :CHANNEL "#fink" :TITLE "fink list output" :CONTENTS "duan145-101-dhcp:/Users/smithzv root# fink list x11
 Information about 1744 packages read in 1 seconds.
      nethack-x11            3.4.3-1002        Console/X11 based graphical adventure game
      nethack-x11-gnome      3.4.3-1002        Console/X11 based graphical adventure game
@@ -1118,7 +1118,7 @@ Information about 1744 packages read in 1 seconds.
  p   x11-shlibs                               [virtual package]
 duan145-101-dhcp:/Users/smithzv root# fink list system-xfree86
 Information about 1744 packages read in 0 seconds.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19808 :USER "bpt" :DATE 3356108783 :CHANNEL "#emacs" :TITLE "real-time two-user editing" :CONTENTS "(defmacro receive (vars form &rest body)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19808 :USER "bpt" :DATE 3356108783 :CHANNEL "#emacs" :TITLE "real-time two-user editing" :CONTENTS "(defmacro receive (vars form &rest body)
   `(multiple-value-bind ,vars ,form ,@body))
 (defmacro define (name+parameters &rest body)
   `(defun ,(car name+parameters) ,(cdr name+parameters) ,@body))
@@ -1421,7 +1421,7 @@ Information about 1744 packages read in 0 seconds.
                 ((noop) (make-noop)))
               (make-state state-mine state-theirs)))))
         (setq message-form (maybe-read (current-buffer)))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19807 :USER "jeward" :DATE 3356106337 :CHANNEL "#fink" :TITLE "X11 stuff" :CONTENTS " i      system-xfree86  2:4.4-2 [placeholder for user installed x11]
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19807 :USER "jeward" :DATE 3356106337 :CHANNEL "#fink" :TITLE "X11 stuff" :CONTENTS " i      system-xfree86  2:4.4-2 [placeholder for user installed x11]
  i      system-xfree86-dev      2:4.4-2 [placeholder for user installed x11 development tools]
         system-xfree86-manual-install   0-0     Manually installed X11 components
  i      system-xfree86-shlibs   2:4.4-2 [placeholder for user installed x11 shared libraries]
@@ -1444,10 +1444,10 @@ Information about 1744 packages read in 0 seconds.
  p      x11-dev         [virtual package]
  p      x11-shlibs              [virtual package]
         x11-ssh-askpass 1.2.4.1-1       X11-based SSH passphrase dialog
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19806 :USER "jdrake" :DATE 3356103809 :CHANNEL "None" :TITLE "Tolerance" :CONTENTS "    Helen Nuss refers to Canada and the United States basing their culture on Christian principles. She sees only positives from this, \"with the result that millions have wanted to emigrate to and enjoy the benefits of our freedom and prosperity.\" But what is this freedom and prosperity she speaks of? Our freedom to murder natives and steal their land, our freedom to base our economy on the exploitation of slaves from Africa and elsewhere. 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19806 :USER "jdrake" :DATE 3356103809 :CHANNEL "None" :TITLE "Tolerance" :CONTENTS "    Helen Nuss refers to Canada and the United States basing their culture on Christian principles. She sees only positives from this, \"with the result that millions have wanted to emigrate to and enjoy the benefits of our freedom and prosperity.\" But what is this freedom and prosperity she speaks of? Our freedom to murder natives and steal their land, our freedom to base our economy on the exploitation of slaves from Africa and elsewhere. 
     It is not a matter of freedom, but freedom to whom. She states that a great philosopher said \"tolerance is the last virtue of a degenerate society.\" That 'great' philosopher is James Kennedy, the televangelist who condoned the invasion of Iraq by signing the Land Letter sent to Bush.
     Tolerance is in the middle of overtolerance and narrow mindedness. Not everybody will agree where that middle should be. The narrow mind will not accept anything different. Boasting about christian principles does little justice to the millions of people who have died in the name of One, who would surely not approve. 
-    If Jesus died on the cross for your sins, don't injur him further by failing in him, whose message of love and tolerance is an example so regularily skewed." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19805 :USER "lumi" :DATE 3356103258 :CHANNEL "#haskell" :TITLE "Parsing numbers for fun and profit" :CONTENTS "parseNumber :: Parser LispVal
+    If Jesus died on the cross for your sins, don't injur him further by failing in him, whose message of love and tolerance is an example so regularily skewed." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19805 :USER "lumi" :DATE 3356103258 :CHANNEL "#haskell" :TITLE "Parsing numbers for fun and profit" :CONTENTS "parseNumber :: Parser LispVal
 parseNumber = do
   ([e],[r]) <- option ([Nothing],[readDec]) prefix
   let read = runRead r
@@ -1476,7 +1476,7 @@ parseNumber = do
     runRead f s = case [x | (x,t) <- f s, (\"\",\"\") <- lex t] of
                     [x] -> return x
                     [] -> fail $ \"Can't parse number <\"++s++\">\"
-                   " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19804 :USER "masm" :DATE 3356101614 :CHANNEL "#lisp" :TITLE "problem with cffi (pró luis)" :CONTENTS "(defparameter *display-func-procedure* nil)
+                   " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19804 :USER "masm" :DATE 3356101614 :CHANNEL "#lisp" :TITLE "problem with cffi (pró luis)" :CONTENTS "(defparameter *display-func-procedure* nil)
 (defcallback display-func-callback :void ()
   (format t \"Never gets here.~%\")
   (funcall *display-func-procedure*))
@@ -1487,12 +1487,12 @@ parseNumber = do
   (when (null *display-func-procedure*)
     (%display-func (callback display-func-callback)))
   (setf *display-func-procedure* callback))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19803 :USER "jroes" :DATE 3356099555 :CHANNEL "#lisp" :TITLE "huh, aren't those two args?" :CONTENTS "CG-USER(2): (defun prefix (A X) (cond ((null X) (cons A (car X)))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19803 :USER "jroes" :DATE 3356099555 :CHANNEL "#lisp" :TITLE "huh, aren't those two args?" :CONTENTS "CG-USER(2): (defun prefix (A X) (cond ((null X) (cons A (car X)))
                                       (t (cons A (prefix (cdr X))))))
 PREFIX
 CG-USER(3): (prefix 'A '(1 2 3 4))
 Error: PREFIX got 1 arg, wanted 2 args.
-[condition type: PROGRAM-ERROR]" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19802 :USER "keramida" :DATE 3356099079 :CHANNEL "None" :TITLE "walk-list" :CONTENTS "(defun member-and-position (item list &optional compare)
+[condition type: PROGRAM-ERROR]" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19802 :USER "keramida" :DATE 3356099079 :CHANNEL "None" :TITLE "walk-list" :CONTENTS "(defun member-and-position (item list &optional compare)
   (let ((pos -1)
         result
         (compare (or compare #'equal)))
@@ -1503,7 +1503,7 @@ Error: PREFIX got 1 arg, wanted 2 args.
         (if (apply compare (list elt item))
             (setq result (cons list pos))
           (setq list rest))))
-    result))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19801 :USER "runelind" :DATE 3356098314 :CHANNEL "#fink" :TITLE "build errors" :CONTENTS "/sw/bin/dpkg-lockwait -i /sw/fink/dists/unstable/main/binary-darwin-powerpc/base
+    result))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19801 :USER "runelind" :DATE 3356098314 :CHANNEL "#fink" :TITLE "build errors" :CONTENTS "/sw/bin/dpkg-lockwait -i /sw/fink/dists/unstable/main/binary-darwin-powerpc/base
 dpkg: considering removing libgettext3-dev in favour of gettext-dev ...
 dpkg: no, cannot remove libgettext3-dev (--auto-deconfigure will help):
  fink-buildlock-koffice-1.5.0-21 depends on libgettext3-dev
@@ -1517,7 +1517,7 @@ Errors were encountered while processing:
  /sw/fink/dists/unstable/main/binary-darwin-powerpc/base/gettext-dev_0.10.40-24_
 ### execution of /sw/bin/dpkg-lockwait failed, exit code 1
 Failed: can't install package gettext-dev-0.10.40-24
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19800 :USER "dchud" :DATE 3356095730 :CHANNEL "#code4lib" :TITLE "xpathcrank example" :CONTENTS "Sample data (excerpt):
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19800 :USER "dchud" :DATE 3356095730 :CHANNEL "#code4lib" :TITLE "xpathcrank example" :CONTENTS "Sample data (excerpt):
 
 <x_server_response metalib_version=\"3.13.168\">
 <source_locate_response>
@@ -1581,7 +1581,7 @@ Sample result (excerpt):
              'name': 'TREECD (SP) -- kb',
              'record': <Element {http://www.loc.gov/MARC21/slim}record at 2a98944488>,
              'yul_id': 'YUL02638'},
-..." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19799 :USER "valez" :DATE 3356095528 :CHANNEL "#haskell" :TITLE "io problem" :CONTENTS "main = do putStrLn \"Enter source file name:\"
+..." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19799 :USER "valez" :DATE 3356095528 :CHANNEL "#haskell" :TITLE "io problem" :CONTENTS "main = do putStrLn \"Enter source file name:\"
 	  sfile <- getLine
 	  source <- readFile sfile
 	  let definitions = selectDef source
@@ -1590,7 +1590,7 @@ Sample result (excerpt):
 	  let parsedGuards = parseGuard guards
 	  putStrLn \"Enter target file name:\"
 	  tfile <- getLine
-	  writeFile tfile ( (show parsedDefinitions) ++\" \" ++ (show parsedGuards))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19798 :USER "lichtblau" :DATE 3356094852 :CHANNEL "#lisp" :TITLE "Marko's memory map" :CONTENTS "00230000-00233000 <Pagefile-Backed> (Data)
+	  writeFile tfile ( (show parsedDefinitions) ++\" \" ++ (show parsedGuards))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19798 :USER "lichtblau" :DATE 3356094852 :CHANNEL "#lisp" :TITLE "Marko's memory map" :CONTENTS "00230000-00233000 <Pagefile-Backed> (Data)
 00350000-00353000 <Pagefile-Backed> (Data)
 00353000-00360000 <Pagefile-Backed> (Data)
 00360000-00376000 unicode.nls (Data)
@@ -1624,7 +1624,7 @@ Sample result (excerpt):
 7f6f0000-7f6f7000 <Pagefile-Backed> (Data)
 7f6f7000-7f7f0000 <Pagefile-Backed> (Data)
 7ffb0000-7ffd4000 <Pagefile-Backed> (Data)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19797 :USER "ths" :DATE 3356091539 :CHANNEL "#lisp" :TITLE "Integer overflow detection" :CONTENTS "32bit signed integer overflow/underflow checking
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19797 :USER "ths" :DATE 3356091539 :CHANNEL "#lisp" :TITLE "Integer overflow detection" :CONTENTS "32bit signed integer overflow/underflow checking
 ------------------------------------------------
 
 sign bits     add            sub
@@ -1656,7 +1656,7 @@ if ((a ^ b) & (a ^ c) >> 31)
 else
         /* in range */
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19796 :USER "AlthA" :DATE 3356091264 :CHANNEL "#webkit" :TITLE "for Anders" :CONTENTS "Index: checkout.html
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19796 :USER "AlthA" :DATE 3356091264 :CHANNEL "#webkit" :TITLE "for Anders" :CONTENTS "Index: checkout.html
 ===================================================================
 --- checkout.html	(revision 14228)
 +++ checkout.html	(working copy)
@@ -1676,7 +1676,7 @@ else
 -?>
 \\ No newline at end of file
 +?>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19795 :USER "aspect" :DATE 3356091212 :CHANNEL "#scheme" :TITLE "Russel's paradox, lambda calculus and Y (oh my!)" :CONTENTS "; Russel's paradox considers the set:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19795 :USER "aspect" :DATE 3356091212 :CHANNEL "#scheme" :TITLE "Russel's paradox, lambda calculus and Y (oh my!)" :CONTENTS "; Russel's paradox considers the set:
 ; A = { x : x \\notin x }
 ;  x \\in A  \\iff  x \\notin x
 ;  A \\in A  \\iff  A \\notin A
@@ -1713,7 +1713,7 @@ else
 
 ; (adapted from: Classical Recursion Theory, P. Odifreddi, North Holland Press)
 ;  (part of the \"Studies in Logic\" series that also includes Barendregt's
-;   \"The Lambda Calculus: Its Syntax and Semantics\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19794 :USER "dto" :DATE 3356088970 :CHANNEL "#emacs" :TITLE "my old planner-muse config" :CONTENTS ";;; planner-config.el --- old configuration for planner.
+;   \"The Lambda Calculus: Its Syntax and Semantics\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19794 :USER "dto" :DATE 3356088970 :CHANNEL "#emacs" :TITLE "my old planner-muse config" :CONTENTS ";;; planner-config.el --- old configuration for planner.
 
 ;; Copyright (C) 2005  David O'Toole
 
@@ -1829,7 +1829,7 @@ else
 ;; (set-variable 'diary-file \"~/e/diary\")
 ;; (setq planner-diary-file diary-file)
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19793 :USER "skew" :DATE 3356085083 :CHANNEL "#haskell" :TITLE "network" :CONTENTS "--server.hs
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19793 :USER "skew" :DATE 3356085083 :CHANNEL "#haskell" :TITLE "network" :CONTENTS "--server.hs
 import Network
 import Control.Concurrent
 import System.IO
@@ -1880,7 +1880,7 @@ worker port = do
     v <- readIORef var
     writeIORef var $! v+1)
   return var
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19792 :USER "keramida" :DATE 3356083752 :CHANNEL "#emacs" :TITLE "(member-position)" :CONTENTS "(defun member-position (lst value)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19792 :USER "keramida" :DATE 3356083752 :CHANNEL "#emacs" :TITLE "(member-position)" :CONTENTS "(defun member-position (lst value)
   (let ((pos -1)
         result)
     (while (and lst (not result))
@@ -1891,7 +1891,7 @@ worker port = do
             (setq result pos))
         (setq lst rest)))
     result))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19791 :USER "wingo" :DATE 3356083319 :CHANNEL "None" :TITLE "guile make check errors" :CONTENTS "if ccache gcc -DHAVE_CONFIG_H -I. -I. -I../..    -I../../test-suite/standalone -I../.. -I../../libguile-ltdl  -pthread -g -O2 -Wall -Wmissing-prototypes -Werror -MT test_conversion-test-conversion.o -MD -MP -MF \".deps/test_conversion-test-conversion.Tpo\" -c -o test_conversion-test-conversion.o `test -f 'test-conversion.c' || echo './'`test-conversion.c; \\
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19791 :USER "wingo" :DATE 3356083319 :CHANNEL "None" :TITLE "guile make check errors" :CONTENTS "if ccache gcc -DHAVE_CONFIG_H -I. -I. -I../..    -I../../test-suite/standalone -I../.. -I../../libguile-ltdl  -pthread -g -O2 -Wall -Wmissing-prototypes -Werror -MT test_conversion-test-conversion.o -MD -MP -MF \".deps/test_conversion-test-conversion.Tpo\" -c -o test_conversion-test-conversion.o `test -f 'test-conversion.c' || echo './'`test-conversion.c; \\
 	then mv -f \".deps/test_conversion-test-conversion.Tpo\" \".deps/test_conversion-test-conversion.Po\"; else rm -f \".deps/test_conversion-test-conversion.Tpo\"; exit 1; fi
 cc1: warnings being treated as errors
 test-conversion.c: In function test_1:
@@ -1929,9 +1929,9 @@ test-conversion.c:583: warning: format %Ld expects type long long int, b
 test-conversion.c: In function test_8u:
 test-conversion.c:641: warning: format %Ld expects type long long int, but argument 5 has type scm_t_uintmax
 make[4]: *** [test_conversion-test-conversion.o] Error 1
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19790 :USER "wingo" :DATE 3356077916 :CHANNEL "#guile" :TITLE "hi zeenix" :CONTENTS "(define (hello)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19790 :USER "wingo" :DATE 3356077916 :CHANNEL "#guile" :TITLE "hi zeenix" :CONTENTS "(define (hello)
   (display \"Hi zeenix\")
-  (newline))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19789 :USER "Tobin" :DATE 3356077489 :CHANNEL "None" :TITLE "OpenTTD buil;d" :CONTENTS "tobie@Tea-Chest ~/Projects/ottdTEMP/bridge $ make
+  (newline))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19789 :USER "Tobin" :DATE 3356077489 :CHANNEL "None" :TITLE "OpenTTD buil;d" :CONTENTS "tobie@Tea-Chest ~/Projects/ottdTEMP/bridge $ make
 ===> Compiling and Linking endian_check
 ===> Testing endianness for host
 ===> Compiling and Linking strgen/strgen
@@ -2294,7 +2294,7 @@ _DoConvertBridgeRail
 _DoConvertTunnelRail
 collect2: ld returned 1 exit status
 make: *** [.OSX/openttd.i386] Error 1
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19788 :USER "patr1ck" :DATE 3356075088 :CHANNEL "#adium" :TITLE "Crash Log" :CONTENTS "**********
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19788 :USER "patr1ck" :DATE 3356075088 :CHANNEL "#adium" :TITLE "Crash Log" :CONTENTS "**********
 
 Host Name:      Icarus
 Date/Time:      2006-05-08 04:09:02.208 -0400
@@ -2467,7 +2467,7 @@ Binary Images Description:
 0x96b14000 - 0x96bb7fff libcrypto.0.9.dylib 	/usr/lib/libcrypto.0.9.dylib
 0x96beb000 - 0x96c18fff libssl.0.9.dylib 	/usr/lib/libssl.0.9.dylib
 0xefbef000 - 0xefcd1fff libPSIKey.dylib 	/Library/Application Support/DivXNetworks/libPSIKey.dylib
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19787 :USER "hyatt" :DATE 3356073833 :CHANNEL "#webkit" :TITLE "box-sizing please review" :CONTENTS "Index: css/html4.css
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19787 :USER "hyatt" :DATE 3356073833 :CHANNEL "#webkit" :TITLE "box-sizing please review" :CONTENTS "Index: css/html4.css
 ===================================================================
 --- css/html4.css	(revision 14218)
 +++ css/html4.css	(working copy)
@@ -2534,7 +2534,7 @@ Index: css/quirks.css
 +input:not[type=image], textarea {
 +    box-sizing: border-box;
 +}
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19786 :USER "patr1ck" :DATE 3356071996 :CHANNEL "#adium" :TITLE "Pimp my code!" :CONTENTS "- (BOOL)shouldPollToUpdateString:(NSString *)inString
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19786 :USER "patr1ck" :DATE 3356071996 :CHANNEL "#adium" :TITLE "Pimp my code!" :CONTENTS "- (BOOL)shouldPollToUpdateString:(NSString *)inString
 {
 	NSEnumerator	*enumerator;
 	NSString		*stringRequiringPolling;
@@ -2561,7 +2561,7 @@ Index: css/quirks.css
 	
 	return shouldPoll;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19785 :USER "Thinine" :DATE 3356070420 :CHANNEL "#webkit" :TITLE "bcoding in Cocoa" :CONTENTS "#import \"JSbcoder.h\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19785 :USER "Thinine" :DATE 3356070420 :CHANNEL "#webkit" :TITLE "bcoding in Cocoa" :CONTENTS "#import \"JSbcoder.h\"
 
 
 @implementation JSbcoder
@@ -2797,7 +2797,7 @@ if (returnCode == NSOKButton)
 				i += range.length;
 			}
 		}
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19784 :USER "interferon" :DATE 3356069749 :CHANNEL "#lisp" :TITLE "serialization trick - totally crazy?" :CONTENTS ";; in response to http://groups.google.com/group/comp.lang.lisp/tree/browse_frm/thread/94a7939a291e40ec/279fa57bdbcdb638?rnum=1&_done=%2Fgroup%2Fcomp.lang.lisp%2Fbrowse_frm%2Fthread%2F94a7939a291e40ec%2F279fa57bdbcdb638%3F#doc_279fa57bdbcdb638
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19784 :USER "interferon" :DATE 3356069749 :CHANNEL "#lisp" :TITLE "serialization trick - totally crazy?" :CONTENTS ";; in response to http://groups.google.com/group/comp.lang.lisp/tree/browse_frm/thread/94a7939a291e40ec/279fa57bdbcdb638?rnum=1&_done=%2Fgroup%2Fcomp.lang.lisp%2Fbrowse_frm%2Fthread%2F94a7939a291e40ec%2F279fa57bdbcdb638%3F#doc_279fa57bdbcdb638
 
 ;; we can assume that everything in THING is a simple Lisp type, easily READ or PRINT'd
 
@@ -2859,7 +2859,7 @@ Evaluation took:
   0 page faults and
   25,329,568 bytes consed.
 10000
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19783 :USER "tizoc" :DATE 3356068563 :CHANNEL "None" :TITLE "captcha" :CONTENTS ";; Palabra base
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19783 :USER "tizoc" :DATE 3356068563 :CHANNEL "None" :TITLE "captcha" :CONTENTS ";; Palabra base
 (define *base-codes* (list->vector (map char->integer
 					(string->list \"desaweb\"))))
 
@@ -2914,7 +2914,7 @@ Evaluation took:
       (if (>= i len)
 	(reverse codes)
 	(loop (+ i 3) (cons (string->number (substring getstr i (+ i 3)))
-			    codes))))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19782 :USER "bmaret" :DATE 3356041314 :CHANNEL "#fink" :TITLE "Shlibs issue in Gnucash" :CONTENTS "I am packagin gnucash-1.9.5 It compiles fine, but there is a problem with shared libs:
+			    codes))))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19782 :USER "bmaret" :DATE 3356041314 :CHANNEL "#fink" :TITLE "Shlibs issue in Gnucash" :CONTENTS "I am packagin gnucash-1.9.5 It compiles fine, but there is a problem with shared libs:
 
 % gnucash
 ERROR: In procedure dynamic-link:
@@ -2935,12 +2935,12 @@ while gnucash-libs contains:
 lrwxr-xr-x root/admin        0 2006-05-06 19:37:09 ./sw/lib/libgw-core-utils.0.dylib -> libgw-core-utils.0.0.0.dylib
 
 It looks like that gnucash needs /sw/lib/libgw-core-utils.dylib
-symlink for some reason." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19781 :USER "othermaciej" :DATE 3356034897 :CHANNEL "#webkit" :TITLE "multi-click test case" :CONTENTS "<span id=\"x\" 
+symlink for some reason." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19781 :USER "othermaciej" :DATE 3356034897 :CHANNEL "#webkit" :TITLE "multi-click test case" :CONTENTS "<span id=\"x\" 
       ondblclick='document.getElementById(\"output\").innerHTML += \"dbclick.detail: \" + event.detail + \"<br>\"'
       onclick='document.getElementById(\"output\").innerHTML += \"click.detail: \" + event.detail + \"<br>\"'>
 double click here</span>
 <div id=\"output\"></div>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19780 :USER "turbo24prg" :DATE 3356028978 :CHANNEL "#dylan" :TITLE "parsing xml(-like) elements with meta " :CONTENTS "I want to parse all \"<...>\"-elements in a string \"adadada<dsda>asdasdad<uadasd>sdfs\" and put them into a vector ... but that loops endless, but I can't see what's wrong ...
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19780 :USER "turbo24prg" :DATE 3356028978 :CHANNEL "#dylan" :TITLE "parsing xml(-like) elements with meta " :CONTENTS "I want to parse all \"<...>\"-elements in a string \"adadada<dsda>asdasdad<uadasd>sdfs\" and put them into a vector ... but that loops endless, but I can't see what's wrong ...
 
 let (index, element, other) = scan-maybe-element(\"asdad<foo123'%>assd<foo>foo\");
 
@@ -2955,7 +2955,7 @@ end collector maybe-element-data;
 define collector other-data (data) => (str)
   loop({[\"<\", finish()], [accept(data), do(collect(data))]}),
 end collector other-data;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19779 :USER "sporkmonger" :DATE 3356028518 :CHANNEL "#macdev" :TITLE "custom field editor" :CONTENTS "class RMUDConnectionDocument < OSX::NSDocument
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19779 :USER "sporkmonger" :DATE 3356028518 :CHANNEL "#macdev" :TITLE "custom field editor" :CONTENTS "class RMUDConnectionDocument < OSX::NSDocument
   include OSX
       
   def windowNibName
@@ -2989,7 +2989,7 @@ class RMUDCommandField <  OSX::NSTextField
   def proxyKeyDown(event)
     # [snip]
   end
-end" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19778 :USER "Cheery" :DATE 3356028437 :CHANNEL "None" :TITLE "Little stub for my state machine code." :CONTENTS "(defun start-idle (beginning-parameters) ...)
+end" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19778 :USER "Cheery" :DATE 3356028437 :CHANNEL "None" :TITLE "Little stub for my state machine code." :CONTENTS "(defun start-idle (beginning-parameters) ...)
 (defun start-playing (beginning-parameters) ...)
 
 etc...
@@ -3008,7 +3008,7 @@ etc...
 (defparameter *user-interface-visible* t)
 (when *user-interface-visible* (update-user-interface))
 
-(update-display)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19777 :USER "pkhuong" :DATE 3356027518 :CHANNEL "None" :TITLE "Lispy C++ templates" :CONTENTS "(defun expt (x)
+(update-display)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19777 :USER "pkhuong" :DATE 3356027518 :CHANNEL "None" :TITLE "Lispy C++ templates" :CONTENTS "(defun expt (x)
   (cond ((= 0 x) (out struct result ()
                       \"template <typename T>\"
                       \"static inline T expt(T y) { return 1; }\"))
@@ -3021,7 +3021,7 @@ etc...
                       \"{\"
                       \"    return #{ (expt (/ x 2)) }::expt(y) *\"
                       \"           #{ (expt (/ (+ 1 x) 2)) }::expt(y);\"
-                      \"}\"))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19776 :USER "blub" :DATE 3356020208 :CHANNEL "#haskell" :TITLE "aufgabe 61" :CONTENTS "import List
+                      \"}\"))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19776 :USER "blub" :DATE 3356020208 :CHANNEL "#haskell" :TITLE "aufgabe 61" :CONTENTS "import List
 
 data BinTree a = BinTree a (BinTree a) (BinTree a) | Empty
 
@@ -3048,7 +3048,7 @@ maxPfadWert = treeIso m 0
     where m a w1 w2 = a + max w1 w2
 
 main :: IO ()
-main = putStr \"Compiles!\\n\"" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19775 :USER "jack-" :DATE 3356019882 :CHANNEL "#fink" :TITLE "kasablanca build errors" :CONTENTS "using 4.0.1-apple:
+main = putStr \"Compiles!\\n\"" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19775 :USER "jack-" :DATE 3356019882 :CHANNEL "#fink" :TITLE "kasablanca build errors" :CONTENTS "using 4.0.1-apple:
 
 Making all in src
 /sw/lib/qt3/bin/uic -L /sw/lib/kde3/plugins/designer -nounload -o Q_bookmarkdialog.h ./Q_bookmarkdialog.ui
@@ -3224,7 +3224,7 @@ kbfileinfo.h:38: warning: `bool PrioritySort(KbFileInfo*, KbFileInfo*)'
 make[2]: *** [main.o] Error 1
 make[1]: *** [all-recursive] Error 1
 make: *** [all] Error 2
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19774 :USER "syamajala" :DATE 3356007440 :CHANNEL "#lisp" :TITLE "tbnl stuff" :CONTENTS "component \"tbnl\" not found
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19774 :USER "syamajala" :DATE 3356007440 :CHANNEL "#lisp" :TITLE "tbnl stuff" :CONTENTS "component \"tbnl\" not found
    [Condition of type MISSING-COMPONENT]
 
 Restarts:
@@ -3261,7 +3261,7 @@ Backtrace:
  21: (SWANK::CALL-WITH-BINDINGS 'NIL #<CCL:COMPILED-LEXICAL-CLOSURE #x853C13E>)
  22: (CCL::RUN-PROCESS-INITIAL-FORM '(#<CCL:COMPILED-LEXICAL-CLOSURE #x8537BE6>) #<PROCESS repl-thread(5) [Active] #x8537C1E>)
  23: (#<Anonymous Function #x80DB61E> '(#<CCL:COMPILED-LEXICAL-CLOSURE #x8537BE6>) 0)
- 24: (#<Anonymous Function #x80CE806> 788728 #<LISP-THREAD repl-thread [tcr @ #x3023E0] #x8537D0E>)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19773 :USER "Cheery" :DATE 3356004151 :CHANNEL "None" :TITLE "Is this incredible?" :CONTENTS ";;;; tiny game to test capablities of lisp.
+ 24: (#<Anonymous Function #x80CE806> 788728 #<LISP-THREAD repl-thread [tcr @ #x3023E0] #x8537D0E>)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19773 :USER "Cheery" :DATE 3356004151 :CHANNEL "None" :TITLE "Is this incredible?" :CONTENTS ";;;; tiny game to test capablities of lisp.
 
 
 
@@ -3276,7 +3276,7 @@ Backtrace:
   (event:game-loop *done*
     (on :key-down (setf *done* t))
     (gl:clear 1 1 1)
-    (display:update)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19772 :USER "Lokadin" :DATE 3356004050 :CHANNEL "#haskell" :TITLE "hGetCont" :CONTENTS "-- gets the Contents' without making it impossible to get more
+    (display:update)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19772 :USER "Lokadin" :DATE 3356004050 :CHANNEL "#haskell" :TITLE "hGetCont" :CONTENTS "-- gets the Contents' without making it impossible to get more
 hGetCont hdl = do
    bool <- hWaitForInput hdl 100
    if bool
@@ -3284,12 +3284,12 @@ hGetCont hdl = do
               char' <- hGetCont hdl -- get the rest of the characters
               return $ char : char'
       else return []
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19771 :USER "boredzo" :DATE 3356002977 :CHANNEL "#adium" :TITLE "NibLeak output" :CONTENTS "2006-05-07 05:08:34.858 NibLeak[1303] Slave 0x58f3b0 born
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19771 :USER "boredzo" :DATE 3356002977 :CHANNEL "#adium" :TITLE "NibLeak output" :CONTENTS "2006-05-07 05:08:34.858 NibLeak[1303] Slave 0x58f3b0 born
 2006-05-07 05:08:34.868 NibLeak[1303] Slave 0x58f460 born
 2006-05-07 05:08:34.902 NibLeak[1303] Slave 0x58f3b0 identifier: Y
 2006-05-07 05:08:34.914 NibLeak[1303] Slave 0x58f460 identifier: Z
 2006-05-07 05:08:34.929 NibLeak[1303] Refcounts: Y=2; Z=2
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19770 :USER "Cheery" :DATE 3355998158 :CHANNEL "None" :TITLE "Something I do for this soon, I could never do in any other language." :CONTENTS "(defcstruct keyboard-symbol
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19770 :USER "Cheery" :DATE 3355998158 :CHANNEL "None" :TITLE "Something I do for this soon, I could never do in any other language." :CONTENTS "(defcstruct keyboard-symbol
   (scancode :unsigned-char) (sym :uint) (mod :uint) (unicode :unsigned-short))
 
 (defmacro defcevent (name &rest body)
@@ -3319,7 +3319,7 @@ hGetCont hdl = do
   (jaxis joystick-axis-event) (jball joystick-ball-event)
   (jhat joystick-hat-event)   (jbutton joystick-button-event)
   (resize resize-event) (expose expose-event) (quit quit-event)
-  (user user-event))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19769 :USER "Cheery" :DATE 3355996077 :CHANNEL "None" :TITLE "getting further..." :CONTENTS "(load \"SDL\")
+  (user user-event))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19769 :USER "Cheery" :DATE 3355996077 :CHANNEL "None" :TITLE "getting further..." :CONTENTS "(load \"SDL\")
 
 (unless (find :asdf *features*) (load \"d:/clisp/clisp-2.38/asdf/asdf.lisp\"))
 (unless (find :cffi *features*)
@@ -3336,7 +3336,7 @@ hGetCont hdl = do
     (cffi:with-foreign-object (event 'event::event)
       (iter (always (equal (event::unsafe-poll event) 1))
         (cffi:with-foreign-slots ((type) event event::event)
-          (when (equal type 12) (setq *done* t)))))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19768 :USER "Cheery" :DATE 3355992972 :CHANNEL "None" :TITLE "I know this is comparable to doing nothing, but it is fun. :) " :CONTENTS "(load \"SDL\")
+          (when (equal type 12) (setq *done* t)))))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19768 :USER "Cheery" :DATE 3355992972 :CHANNEL "None" :TITLE "I know this is comparable to doing nothing, but it is fun. :) " :CONTENTS "(load \"SDL\")
 
 (unless (find :asdf *features*) (load \"d:/clisp/clisp-2.38/asdf/asdf.lisp\"))
 (unless (find :cffi *features*)
@@ -3362,7 +3362,7 @@ hGetCont hdl = do
       (cffi:with-foreign-slots ((type) event event::event)
         (when (equal type 12) (setq *done* t))))))
 
-(sdl:quit) ; fix" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19767 :USER "HET2" :DATE 3355992385 :CHANNEL "None" :TITLE "narf" :CONTENTS "(define x 3)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19766 :USER "batkins" :DATE 3355990909 :CHANNEL "None" :TITLE "spreadsheet.lisp" :CONTENTS "(defpackage :spreadsheet (:use :common-lisp))
+(sdl:quit) ; fix" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19767 :USER "HET2" :DATE 3355992385 :CHANNEL "None" :TITLE "narf" :CONTENTS "(define x 3)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19766 :USER "batkins" :DATE 3355990909 :CHANNEL "None" :TITLE "spreadsheet.lisp" :CONTENTS "(defpackage :spreadsheet (:use :common-lisp))
 (in-package :spreadsheet)
 
 (defvar *allowed-funcs*
@@ -3419,7 +3419,7 @@ afterwards.\"
   (maphash (lambda (key value)
 	     (format t \"~A=~A~%\" key value))
 	   (cells sheet)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19765 :USER "Riastradh" :DATE 3355990496 :CHANNEL "#lisp" :TITLE "Close Parenthesis; problem happens in CLOSE-PAIR-AND-NEWLINE when it cals INDENT-CURRENT-LINE" :CONTENTS "(define-command (com-close-parenthesis :name t
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19765 :USER "Riastradh" :DATE 3355990496 :CHANNEL "#lisp" :TITLE "Close Parenthesis; problem happens in CLOSE-PAIR-AND-NEWLINE when it cals INDENT-CURRENT-LINE" :CONTENTS "(define-command (com-close-parenthesis :name t
                                        :command-table lisp-table)
     ()
   (close-pair-command #\\)))
@@ -3498,7 +3498,7 @@ afterwards.\"
 
 (defun in-character-p (mark syntax)
   (in-type-p mark syntax 'CHARACTER-LEXEME))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19764 :USER "sporkmonger" :DATE 3355981033 :CHANNEL "#macdev" :TITLE "broken keyboard input" :CONTENTS "require 'osx/cocoa'
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19764 :USER "sporkmonger" :DATE 3355981033 :CHANNEL "#macdev" :TITLE "broken keyboard input" :CONTENTS "require 'osx/cocoa'
 
 class RMUDCommandField <  OSX::NSTextField
   include OSX
@@ -3539,19 +3539,19 @@ class RMUDCommandField <  OSX::NSTextField
     print \".\"
   end
 end
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19763 :USER "Riastradh" :DATE 3355973259 :CHANNEL "#lisp" :TITLE "multi-continuation READ-CHAR example" :CONTENTS "(block exit
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19763 :USER "Riastradh" :DATE 3355973259 :CHANNEL "#lisp" :TITLE "multi-continuation READ-CHAR example" :CONTENTS "(block exit
   (let ((read-char (lambda args
                      (multi (apply read-char args)
                        0
                        (vals
                         (return-from exit (apply values vals)))))))
     ...))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19762 :USER "Bison" :DATE 3355971699 :CHANNEL "#lisp" :TITLE "remove-file-newline" :CONTENTS "(defun remove-file-newline (in-file out-file)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19762 :USER "Bison" :DATE 3355971699 :CHANNEL "#lisp" :TITLE "remove-file-newline" :CONTENTS "(defun remove-file-newline (in-file out-file)
   (let ((next-char (read-char in-file)))
     (when next-char
             (cond ((not (char= next-char #\\newline))
                    (write-char next-char out-file)))
-            (remove-file-newline in-file out-file))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19761 :USER "spiffy" :DATE 3355968704 :CHANNEL "#lisp" :TITLE "multi collect" :CONTENTS "(defun make-card (value suite)
+            (remove-file-newline in-file out-file))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19761 :USER "spiffy" :DATE 3355968704 :CHANNEL "#lisp" :TITLE "multi collect" :CONTENTS "(defun make-card (value suite)
   `(,value . ,suite))
 
 (defun card-value (card)
@@ -3566,7 +3566,7 @@ end
 (defun make-deck ()
   (loop for s in *suites* append
 	(loop for i from 1 to 10 collecting (make-card i s) for f in *face* collecting (make-card i f)
-)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19760 :USER "minerale" :DATE 3355966236 :CHANNEL "#lisp" :TITLE "test - please ignore" :CONTENTS "this is a test" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19759 :USER "landonf" :DATE 3355964524 :CHANNEL "#opendarwin" :TITLE "default exception handler" :CONTENTS "#define _GNU_SOURCE
+)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19760 :USER "minerale" :DATE 3355966236 :CHANNEL "#lisp" :TITLE "test - please ignore" :CONTENTS "this is a test" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19759 :USER "landonf" :DATE 3355964524 :CHANNEL "#opendarwin" :TITLE "default exception handler" :CONTENTS "#define _GNU_SOURCE
 #include <dlfcn.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -3606,7 +3606,7 @@ int main(void) {
         _lfobjc_real_Unwind_RaiseException = dlsym(RTLD_NEXT, \"_Unwind_RaiseException\");
 
         @throw e;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19758 :USER "Cryo" :DATE 3355962083 :CHANNEL "#macdev" :TITLE "edumakate me" :CONTENTS "Bad:
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19758 :USER "Cryo" :DATE 3355962083 :CHANNEL "#macdev" :TITLE "edumakate me" :CONTENTS "Bad:
 2006-05-06 19:45:06.634 iJournal[21527] setting inuchibi with NSImage 0x54e07d0 Size={48, 48} Reps=(
     NSBitmapImageRep 0x4a67ce0 Size={48, 48} ColorSpace=NSCalibratedRGBColorSpace BPS=8 BPP=24 Pixels=100x100 Alpha=NO Planar=NO Format=0
 
@@ -3615,7 +3615,7 @@ Good:
     NSBitmapImageRep 0x54df750 Size={100, 88} ColorSpace=NSCalibratedRGBColorSpace BPS=8 BPP=24 Pixels=100x88 Alpha=NO Planar=NO Format=0
 
 images are loaded from a URL are are the size specified in Pixels.  I have no idea why that -one- is doing that.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19757 :USER "David" :DATE 3355957480 :CHANNEL "#scheme" :TITLE "re-define-syntax" :CONTENTS "(define (fish x) (+ x 3))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19757 :USER "David" :DATE 3355957480 :CHANNEL "#scheme" :TITLE "re-define-syntax" :CONTENTS "(define (fish x) (+ x 3))
 (define (flap x) (fish x))
 (define-syntax magic
   (syntax-rules ()
@@ -3625,7 +3625,7 @@ images are loaded from a URL are are the size specified in Pixels.  I have no id
     ((fish x) (- x 3))))
 (fish 5)   =>  ?
 (magic 5)  =>  ?
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19756 :USER "aptiva" :DATE 3355952502 :CHANNEL "#macdev" :TITLE "not making sense.." :CONTENTS "message:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19756 :USER "aptiva" :DATE 3355952502 :CHANNEL "#macdev" :TITLE "not making sense.." :CONTENTS "message:
 Path: /Users/aptiva/Desktop/Aquatic software.psd
 2006-05-06 22:06:26.386 Converter[4716] *** Canceling drag because exception 'NSInvalidArgumentException' (reason '*** -[NSURL initFileURLWithPath:]: nil string parameter') was raised during a dragging session
 
@@ -3634,7 +3634,7 @@ code:
 NSLog(@\"Path: %@\", path);
 			[[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:[NSURL fileURLWithPath:path]
 																				   display:NO
-																					 error:nil];" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19755 :USER "housel" :DATE 3355949367 :CHANNEL "#dylan" :TITLE "Unresolved symbols in DxDYLAN" :CONTENTS "   Creating library C:\\Documents and Settings\\housel\\lib\\DxDYLAN.lib and object C:\\Documents and Settings\\housel\\lib\\DxDYLAN.exp
+																					 error:nil];" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19755 :USER "housel" :DATE 3355949367 :CHANNEL "#dylan" :TITLE "Unresolved symbols in DxDYLAN" :CONTENTS "   Creating library C:\\Documents and Settings\\housel\\lib\\DxDYLAN.lib and object C:\\Documents and Settings\\housel\\lib\\DxDYLAN.exp
 pentium-run-time.lib(collector.obj) : error LNK2001: unresolved external symbol __except_list
 mmdw.lib(protw3.obj) : error LNK2001: unresolved external symbol __except_list
 pentium-run-time.lib(collector.obj) : error LNK2001: unresolved external symbol __except_handler3
@@ -3661,7 +3661,7 @@ mmdw.lib(global.obj) : error LNK2001: unresolved external symbol __ftol
 mmdw.lib(trace.obj) : error LNK2001: unresolved external symbol __ftol
 mmdw.lib(pool.obj) : error LNK2001: unresolved external symbol __ftol
 mpsplinth.lib(plinth.obj) : error LNK2001: unresolved external symbol _clock
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19754 :USER "roozbeh" :DATE 3355948092 :CHANNEL "#fpc" :TITLE "sample.s" :CONTENTS "	.file \"project3.pas\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19754 :USER "roozbeh" :DATE 3355948092 :CHANNEL "#fpc" :TITLE "sample.s" :CONTENTS "	.file \"project3.pas\"
 # Begin asmlist al_begin
 
 .section .text.DEBUGSTART_P$PROJECT1
@@ -4014,7 +4014,7 @@ DEBUGEND_P$PROJECT1:
 .Lf4:
 # End asmlist al_end
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19753 :USER "roozbeh" :DATE 3355948076 :CHANNEL "#fpc" :TITLE "sample.pas" :CONTENTS "program Project1;
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19753 :USER "roozbeh" :DATE 3355948076 :CHANNEL "#fpc" :TITLE "sample.pas" :CONTENTS "program Project1;
 
 {$mode objfpc}{$H+}
 {$apptype console}
@@ -4048,7 +4048,7 @@ end;
 
 begin
 end.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19752 :USER "fpk" :DATE 3355946124 :CHANNEL "#fpc" :TITLE "work for Synopsis ;)" :CONTENTS "C:\\fpc\\tests\\test\\cg>c:\\fpc\\compiler\\x86_64\\pp -n -Twin64 -Fuc:\\fpc\\rtl\\units\\x8
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19752 :USER "fpk" :DATE 3355946124 :CHANNEL "#fpc" :TITLE "work for Synopsis ;)" :CONTENTS "C:\\fpc\\tests\\test\\cg>c:\\fpc\\compiler\\x86_64\\pp -n -Twin64 -Fuc:\\fpc\\rtl\\units\\x8
 6_64-win64 -Fuc:\\fpc\\fcl\\units\\x86_64-win64 -Fuc:\\fpc\\packages\\extra\\winunits\\un
 its\\x86_64-win64 tcalext
 Fatal: Compilation aborted
@@ -4060,12 +4060,12 @@ pas
   $0046CC8C  PROC_PROGRAM,  line 1459 of C:/fpc/compiler/pmodules.pas
   $00418F0F  COMPILE,  line 425 of C:/fpc/compiler/parser.pas
   $0040531C  COMPILE,  line 375 of C:/fpc/compiler/compiler.pas
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19751 :USER "davidhouse" :DATE 3355943438 :CHANNEL "#haskell" :TITLE "what i've got at the moment" :CONTENTS "       let os = [initOutput] ++ logs ++ [summary, closeOutput]
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19751 :USER "davidhouse" :DATE 3355943438 :CHANNEL "#haskell" :TITLE "what i've got at the moment" :CONTENTS "       let os = [initOutput] ++ logs ++ [summary, closeOutput]
        let outf = case outputter of 
                     \"--html\"  -> unHTML
                     \"--ascii\" -> unAscii
                     _         -> unAscii -- default to terminal output
-       mapM_ (putStrLn . outf) os" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19750 :USER "qishi" :DATE 3355942842 :CHANNEL "#nebula" :TITLE "Brickbash mangalore gui" :CONTENTS "# ---
+       mapM_ (putStrLn . outf) os" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19750 :USER "qishi" :DATE 3355942842 :CHANNEL "#nebula" :TITLE "Brickbash mangalore gui" :CONTENTS "# ---
 # $parser:ntclserver$ $class:ntransformnode$
 # ---
 .setlocalbox 0.000000 0.000000 0.000000 0.500000 0.500000 0.500000
@@ -4237,7 +4237,7 @@ sel ..
 
 # ---
 # Eof
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19749 :USER "ghoust" :DATE 3355942631 :CHANNEL "#nebula" :TITLE "mangalore gui" :CONTENTS "DRAFT
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19749 :USER "ghoust" :DATE 3355942631 :CHANNEL "#nebula" :TITLE "mangalore gui" :CONTENTS "DRAFT
 
 understanding mangalore gui
 
@@ -4297,7 +4297,7 @@ gui's opening new gui's,  startinggames, stopping them, loading levels,
 etc.) The Handling is done in the EventHandler::HandleEvent() function which
 is the only part you need to implement. Without it you just have buttons
 doing nothing :
--)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19748 :USER "Catfish_Man" :DATE 3355940502 :CHANNEL "#chatkit" :TITLE "One example of HOM" :CONTENTS "//this
+-)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19748 :USER "Catfish_Man" :DATE 3355940502 :CHANNEL "#chatkit" :TITLE "One example of HOM" :CONTENTS "//this
 NSMutableArray *array = [NSMutableArray array];
 NSEnumerator * foo = [bar objectEnumerator];
 Baz *a;
@@ -4310,9 +4310,9 @@ while((a = [foo nextObject]))
 
 //becomes this
 NSMutableArray *array = [NSMutableArray array];
-[[array do] addObject:[bar each]];" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19747 :USER "virtul" :DATE 3355939480 :CHANNEL "#nebula" :TITLE "state" :CONTENTS "nVariable::Handle varHandle;
+[[array do] addObject:[bar each]];" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19747 :USER "virtul" :DATE 3355939480 :CHANNEL "#nebula" :TITLE "state" :CONTENTS "nVariable::Handle varHandle;
 varHandle = nVariableServer::Instance()->GetVariableHandleByName(\"chnCharState\");
-nVariableServer::Instance()->SetIntVariable(varHandle, this->refAnimStates->GetSelectionIndex());" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19746 :USER "resiak" :DATE 3355938596 :CHANNEL "None" :TITLE "snakes" :CONTENTS "search title \"Romantic Fatigue\"
+nVariableServer::Instance()->SetIntVariable(varHandle, this->refAnimStates->GetSelectionIndex());" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19746 :USER "resiak" :DATE 3355938596 :CHANNEL "None" :TITLE "snakes" :CONTENTS "search title \"Romantic Fatigue\"
 file: Albums/Frank_Turner/Demo_1/01 - Romantic_Fatigue.ogg
 Artist: Frank Turner
 Album: Demo 1
@@ -4327,7 +4327,7 @@ Title: Romantic Fatigue
 Time: 11
 OK
 find title \"Romantic Fatigue\"
-ACK [2@0] {find} unknown table" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19745 :USER "falconair" :DATE 3355936299 :CHANNEL "#scheme" :TITLE "\"sudo port install mzscheme\" compilation error" :CONTENTS "--->  Fetching mzscheme
+ACK [2@0] {find} unknown table" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19745 :USER "falconair" :DATE 3355936299 :CHANNEL "#scheme" :TITLE "\"sudo port install mzscheme\" compilation error" :CONTENTS "--->  Fetching mzscheme
 --->  Attempting to fetch mz-209-src-unix.tgz from http://download.plt-scheme.org/bundles/209/mz/
 --->  Verifying checksum(s) for mzscheme
 --->  Extracting mzscheme
@@ -4354,7 +4354,7 @@ make[1]: *** [mz] Error 2
 make: *** [all] Error 2
 
 Error: /opt/local/bin/port: Status 1 encountered during processing.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19744 :USER "xerox" :DATE 3355933578 :CHANNEL "#haskell" :TITLE "Possible HashMap interface?" :CONTENTS "module HashMap where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19744 :USER "xerox" :DATE 3355933578 :CHANNEL "#haskell" :TITLE "Possible HashMap interface?" :CONTENTS "module HashMap where
 
 import qualified Data.IntMap as IM
 
@@ -4373,7 +4373,7 @@ instance Hashable Int where
   -- ... add more ...
 
 -- ... more evoluted instances ...
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19743 :USER "pitecus" :DATE 3355931374 :CHANNEL "#haskell" :TITLE "Ambiguous type variable" :CONTENTS "replace (key,value) ((k,v):xs) | key == k = (key,value):xs
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19743 :USER "pitecus" :DATE 3355931374 :CHANNEL "#haskell" :TITLE "Ambiguous type variable" :CONTENTS "replace (key,value) ((k,v):xs) | key == k = (key,value):xs
                                | otherwise = (k,v): replace (key,value) xs
 replace (key,value) [] = [(key,value)]
 
@@ -4390,7 +4390,7 @@ lookup key (HM im) = case Map.lookup (hash key) im of
 
 insert key value (HM im) = case Map.lookup (hash key) im of
                              Nothing -> HM (Map.insert (hash key) [(key,value)] im)
-                             Just alist -> HM (Map.insert (hash key) (replace (key,value) alist) im)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19742 :USER "RangerRick" :DATE 3355927778 :CHANNEL "#fink" :TITLE "the function" :CONTENTS "static void
+                             Just alist -> HM (Map.insert (hash key) (replace (key,value) alist) im)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19742 :USER "RangerRick" :DATE 3355927778 :CHANNEL "#fink" :TITLE "the function" :CONTENTS "static void
 diff8x8_s16_u8_mmx (int16_t *dest, uint8_t *src1, int ss1, uint8_t *src2, int ss2)
 {
   __asm__ __volatile__ (
@@ -4432,7 +4432,7 @@ diff8x8_s16_u8_mmx (int16_t *dest, uint8_t *src1, int ss1, uint8_t *src2, int ss
      : \"memory\"
   );
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19741 :USER "nyef" :DATE 3355915876 :CHANNEL "#lisp" :TITLE "possible generic-+ optimization for SBCL/MIPS" :CONTENTS "It looks like this is a net win for all code paths. For the non-overflow case you save between 2 and 4 instructions (depending on if you had a negative-signed result or not). For the overflow case you save having to jump around the reboxing of the result. There's a similar optimization for generic--, but I can never remember which way round the xors go. The only question I have is, does it actually work?
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19741 :USER "nyef" :DATE 3355915876 :CHANNEL "#lisp" :TITLE "possible generic-+ optimization for SBCL/MIPS" :CONTENTS "It looks like this is a net win for all code paths. For the non-overflow case you save between 2 and 4 instructions (depending on if you had a negative-signed result or not). For the overflow case you save having to jump around the reboxing of the result. There's a similar optimization for generic--, but I can never remember which way round the xors go. The only question I have is, does it actually work?
 
 --- sbcl-0.9.12-x86-reserve-ebx-2/src/assembly/mips/arith.lisp	2005-08-16 11:20:40.000000000 -0400
 +++ sbcl-0.9.12-x86-reserve-ebx-3/src/assembly/mips/arith.lisp	2006-05-06 07:45:28.000000000 -0400
@@ -4478,7 +4478,7 @@ diff8x8_s16_u8_mmx (int16_t *dest, uint8_t *src1, int ss1, uint8_t *src2, int ss
  
    DONE)
  
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19740 :USER "resiak" :DATE 3355913384 :CHANNEL "#haskell" :TITLE "cases and record updates" :CONTENTS "data MpdStatus = MpdStatus {
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19740 :USER "resiak" :DATE 3355913384 :CHANNEL "#haskell" :TITLE "cases and record updates" :CONTENTS "data MpdStatus = MpdStatus {
   volume      :: Integer,
   crossfade   :: Integer,
   isRepeating :: Bool,
@@ -4505,7 +4505,7 @@ buildMpdStatus xs = buildMpdStatus' xs emptyMpdStatus
           )
 
 -- MpdInteraction.hs:28:27: parse error on input `{'
--- which is the { of the volume-related line" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19739 :USER "petekaz" :DATE 3355890602 :CHANNEL "None" :TITLE "Test Monad" :CONTENTS "module Main where
+-- which is the { of the volume-related line" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19739 :USER "petekaz" :DATE 3355890602 :CHANNEL "None" :TITLE "Test Monad" :CONTENTS "module Main where
 
 import Monad
 
@@ -4525,7 +4525,7 @@ main = return 0         >>=
        readCounter      >>= \\c ->
        putStrLn $ show $ c
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19738 :USER "wimp" :DATE 3355887170 :CHANNEL "#scheme" :TITLE "one more" :CONTENTS "inspect: d
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19738 :USER "wimp" :DATE 3355887170 :CHANNEL "#scheme" :TITLE "one more" :CONTENTS "inspect: d
 '#{Continuation (pc 46) (lp in fold in srfi-1)}
 
 Waiting for (kons (car lis) ans)
@@ -4558,7 +4558,7 @@ void (*func) (void*, void*);
 
 \" () ())
  [7: lists] '()
-inspect: " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19737 :USER "wimp" :DATE 3355884860 :CHANNEL "#scheme" :TITLE "myscript" :CONTENTS "#!/home/tkxue/bin/scsh \\
+inspect: " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19737 :USER "wimp" :DATE 3355884860 :CHANNEL "#scheme" :TITLE "myscript" :CONTENTS "#!/home/tkxue/bin/scsh \\
 -lm /home/tkxue/emacs/scm/package.scm -o tkx-util -o tkx-output -o tkx-processor -o tkx-cutil -s
 !#
 
@@ -4580,7 +4580,7 @@ inspect: " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19737 :USER "wimp" :DAT
        (out-file (open-output-file (string-append filename \".h\"))))
   (format out-file \"#ifndef H_~A\\n#define H_~A\\n\" filename filename)
   (write-string (convert in-file) out-file)
-  (format out-file \"#endif\\n\"))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19736 :USER "jethr0" :DATE 3355871090 :CHANNEL "#haskell" :TITLE "pattern weirdness" :CONTENTS "csgDiff a b = diff (sortBy sortCuts a) (sortBy sortCuts b)
+  (format out-file \"#endif\\n\"))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19736 :USER "jethr0" :DATE 3355871090 :CHANNEL "#haskell" :TITLE "pattern weirdness" :CONTENTS "csgDiff a b = diff (sortBy sortCuts a) (sortBy sortCuts b)
   where diff os@((a,b):xs) ps@((c,d):ys) = case () of
           () | ida > idd  -> diff xs ps
              | idc > idb  -> diff os ys
@@ -4597,7 +4597,7 @@ with the upper commented guard it works fine, with the lower guard it says:
 
 Object.hs:(51,8)-(58,78): Non-exhaustive patterns in function diff
 
-*huh*????" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19735 :USER "slava" :DATE 3355870298 :CHANNEL "#concatenative" :TITLE "oops" :CONTENTS "  full-gc .s full-gc .s full-gc .s
+*huh*????" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19735 :USER "slava" :DATE 3355870298 :CHANNEL "#concatenative" :TITLE "oops" :CONTENTS "  full-gc .s full-gc .s full-gc .s
 *** Major GC (0 minor, 0 cards)
 *** Major GC (0 minor, 0 cards)
 *** Major GC (0 minor, 0 cards)
@@ -4607,7 +4607,7 @@ a sequence containing 1 element
 1.000000241308092
 a sequence containing 1 element
 1.000000245033381
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19734 :USER "Tao`" :DATE 3355868009 :CHANNEL "#macdev" :TITLE "NSOpenPanel weirdness" :CONTENTS "this is in the controller class of the delegate. I wired File > Open... to this method in IB.. 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19734 :USER "Tao`" :DATE 3355868009 :CHANNEL "#macdev" :TITLE "NSOpenPanel weirdness" :CONTENTS "this is in the controller class of the delegate. I wired File > Open... to this method in IB.. 
 
 -(IBAction )openFile:(id )sender
 {
@@ -4630,7 +4630,7 @@ a sequence containing 1 element
 
 when I choose file > open... the open panel appears, but the moment I move my mouse, it disappears. XCode 2.2, os x 10.4.6
 
-Mike" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19733 :USER "AngryLuke" :DATE 3355866545 :CHANNEL "#macdev" :TITLE "mini-rant" :CONTENTS "The article at http://docs.info.apple.com/article.html?artnum=303602 contains some very poor information. Some of which is very bad considering Apple's recent marketing ads.
+Mike" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19733 :USER "AngryLuke" :DATE 3355866545 :CHANNEL "#macdev" :TITLE "mini-rant" :CONTENTS "The article at http://docs.info.apple.com/article.html?artnum=303602 contains some very poor information. Some of which is very bad considering Apple's recent marketing ads.
 
 Step 3, Name your children:
 
@@ -4672,7 +4672,7 @@ To ensure the best system performance and keep file damage to an all-time low, o
 
 Now this is completely useless. Again, it's making it sound like OS X isn't stable. When 10.4 has things like auto-defragging, hot file adaptive clustering, and the pre-allocation of blocks to reduce disk problems. In fact, because of these things optimizing your HD could actually slow down some operations as they completely undo all the optimizations OS X itself has done to the HD.
 
-All in all, this seems like a very poorly written article that makes OS X sound buggy, unstable, and a security risk." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19732 :USER "remote" :DATE 3355866168 :CHANNEL "#linux-quebec" :TITLE "init script de base (Oexal)" :CONTENTS "#!/bin/sh
+All in all, this seems like a very poorly written article that makes OS X sound buggy, unstable, and a security risk." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19732 :USER "remote" :DATE 3355866168 :CHANNEL "#linux-quebec" :TITLE "init script de base (Oexal)" :CONTENTS "#!/bin/sh
 # Demonstration: scripte de type init ala Debian
 #
 
@@ -4697,7 +4697,7 @@ case \"$1\" in
 esac
 
 exit 0
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19731 :USER "keramida" :DATE 3355865838 :CHANNEL "#emacs" :TITLE "attempt at splitting a path" :CONTENTS "(let ((path \"/foo/bar/baz\"))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19731 :USER "keramida" :DATE 3355865838 :CHANNEL "#emacs" :TITLE "attempt at splitting a path" :CONTENTS "(let ((path \"/foo/bar/baz\"))
   (let (base collection filename)
     (save-match-data
       (if (not (string-match \"\\\\(.*\\\\)/\\\\(.*\\\\)\" path))
@@ -4706,13 +4706,13 @@ exit 0
         (setq filename (match-string 2 path))))
     (list base collection filename)))
 
-=> (nil \"/foo/bar\" \"baz\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19730 :USER "inteferon" :DATE 3355865601 :CHANNEL "#emacs" :TITLE "simplify-pathname" :CONTENTS "(defun simplify-pathname (path)
+=> (nil \"/foo/bar\" \"baz\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19730 :USER "inteferon" :DATE 3355865601 :CHANNEL "#emacs" :TITLE "simplify-pathname" :CONTENTS "(defun simplify-pathname (path)
   (let* ((components (last (split-string path \"/\") 2))
 	 (dir (first components))
 	 (file (second components)))
     (concat dir \"/\" file)))
 
-(simplify-pathname  \"/share/music/bo/FooBar/foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobar/Foobar.mp3\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19729 :USER "technomancy" :DATE 3355864760 :CHANNEL "#emacs" :TITLE "libnotify for rcirc nick notification" :CONTENTS ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(simplify-pathname  \"/share/music/bo/FooBar/foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobar/Foobar.mp3\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19729 :USER "technomancy" :DATE 3355864760 :CHANNEL "#emacs" :TITLE "libnotify for rcirc nick notification" :CONTENTS ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Use libnotify to tell us when our name happens
 ;; requires libnotify-bin
 
@@ -4721,7 +4721,7 @@ exit 0
 (defun notify-if-nick (process command sender args line)
   (if (string-match rcirc-nick line)
       (shell-command (concat \"notify-send \\\"\" sender \" said\\\" \\\"\" line \"\\\"\"))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19728 :USER "arnau" :DATE 3355864063 :CHANNEL "None" :TITLE "crap" :CONTENTS "(set 'maxpathlen 30)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19728 :USER "arnau" :DATE 3355864063 :CHANNEL "None" :TITLE "crap" :CONTENTS "(set 'maxpathlen 30)
 (set 'desc \"/share/music/bo/FooBar/foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobar/Foobar.mp3\")
 (if (string-match \"^/share/music/\\\\(.*\\\\)/\\\\(\\\\(.*/\\\\).*\\\\)\\\\.\\\\(mp3\\\\|ogg\\\\)\" desc)
     (if (> (length (match-string 2 desc)) maxpathlen)
@@ -4731,11 +4731,11 @@ exit 0
       (match-string 2 desc))
   (if (string-match \"^/share/music/\\\\(.*\\\\)/\\\\(.*\\\\)\\\\.\\\\(mp3\\\\|ogg\\\\)\" desc)
       (match-string 2 desc)
-    desc))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19727 :USER "exitmusic" :DATE 3355862460 :CHANNEL "#adium" :TITLE "AdiumSpotlightImporter" :CONTENTS "    setenv YACC /usr/bin/yacc
+    desc))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19727 :USER "exitmusic" :DATE 3355862460 :CHANNEL "#adium" :TITLE "AdiumSpotlightImporter" :CONTENTS "    setenv YACC /usr/bin/yacc
     /bin/sh -c /Users/chiragshah/adium/build/Adium.build/Deployment-Debug_PPC-Only/Adium.build/Script-34CF9F57085BA90200D87E37.sh
 Copying external frameworks into Adium.app
 /System/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/chiragshah/adium/build/Deployment-Debug_PPC-Only/AIUtilities.framework /Users/chiragshah/adium/build/Deployment-Debug_PPC-Only/Adium.app/Contents/Frameworks
-pbxcp: AdiumSpotlightImporter.mdimporter: No such file or directory" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19726 :USER "lemonodor" :DATE 3355859231 :CHANNEL "#lisp" :TITLE "primitive montezuma example" :CONTENTS "(in-package #:montezuma)
+pbxcp: AdiumSpotlightImporter.mdimporter: No such file or directory" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19726 :USER "lemonodor" :DATE 3355859231 :CHANNEL "#lisp" :TITLE "primitive montezuma example" :CONTENTS "(in-package #:montezuma)
 
 (defvar *paste-index* nil)
 
@@ -4772,7 +4772,7 @@ pbxcp: AdiumSpotlightImporter.mdimporter: No such file or directory" :ANNOTATION
 			       score
 			       (field-data (document-field paste \"number\"))
 			       (field-data (document-field paste \"title\"))))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19725 :USER "mrbannon" :DATE 3355858301 :CHANNEL "#macdev" :TITLE "Link error" :CONTENTS "Building target Poker2 (Upgraded) of project Poker2
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19725 :USER "mrbannon" :DATE 3355858301 :CHANNEL "#macdev" :TITLE "Link error" :CONTENTS "Building target Poker2 (Upgraded) of project Poker2
 
 
 Checking DependenciesWarning: Multiple build commands for output file /Humagade/Projects/MyProj/Poker2/build/Debug/Poker2.bundle/Contents/Resources/metadata.cfg
@@ -4846,7 +4846,7 @@ Ld /Humagade/Projects/MyProj/Poker2/build/Debug/Poker2.bundle/Contents/MacOS/Pok
 /usr/lib/gcc/i686-apple-darwin8/4.0.1/../../../libSystem.dylib(wmemcmp.So) definition of _wmemcmp
 collect2: ld returned 1 exit status
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19724 :USER "schwatoo" :DATE 3355857709 :CHANNEL "#macsb" :TITLE "Aardvarks" :CONTENTS "- (void)sizeToFit
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19724 :USER "schwatoo" :DATE 3355857709 :CHANNEL "#macsb" :TITLE "Aardvarks" :CONTENTS "- (void)sizeToFit
 {
 if (oldScale == NAN)
 	oldScale = [self scale];
@@ -4874,7 +4874,7 @@ oldScale = theScale;
 
 [self setNeedsDisplay:YES];
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19723 :USER "Bart" :DATE 3355857173 :CHANNEL "None" :TITLE "Trac AcctManager problem" :CONTENTS "In web browser :
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19723 :USER "Bart" :DATE 3355857173 :CHANNEL "None" :TITLE "Trac AcctManager problem" :CONTENTS "In web browser :
 Traceback (most recent call last):
   File \"/usr/lib/python2.4/site-packages/trac/web/main.py\", line 299, in dispatch_request
     dispatcher.dispatch(req)
@@ -4897,16 +4897,16 @@ password_file = /srv/svn/trac/gcrs/trac.htpasswd
 [components]
 webadmin.* = enabled
 trac.web.auth.LoginModule = disabled
-acct_mgr.web_ui.LoginModule = enabled" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19722 :USER "alpheus" :DATE 3355855592 :CHANNEL "#lisp" :TITLE "Intern a symbol into package NIL?" :CONTENTS "(defmethod araneida:handle-request :around ((handler wco-handler) request)
+acct_mgr.web_ui.LoginModule = enabled" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19722 :USER "alpheus" :DATE 3355855592 :CHANNEL "#lisp" :TITLE "Intern a symbol into package NIL?" :CONTENTS "(defmethod araneida:handle-request :around ((handler wco-handler) request)
       (let ((*debugger-hook* (intern \"SWANK-DEBUGGER-HOOK\" (find-package \"SWANK\"))))
         (handler-bind ((error #'invoke-debugger))
-          (call-next-method))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19721 :USER "edsu" :DATE 3355854036 :CHANNEL "#code4lib" :TITLE "bah!" :CONTENTS "#!/usr/bin/env ruby
+          (call-next-method))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19721 :USER "edsu" :DATE 3355854036 :CHANNEL "#code4lib" :TITLE "bah!" :CONTENTS "#!/usr/bin/env ruby
 
 require 'net/http'
 
 response = Net::HTTP.get_response(URI.parse('http://citebase.eprints.org/cgi-bin/oai2?verb=GetRecord&identifier=oai:arXiv.org:nlin/0101014&metadataPrefix=oai_dc'))
 
-print response.body " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19720 :USER "a" :DATE 3355853246 :CHANNEL "#lisp" :TITLE "a" :CONTENTS "(format t \"~A\" \"hello world\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19719 :USER "Xach" :DATE 3355852453 :CHANNEL "#lisp" :TITLE "death and backtrace" :CONTENTS "Argh! gc_find_freeish_pages failed (restart_page), nbytes=2912.
+print response.body " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19720 :USER "a" :DATE 3355853246 :CHANNEL "#lisp" :TITLE "a" :CONTENTS "(format t \"~A\" \"hello world\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19719 :USER "Xach" :DATE 3355852453 :CHANNEL "#lisp" :TITLE "death and backtrace" :CONTENTS "Argh! gc_find_freeish_pages failed (restart_page), nbytes=2912.
  Gen StaPg UbSta LaSta LUbSt Boxed Unboxed LB   LUB  !move  Alloc  Waste   Trig 
    WP  GCs Mem-age
    0:     0     0     0     0     0     0     0     0        0     0        0 20
@@ -4956,7 +4956,7 @@ Backtrace:
   24: Foreign function funcall0, fp = 0xb4a5a428, ra = 0x805a1be
   25: Foreign function new_thread_trampoline, fp = 0xb4a5a448, ra = 0x8058df0
   26: Foreign function (null), fp = 0xb4a5a4b8, ra = 0xa3bbd4
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19718 :USER "dcj" :DATE 3355850307 :CHANNEL "#macsb" :TITLE "Include this File" :CONTENTS "tell application \"Xcode\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19718 :USER "dcj" :DATE 3355850307 :CHANNEL "#macsb" :TITLE "Include this File" :CONTENTS "tell application \"Xcode\"
 	set targetHeaderFile to associated file name of window 1 of active project document
 	
 	-- Extract the leaf
@@ -4972,7 +4972,7 @@ Backtrace:
 	
 	-- Copy it to the pasteboard
 	set the clipboard to includeLine
-end tell" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19717 :USER "zedek" :DATE 3355849791 :CHANNEL "#emacs" :TITLE "gethostbyname failure" :CONTENTS "#ifndef HAVE_GETADDRINFO
+end tell" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19717 :USER "zedek" :DATE 3355849791 :CHANNEL "#emacs" :TITLE "gethostbyname failure" :CONTENTS "#ifndef HAVE_GETADDRINFO
   if (!NILP (host))
     {
       struct hostent *host_info_ptr;
@@ -5004,7 +5004,7 @@ end tell" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19717 :USER "zedek" :DAT
 	}
 
     }
-#endif /* not HAVE_GETADDRINFO */" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19716 :USER "mww" :DATE 3355849711 :CHANNEL "#DarwinPorts" :TITLE "fetch_deps" :CONTENTS "fetch_deps() {
+#endif /* not HAVE_GETADDRINFO */" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19716 :USER "mww" :DATE 3355849711 :CHANNEL "#DarwinPorts" :TITLE "fetch_deps" :CONTENTS "fetch_deps() {
     if [ \"$1\" = \"No\" ]; then
         return;
     fi
@@ -5017,7 +5017,7 @@ end tell" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19717 :USER "zedek" :DAT
         fetch_deps $i;
     done
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19715 :USER "rsinger" :DATE 3355847750 :CHANNEL "#code4lib" :TITLE "test.rb" :CONTENTS "rs375@rsinger:/usr/local/src/ruby-oai/ruby-oai$ ruby test.rb
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19715 :USER "rsinger" :DATE 3355847750 :CHANNEL "#code4lib" :TITLE "test.rb" :CONTENTS "rs375@rsinger:/usr/local/src/ruby-oai/ruby-oai$ ruby test.rb
 Loaded suite test
 Started
 EE
@@ -5040,7 +5040,7 @@ NameError: uninitialized constant OAI::Client::DateTime
     ./test/tc_exception.rb:16:in `test_xml_error'
 
 2 tests, 0 assertions, 0 failures, 2 errors
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19714 :USER "tizoc" :DATE 3355847730 :CHANNEL "None" :TITLE "son" :CONTENTS "(require (planet \"htmlprag.ss\" (\"neil\" \"htmlprag.plt\"))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19714 :USER "tizoc" :DATE 3355847730 :CHANNEL "None" :TITLE "son" :CONTENTS "(require (planet \"htmlprag.ss\" (\"neil\" \"htmlprag.plt\"))
 	 (lib \"pregexp.ss\")
          (lib \"url.ss\" \"net\")
          (lib \"uri-codec.ss\" \"net\")
@@ -5157,7 +5157,7 @@ NameError: uninitialized constant OAI::Client::DateTime
 ;; (thread thunk)
 ;; (make-channel)
 ;; (channel-get channel)
-;; (channel-put channel v)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19713 :USER "runelind" :DATE 3355847650 :CHANNEL "#fink" :TITLE "libao2 errors for dmacks" :CONTENTS "/bin/sh ../../../libtool --mode=compile gcc -DPACKAGE_NAME=\\\"\\\" -DPACKAGE_TARNAME=\\\"\\\" -DPACKAGE_VERSION=\\\"\\\" -DPACKAGE_STRING=\\\"\\\" -DPACKAGE_BUGREPORT=\\\"\\\" -DPACKAGE=\\\"libao\\\" -DVERSION=\\\"0.8.5\\\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_DLFCN_H=1 -DHAVE_LIBPTHREAD=1 -DDLOPEN_FLAG=\\(RTLD_LAZY\\) -DSHARED_LIB_EXT=\\\".so\\\" -DSIZEOF_SHORT=2 -DSIZEOF_INT=4 -DSIZEOF_LONG=4  -I. -I. -I../../../include/ao -I../../../include  -I/sw/include  -D__NO_MATH_INLINES -fsigned-char -g -O2 -c -o ao_macosx.lo `test -f 'ao_macosx.c' || echo './'`ao_macosx.cgcc -DPACKAGE_NAME=\\\"\\\" -DPACKAGE_TARNAME=\\\"\\\" -DPACKAGE_VERSION=\\\"\\\" -DPACKAGE_STRING=\\\"\\\" -DPACKAGE_BUGREPORT=\\\"\\\" -DPACKAGE=\\\"libao\\\" -DVERSION=\\\"0.8.5\\\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_DLFCN_H=1 -DHAVE_LIBPTHREAD=1 \"-DDLOPEN_FLAG=(RTLD_LAZY)\" -DSHARED_LIB_EXT=\\\".so\\\" -DSIZEOF_SHORT=2 -DSIZEOF_INT=4 -DSIZEOF_LONG=4 -I. -I. -I../../../include/ao -I../../../include -I/sw/include -D__NO_MATH_INLINES -fsigned-char -g -O2 -c ao_macosx.c -MT ao_macosx.lo -MD -MP -MF .deps/ao_macosx.TPlo  -fno-common -DPIC -o ao_macosx.loao_macosx.c: In function 'ao_plugin_open':ao_macosx.c:257: warning: incompatible implicit declaration of built-in function 'memset'ao_macosx.c: In function 'ao_plugin_play':ao_macosx.c:314: warning: incompatible implicit declaration of built-in function 'memcpy'ao_macosx.c: In function 'audioDeviceIOProc':ao_macosx.c:405: error: 'SHRT_MAX' undeclared (first use in this function)ao_macosx.c:405: error: (Each undeclared identifier is reported only onceao_macosx.c:405: error: for each function it appears in.)ao_macosx.c:418: warning: incompatible implicit declaration of built-in function 'memset'ao_macosx.c:441:2: warning: #warning On the last buffer, zero out the part of the buffer that does not have valid samplesao_macosx.c:444:2: warning: #warning The bytes in the buffer are currently in little endian, but we need big endian. Supposedly these are going to be host endian at some point and the following line of code can go away.make[3]: *** [ao_macosx.lo] Error 1make[2]: *** [all-recursive] Error 1make[1]: *** [all-recursive] Error 1make: *** [all-recursive] Error 1### execution of make failed, exit code 2Removing build lock.../sw/bin/dpkg-lockwait -r fink-buildlock-libao2-0.8.5-11(Reading database ... 148182 files and directories currently installed.)Removing fink-buildlock-libao2-0.8.5-11 ...Failed: phase compiling: libao2-0.8.5-11 failed" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19712 :USER "twb" :DATE 3355846029 :CHANNEL "#emacs" :TITLE "test case" :CONTENTS "(eval-when-compile (require 'cl))
+;; (channel-put channel v)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19713 :USER "runelind" :DATE 3355847650 :CHANNEL "#fink" :TITLE "libao2 errors for dmacks" :CONTENTS "/bin/sh ../../../libtool --mode=compile gcc -DPACKAGE_NAME=\\\"\\\" -DPACKAGE_TARNAME=\\\"\\\" -DPACKAGE_VERSION=\\\"\\\" -DPACKAGE_STRING=\\\"\\\" -DPACKAGE_BUGREPORT=\\\"\\\" -DPACKAGE=\\\"libao\\\" -DVERSION=\\\"0.8.5\\\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_DLFCN_H=1 -DHAVE_LIBPTHREAD=1 -DDLOPEN_FLAG=\\(RTLD_LAZY\\) -DSHARED_LIB_EXT=\\\".so\\\" -DSIZEOF_SHORT=2 -DSIZEOF_INT=4 -DSIZEOF_LONG=4  -I. -I. -I../../../include/ao -I../../../include  -I/sw/include  -D__NO_MATH_INLINES -fsigned-char -g -O2 -c -o ao_macosx.lo `test -f 'ao_macosx.c' || echo './'`ao_macosx.cgcc -DPACKAGE_NAME=\\\"\\\" -DPACKAGE_TARNAME=\\\"\\\" -DPACKAGE_VERSION=\\\"\\\" -DPACKAGE_STRING=\\\"\\\" -DPACKAGE_BUGREPORT=\\\"\\\" -DPACKAGE=\\\"libao\\\" -DVERSION=\\\"0.8.5\\\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_DLFCN_H=1 -DHAVE_LIBPTHREAD=1 \"-DDLOPEN_FLAG=(RTLD_LAZY)\" -DSHARED_LIB_EXT=\\\".so\\\" -DSIZEOF_SHORT=2 -DSIZEOF_INT=4 -DSIZEOF_LONG=4 -I. -I. -I../../../include/ao -I../../../include -I/sw/include -D__NO_MATH_INLINES -fsigned-char -g -O2 -c ao_macosx.c -MT ao_macosx.lo -MD -MP -MF .deps/ao_macosx.TPlo  -fno-common -DPIC -o ao_macosx.loao_macosx.c: In function 'ao_plugin_open':ao_macosx.c:257: warning: incompatible implicit declaration of built-in function 'memset'ao_macosx.c: In function 'ao_plugin_play':ao_macosx.c:314: warning: incompatible implicit declaration of built-in function 'memcpy'ao_macosx.c: In function 'audioDeviceIOProc':ao_macosx.c:405: error: 'SHRT_MAX' undeclared (first use in this function)ao_macosx.c:405: error: (Each undeclared identifier is reported only onceao_macosx.c:405: error: for each function it appears in.)ao_macosx.c:418: warning: incompatible implicit declaration of built-in function 'memset'ao_macosx.c:441:2: warning: #warning On the last buffer, zero out the part of the buffer that does not have valid samplesao_macosx.c:444:2: warning: #warning The bytes in the buffer are currently in little endian, but we need big endian. Supposedly these are going to be host endian at some point and the following line of code can go away.make[3]: *** [ao_macosx.lo] Error 1make[2]: *** [all-recursive] Error 1make[1]: *** [all-recursive] Error 1make: *** [all-recursive] Error 1### execution of make failed, exit code 2Removing build lock.../sw/bin/dpkg-lockwait -r fink-buildlock-libao2-0.8.5-11(Reading database ... 148182 files and directories currently installed.)Removing fink-buildlock-libao2-0.8.5-11 ...Failed: phase compiling: libao2-0.8.5-11 failed" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19712 :USER "twb" :DATE 3355846029 :CHANNEL "#emacs" :TITLE "test case" :CONTENTS "(eval-when-compile (require 'cl))
 
 (flet ((foo () (message \"Hello,\")))
   (foo))
@@ -5167,7 +5167,7 @@ NameError: uninitialized constant OAI::Client::DateTime
     (bar))
   nil
   :group 'emacs)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19711 :USER "Shine" :DATE 3355835352 :CHANNEL "#lisp" :TITLE "find hashtable maximizing key with loop" :CONTENTS "(defparameter *ht* (make-hash-table :test 'eql))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19711 :USER "Shine" :DATE 3355835352 :CHANNEL "#lisp" :TITLE "find hashtable maximizing key with loop" :CONTENTS "(defparameter *ht* (make-hash-table :test 'eql))
 
 (setf (gethash 10 *ht*) 42)
 (setf (gethash 11 *ht*) 40)
@@ -5180,14 +5180,14 @@ NameError: uninitialized constant OAI::Client::DateTime
       (when (or (not max-value) (> value max-value))
         (setf max-value value
               max-key key)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19710 :USER "fr" :DATE 3355831327 :CHANNEL "#emacs" :TITLE "gnus directory havoc for Aiviru" :CONTENTS "(setq message-directory           \"~/.Mail\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19710 :USER "fr" :DATE 3355831327 :CHANNEL "#emacs" :TITLE "gnus directory havoc for Aiviru" :CONTENTS "(setq message-directory           \"~/.Mail\"
       message-auto-save-directory \"~/.Mail/drafts/\"
       gnus-directory              \"~/.News\"
       gnus-agent-directory        \"~/.News/agent/\"
       gnus-cache-active-file      \"~/.News/cache/active\"
       gnus-cache-directory        \"~/.News/cache/\"
       gnus-article-save-directory \"~/.Mail/save\"
-      nndraft-directory           \"~/.Mail/drafts\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19709 :USER "klette" :DATE 3355829456 :CHANNEL "None" :TITLE "ogl vbo stuff" :CONTENTS "class vertex {
+      nndraft-directory           \"~/.Mail/drafts\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19709 :USER "klette" :DATE 3355829456 :CHANNEL "None" :TITLE "ogl vbo stuff" :CONTENTS "class vertex {
 	public:
 		vertex(float _x, float _y, float _z){ x = _x; y = _y; z = _z; }
 		float x;
@@ -5195,7 +5195,7 @@ NameError: uninitialized constant OAI::Client::DateTime
 		float z;
 };
 
-std::vector<vertex> vertices;" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19708 :USER "Mustermann" :DATE 3355824382 :CHANNEL "#emacs" :TITLE "dns test" :CONTENTS "#!/usr/bin/env ruby
+std::vector<vertex> vertices;" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19708 :USER "Mustermann" :DATE 3355824382 :CHANNEL "#emacs" :TITLE "dns test" :CONTENTS "#!/usr/bin/env ruby
 
 require 'socket'
 
@@ -5209,7 +5209,7 @@ rescue SocketError
   p \"not found\"
 
 end
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19707 :USER "The_Tick" :DATE 3355823388 :CHANNEL "#macdev" :TITLE "ub stuff" :CONTENTS "ARCHS = ppc i386
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19707 :USER "The_Tick" :DATE 3355823388 :CHANNEL "#macdev" :TITLE "ub stuff" :CONTENTS "ARCHS = ppc i386
 SEPARATE_STRIP = YES
 GCC_VERSION_i386 = 4.0
 GCC_VERSION_ppc = 3.3
@@ -5217,7 +5217,7 @@ MACOSX_DEPLOYMENT_TARGET_i386 = 10.4
 MACOSX_DEPLOYMENT_TARGET_ppc = 10.2
 SDKROOT_i386 = /Developer/SDKs/MacOSX10.4u.sdk
 SDKROOT_ppc = /Developer/SDKs/MacOSX10.2.8.sdk
-SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19706 :USER "zedek" :DATE 3355822472 :CHANNEL "#emacs" :TITLE "Still this DNS resolution problem when resuming" :CONTENTS "  (make-network-process :name \"irc.freenode.net\" :buffer nil :host \"irc.freenode.net\" :service 6667)                                             
+SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19706 :USER "zedek" :DATE 3355822472 :CHANNEL "#emacs" :TITLE "Still this DNS resolution problem when resuming" :CONTENTS "  (make-network-process :name \"irc.freenode.net\" :buffer nil :host \"irc.freenode.net\" :service 6667)                                             
 
 this won't work here even if I can \"ping\" the host in my xterm...
 
@@ -5234,7 +5234,7 @@ Debugger entered--Lisp error: (error \"irc.freenode.net/6667 Échec temporaire d
   rcirc-process-input-line(\"/reconnect\")
   rcirc-send-input()
   call-interactively(rcirc-send-input)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19705 :USER "tizoc" :DATE 3355820447 :CHANNEL "None" :TITLE "SoN" :CONTENTS "(require (planet \"htmlprag.ss\" (\"neil\" \"htmlprag.plt\"))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19705 :USER "tizoc" :DATE 3355820447 :CHANNEL "None" :TITLE "SoN" :CONTENTS "(require (planet \"htmlprag.ss\" (\"neil\" \"htmlprag.plt\"))
 	 (lib \"pregexp.ss\")
          (lib \"url.ss\" \"net\")
          (lib \"uri-codec.ss\" \"net\")
@@ -5299,7 +5299,7 @@ Debugger entered--Lisp error: (error \"irc.freenode.net/6667 Échec temporaire d
     (ormap get-permalink sxml)]
    [else #f]))
 
-(define (get-link) (get-permalink (do-post URL #f COOKIE)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19704 :USER "mnislaih" :DATE 3355817262 :CHANNEL "#haskell" :TITLE "Flawed Memoization" :CONTENTS "inProp :: (@sig::Signature)=>IdFunctions -> IdFunctions -> Prop
+(define (get-link) (get-permalink (do-post URL #f COOKIE)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19704 :USER "mnislaih" :DATE 3355817262 :CHANNEL "#haskell" :TITLE "Flawed Memoization" :CONTENTS "inProp :: (@sig::Signature)=>IdFunctions -> IdFunctions -> Prop
 
 --inProp : Memoization Trick
 
@@ -5318,7 +5318,7 @@ h `inProp` g = cache Map.! (h,g)
 
        (h `inProp1` g) ffs = -- ... real work gets done here 
 
- " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19703 :USER "matkam" :DATE 3355802554 :CHANNEL "#adium" :TITLE "joscar null pointer exception" :CONTENTS "Exception in thread \"Timer-1\" java.lang.NullPointerException
+ " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19703 :USER "matkam" :DATE 3355802554 :CHANNEL "#adium" :TITLE "joscar null pointer exception" :CONTENTS "Exception in thread \"Timer-1\" java.lang.NullPointerException
 	at net.kano.joustsim.oscar.oscar.service.icon.IconServiceArbiter$RequestedIconInfo.hashCode(IconServiceArbiter.java:139)
 	at java.util.HashMap.hash(HashMap.java:264)
 	at java.util.HashMap.put(HashMap.java:382)
@@ -5330,7 +5330,7 @@ h `inProp` g = cache Map.! (h,g)
 	at net.kano.joustsim.oscar.BuddyIconTracker.access$600(BuddyIconTracker.java:57)
 	at net.kano.joustsim.oscar.BuddyIconTracker$3.run(BuddyIconTracker.java:136)
 	at java.util.TimerThread.mainLoop(Timer.java:512)
-	at java.util.TimerThread.run(Timer.java:462)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19702 :USER "darin" :DATE 3355802227 :CHANNEL "#webkit" :TITLE "patch to fix massive storage leak" :CONTENTS "Index: platform/cg/GraphicsContextCG.cpp
+	at java.util.TimerThread.run(Timer.java:462)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19702 :USER "darin" :DATE 3355802227 :CHANNEL "#webkit" :TITLE "patch to fix massive storage leak" :CONTENTS "Index: platform/cg/GraphicsContextCG.cpp
 ===================================================================
 --- platform/cg/GraphicsContextCG.cpp	(revision 14195)
 +++ platform/cg/GraphicsContextCG.cpp	(working copy)
@@ -5479,7 +5479,7 @@ Index: ChangeLog
  2006-05-04  Justin Garcia  <justin.garcia@apple.com>
  
          Reviewed by harrison
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19701 :USER "interferon" :DATE 3355799333 :CHANNEL "#emacs" :TITLE "SBCL disassembly example" :CONTENTS "CL-USER> (defun foo (a b)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19701 :USER "interferon" :DATE 3355799333 :CHANNEL "#emacs" :TITLE "SBCL disassembly example" :CONTENTS "CL-USER> (defun foo (a b)
 	   ;; simple addition procedure; generates lots of assembly
 	   (+ a b))
 FOO
@@ -5529,7 +5529,7 @@ CL-USER> (disassemble 'foo)
 ;       44:       CD               BYTE #XCD                  ; EBX
 ; 
 NIL
-CL-USER> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19700 :USER "interferon" :DATE 3355799315 :CHANNEL "#lisp" :TITLE "SBCL disassembly example" :CONTENTS "CL-USER> (defun foo (a b)
+CL-USER> " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19700 :USER "interferon" :DATE 3355799315 :CHANNEL "#lisp" :TITLE "SBCL disassembly example" :CONTENTS "CL-USER> (defun foo (a b)
 	   ;; simple addition procedure; generates lots of assembly
 	   (+ a b))
 FOO
@@ -5579,7 +5579,7 @@ CL-USER> (disassemble 'foo)
 ;       44:       CD               BYTE #XCD                  ; EBX
 ; 
 NIL
-CL-USER> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19699 :USER "arnau" :DATE 3355789405 :CHANNEL "None" :TITLE "emms" :CONTENTS "      (defun emms-my-info-track-description (track)
+CL-USER> " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19699 :USER "arnau" :DATE 3355789405 :CHANNEL "None" :TITLE "emms" :CONTENTS "      (defun emms-my-info-track-description (track)
 	\"Return a description of the current track.\"
 	(let ((artist (emms-track-get track 'info-artist))
 	      (num (emms-track-get track 'info-tracknumber))
@@ -5588,7 +5588,7 @@ CL-USER> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19699 :USER "arnau" :DA
 	      (time (emms-track-get track 'info-playing-time)))
 	  
 	  (format \"[%s](%s) %s: %s - %s\" album time num artist title)
-	  (emms-track-simple-description track)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19698 :USER "Kahdloc" :DATE 3355788631 :CHANNEL "#lisp" :TITLE "defun pow, why does it have a nil error?" :CONTENTS "(defun pow (a b)
+	  (emms-track-simple-description track)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19698 :USER "Kahdloc" :DATE 3355788631 :CHANNEL "#lisp" :TITLE "defun pow, why does it have a nil error?" :CONTENTS "(defun pow (a b)
   (COND (
 	 (> b 1)
 	 (* a
@@ -5599,7 +5599,7 @@ CL-USER> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19699 :USER "arnau" :DA
 )
 (print (pow 4 4) )
 
-;this prints \"*** - *: NIL is not a number\" why?" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19697 :USER "Aiviru" :DATE 3355786997 :CHANNEL "#emacs" :TITLE "my EMMS config stuff" :CONTENTS "(when (file-accessible-directory-p \"~/tmp/emms2/\")
+;this prints \"*** - *: NIL is not a number\" why?" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19697 :USER "Aiviru" :DATE 3355786997 :CHANNEL "#emacs" :TITLE "my EMMS config stuff" :CONTENTS "(when (file-accessible-directory-p \"~/tmp/emms2/\")
   (add-to-list 'load-path \"~/tmp/emms2/\")
   (require 'emms-setup)
   (emms-devel)
@@ -5679,7 +5679,7 @@ Otherwise, return the type and the name with a colon in between.\"
   (setq emms-track-description-function 'emms-track-description-aiviru)
 
   )
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19696 :USER "butt" :DATE 3355786218 :CHANNEL "None" :TITLE "butt" :CONTENTS "module Butt () where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19696 :USER "butt" :DATE 3355786218 :CHANNEL "None" :TITLE "butt" :CONTENTS "module Butt () where
 
 import Maybe
 import List
@@ -5693,7 +5693,7 @@ simplify p = foldl (\\ p (a,n) ->
                           (Just x)  -> (a+fst x,n) : delete x p
                           Nothing   -> (a,n):p)
              [] p
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19695 :USER "Tela" :DATE 3355784779 :CHANNEL "#emacs" :TITLE "Paredit Mishaps" :CONTENTS "() ; After just hitting \"(\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19695 :USER "Tela" :DATE 3355784779 :CHANNEL "#emacs" :TITLE "Paredit Mishaps" :CONTENTS "() ; After just hitting \"(\"
 
 (defun ) ; Still good...
 
@@ -5703,7 +5703,7 @@ simplify p = foldl (\\ p (a,n) ->
 ; But here it worked again without explicitly
 ; typing the \")\". I'll have to explicitly put
 ; the final paren in though, else slime complains
-; about the obvious unbalanced parens." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19694 :USER "Kobold" :DATE 3355784119 :CHANNEL "#darwinports" :TITLE "gtk26 build error" :CONTENTS "--->  Building gtk26 with target all
+; about the obvious unbalanced parens." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19694 :USER "Kobold" :DATE 3355784119 :CHANNEL "#darwinports" :TITLE "gtk26 build error" :CONTENTS "--->  Building gtk26 with target all
 ...
 if /bin/sh ../../../libtool --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../../.. -I../../.. -I../../../gdk -I../../../gdk -DG_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -D_REENTRANT -DXTHREADS -I/opt/local/include/glib-2.0 -I/opt/local/lib/glib-2.0/include -I/opt/local/include/pango-1.0 -I/opt/local/include -I/opt/local/include/freetype2 -I/usr/X11R6/include -I/opt/local/include/atk-1.0       -I/opt/local/include -no-cpp-precomp -DX_LOCALE  -I/usr/X11R6/include -MT pixbuf-draw.lo -MD -MP -MF \".deps/pixbuf-draw.Tpo\" \\
   -c -o pixbuf-draw.lo `test -f 'pixbuf-draw.c' || echo './'`pixbuf-draw.c; \\
@@ -5734,7 +5734,7 @@ make[3]: *** [all-recursive] Error 1
 make[2]: *** [all-recursive] Error 1
 make[1]: *** [all-recursive] Error 1
 make: *** [all] Error 2
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19693 :USER "perdix" :DATE 3355779316 :CHANNEL "#sxemacs" :TITLE "AC_INIT, from the autoconf manual" :CONTENTS " - Macro: AC_INIT (PACKAGE, VERSION, [BUG-REPORT], [TARNAME])
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19693 :USER "perdix" :DATE 3355779316 :CHANNEL "#sxemacs" :TITLE "AC_INIT, from the autoconf manual" :CONTENTS " - Macro: AC_INIT (PACKAGE, VERSION, [BUG-REPORT], [TARNAME])
      Process any command-line arguments and perform various
      initializations and verifications.
 
@@ -5751,7 +5751,7 @@ make: *** [all] Error 2
      It is preferable that the arguments of `AC_INIT' be static, i.e.,
      there should not be any shell computation, but they can be
      computed by M4.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19692 :USER "mgr" :DATE 3355778397 :CHANNEL "#lisp" :TITLE "error trying to use gtkairo an ACL 6.2" :CONTENTS "Attempt to call #(\"gdk_cairo_create\" 1075661894 0 2 1075661894) for
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19692 :USER "mgr" :DATE 3355778397 :CHANNEL "#lisp" :TITLE "error trying to use gtkairo an ACL 6.2" :CONTENTS "Attempt to call #(\"gdk_cairo_create\" 1075661894 0 2 1075661894) for
 which the definition has not yet been (or is no longer) loaded.
    [Condition of type SIMPLE-ERROR]
 
@@ -5782,7 +5782,7 @@ for which the definition has not yet been (or is no longer) loaded~].\" :FORMAT-
  17: (SWANK::EVAL-REGION \"(clim-demo:GADGET-TEST)
 \" T)
  18: ((:INTERNAL SWANK:LISTENER-EVAL 0))
- 19: ((METHOD SWANK-BACKEND:CALL-WITH-SYNTAX-HOOKS (T)) #<Closure (:INTERNAL SWANK:LISTENER-EVAL 0) @ #x72e321fa>)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19691 :USER "ccgus" :DATE 3355777650 :CHANNEL "#macsb" :TITLE "For schwatoo if it helps." :CONTENTS "//
+ 19: ((METHOD SWANK-BACKEND:CALL-WITH-SYNTAX-HOOKS (T)) #<Closure (:INTERNAL SWANK:LISTENER-EVAL 0) @ #x72e321fa>)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19691 :USER "ccgus" :DATE 3355777650 :CHANNEL "#macsb" :TITLE "For schwatoo if it helps." :CONTENTS "//
 //  FMNSFileManagerAdditions.m
 //  fmkit
 //
@@ -5858,7 +5858,7 @@ for which the definition has not yet been (or is no longer) loaded~].\" :FORMAT-
 
 
 @end
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19690 :USER "RangerRick" :DATE 3355777241 :CHANNEL "None" :TITLE "cmake diffs" :CONTENTS "Index: FindKDE4Internal.cmake
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19690 :USER "RangerRick" :DATE 3355777241 :CHANNEL "None" :TITLE "cmake diffs" :CONTENTS "Index: FindKDE4Internal.cmake
 ===================================================================
 --- FindKDE4Internal.cmake      (revision 537451)
 +++ FindKDE4Internal.cmake      (working copy)
@@ -5922,14 +5922,14 @@ for which the definition has not yet been (or is no longer) loaded~].\" :FORMAT-
  endif (APPLE)
  
  
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19689 :USER "technomancy" :DATE 3355776681 :CHANNEL "#emacs" :TITLE "refactoring opportunity" :CONTENTS "(defun eobby-document-record (doc-id args)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19689 :USER "technomancy" :DATE 3355776681 :CHANNEL "#emacs" :TITLE "refactoring opportunity" :CONTENTS "(defun eobby-document-record (doc-id args)
   (setq user-id (pop args))
   (setq version (pop args))
   (setq zero (pop args))
   (setq command (pop args))
   (cond
     ((equal \"ins\" command) (eobby-document-record-ins doc-id args))
-    ((equal \"del\" command) (eobby-document-record-del doc-id args))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19688 :USER "mjgiarlo" :DATE 3355775474 :CHANNEL "#fedora-users" :TITLE "fedorapy traceback" :CONTENTS "Traceback (most recent call last):
+    ((equal \"del\" command) (eobby-document-record-del doc-id args))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19688 :USER "mjgiarlo" :DATE 3355775474 :CHANNEL "#fedora-users" :TITLE "fedorapy traceback" :CONTENTS "Traceback (most recent call last):
   File \"runall.py\", line 56, in ?
     runner.run(alltests)
   File \"/usr/lib/python2.4/unittest.py\", line 696, in run
@@ -5965,7 +5965,7 @@ for which the definition has not yet been (or is no longer) loaded~].\" :FORMAT-
   File \"/usr/lib/python2.4/linecache.py\", line 77, in updatecache
     stat = os.stat(fullname)
 OSError: [Errno 20] Not a directory: '/usr/lib/python2.4/site-packages/ZSI-2.0_rc2-py2.4.egg/ZSI/client.py'
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19687 :USER "MacDome" :DATE 3355774888 :CHANNEL "#webkit" :TITLE "more patch for andersca" :CONTENTS "Index: bindings/scripts/CodeGeneratorJS.pm
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19687 :USER "MacDome" :DATE 3355774888 :CHANNEL "#webkit" :TITLE "more patch for andersca" :CONTENTS "Index: bindings/scripts/CodeGeneratorJS.pm
 ===================================================================
 --- bindings/scripts/CodeGeneratorJS.pm	(revision 14181)
 +++ bindings/scripts/CodeGeneratorJS.pm	(working copy)
@@ -6096,7 +6096,7 @@ OSError: [Errno 20] Not a directory: '/usr/lib/python2.4/site-packages/ZSI-2.0_r
    }
    
    die (\"$value \" . $signature->type);
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19686 :USER "MacDome" :DATE 3355774375 :CHANNEL "#webkit" :TITLE "local patch for andersca" :CONTENTS "@@ -146,25 +149,7 @@ sub AddIncludesForType
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19686 :USER "MacDome" :DATE 3355774375 :CHANNEL "#webkit" :TITLE "local patch for andersca" :CONTENTS "@@ -146,25 +149,7 @@ sub AddIncludesForType
    # When we're finished with the one-file-per-class 
    # reorganization, we don't need these special cases.
    
@@ -6145,14 +6145,14 @@ OSError: [Errno 20] Not a directory: '/usr/lib/python2.4/site-packages/ZSI-2.0_r
 +    $implIncludes{\"${type}.h\"} = 1;
    }
  }
- " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19685 :USER "kombinator" :DATE 3355772846 :CHANNEL "#haskell" :TITLE "no class functions" :CONTENTS "module Test where
+ " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19685 :USER "kombinator" :DATE 3355772846 :CHANNEL "#haskell" :TITLE "no class functions" :CONTENTS "module Test where
 
 data T1 = T1 Integer
 
 instance Eq T1
   where
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19684 :USER "mischi" :DATE 3355772676 :CHANNEL "#fpc" :TITLE "fpc2.1.1 bug when compiling on darwin" :CONTENTS "the tail of the log after \"make OPT=-va\":
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19684 :USER "mischi" :DATE 3355772676 :CHANNEL "#fpc" :TITLE "fpc2.1.1 bug when compiling on darwin" :CONTENTS "the tail of the log after \"make OPT=-va\":
 
 (SynHighlighterCpp) Loading implementation units from SYNHIGHLIGHTERCPP
 (SynHighlighterCpp) Load from SYNHIGHLIGHTERCPP (implementation) unit SYNEDITSTRCONST
@@ -6198,7 +6198,7 @@ begin
 end;
 
 If I remove all of the procedure, this file compiles without a problem, but sure later compilations fail because MakeIdentTable is missing. 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19683 :USER "PuppiesOnAcid" :DATE 3355771477 :CHANNEL "#macdev" :TITLE "HelloWorld!" :CONTENTS "#import \"JLHelloView.h\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19683 :USER "PuppiesOnAcid" :DATE 3355771477 :CHANNEL "#macdev" :TITLE "HelloWorld!" :CONTENTS "#import \"JLHelloView.h\"
 
 @implementation JLHelloView
 
@@ -6231,7 +6231,7 @@ If I remove all of the procedure, this file compiles without a problem, but sure
 {
 }
 
-@end" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19682 :USER "ofri" :DATE 3355771173 :CHANNEL "#chatkit" :TITLE "for CFM" :CONTENTS "patr1ck: yeah... Is writing a service plugin really a big enough project for an SoC project?
+@end" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19682 :USER "ofri" :DATE 3355771173 :CHANNEL "#chatkit" :TITLE "for CFM" :CONTENTS "patr1ck: yeah... Is writing a service plugin really a big enough project for an SoC project?
 [22:36] patr1ck: I mean, i'm not saying it's easy by any means
 [22:37] patr1ck: but I also don't think it would take all summer, you know?
 [22:38] patr1ck: I'd love to help out with general chatkit development as i'm doing it, but what specifically would that entail? It's hard to quantify that stuff.
@@ -6241,11 +6241,11 @@ If I remove all of the procedure, this file compiles without a problem, but sure
 [22:39] ofri: Catfish_Man: ping
 [22:41] patr1ck: ah okay cool, i was curious as how those played into it
 [22:41] ofri: patr1ck: i guess that if it's not enough, you could either just implement new jeps you pick into smak and integrate them, or just do some other useful stuff for chatkit like AB integration (should take few days at most)
-[22:41] ofri: or do meta contacts" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19681 :USER "technomancy" :DATE 3355770903 :CHANNEL "#emacs" :TITLE "case question" :CONTENTS "(case 'blah
+[22:41] ofri: or do meta contacts" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19681 :USER "technomancy" :DATE 3355770903 :CHANNEL "#emacs" :TITLE "case question" :CONTENTS "(case 'blah
   ('blah (message \"works\")))
 
 (case \"blah\"
-  (\"blah\" (message \"does not work\")))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19680 :USER "slyrus" :DATE 3355770373 :CHANNEL "#lisp" :TITLE "more compiler hackery" :CONTENTS "
+  (\"blah\" (message \"does not work\")))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19680 :USER "slyrus" :DATE 3355770373 :CHANNEL "#lisp" :TITLE "more compiler hackery" :CONTENTS "
 the error is:
 
 The variable SB-C:DERIVE-TYPE is unbound.
@@ -6306,11 +6306,11 @@ The variable SB-C:DERIVE-TYPE is unbound.
        (sb-ext:truly-the sb-kernel::index index)))))
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19679 :USER "perdix" :DATE 3355769660 :CHANNEL "#sxemacs" :TITLE "`configure --help' output -- needs update" :CONTENTS "### To rebuild it, execute the command
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19679 :USER "perdix" :DATE 3355769660 :CHANNEL "#sxemacs" :TITLE "`configure --help' output -- needs update" :CONTENTS "### To rebuild it, execute the command
 ###	autoconf
 ### in the this directory.  You must have autoconf version 2.13 or later.
 ### Note: this script has not yet been ported to autoconf version 2.5x.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19678 :USER "qishi" :DATE 3355769016 :CHANNEL "#nebula" :TITLE "My sound.xml table file" :CONTENTS "<?xml version=\"1.0\"?>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19678 :USER "qishi" :DATE 3355769016 :CHANNEL "#nebula" :TITLE "My sound.xml table file" :CONTENTS "<?xml version=\"1.0\"?>
 <?mso-application progid=\"Excel.Sheet\"?>
 <Workbook xmlns=\"urn:schemas-microsoft-com:office:spreadsheet\"
  xmlns:o=\"urn:schemas-microsoft-com:office:office\"
@@ -7498,13 +7498,13 @@ The variable SB-C:DERIVE-TYPE is unbound.
   </WorksheetOptions>
  </Worksheet>
 </Workbook>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19677 :USER "galaxor" :DATE 3355766730 :CHANNEL "#macdev" :TITLE "my buggy code" :CONTENTS "associations = [[NSUserDefaults standardUserDefaults] objectForKey:@\"Associations\"];
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19677 :USER "galaxor" :DATE 3355766730 :CHANNEL "#macdev" :TITLE "my buggy code" :CONTENTS "associations = [[NSUserDefaults standardUserDefaults] objectForKey:@\"Associations\"];
 
 NSLog(@\"I will look up %@ in %@\\n\", [filenames objectAtIndex:0], associations);
 if( associations ) {
    counterpart = [associations objectForKey:[filenames objectAtIndex:0]];
    NSLog(@\"I got it.  It's: %@\\n\", counterpart);
-} // if associations" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19676 :USER "imajes" :DATE 3355762496 :CHANNEL "#growl" :TITLE "for ofri" :CONTENTS "% w
+} // if associations" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19676 :USER "imajes" :DATE 3355762496 :CHANNEL "#growl" :TITLE "for ofri" :CONTENTS "% w
 18:20  up 7 days,  8:23, 11 users, load averages: 3.20 2.50 2.28
 USER     TTY      FROM              LOGIN@  IDLE WHAT
 james    p1       -                Fri07   1day  irb                                                                            
@@ -7517,7 +7517,7 @@ james    p7       -                Tue21      43 -zsh
 james    p8       -                13:41       - w
 james    p9       -                14:24       5 ssh enoch
 james    pa       -                18:15       - -
-james    pb       -                18:16       - -" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19675 :USER "therp" :DATE 3355761592 :CHANNEL "#lisp" :TITLE "because I wanted to do things like these" :CONTENTS "(dolist (test-case '((:real . sb-impl::*schedule-real*)
+james    pb       -                18:16       - -" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19675 :USER "therp" :DATE 3355761592 :CHANNEL "#lisp" :TITLE "because I wanted to do things like these" :CONTENTS "(dolist (test-case '((:real . sb-impl::*schedule-real*)
 		       (:virtual . sb-impl::*schedule-virtual*)
 		       (:profile . sb-impl::*schedule-profile*)))
   (with-test (:name (:timer :relative (car test-case)))
@@ -7530,7 +7530,7 @@ james    pb       -                18:16       - -" :ANNOTATIONS NIL) #S(MONTEZU
       (assert (not has-run-p))
       (sleep 0.5)
       (assert has-run-p)
-      (assert (zerop (length (sb-impl::%pqueue-contents (cdr test-case))))))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19674 :USER "schwatoo" :DATE 3355761529 :CHANNEL "#macsb" :TITLE "Fix me!" :CONTENTS "#import <Foundation/Foundation.h>
+      (assert (zerop (length (sb-impl::%pqueue-contents (cdr test-case))))))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19674 :USER "schwatoo" :DATE 3355761529 :CHANNEL "#macsb" :TITLE "Fix me!" :CONTENTS "#import <Foundation/Foundation.h>
 #import <Quartz/Quartz.h>
 
 int main (int argc, const char * argv[])
@@ -7582,7 +7582,7 @@ BOOL theResult = CGImageDestinationFinalize(theDestination);
 [pool release];
 return 0;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19673 :USER "kpreid" :DATE 3355760486 :CHANNEL "##parsers" :TITLE "XML 1.0 character ranges in ANTLR" :CONTENTS "protected
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19673 :USER "kpreid" :DATE 3355760486 :CHANNEL "##parsers" :TITLE "XML 1.0 character ranges in ANTLR" :CONTENTS "protected
 XML10Letter: XML10BaseChar | XML10Ideographic ;
 
 protected
@@ -7599,7 +7599,7 @@ XML10Digit: '\\u0030'..'\\u0039' | '\\u0660'..'\\u0669' | '\\u06F0'..'\\u06F9' |
 
 protected
 XML10Extender: '\\u00B7' | '\\u02D0' | '\\u02D1' | '\\u0387' | '\\u0640' | '\\u0E46' | '\\u0EC6' | '\\u3005' | '\\u3031'..'\\u3035' | '\\u309D'..'\\u309E' | '\\u30FC'..'\\u30FE' ;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19672 :USER "slyrus" :DATE 3355760123 :CHANNEL "#lisp" :TITLE "fun with macros" :CONTENTS "I'm trying to eliminate the need to explicitly pass in the element-type to my with-typed-matrix-vals macro. I'd like to be able to use the declared type of x, which we know when with-typed-matrix-vals gets expanded, but I can't seem to get at it.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19672 :USER "slyrus" :DATE 3355760123 :CHANNEL "#lisp" :TITLE "fun with macros" :CONTENTS "I'm trying to eliminate the need to explicitly pass in the element-type to my with-typed-matrix-vals macro. I'd like to be able to use the declared type of x, which we know when with-typed-matrix-vals gets expanded, but I can't seem to get at it.
 
 Suggestions?
 
@@ -7629,12 +7629,12 @@ Suggestions?
             (setf acc (+ acc (the (unsigned-byte 8) (clem::aref v i j)))))))
       (print acc))))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19671 :USER "perdix" :DATE 3355758728 :CHANNEL "#sxemacs" :TITLE "XawInit.h warning suffix" :CONTENTS "configure: WARNING:     ## ---------------------------------------- ##
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19671 :USER "perdix" :DATE 3355758728 :CHANNEL "#sxemacs" :TITLE "XawInit.h warning suffix" :CONTENTS "configure: WARNING:     ## ---------------------------------------- ##
 configure: WARNING:     ## Report this to sxemacs-devel@sxemacs.org ##
 configure: WARNING:     ## ---------------------------------------- ##
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19670 :USER "perdix" :DATE 3355758594 :CHANNEL "#sxemacs" :TITLE "first two lines of `./configure --version'" :CONTENTS "SXEmacs configure beta version
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19670 :USER "perdix" :DATE 3355758594 :CHANNEL "#sxemacs" :TITLE "first two lines of `./configure --version'" :CONTENTS "SXEmacs configure beta version
 generated by GNU Autoconf 2.59
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19669 :USER "copton" :DATE 3355755597 :CHANNEL "None" :TITLE "scons2" :CONTENTS "3075    17:23:37    alex@kite:~trunk/test/boxdb
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19669 :USER "copton" :DATE 3355755597 :CHANNEL "None" :TITLE "scons2" :CONTENTS "3075    17:23:37    alex@kite:~trunk/test/boxdb
 $ scons -c
 scons: Reading SConscript files ...
 scons: done reading SConscript files.
@@ -7663,7 +7663,7 @@ g++ -g -o testbench main.o -L/home/alex/logix/svnroot/lbcs2/trunk/modules/driver
 /home/alex/logix/svnroot/lbcs2/trunk/modules/driver/cryptodb/libcryptodb.a(impl.o): In function `std::__simple_alloc<CryptoDb::Job*, std::__default_alloc_template<true, 0> >::allocate(unsigned int)':impl.cc:(.gnu.linkonce.t._ZNSt14__simple_allocIPN8CryptoDb3JobESt24__default_alloc_templateILb1ELi0EEE8allocateEj+0x1d): undefined reference to `std::__default_alloc_template<true, 0>::allocate(unsigned int)'
 collect2: ld returned 1 exit status
 scons: *** [testbench] Error 1
-scons: building terminated because of errors." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19668 :USER "copton" :DATE 3355754870 :CHANNEL "None" :TITLE "scons" :CONTENTS "$ scons
+scons: building terminated because of errors." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19668 :USER "copton" :DATE 3355754870 :CHANNEL "None" :TITLE "scons" :CONTENTS "$ scons
 scons: Reading SConscript files ...
 scons: done reading SConscript files.
 scons: Building targets ...
@@ -7679,7 +7679,7 @@ g++ -o testbench main.o -L/home/alex/logix/svnroot/lbcs2/trunk/modules/driver/cr
 collect2: ld returned 1 exit status
 scons: *** [testbench] Error 1
 scons: building terminated because of errors.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19667 :USER "ndm" :DATE 3355754453 :CHANNEL "#haskell" :TITLE "Type checking issues" :CONTENTS "mapPredM :: (Eq a, Monad m) => (Pred a -> m (Pred a)) -> Pred a -> m (Pred a)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19667 :USER "ndm" :DATE 3355754453 :CHANNEL "#haskell" :TITLE "Type checking issues" :CONTENTS "mapPredM :: (Eq a, Monad m) => (Pred a -> m (Pred a)) -> Pred a -> m (Pred a)
 mapPredM f x = do y <- case x of
                       PredOr xs  -> fs isTrue predTrue xs >>= return . predOr
                       PredAnd xs -> fs isFalse predFalse xs >>= return . predAnd
@@ -7721,7 +7721,7 @@ GHCi:
                if test y then return [result] else (fs test result xs) >>= (retu
 rn . ((y :)))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19666 :USER "_deepfire" :DATE 3355740844 :CHANNEL "#lisp" :TITLE "not-enough-eval problem?" :CONTENTS "short context:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19666 :USER "_deepfire" :DATE 3355740844 :CHANNEL "#lisp" :TITLE "not-enough-eval problem?" :CONTENTS "short context:
 
 about a week ago i asked on #lisp about a (let ..) analog which would
 allow me to locally bind (symbol-function ..)`s of symbols.
@@ -7734,7 +7734,7 @@ macroexpansion skills:
 		 collect `(,sym (&rest stuff) (apply ,val stuff))))
      ,@body))
 
-the fletted symbol is evaluated every time it is referenced -- which is the problem" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19665 :USER "AngryLuke" :DATE 3355720646 :CHANNEL "#macdev" :TITLE "code paths suck" :CONTENTS "-(IBAction)checkNow:(id)sender
+the fletted symbol is evaluated every time it is referenced -- which is the problem" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19665 :USER "AngryLuke" :DATE 3355720646 :CHANNEL "#macdev" :TITLE "code paths suck" :CONTENTS "-(IBAction)checkNow:(id)sender
 {
 	if ([progessBar isHidden])
 	{
@@ -7785,18 +7785,18 @@ the fletted symbol is evaluated every time it is referenced -- which is the prob
 		[NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(updateCheckComplete:) userInfo:NULL repeats:NO];
 		
 	}
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19664 :USER "twodeko" :DATE 3355718186 :CHANNEL "#svn" :TITLE "rsync command" :CONTENTS "twodeko@havarti ~/Websites $ rsync -av twodeko.com twodeko@butler.dreamhost.com:/home/twodeko/twodeko.com/twodeko.com/svn
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19664 :USER "twodeko" :DATE 3355718186 :CHANNEL "#svn" :TITLE "rsync command" :CONTENTS "twodeko@havarti ~/Websites $ rsync -av twodeko.com twodeko@butler.dreamhost.com:/home/twodeko/twodeko.com/twodeko.com/svn
 Password: 
 building file list ... done
 rsync: mkdir \"/home/twodeko/twodeko.com/twodeko.com/svn\" failed: No such file or directory (2)
 rsync error: error in file IO (code 11) at main.c(420)
 rsync: connection unexpectedly closed (8 bytes received so far) [sender]
 rsync error: error in rsync protocol data stream (code 12) at io.c(463) [sender=2.6.8]
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19663 :USER "twodeko" :DATE 3355716843 :CHANNEL "#svn" :TITLE "ls -la" :CONTENTS "twodeko@havarti ~/Websites/twodeko.com $ ls -la /mnt/twodeko.com/twodeko.com/test
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19663 :USER "twodeko" :DATE 3355716843 :CHANNEL "#svn" :TITLE "ls -la" :CONTENTS "twodeko@havarti ~/Websites/twodeko.com $ ls -la /mnt/twodeko.com/twodeko.com/test
 total 8
 drwxr-xr-x 1 678268 183760 4096 May  3 23:18 .
 drwxr-xr-x 1 678268 183760 4096 May  3 23:22 ..
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19662 :USER "twodeko" :DATE 3355716741 :CHANNEL "#svn" :TITLE "hook script" :CONTENTS "#include <stddef.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19662 :USER "twodeko" :DATE 3355716741 :CHANNEL "#svn" :TITLE "hook script" :CONTENTS "#include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
 int main(void)
@@ -7806,11 +7806,11 @@ int main(void)
         return(EXIT_FAILURE);
 }
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19661 :USER "forcer" :DATE 3355715166 :CHANNEL "None" :TITLE "A test for lisppaste.el" :CONTENTS "(autoload 'lisppaste-create-new-paste \"lisppaste\" \"Interactively create a new paste.\" t)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19661 :USER "forcer" :DATE 3355715166 :CHANNEL "None" :TITLE "A test for lisppaste.el" :CONTENTS "(autoload 'lisppaste-create-new-paste \"lisppaste\" \"Interactively create a new paste.\" t)
 (autoload 'lisppaste-create-new-annotation \"lisppaste\" \"Interactively annotate a paste.\" t)
 (autoload 'lisppaste-paste-region \"lisppaste\" \"Send the region between BEG and END as a paste.\" t)
 (autoload 'lisppaste-list-recent-pastes \"lisppaste\" \"List the most recent N pastes.\" t)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19660 :USER "Riastradh" :DATE 3355714737 :CHANNEL "#scheme" :TITLE "hideous control structure" :CONTENTS "(define (spawn-slime48-tcp-server world exit-on-quit? . port-opt)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19660 :USER "Riastradh" :DATE 3355714737 :CHANNEL "#scheme" :TITLE "hideous control structure" :CONTENTS "(define (spawn-slime48-tcp-server world exit-on-quit? . port-opt)
   (let ((server (apply spawn-swank-tcp-server world
                        (lambda (session-placeholder body)
                          (with-sldb-handler #f
@@ -7842,7 +7842,7 @@ int main(void)
             (write (swank-tcp-server-port-number server)
                    out))))
     server))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19659 :USER "zedek" :DATE 3355693124 :CHANNEL "#emacs" :TITLE "Silent the byte-compiler" :CONTENTS "*** /home/zedek/.emacs.d/lib/org-blog.el.orig   2006-05-04 02:01:00.000000000 +0200
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19659 :USER "zedek" :DATE 3355693124 :CHANNEL "#emacs" :TITLE "Silent the byte-compiler" :CONTENTS "*** /home/zedek/.emacs.d/lib/org-blog.el.orig   2006-05-04 02:01:00.000000000 +0200
 --- /home/zedek/.emacs.d/lib/org-blog.el        2006-05-04 02:02:03.000000000 +0200
 ***************
 *** 157,163 ****
@@ -7895,9 +7895,9 @@ int main(void)
                                   (goto-char (point-min))
                                   (re-search-forward \"#\\\\+TITLE: \\\\(.*\\\\)$\" nil t)
                                   (message (match-string 1))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19658 :USER "zedek" :DATE 3355691532 :CHANNEL "None" :TITLE "for dto" :CONTENTS "(\"/home/zedek/blog/index.org\" \"/home/zedek/blog/blog-2006-05-04-0125.org\" \"/home/zedek/blog/blog-2006-05-04-0105.org\" \"/home/zedek/blog/blog-200\\
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19658 :USER "zedek" :DATE 3355691532 :CHANNEL "None" :TITLE "for dto" :CONTENTS "(\"/home/zedek/blog/index.org\" \"/home/zedek/blog/blog-2006-05-04-0125.org\" \"/home/zedek/blog/blog-2006-05-04-0105.org\" \"/home/zedek/blog/blog-200\\
 6-05-04-0100.org\" \"/home/zedek/blog/blog-2006-05-04-0047.org\" \"/home/zedek/blog/blog-2006-05-04-0044.org\" \"/home/zedek/blog/blog-2006-05-02-1455\\
-.org\" \"/home/zedek/blog/blog-2006-05-02-1401.org\") " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19657 :USER "JackaLX" :DATE 3355690770 :CHANNEL "#sxemacs" :TITLE "'nother test" :CONTENTS "whee!" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19656 :USER "JackaLX" :DATE 3355690502 :CHANNEL "#sxemacs" :TITLE "test paste" :CONTENTS "whee!!" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19655 :USER "zedek" :DATE 3355688957 :CHANNEL "#emacs" :TITLE "My blog project" :CONTENTS "'(\"blog\" . (:base-directory \"~/blog/\"                                                                                                     
+.org\" \"/home/zedek/blog/blog-2006-05-02-1401.org\") " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19657 :USER "JackaLX" :DATE 3355690770 :CHANNEL "#sxemacs" :TITLE "'nother test" :CONTENTS "whee!" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19656 :USER "JackaLX" :DATE 3355690502 :CHANNEL "#sxemacs" :TITLE "test paste" :CONTENTS "whee!!" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19655 :USER "zedek" :DATE 3355688957 :CHANNEL "#emacs" :TITLE "My blog project" :CONTENTS "'(\"blog\" . (:base-directory \"~/blog/\"                                                                                                     
                                    :base-extension \"org\"                                                                                         
                                    :publishing-function org-publish-org-to-html                                                                  
                                    :publishing-directory \"/ftp:zedek@perso.nerim.net:~/html/blog/\"                                               
@@ -7905,14 +7905,14 @@ int main(void)
                                    :index-filename \"index.org\"                                                                                   
                                    :index-title \"My own Blog\"                                                                                    
                                    :index-posts 10                                                                                               
-                                   :index-function org-publish-blog-index))             " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19654 :USER "freephile" :DATE 3355688528 :CHANNEL "#svn" :TITLE "UTF-8 error" :CONTENTS "svn status -v work/websites/trunk/
+                                   :index-function org-publish-blog-index))             " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19654 :USER "freephile" :DATE 3355688528 :CHANNEL "#svn" :TITLE "UTF-8 error" :CONTENTS "svn status -v work/websites/trunk/
 
 [snip lots of status on files]
 
 svn: Valid UTF-8 data
 (hex: 49 6e 74 72 ...................)   <------ this string is a long set of tuples
 followed by invalid UTF-8 sequence
-(hex: 92 73 20 4d)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19653 :USER "Shine" :DATE 3355688279 :CHANNEL "#lisp" :TITLE "looks a bit like my new version :-)" :CONTENTS "(defun is-whitespace (char)
+(hex: 92 73 20 4d)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19653 :USER "Shine" :DATE 3355688279 :CHANNEL "#lisp" :TITLE "looks a bit like my new version :-)" :CONTENTS "(defun is-whitespace (char)
   (member char '(#\\Space #\\Tab #\\Newline)))
 
 (defun parse (string)
@@ -7928,7 +7928,7 @@ followed by invalid UTF-8 sequence
               (setf start i))))
     (when start (push (subseq string start) result))
     (nreverse result)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19652 :USER "Shine" :DATE 3355686990 :CHANNEL "#lisp" :TITLE "Ugly code" :CONTENTS "(defun parse (string)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19652 :USER "Shine" :DATE 3355686990 :CHANNEL "#lisp" :TITLE "Ugly code" :CONTENTS "(defun parse (string)
   (loop for char across string
         with in-string = nil
         with result = '()
@@ -7965,10 +7965,10 @@ followed by invalid UTF-8 sequence
   (assert (equalp '(\"foo\" \"bar\") (parse \"   foo bar\")))
   (assert (equalp '(\"foo\" \"bar\") (parse \"   foo bar  \"))))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19651 :USER "eh" :DATE 3355686890 :CHANNEL "#svn" :TITLE "test: hungbv can't do this" :CONTENTS "Why not?" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19650 :USER "patr1ck" :DATE 3355686633 :CHANNEL "#adium" :TITLE "Believe it or not, this works." :CONTENTS "- (void):(NSString *)message
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19651 :USER "eh" :DATE 3355686890 :CHANNEL "#svn" :TITLE "test: hungbv can't do this" :CONTENTS "Why not?" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19650 :USER "patr1ck" :DATE 3355686633 :CHANNEL "#adium" :TITLE "Believe it or not, this works." :CONTENTS "- (void):(NSString *)message
 {
 	NSLog(@\"The word is %@\", message);
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19649 :USER "rsinger" :DATE 3355682380 :CHANNEL "None" :TITLE "proxy_url -- PHP" :CONTENTS "**
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19649 :USER "rsinger" :DATE 3355682380 :CHANNEL "None" :TITLE "proxy_url -- PHP" :CONTENTS "**
  * @return array
  * @param string $xml
  * @desc Send a request to the proxy resolver and return the results as an array.
@@ -8042,7 +8042,7 @@ function proxyPage($links, $html) {
 		next($proxies);
 	}
 	return $html;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19641 :USER "klette" :DATE 3355666083 :CHANNEL "#programmering" :TITLE "Seg Fault on push_back" :CONTENTS "		std::vector<vertex*> vertices;
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19641 :USER "klette" :DATE 3355666083 :CHANNEL "#programmering" :TITLE "Seg Fault on push_back" :CONTENTS "		std::vector<vertex*> vertices;
 		std::vector<texcoord*> texcoords;
 		std::vector<vertex*> normals;
 		
@@ -8086,7 +8086,7 @@ Program received signal SIGSEGV, Segmentation fault.
 #2  0x0804db6e in System (this=0x805dd10) at System.cpp:15
 #3  0x08051600 in main (argc=1, argv=0xbfb381b4) at main.cpp:13
 
-Line 52 = push_back(vert);" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19640 :USER "scuba" :DATE 3355657880 :CHANNEL "None" :TITLE "scheme - not working" :CONTENTS "(define (add n1 n2)
+Line 52 = push_back(vert);" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19640 :USER "scuba" :DATE 3355657880 :CHANNEL "None" :TITLE "scheme - not working" :CONTENTS "(define (add n1 n2)
 (if 
 
 ;;case:
@@ -8100,7 +8100,7 @@ Line 52 = push_back(vert);" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19640 
 ;;false:
     (cond       
       ((integer? n2) (+rat1 n1) (make-integer n2)))
-      ((rat? n2) (+rat1 n1 n2))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19639 :USER "Xach" :DATE 3355657209 :CHANNEL "#lisp" :TITLE "gc_find_freeish_pages failed" :CONTENTS "Argh! gc_find_freeish_pages failed (restart_page), nbytes=435289304.
+      ((rat? n2) (+rat1 n1 n2))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19639 :USER "Xach" :DATE 3355657209 :CHANNEL "#lisp" :TITLE "gc_find_freeish_pages failed" :CONTENTS "Argh! gc_find_freeish_pages failed (restart_page), nbytes=435289304.
  Gen StaPg UbSta LaSta LUbSt Boxed Unboxed LB   LUB  !move  Alloc  Waste   Trig 
    WP  GCs Mem-age
    0:  9888     0     0     0   198     4     0 106281   106342 436111904    424
@@ -8119,7 +8119,7 @@ Line 52 = push_back(vert);" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19640 
  2000000 8786  0.0000
    Total bytes allocated=486069432
 fatal error encountered in SBCL pid 32464(tid 3044203424):
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19638 :USER "nosfe" :DATE 3355652972 :CHANNEL "None" :TITLE "code comenter" :CONTENTS "#include <stdio.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19638 :USER "nosfe" :DATE 3355652972 :CHANNEL "None" :TITLE "code comenter" :CONTENTS "#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <Windows.h>
@@ -8328,7 +8328,7 @@ main()
 	Creation_domaine(Sudoku,Domaine);
 	Resolution_Forward_checking(Sudoku,Domaine,0);
 	Afficher_Sudoku(Sudoku);
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19637 :USER "nosfe" :DATE 3355645180 :CHANNEL "None" :TITLE "imconprehension" :CONTENTS "#include <stdio.h>
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19637 :USER "nosfe" :DATE 3355645180 :CHANNEL "None" :TITLE "imconprehension" :CONTENTS "#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <Windows.h>
@@ -8509,7 +8509,7 @@ main()
 	Creation_domaine(Sudoku,Domaine);
 	Resolution_Forward_checking(Sudoku,Domaine,0);
 	Afficher_Sudoku(Sudoku);
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19636 :USER "Whooo" :DATE 3355634711 :CHANNEL "None" :TITLE "CSS" :CONTENTS ".clearfix:after {
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19636 :USER "Whooo" :DATE 3355634711 :CHANNEL "None" :TITLE "CSS" :CONTENTS ".clearfix:after {
     content: \".\"; 
     display: block; 
     height: 0; 
@@ -8615,7 +8615,7 @@ div#footer {
 	font-family: Tahoma;
 	font-size: 0.8em;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19635 :USER "Lokadin" :DATE 3355633604 :CHANNEL "#haskell" :TITLE "Haish" :CONTENTS "module Main
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19635 :USER "Lokadin" :DATE 3355633604 :CHANNEL "#haskell" :TITLE "Haish" :CONTENTS "module Main
   where
 
 import Control.Monad
@@ -8658,14 +8658,14 @@ getCont hdl = do
          char2 <- getCont hdl
          return (char : char2 )
       else return []
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19634 :USER "dmacks" :DATE 3355630426 :CHANNEL "#opendarwin" :TITLE "Wot's wrong here?" :CONTENTS "$ g95 -c ../../icon8/output.f
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19634 :USER "dmacks" :DATE 3355630426 :CHANNEL "#opendarwin" :TITLE "Wot's wrong here?" :CONTENTS "$ g95 -c ../../icon8/output.f
 In file ../../icon8/output.f:30
 
       DATA HYDROG/' H'/
                   1
 Error: Numeric constant required at (1)
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19633 :USER "machack666" :DATE 3355627333 :CHANNEL "#haskell" :TITLE "PartialKey code" :CONTENTS "module Data.Set.PartialMatch where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19633 :USER "machack666" :DATE 3355627333 :CHANNEL "#haskell" :TITLE "PartialKey code" :CONTENTS "module Data.Set.PartialMatch where
 
 import Data.Set (Set, size, union)
 import System.IO.Unsafe
@@ -8689,7 +8689,7 @@ dictWords = unsafePerformIO allWords
 
 sampleSearch = flip partialMatch [Nothing, Just 'a', Nothing,Just 'o',Nothing] dictWords
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19632 :USER "sjanssen" :DATE 3355626441 :CHANNEL "#haskell" :TITLE "counting sort" :CONTENTS "countSort :: ByteString -> ByteString
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19632 :USER "sjanssen" :DATE 3355626441 :CHANNEL "#haskell" :TITLE "counting sort" :CONTENTS "countSort :: ByteString -> ByteString
 countSort (PS input s l) = create l $ \\p -> allocaArray 256 $ \\arr -> do
     memset (castPtr arr) 0 (256 * fromIntegral (sizeOf (undefined :: CSize)))
     let doCount :: Ptr Word8 -> Int -> IO ()
@@ -8709,7 +8709,7 @@ countSort (PS input s l) = create l $ \\p -> allocaArray 256 $ \\arr -> do
                 then memset ptr (fromIntegral i) n >> return ()
                 else return ()
             go (i + 1) (ptr `plusPtr` (fromIntegral n))
-    go 0 p" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19631 :USER "nosfe" :DATE 3355624334 :CHANNEL "None" :TITLE "help :p" :CONTENTS "int tri_domaine(int Case,int Valeur,int **Domaine)
+    go 0 p" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19631 :USER "nosfe" :DATE 3355624334 :CHANNEL "None" :TITLE "help :p" :CONTENTS "int tri_domaine(int Case,int Valeur,int **Domaine)
 {
 	int j = 0;
 	while(j<9)
@@ -8787,7 +8787,7 @@ int Resolution_Forward_checking(int *Sudoku,int **Domaine,int prof)
 			return 0;
 		}
 	}
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19630 :USER "nosfe" :DATE 3355623642 :CHANNEL "None" :TITLE "besoin d'aide" :CONTENTS "/* mon probleme est simple dans les fonctions qui suivent tu peu voir que j'essaye d'utiliser Domaine un tableau de tableau d'entier defini par Domaine[81][9].
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19630 :USER "nosfe" :DATE 3355623642 :CHANNEL "None" :TITLE "besoin d'aide" :CONTENTS "/* mon probleme est simple dans les fonctions qui suivent tu peu voir que j'essaye d'utiliser Domaine un tableau de tableau d'entier defini par Domaine[81][9].
 Probleme, a la compilation j'ai des \"imcompatible pointer type\" de partout ainsi que un \"function returns adress of local variables\" pour la fonction \"Creation_Domaine\"*/
 
 int tri_domaine(int Case,int Valeur,int **Domaine)
@@ -8865,7 +8865,7 @@ int Resolution_Forward_checking(int *Sudoku,int **Domaine,int prof)
 			return 0;
 		}
 	}
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19629 :USER "RangerRick" :DATE 3355622775 :CHANNEL "#fink" :TITLE "grr" :CONTENTS "dpkg-deb -b root-cctools-extra-590.18-2 /trans/fink/10.4-transitional/stable/main/binary-darwin-powerpc/base
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19629 :USER "RangerRick" :DATE 3355622775 :CHANNEL "#fink" :TITLE "grr" :CONTENTS "dpkg-deb -b root-cctools-extra-590.18-2 /trans/fink/10.4-transitional/stable/main/binary-darwin-powerpc/base
 dpkg-deb: building package `cctools-extra' in `/trans/fink/10.4-transitional/stable/main/binary-darwin-powerpc/base/cctools-extra_590.18-2_darwin-powerpc.deb'.
 Could not resolve inconsistent dependencies!
 
@@ -8876,7 +8876,7 @@ Fink isn't sure how to install the above packages safely. You may be able to fix
   apt-get install cctools-extra=1:590.18-2
 
 Fink::SysState: Could not resolve inconsistent dependencies
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19628 :USER "freakman" :DATE 3355617293 :CHANNEL "#adium" :TITLE "Quadrilaterals" :CONTENTS "#include <stdio.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19628 :USER "freakman" :DATE 3355617293 :CHANNEL "#adium" :TITLE "Quadrilaterals" :CONTENTS "#include <stdio.h>
 #include <math.h>
 
 #define x 0
@@ -8952,14 +8952,14 @@ int main(void)
 	}
 	printf(\"%s\\n\", result);
 	return 0;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19627 :USER "pogma" :DATE 3355614828 :CHANNEL "#opendarwin" :TITLE "c++ -force_flat_namespace" :CONTENTS "peter$ /opt/gcc_mainline/bin/g++ -force_flat_namespace -o foo foo.cpp
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19627 :USER "pogma" :DATE 3355614828 :CHANNEL "#opendarwin" :TITLE "c++ -force_flat_namespace" :CONTENTS "peter$ /opt/gcc_mainline/bin/g++ -force_flat_namespace -o foo foo.cpp
 /opt/odcctools/bin/ld: multiple definitions of symbol _atexit
 /opt/gcc_mainline/lib/gcc/powerpc-apple-darwin8.6.0/4.2.0/crt3.o private external definition of _atexit in section (__TEXT,__text)
 /usr/lib/libSystem.dylib(atexit.So) definition of _atexit
 /opt/odcctools/bin/ld: multiple definitions of symbol ___cxa_atexit
 /opt/gcc_mainline/lib/gcc/powerpc-apple-darwin8.6.0/4.2.0/crt3.o private external definition of ___cxa_atexit in section (__TEXT,__text)
 /usr/lib/libSystem.dylib(atexit.So) definition of ___cxa_atexit
-collect2: ld returned 1 exit status" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19626 :USER "slyrus" :DATE 3355614493 :CHANNEL "#lisp" :TITLE "deftransform abuse?" :CONTENTS ";; I'm not sure if this is wise or not, but I think it sort of
+collect2: ld returned 1 exit status" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19626 :USER "slyrus" :DATE 3355614493 :CHANNEL "#lisp" :TITLE "deftransform abuse?" :CONTENTS ";; I'm not sure if this is wise or not, but I think it sort of
 ;; does what I want:
 
 (sb-c:defknown mref2 (matrix fixnum fixnum) number
@@ -8996,7 +8996,7 @@ collect2: ld returned 1 exit status" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMB
           (declare (type fixnum j))
           (setf acc (+ acc (the single-float (clem::mref2 x i j))))))
       (print acc))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19625 :USER "XhyldazhK" :DATE 3355613874 :CHANNEL "#scheme" :TITLE "ze-map.scm" :CONTENTS "; map operations
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19625 :USER "XhyldazhK" :DATE 3355613874 :CHANNEL "#scheme" :TITLE "ze-map.scm" :CONTENTS "; map operations
 ;
 
 (define (factorial x)
@@ -9007,7 +9007,7 @@ collect2: ld returned 1 exit status" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMB
 (define-external (factorial (int x)) int
                  (factorial x))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19624 :USER "forcer" :DATE 3355612955 :CHANNEL "None" :TITLE "Schöner schreiben mit Scheme" :CONTENTS "[with (bound-id
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19624 :USER "forcer" :DATE 3355612955 :CHANNEL "None" :TITLE "Schöner schreiben mit Scheme" :CONTENTS "[with (bound-id
        named-expr
        bound-body)
       (let ((tmp (hash-table-get-default sub-rep
@@ -9025,7 +9025,7 @@ collect2: ld returned 1 exit status" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMB
                            bound-id
                            tmp)
           ret))]
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19623 :USER "yann" :DATE 3355607153 :CHANNEL "None" :TITLE "Title" :CONTENTS "  <Location /projects>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19623 :USER "yann" :DATE 3355607153 :CHANNEL "None" :TITLE "Title" :CONTENTS "  <Location /projects>
     SetHandler mod_python
     PythonHandler trac.web.modpython_frontend
     PythonOption TracLocale \"fr_FR.UTF-8\"
@@ -9039,7 +9039,7 @@ collect2: ld returned 1 exit status" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMB
     AuthName \"Trac Authentication\"
     AuthUserFile /srv/svn/.htaccess
     Require valid-user
-  </LocationMatch>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19622 :USER "zorn" :DATE 3355603313 :CHANNEL "None" :TITLE "no title" :CONTENTS "- (void)refreshObjectsToShowInMainTable
+  </LocationMatch>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19622 :USER "zorn" :DATE 3355603313 :CHANNEL "None" :TITLE "no title" :CONTENTS "- (void)refreshObjectsToShowInMainTable
 {
 	NSLog(@\"refreshObjectsToShowInMainTable called\");
 	
@@ -9100,13 +9100,13 @@ collect2: ld returned 1 exit status" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMB
 	}
 	//[fetchRequest release];
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19621 :USER "rob_desk" :DATE 3355596624 :CHANNEL "#code4lib" :TITLE "ezproxy xml response" :CONTENTS "<proxy_url_response>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19621 :USER "rob_desk" :DATE 3355596624 :CHANNEL "#code4lib" :TITLE "ezproxy xml response" :CONTENTS "<proxy_url_response>
 -
 	<proxy_urls>
 <url proxy=\"false\" scheme=\"\" hostname=\"\" port=\"\" login_path=\"\" encode=\"false\">http://www.somedb.com</url>
 <url proxy=\"false\" scheme=\"\" hostname=\"\" port=\"\" login_path=\"\" encode=\"false\">http://www.otherdb.com/search/</url>
 </proxy_urls>
-</proxy_url_response>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19620 :USER "cinezone" :DATE 3355589287 :CHANNEL "None" :TITLE "Dichotomie" :CONTENTS "FILE *fp = fopen(VIDEOSF, \"r\");
+</proxy_url_response>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19620 :USER "cinezone" :DATE 3355589287 :CHANNEL "None" :TITLE "Dichotomie" :CONTENTS "FILE *fp = fopen(VIDEOSF, \"r\");
 	long min, max, mil;
 	
 	min = 0;
@@ -9124,7 +9124,7 @@ collect2: ld returned 1 exit status" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMB
 		} else {
 			min = mil+1*sizeof(*vid);
 		}
-	}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19619 :USER "b42" :DATE 3355587268 :CHANNEL "None" :TITLE "error: looser throw specifier for ..." :CONTENTS "class Base
+	}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19619 :USER "b42" :DATE 3355587268 :CHANNEL "None" :TITLE "error: looser throw specifier for ..." :CONTENTS "class Base
 {
 public:
 	class BaseException
@@ -9154,7 +9154,7 @@ public:
 	{
 		throw DerException(1,42);
 	}
-};" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19618 :USER "b42" :DATE 3355586086 :CHANNEL "None" :TITLE "error: looser throw specifier for ..." :CONTENTS "class Base
+};" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19618 :USER "b42" :DATE 3355586086 :CHANNEL "None" :TITLE "error: looser throw specifier for ..." :CONTENTS "class Base
 {
 public:
 	class BaseException
@@ -9184,7 +9184,7 @@ public:
 	{
 		throw BaseException(1);
 	}
-};" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19617 :USER "joneskoo" :DATE 3355574825 :CHANNEL "None" :TITLE "Quartz backtrace / VLC" :CONTENTS "Exception:  EXC_BAD_ACCESS (0x0001)
+};" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19617 :USER "joneskoo" :DATE 3355574825 :CHANNEL "None" :TITLE "Quartz backtrace / VLC" :CONTENTS "Exception:  EXC_BAD_ACCESS (0x0001)
 Codes:      KERN_INVALID_ADDRESS (0x0001) at 0x87cb190b
 
 Reading symbols for shared libraries .................... done
@@ -9222,7 +9222,7 @@ Reason: KERN_INVALID_ADDRESS at address: 0x87cb190b
 #21 0x000acb09 in RunThread (p_vout=0x31d4200) at video_output/video_output.c:959
 #22 0x90024a27 in _pthread_body ()
 (gdb) 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19616 :USER "rdlugosz" :DATE 3355573833 :CHANNEL "None" :TITLE "Smugmug JS" :CONTENTS "// ***********************************************
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19616 :USER "rdlugosz" :DATE 3355573833 :CHANNEL "None" :TITLE "Smugmug JS" :CONTENTS "// ***********************************************
 // BEGIN Add Referral Code
 // ***********************************************
 
@@ -9812,7 +9812,7 @@ function deleteCookie(name, path, domain) {
 // ***********************************************
 // END Slide Show
 // SEE: http://dgrin.com/showthread.php?t=28348
-// ***********************************************" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19615 :USER "geren" :DATE 3355568469 :CHANNEL "#scheme" :TITLE "lisp" :CONTENTS "(defun traverse (examples attribs default)
+// ***********************************************" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19615 :USER "geren" :DATE 3355568469 :CHANNEL "#scheme" :TITLE "lisp" :CONTENTS "(defun traverse (examples attribs default)
 
 
 (print \"start of attribs\")
@@ -9869,14 +9869,14 @@ function deleteCookie(name, path, domain) {
         )
     
   ))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19614 :USER "pjb" :DATE 3355568261 :CHANNEL "#scheme" :TITLE "formated" :CONTENTS "(define (ex list)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19614 :USER "pjb" :DATE 3355568261 :CHANNEL "#scheme" :TITLE "formated" :CONTENTS "(define (ex list)
   (display \"enter : \") (display list) (newline)
   (if (= 1 (car list))
       (begin  
         (set-car! list (- (car list) 1))
         (ex list))
       (set-car! list (+ (car list) 1)))
-  (display \"exit : \") (display list) (newline))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19613 :USER "pjb" :DATE 3355565931 :CHANNEL "#scheme" :TITLE "remove-nth in DrScheme" :CONTENTS " (require (lib \"trace.ss\"))
+  (display \"exit : \") (display list) (newline))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19613 :USER "pjb" :DATE 3355565931 :CHANNEL "#scheme" :TITLE "remove-nth in DrScheme" :CONTENTS " (require (lib \"trace.ss\"))
                            
 (define (remove-nth n list)
   (if (= n 0)
@@ -9903,7 +9903,7 @@ Teachpack: /local/languages/plt-299.200/teachpack/htdp/image.ss.
 | (1 2 3 5 6 7 8 9)
 |(0 1 2 3 5 6 7 8 9)
 (0 1 2 3 5 6 7 8 9)
-> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19612 :USER "sbp" :DATE 3355554122 :CHANNEL "#swhack" :TITLE "Who's Been Topiced on Swhack? (By Popularity)" :CONTENTS "sbp@manxome:/web/swhack.com/logs$ grep 'changed the topic' 200*-*-*.txt | sed -r 's/.........<[^>]*>//' | egrep -o '<[^>]+>' | sort | uniq -c | sort -rn
+> " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19612 :USER "sbp" :DATE 3355554122 :CHANNEL "#swhack" :TITLE "Who's Been Topiced on Swhack? (By Popularity)" :CONTENTS "sbp@manxome:/web/swhack.com/logs$ grep 'changed the topic' 200*-*-*.txt | sed -r 's/.........<[^>]*>//' | egrep -o '<[^>]+>' | sort | uniq -c | sort -rn
     106 <Monty>
     104 <sbp>
     100 <Morbus>
@@ -10055,7 +10055,7 @@ Teachpack: /local/languages/plt-299.200/teachpack/htdp/image.ss.
       1 <Arnia(edited)>
       1 < Arnia>
       1 <Apokalipse>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19611 :USER "gpd" :DATE 3355551531 :CHANNEL "None" :TITLE "clisp configure" :CONTENTS "executing /home/gpd/filth/clisp-2.38/src/configure --cache-file=config.cache
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19611 :USER "gpd" :DATE 3355551531 :CHANNEL "None" :TITLE "clisp configure" :CONTENTS "executing /home/gpd/filth/clisp-2.38/src/configure --cache-file=config.cache
 configure: loading cache config.cache
 configure: * checks for UNIX variants that set DEFS
 checking for gcc... (cached) gcc
@@ -10971,7 +10971,7 @@ If you insist on building without libsigsegv, please pass
   --ignore-absence-of-libsigsegv
 to this script:
   ./configure --ignore-absence-of-libsigsegv
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19610 :USER "Ikana" :DATE 3355547770 :CHANNEL "#scheme" :TITLE "prime numbers" :CONTENTS "(define (genlist x y)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19610 :USER "Ikana" :DATE 3355547770 :CHANNEL "#scheme" :TITLE "prime numbers" :CONTENTS "(define (genlist x y)
   (if (< y 1)
       ()
   (cons x (genlist (+ x 1) (- y 1)))))
@@ -10995,7 +10995,7 @@ to this script:
     (primes-iter
      (map (lambda (c) (if (and (< y c) (equal? (modulo c y) 0)) 0 c))
 	  plist)
-     x (findprime y plist))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19609 :USER "mee_who" :DATE 3355546288 :CHANNEL "#fink" :TITLE "last few lines of the compile" :CONTENTS "g++ -L/sw/lib -L../lib -L../optlib -framework CoreFoundation -force_flat_namespace -o dselect  basecmds.o  baselist.o  basetop.o  bindings.o  curkeys.o  main.o  methkeys.o  methlist.o  method.o  methparse.o  pkgcmds.o  pkgdepcon.o  pkgdisplay.o  pkginfo.o  pkgkeys.o  pkglist.o  pkgsublist.o  pkgtop.o  helpmsgs.o -lncurses  -ldpkg -lopt -lz -lintl -liconv 
+     x (findprime y plist))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19609 :USER "mee_who" :DATE 3355546288 :CHANNEL "#fink" :TITLE "last few lines of the compile" :CONTENTS "g++ -L/sw/lib -L../lib -L../optlib -framework CoreFoundation -force_flat_namespace -o dselect  basecmds.o  baselist.o  basetop.o  bindings.o  curkeys.o  main.o  methkeys.o  methlist.o  method.o  methparse.o  pkgcmds.o  pkgdepcon.o  pkgdisplay.o  pkginfo.o  pkgkeys.o  pkglist.o  pkgsublist.o  pkgtop.o  helpmsgs.o -lncurses  -ldpkg -lopt -lz -lintl -liconv 
 /usr/bin/ld: multiple definitions of symbol _atexit
 /usr/lib/gcc/i686-apple-darwin8/4.0.1/crt3.o private external definition of _atexit in section (__TEXT,__text)
 /usr/lib/gcc/i686-apple-darwin8/4.0.1/../../../libSystem.dylib(atexit.So) definition of _atexit
@@ -11020,7 +11020,7 @@ the maintainer directly:
 Note that many fink package maintainers do not (yet) have access to OS X on
 Intel hardware, so you may have better luck on the mailing lists.
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19608 :USER "trr" :DATE 3355544348 :CHANNEL "#lisp" :TITLE "Compiler hangs an athlon box" :CONTENTS "(defun make-single-float (bits)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19608 :USER "trr" :DATE 3355544348 :CHANNEL "#lisp" :TITLE "Compiler hangs an athlon box" :CONTENTS "(defun make-single-float (bits)
   (cond
     ;; IEEE float special cases
     ((zerop bits) 0.0)
@@ -11038,18 +11038,18 @@ Intel hardware, so you may have better luck on the mailing lists.
                                    (ash 1 23)))
                        (expt 0.5 23))))
 	 (* sign (expt 2.0 expt) mant)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19607 :USER "interferon" :DATE 3355543993 :CHANNEL "#emacs" :TITLE "convert DOS to UNIX" :CONTENTS "(defun dos-unix () 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19607 :USER "interferon" :DATE 3355543993 :CHANNEL "#emacs" :TITLE "convert DOS to UNIX" :CONTENTS "(defun dos-unix () 
   \"Convert DOS line breaks to UNIX line breaks in the current buffer\"
   (interactive) 
   (save-excursion 
     (goto-char (point-min))
-    (while (search-forward \"\\r\" nil t) (replace-match \"\"))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19606 :USER "Riastradh" :DATE 3355541837 :CHANNEL "#scheme" :TITLE "non-selective dequeuing without infinite loop or deadlock" :CONTENTS "(let loop ((message (receive-message)))
+    (while (search-forward \"\\r\" nil t) (replace-match \"\"))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19606 :USER "Riastradh" :DATE 3355541837 :CHANNEL "#scheme" :TITLE "non-selective dequeuing without infinite loop or deadlock" :CONTENTS "(let loop ((message (receive-message)))
   (if (satisfactory? message)
       ...
       (let ((next-message (receive-message)))
         (send-message (current-pid) message)
         (loop next-message))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19605 :USER "AngryLuke" :DATE 3355541014 :CHANNEL "#macdev" :TITLE "sender is either an NSTimer or a button" :CONTENTS "#define VAR_ISTYPE(var, type) (NULL!=var && type ## GetTypeID()==CFGetTypeID(var))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19605 :USER "AngryLuke" :DATE 3355541014 :CHANNEL "#macdev" :TITLE "sender is either an NSTimer or a button" :CONTENTS "#define VAR_ISTYPE(var, type) (NULL!=var && type ## GetTypeID()==CFGetTypeID(var))
 
 
 if (VAR_ISTYPE(sender, CFRunLoopTimer) or ![sender tag])
@@ -11070,7 +11070,7 @@ if (VAR_ISTYPE(sender, CFRunLoopTimer) or ![sender tag])
 				CFPreferencesSetAppValue(CFSTR(\"SULastCheckDate\"), (CFDateRef)[NSDate date],  (CFStringRef)apeBundleID);
 				CFPreferencesAppSynchronize((CFStringRef)apeBundleID);
 			}
-}}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19604 :USER "pop" :DATE 3355540794 :CHANNEL "None" :TITLE "weasel" :CONTENTS "#include \"globaltimer.h\"
+}}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19604 :USER "pop" :DATE 3355540794 :CHANNEL "None" :TITLE "weasel" :CONTENTS "#include \"globaltimer.h\"
 
 GTimer *GTimer::m_singleton = 0;
  
@@ -11099,14 +11099,14 @@ GTimer GTimer::	*GetInstance( void )
 	unsigned long	GTimer::GetTime( void )			{ return m_currentTime; }
 	float			GTimer::GetFps( void )			{ return ((float)1000.0 / (float)(m_currentTime - m_lastTime)); }
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19603 :USER "aufrank" :DATE 3355539841 :CHANNEL "#perl6" :TITLE "make install error on osx 10.3.9 with ghc 6.4.1" :CONTENTS "*** Running: ./Setup install
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19603 :USER "aufrank" :DATE 3355539841 :CHANNEL "#perl6" :TITLE "make install error on osx 10.3.9 with ghc 6.4.1" :CONTENTS "*** Running: ./Setup install
 Installing: /usr/local/lib/Pugs-6.2.11 & /usr/local/bin Pugs-6.2.11...
 Registering Pugs-6.2.11...
 Reading package info from \".installed-pkg-config\" ... done.
 building GHCi library /usr/local/lib/Pugs-6.2.11/HSPugs-6.2.11.o...ld: /usr/local/lib/Pugs-6.2.11/libHSPugs-6.2.11.a(__.SYMDEF SORTED) bad magic number (not a Mach-O file)
 *** Installation failed (exit code 256).
 Appending installation info to /System/Library/Perl/5.8.1/darwin-thread-multi-2level/perllocal.pod
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19602 :USER "aufrank" :DATE 3355538204 :CHANNEL "#perl6" :TITLE "build error on osx 10.3.9 with ghc 6.4.1" :CONTENTS "Compiling Pugs             ( src/Pugs.hs, dist/build/src/Pugs.o )
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19602 :USER "aufrank" :DATE 3355538204 :CHANNEL "#perl6" :TITLE "build error on osx 10.3.9 with ghc 6.4.1" :CONTENTS "Compiling Pugs             ( src/Pugs.hs, dist/build/src/Pugs.o )
 ar: creating archive dist/build/libHSPugs-6.2.11.a
 *** Building: /usr/local/bin/ghc -package stm -package network -package mtl -package template-haskell -package base -package fps -package HsSyck -package unix -package readline -package plugins -package haskell-src -idist/build -Ldist/build -idist/build/src -Ldist/build/src -o pugs src/Main.hs -lHSPugs-6.2.11 -threaded -optl-g -optl-pipe -optl-pipe -optl-fno-common -optc-DPERL_DARWIN -optl-no-cpp-precomp -optl-fno-strict-aliasing -optl-I/usr/local/include -optl-L/usr/local/lib -optl-flat_namespace -optl-L/sw/lib -optl-L/sw/lib -optl-lm -optl-lgmp -optl-lreadline -optl-licucore -optl-licucore -optl-licucore -L/usr/local/lib -L/System/Library/Perl/5.8.1/darwin-thread-multi-2level/CORE -lperl -ldl -lm -lc -L/Users/aufrank/projects/parrot/parrot-local//lib -L/Users/aufrank/projects/parrot/parrot-local//blib/lib -L/usr/local/lib -lparrot /System/Library/Perl/5.8.1/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a /Users/aufrank/projects/parrot/parrot-local/src/install_config.o
 ld: archive: /Users/aufrank/projects/pugs/pugs-local/dist/lib/HsSyck-0.1/libHSHsSyck-0.1.a has no table of contents, add one with ranlib(1) (can't load from it)
@@ -11115,7 +11115,7 @@ ld: warning suggest use of -bind_at_load, as lazy binding may result in errors o
 symbol _hash_destroy used from dynamic library /usr/local/lib/libparrot.dylib(hash.o) not from earlier dynamic library /usr/lib/libSystem.B.dylib(strhash.So)
 Build failed: 256 at util/build_pugs.pl line 193.
 make: *** [unoptimized] Error 2
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19601 :USER "RangerRick" :DATE 3355538088 :CHANNEL "#fink" :TITLE "for cirdan: brute-force it!" :CONTENTS "#!/usr/bin/perl
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19601 :USER "RangerRick" :DATE 3355538088 :CHANNEL "#fink" :TITLE "for cirdan: brute-force it!" :CONTENTS "#!/usr/bin/perl
 
 for my $file (@ARGV) {
    my $newfile = $file;
@@ -11127,7 +11127,7 @@ for my $file (@ARGV) {
    system(\"mv\", $file, $newfile);
    print $file, \"\\n\";
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19600 :USER "geren" :DATE 3355536998 :CHANNEL "#lisp" :TITLE "lisp" :CONTENTS "(defun decide(samp attlist mylist)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19600 :USER "geren" :DATE 3355536998 :CHANNEL "#lisp" :TITLE "lisp" :CONTENTS "(defun decide(samp attlist mylist)
    (if (atom mylist)
       (print mylist)
       
@@ -11142,7 +11142,7 @@ for my $file (@ARGV) {
         )
       )  
     )
-)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19599 :USER "test" :DATE 3355536247 :CHANNEL "None" :TITLE "test" :CONTENTS "Blackhole:/home/qcoder# aptitude update
+)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19599 :USER "test" :DATE 3355536247 :CHANNEL "None" :TITLE "test" :CONTENTS "Blackhole:/home/qcoder# aptitude update
 Reading package lists... Done
 Building dependency tree... Done
 Reading extended state information
@@ -11173,12 +11173,12 @@ Reading package lists... Done
 W: GPG error: http://secure-testing.debian.net etch/security-updates Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 946AA6E18722E71E
 W: GPG error: ftp://ftp.nerim.net etch Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 07DC563D1F41B907
 W: You may want to run apt-get update to correct these problems
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19598 :USER "drasch" :DATE 3355535672 :CHANNEL "None" :TITLE "tt" :CONTENTS "Broadcast Message from jfaulkne@reddick
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19598 :USER "drasch" :DATE 3355535672 :CHANNEL "None" :TITLE "tt" :CONTENTS "Broadcast Message from jfaulkne@reddick
         (/dev/pts/0) at 22:18 ...
 
 I am your dom, you are my sub.
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19597 :USER "freakman" :DATE 3355535378 :CHANNEL "#adium" :TITLE "help? please? :)" :CONTENTS "#include <stdio.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19597 :USER "freakman" :DATE 3355535378 :CHANNEL "#adium" :TITLE "help? please? :)" :CONTENTS "#include <stdio.h>
 #include <math.h>
 
 #define point 2
@@ -11210,7 +11210,7 @@ int main(void)
 	quadrilateralCoordinate[d] = {-4.0, 4.0};
 	printf(\"%f\\n\", Distance(quadrilateralCoordinate[a], quadrilateralCoordinate[b]));
 	return 0;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19596 :USER "geren" :DATE 3355533597 :CHANNEL "#lisp" :TITLE "lisp" :CONTENTS "(defun printlist (mylist)
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19596 :USER "geren" :DATE 3355533597 :CHANNEL "#lisp" :TITLE "lisp" :CONTENTS "(defun printlist (mylist)
   (if (atom mylist)  ;if mylist is an atom
       (print mylist) ;then print it
       
@@ -11223,7 +11223,7 @@ int main(void)
       )
   )
 ) 
-  " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19595 :USER "geren" :DATE 3355533043 :CHANNEL "#lisp" :TITLE "lisp" :CONTENTS "(defun traverse ()
+  " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19595 :USER "geren" :DATE 3355533043 :CHANNEL "#lisp" :TITLE "lisp" :CONTENTS "(defun traverse ()
 (setq dtl
       (list 'A (cons 'yes (list 'B (cons 'yes 'yes)(cons 'no 'no)))
                (cons 'no  (list 'C (cons 'yes 'yes)(cons 'no 'no)))
@@ -11242,7 +11242,7 @@ int main(void)
 )
 )
 )     
-  " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19594 :USER "geren" :DATE 3355531300 :CHANNEL "#lisp" :TITLE "lisp" :CONTENTS "(defun traverse ()
+  " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19594 :USER "geren" :DATE 3355531300 :CHANNEL "#lisp" :TITLE "lisp" :CONTENTS "(defun traverse ()
 (setf dtl
       (list 'A (cons 'yes (list 'B (cons 'yes 'yes)(cons 'no 'no)))
                (cons 'no  (list 'C (cons 'yes 'yes)(cons 'no 'no)))
@@ -11254,7 +11254,7 @@ int main(void)
 
 (defun printlist (t)
  (print 'a)
-)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19593 :USER "slyrus" :DATE 3355527879 :CHANNEL "#lisp" :TITLE "mach exception handler patch" :CONTENTS "here's a patch if anyone wants to follow along at home. it builds, but fails in alien.impure.lisp.
+)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19593 :USER "slyrus" :DATE 3355527879 :CHANNEL "#lisp" :TITLE "mach exception handler patch" :CONTENTS "here's a patch if anyone wants to follow along at home. it builds, but fails in alien.impure.lisp.
 
 
 
@@ -11657,7 +11657,7 @@ diff -u -r1.1 x86-darwin-os.h
 +#define USE_MACH_EXCEPTION_HANDLER
 +
  #endif /* _X86_DARWIN_OS_H */
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19592 :USER "slyrus" :DATE 3355527135 :CHANNEL "#lisp" :TITLE "sigbus-handler loop" :CONTENTS "I don't really understand how lisp-level error handling works and for some reason I'm entering into a sigbus-handler loop here:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19592 :USER "slyrus" :DATE 3355527135 :CHANNEL "#lisp" :TITLE "sigbus-handler loop" :CONTENTS "I don't really understand how lisp-level error handling works and for some reason I'm entering into a sigbus-handler loop here:
 
 ...
  262: Foreign function call_into_lisp, fp = 0x9036c8, ra = 0x14251
@@ -11711,7 +11711,7 @@ diff -u -r1.1 x86-darwin-os.h
  310: (SB-C::TL-XEP SB-IMPL::TOPLEVEL-INIT)
  311: (COMMON-LISP::LABELS SB-IMPL::RESTART-LISP)
  312: Foreign fp = 0x904f88, ra = 0x705000
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19591 :USER "sethk" :DATE 3355524858 :CHANNEL "#haskell" :TITLE "Polymorphic?" :CONTENTS "module ClientServer where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19591 :USER "sethk" :DATE 3355524858 :CHANNEL "#haskell" :TITLE "Polymorphic?" :CONTENTS "module ClientServer where
 
 import System.IO
 
@@ -11799,7 +11799,7 @@ putRequestDR handle req = do
     return ()
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19590 :USER "mbishop" :DATE 3355519689 :CHANNEL "#lisp" :TITLE "bad chars?" :CONTENTS "The value NIL is not of type SYSTEM-AREA-POINTER.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19590 :USER "mbishop" :DATE 3355519689 :CHANNEL "#lisp" :TITLE "bad chars?" :CONTENTS "The value NIL is not of type SYSTEM-AREA-POINTER.
    [Condition of type TYPE-ERROR]
 
 Restarts:
@@ -11815,7 +11815,7 @@ Backtrace:
   6: (\"foreign function: call_into_lisp\")
   7: (\"foreign function: funcall0\")
   8: (\"foreign function: new_thread_trampoline\")
-  9: (\"foreign function: #xB7FCECED\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19589 :USER "dem" :DATE 3355519556 :CHANNEL "None" :TITLE "error" :CONTENTS "gmake -C libmpdemux
+  9: (\"foreign function: #xB7FCECED\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19589 :USER "dem" :DATE 3355519556 :CHANNEL "None" :TITLE "error" :CONTENTS "gmake -C libmpdemux
 gmake[1]: Entering directory `/usr/local/share/mplayer/main/libmpdemux'
 cc -c -I../libvo -I../../libvo -I/usr/X11R6/include -fno-PIC -O4 -march=k8 -mtune=k8 -pipe -ffast-math -fomit-frame-pointer -D_THREAD_SAFE -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -I/usr/local/include -I.. -I../loader  -I/usr/local/include  -I../libavutil -I../libavcodec -I../libavformat    -o demux_ogg.o demux_ogg.c
 demux_ogg.c: In function `demux_ogg_add_sub':
@@ -11859,9 +11859,9 @@ gmake[1]: *** [demux_ogg.o] Error 1
 gmake[1]: Leaving directory `/usr/local/share/mplayer/main/libmpdemux'
 gmake: *** [libmpdemux/libmpdemux.a] Error 2
 Exit 2
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19588 :USER "geren" :DATE 3355519011 :CHANNEL "#lisp" :TITLE "test.lisp" :CONTENTS "(defun test ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19588 :USER "geren" :DATE 3355519011 :CHANNEL "#lisp" :TITLE "test.lisp" :CONTENTS "(defun test ()
 (let my-age 9)
-)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19587 :USER "zedek" :DATE 3355517882 :CHANNEL "None" :TITLE "org-blog add entry example" :CONTENTS "(defun org-blog-add-entry ()                                                                                                                     
+)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19587 :USER "zedek" :DATE 3355517882 :CHANNEL "None" :TITLE "org-blog add entry example" :CONTENTS "(defun org-blog-add-entry ()                                                                                                                     
   (interactive)                                                                                                                                  
   (let ((buffer (format \"blog-%s-%s.org\"                                                                                                         
                         (format-time-string \"%Y%m%d\")                                                                                            
@@ -11871,7 +11871,7 @@ Exit 2
     (set-buffer buffer)                                                                                                                          
     (insert \"#+TITLE: \" (read-string \"What is your journal title: \"))                                                                            
     (insert \"#+AUTHOR: Xavier Maillard\")                                                                                                         
-    ))         " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19586 :USER "tomppa" :DATE 3355516869 :CHANNEL "#lisp" :TITLE "mcclim pixmap problem" :CONTENTS "
+    ))         " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19586 :USER "tomppa" :DATE 3355516869 :CHANNEL "#lisp" :TITLE "mcclim pixmap problem" :CONTENTS "
 (defparameter *xpm* (climi::xpm-parse-file \"some.xpm\"))
 
 (define-application-frame test ()
@@ -11891,7 +11891,7 @@ Exit 2
       (draw-pattern* pane *xpm* 0 0))))
 
 
-(run-frame-top-level (make-application-frame 'test))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19585 :USER "Shine" :DATE 3355516769 :CHANNEL "None" :TITLE "macro generating macro for database classes and with-all-slots" :CONTENTS "(defmacro make-db-class (name fields)
+(run-frame-top-level (make-application-frame 'test))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19585 :USER "Shine" :DATE 3355516769 :CHANNEL "None" :TITLE "macro generating macro for database classes and with-all-slots" :CONTENTS "(defmacro make-db-class (name fields)
   `(progn (defclass ,name ()
             ,(loop for field in fields collect 
                    `(,field :initform ()
@@ -11910,7 +11910,7 @@ Exit 2
       (setf first-name \"Frank\"
             last-name \"Buss\")
       (format t \"~a ~a\" first-name last-name))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19584 :USER "igby" :DATE 3355516453 :CHANNEL "None" :TITLE "primer" :CONTENTS "                                    L3
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19584 :USER "igby" :DATE 3355516453 :CHANNEL "None" :TITLE "primer" :CONTENTS "                                    L3
    =======<===================<===============================
   |                                                          |
   |             L1                                           |
@@ -11923,7 +11923,7 @@ Exit 2
   |                               9------>------3-------W---->  
   |
    ----------------------------------------------------------------------->
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19583 :USER "sylvar" :DATE 3355511851 :CHANNEL "#code4lib" :TITLE "booklist.xsl" :CONTENTS "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19583 :USER "sylvar" :DATE 3355511851 :CHANNEL "#code4lib" :TITLE "booklist.xsl" :CONTENTS "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>
 
 <xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">
 
@@ -11943,7 +11943,7 @@ Exit 2
 </xsl:template>
 
 </xsl:stylesheet>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19582 :USER "sylvar" :DATE 3355511827 :CHANNEL "#code4lib" :TITLE "recent.pl" :CONTENTS "#!/usr/bin/perl
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19582 :USER "sylvar" :DATE 3355511827 :CHANNEL "#code4lib" :TITLE "recent.pl" :CONTENTS "#!/usr/bin/perl
 
 use Time::Local;
 use DBD::ODBC;
@@ -12070,14 +12070,14 @@ $sth->execute();
 
 $dbh->disconnect() if ($dbh);       
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19581 :USER "bobbysmith_007" :DATE 3355509557 :CHANNEL "#lisp" :TITLE "all-slot-accessors" :CONTENTS "(defmacro %with-all-slot-accessors (data &body body)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19581 :USER "bobbysmith_007" :DATE 3355509557 :CHANNEL "#lisp" :TITLE "all-slot-accessors" :CONTENTS "(defmacro %with-all-slot-accessors (data &body body)
   ``(with-accessors ,(create-accessor-symbol-list ,data) ,,data
      ,@',body ))
 
 (defmacro with-all-slot-accessors ((data) &body body)
   (with-unique-names (val)
     `(let ((,val ,data))
-      (eval (%with-all-slot-accessors ,val ,@body)))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19580 :USER "sylvar" :DATE 3355508436 :CHANNEL "#code4lib" :TITLE "Is this bad XML or bad XSLT? ;)" :CONTENTS "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+      (eval (%with-all-slot-accessors ,val ,@body)))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19580 :USER "sylvar" :DATE 3355508436 :CHANNEL "#code4lib" :TITLE "Is this bad XML or bad XSLT? ;)" :CONTENTS "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <?xml-stylesheet type=\"text/xsl\" href=\"http://helpdesk.tblc.org/sunline/booklist.xsl\"?>
 
 
@@ -12098,7 +12098,7 @@ The XSL file:
   </body>
 </html>
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19579 :USER "runelind" :DATE 3355508043 :CHANNEL "#fink" :TITLE "libao2 errors during kde compile" :CONTENTS "ao_macosx.c:444:2: warning: #warning The bytes in the buffer are currently in little endian, but we need big endian. Supposedly these are going to be host endian at some point and the following line of code can go away.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19579 :USER "runelind" :DATE 3355508043 :CHANNEL "#fink" :TITLE "libao2 errors during kde compile" :CONTENTS "ao_macosx.c:444:2: warning: #warning The bytes in the buffer are currently in little endian, but we need big endian. Supposedly these are going to be host endian at some point and the following line of code can go away.
 make[3]: *** [ao_macosx.lo] Error 1
 make[2]: *** [all-recursive] Error 1
 make[1]: *** [all-recursive] Error 1
@@ -12108,10 +12108,10 @@ Removing build lock...
 /sw/bin/dpkg-lockwait -r fink-buildlock-libao2-0.8.5-11
 (Reading database ... 141487 files and directories currently installed.)
 Removing fink-buildlock-libao2-0.8.5-11 ...
-Failed: phase compiling: libao2-0.8.5-11 failed" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19578 :USER "sylvar" :DATE 3355507896 :CHANNEL "#code4lib" :TITLE "What am I doing wrong here?" :CONTENTS "  my $feed = $rss->as_string;
+Failed: phase compiling: libao2-0.8.5-11 failed" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19578 :USER "sylvar" :DATE 3355507896 :CHANNEL "#code4lib" :TITLE "What am I doing wrong here?" :CONTENTS "  my $feed = $rss->as_string;
 #  $feed =~ s/\\?>/\\?><\\?xml-stylesheet type=\"text\\/xsl\" href=\"http:\\/\\/helpdesk.tblc.org\\/sunline\\/booklist.xsl\"\\?>/;
   print $feed;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19577 :USER "sethk" :DATE 3355506336 :CHANNEL "#haskell" :TITLE "can I make this polymorphic?" :CONTENTS "All, I have two versions of essential the same function.  The only difference is that putRequestGR (put request get response) returns a value of a type that is an instance of Respone.  (The classes are below.)  putRequestDR (put request discard response is identical, except that instead of returning the value, it discards it.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19577 :USER "sethk" :DATE 3355506336 :CHANNEL "#haskell" :TITLE "can I make this polymorphic?" :CONTENTS "All, I have two versions of essential the same function.  The only difference is that putRequestGR (put request get response) returns a value of a type that is an instance of Respone.  (The classes are below.)  putRequestDR (put request discard response is identical, except that instead of returning the value, it discards it.
 
 The problem is that the compiler refuses to compile putRequestDR without the type annotaion on the getResponse call.  For putRequestGR the type of the response value can be inferred.  Since putRequestDR doesn't return it, the compiler doesn't have any way to infer the type.
 
@@ -12208,7 +12208,7 @@ putRequestGR handle req = do
     tsPrint SeriouslyVerbose $ \"returned from getResponse, resp=\" ++ (show resp)
     return resp
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19576 :USER "ccgus" :DATE 3355505755 :CHANNEL "#macsb" :TITLE "how to figure out the drop location" :CONTENTS "- (void) putInsertionPointFromDragOpertion:(id <NSDraggingInfo>)sender {
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19576 :USER "ccgus" :DATE 3355505755 :CHANNEL "#macsb" :TITLE "how to figure out the drop location" :CONTENTS "- (void) putInsertionPointFromDragOpertion:(id <NSDraggingInfo>)sender {
     
 	
     NSLayoutManager *layoutManager = [self layoutManager];
@@ -12232,7 +12232,7 @@ putRequestGR handle req = do
         [self setSelectedRange:NSMakeRange(charIndex, 0)];
     }
     
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19575 :USER "durin42" :DATE 3355505633 :CHANNEL "#adium" :TITLE "CFM: thoughts?" :CONTENTS "//the advantage of the new method is it works for allow lists automatically, and the contact doesn't
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19575 :USER "durin42" :DATE 3355505633 :CHANNEL "#adium" :TITLE "CFM: thoughts?" :CONTENTS "//the advantage of the new method is it works for allow lists automatically, and the contact doesn't
 //have to keep manual track of wether or not it is blocked. Should I leave it this way?
 
 //old method:
@@ -12251,7 +12251,7 @@ putRequestGR handle req = do
 		return NO;
 }
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19574 :USER "rehabdoll" :DATE 3355502116 :CHANNEL "None" :TITLE "iftop" :CONTENTS "=======> Building '/usr/ports/opt/iftop/iftop#0.17-1.pkg.tar.gz'.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19574 :USER "rehabdoll" :DATE 3355502116 :CHANNEL "None" :TITLE "iftop" :CONTENTS "=======> Building '/usr/ports/opt/iftop/iftop#0.17-1.pkg.tar.gz'.
 tar -C /usr/ports/opt/iftop/work/src --use-compress-program=gzip -xf /usr/ports/opt/iftop/iftop-0.17.tar.gz
 + build
 + cd iftop-0.17
@@ -12330,7 +12330,7 @@ checking for a curses library containing mvchgat... -lcurses
 checking POSIX threads compilation... CFLAGS= and LIBS=-lpthread
 checking POSIX threads usability... configure: error: it fails.  We probably guessed the wrong CFLAGS.
 =======> ERROR: Building '/usr/ports/opt/iftop/iftop#0.17-1.pkg.tar.gz' failed.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19573 :USER "Rick" :DATE 3355501599 :CHANNEL "#scheme" :TITLE "need explaining" :CONTENTS "(define (guess s1 s2 lis)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19573 :USER "Rick" :DATE 3355501599 :CHANNEL "#scheme" :TITLE "need explaining" :CONTENTS "(define (guess s1 s2 lis)
 (cond
 ((null? lis) '())
 ((eq? s1 (car lis)) (cons s2 (guess s1 s2 (cdr lis))))
@@ -12344,7 +12344,7 @@ What does the function guess do? Show the result applying guess to an example
 
 
 The function guess replaces all occurrences of s1 in lis by s2.
-Example: (guess 1 6 (1 3 1 4)) will be (6 3 6 4)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19572 :USER "lovelace" :DATE 3355500889 :CHANNEL "None" :TITLE "cacert proposed blog post" :CONTENTS "Subject: CACert Assurances in Raleigh-Durham, North Carolina
+Example: (guess 1 6 (1 3 1 4)) will be (6 3 6 4)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19572 :USER "lovelace" :DATE 3355500889 :CHANNEL "None" :TITLE "cacert proposed blog post" :CONTENTS "Subject: CACert Assurances in Raleigh-Durham, North Carolina
 
 At the monthly meeting in May of the Triangle Linux Users 
 Group, one of the largest linux user groups on the east coast 
@@ -12354,7 +12354,7 @@ will be coordinating a CACert Assurance.  CACert has
 graciously granted Super Assurer 
 (http://wiki.cacert.org/wiki/SuperAssurers) status so that 
 full assurance may be granted on the spot.  Make sure you 
-bring two forms of government issued ID and sign up at http://www.cacert.org/ before the meeting (http://wiki.cacert.org/wiki/FAQ/AssuranceByCAP)." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19571 :USER "chkno" :DATE 3355499001 :CHANNEL "#lisp" :TITLE "newbie question - keyed reduce" :CONTENTS "; I want to fetch the shortest string in a list of strings
+bring two forms of government issued ID and sign up at http://www.cacert.org/ before the meeting (http://wiki.cacert.org/wiki/FAQ/AssuranceByCAP)." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19571 :USER "chkno" :DATE 3355499001 :CHANNEL "#lisp" :TITLE "newbie question - keyed reduce" :CONTENTS "; I want to fetch the shortest string in a list of strings
 
 ; This gives the length of the desired string, not the string itself.
 (reduce #'min stringlist :key #'length)
@@ -12364,11 +12364,11 @@ bring two forms of government issued ID and sign up at http://www.cacert.org/ be
             (if (< (length a) (length b))
               a
               b))
-        stringlist)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19570 :USER "davidhouse" :DATE 3355497355 :CHANNEL "None" :TITLE "my ssh public key" :CONTENTS "ssh-dss AAAAB3NzaC1kc3MAAACBAPSBywb5sKPRIdjoumV6VfF0gOp+8CZhkzDHyZDEJilR4G+ax+6RQNbohsVQWam5PzA77rmr4AAIAOjvy1lbORFKqUYYMcBziZ1to0r4DrHlJx9wRT8y0fu6mVBaspiveF5waW96ta63X50VaABBpN5tkv7lslelb0LmO8Diao3LAAAAFQDLdvBzsYwrWdM++uFFEHl7rKB7+QAAAIAPRtTdgbj/Yf07sUqjc9Iu8LOUXRUk2L0gszW5t78i5v75duXUQimvuxJoO416uZTCF80VB3StufHPMUcHHLoD/eLNSmD32ur0wEMP5AQPae7xzTixVSxlH7Xcqs62fWhLDLvrnCB04c6v1LXyjMaBa227FT2Ui5un2hIYn3xjjgAAAIBnGTiv42lFcc0e0vRxqmtF81q0y0Hrvo6X3qUKrTNaIIbMxaxsVu7m0fM/0KbGEAWM005uekaY16jpCpVVtSu5yU1eXG9BHErs+CU/pwvBk77LDwh0DWW3XCo9IwqEjlJJX4Ank3LB5yI3RTxvn62c3D0KDsmPztJS/EeU3uU8PA== david@tarn" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19569 :USER "petekaz" :DATE 3355495533 :CHANNEL "#haskell" :TITLE "Darcs get of FPS repo" :CONTENTS "kaz@coco:~/repos$ darcs get --partial http://www.cse.unsw.edu.au/~dons/code/fps
+        stringlist)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19570 :USER "davidhouse" :DATE 3355497355 :CHANNEL "None" :TITLE "my ssh public key" :CONTENTS "ssh-dss AAAAB3NzaC1kc3MAAACBAPSBywb5sKPRIdjoumV6VfF0gOp+8CZhkzDHyZDEJilR4G+ax+6RQNbohsVQWam5PzA77rmr4AAIAOjvy1lbORFKqUYYMcBziZ1to0r4DrHlJx9wRT8y0fu6mVBaspiveF5waW96ta63X50VaABBpN5tkv7lslelb0LmO8Diao3LAAAAFQDLdvBzsYwrWdM++uFFEHl7rKB7+QAAAIAPRtTdgbj/Yf07sUqjc9Iu8LOUXRUk2L0gszW5t78i5v75duXUQimvuxJoO416uZTCF80VB3StufHPMUcHHLoD/eLNSmD32ur0wEMP5AQPae7xzTixVSxlH7Xcqs62fWhLDLvrnCB04c6v1LXyjMaBa227FT2Ui5un2hIYn3xjjgAAAIBnGTiv42lFcc0e0vRxqmtF81q0y0Hrvo6X3qUKrTNaIIbMxaxsVu7m0fM/0KbGEAWM005uekaY16jpCpVVtSu5yU1eXG9BHErs+CU/pwvBk77LDwh0DWW3XCo9IwqEjlJJX4Ank3LB5yI3RTxvn62c3D0KDsmPztJS/EeU3uU8PA== david@tarn" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19569 :USER "petekaz" :DATE 3355495533 :CHANNEL "#haskell" :TITLE "Darcs get of FPS repo" :CONTENTS "kaz@coco:~/repos$ darcs get --partial http://www.cse.unsw.edu.au/~dons/code/fps
 Copying patch 1 of 31...
 darcs failed:  Failed to download URL http://www.cse.unsw.edu.au/~dons/code/fps/_darcs/patches/20060501064204-12744-4476426ab547b00e27b4a0aeec920bcc9983ebe4.gz
 libcurl: HTTP error (404?)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19568 :USER "pogma" :DATE 3355490780 :CHANNEL "#opendarwin" :TITLE "xlc on AIX suckage" :CONTENTS "% cc -c foo.c 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19568 :USER "pogma" :DATE 3355490780 :CHANNEL "#opendarwin" :TITLE "xlc on AIX suckage" :CONTENTS "% cc -c foo.c 
 % ls foo.*
 foo.c  foo.o
 % cc -DMAIN=1 -o foo foo.c 
@@ -12376,13 +12376,13 @@ foo.c  foo.o
 foo.c
 
 Um. Where the hell did my foo.o go?
-STUPID COMPILER!!!!" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19567 :USER "Shine" :DATE 3355485988 :CHANNEL "None" :TITLE "collect cond simulation" :CONTENTS "(let ((test '(1 2 3 4 5 6 7 8 9 10)))
+STUPID COMPILER!!!!" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19567 :USER "Shine" :DATE 3355485988 :CHANNEL "None" :TITLE "collect cond simulation" :CONTENTS "(let ((test '(1 2 3 4 5 6 7 8 9 10)))
   (loop for i in test
         if (= i 1) collect i
         else if (= i 3) collect i
         else if (= i 7) collect i))
 -> (1 3 7)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19566 :USER "twb" :DATE 3355481456 :CHANNEL "#scheme" :TITLE "dirty, dirty fmt" :CONTENTS ";;; fixme: this algo is real nasty
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19566 :USER "twb" :DATE 3355481456 :CHANNEL "#scheme" :TITLE "dirty, dirty fmt" :CONTENTS ";;; fixme: this algo is real nasty
 (define (fill-paragraph s)
   (in (string-drop s* 1)                ; remove the leading space
     (let ((s* (unlines 
@@ -12409,13 +12409,13 @@ STUPID COMPILER!!!!" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19567 :USER "
     ((in x (let    bs))         (let    bs x))
     ((in x (let*   bs))         (let*   bs x))
     ((in x (letrec bs))         (letrec bs x))
-    ((in x (define . b) ...)    (let () (define . b) ... x))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19565 :USER "Lokadin" :DATE 3355478466 :CHANNEL "#haskell" :TITLE "expressionless do statement" :CONTENTS "process sType line = do
+    ((in x (define . b) ...)    (let () (define . b) ... x))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19565 :USER "Lokadin" :DATE 3355478466 :CHANNEL "#haskell" :TITLE "expressionless do statement" :CONTENTS "process sType line = do
    (inp,out,err,hdl) <- runInteractiveCommand $ sType ++  line
     output  <- hGetContents out
     errorout <- hGetContents err
     -- print erroroutput and non erroroutput if it exists if there is any
     when (not $null output) $ putStrLn $ \"Output: \" ++ output
-    when (not $null errorout) $ putStrLn $ \"Error: \" ++ errorout" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19564 :USER "turbo24prg" :DATE 3355475229 :CHANNEL "#dylan" :TITLE "MPS: pthread_kill error" :CONTENTS "make -f lii4gc.gmk 'CC=gcc-3.4.5'  mmdw.a mpsplan.a
+    when (not $null errorout) $ putStrLn $ \"Error: \" ++ errorout" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19564 :USER "turbo24prg" :DATE 3355475229 :CHANNEL "#dylan" :TITLE "MPS: pthread_kill error" :CONTENTS "make -f lii4gc.gmk 'CC=gcc-3.4.5'  mmdw.a mpsplan.a
 lii4gc: lii4gc/hi/version.o
 lii4gc: lii4gc/hi/pthrdext.o
 pthrdext.c:51: warning: ISO C forbids empty initializer braces
@@ -12427,7 +12427,7 @@ pthrdext.c:380: warning: nested extern declaration of `pthread_kill'
 make[2]: *** [lii4gc/hi/pthrdext.o] Error 1
 make[1]: *** [target] Error 2
 make: *** [mmdw.a] Error 2
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19563 :USER "sbp" :DATE 3355467738 :CHANNEL "#swhack" :TITLE "JournalledDictionary" :CONTENTS ">>> class JournalledDictionary(dict): 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19563 :USER "sbp" :DATE 3355467738 :CHANNEL "#swhack" :TITLE "JournalledDictionary" :CONTENTS ">>> class JournalledDictionary(dict): 
 ...    def __init__(self, *args, **kargs): 
 ...       self.journal = []
 ...       dict.__init__(self, *args, **kargs)
@@ -12455,7 +12455,7 @@ lalala hello
 boing 3
 loldongs AIRJKGOIAJGAR
 >>> 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19562 :USER "sjanssen" :DATE 3355450718 :CHANNEL "#haskell" :TITLE "for dons" :CONTENTS "import Data.Char (isAlpha, toLower)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19562 :USER "sjanssen" :DATE 3355450718 :CHANNEL "#haskell" :TITLE "for dons" :CONTENTS "import Data.Char (isAlpha, toLower)
 import Data.List (sortBy)
 import qualified Data.ByteString.Char8 as P
 
@@ -12468,8 +12468,8 @@ main =
     . P.filter isAlpha
     . P.map toLower
     =<< P.getContents
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19561 :USER "whiteline" :DATE 3355449633 :CHANNEL "None" :TITLE "myspace" :CONTENTS "<XML ID=I><X><C><![CDATA[<IMG SRC=\"javas]]><![CDATA[cript:alert('XSS');\">]]>
-</C></X></xml><SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML></SPAN>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19560 :USER "yonkeltron" :DATE 3355448942 :CHANNEL "#lisp" :TITLE "Failing monte carlo" :CONTENTS ";open a door
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19561 :USER "whiteline" :DATE 3355449633 :CHANNEL "None" :TITLE "myspace" :CONTENTS "<XML ID=I><X><C><![CDATA[<IMG SRC=\"javas]]><![CDATA[cript:alert('XSS');\">]]>
+</C></X></xml><SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML></SPAN>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19560 :USER "yonkeltron" :DATE 3355448942 :CHANNEL "#lisp" :TITLE "Failing monte carlo" :CONTENTS ";open a door
 (defun open-door (scenario n)
   (cond ((= n 0) (getf scenario :a))
         ((= n 1) (getf scenario :b))
@@ -12502,7 +12502,7 @@ main =
       (format t \"Switch successes: ~d~%\" (+ 0 success))
       (switch-pick (1- iters) success)))       ; otherwise, call self with decremented counter
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19559 :USER "RyanT5000" :DATE 3355444446 :CHANNEL "#haskell" :TITLE "crashesOnExit" :CONTENTS "-----------------------------------------------------------------------------------------
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19559 :USER "RyanT5000" :DATE 3355444446 :CHANNEL "#haskell" :TITLE "crashesOnExit" :CONTENTS "-----------------------------------------------------------------------------------------
 {-| Module      : Main
     Copyright   : Graviton Studios 2006
     License     : All Rights Reserved
@@ -12687,7 +12687,7 @@ repaint screen yaw pitch level = do
 			texCoord2f 0 1
 			vertex3f (-1) 1 0
 	SDL.glSwapBuffers
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19558 :USER "wyvern" :DATE 3355444345 :CHANNEL "#fink" :TITLE "ruby build failure" :CONTENTS "compiling digest/sha2
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19558 :USER "wyvern" :DATE 3355444345 :CHANNEL "#fink" :TITLE "ruby build failure" :CONTENTS "compiling digest/sha2
 gcc -fno-common -g -Os  -fno-common -pipe -fno-common -DHAVE_CONFIG_H -I../../.././ext/digest/sha2/..  -I. -I../../.. -I../../../. -I../../.././ext/digest/sha2 -DHAVE_SYS_CDEFS_H -DHAVE_INTTYPES_H -DHAVE_UNISTD_H -DHAVE_TYPE_UINT64_T -I/sw/lib/system-openssl/include -I/sw/include -c sha2.c
 gcc -fno-common -g -Os  -fno-common -pipe -fno-common -DHAVE_CONFIG_H -I../../.././ext/digest/sha2/..  -I. -I../../.. -I../../../. -I../../.././ext/digest/sha2 -DHAVE_SYS_CDEFS_H -DHAVE_INTTYPES_H -DHAVE_UNISTD_H -DHAVE_TYPE_UINT64_T -I/sw/lib/system-openssl/include -I/sw/include -c sha2hl.c
 sha2hl.c: In function 'rb_Digest_SHA256_End':
@@ -12726,10 +12726,10 @@ the maintainer directly:
 
 Note that many fink package maintainers do not (yet) have access to OS X on
 Intel hardware, so you may have better luck on the mailing lists.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19557 :USER "Shine" :DATE 3355437709 :CHANNEL "None" :TITLE "where-to-eat" :CONTENTS "(defun where-to-eat ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19557 :USER "Shine" :DATE 3355437709 :CHANNEL "None" :TITLE "where-to-eat" :CONTENTS "(defun where-to-eat ()
   (let ((list '(\"Taco Bell\" \"KFC\" \"Wendys\" \"Burger King\" \"Quiznos\" \"McDonalds\" \"Malt-n-Burger\" \"Popeyes\" \"DQ\" \"Sonic\" \"Rallys\")))
     (elt list (random (length list)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19556 :USER "HumpBack" :DATE 3355435383 :CHANNEL "None" :TITLE "pyicq issues" :CONTENTS "[2006-04-30 23:22:56] INFO :: humpback@jabber.felisberto.net :: Session :: onPresence :: {'el': <twisted.words.xish.domish.Element object at 0xb6c1026c>, 'self': 'instance'} :: 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19556 :USER "HumpBack" :DATE 3355435383 :CHANNEL "None" :TITLE "pyicq issues" :CONTENTS "[2006-04-30 23:22:56] INFO :: humpback@jabber.felisberto.net :: Session :: onPresence :: {'el': <twisted.words.xish.domish.Element object at 0xb6c1026c>, 'self': 'instance'} :: 
 [2006-04-30 23:22:56] INFO :: humpback@jabber.felisberto.net :: Session :: onPresence :: {'status': None, 'el': <twisted.words.xish.domish.Element object at 0xb6c1026c>, 'froj': <twisted.words.protocols.jabber.jid.JID instance at 0xb6c107cc>, 'show': None, 'url': None, 'self': 'instance', 'fro': u'humpback@jabber.felisberto.net/Psi', 'avatarHash': '', 'ptype': None, 'priority': u'5', 'to': u'icq.jabber.felisberto.net', 'child': <twisted.words.xish.domish.Element object at 0xb6c103ec>, 'nickname': '', 'toj': <twisted.words.protocols.jabber.jid.JID instance at 0xb6c10f0c>} :: Parsed presence packet
 [2006-04-30 23:22:56] INFO :: humpback@jabber.felisberto.net :: Session :: handleResourcePresence :: {'status': None, 'resource': u'Psi', 'show': None, 'url': None, 'self': 'instance', 'ptype': None, 'existing': True, 'priority': u'5', 'to': u'icq.jabber.felisberto.net', 'tor': None, 'source': u'humpback@jabber.felisberto.net'} :: Setting status
 [2006-04-30 23:22:56] INFO :: humpback@jabber.felisberto.net :: Session :: handleResourcePresence :: {'status': None, 'resource': u'Psi', 'show': None, 'url': None, 'self': 'instance', 'ptype': None, 'existing': True, 'priority': u'5', 'to': u'icq.jabber.felisberto.net', 'tor': None, 'source': u'humpback@jabber.felisberto.net', 'highestActive': u'Psi'} :: Updating status on legacy service
@@ -12784,13 +12784,13 @@ Intel hardware, so you may have better luck on the mailing lists.
 	    for u in g.users:
 	exceptions.AttributeError: SSIBuddy instance has no attribute 'users'
 	
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19555 :USER "yonkeltron" :DATE 3355434160 :CHANNEL "#lisp" :TITLE "understanding keywords" :CONTENTS ";cheap, crazy keyword function
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19555 :USER "yonkeltron" :DATE 3355434160 :CHANNEL "#lisp" :TITLE "understanding keywords" :CONTENTS ";cheap, crazy keyword function
 (defun hemp (x y z &key type)
   (cond ((equal type \"mul\") (* x y z))
-        ((equal type \"add\") (+ x y z))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19554 :USER "yonkeltron" :DATE 3355434136 :CHANNEL "#lisp" :TITLE "understanding keywords" :CONTENTS ";cheap, crazy keyword function
+        ((equal type \"add\") (+ x y z))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19554 :USER "yonkeltron" :DATE 3355434136 :CHANNEL "#lisp" :TITLE "understanding keywords" :CONTENTS ";cheap, crazy keyword function
 (defun hemp (x y z &key type)
   (cond ((equal type \"mul\") (* x y z))
-        ((equal type \"add\") (+ x y z))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19553 :USER "SimonRC" :DATE 3355432875 :CHANNEL "#haskell" :TITLE "Infinite type problem" :CONTENTS "> import Control.Monad.Cont
+        ((equal type \"add\") (+ x y z))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19553 :USER "SimonRC" :DATE 3355432875 :CHANNEL "#haskell" :TITLE "Infinite type problem" :CONTENTS "> import Control.Monad.Cont
 > import Control.Monad.Trans
                                                                                                                                      
 > generatorLoop (x:xs) q = do q' <- callCC (\\k -> q (k, 100 + x))
@@ -12819,7 +12819,7 @@ Coroutines.lhs:9:34:
     In the first argument of `receiverLoop', namely `k''
     In the result of a 'do' expression: receiverLoop k'
 Failed, modules loaded: none.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19552 :USER "Xach" :DATE 3355432503 :CHANNEL "#lisp" :TITLE "some slime stuff from my .emacs" :CONTENTS "(add-hook 'lisp-mode-hook
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19552 :USER "Xach" :DATE 3355432503 :CHANNEL "#lisp" :TITLE "some slime stuff from my .emacs" :CONTENTS "(add-hook 'lisp-mode-hook
           (defun lisp-mode-hook-fun ()
             (font-lock-add-keywords
              nil
@@ -12828,14 +12828,14 @@ Failed, modules loaded: none.
                (\"\\\\<\\\\*[^ *)]*?\\\\*\\\\>\" . font-lock-variable-name-face)))
             (slime-mode t)
             (setq slime-net-coding-system 'utf-8-unix)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19551 :USER "dabaR" :DATE 3355432071 :CHANNEL "#lisp" :TITLE "Error with SBCL" :CONTENTS "0[6] (defun prompt-read (prompt)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19551 :USER "dabaR" :DATE 3355432071 :CHANNEL "#lisp" :TITLE "Error with SBCL" :CONTENTS "0[6] (defun prompt-read (prompt)
 (format *query-io* \"~a: \" prompt)
 (force-output *query-io*)
 (read-line *query-io))
 Help! 11 nested errors. SB-KERNEL:*MAXIMUM-ERROR-DEPTH* exceeded.
 (SB-DEBUG::DEBUG-LOOP-FUN)
 0[7]
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19550 :USER "fons" :DATE 3355430392 :CHANNEL "#haskell" :TITLE "Main.hs" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19550 :USER "fons" :DATE 3355430392 :CHANNEL "#haskell" :TITLE "Main.hs" :CONTENTS "
 
 #!/usr/bin/runghc
 module Main (main) where
@@ -12926,7 +12926,7 @@ processExpr n str = case  runParser (lineExprRow n) () \"\" str of
                                            --putStr \"simplified to: \"
                                            print (simplify expr)
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19549 :USER "fons" :DATE 3355430353 :CHANNEL "#haskell" :TITLE "ExprParser.hs" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19549 :USER "fons" :DATE 3355430353 :CHANNEL "#haskell" :TITLE "ExprParser.hs" :CONTENTS "
 module ExprParser (lineExprRow) where
 ------------------------------------------------------------------------------
 --               2D1456, Advanced Functional Programming                    --
@@ -13086,7 +13086,7 @@ either2const (Left i)  = Const (fromInteger i)
 -- to avoid things as 0.9 => 8106479329266893 % 9007199254740992
 either2const (Right d) = Const (approxRational (realToFrac d) 0.000000001) 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19548 :USER "fons" :DATE 3355430320 :CHANNEL "#haskell" :TITLE "Simplify.hs" :CONTENTS "module Simplify (simplify)  where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19548 :USER "fons" :DATE 3355430320 :CHANNEL "#haskell" :TITLE "Simplify.hs" :CONTENTS "module Simplify (simplify)  where
 ------------------------------------------------------------------------------
 --               2D1456, Advanced Functional Programming                    --
 --               Mini project: P1.2 Symbolic Integration                    --
@@ -13448,7 +13448,7 @@ simpByEval _                            = Nothing
 
 deriv :: Expr -> Char -> Expr
 deriv expr x = simplify (D expr x)  
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19547 :USER "fons" :DATE 3355430243 :CHANNEL "None" :TITLE "Simplify.hs" :CONTENTS "module Simplify (simplify)  where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19547 :USER "fons" :DATE 3355430243 :CHANNEL "None" :TITLE "Simplify.hs" :CONTENTS "module Simplify (simplify)  where
 ------------------------------------------------------------------------------
 --               2D1456, Advanced Functional Programming                    --
 --               Mini project: P1.2 Symbolic Integration                    --
@@ -13810,7 +13810,7 @@ simpByEval _                            = Nothing
 
 deriv :: Expr -> Char -> Expr
 deriv expr x = simplify (D expr x)  
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19546 :USER "fons" :DATE 3355430203 :CHANNEL "None" :TITLE "ExprParser.hs" :CONTENTS "module ExprParser (lineExprRow) where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19546 :USER "fons" :DATE 3355430203 :CHANNEL "None" :TITLE "ExprParser.hs" :CONTENTS "module ExprParser (lineExprRow) where
 ------------------------------------------------------------------------------
 --               2D1456, Advanced Functional Programming                    --
 --               Mini project: P1.2 Symbolic Integration                    --
@@ -13969,7 +13969,7 @@ either2const (Left i)  = Const (fromInteger i)
 -- to avoid things as 0.9 => 8106479329266893 % 9007199254740992
 either2const (Right d) = Const (approxRational (realToFrac d) 0.000000001) 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19545 :USER "fons" :DATE 3355430154 :CHANNEL "#haskell" :TITLE "Expr.hs" :CONTENTS "module Expr (Expr (..), freeOf, freeOfList, isConst, 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19545 :USER "fons" :DATE 3355430154 :CHANNEL "#haskell" :TITLE "Expr.hs" :CONTENTS "module Expr (Expr (..), freeOf, freeOfList, isConst, 
              notConst, factorize, unfactorize, querep, (<**>)) 
 where
 ------------------------------------------------------------------------------
@@ -14188,13 +14188,13 @@ a <**> b
  | (denominator b) == 1 =  a ^^ numerator(b)   
  | otherwise     = toRational ((fromRational a) ** (fromRational b)) 
   
-      " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19544 :USER "sbp" :DATE 3355428111 :CHANNEL "#swhack" :TITLE "getrdf.xsl" :CONTENTS "<stylesheet xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" 
+      " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19544 :USER "sbp" :DATE 3355428111 :CHANNEL "#swhack" :TITLE "getrdf.xsl" :CONTENTS "<stylesheet xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" 
    xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" 
    xmlns=\"http://www.w3.org/1999/XSL/Transform\" version=\"1.0\" >
 <template match=\"xhtml:head/rdf:RDF\"><copy-of select=\".\"/></template>
 <template match=\"text()\"/>
 </stylesheet>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19543 :USER "davidhouse" :DATE 3355424757 :CHANNEL "#haskell" :TITLE "lambdabot won't make" :CONTENTS "... a load of stuff ...
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19543 :USER "davidhouse" :DATE 3355424757 :CHANNEL "#haskell" :TITLE "lambdabot won't make" :CONTENTS "... a load of stuff ...
 
 ghc -Wall -Werror -fglasgow-exts -I. -pgmF ./dsl -F -funbox-strict-fields -O -fasm -fno-warn-incomplete-patterns -fno-warn-missing-methods   -c Lib/Serial.hs -o Lib/Serial.o -ohi Lib/Serial.hi
 
@@ -14207,7 +14207,7 @@ ghc -Wall -Werror -fglasgow-exts -I. -pgmF ./dsl -F -funbox-strict-fields -O -fa
     Warning: `ByteString' is imported more than once:
                imported from Data.ByteString.Char8 at /tmp/ghc11788.hspp:36:30-39
                imported from Data.ByteString.Char8 at /tmp/ghc11788.hspp:35:0-42
-make: *** [Lib/Serial.o] Error 1" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19542 :USER "pauldunlop" :DATE 3355422074 :CHANNEL "#webkit" :TITLE "Font test" :CONTENTS "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+make: *** [Lib/Serial.o] Error 1" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19542 :USER "pauldunlop" :DATE 3355422074 :CHANNEL "#webkit" :TITLE "Font test" :CONTENTS "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
 <head>
 <title>title</title>
@@ -14233,7 +14233,7 @@ make: *** [Lib/Serial.o] Error 1" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 
 
 </body>
 </html>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19541 :USER "rotty" :DATE 3355417759 :CHANNEL "#scheme" :TITLE "s48 packages" :CONTENTS "(define (main args)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19541 :USER "rotty" :DATE 3355417759 :CHANNEL "#scheme" :TITLE "s48 packages" :CONTENTS "(define (main args)
   (let* ((structures (list 'srfi-1))
          (package (make-simple-package
                    structures #t
@@ -14244,7 +14244,7 @@ make: *** [Lib/Serial.o] Error 1" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 
                    'test-environment)))
     (ensure-loaded package)
     (display (eval '(+ 1 2) package)) (newline)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19540 :USER "petekaz" :DATE 3355414107 :CHANNEL "#haskell" :TITLE "My first haskell program" :CONTENTS "module Main where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19540 :USER "petekaz" :DATE 3355414107 :CHANNEL "#haskell" :TITLE "My first haskell program" :CONTENTS "module Main where
 
 import Control.Arrow
 import Data.Char
@@ -14253,12 +14253,12 @@ import Data.List
 main = do contents <- getContents
           print . take 5 . sortBy (\\a b -> snd b `compare` snd a) . map (head &&& length) . group . sort . filter isAlpha $ map toLower contents
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19539 :USER "sanxiyn" :DATE 3355413051 :CHANNEL "#lisp" :TITLE "Lisp pretty printer" :CONTENTS "(let* ((filename \"%s\")
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19539 :USER "sanxiyn" :DATE 3355413051 :CHANNEL "#lisp" :TITLE "Lisp pretty printer" :CONTENTS "(let* ((filename \"%s\")
        (content (with-open-file (f filename)
          (loop for sexp = (read f nil) while sexp collect sexp))))
   (with-open-file (out filename
       :direction :output :if-does-not-exist :create :if-exists :supersede)
-    (loop for sexp in content do (pprint sexp out))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19538 :USER "pjb" :DATE 3355411954 :CHANNEL "#lisp" :TITLE "generalized field accessor" :CONTENTS "
+    (loop for sexp in content do (pprint sexp out))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19538 :USER "pjb" :DATE 3355411954 :CHANNEL "#lisp" :TITLE "generalized field accessor" :CONTENTS "
 (defun length<= (length list)
   (or (zerop length) (and list (length<= (1- length) (cdr list)))))
 
@@ -14293,17 +14293,17 @@ main = do contents <- getContents
          (and (symbolp (first path)) (fboundp (first path))))
      (apply (function ->) (funcall (first path) object) (rest path)))
     (t (error \"This is not a compound object: ~S\" object))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19537 :USER "xerox" :DATE 3355410854 :CHANNEL "#emacs" :TITLE "Bye bye" :CONTENTS "(when (and (featurep 'tool-bar)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19537 :USER "xerox" :DATE 3355410854 :CHANNEL "#emacs" :TITLE "Bye bye" :CONTENTS "(when (and (featurep 'tool-bar)
            window-system)
   (tool-bar-mode -1))
 (when (fboundp 'blink-cursor-mode)
   (blink-cursor-mode -1))
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19536 :USER "hroptatyr" :DATE 3355410817 :CHANNEL "#xemacs" :TITLE "A c00l paste" :CONTENTS "Now
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19536 :USER "hroptatyr" :DATE 3355410817 :CHANNEL "#xemacs" :TITLE "A c00l paste" :CONTENTS "Now
 can you C-s 
 this @string@?
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19535 :USER "nearfar" :DATE 3355410190 :CHANNEL "#scheme" :TITLE "the function `fringe' does not work" :CONTENTS "Write a procedure fringe that takes as argument a tree (represented as a list) and returns a list whose elements are all the leaves of the tree arranged in left-to-right order. For example,
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19535 :USER "nearfar" :DATE 3355410190 :CHANNEL "#scheme" :TITLE "the function `fringe' does not work" :CONTENTS "Write a procedure fringe that takes as argument a tree (represented as a list) and returns a list whose elements are all the leaves of the tree arranged in left-to-right order. For example,
 
 (define x (list (list 1 2) (list 3 4)))
 
@@ -14323,7 +14323,7 @@ this @string@?
 (define (fringe lst)
   (cond ((null? lst) lst)
 	((not (pair? lst)) (list lst))
-	(append (fringe (car lst)) (fringe (cdr lst)))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19534 :USER "jacobolus" :DATE 3355390402 :CHANNEL "None" :TITLE "dialog" :CONTENTS "tell app \"TextMate\"
+	(append (fringe (car lst)) (fringe (cdr lst)))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19534 :USER "jacobolus" :DATE 3355390402 :CHANNEL "None" :TITLE "dialog" :CONTENTS "tell app \"TextMate\"
 	display dialog \"TextMate will rock you\" ¬
 		default answer \"Your PC is a POS\" ¬
 		with icon 0 ¬
@@ -14335,7 +14335,7 @@ this @string@?
 	else
 		beep 4
 	end if
-end tell" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19533 :USER "Tom Elam" :DATE 3355388354 :CHANNEL "#lisp" :TITLE "How can I fix this call to `register-application'?" :CONTENTS "; I tried pasting this code into #ucw -- but it didn't go. Please excuse me
+end tell" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19533 :USER "Tom Elam" :DATE 3355388354 :CHANNEL "#lisp" :TITLE "How can I fix this call to `register-application'?" :CONTENTS "; I tried pasting this code into #ucw -- but it didn't go. Please excuse me
 ; if I'm out of protocol.
 
 ; I copied the code from the ucw movie by Marco Baringer.
@@ -14384,7 +14384,7 @@ restarts (invokable by number or by possibly-abbreviated name):
  (NIL #<COOKIE-SESSION-APPLICATION \"/hello\" {C144351}>))
 0]
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19532 :USER "xinming" :DATE 3355384000 :CHANNEL "#perl6" :TITLE "Error even after doing `rm -rf dist; third-party/fps/dist`" :CONTENTS "perl Makefile.PL
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19532 :USER "xinming" :DATE 3355384000 :CHANNEL "#perl6" :TITLE "Error even after doing `rm -rf dist; third-party/fps/dist`" :CONTENTS "perl Makefile.PL
 *** Probing configuration (please ignore any warnings)...
 
 Chasing modules from: Setup.lhs
@@ -14672,7 +14672,7 @@ Build failed: 256 at util/build_pugs.pl line 96.
 make: *** [pugs] Error 2
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19531 :USER "cmarcelo" :DATE 3355383303 :CHANNEL "None" :TITLE "parsec token example" :CONTENTS "module Teste where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19531 :USER "cmarcelo" :DATE 3355383303 :CHANNEL "None" :TITLE "parsec token example" :CONTENTS "module Teste where
 
 import Text.ParserCombinators.Parsec
 
@@ -14687,12 +14687,12 @@ main = case (parse integer \"\" \"2222\") of Right xs -> print xs
 
 -- Try \":t P.integer\" and \":t P.integer lexer\" in GHCi
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19530 :USER "gnomon" :DATE 3355381746 :CHANNEL "#scheme" :TITLE "Timecube -> fortune file" :CONTENTS "wget -qO- http://timecube.com/ | sed -ne 's/<[^>]\\+>//g;H;${x;y/\\r\\n/  /;s/&nbsp;/ /g;s/[ \\t]\\+/ /g;s/[-*=\\.]\\{5,\\}//g;s/\\([^\\.]\\+\\.[^\\.]\\+.[^\\.]\\+\\.\\) /%%\\n\\n\\1\\n\\n\\t- Timecube.com\\n\\n/g;p}' | fmt" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19529 :USER "ayrnieu" :DATE 3355374027 :CHANNEL "#erlang" :TITLE "can someone explain this httpd log?" :CONTENTS "58.218.149.30 - - [27/Apr/2006:07:49:12 -0500] \"GET http://www.qq.com/ HTTP/1.1\" 200 [54,52,56]
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19530 :USER "gnomon" :DATE 3355381746 :CHANNEL "#scheme" :TITLE "Timecube -> fortune file" :CONTENTS "wget -qO- http://timecube.com/ | sed -ne 's/<[^>]\\+>//g;H;${x;y/\\r\\n/  /;s/&nbsp;/ /g;s/[ \\t]\\+/ /g;s/[-*=\\.]\\{5,\\}//g;s/\\([^\\.]\\+\\.[^\\.]\\+.[^\\.]\\+\\.\\) /%%\\n\\n\\1\\n\\n\\t- Timecube.com\\n\\n/g;p}' | fmt" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19529 :USER "ayrnieu" :DATE 3355374027 :CHANNEL "#erlang" :TITLE "can someone explain this httpd log?" :CONTENTS "58.218.149.30 - - [27/Apr/2006:07:49:12 -0500] \"GET http://www.qq.com/ HTTP/1.1\" 200 [54,52,56]
 220.134.13.167 - - [28/Apr/2006:06:05:05 -0500] \"GET http://www.ebay.com/ HTTP/1.1\" 200 [54,52,56]
 217.160.249.106 - - [29/Apr/2006:07:41:29 -0500] \"GET http://66.29.102.2/~antigoth/printenv.php HTTP/1.1\" 404 0
 219.132.23.120 - - [29/Apr/2006:09:17:22 -0500] \"GET http://verify.qq.com/getimage?0.5770163684465186 HTTP/1.1\" 404 0
 
-... so, what?  Is someone randomly trying to use me as a proxy?" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19528 :USER "drm" :DATE 3355370889 :CHANNEL "#fink" :TITLE "64 bit question" :CONTENTS "            # On Darwin we can use 64-bit instructions with a longlong limb,
+... so, what?  Is someone randomly trying to use me as a proxy?" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19528 :USER "drm" :DATE 3355370889 :CHANNEL "#fink" :TITLE "64 bit question" :CONTENTS "            # On Darwin we can use 64-bit instructions with a longlong limb,
             # but the chip still in 32-bit mode.
             # In theory this can be used on any OS which knows how to save
             # 64-bit registers in a context switch.
@@ -14707,7 +14707,7 @@ main = case (parse integer \"\" \"2222\") of Right xs -> print xs
             # One would think -mpowerpc64 would set the assembler in the right
             # mode to handle 64-bit instructions.  But for that, also
             # -force_cpusubtype_ALL is needed.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19527 :USER "pjb" :DATE 3355368298 :CHANNEL "#lisp" :TITLE "postprocess logical pathname translations" :CONTENTS "#+sbcl
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19527 :USER "pjb" :DATE 3355368298 :CHANNEL "#lisp" :TITLE "postprocess logical pathname translations" :CONTENTS "#+sbcl
 (defun post-process-logical-pathname-translations (host)
   (flet ((pstring (x) (if (pathnamep x) (namestring x) (string x))))
     (setf (logical-pathname-translations host)
@@ -14730,14 +14730,14 @@ main = case (parse integer \"\" \"2222\") of Right xs -> print xs
                  (LOGICAL-PATHNAME-TRANSLATIONS HOST)
                  :KEY (FUNCTION FIRST))
                 (LAMBDA (A B) (> (LENGTH (PSTRING (FIRST A)))
-                            (LENGTH (PSTRING (FIRST B)))))))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19526 :USER "wy" :DATE 3355368012 :CHANNEL "#lisp" :TITLE "source code path translation" :CONTENTS "(SETF (LOGICAL-PATHNAME-TRANSLATIONS \"SYS\")
+                            (LENGTH (PSTRING (FIRST B)))))))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19526 :USER "wy" :DATE 3355368012 :CHANNEL "#lisp" :TITLE "source code path translation" :CONTENTS "(SETF (LOGICAL-PATHNAME-TRANSLATIONS \"SYS\")
       (list (list \"SRC;**;*\" \"#P/home/wy/Downloads/sbcl-0.9.11/src/**/*\")
             (list \"SRC;**;*.*\" \"#P/home/wy/Downloads/sbcl-0.9.11/src/**/*.*\")
             (list \"SRC;**;*.*.*\" \"#P/home/wy/Downloads/sbcl-0.9.11/src/**/*.*.*\")))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19525 :USER "bla" :DATE 3355363455 :CHANNEL "#emacs" :TITLE "bla" :CONTENTS "(add-hook (make-local-hook 'emms-playlist-cleared-hook)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19525 :USER "bla" :DATE 3355363455 :CHANNEL "#emacs" :TITLE "bla" :CONTENTS "(add-hook (make-local-hook 'emms-playlist-cleared-hook)
           '(lambda() 
              (emms-stop) 
-             (emms-player-mpd-sync-from-emms)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19524 :USER "Tel" :DATE 3355361678 :CHANNEL "None" :TITLE "CAPT 'CHA" :CONTENTS ";;;;;;;;;;;;;;
+             (emms-player-mpd-sync-from-emms)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19524 :USER "Tel" :DATE 3355361678 :CHANNEL "None" :TITLE "CAPT 'CHA" :CONTENTS ";;;;;;;;;;;;;;
 ;
 ;
 ;          CAPTured 'CHA
@@ -14888,7 +14888,7 @@ main = case (parse integer \"\" \"2222\") of Right xs -> print xs
 			     (not (eq (type-of x) type)))
 			   (constantly nil))
 		       db)))
-    (perform (elt db (random (length db))))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19523 :USER "ashanks" :DATE 3355356792 :CHANNEL "#webkit" :TITLE "some crappy bash skills" :CONTENTS "#!/bin/sh
+    (perform (elt db (random (length db))))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19523 :USER "ashanks" :DATE 3355356792 :CHANNEL "#webkit" :TITLE "some crappy bash skills" :CONTENTS "#!/bin/sh
 #### webkit-updater
 #### Created by poundpoundpoundpound
 cd ~/Desktop/
@@ -14906,7 +14906,7 @@ cp -Rv /Volumes/WebKit/WebKit.app /Applications/
 hdiutil unmount /Volumes/WebKit
 rm -rv Latest-WebKit-Nightly.dmg
 # and...reload the browser
-/Applications/WebKit.app/Contents/MacOS/WebKit" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19522 :USER "Leimy" :DATE 3355353456 :CHANNEL "#opendarwin" :TITLE "erlang ring demo..." :CONTENTS "-module(ring).
+/Applications/WebKit.app/Contents/MacOS/WebKit" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19522 :USER "Leimy" :DATE 3355353456 :CHANNEL "#opendarwin" :TITLE "erlang ring demo..." :CONTENTS "-module(ring).
 -export([start/2, doit/2]).
 
 % Entry point... creates the first process that creates the others in
@@ -14956,7 +14956,7 @@ worker(Neighbor, M) ->
 			Neighbor ! {Pid}
 	end,
 	worker(Neighbor, M-1).
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19521 :USER "int80_h" :DATE 3355350454 :CHANNEL "#haskell" :TITLE "assignment 6.22 from Haskell:The Craft of Functional Programming" :CONTENTS "I am supposed to use
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19521 :USER "int80_h" :DATE 3355350454 :CHANNEL "#haskell" :TITLE "assignment 6.22 from Haskell:The Craft of Functional Programming" :CONTENTS "I am supposed to use
 6.21
 
 >       formatLine :: (Name, Price) -> String
@@ -14986,7 +14986,7 @@ Here are my two attempts
 >       formatLines :: [ (Name, Price)] -> String
 >       formatLines  [(name,price)]
 >          = [ [(n,p)] | (n,p) <- formatLine (unzip (concat([(name,price)]))]
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19520 :USER "KeeWee" :DATE 3355350416 :CHANNEL "#fpc" :TITLE "InterLockedCompareExchange" :CONTENTS "function InterLockedCompareExchange(var Target: longint; Compare, NewValue: longint): longint; assembler;
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19520 :USER "KeeWee" :DATE 3355350416 :CHANNEL "#fpc" :TITLE "InterLockedCompareExchange" :CONTENTS "function InterLockedCompareExchange(var Target: longint; Compare, NewValue: longint): longint; assembler;
 asm
 {$ifdef win64}
         movl            %edx,%eax
@@ -14999,7 +14999,7 @@ asm
 {$endif win64}
 end;
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19519 :USER "roozbeh" :DATE 3355348979 :CHANNEL "#fpc" :TITLE "strange code" :CONTENTS "output is
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19519 :USER "roozbeh" :DATE 3355348979 :CHANNEL "#fpc" :TITLE "strange code" :CONTENTS "output is
 -222
 -222
 65315
@@ -15039,9 +15039,9 @@ writeln(aa);
 writeln(rec1.w);
 setscrollinfo2(0,0,rec1,true);
 end.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19518 :USER "Free Ringtones" :DATE 3355347369 :CHANNEL "#xemacs" :TITLE "Free Ringtones" :CONTENTS "FREE RINGTONES 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19518 :USER "Free Ringtones" :DATE 3355347369 :CHANNEL "#xemacs" :TITLE "Free Ringtones" :CONTENTS "FREE RINGTONES 
 <a href=\"http://mywebpage.netscape.com/free1ringtones/free-mp3-ringtones.html\">Free Mp3 Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/FREE-RINGTONES.html\">Free Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/100-free-ringtones.htm\">100 Free Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-verizon-ringtones.html\">Free Verizon Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/download-free-ringtones.htm\">Download Free Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-motorola-ringtones.html\">Free Motorola Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-cell-phone-ringtones.html\">Free Cell Phone Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-nokia-ringtones.html\">Free Nokia Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-nextel-ringtones.html\">Free Nextel Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-ringtones.htm\">Free Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-t-mobile-ringtones.html\">Free T Mobile Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-sprint-ringtones.html\">Free Sprint Ringtones</a> 
-[url=http://mywebpage.netscape.com/free1ringtones/free-verizon-ringtones.html]Free Verizon Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-ringtones.htm]Free Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/100-free-ringtones.htm]100 Free Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-mp3-ringtones.html]Free Mp3 Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-motorola-ringtones.html]Free Motorola Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-nextel-ringtones.html]Free Nextel Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-sprint-ringtones.html]Free Sprint Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-kyocera-ringtones.html]Free Kyocera Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-t-mobile-ringtones.html]Free T Mobile Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/FREE-RINGTONES.html]Free Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/]FREE-RINGTONES[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-cell-phone-ringtones.html]Free Cell Phone Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/download-free-ringtones.htm]Download Free Ringtones[/url]" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19517 :USER "piyush" :DATE 3355344940 :CHANNEL "#svn" :TITLE "svn not working" :CONTENTS "Password:
+[url=http://mywebpage.netscape.com/free1ringtones/free-verizon-ringtones.html]Free Verizon Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-ringtones.htm]Free Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/100-free-ringtones.htm]100 Free Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-mp3-ringtones.html]Free Mp3 Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-motorola-ringtones.html]Free Motorola Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-nextel-ringtones.html]Free Nextel Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-sprint-ringtones.html]Free Sprint Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-kyocera-ringtones.html]Free Kyocera Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-t-mobile-ringtones.html]Free T Mobile Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/FREE-RINGTONES.html]Free Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/]FREE-RINGTONES[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-cell-phone-ringtones.html]Free Cell Phone Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/download-free-ringtones.htm]Download Free Ringtones[/url]" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19517 :USER "piyush" :DATE 3355344940 :CHANNEL "#svn" :TITLE "svn not working" :CONTENTS "Password:
 debug1: Authentication succeeded (keyboard-interactive).
 debug1: channel 0: new [client-session]
 debug1: Entering interactive session.
@@ -15082,14 +15082,14 @@ debug1: Trying private key: /home/liux/.ssh/identity
 debug1: Trying private key: /home/liux/.ssh/id_rsa
 debug1: Trying private key: /home/liux/.ssh/id_dsa
 debug1: Next authentication method: keyboard-interactive
-Password:                                         " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19516 :USER "zedek" :DATE 3355344677 :CHANNEL "#emacs" :TITLE "EMMS and MPD basic setup" :CONTENTS "(require 'emms-player-simple)                                                                                                                    
+Password:                                         " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19516 :USER "zedek" :DATE 3355344677 :CHANNEL "#emacs" :TITLE "EMMS and MPD basic setup" :CONTENTS "(require 'emms-player-simple)                                                                                                                    
 (require 'emms-player-mpd)                                                                                                                       
 (require 'emms-source-file)                                                                                                                      
 (require 'emms-source-playlist)                                                                                                                  
-(setq emms-player-list '(emms-player-mpd))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19515 :USER "Bison" :DATE 3355342422 :CHANNEL "#lisp" :TITLE "macro problems" :CONTENTS "(defmacro gen-limit-functions ()
+(setq emms-player-list '(emms-player-mpd))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19515 :USER "Bison" :DATE 3355342422 :CHANNEL "#lisp" :TITLE "macro problems" :CONTENTS "(defmacro gen-limit-functions ()
   (let ((names '(r l)))
     (dolist (i names)           
-      `(defun ,i ()))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19514 :USER "roozbeh" :DATE 3355340855 :CHANNEL "#fpc" :TITLE "sample.pas" :CONTENTS "program Project1;
+      `(defun ,i ()))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19514 :USER "roozbeh" :DATE 3355340855 :CHANNEL "#fpc" :TITLE "sample.pas" :CONTENTS "program Project1;
 
 {$mode objfpc}{$H+}
 {$apptype console}
@@ -15123,7 +15123,7 @@ begin
 rec1.w:=10;
 setscrollinfo2(0,0,rec1,true);
 end.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19513 :USER "roozbeh" :DATE 3355340835 :CHANNEL "#fpc" :TITLE "sample" :CONTENTS "	.file \"project2.pas\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19513 :USER "roozbeh" :DATE 3355340835 :CHANNEL "#fpc" :TITLE "sample" :CONTENTS "	.file \"project2.pas\"
 # Begin asmlist al_begin
 
 .section .text
@@ -15453,7 +15453,7 @@ DEBUGEND_P$PROJECT1:
 .Lf4:
 # End asmlist al_end
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19512 :USER "roozbeh" :DATE 3355338998 :CHANNEL "#fpc" :TITLE "program sample asm file" :CONTENTS "	.stabs \"TAGSCROLLINFO:Tt6=s28CBSIZE:5,0,32;FMASK:5,32,32;NMIN:4,64,32;NMAX:4,96,32;NPAGE:5,128,32;NPOS:4,160,32;NTRACKPOS:4,192,32;;\",128,0,0,0
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19512 :USER "roozbeh" :DATE 3355338998 :CHANNEL "#fpc" :TITLE "program sample asm file" :CONTENTS "	.stabs \"TAGSCROLLINFO:Tt6=s28CBSIZE:5,0,32;FMASK:5,32,32;NMIN:4,64,32;NMAX:4,96,32;NPAGE:5,128,32;NPOS:4,160,32;NTRACKPOS:4,192,32;;\",128,0,0,0
 # Defs - End unit LCLTYPE has index 6
 # Defs - Begin Staticsymtable
 	.stabs \"BYTE:t8=r8;0;255;\",128,0,0,0
@@ -15663,7 +15663,7 @@ U_P$PROJECT1_REC1:
 .globl	THREADVARLIST_P$PROJECT1
 THREADVARLIST_P$PROJECT1:
 	.long	0
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19511 :USER "roozbeh" :DATE 3355338976 :CHANNEL "#fpc" :TITLE "program sample" :CONTENTS "//this is the sample file
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19511 :USER "roozbeh" :DATE 3355338976 :CHANNEL "#fpc" :TITLE "program sample" :CONTENTS "//this is the sample file
 program Project1;
 
 {$mode objfpc}{$H+}
@@ -15707,7 +15707,7 @@ rec1.w:=10;
 setscrollinfo2(0,0,rec1,true);
 //setscrollinfo(0,0,scr,true);
 end.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19510 :USER "roozbeh" :DATE 3355338937 :CHANNEL "#fpc" :TITLE "program sample" :CONTENTS "//this is the sample file
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19510 :USER "roozbeh" :DATE 3355338937 :CHANNEL "#fpc" :TITLE "program sample" :CONTENTS "//this is the sample file
 program Project1;
 
 {$mode objfpc}{$H+}
@@ -15751,7 +15751,7 @@ rec1.w:=10;
 setscrollinfo2(0,0,rec1,true);
 //setscrollinfo(0,0,scr,true);
 end.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19509 :USER "zirener" :DATE 3355336959 :CHANNEL "#programmering" :TITLE "Det er hardt å være datanerd" :CONTENTS "(18:51:42) Ståle: Halla jalla
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19509 :USER "zirener" :DATE 3355336959 :CHANNEL "#programmering" :TITLE "Det er hardt å være datanerd" :CONTENTS "(18:51:42) Ståle: Halla jalla
 (18:51:51) (*)(H)(*): halla
 (18:51:53) Ståle: Veit du hva den praktiske delen av heimkunnskap går ut på?
 (18:52:53) (*)(H)(*) har lukket samtalevinduet.
@@ -15790,7 +15790,7 @@ end.
 (19:05:42) (*)(H)(*) har lukket samtalevinduet.
 (19:06:03) (*)(H)(*): :P:P
 (19:06:15) (*)(H)(*): du trenger ikke å nevne det til noen da:P
-(19:07:10) Ståle: De kommer til å finne det ut.. One way or the other :'(" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19508 :USER "hotblack23" :DATE 3355335972 :CHANNEL "#scheme" :TITLE "Parser for JavaScript Object Notation" :CONTENTS ";;; parser for json syntax (http://json.org/)
+(19:07:10) Ståle: De kommer til å finne det ut.. One way or the other :'(" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19508 :USER "hotblack23" :DATE 3355335972 :CHANNEL "#scheme" :TITLE "Parser for JavaScript Object Notation" :CONTENTS ";;; parser for json syntax (http://json.org/)
 ;;; numbers are not yet handled
 ;;;
 ;;; tested with sisc (http://sisc.sf.net/)
@@ -16008,7 +16008,7 @@ end.
 
 (display-xml (json/parse-string \"{'abc': ['a', 'b', 'c',  { 'zasf' : ['1', '2', '3']}]  , 'xyz' : ['123', '456', '789']  }\"))
 (display #\\newline)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19507 :USER "Riastradh" :DATE 3355334227 :CHANNEL "#scheme" :TITLE "incorrect GUARD" :CONTENTS "(define-syntax guard
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19507 :USER "Riastradh" :DATE 3355334227 :CHANNEL "#scheme" :TITLE "incorrect GUARD" :CONTENTS "(define-syntax guard
   (syntax-rules (ELSE)
     ((GUARD (var
              (condition then0 then1 ...)
@@ -16027,19 +16027,19 @@ end.
              (condition then0 then1 ...)
              (ELSE (RAISE var)))
        body0 body1 ...))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19506 :USER "KeeWee" :DATE 3355327363 :CHANNEL "None" :TITLE "test" :CONTENTS "  Lock := 0; // Lock is available
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19506 :USER "KeeWee" :DATE 3355327363 :CHANNEL "None" :TITLE "test" :CONTENTS "  Lock := 0; // Lock is available
   Res := InterLockedCompareExchange(Lock, 1, 0); // Res=0 Lock=1 -> meaning Lock acquired successfully
   Res := InterLockedCompareExchange(Lock, 1, 0); // Another thread trying to acquire the lock will have Res=1 since Lock=1 -> meaning unsuccessfull Lock already acquired
   Lock := 0; // Releasing the Lock
   Res := InterLockedCompareExchange(Lock, 1, 0); // Res=0 Lock=1 -> meaning Lock acquired successfully
   Res := InterLockedCompareExchange(Lock, 1, 0); // Another thread trying to acquire the lock will have Res=1 since Lock=1 -> meaning unsuccessfull Lock already acquired
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19505 :USER "roozbeh" :DATE 3355326333 :CHANNEL "#fpc" :TITLE "output of where" :CONTENTS "(gdb) where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19505 :USER "roozbeh" :DATE 3355326333 :CHANNEL "#fpc" :TITLE "output of where" :CONTENTS "(gdb) where
 #0  0x000659b8 in CLASSES_IDENTTOINT$ANSISTRING$LONGINT$array_of_TIDENTMAPENTRY$
 $BOOLEAN ()
 #1  0x00138a90 in IDENTTOCOLOR (IDENT=0x7f9480, COLOR=7) at Graphics.pp:1587
 #2  0x00065b88 in CLASSES_GLOBALIDENTTOINT$ANSISTRING$LONGINT$$BOOLEAN ()
 #3  0x0006f858 in VTREF464_VMT_CLASSES_TABSTRACTOBJECTREADER$$20 ()
-#4  0x0006f858 in VTREF464_VMT_CLASSES_TABSTRACTOBJECTREADER$$20 ()" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19504 :USER "roozbeh" :DATE 3355325824 :CHANNEL "#fpc" :TITLE "dissassemble result" :CONTENTS "this is also above of it shown
+#4  0x0006f858 in VTREF464_VMT_CLASSES_TABSTRACTOBJECTREADER$$20 ()" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19504 :USER "roozbeh" :DATE 3355325824 :CHANNEL "#fpc" :TITLE "dissassemble result" :CONTENTS "this is also above of it shown
 
 child process -30880 In: CLASSES_IDENTTOINT$ANSISTRING$* Line: ??   PC: 0x659b8
 
@@ -16071,7 +16071,7 @@ TIDENTMAPENTRY$$BOOLEAN+120>
 0x000659c8 <CLASSES_IDENTTOINT$ANSISTRING$LONGINT$array_of_TIDENTMAPENTRY$$BOOLE
 AN+116>:        b       0x659f0 <CLASSES_IDENTTOINT$ANSISTRING$LONGINT$array_of_
 TIDENTMAPENTRY$$BOOLEAN+156>
-0x000659cc <CLASSES_IDENTTOINT$ANSISTRING$LONGINT$array_of_TIDENTMAPENTRY$$BOOLE" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19503 :USER "roozbeh" :DATE 3355325118 :CHANNEL "#fpc" :TITLE "crash problem wince" :CONTENTS "crashes in calling of CLASSES_INTTOIDENT$LONGINT$ANSISTRING$array_of_TIDENTMAPENTRY$$BOOLEAN
+0x000659cc <CLASSES_IDENTTOINT$ANSISTRING$LONGINT$array_of_TIDENTMAPENTRY$$BOOLE" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19503 :USER "roozbeh" :DATE 3355325118 :CHANNEL "#fpc" :TITLE "crash problem wince" :CONTENTS "crashes in calling of CLASSES_INTTOIDENT$LONGINT$ANSISTRING$array_of_TIDENTMAPENTRY$$BOOLEAN
 
 both files(with and without {$packrecord c} generated this same code
 
@@ -16120,7 +16120,7 @@ GRAPHICS_COLORTOIDENT$LONGINT$ANSISTRING$$BOOLEAN:
 	.stabs \"RESULT:X36\",160,0,0,-49
 	.stabn 192,0,0,GRAPHICS_COLORTOIDENT$LONGINT$ANSISTRING$$BOOLEAN-GRAPHICS_COLORTOIDENT$LONGINT$ANSISTRING$$BOOLEAN
 	.stabn 224,0,0,.Lt385-GRAPHICS_COLORTOIDENT$LONGINT$ANSISTRING$$BOOLEAN
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19502 :USER "twb" :DATE 3355323783 :CHANNEL "#scheme" :TITLE "hairy wheres" :CONTENTS "expressionList :: Parser [NativeLangExpression]
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19502 :USER "twb" :DATE 3355323783 :CHANNEL "#scheme" :TITLE "hairy wheres" :CONTENTS "expressionList :: Parser [NativeLangExpression]
 expressionList = do
     many $ symbol \";\"
     exps <- maybeEof $ semiColonSep (fmap Left assignment <|> fmap Right expression)
@@ -16159,7 +16159,7 @@ main' dpy = do grabK \"F1\"
                     onK (_,w,_,_,_,_,_,_,_,_) | w /= none = raiseWindow dpy w
                     onB (_,w,_,_,_,_,_,_,_,_) 
                         | w /= none = grabP w >> return ()
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19501 :USER "forcer" :DATE 3355323272 :CHANNEL "#scheme" :TITLE "procedure documentation" :CONTENTS ";;; @deffn Message add-value-slot! getter value
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19501 :USER "forcer" :DATE 3355323272 :CHANNEL "#scheme" :TITLE "procedure documentation" :CONTENTS ";;; @deffn Message add-value-slot! getter value
 ;;; @deffnx Message add-value-slot! getter setter value
 ;;;
 ;;; Add a new value slot to the recipient. The value of the slot can
@@ -16187,7 +16187,7 @@ main' dpy = do grabK \"F1\"
                 (if (eq? new-self self)
                     (set-slot-value! slot new-value)
                     (new-self 'add-value-slot! getter setter new-value))))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19500 :USER "biesi" :DATE 3355321309 :CHANNEL "#cairo" :TITLE "_cairo_surface_get_extentsbetter " :CONTENTS "cairo_status_t
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19500 :USER "biesi" :DATE 3355321309 :CHANNEL "#cairo" :TITLE "_cairo_surface_get_extentsbetter " :CONTENTS "cairo_status_t
 _cairo_surface_get_extents (cairo_surface_t   *surface,
 			    cairo_rectangle_t *rectangle)
 {
@@ -16222,7 +16222,7 @@ _cairo_surface_get_extents (cairo_surface_t   *surface,
     return status;
 }
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19499 :USER "biesi" :DATE 3355320806 :CHANNEL "#cairo" :TITLE "_cairo_surface_get_extents" :CONTENTS "cairo_status_t
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19499 :USER "biesi" :DATE 3355320806 :CHANNEL "#cairo" :TITLE "_cairo_surface_get_extents" :CONTENTS "cairo_status_t
 _cairo_surface_get_extents (cairo_surface_t   *surface,
 			    cairo_rectangle_t *rectangle)
 {
@@ -16258,7 +16258,7 @@ _cairo_surface_get_extents (cairo_surface_t   *surface,
     rectangle->height = rectangle->height - rectangle->y;
 
     return status;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19498 :USER "forcer" :DATE 3355320643 :CHANNEL "#emacs" :TITLE "Haskell's quicksort in C" :CONTENTS "/*
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19498 :USER "forcer" :DATE 3355320643 :CHANNEL "#emacs" :TITLE "Haskell's quicksort in C" :CONTENTS "/*
 -- Haskell version:
 quicksort [] = []
 quicksort (s:xs) = quicksort [x|x <- xs,x < s]
@@ -16281,7 +16281,7 @@ list *quicksort (list *l) {
                               list_append( make_list(s),
                                            quicksort( list_filter_greater_than(l, s) )));
      }
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19497 :USER "ZabaQ" :DATE 3355319516 :CHANNEL "#lisp" :TITLE "I'm getting the hang of this macro thing.." :CONTENTS "(defmacro scale-triple (accessor object scale)
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19497 :USER "ZabaQ" :DATE 3355319516 :CHANNEL "#lisp" :TITLE "I'm getting the hang of this macro thing.." :CONTENTS "(defmacro scale-triple (accessor object scale)
   `(progn
      ,@(loop
           for index from 0 to 2 
@@ -16290,7 +16290,7 @@ list *quicksort (list *l) {
                  (setf (aref (,accessor ,object) ,index)
                        (* (aref (,accessor ,object) ,index) ,scale))
                (system::simple-floating-point-underflow ()
-                 (setf (aref (,accessor ,object) ,index) 0.0))))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19496 :USER "cworth" :DATE 3355317001 :CHANNEL "None" :TITLE "vlad and cworth talk about device offsets" :CONTENTS "Mar 09 13:42:43 <vlad_> cworth: ping
+                 (setf (aref (,accessor ,object) ,index) 0.0))))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19496 :USER "cworth" :DATE 3355317001 :CHANNEL "None" :TITLE "vlad and cworth talk about device offsets" :CONTENTS "Mar 09 13:42:43 <vlad_> cworth: ping
 Mar 09 13:43:11 <--     ifoox has quit (\"Leaving\")
 Mar 09 13:43:42 <cworth>        vlad_: pong
 Mar 09 13:44:49 <vlad_> I'm looking at your device-offsets branch, poking at glyphs
@@ -16337,11 +16337,11 @@ Mar 09 13:57:55 <vlad_> lots of things passing with this now
 Mar 09 13:58:21 <cworth>        vlad_: Yeah, should be really close. And I think I know how to fix self-copy too.
 Mar 09 13:58:48 <cworth>        vlad_: I'm going to rollback those last two commits and fix them properly, so wait for that before you start branching off of my stuff or anything.
 Mar 09 14:00:51 <vlad_> k
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19495 :USER "paulwilde" :DATE 3355314744 :CHANNEL "#chatkit" :TITLE "Console output" :CONTENTS "Apr 29 13:56:08 paul-wildes-imac-g5 crashdump[8047]: CKTestClient crashed
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19495 :USER "paulwilde" :DATE 3355314744 :CHANNEL "#chatkit" :TITLE "Console output" :CONTENTS "Apr 29 13:56:08 paul-wildes-imac-g5 crashdump[8047]: CKTestClient crashed
 Apr 29 13:56:08 paul-wildes-imac-g5 crashdump[8047]: crash report written to: /Users/paulwilde/Library/Logs/CrashReporter/CKTestClient.crash.log
 dyld: Library not loaded: @loader_path/../Frameworks/CKServiceImp.framework/Versions/A/CKServiceImp
   Referenced from: /Users/paulwilde/chatkit/build/Debug/CKTestClient.app/Contents/MacOS/../Frameworks/ChatKit.framework/Versions/A/ChatKit
-  Reason: image not found" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19494 :USER "paulwilde" :DATE 3355314397 :CHANNEL "#chatkit" :TITLE "Run Log" :CONTENTS "[Session started at 2006-04-29 13:49:11 +0100.]
+  Reason: image not found" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19494 :USER "paulwilde" :DATE 3355314397 :CHANNEL "#chatkit" :TITLE "Run Log" :CONTENTS "[Session started at 2006-04-29 13:49:11 +0100.]
 2006-04-29 13:49:19.480 ChatKitAgent[8030] Session manager ready.  Available Services:
 (
     (<CKService: 0x339440> Internet Relay Chat - ChatCore - IRC), 
@@ -16349,7 +16349,7 @@ dyld: Library not loaded: @loader_path/../Frameworks/CKServiceImp.framework/Vers
     (<CKService: 0x33aad0> AOL Instant Messenger - JOscar), 
     (<CKService: 0x33b950> Bonjour - libezv), 
     (<CKService: 0x33bec0> ChatKit Testing Service - CKTest)
-)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19493 :USER "dan_b" :DATE 3355313522 :CHANNEL "#lisp" :TITLE "ilc-02 audio/video?" :CONTENTS "
+)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19493 :USER "dan_b" :DATE 3355313522 :CHANNEL "#lisp" :TITLE "ilc-02 audio/video?" :CONTENTS "
 :; ls ilc02-2/
 Brian_Rice.wmv                  Robert_Strandh.wmv
 Brian_Rice.wmv.torrent          Robert_Strandh.wmv.torrent
@@ -16369,7 +16369,7 @@ Emmanuel_Chailloux.wmv.torrent  Richard_Stallman.wmv
 Henry_Lieberman.wmv             Richard_Stallman.wmv.torrent
 Henry_Lieberman.wmv.torrent     Roger_Corman.wmv
 JonL_White.wmv                  Roger_Corman.wmv.torrent
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19492 :USER "mstevens" :DATE 3355305119 :CHANNEL "#DarwinPorts" :TITLE "exciting new port" :CONTENTS "# $Id$
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19492 :USER "mstevens" :DATE 3355305119 :CHANNEL "#DarwinPorts" :TITLE "exciting new port" :CONTENTS "# $Id$
 PortSystem		1.0
 name			jlj
 version			2.12
@@ -16398,7 +16398,7 @@ post-destroot     {
 	system \"cp ${workpath}/jlj/README.JLJ ${destroot}${prefix}/share/doc/${name}_${version}\"
 	system \"mkdir -p ${destroot}/${prefix}/share/examples/${name}_${version}\"
 	system \"cp ${workpath}/jlj/.livejournal.rc ${destroot}${prefix}/share/examples/${name}_${version}/livejournal.rc\"
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19491 :USER "AngryLuke" :DATE 3355292355 :CHANNEL "#webkit" :TITLE "arg" :CONTENTS "id Silk_FontWithFamily_traits_size(id self, SEL selector, CFStringRef familyName, unsigned int traits, float size)
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19491 :USER "AngryLuke" :DATE 3355292355 :CHANNEL "#webkit" :TITLE "arg" :CONTENTS "id Silk_FontWithFamily_traits_size(id self, SEL selector, CFStringRef familyName, unsigned int traits, float size)
 {
     id font=NULL;
     
@@ -16513,7 +16513,7 @@ post-destroot     {
     
 
     return font;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19490 :USER "Cryo" :DATE 3355290461 :CHANNEL "#opendarwin" :TITLE "How to tell your code is old..." :CONTENTS "    if(!(floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_0) &&
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19490 :USER "Cryo" :DATE 3355290461 :CHANNEL "#opendarwin" :TITLE "How to tell your code is old..." :CONTENTS "    if(!(floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_0) &&
        !(floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_1)) // Check for Jaguar
         [postProgressIndicator setStyle: NSProgressIndicatorSpinningStyle];
 
@@ -16522,7 +16522,7 @@ post-destroot     {
     if ([postProgressIndicator respondsToSelector:@selector(setDisplayedWhenStopped:)]) {
         [postProgressIndicator setDisplayedWhenStopped:NO];
     }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19489 :USER "slava" :DATE 3355288189 :CHANNEL "#concatenative" :TITLE "Hairy intrinsic" :CONTENTS "\\ type [
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19489 :USER "slava" :DATE 3355288189 :CHANNEL "#concatenative" :TITLE "Hairy intrinsic" :CONTENTS "\\ type [
     <label> \"f\" set
     <label> \"end\" set
     ! Get the tag
@@ -16550,7 +16550,7 @@ post-destroot     {
     { +input { { f \"obj\" } } }
     { +scratch { { f \"x\" } { f \"y\" } } }
     { +output { \"obj\" } }
-} define-intrinsic" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19488 :USER "slava" :DATE 3355287274 :CHANNEL "#concatenative" :TITLE "Compiler backend protocol" :CONTENTS "IN: compiler
+} define-intrinsic" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19488 :USER "slava" :DATE 3355287274 :CHANNEL "#concatenative" :TITLE "Compiler backend protocol" :CONTENTS "IN: compiler
 USING: generic kernel kernel-internals math memory namespaces
 sequences ;
 
@@ -16662,7 +16662,7 @@ M: integer v>operand tag-bits shift ;
 
 M: vreg v>operand vreg-n vregs nth ;
 
-M: f v>operand address ;" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19487 :USER "pjb" :DATE 3355286361 :CHANNEL "#emacs" :TITLE "pjb-asm7090" :CONTENTS ";;****************************************************************************
+M: f v>operand address ;" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19487 :USER "pjb" :DATE 3355286361 :CHANNEL "#emacs" :TITLE "pjb-asm7090" :CONTENTS ";;****************************************************************************
 ;;FILE:               7090.el
 ;;LANGUAGE:           emacs lisp
 ;;SYSTEM:             POSIX
@@ -17180,9 +17180,9 @@ M: f v>operand address ;" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19487 :U
                          (asm7090-describe-codop) 
                          (newline-and-indent)))
   (message \"asm7090 activated\"))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19486 :USER "petekaz" :DATE 3355278681 :CHANNEL "#haskell" :TITLE "lisp 'if' macro" :CONTENTS "(defmacro my-if (test then &optional else)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19486 :USER "petekaz" :DATE 3355278681 :CHANNEL "#haskell" :TITLE "lisp 'if' macro" :CONTENTS "(defmacro my-if (test then &optional else)
   `(cond (,test ,then)
-         (t ,else)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19485 :USER "dump" :DATE 3355274769 :CHANNEL "None" :TITLE "perl " :CONTENTS "root Net-Trackback-1.01 # ls -l /usr/local/lib/perl5/site_perl/5.8.8/Net
+         (t ,else)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19485 :USER "dump" :DATE 3355274769 :CHANNEL "None" :TITLE "perl " :CONTENTS "root Net-Trackback-1.01 # ls -l /usr/local/lib/perl5/site_perl/5.8.8/Net
 total 256
 drwxr-xr-x  2 root  wheel    512 Apr  4 22:50 CIDR
 -r--r--r--  1 root  wheel  15796 Jun 30  2004 Cmd.pm
@@ -17207,7 +17207,7 @@ drwxr-xr-x  2 root  wheel    512 Apr 28 21:12 Trackback
 
 Can't locate Net/TrackBack/Client.pm in @INC (@INC contains: /usr/local/lib/perl5/5.8.8/BSDPAN /usr/local/lib/perl5/site_perl/5.8.8/mach /usr/local/lib/perl5/site_perl/5.8.8 /usr/local/lib/perl5/site_perl/5.8.7 /usr/local/lib/perl5/site_perl /usr/local/lib/perl5/5.8.8/mach /usr/local/lib/perl5/5.8.8 .) at dev.pl line 3.
 BEGIN failed--compilation aborted at dev.pl line 3.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19484 :USER "Bardology" :DATE 3355272097 :CHANNEL "#macdev" :TITLE "JLPostgres.h" :CONTENTS "#import <Cocoa/Cocoa.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19484 :USER "Bardology" :DATE 3355272097 :CHANNEL "#macdev" :TITLE "JLPostgres.h" :CONTENTS "#import <Cocoa/Cocoa.h>
 #import <libpq-fe.h>
 
 #define DEFAULT_USERNAME @\"katkards\"
@@ -17266,7 +17266,7 @@ enum PGBooleanOperatorType {
 + (void)querDidComplet:(NSDictionary *)queryDictionary;
 + (void)queryDidFail:(NSDictionary *)queryDictionary;
 @end
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19483 :USER "Vernius" :DATE 3355265154 :CHANNEL "None" :TITLE "Layer coordinates to popup window" :CONTENTS ";; -*-scheme-*- 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19483 :USER "Vernius" :DATE 3355265154 :CHANNEL "None" :TITLE "Layer coordinates to popup window" :CONTENTS ";; -*-scheme-*- 
 
 (define (script-fu-layer-coordinates image drawable)
   (let* (
@@ -17304,7 +17304,7 @@ enum PGBooleanOperatorType {
 			SF-DRAWABLE \"Drawable\" 0)
 
 (script-fu-menu-register \"script-fu-layer-coordinates\"
-			\"<Image>/Layer\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19482 :USER "Dylan" :DATE 3355254891 :CHANNEL "None" :TITLE "catching" :CONTENTS "let rec split' offset s c =
+			\"<Image>/Layer\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19482 :USER "Dylan" :DATE 3355254891 :CHANNEL "None" :TITLE "catching" :CONTENTS "let rec split' offset s c =
   match catch (String.index_from s offset c) with
       Result idx ->
         let len = idx - offset in
@@ -17313,11 +17313,11 @@ enum PGBooleanOperatorType {
     | Error Not_found ->
         [ String.sub s offset (String.length s - offset) ]
     | Error e -> raise e
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19481 :USER "elhochme" :DATE 3355253400 :CHANNEL "#squeak" :TITLE "orderedList:do:" :CONTENTS "orderedList: aCollection do: aBlock
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19481 :USER "elhochme" :DATE 3355253400 :CHANNEL "#squeak" :TITLE "orderedList:do:" :CONTENTS "orderedList: aCollection do: aBlock
 	self orderedList:
 		[aCollection do:
 			[:item |
-			self listItem: [aBlock value: item]]]" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19480 :USER "Vernius" :DATE 3355253293 :CHANNEL "#scheme" :TITLE "Script-fu layer coordinate display (borked)" :CONTENTS ";; -*-scheme-*- 
+			self listItem: [aBlock value: item]]]" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19480 :USER "Vernius" :DATE 3355253293 :CHANNEL "#scheme" :TITLE "Script-fu layer coordinate display (borked)" :CONTENTS ";; -*-scheme-*- 
 
 (define (script-fu-layer-coordinates image drawable)
   (let* (
@@ -17355,7 +17355,7 @@ enum PGBooleanOperatorType {
 		    SF-DRAWABLE \"Drawable\" 0)
 
 (script-fu-menu-register \"script-fu-layer-coordinates\" 
-			 \"<Image>/Layer\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19479 :USER "dgtl" :DATE 3355251517 :CHANNEL "None" :TITLE "Unix basename replica" :CONTENTS "// Replicate the Unix tool basename
+			 \"<Image>/Layer\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19479 :USER "dgtl" :DATE 3355251517 :CHANNEL "None" :TITLE "Unix basename replica" :CONTENTS "// Replicate the Unix tool basename
 
 #import <stdio.h>
 #import <Foundation/NSString.h>
@@ -17416,7 +17416,7 @@ int main(int argc, char *argv[])
 	[pool release];
 	return 0;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19478 :USER "RangerRick" :DATE 3355250847 :CHANNEL "#fink" :TITLE "htodd -- here's my output" :CONTENTS "Almost looks like things are happening out of order on your machine.  Perhaps I should make sure there's an explicit MAKEFLAGS=-j1.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19478 :USER "RangerRick" :DATE 3355250847 :CHANNEL "#fink" :TITLE "htodd -- here's my output" :CONTENTS "Almost looks like things are happening out of order on your machine.  Perhaps I should make sure there's an explicit MAKEFLAGS=-j1.
 
 ---(snip!)---
 rm -f libfontconfig.1.0.4.dylib~
@@ -17442,7 +17442,7 @@ cd ../../exports/lib && ln -s ../../lib/fontconfig/libfontconfig.1.0.4.dylib .
 + cd ../../exports/lib
 + ln -s ../../lib/fontconfig/libfontconfig.dylib .
 ---(snip!)---
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19477 :USER "fons" :DATE 3355249040 :CHANNEL "#haskell" :TITLE "ExprParser.hs" :CONTENTS "module ExprParser (whiteExpr) where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19477 :USER "fons" :DATE 3355249040 :CHANNEL "#haskell" :TITLE "ExprParser.hs" :CONTENTS "module ExprParser (whiteExpr) where
 ------------------------------------------------------------------------------
 --               2D1456, Advanced Functional Programming                    --
 --               Mini project: P1.2 Symbolic Integration                    --
@@ -17566,7 +17566,7 @@ either2const :: Either Integer Double -> Expr
 either2const (Left i)  = Const (fromInteger i)
 either2const (Right d) = Const (realToFrac d) 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19476 :USER "fons" :DATE 3355248976 :CHANNEL "#haskell" :TITLE "Expr.hs" :CONTENTS "module Expr (Expr (..), RhsExp (..), freeOf, freeOfList, rhsExp2Expr, 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19476 :USER "fons" :DATE 3355248976 :CHANNEL "#haskell" :TITLE "Expr.hs" :CONTENTS "module Expr (Expr (..), RhsExp (..), freeOf, freeOfList, rhsExp2Expr, 
              expr2rhsExp, isConst, notConst, factorize, unfactorize, querep) 
 where
 ------------------------------------------------------------------------------
@@ -17811,9 +17811,9 @@ unfactorize :: [Expr] -> Expr
 unfactorize [] = (Const 1.0)
 unfactorize xs = foldl1 (:*:) xs 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19475 :USER "mileswu" :DATE 3355248832 :CHANNEL "#macdev" :TITLE "Applescript" :CONTENTS "tell application \"arRsync\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19475 :USER "mileswu" :DATE 3355248832 :CHANNEL "#macdev" :TITLE "Applescript" :CONTENTS "tell application \"arRsync\"
   runPreset \"hi\"
-end tell" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19474 :USER "mileswu" :DATE 3355248586 :CHANNEL "#macdev" :TITLE "NSScriptCommand" :CONTENTS "//
+end tell" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19474 :USER "mileswu" :DATE 3355248586 :CHANNEL "#macdev" :TITLE "NSScriptCommand" :CONTENTS "//
 //  scriptController.h
 //  arRsync
 //
@@ -17836,7 +17836,7 @@ end tell" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19474 :USER "mileswu" :D
 
 -(NSString *)runPreset:(NSString *)presetName;
 @end
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19473 :USER "CFThetized" :DATE 3355244714 :CHANNEL "None" :TITLE "IsPathVisible" :CONTENTS "//------------------------------------------------------------------------------------------
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19473 :USER "CFThetized" :DATE 3355244714 :CHANNEL "None" :TITLE "IsPathVisible" :CONTENTS "//------------------------------------------------------------------------------------------
 Boolean IsPathVisible(const CFStringRef fullpath)
 {
 //typedef enum {
@@ -17866,7 +17866,7 @@ Boolean IsPathVisible(const CFStringRef fullpath)
 	
 	return isVisible;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19472 :USER "CFThetized" :DATE 3355244243 :CHANNEL "None" :TITLE "GetFSRef" :CONTENTS "//------------------------------------------------------------------------------------------
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19472 :USER "CFThetized" :DATE 3355244243 :CHANNEL "None" :TITLE "GetFSRef" :CONTENTS "//------------------------------------------------------------------------------------------
 SInt16 SetFilePath(const CFStringRef fullpath)
 {
 //typedef enum {
@@ -17894,7 +17894,7 @@ SInt16 SetFilePath(const CFStringRef fullpath)
 	
 	return myerr;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19471 :USER "CFThetized" :DATE 3355243604 :CHANNEL "None" :TITLE "kLSItemInfoIsInvisible" :CONTENTS "//------------------------------------------------------------------------------------------
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19471 :USER "CFThetized" :DATE 3355243604 :CHANNEL "None" :TITLE "kLSItemInfoIsInvisible" :CONTENTS "//------------------------------------------------------------------------------------------
 Boolean TOpenWSPuzzMgr::sWSPuzzFilter(AEDesc* theItem, void* info, 
 							void* callBackUD,  NavFilterModes filterMode)
 {
@@ -17989,7 +17989,7 @@ Boolean TOpenWSPuzzMgr::sWSPuzzFilter(AEDesc* theItem, void* info,
 	}
 	return display;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19470 :USER "tmh" :DATE 3355240802 :CHANNEL "#lisp" :TITLE "Stupid Error" :CONTENTS ";;; Exercise 1.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19470 :USER "tmh" :DATE 3355240802 :CHANNEL "#lisp" :TITLE "Stupid Error" :CONTENTS ";;; Exercise 1.
 (defun tokens (str &key (test #'constituent) (start 0))
   (let ((p1 (position-if test str :start start)))
     (if p1
@@ -18011,7 +18011,7 @@ Boolean TOpenWSPuzzMgr::sWSPuzzFilter(AEDesc* theItem, void* info,
 	:start 0)
 
 unknown &KEY argument: #<FUNCTION \"top level local call ALPHA-CHAR-P\" {107805CD}>
-   [Condition of type SB-INT:SIMPLE-PROGRAM-ERROR" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19469 :USER "Xof" :DATE 3355238804 :CHANNEL "#lisp" :TITLE "see also http://www-jcsu.jesus.cam.ac.uk/~csr21/ed-in-climacs.png" :CONTENTS ";;; depends on the new command-parser, or at least on having a
+   [Condition of type SB-INT:SIMPLE-PROGRAM-ERROR" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19469 :USER "Xof" :DATE 3355238804 :CHANNEL "#lisp" :TITLE "see also http://www-jcsu.jesus.cam.ac.uk/~csr21/ed-in-climacs.png" :CONTENTS ";;; depends on the new command-parser, or at least on having a
 ;;; COM-FIND-FILE with arguments.
 
 #+sbcl
@@ -18026,7 +18026,7 @@ unknown &KEY argument: #<FUNCTION \"top level local call ALPHA-CHAR-P\" {107805C
 
 #+sbcl
 (pushnew 'ed-in-climacs sb-ext:*ed-functions*)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19468 :USER "twb" :DATE 3355237178 :CHANNEL "#rcirc" :TITLE "error text" :CONTENTS "Debugger entered--Lisp error: (error \"Lisp nesting exceeds `max-lisp-eval-depth'\")
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19468 :USER "twb" :DATE 3355237178 :CHANNEL "#rcirc" :TITLE "error text" :CONTENTS "Debugger entered--Lisp error: (error \"Lisp nesting exceeds `max-lisp-eval-depth'\")
   ad-real-definition(ad-Orig-rcirc-facify)
   ad-real-orig-definition(rcirc-facify)
   ad-cache-id-verification-code(rcirc-facify)
@@ -18040,7 +18040,7 @@ unknown &KEY argument: #<FUNCTION \"top level local call ALPHA-CHAR-P\" {107805C
   (if (functionp (quote rcirc-track-minor-mode)) (rcirc-track-minor-mode 1))
   execute-extended-command(nil)
   call-interactively(execute-extended-command)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19467 :USER "p00ya" :DATE 3355236041 :CHANNEL "#emacs" :TITLE "merge with ediff" :CONTENTS "#!/bin/sh
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19467 :USER "p00ya" :DATE 3355236041 :CHANNEL "#emacs" :TITLE "merge with ediff" :CONTENTS "#!/bin/sh
 # merge(1) compatible wrapper for emacs ediff
 
 set -e
@@ -18072,7 +18072,7 @@ END_ELISP
 fi
 
 exec emacsclient --eval=${eval}
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19466 :USER "_deepfire" :DATE 3355235898 :CHANNEL "#lisp" :TITLE "variable \"usage\"" :CONTENTS "i wrote this macro:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19466 :USER "_deepfire" :DATE 3355235898 :CHANNEL "#lisp" :TITLE "variable \"usage\"" :CONTENTS "i wrote this macro:
 
 (defmacro symfnlet (fndecllist &body body)
   (let ((symfnlist (mapcar #'car fndecllist)))
@@ -18115,7 +18115,7 @@ But, during evaluation SBCL emits following messages:
 ;   caught 3 STYLE-WARNING conditions
 
 What does really \"variable usage\" mean?
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19465 :USER "Cheery" :DATE 3355233205 :CHANNEL "#lisp" :TITLE "Toy-ish syntax implementation on lisp." :CONTENTS "; This program tests a different kind of syntax for lisp.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19465 :USER "Cheery" :DATE 3355233205 :CHANNEL "#lisp" :TITLE "Toy-ish syntax implementation on lisp." :CONTENTS "; This program tests a different kind of syntax for lisp.
 ; It is not complete, and the idea behind is vague and loose.
 ; This is neither better, it is hard to beat common lisp's original syntax in list processing.
 ;
@@ -18266,7 +18266,7 @@ What does really \"variable usage\" mean?
       (rightparen (error \"lonely rigth parenthesis or quote and right parenthesis.\"))
       (otherwise (error \"unknown token ~S with ~S\" result text)))))
 
-(loop (print (parse)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19464 :USER "dmiles_akf" :DATE 3355231507 :CHANNEL "#lisp" :TITLE "what is wrong here besides lack of sleep?" :CONTENTS "#|
+(loop (print (parse)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19464 :USER "dmiles_akf" :DATE 3355231507 :CHANNEL "#lisp" :TITLE "what is wrong here besides lack of sleep?" :CONTENTS "#|
 lambda-list::= (var* 
                 [&optional {var | (var [init-form [supplied-p-parameter]])}*] 
                 [&rest var] 
@@ -18303,7 +18303,7 @@ UNKEY
 (CLASS-DESCRIPTIONP EXPR :FAIL-MODE FAIL-MODE)
 (DEFUN CLASS-DESCRIPTION-TO-CLASS+SLOTSVALS (EXPR &KEY) (RET (PROGN (CLASS-DESCRIPTIONP EXPR :FAIL-MODE FAIL-MODE))))
 (DEFUN CLASS-DESCRIPTION-TO-CLASS+SLOTSVALS (EXPR &KEY) (RET (PROGN (CLASS-DESCRIPTIONP EXPR :FAIL-MODE FAIL-MODE))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19463 :USER "jkp" :DATE 3355230622 :CHANNEL "#adium" :TITLE "keyViewCalc" :CONTENTS "#0  -[TestTextView frame] (self=0x464760, _cmd=0x90a9ab40) at /Users/jkp/Documents/Atex/Prestige5/5.0.2/Mac/TestTextView.m:16
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19463 :USER "jkp" :DATE 3355230622 :CHANNEL "#adium" :TITLE "keyViewCalc" :CONTENTS "#0  -[TestTextView frame] (self=0x464760, _cmd=0x90a9ab40) at /Users/jkp/Documents/Atex/Prestige5/5.0.2/Mac/TestTextView.m:16
 #1  0x93783a24 in -[NSView compareGeometry:] ()
 #2  0x907de924 in CFQSortArray ()
 #3  0x9298afc8 in -[NSArray sortedArrayUsingFunction:context:] ()
@@ -18332,7 +18332,7 @@ UNKEY
 #26 0x93723ef4 in -[NSApplication sendEvent:] ()
 #27 0x9371b330 in -[NSApplication run] ()
 #28 0x9380be68 in NSApplicationMain ()
-#29 0x0000a424 in main (argc=1, argv=0xbffff99c) at /Users/jkp/Documents/Atex/Prestige5/5.0.2/Mac/PrContentManager/main.mm:25" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19462 :USER "nyef" :DATE 3355228930 :CHANNEL "#lisp" :TITLE "I can't tell if this is progress or not." :CONTENTS "//entering make-target-2.sh
+#29 0x0000a424 in main (argc=1, argv=0xbffff99c) at /Users/jkp/Documents/Atex/Prestige5/5.0.2/Mac/PrContentManager/main.mm:25" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19462 :USER "nyef" :DATE 3355228930 :CHANNEL "#lisp" :TITLE "I can't tell if this is progress or not." :CONTENTS "//entering make-target-2.sh
 //doing warm init
 This is SBCL 0.9.12, an implementation of ANSI Common Lisp.
 More information about SBCL is available at <http://www.sbcl.org/>.
@@ -18371,7 +18371,7 @@ Backtrace:
   20: (SB!C::TL-XEP SB!KERNEL::!COLD-INIT)
   21: Foreign fp = 0xb7c48f88, ra = 0x817e028
 ldb>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19461 :USER "MacDome" :DATE 3355227182 :CHANNEL "#webkit" :TITLE "review for andersca" :CONTENTS "Index: ChangeLog
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19461 :USER "MacDome" :DATE 3355227182 :CHANNEL "#webkit" :TITLE "review for andersca" :CONTENTS "Index: ChangeLog
 ===================================================================
 --- ChangeLog	(revision 14098)
 +++ ChangeLog	(working copy)
@@ -18469,7 +18469,7 @@ Index: projects/svg/status.xml
                      <issue>filters-displace-01-f displays incorrectly <bug>6719</bug></issue>
                  </issues>
              </element>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19460 :USER "MacDome" :DATE 3355226362 :CHANNEL "#webkit" :TITLE "review for andersca" :CONTENTS "Index: Scripts/run-webkit-tests
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19460 :USER "MacDome" :DATE 3355226362 :CHANNEL "#webkit" :TITLE "review for andersca" :CONTENTS "Index: Scripts/run-webkit-tests
 ===================================================================
 --- Scripts/run-webkit-tests	(revision 14094)
 +++ Scripts/run-webkit-tests	(working copy)
@@ -18516,7 +18516,7 @@ Index: ChangeLog
  2006-04-26  Mitz Pettel  <opendarwin.org@mitzpettel.com>
  
          Reviewed by hyatt.  Landed by eseidel.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19459 :USER "MacDome" :DATE 3355223387 :CHANNEL "#webkit" :TITLE "for review" :CONTENTS "Index: kcanvas/KCanvasContainer.h
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19459 :USER "MacDome" :DATE 3355223387 :CHANNEL "#webkit" :TITLE "for review" :CONTENTS "Index: kcanvas/KCanvasContainer.h
 ===================================================================
 --- kcanvas/KCanvasContainer.h	(revision 14094)
 +++ kcanvas/KCanvasContainer.h	(working copy)
@@ -19296,12 +19296,12 @@ Index: ksvg2/svg/SVGUseElement.cpp
  }
  
  // vim:ts=4:noet
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19458 :USER "a" :DATE 3355219642 :CHANNEL "None" :TITLE "b" :CONTENTS "cgi.out(\"charset\"=>\"UTF-8\") {
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19458 :USER "a" :DATE 3355219642 :CHANNEL "None" :TITLE "b" :CONTENTS "cgi.out(\"charset\"=>\"UTF-8\") {
   CGI.pretty(cgi.html{
                cgi.head{ cgi.title{ \"#{title}\" } } +
                  cgi.body{ getFeeds(foo, cgi) } } )
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19457 :USER "Lokadin" :DATE 3355218499 :CHANNEL "#haskell" :TITLE "thingy magigi" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19457 :USER "Lokadin" :DATE 3355218499 :CHANNEL "#haskell" :TITLE "thingy magigi" :CONTENTS "
 
 
 
@@ -19342,7 +19342,7 @@ getCont x = do
 
 play :: FilePath -> IO ()
 play name = system(\"sh /home/loki/.hai/\" ++ name)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19456 :USER "dialtone" :DATE 3355217864 :CHANNEL "#lisp-it" :TITLE "Generated code" :CONTENTS "(DEFCLASS OBJECT () ((META)))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19456 :USER "dialtone" :DATE 3355217864 :CHANNEL "#lisp-it" :TITLE "Generated code" :CONTENTS "(DEFCLASS OBJECT () ((META)))
 (DEFINE-CONDITION EXCEPTIONS.EXCEPTION (CONDITION OBJECT) NIL)
 (DEFINE-CONDITION TEST-EXCEPTION.MYEXCEPTION (EXCEPTIONS.EXCEPTION) NIL)
 (DEFCLASS OBJECT-META () ((CLASS-)))
@@ -19373,7 +19373,7 @@ play name = system(\"sh /home/loki/.hai/\" ++ name)
         (SETF ETYPE-2 V151 EVALUE-2 V150)
         (GO TAG2)
    TAG2 (ERROR EVALUE-2)))
-(WRITE (HANDLE-EXCEPTION NIL))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19455 :USER "sijmen" :DATE 3355217789 :CHANNEL "#macdev" :TITLE "export code" :CONTENTS "NSMutableString *text = [[NSMutableString alloc] init];
+(WRITE (HANDLE-EXCEPTION NIL))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19455 :USER "sijmen" :DATE 3355217789 :CHANNEL "#macdev" :TITLE "export code" :CONTENTS "NSMutableString *text = [[NSMutableString alloc] init];
 for (int i=0; i<selectionCount; i++) {
 	NSManagedObject *item = [selection objectAtIndex:i];
 	[text appendFormat:@\"// WEEK %@\\n\", i];
@@ -19399,11 +19399,11 @@ for (int i=0; i<selectionCount; i++) {
 	[text appendFormat:format, @\"infoZangdienst\", infoZangdienst];
 	[text appendFormat:format, @\"infoPreker\", infoPreker];
 	[text appendFormat:format, @\"infoBijzonder\", infoBijzonder];
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19454 :USER "TSC" :DATE 3355209598 :CHANNEL "#emacs" :TITLE "Try using this" :CONTENTS "(defadvice erc-modified-channels-update (around gnus-summary-exit activate)
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19454 :USER "TSC" :DATE 3355209598 :CHANNEL "#emacs" :TITLE "Try using this" :CONTENTS "(defadvice erc-modified-channels-update (around gnus-summary-exit activate)
   ;; This is true when gnus is exiting from a summary buffer
   (unless (bound-and-true-p gnus-group-is-exiting-p)
     ad-do-it))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19453 :USER "speth" :DATE 3355208595 :CHANNEL "#webkit" :TITLE "delegate dump" :CONTENTS "DELEGATE: [<_WebSafeForwarder> webView:<WebView> willPerformClientRedirectToURL:file:///Users/speth/Projects/apple/WebKit/WebKit/WebKitTools/JGS3.html delay:0 fireDate:2006-04-28 00:22:33 -0700 forFrame:<WebFrame> ]
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19453 :USER "speth" :DATE 3355208595 :CHANNEL "#webkit" :TITLE "delegate dump" :CONTENTS "DELEGATE: [<_WebSafeForwarder> webView:<WebView> willPerformClientRedirectToURL:file:///Users/speth/Projects/apple/WebKit/WebKit/WebKitTools/JGS3.html delay:0 fireDate:2006-04-28 00:22:33 -0700 forFrame:<WebFrame> ]
 
 DELEGATE: [<_WebSafeForwarder> webView:<WebView> didHandleOnloadEventsForFrame:<WebFrame> ]
 
@@ -19441,14 +19441,14 @@ This tests [page 3 description]....
 DELEGATE: [<_WebSafeForwarder> webView:<WebView> willCloseFrame:<WebFrame> ]
 
 checking for webView:willCloseFrame:    PASS
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19452 :USER "ct16k" :DATE 3355205916 :CHANNEL "#haskell" :TITLE "Can someone pls provide assistance with this? (I cannot log in the channel :()" :CONTENTS "I'm having trouble logging in, I hope this makes it through. If anyone has any ideas how to make this work, please annotate comments. Thx.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19452 :USER "ct16k" :DATE 3355205916 :CHANNEL "#haskell" :TITLE "Can someone pls provide assistance with this? (I cannot log in the channel :()" :CONTENTS "I'm having trouble logging in, I hope this makes it through. If anyone has any ideas how to make this work, please annotate comments. Thx.
 
 -- Given a world, produce a text file of it.
 saveWorld :: World -> String -> IO()
 saveWorld (n,m,w) name = do
  let {strs=[[ch|y<-[0..m-1],if (member (x,y) w==True) then ch='*' else ch='.']|x<-[0..n-1]]}
  writeFile name strs
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19451 :USER "htodd" :DATE 3355202767 :CHANNEL "#fink" :TITLE "RangerRick: new xorg error" :CONTENTS "Setting up xorg (6.8.2-1035) ...
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19451 :USER "htodd" :DATE 3355202767 :CHANNEL "#fink" :TITLE "RangerRick: new xorg error" :CONTENTS "Setting up xorg (6.8.2-1035) ...
 dyld: Library not loaded: /usr/X11R6/lib/libfontconfig.1.dylib
   Referenced from: /usr/X11R6/bin/fc-cache
   Reason: image not found
@@ -19457,7 +19457,7 @@ dyld: Library not loaded: /usr/X11R6/lib/libfontconfig.1.dylib
  subprocess post-installation script returned error exit status 133
 Errors were encountered while processing:
  xorg
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19450 :USER "MacDome" :DATE 3355200184 :CHANNEL "#webkit" :TITLE "review!" :CONTENTS "Index: dom/DOMImplementation.cpp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19450 :USER "MacDome" :DATE 3355200184 :CHANNEL "#webkit" :TITLE "review!" :CONTENTS "Index: dom/DOMImplementation.cpp
 ===================================================================
 --- dom/DOMImplementation.cpp	(revision 14094)
 +++ dom/DOMImplementation.cpp	(working copy)
@@ -19520,8 +19520,8 @@ Index: ChangeLog
          * WebCore.vcproj/WebCore/WebCore.vcproj: Fix break from last checkin.
  
  2006-04-27  Geoffrey Garen  <ggaren@apple.com>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19449 :USER "Cyg" :DATE 3355197518 :CHANNEL "#macdev" :TITLE "file type error?" :CONTENTS "NSDictionary *theFileAttributes = [theManager fileAttributesAtPath:theFilePath traverseLink:NO];
-NSString *theFileType = [theFileAttributes objectForKey:NSFileHFSTypeCode];" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19448 :USER "twb" :DATE 3355196457 :CHANNEL "#emacs" :TITLE "nasty, eh?" :CONTENTS "#!/bin/sh
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19449 :USER "Cyg" :DATE 3355197518 :CHANNEL "#macdev" :TITLE "file type error?" :CONTENTS "NSDictionary *theFileAttributes = [theManager fileAttributesAtPath:theFilePath traverseLink:NO];
+NSString *theFileType = [theFileAttributes objectForKey:NSFileHFSTypeCode];" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19448 :USER "twb" :DATE 3355196457 :CHANNEL "#emacs" :TITLE "nasty, eh?" :CONTENTS "#!/bin/sh
 if test -n \"$QUERY_STRING\"
 then 
     echo \"content-type: text/html\"
@@ -19534,11 +19534,11 @@ else
     echo \"brain fart!\"
     set
 fi
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19447 :USER "imajes" :DATE 3355195903 :CHANNEL "None" :TITLE "fanciful" :CONTENTS "canadaduane joined the chat room. (04:23) 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19447 :USER "imajes" :DATE 3355195903 :CHANNEL "None" :TITLE "fanciful" :CONTENTS "canadaduane joined the chat room. (04:23) 
 [04:29] canadaduane: ?$seen allan
 ?[04:29] caprica_six: ?canadaduane: allan was last seen 8h 2m 20s ago, saying: okay, going to bed  l8r all
 ?[04:29] canadaduane left the chat room. (04:29) 
-[04:39] allan joined the chat room. (04:39) " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19446 :USER "feelgood" :DATE 3355195407 :CHANNEL "#macdev" :TITLE "color inversion shader" :CONTENTS "!!ARBfp1.0
+[04:39] allan joined the chat room. (04:39) " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19446 :USER "feelgood" :DATE 3355195407 :CHANNEL "#macdev" :TITLE "color inversion shader" :CONTENTS "!!ARBfp1.0
 							
 OPTION ARB_precision_hint_fastest;
 								
@@ -19547,7 +19547,7 @@ TEMP t0;
 TEX t0, fragment.texcoord[0], texture[0], [texture_type];
 ADD t0, 1.0, -t0;
 
-END" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19445 :USER "3533c333" :DATE 3355192813 :CHANNEL "#ledger" :TITLE "8cc1d75f" :CONTENTS " f04d7790 http://af53f489.com <a href='http://1a27c7ba.com'>09515776</a> [url]http://69e094a6.com[/url] [url=http://0b895999.com]4d90693b[/url] " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19444 :USER "kilimanjaro" :DATE 3355187378 :CHANNEL "#scheme" :TITLE "rpn calc" :CONTENTS ";;; macro hack so procedures can be written without explicitly manipulating the stack
+END" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19445 :USER "3533c333" :DATE 3355192813 :CHANNEL "#ledger" :TITLE "8cc1d75f" :CONTENTS " f04d7790 http://af53f489.com <a href='http://1a27c7ba.com'>09515776</a> [url]http://69e094a6.com[/url] [url=http://0b895999.com]4d90693b[/url] " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19444 :USER "kilimanjaro" :DATE 3355187378 :CHANNEL "#scheme" :TITLE "rpn calc" :CONTENTS ";;; macro hack so procedures can be written without explicitly manipulating the stack
 (define-syntax proc
   (syntax-rules ()
     ((proc () expr ...)
@@ -19576,7 +19576,7 @@ END" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19445 :USER "3533c333" :DATE 
 		      (div , (proc (x y) (/ x y))))))
    stack))
 
-(eval '(1 2 add 3 mul)) ; 9" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19443 :USER "kjgl" :DATE 3355182523 :CHANNEL "None" :TITLE "polk" :CONTENTS "28,416,43" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19442 :USER "pytchfork" :DATE 3355180941 :CHANNEL "#fink" :TITLE "-dynamic" :CONTENTS "gcc -dynamiclib -install_name /sw/lib/ncurses/`basename ../lib/libncurses.5.dylib` -compatibility_version 5 -current_version 5 -o ../lib/libncurses.5.dylib ../obj_s/hardscroll.o ../obj_s/hashmap.o ../obj_s/lib_addch.o ../obj_s/lib_addstr.o ../obj_s/lib_beep.o ../obj_s/lib_bkgd.o ../obj_s/lib_box.o ../obj_s/lib_chgat.o ../obj_s/lib_clear.o ../obj_s/lib_clearok.o ../obj_s/lib_clrbot.o ../obj_s/lib_clreol.o ../obj_s/lib_color.o ../obj_s/lib_colorset.o ../obj_s/lib_delch.o ../obj_s/lib_delwin.o ../obj_s/lib_echo.o ../obj_s/lib_endwin.o ../obj_s/lib_erase.o ../obj_s/lib_flash.o ../obj_s/lib_gen.o ../obj_s/lib_getch.o ../obj_s/lib_getstr.o ../obj_s/lib_hline.o ../obj_s/lib_immedok.o ../obj_s/lib_inchstr.o ../obj_s/lib_initscr.o ../obj_s/lib_insch.o ../obj_s/lib_insdel.o ../obj_s/lib_insnstr.o ../obj_s/lib_instr.o ../obj_s/lib_isendwin.o ../obj_s/lib_leaveok.o ../obj_s/lib_mouse.o ../obj_s/lib_move.o ../obj_s/lib_mvcur.o ../obj_s/lib_mvwin.o ../obj_s/lib_newterm.o ../obj_s/lib_newwin.o ../obj_s/lib_nl.o ../obj_s/lib_overlay.o ../obj_s/lib_pad.o ../obj_s/lib_printw.o ../obj_s/lib_redrawln.o ../obj_s/lib_refresh.o ../obj_s/lib_restart.o ../obj_s/lib_scanw.o ../obj_s/lib_screen.o ../obj_s/lib_scroll.o ../obj_s/lib_scrollok.o ../obj_s/lib_scrreg.o ../obj_s/lib_set_term.o ../obj_s/lib_slk.o ../obj_s/lib_slkatr_set.o ../obj_s/lib_slkatrof.o ../obj_s/lib_slkatron.o ../obj_s/lib_slkatrset.o ../obj_s/lib_slkattr.o ../obj_s/lib_slkclear.o ../obj_s/lib_slkcolor.o ../obj_s/lib_slkinit.o ../obj_s/lib_slklab.o ../obj_s/lib_slkrefr.o ../obj_s/lib_slkset.o ../obj_s/lib_slktouch.o ../obj_s/lib_touch.o ../obj_s/lib_tstp.o ../obj_s/lib_ungetch.o ../obj_s/lib_vidattr.o ../obj_s/lib_vline.o ../obj_s/lib_wattroff.o ../obj_s/lib_wattron.o ../obj_s/lib_winch.o ../obj_s/lib_window.o ../obj_s/nc_panel.o ../obj_s/safe_sprintf.o ../obj_s/tty_update.o ../obj_s/varargs.o ../obj_s/memmove.o ../obj_s/vsscanf.o ../obj_s/lib_freeall.o ../obj_s/define_key.o ../obj_s/expanded.o ../obj_s/key_defined.o ../obj_s/keybound.o ../obj_s/keyok.o ../obj_s/lib_dft_fgbg.o ../obj_s/lib_print.o ../obj_s/resizeterm.o ../obj_s/tries.o ../obj_s/wresize.o ../obj_s/access.o ../obj_s/add_tries.o ../obj_s/alloc_entry.o ../obj_s/alloc_ttype.o ../obj_s/captoinfo.o ../obj_s/codes.o ../obj_s/comp_captab.o ../obj_s/comp_error.o ../obj_s/comp_expand.o ../obj_s/comp_hash.o ../obj_s/comp_parse.o ../obj_s/comp_scan.o ../obj_s/doalloc.o ../obj_s/fallback.o ../obj_s/free_ttype.o ../obj_s/getenv_num.o ../obj_s/home_terminfo.o ../obj_s/init_keytry.o ../obj_s/lib_acs.o ../obj_s/lib_baudrate.o ../obj_s/lib_cur_term.o ../obj_s/lib_data.o ../obj_s/lib_has_cap.o ../obj_s/lib_kernel.o ../obj_s/lib_keyname.o ../obj_s/lib_longname.o ../obj_s/lib_napms.o ../obj_s/lib_options.o ../obj_s/lib_raw.o ../obj_s/lib_setup.o ../obj_s/lib_termcap.o ../obj_s/lib_termname.o ../obj_s/lib_tgoto.o ../obj_s/lib_ti.o ../obj_s/lib_tparm.o ../obj_s/lib_tputs.o ../obj_s/lib_trace.o ../obj_s/lib_ttyflags.o ../obj_s/lib_twait.o ../obj_s/name_match.o ../obj_s/names.o ../obj_s/parse_entry.o ../obj_s/read_entry.o ../obj_s/read_termcap.o ../obj_s/setbuf.o ../obj_s/strings.o ../obj_s/unctrl.o ../obj_s/visbuf.o ../obj_s/write_entry.o ../obj_s/version.o -L../lib  -Wl,-search_paths_first  
+(eval '(1 2 add 3 mul)) ; 9" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19443 :USER "kjgl" :DATE 3355182523 :CHANNEL "None" :TITLE "polk" :CONTENTS "28,416,43" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19442 :USER "pytchfork" :DATE 3355180941 :CHANNEL "#fink" :TITLE "-dynamic" :CONTENTS "gcc -dynamiclib -install_name /sw/lib/ncurses/`basename ../lib/libncurses.5.dylib` -compatibility_version 5 -current_version 5 -o ../lib/libncurses.5.dylib ../obj_s/hardscroll.o ../obj_s/hashmap.o ../obj_s/lib_addch.o ../obj_s/lib_addstr.o ../obj_s/lib_beep.o ../obj_s/lib_bkgd.o ../obj_s/lib_box.o ../obj_s/lib_chgat.o ../obj_s/lib_clear.o ../obj_s/lib_clearok.o ../obj_s/lib_clrbot.o ../obj_s/lib_clreol.o ../obj_s/lib_color.o ../obj_s/lib_colorset.o ../obj_s/lib_delch.o ../obj_s/lib_delwin.o ../obj_s/lib_echo.o ../obj_s/lib_endwin.o ../obj_s/lib_erase.o ../obj_s/lib_flash.o ../obj_s/lib_gen.o ../obj_s/lib_getch.o ../obj_s/lib_getstr.o ../obj_s/lib_hline.o ../obj_s/lib_immedok.o ../obj_s/lib_inchstr.o ../obj_s/lib_initscr.o ../obj_s/lib_insch.o ../obj_s/lib_insdel.o ../obj_s/lib_insnstr.o ../obj_s/lib_instr.o ../obj_s/lib_isendwin.o ../obj_s/lib_leaveok.o ../obj_s/lib_mouse.o ../obj_s/lib_move.o ../obj_s/lib_mvcur.o ../obj_s/lib_mvwin.o ../obj_s/lib_newterm.o ../obj_s/lib_newwin.o ../obj_s/lib_nl.o ../obj_s/lib_overlay.o ../obj_s/lib_pad.o ../obj_s/lib_printw.o ../obj_s/lib_redrawln.o ../obj_s/lib_refresh.o ../obj_s/lib_restart.o ../obj_s/lib_scanw.o ../obj_s/lib_screen.o ../obj_s/lib_scroll.o ../obj_s/lib_scrollok.o ../obj_s/lib_scrreg.o ../obj_s/lib_set_term.o ../obj_s/lib_slk.o ../obj_s/lib_slkatr_set.o ../obj_s/lib_slkatrof.o ../obj_s/lib_slkatron.o ../obj_s/lib_slkatrset.o ../obj_s/lib_slkattr.o ../obj_s/lib_slkclear.o ../obj_s/lib_slkcolor.o ../obj_s/lib_slkinit.o ../obj_s/lib_slklab.o ../obj_s/lib_slkrefr.o ../obj_s/lib_slkset.o ../obj_s/lib_slktouch.o ../obj_s/lib_touch.o ../obj_s/lib_tstp.o ../obj_s/lib_ungetch.o ../obj_s/lib_vidattr.o ../obj_s/lib_vline.o ../obj_s/lib_wattroff.o ../obj_s/lib_wattron.o ../obj_s/lib_winch.o ../obj_s/lib_window.o ../obj_s/nc_panel.o ../obj_s/safe_sprintf.o ../obj_s/tty_update.o ../obj_s/varargs.o ../obj_s/memmove.o ../obj_s/vsscanf.o ../obj_s/lib_freeall.o ../obj_s/define_key.o ../obj_s/expanded.o ../obj_s/key_defined.o ../obj_s/keybound.o ../obj_s/keyok.o ../obj_s/lib_dft_fgbg.o ../obj_s/lib_print.o ../obj_s/resizeterm.o ../obj_s/tries.o ../obj_s/wresize.o ../obj_s/access.o ../obj_s/add_tries.o ../obj_s/alloc_entry.o ../obj_s/alloc_ttype.o ../obj_s/captoinfo.o ../obj_s/codes.o ../obj_s/comp_captab.o ../obj_s/comp_error.o ../obj_s/comp_expand.o ../obj_s/comp_hash.o ../obj_s/comp_parse.o ../obj_s/comp_scan.o ../obj_s/doalloc.o ../obj_s/fallback.o ../obj_s/free_ttype.o ../obj_s/getenv_num.o ../obj_s/home_terminfo.o ../obj_s/init_keytry.o ../obj_s/lib_acs.o ../obj_s/lib_baudrate.o ../obj_s/lib_cur_term.o ../obj_s/lib_data.o ../obj_s/lib_has_cap.o ../obj_s/lib_kernel.o ../obj_s/lib_keyname.o ../obj_s/lib_longname.o ../obj_s/lib_napms.o ../obj_s/lib_options.o ../obj_s/lib_raw.o ../obj_s/lib_setup.o ../obj_s/lib_termcap.o ../obj_s/lib_termname.o ../obj_s/lib_tgoto.o ../obj_s/lib_ti.o ../obj_s/lib_tparm.o ../obj_s/lib_tputs.o ../obj_s/lib_trace.o ../obj_s/lib_ttyflags.o ../obj_s/lib_twait.o ../obj_s/name_match.o ../obj_s/names.o ../obj_s/parse_entry.o ../obj_s/read_entry.o ../obj_s/read_termcap.o ../obj_s/setbuf.o ../obj_s/strings.o ../obj_s/unctrl.o ../obj_s/visbuf.o ../obj_s/write_entry.o ../obj_s/version.o -L../lib  -Wl,-search_paths_first  
 libtool: unrecognized option `-dynamic'
 Try `libtool --help' for more information.
 make[1]: *** [../lib/libncurses.5.dylib] Error 1
@@ -19587,7 +19587,7 @@ Removing build lock...
 (Reading database ... 4460 files and directories currently installed.)
 Removing fink-buildlock-ncurses-5.4-20041023-10 ...
 Failed: phase compiling: ncurses-5.4-20041023-10 failed
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19441 :USER "geckosenator" :DATE 3355180119 :CHANNEL "#scheme" :TITLE "scheme to bf" :CONTENTS "(display \"(define b (make-vector 30000 0))(define p 0)\")
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19441 :USER "geckosenator" :DATE 3355180119 :CHANNEL "#scheme" :TITLE "scheme to bf" :CONTENTS "(display \"(define b (make-vector 30000 0))(define p 0)\")
 (let loop ()
   (let ((c (read-char)))
     (cond ((not (eof-object? c))
@@ -19601,7 +19601,7 @@ Failed: phase compiling: ncurses-5.4-20041023-10 failed
 	     ((#\\[) (display \"(let loop () (cond ((not (= 0 (vector-ref b p)))\"))
 	     ((#\\]) (display \"(loop))))\")))
 	   (loop)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19440 :USER "petekaz" :DATE 3355175429 :CHANNEL "None" :TITLE "erbot changes for erc" :CONTENTS "kaz@coco:/home/erbot/elisp/erbot/erbot$ cvs -q diff  | more
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19440 :USER "petekaz" :DATE 3355175429 :CHANNEL "None" :TITLE "erbot changes for erc" :CONTENTS "kaz@coco:/home/erbot/elisp/erbot/erbot$ cvs -q diff  | more
 Index: erbot.el
 ===================================================================
 RCS file: /cvsroot/erbot/erbot/erbot.el,v
@@ -19642,7 +19642,7 @@ diff -u -r1.18 erbtrain.el
 +            (when (erc-process-alive) (erc-server-send \"PING\"))))))
       (if (listp erbtrain-keep-alive-buffer) erbtrain-keep-alive-buffer
         (list erbtrain-keep-alive-buffer)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19439 :USER "dave007" :DATE 3355173563 :CHANNEL "#lisp" :TITLE "errors" :CONTENTS "(setf s nil)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19439 :USER "dave007" :DATE 3355173563 :CHANNEL "#lisp" :TITLE "errors" :CONTENTS "(setf s nil)
 (setf start (who-starts s))
 (print start)
 
@@ -19656,7 +19656,7 @@ diff -u -r1.18 erbtrain.el
 	  (t (print '(Bad option))))
     
     ))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19438 :USER "lukego" :DATE 3355172772 :CHANNEL "#lisp" :TITLE "LogicaCMG's contribution to networking" :CONTENTS "POST /upower/ProcessLayer/processuPowerRequest.uone HTTP/1.1
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19438 :USER "lukego" :DATE 3355172772 :CHANNEL "#lisp" :TITLE "LogicaCMG's contribution to networking" :CONTENTS "POST /upower/ProcessLayer/processuPowerRequest.uone HTTP/1.1
 Host: localhost:1070
 Content-Length: 466
 Content-Type: application/x-www-form-urlencoded
@@ -20374,7 +20374,7 @@ c0d
 
 0
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19437 :USER "sijmen" :DATE 3355170433 :CHANNEL "#macdev" :TITLE "Panel code" :CONTENTS "- (IBAction)export:(id)sender
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19437 :USER "sijmen" :DATE 3355170433 :CHANNEL "#macdev" :TITLE "Panel code" :CONTENTS "- (IBAction)export:(id)sender
 {
 	NSSavePanel* savePanel = [NSSavePanel savePanel];
 	[savePanel setRequiredFileType:@\"php\"];
@@ -20390,7 +20390,7 @@ c0d
 	} else {
 		NSLog(@\"Cancel\");
 	}
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19436 :USER "Cheery" :DATE 3355167841 :CHANNEL "#scheme" :TITLE "How lisp does it?" :CONTENTS "(defun parse ()
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19436 :USER "Cheery" :DATE 3355167841 :CHANNEL "#scheme" :TITLE "How lisp does it?" :CONTENTS "(defun parse ()
   (multiple-value-bind (result text) (next-token)
     (case result
       (whitespace (parse))
@@ -20399,7 +20399,7 @@ c0d
       (leftparen ... ?
       (rightparen ... ?
       (quote (list 'quote (parse)))
-      (otherwise (error \"unknown token ~S with data ~S\" result text)))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19435 :USER "tewk" :DATE 3355166163 :CHANNEL "#scheme" :TITLE "Best way to turn a string containing a procedure name into a procedure?" :CONTENTS "(define (a)
+      (otherwise (error \"unknown token ~S with data ~S\" result text)))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19435 :USER "tewk" :DATE 3355166163 :CHANNEL "#scheme" :TITLE "Best way to turn a string containing a procedure name into a procedure?" :CONTENTS "(define (a)
   (printf \"A called ~n\"))
 
 (define (b)
@@ -20407,7 +20407,7 @@ c0d
 
 (if b
      ((eval (string->symbol \"a\")))
-     (b))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19434 :USER "Cheery" :DATE 3355161054 :CHANNEL "#scheme" :TITLE "I need your opinion about this!" :CONTENTS "
+     (b))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19434 :USER "Cheery" :DATE 3355161054 :CHANNEL "#scheme" :TITLE "I need your opinion about this!" :CONTENTS "
 
 (setq *tokens* nil)
 
@@ -20495,7 +20495,7 @@ c0d
 
 (reset *standard-input*)
 
-(loop (format t \"~S~&\" (next-token)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19433 :USER "ben" :DATE 3355160595 :CHANNEL "None" :TITLE "fun" :CONTENTS "#include <stdio.h>
+(loop (format t \"~S~&\" (next-token)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19433 :USER "ben" :DATE 3355160595 :CHANNEL "None" :TITLE "fun" :CONTENTS "#include <stdio.h>
 
 int main ()
 {
@@ -20512,7 +20512,7 @@ int main ()
   }
             
   printf(\"red is %u\\n\", (unsigned int)red);
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19432 :USER "josh" :DATE 3355160396 :CHANNEL "None" :TITLE "reverse premultiply 8-bit color components" :CONTENTS "#include <stdio.h>
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19432 :USER "josh" :DATE 3355160396 :CHANNEL "None" :TITLE "reverse premultiply 8-bit color components" :CONTENTS "#include <stdio.h>
 
 int main ()
 {
@@ -20527,7 +20527,7 @@ int main ()
   }
             
   printf(\"red is %u\\n\", (unsigned int)red);
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19431 :USER "sbp" :DATE 3355156829 :CHANNEL "#swhack" :TITLE "Email as a Mass Noun (on #d8uv.com, 22nd April 2006)" :CONTENTS "[03:17] <sbp> though I found myself mass nouning something the other day through
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19431 :USER "sbp" :DATE 3355156829 :CHANNEL "#swhack" :TITLE "Email as a Mass Noun (on #d8uv.com, 22nd April 2006)" :CONTENTS "[03:17] <sbp> though I found myself mass nouning something the other day through
    American influence, and I can't remember what... oh wait, I can look it up
 [03:17] <sbp> \"I got email (eek, mass noun) today about The Mills Experiments\"
 [03:18] <d8uv> You should pluralize things arbitrarily. It's awesomes
@@ -20544,7 +20544,7 @@ int main ()
 [03:20] <sbp> fair enough
 
 Timestamps in BST.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19430 :USER "defcon8" :DATE 3355156326 :CHANNEL "#scheme" :TITLE "what is wrong?" :CONTENTS "(define (square x)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19430 :USER "defcon8" :DATE 3355156326 :CHANNEL "#scheme" :TITLE "what is wrong?" :CONTENTS "(define (square x)
   (* x x))
 
 (define (sqrt-iter guess x)
@@ -20557,7 +20557,7 @@ Timestamps in BST.
 
 (define (improve guess x)
   (/ (+ x guess) 2))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19429 :USER "fd817045" :DATE 3355154333 :CHANNEL "#sdlperl" :TITLE "54aa9d7e" :CONTENTS " 6ab7db29 http://0bd2b9f7.com <a href='http://37a6f970.com'>817d3508</a> [url]http://86a48616.com[/url] [url=http://04436da5.com]fe12fa24[/url] " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19428 :USER "death" :DATE 3355153259 :CHANNEL "#lisp" :TITLE "sbcl 0.9.11 (room) bugged" :CONTENTS "  failed AVER:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19429 :USER "fd817045" :DATE 3355154333 :CHANNEL "#sdlperl" :TITLE "54aa9d7e" :CONTENTS " 6ab7db29 http://0bd2b9f7.com <a href='http://37a6f970.com'>817d3508</a> [url]http://86a48616.com[/url] [url=http://04436da5.com]fe12fa24[/url] " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19428 :USER "death" :DATE 3355153259 :CHANNEL "#lisp" :TITLE "sbcl 0.9.11 (room) bugged" :CONTENTS "  failed AVER:
     \"(OR (EQL (ROOM-INFO-LENGTH INFO) (1+ (GET-HEADER-DATA OBJ)))
     (FLOATP OBJ)
     (SIMPLE-ARRAY-NIL-P OBJ))\"
@@ -20609,7 +20609,7 @@ Backtrace:
  27: (\"foreign function: funcall0\")
  28: (\"foreign function: new_thread_trampoline\")
  29: (\"foreign function: #x40035297\")
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19427 :USER "autoxr" :DATE 3355150819 :CHANNEL "#macdev" :TITLE "my little bit of keyloop code" :CONTENTS "    keyLoopView = [self nextKeyView];
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19427 :USER "autoxr" :DATE 3355150819 :CHANNEL "#macdev" :TITLE "my little bit of keyloop code" :CONTENTS "    keyLoopView = [self nextKeyView];
     if ([keyLoopView isDescendantOf:self]) {
         // We need to remove our subviews (which will be hidden) from the key loop.
     
@@ -20631,7 +20631,7 @@ Backtrace:
         [nonretainedLastChildKeyView setNextKeyView:nil];
     } else {
         nonretainedOriginalNextKeyView = nil;
-    }" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19426 :USER "forcer" :DATE 3355149545 :CHANNEL "None" :TITLE "isearch-forward-word-at-point" :CONTENTS "(defun isearch-forward-word-at-point ()
+    }" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19426 :USER "forcer" :DATE 3355149545 :CHANNEL "None" :TITLE "isearch-forward-word-at-point" :CONTENTS "(defun isearch-forward-word-at-point ()
   \"Search forward for word at point.\"
   (interactive)
   (let ((word (save-excursion
@@ -20641,7 +20641,7 @@ Backtrace:
                   (buffer-substring beg (point))))))
     (isearch-mode t nil nil nil t)
     (isearch-yank-string word)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19425 :USER "123" :DATE 3355148416 :CHANNEL "None" :TITLE "123" :CONTENTS "#include <stdio.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19425 :USER "123" :DATE 3355148416 :CHANNEL "None" :TITLE "123" :CONTENTS "#include <stdio.h>
 
 class CHure     // Basisklasse.
 {
@@ -20688,7 +20688,7 @@ int main( int iArgC, char **pszArgV )
                       //               dass er auch auf eine solche zeigt.
 
   return 0;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19424 :USER "123" :DATE 3355148397 :CHANNEL "None" :TITLE "123" :CONTENTS "#include <stdio.h>
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19424 :USER "123" :DATE 3355148397 :CHANNEL "None" :TITLE "123" :CONTENTS "#include <stdio.h>
 
 class CHure     // Basisklasse.
 {
@@ -20735,7 +20735,7 @@ int main( int iArgC, char **pszArgV )
                       //               dass er auch auf eine solche zeigt.
 
   return 0;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19423 :USER "mvilleneuve" :DATE 3355146805 :CHANNEL "#lisp" :TITLE "string edit distance" :CONTENTS "(let ((d (make-array (list 32 32) :element-type 'fixnum)))
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19423 :USER "mvilleneuve" :DATE 3355146805 :CHANNEL "#lisp" :TITLE "string edit distance" :CONTENTS "(let ((d (make-array (list 32 32) :element-type 'fixnum)))
   (defun levenshtein-distance (word1 word2)
     (declare (type simple-string word1 word2)
              (optimize (speed 3)))
@@ -20756,10 +20756,10 @@ int main( int iArgC, char **pszArgV )
                                    (1+ (aref d i (1- j)))
                                    (+ (aref d (1- i) (1- j)) cost)))))
       (aref d length1 length2))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19422 :USER "oober" :DATE 3355139091 :CHANNEL "#svn" :TITLE "Subversion checkout" :CONTENTS "#svn co http://svn.atheme.org/audacious/audtool/ audtool
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19422 :USER "oober" :DATE 3355139091 :CHANNEL "#svn" :TITLE "Subversion checkout" :CONTENTS "#svn co http://svn.atheme.org/audacious/audtool/ audtool
 svn: PROPFIND request failed on '/audacious/audtool'
 svn: PROPFIND of '/audacious/audtool': Could not parse response status line. (http://svn.atheme.org)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19421 :USER "ltsampros" :DATE 3355134814 :CHANNEL "#emacs" :TITLE "indent-all-buffers" :CONTENTS "(defun indent-all-buffers ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19421 :USER "ltsampros" :DATE 3355134814 :CHANNEL "#emacs" :TITLE "indent-all-buffers" :CONTENTS "(defun indent-all-buffers ()
   (interactive)
   (dolist (elt (mapcar (function buffer-name) (buffer-list)) nil)
     (save-current-buffer
@@ -20767,7 +20767,7 @@ svn: PROPFIND of '/audacious/audtool': Could not parse response status line. (ht
       (if (not buffer-read-only)
           (indent-region (point-min) (point-max) nil))
       )))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19420 :USER "yrk" :DATE 3355123892 :CHANNEL "#lisp" :TITLE "*printer-readably*" :CONTENTS "The following writes to the file and outputs:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19420 :USER "yrk" :DATE 3355123892 :CHANNEL "#lisp" :TITLE "*printer-readably*" :CONTENTS "The following writes to the file and outputs:
 \"*print-readably* => NIL\"
 
 (let ((*print-readably* t))
@@ -20777,7 +20777,7 @@ svn: PROPFIND of '/audacious/audtool': Could not parse response status line. (ht
 			 :if-exists :supersede)
       (with-standard-io-syntax
 	(print symbol out)))
-    (format nil \"*print-readably* => ~A\" *print-readably*)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19419 :USER "arbscht" :DATE 3355122857 :CHANNEL "None" :TITLE "sbcl sarge24 deb failure" :CONTENTS "server:/# apt-get install sbcl
+    (format nil \"*print-readably* => ~A\" *print-readably*)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19419 :USER "arbscht" :DATE 3355122857 :CHANNEL "None" :TITLE "sbcl sarge24 deb failure" :CONTENTS "server:/# apt-get install sbcl
 Reading Package Lists... Done
 Building Dependency Tree... Done
 Suggested packages:
@@ -20799,7 +20799,7 @@ ensure_space: failed to validate 536870912 bytes at 0x09000000
 (hint: Try \"ulimit -a\"; maybe you should increase memory limits.)
 mv: cannot stat `sbcl-new.core': No such file or directory
 FAILED
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19418 :USER "kensanata" :DATE 3355121655 :CHANNEL "#rcirc" :TITLE "no autojoin?" :CONTENTS "[2006-04-27T09:16:48 irc.freenode.net] NICK kensanata
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19418 :USER "kensanata" :DATE 3355121655 :CHANNEL "#rcirc" :TITLE "no autojoin?" :CONTENTS "[2006-04-27T09:16:48 irc.freenode.net] NICK kensanata
 [2006-04-27T09:16:48 irc.freenode.net] USER asc hostname servername :Alex Schroeder
 [2006-04-27T09:16:48 irc.freenode.net] NOTICE AUTH :*** Looking up your hostname...
 [2006-04-27T09:16:48 irc.freenode.net] NOTICE AUTH :*** Found your hostname, welcome back
@@ -20856,7 +20856,7 @@ NOTICE kensanata` :*** Your host is zelazny.freenode.net[zelazny.freenode.net/66
 [2006-04-27T09:17:31 irc.freenode.net] :zelazny.freenode.net PONG zelazny.freenode.net :kensanata`
 [2006-04-27T09:18:30 irc.freenode.net] PING zelazny.freenode.net
 [2006-04-27T09:18:31 irc.freenode.net] :zelazny.freenode.net PONG zelazny.freenode.net :kensanata`
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19417 :USER "falconair" :DATE 3355112952 :CHANNEL "#scheme" :TITLE "small expression evaluator?" :CONTENTS "//example data
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19417 :USER "falconair" :DATE 3355112952 :CHANNEL "#scheme" :TITLE "small expression evaluator?" :CONTENTS "//example data
 var tables = {
     testdata:[[\"bob\",15,2.5],[\"jim\",17,2.9],[\"jones\",12,3.5],[\"dave\",18,2.4],
     [\"eric\",15,4.0],[\"kyle\",21,1.1],[\"bart\",12,2.2],[\"homer\",22,3.3],[\"jack\",15,.5],
@@ -20906,7 +20906,7 @@ func_gt (columns_age columns_gpa )
 
 Now I need to build a function, which takes either this textual representation or some tree like datastructure (which i don't have yet) and build a predicate whcih i can use in my filter function as such:
 filter(data, predicatefunction)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19416 :USER "Testeur" :DATE 3355111370 :CHANNEL "#linux-quebec" :TITLE "Un test" :CONTENTS "Je ne fais que tester cette fonction." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19415 :USER "freddy" :DATE 3355111364 :CHANNEL "None" :TITLE "dmesg" :CONTENTS "ALSA sound/pci/ac97/ac97_codec.c:1968: AC'97 0 access is not valid [0xffffffff], removing mixer.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19416 :USER "Testeur" :DATE 3355111370 :CHANNEL "#linux-quebec" :TITLE "Un test" :CONTENTS "Je ne fais que tester cette fonction." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19415 :USER "freddy" :DATE 3355111364 :CHANNEL "None" :TITLE "dmesg" :CONTENTS "ALSA sound/pci/ac97/ac97_codec.c:1968: AC'97 0 access is not valid [0xffffffff], removing mixer.
     ACPI-0402: *** Warning: Unable to derive IRQ for device 0000:01:0b.0
 EMU10K1_Audigy: probe of 0000:01:0b.0 failed with error -5
     ACPI-0402: *** Warning: Unable to derive IRQ for device 0000:01:0b.0
@@ -20916,7 +20916,7 @@ ALSA sound/pci/ac97/ac97_codec.c:1968: AC'97 0 access is not valid [0xffffffff],
     ACPI-0402: *** Warning: Unable to derive IRQ for device 0000:01:0b.0
 EMU10K1_Audigy: probe of 0000:01:0b.0 failed with error -5
 gameport: kgameportd exiting
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19414 :USER "freddy" :DATE 3355109301 :CHANNEL "None" :TITLE "dmesg" :CONTENTS "linux:/home/freddy # dmesg | tail
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19414 :USER "freddy" :DATE 3355109301 :CHANNEL "None" :TITLE "dmesg" :CONTENTS "linux:/home/freddy # dmesg | tail
     ACPI-0402: *** Warning: Unable to derive IRQ for device 0000:01:0b.0
 ACPI: PCI Interrupt 0000:01:0b.0[?]: no GSI - using IRQ 9
 ALSA sound/pci/ac97/ac97_codec.c:1959: AC'97 0 does not respond - RESET
@@ -20927,11 +20927,11 @@ SFW2-OUT-ERROR IN= OUT=eth0 SRC=192.168.1.102 DST=216.165.129.140 LEN=52 TOS=0x0
 SFW2-INext-DROP-DEFLT-INV IN=eth0 OUT= MAC=00:04:75:bd:b3:77:00:12:17:ca:cf:03:08:00 SRC=216.165.129.140 DST=192.168.1.102 LEN=40 TOS=0x00 PREC=0x00 TTL=49 ID=12688 DF PROTO=TCP SPT=80 DPT=23215 WINDOW=0 RES=0x00 RST URGP=0
 SFW2-OUT-ERROR IN= OUT=eth0 SRC=192.168.1.102 DST=216.165.129.140 LEN=52 TOS=0x00 PREC=0x00 TTL=64 ID=49610 DF PROTO=TCP SPT=23215 DPT=80 WINDOW=16022 RES=0x00 ACK FIN URGP=0 OPT (0101080A02A0B69EA861736F)
 SFW2-INext-DROP-DEFLT-INV IN=eth0 OUT= MAC=00:04:75:bd:b3:77:00:12:17:ca:cf:03:08:00 SRC=216.165.129.140 DST=192.168.1.102 LEN=40 TOS=0x00 PREC=0x00 TTL=49 ID=12968 DF PROTO=TCP SPT=80 DPT=23215 WINDOW=0 RES=0x00 RST URGP=0
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19413 :USER "landonf" :DATE 3355108737 :CHANNEL "#opendarwin" :TITLE "Am I being an idiot?" :CONTENTS "landonf@timor:auth-ldap/trunk/build/tests> gcc -o tests tests.o LFString.o -L../src -lopenvpn-auth-ldap
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19413 :USER "landonf" :DATE 3355108737 :CHANNEL "#opendarwin" :TITLE "Am I being an idiot?" :CONTENTS "landonf@timor:auth-ldap/trunk/build/tests> gcc -o tests tests.o LFString.o -L../src -lopenvpn-auth-ldap
 /usr/bin/ld: can't locate file for: -lopenvpn-auth-ldap
 collect2: ld returned 1 exit status
 landonf@timor:auth-ldap/trunk/build/tests> ls ../src/openvpn-auth-ldap.dylib 
-../src/openvpn-auth-ldap.dylib" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19412 :USER "mbishop" :DATE 3355103766 :CHANNEL "#lisp" :TITLE "simple bot problem" :CONTENTS "(defpackage :testbot (:use :common-lisp :irc :cl-ppcre) (:export :start-testbot 
+../src/openvpn-auth-ldap.dylib" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19412 :USER "mbishop" :DATE 3355103766 :CHANNEL "#lisp" :TITLE "simple bot problem" :CONTENTS "(defpackage :testbot (:use :common-lisp :irc :cl-ppcre) (:export :start-testbot 
 						       :die-testbot
 						       :bot-say))
 (in-package :testbot)
@@ -20969,7 +20969,7 @@ landonf@timor:auth-ldap/trunk/build/tests> ls ../src/openvpn-auth-ldap.dylib
   (setf *connection* (connect :nickname *nickname* :server server))
   (join *connection* channel)
   (add-hook *connection* 'irc::irc-privmsg-message 'msg-hook)
-  (start-background-message-handler *connection*))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19411 :USER "saccade" :DATE 3355102978 :CHANNEL "#emacs" :TITLE "for riastradh" :CONTENTS "Debugger entered--Lisp error: (wrong-type-argument integerp \\.\\.\\.)
+  (start-background-message-handler *connection*))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19411 :USER "saccade" :DATE 3355102978 :CHANNEL "#emacs" :TITLE "for riastradh" :CONTENTS "Debugger entered--Lisp error: (wrong-type-argument integerp \\.\\.\\.)
   modify-syntax-entry(\\.\\.\\. \"'     \" #^[t nil (3) (3) (3) (3) (3) (3) (3) (3) (3) (0) (12) (3) (0) (0) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (0) (3) (7) (6) (3) (3) (3) (1048576) (4 . 41) (5 . 40) (3) (3) (1048579) (3) (3) (3) ...])
   (while --dolist-temp--57745 (setq char (car --dolist-temp--57745)) (modify-syntax-entry char \"'     \" scheme-mode-syntax-table) (setq --dolist-temp--57745 (cdr --dolist-temp--57745)))
   (let ((--dolist-temp--57745 ...) char) (while --dolist-temp--57745 (setq char ...) (modify-syntax-entry char \"'     \" scheme-mode-syntax-table) (setq --dolist-temp--57745 ...)) nil)
@@ -20981,7 +20981,7 @@ landonf@timor:auth-ldap/trunk/build/tests> ls ../src/openvpn-auth-ldap.dylib
   eval-last-sexp-1(nil)
   eval-last-sexp(nil)
   call-interactively(eval-last-sexp)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19410 :USER "technomancy" :DATE 3355096677 :CHANNEL "None" :TITLE "emacs rails view switching" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19410 :USER "technomancy" :DATE 3355096677 :CHANNEL "None" :TITLE "emacs rails view switching" :CONTENTS "
 ;;; action/view switching functions
 
 (defun arorem-switch-view ()
@@ -21031,7 +21031,7 @@ landonf@timor:auth-ldap/trunk/build/tests> ls ../src/openvpn-auth-ldap.dylib
 	  \"app/controllers/\"
 	   (file-name-nondirectory 
 	    (expand-file-name (concat view \"/..\")))
-	  \"_controller.rb\"))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19409 :USER "Mike" :DATE 3355096447 :CHANNEL "None" :TITLE "WebView and OCUnit" :CONTENTS "@implementation LJavaScriptBridgeTest
+	  \"_controller.rb\"))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19409 :USER "Mike" :DATE 3355096447 :CHANNEL "None" :TITLE "WebView and OCUnit" :CONTENTS "@implementation LJavaScriptBridgeTest
 
 -(LJavaScriptBridge* )setup
 {
@@ -21059,7 +21059,7 @@ landonf@timor:auth-ldap/trunk/build/tests> ls ../src/openvpn-auth-ldap.dylib
 }
 
 @end
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19408 :USER "pfdietz" :DATE 3355094599 :CHANNEL "#lisp" :TITLE "misc.640" :CONTENTS ";;; sbcl 0.9.11.45 (x86 linux)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19408 :USER "pfdietz" :DATE 3355094599 :CHANNEL "#lisp" :TITLE "misc.640" :CONTENTS ";;; sbcl 0.9.11.45 (x86 linux)
 ;;; Incorrect value: -32377322164
 
 (deftest misc.640
@@ -21073,7 +21073,7 @@ landonf@timor:auth-ldap/trunk/build/tests> ls ../src/openvpn-auth-ldap.dylib
 			     (setf g -16188661082))))))
     (funcall (compile nil form) 335562 4655131896))
   -16188325520)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19407 :USER "ADEpt" :DATE 3355093107 :CHANNEL "#haskell" :TITLE "Where is the empty list?" :CONTENTS "preparse :: XmppStateT ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19407 :USER "ADEpt" :DATE 3355093107 :CHANNEL "#haskell" :TITLE "Where is the empty list?" :CONTENTS "preparse :: XmppStateT ()
 preparse =
   do lexemes <- getTokens
      debug $ \"In preparse. in queue: \" ++ show (length lexemes) ++ \" lexemes\"
@@ -21103,7 +21103,7 @@ Need more
 Fetched 1440 bytes: [skip]
 Fetched and lexed
 Fetched
-<GHC.List.CAF>testXmpp: Prelude.tail: empty list" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19406 :USER "josh" :DATE 3355090977 :CHANNEL "None" :TITLE "bad build, bad" :CONTENTS "In file included from /System/Library/Frameworks/AppKit.framework/Headers/NSTokenField.h:12,
+<GHC.List.CAF>testXmpp: Prelude.tail: empty list" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19406 :USER "josh" :DATE 3355090977 :CHANNEL "None" :TITLE "bad build, bad" :CONTENTS "In file included from /System/Library/Frameworks/AppKit.framework/Headers/NSTokenField.h:12,
                  from /System/Library/Frameworks/AppKit.framework/Headers/AppKit.h:90,
                  from /System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h:13,
                  from /Users/josh/src/ff_debug/mozilla/modules/libpr0n/decoders/icon/mac/nsIconChannel.h:54,
@@ -21118,7 +21118,7 @@ make[3]: *** [nsIconModule.o] Interrupt
 make[2]: *** [libs] Interrupt
 make[1]: *** [libs] Interrupt
 make: *** [all] Interrupt
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19405 :USER "Acássio" :DATE 3355089365 :CHANNEL "None" :TITLE "Exemplo Busca BInária" :CONTENTS "#include <iostream>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19405 :USER "Acássio" :DATE 3355089365 :CHANNEL "None" :TITLE "Exemplo Busca BInária" :CONTENTS "#include <iostream>
 #include <stdlib.h>
 
 #define MAX 3
@@ -21178,7 +21178,7 @@ int main(int argc, char *argv[])
     system(\"PAUSE\");	
     return 0;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19404 :USER "pjb" :DATE 3355087888 :CHANNEL "None" :TITLE "convert" :CONTENTS "(defun convert-to-base-10 (number base)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19404 :USER "pjb" :DATE 3355087888 :CHANNEL "None" :TITLE "convert" :CONTENTS "(defun convert-to-base-10 (number base)
   (loop 
      :for num = number :then (truncate num 10)
      :for place = 1 :then (* place base)
@@ -21197,7 +21197,7 @@ int main(int argc, char *argv[])
 (defun convert-to-base-10s (number base)
    (parse-integer (format nil \"~D\" number) :radix base))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19403 :USER "zedek" :DATE 3355087155 :CHANNEL "#emacs" :TITLE "mtty" :CONTENTS "#!/bin/bash
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19403 :USER "zedek" :DATE 3355087155 :CHANNEL "#emacs" :TITLE "mtty" :CONTENTS "#!/bin/bash
 # Usage: preload-emacs <name> [<waitp>]
 #
 # Preloads the Emacs instance called NAME in a detached screen
@@ -21244,7 +21244,7 @@ if [ -z \"$name\" ]; then
 fi
 /tmp/preload-emacs \"$name\" wait
 /usr/bin/emacsclient -s \"$name\" \"$@\"
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19402 :USER "Leimy" :DATE 3355086268 :CHANNEL "#opendarwin" :TITLE "mmap based C++ STL: allocator... uses MAP_ANON" :CONTENTS "// Three different POSIX happy allocators for C++ STL objects and some 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19402 :USER "Leimy" :DATE 3355086268 :CHANNEL "#opendarwin" :TITLE "mmap based C++ STL: allocator... uses MAP_ANON" :CONTENTS "// Three different POSIX happy allocators for C++ STL objects and some 
 // measurements.
 
 
@@ -21372,7 +21372,7 @@ int main ()
 }
     
  
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19401 :USER "Xophe" :DATE 3355083443 :CHANNEL "#lisp" :TITLE "ho ho ho" :CONTENTS "Bill Bradford wrote:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19401 :USER "Xophe" :DATE 3355083443 :CHANNEL "#lisp" :TITLE "ho ho ho" :CONTENTS "Bill Bradford wrote:
 > I can no longer find any reference on franz.com about the upcoming
 > Allegro CL v8 free \"Express Edition\" that was slated to be released \"in
 > the coming weeks\".  Have plans for it been ditched?
@@ -21388,13 +21388,13 @@ Allegro CL since it has a bug that prevents my code from executing.
 Hopefully, it will improve in the future.
 
 David
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19400 :USER "Cale" :DATE 3355082033 :CHANNEL "#haskell" :TITLE "runListTFull" :CONTENTS "runListTFull m = do
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19400 :USER "Cale" :DATE 3355082033 :CHANNEL "#haskell" :TITLE "runListTFull" :CONTENTS "runListTFull m = do
     x <- runListT' m
     case x of
         Nothing -> return []
         Just (v,n) -> do vs <- runListTFull n
                          return (v:vs)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19399 :USER "win" :DATE 3355080316 :CHANNEL "None" :TITLE "xp" :CONTENTS "mam jeden problem s windows a tak jsem si rekl ze se podelim mozna nekdo bude vedet o co jde nebo se stim take setkal...
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19399 :USER "win" :DATE 3355080316 :CHANNEL "None" :TITLE "xp" :CONTENTS "mam jeden problem s windows a tak jsem si rekl ze se podelim mozna nekdo bude vedet o co jde nebo se stim take setkal...
 
 Tento tyden jsem zkousel asi 7instalaci windows XP vsechny bud corporateSP2 nebo pro a s SP2...
 U vetsiny znich jsem uspesne nainstaloval ale uz jsem nenabehl... po bootovani se z obrazovky stal \"rozsypany caj\" a barevne pruhy na lcd
@@ -21403,13 +21403,13 @@ nebo se to kouslo uz pri bootu, nevite nekdo cim to muze byt?
 U dalsich instalaci co slo tak nesel instalovat Direct 9c, a ani validate spustit neslo i kdyz to bylo originalni...
 
 Moje teorie je ze proste v tech SP2 je nejaka aktualizace ktera se nema rada s mym HW, nicmene poskozenost HW je vyloucena protoze Win2000 a dva ruzne linux distra jedou naprosto bez problemu....
-diky :-)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19398 :USER "edsu" :DATE 3355079831 :CHANNEL "#code4lib" :TITLE "anonymous no more!" :CONTENTS "ed@anvil ~ $ grep anonymous panizzi/logs/misc.log  | perl -ne '/(\\w+)!/; print $1, \"\\n\";' | sort | uniq -c
+diky :-)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19398 :USER "edsu" :DATE 3355079831 :CHANNEL "#code4lib" :TITLE "anonymous no more!" :CONTENTS "ed@anvil ~ $ grep anonymous panizzi/logs/misc.log  | perl -ne '/(\\w+)!/; print $1, \"\\n\";' | sort | uniq -c
       4 bradl_away
      21 dchud
      24 edsu
       2 ksclarke
       1 miker_
-     10 robcaSSon" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19397 :USER "petekaz" :DATE 3355079438 :CHANNEL "#haskell" :TITLE "How do I get rid of the 'case'?" :CONTENTS "module Main where
+     10 robcaSSon" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19397 :USER "petekaz" :DATE 3355079438 :CHANNEL "#haskell" :TITLE "How do I get rid of the 'case'?" :CONTENTS "module Main where
 
 import Data.HashTable as HT
 
@@ -21420,7 +21420,7 @@ main = HT.new (==) hashString        >>= \\ht ->
          Nothing   -> return ()
          Just last -> putStrLn last
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19396 :USER "antifuchs" :DATE 3355078062 :CHANNEL "#lisp" :TITLE "patch to nuke the slot" :CONTENTS "Index: incremental-redisplay.lisp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19396 :USER "antifuchs" :DATE 3355078062 :CHANNEL "#lisp" :TITLE "patch to nuke the slot" :CONTENTS "Index: incremental-redisplay.lisp
 ===================================================================
 RCS file: /project/mcclim/cvsroot/mcclim/incremental-redisplay.lisp,v
 retrieving revision 1.60
@@ -21467,7 +21467,7 @@ diff -u -r1.60 incremental-redisplay.lisp
  
  
  (defclass standard-updating-output-record (updating-output-record-mixin
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19395 :USER "nebuchadnezzar" :DATE 3355077265 :CHANNEL "#emacs" :TITLE "assign a mapced list" :CONTENTS "(defun package-maint-unload-package (files)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19395 :USER "nebuchadnezzar" :DATE 3355077265 :CHANNEL "#emacs" :TITLE "assign a mapced list" :CONTENTS "(defun package-maint-unload-package (files)
   \"Use package-maint-files-rdep to cleanly unload all the features.\"
   (let ((max-lisp-eval-depth (* 300 max-lisp-eval-depth)))
     (defun recurse-do (files)
@@ -21490,7 +21490,7 @@ diff -u -r1.60 incremental-redisplay.lisp
 		     (setq files (delete file files))
 		     (add-to-list 'notloaded file))))
 	     notloaded))))
-    (recurse-do files)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19394 :USER "fpcfan" :DATE 3355077131 :CHANNEL "#fpc" :TITLE "crosscycle arm rtl error" :CONTENTS "c:\\fpc\\crossbin/arm-wince-as.exe  -o C:/lazarus/source/fpc/2.1/rtl/units/arm-wince/wprt0.o arm/wprt0.as
+    (recurse-do files)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19394 :USER "fpcfan" :DATE 3355077131 :CHANNEL "#fpc" :TITLE "crosscycle arm rtl error" :CONTENTS "c:\\fpc\\crossbin/arm-wince-as.exe  -o C:/lazarus/source/fpc/2.1/rtl/units/arm-wince/wprt0.o arm/wprt0.as
 C:/lazarus/source/fpc/2.1/compiler/ppcrossarm.exe -Ur -Twince -Parm -XParm-wince- -Xc -Xr -Ur -Xs -O2 -n -Fi../inc -Fi../arm -Fi../win -FDc:\\fpc\\crossbin -FE. -FUC:/lazarus/source/fpc/2.1/rtl/units/arm-wince -g -gh -gl -CX -darm -dRELEASE  -Us -Sg system.pp
 system.pp(1662) Error: Creation of Dynamic/Shared Libraries not supported
 C:\\lazarus\\source\\fpc\\2.1\\rtl\\units\\arm-wince\\system.sl
@@ -21500,7 +21500,7 @@ Fatal: Compilation aborted
 make.exe[2]: *** [system.ppu] Error 1
 make.exe[2]: Leaving directory `C:/lazarus/source/fpc/2.1/rtl/wince'
 make.exe[1]: *** [wince_all] Error 2
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19393 :USER "roozbeh" :DATE 3355076181 :CHANNEL "#fpc" :TITLE "optimzition...." :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19393 :USER "roozbeh" :DATE 3355076181 :CHANNEL "#fpc" :TITLE "optimzition...." :CONTENTS "
 # [42] w:=rec1.w;
 	ldr	r0,.Lj28
 	ldrb	r1,[r0]
@@ -21509,7 +21509,7 @@ make.exe[1]: *** [wince_all] Error 2
 	orr	r1,r1,r0,lsl #8
 	ldr	r0,.Lj30
 	strh	r1,[r0]
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19392 :USER "yrk" :DATE 3355076058 :CHANNEL "#lisp" :TITLE "password storage question" :CONTENTS "Does the following make sense in order to produce simple password encryption for storage?
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19392 :USER "yrk" :DATE 3355076058 :CHANNEL "#lisp" :TITLE "password storage question" :CONTENTS "Does the following make sense in order to produce simple password encryption for storage?
 
 Let +md5salt+ be any constant string, and +md5iter+ a positive number.
 
@@ -21520,7 +21520,7 @@ Let +md5salt+ be any constant string, and +md5iter+ a positive number.
 		  (md5:md5sum-sequence seq))))
 
 (defun make-md5hash (seq)
-  (make-nhash +md5iter+ (concatenate 'string +md5salt+ seq)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19391 :USER "fpk" :DATE 3355074846 :CHANNEL "#fpc" :TITLE "arm problem" :CONTENTS "	ldrb	r3,.Lj1846
+  (make-nhash +md5iter+ (concatenate 'string +md5salt+ seq)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19391 :USER "fpk" :DATE 3355074846 :CHANNEL "#fpc" :TITLE "arm problem" :CONTENTS "	ldrb	r3,.Lj1846
 	ldrb	r1,.Lj1846+1
 	orr	r0,r3,r1,lsl #8
 	ldrb	r3,.Lj1846+2
@@ -21534,7 +21534,7 @@ Let +md5salt+ be any constant string, and +md5iter+ a positive number.
 	orr	r1,r0,r2,lsl #16
 	ldrb	r1,.Lj1846+7
 	orr	r2,r1,r0,lsl #24
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19390 :USER "fledermaus" :DATE 3355073372 :CHANNEL "#emacs" :TITLE "paren-match" :CONTENTS "(defun paren-match ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19390 :USER "fledermaus" :DATE 3355073372 :CHANNEL "#emacs" :TITLE "paren-match" :CONTENTS "(defun paren-match ()
   \"Jumps to the paren matching the one under point,
 and does nothing if there isn't one.\"
   (interactive)
@@ -21543,7 +21543,7 @@ and does nothing if there isn't one.\"
    ((looking-at \"[]})]\") (forward-char) (backward-sexp 1))
    (t           (message \"Could not find matching paren.\"))) )
 
-(global-set-key \"\\C-x,\"     'paren-match)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19389 :USER "Tao`" :DATE 3355072635 :CHANNEL "#macdev" :TITLE "Menu items are disabled" :CONTENTS "this is my -awakeFromNib in my NSArrayController subclass:
+(global-set-key \"\\C-x,\"     'paren-match)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19389 :USER "Tao`" :DATE 3355072635 :CHANNEL "#macdev" :TITLE "Menu items are disabled" :CONTENTS "this is my -awakeFromNib in my NSArrayController subclass:
 
 - (void) awakeFromNib {
 	
@@ -21574,7 +21574,7 @@ however, the menu items are disabled. Any idea why? search: looks like this:
 
 - (void)search:(id)sender
 
-Mike" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19388 :USER "jcowan" :DATE 3355072143 :CHANNEL "#swhack" :TITLE "Python module" :CONTENTS "import socket
+Mike" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19388 :USER "jcowan" :DATE 3355072143 :CHANNEL "#swhack" :TITLE "Python module" :CONTENTS "import socket
 import time
 
 class AlphaTicker:
@@ -21608,7 +21608,7 @@ class AlphaTicker:
 
         def decodeColor(color):
                 return ord(chr('1') + colors.index(color))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19387 :USER "klette" :DATE 3355057952 :CHANNEL "#programmering" :TITLE "Sconstruct" :CONTENTS "import glob
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19387 :USER "klette" :DATE 3355057952 :CHANNEL "#programmering" :TITLE "Sconstruct" :CONTENTS "import glob
 
 env = Environment()
 
@@ -21617,7 +21617,7 @@ SOURCES = glob.glob('*.cpp')
 env.Append(CCFLAGS = ['-ggdb3', '-Wall'], LINKFLAGS = ['-lSDL', '-lSDL_image', '-lGL', '-lGLU', '-lopenal','-lalut', '-lpthread'])
 
 env.Program('OnionEngine-dbg', SOURCES)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19386 :USER "gigamonkeys" :DATE 3355054945 :CHANNEL "#lisp" :TITLE "I guess Lisp is being used somewhere" :CONTENTS "[I just got this mail this morning. What the heck ISP is this and how does he know it's a Lisp web server. To say nothing of the url being to a private IP address which makes no sense. Huh?]
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19386 :USER "gigamonkeys" :DATE 3355054945 :CHANNEL "#lisp" :TITLE "I guess Lisp is being used somewhere" :CONTENTS "[I just got this mail this morning. What the heck ISP is this and how does he know it's a Lisp web server. To say nothing of the url being to a private IP address which makes no sense. Huh?]
 
 Peter,
  Hai, this is syed.
@@ -21638,19 +21638,19 @@ My local ISP site: http://192.168.98.254:800/loginnow.php3
 I am not using any proxy setting in internet explorer options also.
  
 Please Help,
-Syed." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19385 :USER "luis" :DATE 3355051301 :CHANNEL "#lisp" :TITLE "allegro weak pointers" :CONTENTS "(defstruct (weak-pointer (:constructor %make-weak-pointer))
+Syed." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19385 :USER "luis" :DATE 3355051301 :CHANNEL "#lisp" :TITLE "allegro weak pointers" :CONTENTS "(defstruct (weak-pointer (:constructor %make-weak-pointer))
   pointer)
 
 (defun make-weak-pointer (object)
   (let ((wv (excl:weak-vector 1)))
     (setf (svref wv 0) object)
-    (%make-weak-pointer :pointer wv)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19384 :USER "sky" :DATE 3355050748 :CHANNEL "None" :TITLE "bundle_load strange" :CONTENTS "    cd /Users/sky/Desktop/Asterisk-1.0.10n.X
+    (%make-weak-pointer :pointer wv)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19384 :USER "sky" :DATE 3355050748 :CHANNEL "None" :TITLE "bundle_load strange" :CONTENTS "    cd /Users/sky/Desktop/Asterisk-1.0.10n.X
     /usr/bin/gcc-4.0 -o /Users/sky/Desktop/Asterisk-1.0.10n.X/build/Asterisk-1.0.10n.X.build/Debug/res_adsi.build/Objects-normal/ppc/res_adsi.so -L/Users/sky/Desktop/Asterisk-1.0.10n.X/build/Debug -F/Users/sky/Desktop/Asterisk-1.0.10n.X/build/Debug -filelist /Users/sky/Desktop/Asterisk-1.0.10n.X/build/Asterisk-1.0.10n.X.build/Debug/res_adsi.build/Objects-normal/ppc/res_adsi.LinkFileList -arch ppc -bundle -mmacosx-version-min=10.4 -bundle_loader /Users/sky/Desktop/Asterisk-1.0.10n.X/build/Debug/Asterisk-1.0.10n.X -undefined dynamic_lookup -isysroot /Developer/SDKs/MacOSX10.4u.sdk
 /usr/bin/ld: warning -L: directory name (/Users/sky/Desktop/Asterisk-1.0.10n.X/build/Debug) does not exist
 /usr/bin/ld: warning -F: directory name (/Users/sky/Desktop/Asterisk-1.0.10n.X/build/Debug) does not exist
 /usr/bin/ld: can't open: /Users/sky/Desktop/Asterisk-1.0.10n.X/build/Debug/Asterisk-1.0.10n.X (No such file or directory, errno = 2)
 collect2: ld returned 1 exit status
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19383 :USER "sanxiyn" :DATE 3355048751 :CHANNEL "#lisp" :TITLE "ctypes usage" :CONTENTS "from ctypes import *
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19383 :USER "sanxiyn" :DATE 3355048751 :CHANNEL "#lisp" :TITLE "ctypes usage" :CONTENTS "from ctypes import *
 libc = cdll.LoadLibrary('libc.so.6')
 class timeval(Structure):
     _fields_ = [
@@ -21670,7 +21670,7 @@ def gettimeofday():
     tz = timezone()
     c_gettimeofday(byref(tv), byref(tz))
     return tv.tv_sec, tv.tv_usec
-print gettimeofday()" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19382 :USER "sanxiyn" :DATE 3355046869 :CHANNEL "#lisp" :TITLE "CFFI usage" :CONTENTS "(asdf:operate 'asdf:load-op 'cffi)
+print gettimeofday()" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19382 :USER "sanxiyn" :DATE 3355046869 :CHANNEL "#lisp" :TITLE "CFFI usage" :CONTENTS "(asdf:operate 'asdf:load-op 'cffi)
 (defpackage :cffi-user
   (:use :common-lisp :cffi))
 (in-package :cffi-user)
@@ -21691,7 +21691,7 @@ print gettimeofday()" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19382 :USER 
     (c-gettimeofday tv tz)
     (with-foreign-slots ((tv_sec tv_usec) tv timeval)
       (list tv_sec tv_usec))))
-(write (gettimeofday))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19381 :USER "roozbeh" :DATE 3355042279 :CHANNEL "#fpc" :TITLE "compiler output" :CONTENTS "Fatal: Compilation aborted
+(write (gettimeofday))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19381 :USER "roozbeh" :DATE 3355042279 :CHANNEL "#fpc" :TITLE "compiler output" :CONTENTS "Fatal: Compilation aborted
 An unhandled exception occurred at $00408D17 :
 EAccessViolation : Access violation
   $00408D17  TLINKEDLIST__REMOVE,  line 1093 of e:/fpc/source/compiler/cclasses.
@@ -21709,7 +21709,7 @@ b.pas
 pas
   $0046A88C  PROC_UNIT,  line 1008 of e:/fpc/source/compiler/pmodules.pas
   $004176AF  COMPILE,  line 425 of e:/fpc/source/compiler/parser.pas
-  $004052A0  COMPILE,  line 375 of e:/fpc/source/compiler/compiler.pas" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19380 :USER "roozbeh" :DATE 3355042008 :CHANNEL "#fpc" :TITLE "load_store problem" :CONTENTS "//roozbeh:read botton again
+  $004052A0  COMPILE,  line 375 of e:/fpc/source/compiler/compiler.pas" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19380 :USER "roozbeh" :DATE 3355042008 :CHANNEL "#fpc" :TITLE "load_store problem" :CONTENTS "//roozbeh:read botton again
     procedure tcgarm.handle_load_store(list:TAsmList;op: tasmop;oppostfix : toppostfix;reg:tregister;ref: treference);
       var
         tmpreg,tmpreg2 : tregister;
@@ -21921,7 +21921,7 @@ pas
                end
              else
         list.concat(setoppostfix(taicpu.op_reg_ref(op,reg,ref),oppostfix));
-      end;" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19379 :USER "Bovine114" :DATE 3355030513 :CHANNEL "#adium" :TITLE "My code" :CONTENTS "int main(int argc, char **argv)
+      end;" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19379 :USER "Bovine114" :DATE 3355030513 :CHANNEL "#adium" :TITLE "My code" :CONTENTS "int main(int argc, char **argv)
 {	
 	char* test;
 	double d = strtod(\"1.0\",&test);
@@ -21943,7 +21943,7 @@ pas
 //	replaceList(list,toReplace,replacement);
 //	displayList(list);
 	}
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19378 :USER "sjanssen" :DATE 3355029855 :CHANNEL "#haskell" :TITLE "instance Monad GUI" :CONTENTS "data Message = Message
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19378 :USER "sjanssen" :DATE 3355029855 :CHANNEL "#haskell" :TITLE "instance Monad GUI" :CONTENTS "data Message = Message
 data GUI a = GUI {runGUI :: Message -> (a, GUI a)}
 
 instance Functor GUI where
@@ -21953,7 +21953,7 @@ instance Monad GUI where
     return x = g
      where
         g = GUI (\\m -> (x, g))
-    g >>= f = GUI (\\m -> let (x, g') = runGUI g m; (y, f') = runGUI (f x) m in (y, g' >> f'))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19377 :USER "dripple" :DATE 3355026382 :CHANNEL "None" :TITLE "PocoCli HTTP" :CONTENTS "diff -ru .cpan/build/POE-Component-Client-HTTP-0.74/blib/lib/POE/Component/Client/HTTP/RequestFactory.pm POE-Component-Client-HTTP-0.74/blib/lib/POE/Component/Client/HTTP/RequestFactory.pm
+    g >>= f = GUI (\\m -> let (x, g') = runGUI g m; (y, f') = runGUI (f x) m in (y, g' >> f'))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19377 :USER "dripple" :DATE 3355026382 :CHANNEL "None" :TITLE "PocoCli HTTP" :CONTENTS "diff -ru .cpan/build/POE-Component-Client-HTTP-0.74/blib/lib/POE/Component/Client/HTTP/RequestFactory.pm POE-Component-Client-HTTP-0.74/blib/lib/POE/Component/Client/HTTP/RequestFactory.pm
 --- .cpan/build/POE-Component-Client-HTTP-0.74/blib/lib/POE/Component/Client/HTTP/RequestFactory.pm	2006-03-24 06:10:12.000000000 -0800
 +++ POE-Component-Client-HTTP-0.74/blib/lib/POE/Component/Client/HTTP/RequestFactory.pm	2006-04-25 21:04:02.000000000 -0700
 @@ -18,6 +18,7 @@
@@ -22339,9 +22339,9 @@ diff -ru .cpan/build/POE-Component-Client-HTTP-0.74/lib/POE/Component/Client/HTT
        if (@filters > 1) {
          $filter = POE::Filter::Stackable->new( Filters => \\@filters );
        }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19376 :USER "Ivan" :DATE 3355026353 :CHANNEL "#cairo" :TITLE "Ivan" :CONTENTS "Here it is possible 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19376 :USER "Ivan" :DATE 3355026353 :CHANNEL "#cairo" :TITLE "Ivan" :CONTENTS "Here it is possible 
 <a href=\"http://mywebpage.netscape.com/free1ringtones/free-cingular-ringtones.html\">Free Cingular Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-verizon-ringtones.html\">Free Verizon Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-mp3-ringtones.html\">Free Mp3 Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/\">FREERINGTONES</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-kyocera-ringtones.html\">Free Kyocera Ringtones</a> 
-[url=http://mywebpage.netscape.com/free1ringtones/free-nextel-ringtones.html]Free Nextel Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-cingular-ringtones.html]Free Cingular Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-polyphonic-ringtones.html]Free Polyphonic Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-t-mobile-ringtones.html]Free T Mobile Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/]FREERINGTONES[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-nokia-ringtones.html]Free Nokia Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-mp3-ringtones.html]Free Mp3 Ringtones[/url]" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19375 :USER "dmiles_afk" :DATE 3355021067 :CHANNEL "#lisp" :TITLE "I need to escape my backquote help" :CONTENTS "(defun defstub (pack symb)
+[url=http://mywebpage.netscape.com/free1ringtones/free-nextel-ringtones.html]Free Nextel Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-cingular-ringtones.html]Free Cingular Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-polyphonic-ringtones.html]Free Polyphonic Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-t-mobile-ringtones.html]Free T Mobile Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/]FREERINGTONES[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-nokia-ringtones.html]Free Nokia Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-mp3-ringtones.html]Free Mp3 Ringtones[/url]" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19375 :USER "dmiles_afk" :DATE 3355021067 :CHANNEL "#lisp" :TITLE "I need to escape my backquote help" :CONTENTS "(defun defstub (pack symb)
     (unless (packagep pack) (setq pack (find-package pack)))
     (let ((sname (symbol-name symb))(pakdsym (in-package sname pack)))
         (unless pakdsym (setq pakdsym symb))
@@ -22353,7 +22353,7 @@ diff -ru .cpan/build/POE-Component-Client-HTTP-0.74/lib/POE/Component/Client/HTT
                         (eval macrodefr)
                         (eval-remote *cyc-server* macrodefr)
                         (symbol-function pakdsym)))))
-     " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19374 :USER "Macskeeball" :DATE 3355017772 :CHANNEL "#adium" :TITLE "Break Countdown AppleScript" :CONTENTS "-- Break Countdown
+     " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19374 :USER "Macskeeball" :DATE 3355017772 :CHANNEL "#adium" :TITLE "Break Countdown AppleScript" :CONTENTS "-- Break Countdown
 -- By Paul Tow (alias Macskeeball)
 -- macskeeball@gmail.com
 -- Outputs the amount of time remaining in the ten minute break
@@ -22385,7 +22385,7 @@ on substitute()
 		if (break_end_hour is greater than 12) then set break_end_hour to (break_end_hour - 12)
 		return \"Be back in about \" & (break_remaining div 60) & \" min (\" & break_end_hour & \":\" & break_end_minutes & \"PM CST)\"
 	end if
-end substitute" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19373 :USER "macubergeek" :DATE 3355016384 :CHANNEL "#fink" :TITLE "fink for intel won't build" :CONTENTS "[jamesks-computer:jamesk/Desktop/fink-0.24.15] jamesk# ./bootstrap.sh
+end substitute" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19373 :USER "macubergeek" :DATE 3355016384 :CHANNEL "#fink" :TITLE "fink for intel won't build" :CONTENTS "[jamesks-computer:jamesk/Desktop/fink-0.24.15] jamesk# ./bootstrap.sh
 
 Welcome to Fink.
 
@@ -22400,7 +22400,7 @@ Use of inherited AUTOLOAD for non-method Term::ReadKey::termsizeoptions() is dep
 Can't locate auto/Term/ReadKey/termsizeopt.al in @INC (@INC contains: /Users/jamesk/Desktop/fink-0.24.15/perlmod /System/Library/Perl/5.8.6/darwin-thread-multi-2level /System/Library/Perl/5.8.6 /Library/Perl/5.8.6/darwin-thread-multi-2level /Library/Perl/5.8.6 /Library/Perl /Network/Library/Perl/5.8.6/darwin-thread-multi-2level /Network/Library/Perl/5.8.6 /Network/Library/Perl /System/Library/Perl/Extras/5.8.6/darwin-thread-multi-2level /System/Library/Perl/Extras/5.8.6 /Library/Perl/5.8.1 .) at /Users/jamesk/Desktop/fink-0.24.15/perlmod/Fink/CLI.pm line 493
 [jamesks-computer:jamesk/Desktop/fink-0.24.15] jamesk# 
 [jamesks-computer:jamesk/Desktop/fink-0.24.15] jamesk# 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19372 :USER "Riastradh" :DATE 3355013810 :CHANNEL "#lisp" :TITLE "OpenMCL's IGNORABLE implementation" :CONTENTS "(defnxdecl ignorable (pending decl env)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19372 :USER "Riastradh" :DATE 3355013810 :CHANNEL "#lisp" :TITLE "OpenMCL's IGNORABLE implementation" :CONTENTS "(defnxdecl ignorable (pending decl env)
   (declare (ignore env))
   (dolist (s (%cdr decl))
     (if (symbolp s)
@@ -22411,13 +22411,13 @@ Can't locate auto/Term/ReadKey/termsizeopt.al in @INC (@INC contains: /Users/jam
                (symbolp (setq s (%cadr s))))       ;***
         (nx-new-fdecl pending s 'ignore-if-unused t)
         (nx-bad-decls decl)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19371 :USER "lemonodor" :DATE 3355013279 :CHANNEL "#lisp" :TITLE "flet declarations" :CONTENTS "     (flet ((fixture-var (name)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19371 :USER "lemonodor" :DATE 3355013279 :CHANNEL "#lisp" :TITLE "flet declarations" :CONTENTS "     (flet ((fixture-var (name)
 	      (gethash name (test-fixture-vars fixture)))
 	    ((setf fixture-var) (value name)
 	      (setf (gethash name (test-fixture-vars fixture)) value)))
        ;; is this declaration correct?
        (declare (ignorable (function fixture-var) (function (setf fixture-var))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19370 :USER "dydimustk" :DATE 3355012914 :CHANNEL "#emacs" :TITLE "planner-lists-contexts" :CONTENTS "(defun dyd/planner-list-contexts ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19370 :USER "dydimustk" :DATE 3355012914 :CHANNEL "#emacs" :TITLE "planner-lists-contexts" :CONTENTS "(defun dyd/planner-list-contexts ()
   (interactive)
   (let* ((planner-list (muse-project-file-alist planner-project))
          (contexts
@@ -22429,7 +22429,7 @@ Can't locate auto/Term/ReadKey/termsizeopt.al in @INC (@INC contains: /Users/jam
     (mapc
      (lambda (context)
        (insert (planner-make-link context) \"\\n\"))
-     contexts)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19369 :USER "robcaSSon" :DATE 3355004238 :CHANNEL "#code4lib" :TITLE "search results table" :CONTENTS "                                  Table \"public.search_results\"
+     contexts)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19369 :USER "robcaSSon" :DATE 3355004238 :CHANNEL "#code4lib" :TITLE "search results table" :CONTENTS "                                  Table \"public.search_results\"
        Column       |  Type   |                            Modifiers
 --------------------+---------+------------------------------------------------------------------
  control            | integer | not null default nextval('search_results_control_seq'::regclass)
@@ -22455,7 +22455,7 @@ Can't locate auto/Term/ReadKey/termsizeopt.al in @INC (@INC contains: /Users/jam
  marked             | boolean | default false
  dupe               | boolean | default false
  dupe_info          | text    |
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19368 :USER "Shine" :DATE 3355003685 :CHANNEL "None" :TITLE "Lispbox tests" :CONTENTS ";; cl-opengl samples
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19368 :USER "Shine" :DATE 3355003685 :CHANNEL "None" :TITLE "Lispbox tests" :CONTENTS ";; cl-opengl samples
 (asdf:oos 'asdf:load-op :cl-glut-examples)
 (redbook-examples:rb12)
 (mesademos-gears-raw:run)
@@ -22470,7 +22470,7 @@ Can't locate auto/Term/ReadKey/termsizeopt.al in @INC (@INC contains: /Users/jam
 (asdf:oos 'asdf:load-op :lispbuilder-windows-examples)
 (in-package :lispbuilder-windows-examples)
 (gui-eval)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19367 :USER "luis" :DATE 3355002391 :CHANNEL "#lisp" :TITLE "clisp #\\Esc patch" :CONTENTS "--- src/constobj.d.old  2006-04-25 23:09:56.000000000 +0100
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19367 :USER "luis" :DATE 3355002391 :CHANNEL "#lisp" :TITLE "clisp #\\Esc patch" :CONTENTS "--- src/constobj.d.old  2006-04-25 23:09:56.000000000 +0100
 +++ src/constobj.d      2006-04-25 23:11:13.000000000 +0100
 @@ -68,7 +68,7 @@
    # On change of character-names except of CONSTOBJ.D, also
@@ -22489,7 +22489,7 @@ Can't locate auto/Term/ReadKey/termsizeopt.al in @INC (@INC contains: /Users/jam
    #endif
    #ifdef UNIX_CHARNAMES
      LISPOBJ(charname_0bis,\"\\\"Null\\\"\")
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19366 :USER "lnostdal" :DATE 3355001699 :CHANNEL "#programmering" :TITLE "calling constructor of base class" :CONTENTS "#include <iostream>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19366 :USER "lnostdal" :DATE 3355001699 :CHANNEL "#programmering" :TITLE "calling constructor of base class" :CONTENTS "#include <iostream>
 
 using namespace std;
 
@@ -22522,7 +22522,7 @@ int main()
 lars@ibmr52:~/programming/c$ g++ -Wall -g blah.cpp -o blah && ./blah
 A: 1
 B: 2
-*/" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19365 :USER "housel" :DATE 3354999267 :CHANNEL "#dylan" :TITLE "Patch to add addresses to the default print-object" :CONTENTS "Index: print.dylan
+*/" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19365 :USER "housel" :DATE 3354999267 :CHANNEL "#dylan" :TITLE "Patch to add addresses to the default print-object" :CONTENTS "Index: print.dylan
 ===================================================================
 --- print.dylan	(revision 10614)
 +++ print.dylan	(working copy)
@@ -22562,7 +22562,7 @@ Index: library.dylan
    use introspection,
      rename: { subclass-of => subclass-class,
                limited-integer-minimum => limited-integer-min,
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19364 :USER "roozbeh" :DATE 3354997382 :CHANNEL "#fpc" :TITLE "load_store again" :CONTENTS "    procedure tcgarm.handle_load_store(list:TAsmList;op: tasmop;oppostfix : toppostfix;reg:tregister;ref: treference);
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19364 :USER "roozbeh" :DATE 3354997382 :CHANNEL "#fpc" :TITLE "load_store again" :CONTENTS "    procedure tcgarm.handle_load_store(list:TAsmList;op: tasmop;oppostfix : toppostfix;reg:tregister;ref: treference);
       var
         tmpreg,tmpreg2 : tregister;
         tmpref : treference;
@@ -22777,7 +22777,7 @@ Index: library.dylan
               else
         list.concat(setoppostfix(taicpu.op_reg_ref(op,reg,ref),oppostfix));
       end;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19363 :USER "runelind" :DATE 3354996532 :CHANNEL "#fink" :TITLE "fdisk" :CONTENTS "Command (m for help): p
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19363 :USER "runelind" :DATE 3354996532 :CHANNEL "#fink" :TITLE "fdisk" :CONTENTS "Command (m for help): p
 
 Disk /dev/hda: 40.0 GB, 40060403712 bytes
 255 heads, 63 sectors/track, 4870 cylinders
@@ -22802,7 +22802,7 @@ BSD disklabel command (m for help): p
   d:      193*      387*      194*    4.2BSD     2048 16384 28552
   e:      387*      453*       65*    4.2BSD     2048 16384     8
   f:      453*     1958      1505*    4.2BSD     2048 16384 28552
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19362 :USER "sbp" :DATE 3354993809 :CHANNEL "#swhack" :TITLE "Checksum Approaches" :CONTENTS "Context: 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19362 :USER "sbp" :DATE 3354993809 :CHANNEL "#swhack" :TITLE "Checksum Approaches" :CONTENTS "Context: 
 
  * http://downlode.org/rdf/file-properties/ (by Earle Martin)
  * http://chatlogs.planetrdf.com/swig/2006-04-25.html#T18-01-57
@@ -22834,7 +22834,7 @@ Interpretation properties approach:
    </fp:checksum>
 
 Note how the flat, datatypes, and interpretation approaches all incur significantly less overhead than the current approach; but as to which of them is preferable, it's difficult to say.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19361 :USER "tewk" :DATE 3354993351 :CHANNEL "#fink" :TITLE "fink list x11" :CONTENTS "http://paste.lisp.org/new/fink     fltk-x11                                             1.1.6-11                                GUI toolkit
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19361 :USER "tewk" :DATE 3354993351 :CHANNEL "#fink" :TITLE "fink list x11" :CONTENTS "http://paste.lisp.org/new/fink     fltk-x11                                             1.1.6-11                                GUI toolkit
      fltk-x11-shlibs                                      1.1.6-11                                Runtime code for fltk-x11
      nethack-x11                                          3.4.3-1                                 Console/X11 based graphical adventure game
      nethack-x11-gnome                                    3.4.3-1                                 Console/X11 based graphical adventure game
@@ -22842,7 +22842,7 @@ Note how the flat, datatypes, and interpretation approaches all incur significan
      nethack-x11-qt                                       3.4.3-1                                 Console/X11 based graphical adventure game
  p   x11                                                                                          [virtual package]
      x11-dev                                                                                      [virtual package]
- p   x11-shlibs                                                                                   [virtual package]" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19360 :USER "rozbeh" :DATE 3354989192 :CHANNEL "#fpc" :TITLE "load_store" :CONTENTS "
+ p   x11-shlibs                                                                                   [virtual package]" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19360 :USER "rozbeh" :DATE 3354989192 :CHANNEL "#fpc" :TITLE "load_store" :CONTENTS "
 //look to botoom of it,changed codes are there
 
 
@@ -23064,7 +23064,7 @@ Note how the flat, datatypes, and interpretation approaches all incur significan
         end
         else
         list.concat(setoppostfix(taicpu.op_reg_ref(op,reg,ref),oppostfix));
-      end;  " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19359 :USER "yonkeltron" :DATE 3354987231 :CHANNEL "#lisp" :TITLE "gen-scenario error" :CONTENTS ";this raises an error when i call it with something like (gen-scenarios 15)
+      end;  " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19359 :USER "yonkeltron" :DATE 3354987231 :CHANNEL "#lisp" :TITLE "gen-scenario error" :CONTENTS ";this raises an error when i call it with something like (gen-scenarios 15)
 ;it says that the error lies with the (- limit 1) that i have at the bottom
 ;but i don't understand what the problem is.
 
@@ -23078,7 +23078,7 @@ Note how the flat, datatypes, and interpretation approaches all incur significan
         (gen-scenarios (- limit 1)))
       0))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19358 :USER "jkp" :DATE 3354983391 :CHANNEL "#macdev" :TITLE "path code " :CONTENTS "//---------------------------------------------------------- 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19358 :USER "jkp" :DATE 3354983391 :CHANNEL "#macdev" :TITLE "path code " :CONTENTS "//---------------------------------------------------------- 
 //  generateButtonPath 
 //---------------------------------------------------------- 
 - (void) generateButtonPath;
@@ -23096,7 +23096,7 @@ Note how the flat, datatypes, and interpretation approaches all incur significan
     [transform translateXBy:10.0f yBy:10.0f];
     [transform rotateByDegrees:( expanded ? 270.0f : 0.0f )];
     [disclosureTriangle transformUsingAffineTransform:transform];
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19357 :USER "jgw" :DATE 3354981497 :CHANNEL "#opendarwin" :TITLE "Does this look SSL encrypted to YOU?" :CONTENTS "pict
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19357 :USER "jgw" :DATE 3354981497 :CHANNEL "#opendarwin" :TITLE "Does this look SSL encrypted to YOU?" :CONTENTS "pict
 %!&!&!&!&!G)G)H!'!
 )()H1I1i1i1i1i1i1i1i1i1i1i)i)h!'!&
 !%!%
@@ -23119,7 +23119,7 @@ F!F!F!F!g)g)
 )h)g!G!F!F!G!g!g)
 !g!F!F!F!F!E!F!f!F!E!E!%!%
 F!g!h!g!f
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19356 :USER "vinterstum" :DATE 3354979722 :CHANNEL "#scummvm" :TITLE "Kyra testing news item v2" :CONTENTS "<NAME>Call for testing: The Legend of Kyrandia</NAME>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19356 :USER "vinterstum" :DATE 3354979722 :CHANNEL "#scummvm" :TITLE "Kyra testing news item v2" :CONTENTS "<NAME>Call for testing: The Legend of Kyrandia</NAME>
 <DATE>Apr. 25th, 2006</DATE>
 <AUTHOR>vinterstum</AUTHOR>
 <BODY>
@@ -23131,7 +23131,7 @@ F!g!h!g!f
 <p>Currently both CD and floppy editions are supported in their own language. English, French, German and Spanish versions are fully supported, but any other PC (and hopefully Mac) version should work as well (albeit with some text in English, and some interface graphics missing). If you have an unsupported version, we'd love to hear from you! Note that Amiga versions are unfortunately not supported at  all at this time.
 </p>
 </BODY>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19355 :USER "ThanatoS" :DATE 3354974135 :CHANNEL "None" :TITLE "lol" :CONTENTS "              >>> ukc\\bz!~ukc@mezzo.users.undernet.org
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19355 :USER "ThanatoS" :DATE 3354974135 :CHANNEL "None" :TITLE "lol" :CONTENTS "              >>> ukc\\bz!~ukc@mezzo.users.undernet.org
 15:37:11 ukc\\bz is \"ukc\" on #l********m #usjr #cebucity #bloods #tops +#DLSU +#edu @#princeton +#davaocity +#xu-im @#NBI
 15:37:45                  X sets +o ukc\\bz
 16:15:07 [Users #l********m]
@@ -23152,7 +23152,7 @@ F!g!h!g!f
 16:17:04                  Leander sets +b *!*ukc@*
 16:17:16              <<< ukc\\bz [allez hop, du vent] kicked by Leander
 lol
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19354 :USER "ilgaz" :DATE 3354970233 :CHANNEL "#quicksilver" :TITLE "evilness" :CONTENTS "Hardware Overview:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19354 :USER "ilgaz" :DATE 3354970233 :CHANNEL "#quicksilver" :TITLE "evilness" :CONTENTS "Hardware Overview:
 
   Machine Name:	Power Mac G5 Quad
   Machine Model:	PowerMac11,2
@@ -23162,7 +23162,7 @@ lol
   L2 Cache (per CPU):	1 MB
   Memory:	2.5 GB
   Bus Speed:	1.25 GHz
-  Boot ROM Version:	5.2.7f1" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19353 :USER "vinterstum" :DATE 3354969274 :CHANNEL "#scummvm" :TITLE "Kyra testing news item" :CONTENTS "<p>This means that we now need you, our users, to give us a helping hand. In order to
+  Boot ROM Version:	5.2.7f1" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19353 :USER "vinterstum" :DATE 3354969274 :CHANNEL "#scummvm" :TITLE "Kyra testing news item" :CONTENTS "<p>This means that we now need you, our users, to give us a helping hand. In order to
 	root out any remaining bugs, extensive testing is sorely needed. So, please dig up
 	your (legal!) copies of Kyrandia 1, download a SVN snapshot from the <a href=\"downloads.php#SVN\">Downloads</a>
 	page, and post any issues you find to our <a href=\"http://sourceforge.net/tracker/?group_id=37116&atid=418820\">Bug tracker</a> :).
@@ -23170,7 +23170,7 @@ lol
 <p>Currently both CD and floppy editions of the English, French, German and Spanish versions are supported in their own languages,
 	but any other PC version should work as well, though with some text in English. The Amiga versions
 	are not supported at this time, unfortunately.
-</p>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19352 :USER "metaperl" :DATE 3354963045 :CHANNEL "#haskell" :TITLE "getting MonadPlus to work" :CONTENTS "{- I am trying to make Sheep an instance of MonadPlus. 
+</p>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19352 :USER "metaperl" :DATE 3354963045 :CHANNEL "#haskell" :TITLE "getting MonadPlus to work" :CONTENTS "{- I am trying to make Sheep an instance of MonadPlus. 
    what imports do I need for this to work?
 -}
 
@@ -23248,7 +23248,7 @@ main = let dolly = breedSheep
        in do print (maternalGrandfather dolly)
 
 -- END OF FILE
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19351 :USER "MacDome" :DATE 3354953860 :CHANNEL "#webkit" :TITLE "review for othermaciej" :CONTENTS "Index: LayoutTests/ChangeLog
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19351 :USER "MacDome" :DATE 3354953860 :CHANNEL "#webkit" :TITLE "review for othermaciej" :CONTENTS "Index: LayoutTests/ChangeLog
 ===================================================================
 --- LayoutTests/ChangeLog	(revision 14047)
 +++ LayoutTests/ChangeLog	(working copy)
@@ -23332,7 +23332,7 @@ Index: WebCore/ChangeLog
  2006-04-25  Maciej Stachowiak  <mjs@apple.com>
  
          Reviewed by Eric.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19350 :USER "id_sonic" :DATE 3354953408 :CHANNEL "#emacs" :TITLE "my .emacs" :CONTENTS ";; Fred Chu 's Emacs config file
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19350 :USER "id_sonic" :DATE 3354953408 :CHANNEL "#emacs" :TITLE "my .emacs" :CONTENTS ";; Fred Chu 's Emacs config file
 ;; id_sonic@yahoo.com 
 
 (setq load-path (cons (expand-file-name \"~/lisp\") load-path))
@@ -24068,7 +24068,7 @@ Index: WebCore/ChangeLog
 						(menu-bar-lines . 0)
 						(font . 
 \"-*-Courier-medium-r-normal-*-*-90-100-100-m-*-*-*\"))) 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19349 :USER "auc" :DATE 3354950684 :CHANNEL "#lisp" :TITLE "test gcd (pypy backend output)" :CONTENTS "(defun my-gcd
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19349 :USER "auc" :DATE 3354950684 :CHANNEL "#lisp" :TITLE "test gcd (pypy backend output)" :CONTENTS "(defun my-gcd
 (a_0 b_0)
 (prog
 (v0 v1 (b_0 b_0) v2 b_1 b_2 v3 r_0 (a_0 a_0) v4)
@@ -24095,7 +24095,7 @@ tag3
 (go tag1)
 ))
 (write ( my-gcd 96 64 ))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19348 :USER "duncan" :DATE 3354949646 :CHANNEL "#scheme" :TITLE "what is #{Unspecific} ?" :CONTENTS "(define-syntax emit
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19348 :USER "duncan" :DATE 3354949646 :CHANNEL "#scheme" :TITLE "what is #{Unspecific} ?" :CONTENTS "(define-syntax emit
   (syntax-rules ()
     ((_ body ...)
      `(body ...))))
@@ -24114,7 +24114,7 @@ tag3
 
 (scratch)> (emit ,@(emit-for i = 1 to m do
 			     (,$store ,i (+ ,E.stk 1))))
-((23 1 (+ 0 1)) . #{Unspecific})" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19347 :USER "floppyears" :DATE 3354945898 :CHANNEL "None" :TITLE "flops code" :CONTENTS "(defun myCount (num lst) ( myReduce (lambda (x counter) (if (eq x num) (+ 1 counter) counter)) 0 lst ))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19346 :USER "duncan" :DATE 3354945853 :CHANNEL "#scheme" :TITLE "let*" :CONTENTS "(define (generate-call-expression E env stkenv regenv reg stk tail)
+((23 1 (+ 0 1)) . #{Unspecific})" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19347 :USER "floppyears" :DATE 3354945898 :CHANNEL "None" :TITLE "flops code" :CONTENTS "(defun myCount (num lst) ( myReduce (lambda (x counter) (if (eq x num) (+ 1 counter) counter)) 0 lst ))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19346 :USER "duncan" :DATE 3354945853 :CHANNEL "#scheme" :TITLE "let*" :CONTENTS "(define (generate-call-expression E env stkenv regenv reg stk tail)
   (let* ((regenv QEnv.empty)
          (reg    0)
          (stk    (+ stk reg 1))
@@ -24127,7 +24127,7 @@ tag3
          (Es     (generate-expressions Es
                                        env stkenv regenv reg stk tail))))
     
-    ))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19345 :USER "MacDome" :DATE 3354941585 :CHANNEL "#webkit" :TITLE "even better fix for ggaren" :CONTENTS "Index: LayoutTests/ChangeLog
+    ))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19345 :USER "MacDome" :DATE 3354941585 :CHANNEL "#webkit" :TITLE "even better fix for ggaren" :CONTENTS "Index: LayoutTests/ChangeLog
 ===================================================================
 --- LayoutTests/ChangeLog	(revision 14044)
 +++ LayoutTests/ChangeLog	(working copy)
@@ -24213,7 +24213,7 @@ Index: WebCore/ChangeLog
          Reviewed by mjs.
  
          Speculative fix for our 7th worst crasher.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19344 :USER "MacDome" :DATE 3354939832 :CHANNEL "#webkit" :TITLE "fix for another crashtracer" :CONTENTS "Index: dom/ContainerNode.cpp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19344 :USER "MacDome" :DATE 3354939832 :CHANNEL "#webkit" :TITLE "fix for another crashtracer" :CONTENTS "Index: dom/ContainerNode.cpp
 ===================================================================
 --- dom/ContainerNode.cpp	(revision 14042)
 +++ dom/ContainerNode.cpp	(working copy)
@@ -24232,7 +24232,7 @@ Index: WebCore/ChangeLog
      }
      m_lastChild = 0;
      allowEventDispatch();
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19343 :USER "othermaciej" :DATE 3354938848 :CHANNEL "#webkit" :TITLE "initialize WebKit log channels" :CONTENTS "Index: ChangeLog
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19343 :USER "othermaciej" :DATE 3354938848 :CHANNEL "#webkit" :TITLE "initialize WebKit log channels" :CONTENTS "Index: ChangeLog
 ===================================================================
 --- ChangeLog	(revision 14042)
 +++ ChangeLog	(working copy)
@@ -24348,7 +24348,7 @@ Index: WebView/WebView.m
      _private->_pageBridge = [[WebPageBridge alloc] initWithMainFrameName:frameName webView:self frameView:frameView];
  
      [self _addToAllWebViewsSet];
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19342 :USER "mikeash" :DATE 3354937819 :CHANNEL "#macdev" :TITLE "my CGRegisterScreenRefreshCallback docs" :CONTENTS "CGRegisterScreenRefreshCallback
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19342 :USER "mikeash" :DATE 3354937819 :CHANNEL "#macdev" :TITLE "my CGRegisterScreenRefreshCallback docs" :CONTENTS "CGRegisterScreenRefreshCallback
 Registers a callback function to be invoked when local displays are refreshed or modified.
 
 void CGRegisterScreenRefreshCallback (
@@ -24363,7 +24363,7 @@ userParameter
 ( description forthcoming )
 
 Availability
-Available in Mac OS X version 10.0 and later." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19341 :USER "theCore" :DATE 3354936146 :CHANNEL "None" :TITLE "Something ``practical'' in Lisp" :CONTENTS "(define (sexp->html html)
+Available in Mac OS X version 10.0 and later." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19341 :USER "theCore" :DATE 3354936146 :CHANNEL "None" :TITLE "Something ``practical'' in Lisp" :CONTENTS "(define (sexp->html html)
   (cond ((pair? html)
          (string-append
           (apply string-append
@@ -24380,16 +24380,16 @@ Available in Mac OS X version 10.0 and later." :ANNOTATIONS NIL) #S(MONTEZUMA::P
                 (body
                  (h1 \"Generating HTML page with Scheme\")
                  (p \"Hello\" (em \"cruel world.\"))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19340 :USER "Mamadshah" :DATE 3354934649 :CHANNEL "#oscar-cluster" :TITLE "Mamadshah" :CONTENTS "Here it is possible 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19340 :USER "Mamadshah" :DATE 3354934649 :CHANNEL "#oscar-cluster" :TITLE "Mamadshah" :CONTENTS "Here it is possible 
 <a href=\"http://mywebpage.netscape.com/free1ringtones/free-nokia-ringtones.html\">Free Nokia Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-polyphonic-ringtones.html\">Free Polyphonic Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-motorola-ringtones.html\">Free Motorola Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-sprint-ringtones.html\">Free Sprint Ringtones</a> 
-[url=http://mywebpage.netscape.com/free1ringtones/free-cell-phone-ringtones.html]Free Cell Phone Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-polyphonic-ringtones.html]Free Polyphonic Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-motorola-ringtones.html]Free Motorola Ringtones[/url]" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19339 :USER "dbueno" :DATE 3354933738 :CHANNEL "None" :TITLE "Syntax error in ocaml" :CONTENTS "type id' =
+[url=http://mywebpage.netscape.com/free1ringtones/free-cell-phone-ringtones.html]Free Cell Phone Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-polyphonic-ringtones.html]Free Polyphonic Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-motorola-ringtones.html]Free Motorola Ringtones[/url]" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19339 :USER "dbueno" :DATE 3354933738 :CHANNEL "None" :TITLE "Syntax error in ocaml" :CONTENTS "type id' =
     VarId of {name: string; qual: string}
   | PkgId of {name: string; ver: string}
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19338 :USER "YGingras" :DATE 3354930678 :CHANNEL "None" :TITLE "shebam attempt" :CONTENTS "#!/bin/sh
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19338 :USER "YGingras" :DATE 3354930678 :CHANNEL "None" :TITLE "shebam attempt" :CONTENTS "#!/bin/sh
 exec /home/ygingras/bin/cl-launch -X -- \"$0\" \"$@\"
 (format t \"hello, world~%\")
 (write cl-launch:*arguments*) (terpri)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19337 :USER "vik" :DATE 3354926426 :CHANNEL "None" :TITLE "physics.h" :CONTENTS "#ifndef _PHYSICS_H
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19337 :USER "vik" :DATE 3354926426 :CHANNEL "None" :TITLE "physics.h" :CONTENTS "#ifndef _PHYSICS_H
 #define _PHYSICS_H
 
 #include \"vec.h\"
@@ -24524,13 +24524,13 @@ public:
 
 
 #endif
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19336 :USER "_deepfire" :DATE 3354919188 :CHANNEL "#lisp" :TITLE "cvs closure fails visiting urls" :CONTENTS "debugger invoked on a TYPE-ERROR in thread #<THREAD {CDF2209}>:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19336 :USER "_deepfire" :DATE 3354919188 :CHANNEL "#lisp" :TITLE "cvs closure fails visiting urls" :CONTENTS "debugger invoked on a TYPE-ERROR in thread #<THREAD {CDF2209}>:
   The value 1056 is not of type (OR NULL (UNSIGNED-BYTE 8)).
 
 debugger invoked on a SB-KERNEL:INDEX-TOO-LARGE-ERROR in thread
 #<THREAD {CA49F51}>:
   The index 1 is too large.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19335 :USER "Acássio" :DATE 3354917696 :CHANNEL "None" :TITLE "Msn Mobile" :CONTENTS "========================
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19335 :USER "Acássio" :DATE 3354917696 :CHANNEL "None" :TITLE "Msn Mobile" :CONTENTS "========================
 ===class_pop3.inc.php===
 ========================
 
@@ -24706,12 +24706,12 @@ debugger invoked on a SB-KERNEL:INDEX-TOO-LARGE-ERROR in thread
 ?>
 </p>
 </card>
-</wml>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19334 :USER "edsu" :DATE 3354916346 :CHANNEL "#code4lib" :TITLE "fedora soap w/ ruby" :CONTENTS "require 'soap/wsdlDriver'
+</wml>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19334 :USER "edsu" :DATE 3354916346 :CHANNEL "#code4lib" :TITLE "fedora soap w/ ruby" :CONTENTS "require 'soap/wsdlDriver'
 
 
 soap = SOAP::WSDLDriverFactory.new('Fedora-API-A.wsdl').createDriver
 
-puts soap.methods    " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19333 :USER "Pupeno" :DATE 3354914561 :CHANNEL "#erlang" :TITLE "What is function_clause ?" :CONTENTS "=ERROR REPORT==== 24-Apr-2006::21:46:56 ===
+puts soap.methods    " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19333 :USER "Pupeno" :DATE 3354914561 :CHANNEL "#erlang" :TITLE "What is function_clause ?" :CONTENTS "=ERROR REPORT==== 24-Apr-2006::21:46:56 ===
 Error in process <0.1337.0> with exit value: {function_clause,[{gen_dns,tests_domain_parsing,[[{correct,1,[{question,[\"com\",\"com\"],a,in}],<<13 bytes>>},{correct,1,[{question,[\"com\",\"mail\"],a,in}],<<14 bytes>>},{error,1,[{question,[\"com\",\"mail\"],a,in}],<<14 bytes>>},{correct,1,[{question,[\"mail\",\"com\"],a,in}],<<14 bytes>>},{correct,... 
 
 ** exited: {function_clause,[{gen_dns,tests_domain_parsing,
@@ -24757,7 +24757,7 @@ Error in process <0.1337.0> with exit value: {function_clause,[{gen_dns,tests_do
                              {gen_dns,test,0},
                              {erl_eval,do_apply,5},
                              {shell,exprs,6},
-                             {shell,eval_loop,3}]} **" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19332 :USER "zedek" :DATE 3354911657 :CHANNEL "None" :TITLE "small patch" :CONTENTS "--- rmailsum.el.orig    2006-04-24 19:32:17.000000000 +0200
+                             {shell,eval_loop,3}]} **" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19332 :USER "zedek" :DATE 3354911657 :CHANNEL "None" :TITLE "small patch" :CONTENTS "--- rmailsum.el.orig    2006-04-24 19:32:17.000000000 +0200
 +++ rmailsum.el 2006-04-24 19:32:38.000000000 +0200
 @@ -161,7 +161,7 @@
      (goto-char (point-min))
@@ -24783,20 +24783,20 @@ Error in process <0.1337.0> with exit value: {function_clause,[{gen_dns,tests_do
 2006-04-24  Xavier Maillard  <zedek@gnu.org>
 
         * rmailsum.el (rmail-message-senders-p,
-                       rmail-message-subject-p): Changed mail-header-get-header to rmail-header-get-header." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19331 :USER "josh" :DATE 3354911550 :CHANNEL "None" :TITLE "buginess" :CONTENTS "- (void)windowBecameKey:(NSNotification*)inNotification
+                       rmail-message-subject-p): Changed mail-header-get-header to rmail-header-get-header." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19331 :USER "josh" :DATE 3354911550 :CHANNEL "None" :TITLE "buginess" :CONTENTS "- (void)windowBecameKey:(NSNotification*)inNotification
 {
   NSLog(@\"XXXJOSH GOT WINDOW BECAME KEY in nsWindowMap.mm\");
   id firstResponder = [[inNotification object] firstResponder];
   if ([firstResponder isKindOfClass:[ChildView class]]) {
     [firstResponder viewsWindowDidBecomeKey];
   }
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19330 :USER "tao`" :DATE 3354910265 :CHANNEL "#macdev" :TITLE "returning a single instance" :CONTENTS "+ (MySingletonObject *)sharedInstance
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19330 :USER "tao`" :DATE 3354910265 :CHANNEL "#macdev" :TITLE "returning a single instance" :CONTENTS "+ (MySingletonObject *)sharedInstance
 { 
 	if (sharedInstance == nil) { 
 		sharedInstance = [[self alloc] init];
 	} 
 	return sharedInstance; 
-} " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19329 :USER "Xophe" :DATE 3354909701 :CHANNEL "#lisp" :TITLE "my latest try" :CONTENTS "(defun esa-command-parser (command-table stream)
+} " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19329 :USER "Xophe" :DATE 3354909701 :CHANNEL "#lisp" :TITLE "my latest try" :CONTENTS "(defun esa-command-parser (command-table stream)
   (let ((command-name nil)
         (command-args nil))
     (with-delimiter-gestures (*command-name-delimiters* :override t)
@@ -24834,7 +24834,7 @@ Error in process <0.1337.0> with exit value: {function_clause,[{gen_dns,tests_do
                                  collect key and collect (eval val)))
                     result))))))))
 
-;; plus (*command-parser* 'esa-command-parser) in ESA-TOP-LEVEL" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19328 :USER "zacwhite" :DATE 3354905535 :CHANNEL "None" :TITLE "I WIN" :CONTENTS "- (IBAction)changePref:(id)sender{
+;; plus (*command-parser* 'esa-command-parser) in ESA-TOP-LEVEL" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19328 :USER "zacwhite" :DATE 3354905535 :CHANNEL "None" :TITLE "I WIN" :CONTENTS "- (IBAction)changePref:(id)sender{
 	switch([sender tag]){
 		case 0: //show progress indicator.
 			[userDefaults setInteger:[sender state] forKey:@\"progressIndicator\"];
@@ -24852,7 +24852,7 @@ Error in process <0.1337.0> with exit value: {function_clause,[{gen_dns,tests_do
 			break;
 		default: break;
 	}
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19327 :USER "_deepfire" :DATE 3354905501 :CHANNEL "#lisp" :TITLE "closure compilation failure backtrace " :CONTENTS "0: (SB-IMPL::READ-TOKEN #<SYNONYM-STREAM :SYMBOL SB-SYS:*STDIN* {9112981}> #\\e)
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19327 :USER "_deepfire" :DATE 3354905501 :CHANNEL "#lisp" :TITLE "closure compilation failure backtrace " :CONTENTS "0: (SB-IMPL::READ-TOKEN #<SYNONYM-STREAM :SYMBOL SB-SYS:*STDIN* {9112981}> #\\e)
 1: (READ-PRESERVING-WHITESPACE
     #<SYNONYM-STREAM :SYMBOL SB-SYS:*STDIN* {9112981}>
     T
@@ -24895,7 +24895,7 @@ Error in process <0.1337.0> with exit value: {function_clause,[{gen_dns,tests_do
 16: (SB-IMPL::TOPLEVEL-REPL NIL)
 17: (SB-IMPL::TOPLEVEL-INIT)
 18: ((LABELS SB-IMPL::RESTART-LISP))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19326 :USER "jwormy" :DATE 3354900661 :CHANNEL "#lisp" :TITLE "comparing " :CONTENTS "(defun find-greatest(tehlist)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19326 :USER "jwormy" :DATE 3354900661 :CHANNEL "#lisp" :TITLE "comparing " :CONTENTS "(defun find-greatest(tehlist)
 	(let ((thea (nth 0 (list 'tehlist)))))
 	(let ((theb (nth 1 (list 'tehlist)))))
 	(let ((thec (nth 2 (list 'tehlist)))))
@@ -24906,7 +24906,7 @@ Error in process <0.1337.0> with exit value: {function_clause,[{gen_dns,tests_do
 	(if (> 'thec 'theb)(setf highest '\"analyst\"))
 	(if (> 'thed 'thec)(setf highest '\"empathist\"))
 	(print highest)
-	)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19325 :USER "ed-t8" :DATE 3354898172 :CHANNEL "#lisp" :TITLE "cl-opengl error" :CONTENTS "Unable to load any of the alternatives:
+	)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19325 :USER "ed-t8" :DATE 3354898172 :CHANNEL "#lisp" :TITLE "cl-opengl error" :CONTENTS "Unable to load any of the alternatives:
    (\"libglut.so\" \"libglut.so.3\")
    [Condition of type CFFI:LOAD-FOREIGN-LIBRARY-ERROR]
 
@@ -24961,7 +24961,7 @@ Backtrace:
  37: ((LAMBDA NIL))
  38: (\"foreign function: call_into_lisp\")
  39: (\"foreign function: new_thread_trampoline\")
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19324 :USER "toste" :DATE 3354896380 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "ordreAchat (b, (p, strat)) symb nb =
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19324 :USER "toste" :DATE 3354896380 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "ordreAchat (b, (p, strat)) symb nb =
 	if (isJust(find((==symb).symbole) b))
 		then acheterSymb symb nb (b, (p, strat)) head(filter((==symb).symbole) b)
 		else (b, (p, strat))
@@ -24982,9 +24982,9 @@ acheterSymb sym nb (b, (p, strat)) a = (b, ((Achat sym nb x):p, strat))
 
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19323 :USER "xerox" :DATE 3354894973 :CHANNEL "#haskell" :TITLE "nah it's toste" :CONTENTS "acheterSymb sym nb (b, (p, strat)) a = 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19323 :USER "xerox" :DATE 3354894973 :CHANNEL "#haskell" :TITLE "nah it's toste" :CONTENTS "acheterSymb sym nb (b, (p, strat)) a = 
 	(b, ((p:(Achat sym nb x)), strat)
-	where x = (maybe 0.0 id (fmap read (valeurAttribut \"Prix\" a) :: Maybe Float))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19322 :USER "turbo24prg" :DATE 3354893936 :CHANNEL "None" :TITLE "RGBDS won't compile" :CONTENTS "Folgendes Problem:
+	where x = (maybe 0.0 id (fmap read (valeurAttribut \"Prix\" a) :: Maybe Float))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19322 :USER "turbo24prg" :DATE 3354893936 :CHANNEL "None" :TITLE "RGBDS won't compile" :CONTENTS "Folgendes Problem:
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 In file included from gameboy/locallex.h:4,
                  from globlex.c:12:
@@ -25013,7 +25013,7 @@ typedef union
 } YYSTYPE;
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19321 :USER "toste" :DATE 3354893083 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "ordreAchat (b, (p, strat)) symb nb =
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19321 :USER "toste" :DATE 3354893083 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "ordreAchat (b, (p, strat)) symb nb =
 	if (isJust(find((==symb).symbole) b))
 		then acheterSymb symb nb (b, (p, strat)) head(filter ((==symb).symbole) b)
 		else (b, (p, strat))
@@ -25021,7 +25021,7 @@ typedef union
 acheterSymb :: String -> Int -> CONTEXTE_CLIENT -> ACTION -> [CONTEXTE_CLIENT]  
 acheterSymb sym nb (b, (p, strat)) a = 
 	(b, ((p:read(sym ++ \" \" ++ show(nb) ++ \" \" ++ show(x))), strat)
-	where x = maybe 0.0 id (fmap read (valeurAttribut \"Prix\" a) :: Maybe Float)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19320 :USER "dsalo" :DATE 3354892874 :CHANNEL "#code4lib" :TITLE "apache error log" :CONTENTS "[Mon Apr 24 11:13:03 2006] [notice] caught SIGTERM, shutting down
+	where x = maybe 0.0 id (fmap read (valeurAttribut \"Prix\" a) :: Maybe Float)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19320 :USER "dsalo" :DATE 3354892874 :CHANNEL "#code4lib" :TITLE "apache error log" :CONTENTS "[Mon Apr 24 11:13:03 2006] [notice] caught SIGTERM, shutting down
 Processing config directory: /etc/httpd/sites/*.conf
  Processing config file: /etc/httpd/sites/0000_any_80_.conf
  Processing config file: /etc/httpd/sites/0001_any_6969_idisk.conf
@@ -25043,7 +25043,7 @@ Processing config directory: /etc/httpd/sites/*.conf
 [Mon Apr 24 11:35:35 2006] [notice] Apache/1.3.33 (Darwin) PHP/5.0.4 mod_jk/1.2.6 mod_ssl/2.8.24 OpenSSL/0.9.7i configured -- resuming normal operations
 [Mon Apr 24 11:35:35 2006] [notice] Accept mutex: flock (Default: flock)
 [Mon Apr 24 11:39:03 2006] [error] PHP Fatal error:  Cannot redeclare mime_content_type() in /Library/WebServer/Documents/ojs/includes/functions.inc.php on line 168
-[Mon Apr 24 11:39:49 2006] [error] PHP Fatal error:  Cannot redeclare mime_content_type() in /Library/WebServer/Documents/ojs/includes/functions.inc.php on line 158" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19319 :USER "dsalo" :DATE 3354892634 :CHANNEL "#code4lib" :TITLE "functions.inc.php" :CONTENTS "<?php
+[Mon Apr 24 11:39:49 2006] [error] PHP Fatal error:  Cannot redeclare mime_content_type() in /Library/WebServer/Documents/ojs/includes/functions.inc.php on line 158" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19319 :USER "dsalo" :DATE 3354892634 :CHANNEL "#code4lib" :TITLE "functions.inc.php" :CONTENTS "<?php
 
 /**
  * functions.inc.php
@@ -25203,7 +25203,7 @@ function mime_content_type($filename) {
 }
 
 ?>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19318 :USER "aliks" :DATE 3354892295 :CHANNEL "#ucw" :TITLE "reddit-example compile problem" :CONTENTS "CL-USER> (asdf:oos 'asdf:load-op :lisp-on-lines.example)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19318 :USER "aliks" :DATE 3354892295 :CHANNEL "#ucw" :TITLE "reddit-example compile problem" :CONTENTS "CL-USER> (asdf:oos 'asdf:load-op :lisp-on-lines.example)
 
 ; compiling file \"/home2/as07/lol/lisp-on-lines/reddit-example.lisp\" (written 18 APR 2006 04:33:07 PM):
 ; compiling (IN-PACKAGE :LOL)
@@ -25483,7 +25483,7 @@ NIL
 ; compilation unit finished
 ;   caught 3 ERROR conditions
 ;   printed 2 notes
-CL-USER> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19317 :USER "jwormy" :DATE 3354890417 :CHANNEL "#lisp" :TITLE "i am a loser" :CONTENTS "(defun find-greatest(tehlist)
+CL-USER> " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19317 :USER "jwormy" :DATE 3354890417 :CHANNEL "#lisp" :TITLE "i am a loser" :CONTENTS "(defun find-greatest(tehlist)
 	((set 'a (nth 0 tehlist))
 	(set 'b (nth 1 tehlist))
 	(set 'c (nth 2 tehlist))
@@ -25492,7 +25492,7 @@ CL-USER> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19317 :USER "jwormy" :D
 	(if (> b a)(= highest 'legalist))
 	(if (> c b)(= highest 'analyst))
 	(if (> d c)(= highest 'empathist))
-	(print highest)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19316 :USER "quasi" :DATE 3354889511 :CHANNEL "#lisp" :TITLE "my asd file" :CONTENTS "(in-package #:cl-user)
+	(print highest)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19316 :USER "quasi" :DATE 3354889511 :CHANNEL "#lisp" :TITLE "my asd file" :CONTENTS "(in-package #:cl-user)
 
 (defpackage #:cl-memcached-system
   (:use #:cl
@@ -25512,7 +25512,7 @@ CL-USER> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19317 :USER "jwormy" :D
 	       (:file \"util\")
 	       (:file \"cl-memcached\")))
  
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19315 :USER "duncan" :DATE 3354888950 :CHANNEL "#scheme" :TITLE "not really working macros" :CONTENTS "(define-syntax emit
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19315 :USER "duncan" :DATE 3354888950 :CHANNEL "#scheme" :TITLE "not really working macros" :CONTENTS "(define-syntax emit
   (syntax-rules ()
     ((_ body ...)
      `(body ...))))
@@ -25520,7 +25520,7 @@ CL-USER> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19317 :USER "jwormy" :D
 (define-syntax code
   (syntax-rules ()
     ((_ body)
-     ,@body)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19314 :USER "dialtone" :DATE 3354876159 :CHANNEL "#lisp" :TITLE "Is this a bit better now?" :CONTENTS "(DEFCLASS TEST-CLTRANS-OO.C () ((OANSWER)))
+     ,@body)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19314 :USER "dialtone" :DATE 3354876159 :CHANNEL "#lisp" :TITLE "Is this a bit better now?" :CONTENTS "(DEFCLASS TEST-CLTRANS-OO.C () ((OANSWER)))
 (DEFUN NEW-GET-SET ()
   (PROG (LAST-EXC V24 V25 V26 V27 V28)
         (SETF LAST-EXC NIL)
@@ -25531,7 +25531,7 @@ CL-USER> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19317 :USER "jwormy" :D
         (GO TAG1)
    TAG1 (RETURN V28)))
 (WRITE (NEW-GET-SET))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19313 :USER "lol" :DATE 3354875035 :CHANNEL "None" :TITLE "lol" :CONTENTS "# 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19313 :USER "lol" :DATE 3354875035 :CHANNEL "None" :TITLE "lol" :CONTENTS "# 
 # Name:		traverse_tree
 #
 # Description: Traverse the tree while printing the node values.
@@ -25580,14 +25580,14 @@ traverse_post_order:
 traverse_done:
         lw $ra,4($sp)           # restore return address
         addi $sp,$sp,8
-        jr $ra" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19312 :USER "dialtone" :DATE 3354871499 :CHANNEL "#lisp" :TITLE "not working" :CONTENTS "(let* ((filename \"/tmp/usession-dialtone/new_get_set.lisp\")
+        jr $ra" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19312 :USER "dialtone" :DATE 3354871499 :CHANNEL "#lisp" :TITLE "not working" :CONTENTS "(let* ((filename \"/tmp/usession-dialtone/new_get_set.lisp\")
        (content (with-open-file (f filename)
 		  (loop for sexp = (read f nil) while sexp collect sexp))))
   (with-open-stream (out (open filename
 			       :direction :output
 			       :if-does-not-exist :create
 			       :if-exists :overwrite))
-    (pprint content) out))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19311 :USER "jsnell" :DATE 3354869330 :CHANNEL "#lisp" :TITLE "buy it now?" :CONTENTS "CL-USER> (sb-profile:profile foo)
+    (pprint content) out))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19311 :USER "jsnell" :DATE 3354869330 :CHANNEL "#lisp" :TITLE "buy it now?" :CONTENTS "CL-USER> (sb-profile:profile foo)
 ; No value
 CL-USER> (defun bar () 1)
 BAR
@@ -25612,7 +25612,7 @@ overhead estimation parameters:
   1.6000001e-8s/call, 1.536e-6s total profiling, 6.32e-7s internal profiling
 ; No value
 CL-USER> 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19310 :USER "kysh" :DATE 3354865347 :CHANNEL "#macdev" :TITLE "Numerology backtrace / console output" :CONTENTS "#0  0x90048064 in kill ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19310 :USER "kysh" :DATE 3354865347 :CHANNEL "#macdev" :TITLE "Numerology backtrace / console output" :CONTENTS "#0  0x90048064 in kill ()
 #1  0x9012e9b4 in abort ()
 #2  0x0017bfc8 in __cxxabiv1::__terminate ()
 #3  0x0017c00c in std::terminate ()
@@ -25634,7 +25634,7 @@ NAudioMgr: out device: Built-in Audio id: 0
 ERROR : NAudioMgr: missing out device, using default
 )
 
-on the console. " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19309 :USER "Cryo" :DATE 3354864741 :CHANNEL "#webkit" :TITLE "beachball" :CONTENTS "(gdb) attach 6862
+on the console. " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19309 :USER "Cryo" :DATE 3354864741 :CHANNEL "#webkit" :TITLE "beachball" :CONTENTS "(gdb) attach 6862
 Attaching to process 6862.
 Reading symbols for shared libraries . done
 Reading symbols for shared libraries ........................................................................................................................................................ done
@@ -25666,7 +25666,7 @@ Reading symbols for shared libraries ...........................................
 #23 0x9380de68 in NSApplicationMain ()
 #24 0x0005cbec in ?? ()
 #25 0x0005ca94 in ?? ()
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19308 :USER "dialtone" :DATE 3354861633 :CHANNEL "#lisp" :TITLE "Know why this fails?" :CONTENTS ";;;; Main
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19308 :USER "dialtone" :DATE 3354861633 :CHANNEL "#lisp" :TITLE "Know why this fails?" :CONTENTS ";;;; Main
 (defun new_get_set ( )
   (prog
       (last-exc v20 v21 v22 v23 v24)
@@ -25680,7 +25680,7 @@ Reading symbols for shared libraries ...........................................
      (go tag1)
      tag1
      (return v23)))
-(write (new_get_set))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19307 :USER "brucehoult" :DATE 3354856890 :CHANNEL "#dylan" :TITLE "lib files" :CONTENTS "bruce@k7:/usr/local/lib/dylan/2.4.1pre1/x86-linux-gcc$ l
+(write (new_get_set))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19307 :USER "brucehoult" :DATE 3354856890 :CHANNEL "#dylan" :TITLE "lib files" :CONTENTS "bruce@k7:/usr/local/lib/dylan/2.4.1pre1/x86-linux-gcc$ l
 total 16432
 -rwxr-xr-x  1 root root  149540 2006-01-02 01:36 ansi-c.lib.du*
 -rwxr-xr-x  1 root root   20848 2006-01-02 01:36 base-file-system.lib.du*
@@ -25745,7 +25745,7 @@ drwxr-xr-x  2 root root     240 2005-10-05 01:59 elisp/
 -rwxr-xr-x  1 root root   29596 2006-01-02 01:36 threads.lib.du*
 -rwxr-xr-x  1 root root  104728 2006-01-02 01:36 time.lib.du*
 -rwxr-xr-x  1 root root  297196 2006-01-02 01:36 transcendental.lib.du*
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19306 :USER "ace4016" :DATE 3354840118 :CHANNEL "None" :TITLE "print to string" :CONTENTS "(defun gen-music-string (axiom iter)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19306 :USER "ace4016" :DATE 3354840118 :CHANNEL "None" :TITLE "print to string" :CONTENTS "(defun gen-music-string (axiom iter)
   (let ((string axiom))
     (with-output-to-string(s1 string) (format s1 \"~a\"
                                               (loop
@@ -25761,7 +25761,7 @@ drwxr-xr-x  2 root root     240 2005-10-05 01:59 elisp/
                                                                          (nil (format s \"\"))))
                                                                      finally (return ts))))
     (if (> iter 0) (gen-music-string string (1- iter)))
-    string))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19305 :USER "Wengero" :DATE 3354835317 :CHANNEL "#adium" :TITLE "crashy crash" :CONTENTS "    cd \"/Users/robertwe/adium/Frameworks/AIUtilities Framework\"
+    string))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19305 :USER "Wengero" :DATE 3354835317 :CHANNEL "#adium" :TITLE "crashy crash" :CONTENTS "    cd \"/Users/robertwe/adium/Frameworks/AIUtilities Framework\"
     /usr/bin/gcc-4.0 -o /Users/robertwe/adium/Frameworks/AIUtilities\\ Framework/build/AIUtilities.framework.build/Deployment-Debug/AIUtilities.build/Objects-normal/i386/AIUtilities -L/Users/robertwe/adium/Frameworks/AIUtilities\\ Framework/build/Deployment-Debug -F/Users/robertwe/adium/Frameworks/AIUtilities\\ Framework/build/Deployment-Debug -filelist /Users/robertwe/adium/Frameworks/AIUtilities\\ Framework/build/AIUtilities.framework.build/Deployment-Debug/AIUtilities.build/Objects-normal/i386/AIUtilities.LinkFileList -framework Cocoa -framework Carbon -framework Security -framework IOKit -framework SystemConfiguration -framework AudioUnit -framework AudioToolbox -framework QuickTime -framework AddressBook -arch i386 -prebind -Wl,-single_module -compatibility_version 1 -current_version 1 -install_name @executable_path/../Frameworks/AIUtilities.framework/Versions/A/AIUtilities -dynamiclib -mmacosx-version-min=10.4 -Wl,-dead_strip -seg1addr 0x12000000 -isysroot /Developer/SDKs/MacOSX10.4u.sdk
 ld: warning -prebind ignored because MACOSX_DEPLOYMENT_TARGET environment variable greater or equal to 10.4
 ld: Undefined symbols:
@@ -26140,7 +26140,7 @@ _abort
 _fflush
 _fprintf
 /usr/bin/libtool: internal link edit command failed
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19304 :USER "yonkeltron" :DATE 3354834904 :CHANNEL "#lisp" :TITLE "*slime-events*" :CONTENTS "File Edit Options Buffers Tools Help
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19304 :USER "yonkeltron" :DATE 3354834904 :CHANNEL "#lisp" :TITLE "*slime-events*" :CONTENTS "File Edit Options Buffers Tools Help
  (:ok
   (:present
    ((\"20.0\" . -18))))
@@ -26159,7 +26159,7 @@ _fprintf
  (swank:listener-eval \"(help)\\n\")
  \"COMMON-LISP-USER\" :repl-thread 67)
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19303 :USER "toste" :DATE 3354834143 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "mettreAJourAttribut :: Show a => String -> ACTION -> a -> ACTION
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19303 :USER "toste" :DATE 3354834143 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "mettreAJourAttribut :: Show a => String -> ACTION -> a -> ACTION
 
 mettreAJourAttribut att (Action s l) val =
 	if (isJust(find((==att).typeAttribut) l) )
@@ -26168,14 +26168,14 @@ mettreAJourAttribut att (Action s l) val =
 
 remplacer att (Action s (x:xs)) val 
 	| ((typeAttribut x) == att) = (Action s ((read (att ++ \" \" ++ show val)):xs))
-	| otherwise = remplacer  att (Action s (read(xs):x))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19302 :USER "jlhamilton" :DATE 3354833147 :CHANNEL "None" :TITLE "sequence A005228" :CONTENTS "-- http://www.research.att.com/~njas/sequences/A005228
+	| otherwise = remplacer  att (Action s (read(xs):x))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19302 :USER "jlhamilton" :DATE 3354833147 :CHANNEL "None" :TITLE "sequence A005228" :CONTENTS "-- http://www.research.att.com/~njas/sequences/A005228
 
 as@(1:3:as') = 1 : 3 : 7 : zipWith (+) as' (f 5 as')
 
 f n xxs@(x:xs) = 
   if n == x
     then f (n + 1) xs
-    else n : f (n + 1) xxs" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19301 :USER "pjb" :DATE 3354832478 :CHANNEL "None" :TITLE "mcq" :CONTENTS "
+    else n : f (n + 1) xxs" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19301 :USER "pjb" :DATE 3354832478 :CHANNEL "None" :TITLE "mcq" :CONTENTS "
 (defparameter *spaces*
   #+clisp #. (loop 
                 :for code :from 0 :below (expt 2 21) 
@@ -26252,7 +26252,7 @@ f n xxs@(x:xs) =
   (analyze-mcq (ask-mcq test)))
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19300 :USER "Luke" :DATE 3354832219 :CHANNEL "None" :TITLE "lspace" :CONTENTS "(set-macro-character #\\[
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19300 :USER "Luke" :DATE 3354832219 :CHANNEL "None" :TITLE "lspace" :CONTENTS "(set-macro-character #\\[
   #'(lambda (stream character)
       (declare (ignore character))
       `#'(lambda (&optional _1 _2 _3 _4 _5 _6 _7 _8 _9)
@@ -26314,7 +26314,7 @@ f n xxs@(x:xs) =
     (beat earth)
     (format t \"~{~A ~}~%\" (:loc earth))))
 
-(format t \"e~%pause -1~%\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19299 :USER "toste" :DATE 3354831652 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "mettreAJourAttribut :: Show a => String -> ACTION -> a -> ACTION
+(format t \"e~%pause -1~%\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19299 :USER "toste" :DATE 3354831652 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "mettreAJourAttribut :: Show a => String -> ACTION -> a -> ACTION
 
 mettreAJourAttribut att (Action s l) val =
 	if (isJust(find((==att).typeAttribut) l) )
@@ -26331,7 +26331,7 @@ application
 *** Expression     : xs : x
 *** Term           : x
 *** Type           : ATTRIBUT
-*** Does not match : [a]    " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19298 :USER "othermaciej" :DATE 3354831616 :CHANNEL "#webkit" :TITLE "example that shows behavior differences in innerText" :CONTENTS "<html>
+*** Does not match : [a]    " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19298 :USER "othermaciej" :DATE 3354831616 :CHANNEL "#webkit" :TITLE "example that shows behavior differences in innerText" :CONTENTS "<html>
 <head>
 <body>
 <style>
@@ -26345,13 +26345,13 @@ application
 <p>bar</p>
 </body>
 </html>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19297 :USER "jlhamilton" :DATE 3354830157 :CHANNEL "#haskell" :TITLE "series problem" :CONTENTS "series = 1 : zipWith (+) series (2 : 4 : drop 2 (complement series))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19297 :USER "jlhamilton" :DATE 3354830157 :CHANNEL "#haskell" :TITLE "series problem" :CONTENTS "series = 1 : zipWith (+) series (2 : 4 : drop 2 (complement series))
 
 complement xs = complement' [1..] xs where
   complement' (a:as) bbs@(b:bs) = 
     if a < b
       then a : complement' as bbs
-      else complement' as bs" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19296 :USER "lnostdal" :DATE 3354827390 :CHANNEL "#programmering" :TITLE "C can't do what i want" :CONTENTS "#include <stdio.h>
+      else complement' as bs" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19296 :USER "lnostdal" :DATE 3354827390 :CHANNEL "#programmering" :TITLE "C can't do what i want" :CONTENTS "#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -26391,7 +26391,7 @@ int main()
   
   return 0;
 } // main
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19295 :USER "Lokadin" :DATE 3354825411 :CHANNEL "#haskell" :TITLE "stolen echo server" :CONTENTS "module Main
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19295 :USER "Lokadin" :DATE 3354825411 :CHANNEL "#haskell" :TITLE "stolen echo server" :CONTENTS "module Main
     where
 
 import System.IO
@@ -26414,7 +26414,7 @@ echo handle = do line <- (hGetLine handle)
                  if line == \":quit\\r\"
                     then return ()
                          else echo handle
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19294 :USER "goron" :DATE 3354822378 :CHANNEL "#haskell" :TITLE "Circular tree" :CONTENTS "module CircularTree where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19294 :USER "goron" :DATE 3354822378 :CHANNEL "#haskell" :TITLE "Circular tree" :CONTENTS "module CircularTree where
 
 data Tree a b c = Tree (Tree a b c) b (Tree a b c)
                 | Leaf (Tree a b c)
@@ -26433,7 +26433,7 @@ takeTree::Int->Tree Int a Int->[a]
 takeTree 0 _ = []
 takeTree levels (Tree t1 v t2) = v:takeTree (levels-1) t1 ++ takeTree (levels-1) t2
 takeTree levels (Leaf t1) = takeTree (levels-1) t1
- " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19293 :USER "offby1" :DATE 3354820693 :CHANNEL "#scheme" :TITLE "yields runtime error -- why?" :CONTENTS "#!/usr/local/bin/scshvm -o scshvm -h 28000000 -i /usr/lib/scsh-0.6/scsh.image \\
+ " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19293 :USER "offby1" :DATE 3354820693 :CHANNEL "#scheme" :TITLE "yields runtime error -- why?" :CONTENTS "#!/usr/local/bin/scshvm -o scshvm -h 28000000 -i /usr/lib/scsh-0.6/scsh.image \\
 -o scheme-with-scsh -o tables -o primitives -o srfi-23 -o srfi-1 -o sort -l bag.scm -l dict.scm -l anagrams.scm -e main -s
 !#
 
@@ -26448,7 +26448,7 @@ takeTree levels (Leaf t1) = takeTree (levels-1) t1
 $ ./top.scm 
 Can't open heap image file
 No such file or directory
-Image file \"/usr/lib/scsh-0.6/scheme48.image\" is unusable." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19292 :USER "Saulzar" :DATE 3354820385 :CHANNEL "#haskell" :TITLE "Existential badness" :CONTENTS "import Control.Monad.ST
+Image file \"/usr/lib/scsh-0.6/scheme48.image\" is unusable." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19292 :USER "Saulzar" :DATE 3354820385 :CHANNEL "#haskell" :TITLE "Existential badness" :CONTENTS "import Control.Monad.ST
 import Control.Monad.State
 
 {-
@@ -26491,7 +26491,7 @@ Failed, modules loaded: none.
 
 
 -}
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19291 :USER "gwking" :DATE 3354817805 :CHANNEL "#lisp" :TITLE "asdf-system-connections loading boilerplate" :CONTENTS "(defpackage #:metabang.bind-system (:use #:cl #:asdf))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19291 :USER "gwking" :DATE 3354817805 :CHANNEL "#lisp" :TITLE "asdf-system-connections loading boilerplate" :CONTENTS "(defpackage #:metabang.bind-system (:use #:cl #:asdf))
 (in-package #:metabang.bind-system)
 
 ;; try hard
@@ -26505,7 +26505,7 @@ http://www.cliki.net/asdf-system-connections for details and download
 instructions.\"))
 
 (asdf:operate 'asdf:load-op 'asdf-system-connections)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19290 :USER "antifuchs" :DATE 3354817112 :CHANNEL "#lisp" :TITLE "mp and fix" :CONTENTS ";;; used as #.(mp) and #.(fix) in system defs.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19290 :USER "antifuchs" :DATE 3354817112 :CHANNEL "#lisp" :TITLE "mp and fix" :CONTENTS ";;; used as #.(mp) and #.(fix) in system defs.
 
 (eval-when (:compile-toplevel :execute :load-toplevel)
   (defun fix (&optional (prefix \"Lisp-Dep/\"))
@@ -26525,7 +26525,7 @@ instructions.\"))
                           #+excl                    \"mp-acl\"
                           #+openmcl                 \"mp-openmcl\"
                           #+lispworks               \"mp-lw\"
-                          #| fall back |#           \"mp-nil\")))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19289 :USER "yome" :DATE 3354816745 :CHANNEL "#scheme" :TITLE "'(1 2 3) vs (list 1 2 3)" :CONTENTS "> (define (make-1) '(1 2 3))
+                          #| fall back |#           \"mp-nil\")))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19289 :USER "yome" :DATE 3354816745 :CHANNEL "#scheme" :TITLE "'(1 2 3) vs (list 1 2 3)" :CONTENTS "> (define (make-1) '(1 2 3))
 > (define (make-2) (list 1 2 3))
 > (define x (make-1))
 > (set-cdr! x '())
@@ -26537,7 +26537,7 @@ instructions.\"))
 > (define y (make-2))
 > y
 (1 2 3)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19288 :USER "Cheery" :DATE 3354814513 :CHANNEL "#scheme" :TITLE "elaboration..." :CONTENTS "{- Tiny representation about what I were thinking in
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19288 :USER "Cheery" :DATE 3354814513 :CHANNEL "#scheme" :TITLE "elaboration..." :CONTENTS "{- Tiny representation about what I were thinking in
    irc.freenode.net #scheme -channel. -}
 
 defun function (x):
@@ -26559,11 +26559,11 @@ defun function (x):
   2.4 -- ...and floating point number!
 
 function 2
-function -2" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19287 :USER "Pupeno" :DATE 3354808772 :CHANNEL "#erlang" :TITLE "Better way to write this ? maybe with a fold ?" :CONTENTS "build_domains_up_to(_Labels, 0, Domains) -> Domains;
+function -2" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19287 :USER "Pupeno" :DATE 3354808772 :CHANNEL "#erlang" :TITLE "Better way to write this ? maybe with a fold ?" :CONTENTS "build_domains_up_to(_Labels, 0, Domains) -> Domains;
 build_domains_up_to(Labels, Length, Domains) ->
     build_domains_up_to(Labels, 
 			Length - 1,
-			lists:append(Domains, build_domains(Labels, Length)))." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19276 :USER "Pupeno" :DATE 3354804390 :CHANNEL "None" :TITLE "memoization ?" :CONTENTS "-module(delme).
+			lists:append(Domains, build_domains(Labels, Length)))." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19276 :USER "Pupeno" :DATE 3354804390 :CHANNEL "None" :TITLE "memoization ?" :CONTENTS "-module(delme).
 -export([random_list/2]).
 
 random_list(Items, N) ->
@@ -26579,7 +26579,7 @@ one_of(L) ->
     {I1,I2,I3} = erlang:now(),
     random:seed(I1,I2,I3),
     Item = random:uniform(length(L)),
-    lists:nth(Item, L)." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19275 :USER "lnostdal" :DATE 3354804329 :CHANNEL "#programmering" :TITLE "bash-script that adjusts fan-threshold on IBM R52 laptop" :CONTENTS "#!/bin/sh
+    lists:nth(Item, L)." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19275 :USER "lnostdal" :DATE 3354804329 :CHANNEL "#programmering" :TITLE "bash-script that adjusts fan-threshold on IBM R52 laptop" :CONTENTS "#!/bin/sh
 
 MAXTEMP=65
 
@@ -26604,7 +26604,7 @@ do
   test \"$fan\" = \"yes\" && sleep 40
   sleep 20
 done
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19272 :USER "twb" :DATE 3354786213 :CHANNEL "#emacs" :TITLE "tirkal: quick-and-dirty example" :CONTENTS "; (require 'pathname)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19272 :USER "twb" :DATE 3354786213 :CHANNEL "#emacs" :TITLE "tirkal: quick-and-dirty example" :CONTENTS "; (require 'pathname)
 ;    - http://mumble.net/~campbell/emacs/pathname-unix.el
 ;    - http://mumble.net/~campbell/emacs/pathname.el
 (require 'cl)                           ; for setf
@@ -26632,7 +26632,7 @@ ELISP> (tn \"/foo/bar/baz\" 3)
 \"baz\"
 ELISP> (tn \"/foo/bar/baz\" 2)
 *** Eval error ***  t1: no dirs; can't truncate.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19271 :USER "nomeata" :DATE 3354784602 :CHANNEL "#haskell" :TITLE "second tree iter map thing" :CONTENTS "-- TreeModel to List thingy
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19271 :USER "nomeata" :DATE 3354784602 :CHANNEL "#haskell" :TITLE "second tree iter map thing" :CONTENTS "-- TreeModel to List thingy
 treeModelMap :: TreeModelClass self => (TreeIter -> IO a) -> self -> IO [a]
 treeModelMap f tm  = do
 	iterMB <- treeModelGetIterFirst tm
@@ -26646,7 +26646,7 @@ treeModelMap' f tm iter values = do
 	next <- treeModelIterNext tm iter
 	if next
 		then treeModelMap' f tm iter (val:values)
-		else return (val:values)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19270 :USER "Saulzar" :DATE 3354783856 :CHANNEL "#haskell" :TITLE "Tree iter loop thingey" :CONTENTS "   let findPaths' f iter values = do
+		else return (val:values)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19270 :USER "Saulzar" :DATE 3354783856 :CHANNEL "#haskell" :TITLE "Tree iter loop thingey" :CONTENTS "   let findPaths' f iter values = do
         value <- readRow iter
         path  <- treeModelGetPath model iter
 
@@ -26657,7 +26657,7 @@ treeModelMap' f tm iter values = do
         next <- treeModelIterNext model iter
         if next 
             then findPaths' f iter vs
-            else return vs" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19269 :USER "Trisklot" :DATE 3354778181 :CHANNEL "#hardcider" :TITLE "Trisklot" :CONTENTS "Here http://mywebpage.netscape.com/free1ringtones/" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19268 :USER "Riastradh" :DATE 3354764762 :CHANNEL "#scheme" :TITLE "concatenated identifier utilities" :CONTENTS "(define-syntax define-concatenated
+            else return vs" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19269 :USER "Trisklot" :DATE 3354778181 :CHANNEL "#hardcider" :TITLE "Trisklot" :CONTENTS "Here http://mywebpage.netscape.com/free1ringtones/" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19268 :USER "Riastradh" :DATE 3354764762 :CHANNEL "#scheme" :TITLE "concatenated identifier utilities" :CONTENTS "(define-syntax define-concatenated
   (er-macro-transformer
    (lambda (form rename compare)
      compare
@@ -26677,18 +26677,18 @@ treeModelMap' f tm iter values = do
 
 (concatenated foo - bar)
 ;Value: 5
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19267 :USER "twb" :DATE 3354764293 :CHANNEL "#scheme" :TITLE "r5rs-lookup" :CONTENTS ";; first attempt
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19267 :USER "twb" :DATE 3354764293 :CHANNEL "#scheme" :TITLE "r5rs-lookup" :CONTENTS ";; first attempt
 (defun r5rs-lookup (symbol-name)
   \"View the documentation on SYMBOL-NAME from the R5RS.
 Assumes you have R5RS installed in your info path.\"
   (interactive \"s\")
   (info \"r5rs\")
-  (Info-index symbol-name))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19266 :USER "twb" :DATE 3354759068 :CHANNEL "#scheme" :TITLE "disable slime-space in slime48, but not slime buffers" :CONTENTS ";; SLIME48 does not support slime-space.  Disable it in slime48 buffers.
+  (Info-index symbol-name))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19266 :USER "twb" :DATE 3354759068 :CHANNEL "#scheme" :TITLE "disable slime-space in slime48, but not slime buffers" :CONTENTS ";; SLIME48 does not support slime-space.  Disable it in slime48 buffers.
 (let ((f (lambda ()
            (if (string-equal \"s48\" (slime-lisp-implementation-name))
                (set (make-local-variable 'slime-space-information-p) nil)))))
   (add-hook 'slime-mode-hook f)
-  (add-hook 'slime-repl-mode-hook f))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19265 :USER "MacDome" :DATE 3354757701 :CHANNEL "#webkit" :TITLE "patch to fix crash" :CONTENTS "Index: rendering/render_list.cpp
+  (add-hook 'slime-repl-mode-hook f))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19265 :USER "MacDome" :DATE 3354757701 :CHANNEL "#webkit" :TITLE "patch to fix crash" :CONTENTS "Index: rendering/render_list.cpp
 ===================================================================
 --- rendering/render_list.cpp	(revision 14020)
 +++ rendering/render_list.cpp	(working copy)
@@ -26773,13 +26773,13 @@ Assumes you have R5RS installed in your info path.\"
          break;
      case LNONE:
          break;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19264 :USER "dbueno" :DATE 3354756952 :CHANNEL "None" :TITLE "ocaml parser Ast.t not found" :CONTENTS "ocamlc -c parser.mli
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19264 :USER "dbueno" :DATE 3354756952 :CHANNEL "None" :TITLE "ocaml parser Ast.t not found" :CONTENTS "ocamlc -c parser.mli
 File \"parser.mli\", line 19, characters 48-60:
 Unbound type constructor Ast.t
 make: *** [parser.cmi] Error 2
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19263 :USER "lovelace" :DATE 3354755904 :CHANNEL "None" :TITLE "Magnet magic trick" :CONTENTS "This magic trick demonstrates two fundamentals about electronics and electricity: (1) Moving magnetic fields cause electrons to move, and (2) Moving electrons create magnetic fields. \"When the magnet falls through a non-ferrous metal pipe, the moving magnetic field causes the electrons in the conductor to move.  Those moving electrons in turn create an opposing magnetic field that prevents the magnet from falling right through, giving it a 'slow motion' effect.\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19263 :USER "lovelace" :DATE 3354755904 :CHANNEL "None" :TITLE "Magnet magic trick" :CONTENTS "This magic trick demonstrates two fundamentals about electronics and electricity: (1) Moving magnetic fields cause electrons to move, and (2) Moving electrons create magnetic fields. \"When the magnet falls through a non-ferrous metal pipe, the moving magnetic field causes the electrons in the conductor to move.  Those moving electrons in turn create an opposing magnetic field that prevents the magnet from falling right through, giving it a 'slow motion' effect.\"
 
-The magnet moves more slowly in a copper pipe than in an aluminum pipe because copper is a better conductor. It falls straight through a PVC pipe because PVC is an insulator." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19262 :USER "lightbringer" :DATE 3354754841 :CHANNEL "None" :TITLE "compile and link" :CONTENTS "Checking Dependencies
+The magnet moves more slowly in a copper pipe than in an aluminum pipe because copper is a better conductor. It falls straight through a PVC pipe because PVC is an insulator." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19262 :USER "lightbringer" :DATE 3354754841 :CHANNEL "None" :TITLE "compile and link" :CONTENTS "Checking Dependencies
 CompileC \"build/MountainTanks.build/Deployment/Mountain Tanks.build/Objects-normal/ppc/LVGame.o\" /Users/dereka/Desktop/Projects/MountainTanks/Source/LVGame/Base/LVGame.cpp normal ppc c++ com.apple.compilers.gcc.4_0
     cd /Users/dereka/Desktop/Projects/MountainTanks
     /usr/bin/gcc-4.0 -x c++ -arch ppc -pipe -Wno-trigraphs -fasm-blocks -g -Os -Wformat -Wfour-char-constants -fmessage-length=0 -mtune=G4 -fvisibility=hidden -fvisibility-inlines-hidden -Wno-invalid-offsetof -mmacosx-version-min=10.3 -I/Users/dereka/Desktop/Projects/MountainTanks/build/MountainTanks.build/Deployment/Mountain\\ Tanks.build/Mountain\\ Tanks.hmap -Wall -W -Wno-unused-parameter -Wno-multichar -mdynamic-no-pic -F/Users/dereka/Desktop/Projects/MountainTanks/build/Deployment -F/Users/dereka/Desktop/Projects/MountainTanks/libs -I/Users/dereka/Desktop/Projects/MountainTanks/build/Deployment/include -I/Users/dereka/Desktop/Projects/MountainTanks/libs/RakNet.framework/Headers -I/Users/dereka/Desktop/Projects/MountainTanks/libs/SDL.framework/Headers -I../LVEngine -I../LVEngine/Base -I../LVEngine/Graphics -I../LVEngine/Input -I../LVEngine/Interface -I../LVEngine/Lighting -I../LVEngine/Loaders -I../LVEngine/Networking -I../LVEngine/Physics -I../LVEngine/Timers -I../LVEngine/Utility -I../LVEngine/VertexArrays -I../LVEngine/Interface/GUI -I../LVEngine/Loaders/Controllers -I../LVEngine/Interface/GUI/Controls -I../LVEngine/Interface/GUI/Windows -ISource/LVGame -ISource/LVGame/Base -ISource/LVGame/Graphics -ISource/LVGame/GUI -ISource/LVGame/Network -ISource/LVGame/Objects -ISource/LVGame/Particles -ISource/LVGame/World -ISource/LVGame/Objects/Tanks -ISource/LVGame/Objects/Weapons -ISource/LVGame/Particles/Effects -ISource/include -ISource/include/cegui -ISource/include/FFMpeg -ISource/include/freetype -ISource/include/FTGL -ISource/include/HID -ISource/include/Launcher -ISource/include/libpng -ISource/include/MasterServer -ISource/include/ogg -ISource/include/opensteer -ISource/include/tinyxml -ISource/include/cegui/elements -ISource/include/cegui/falagard -ISource/include/cegui/renderers -ISource/include/freetype/cache -ISource/include/freetype/config -ISource/include/freetype/internal -ISource/include/cegui/renderers/directx81GUIRenderer -ISource/include/cegui/renderers/directx9GUIRenderer -ISource/include/cegui/renderers/IrrlichtRenderer -ISource/include/cegui/renderers/OpenGLGUIRenderer -ISource/include/freetype/internal/services -I/Users/dereka/Desktop/Projects/MountainTanks/build/MountainTanks.build/Deployment/Mountain\\ Tanks.build/DerivedSources -DMACOSX -force_cpusubtype_ALL -D_NEWTON_USE_LIB -DBITSTREAM_NATIVE_END -include /Library/Caches/com.apple.Xcode.501/SharedPrecompiledHeaders/LVPrefixheader-fduyluojhrkvhjabqvtutiatqyxf/LVPrefixheader.pch -c /Users/dereka/Desktop/Projects/MountainTanks/Source/LVGame/Base/LVGame.cpp -o /Users/dereka/Desktop/Projects/MountainTanks/build/MountainTanks.build/Deployment/Mountain\\ Tanks.build/Objects-normal/ppc/LVGame.o
@@ -26798,7 +26798,7 @@ CompileC \"build/MountainTanks.build/Deployment/Mountain Tanks.build/Objects-nor
 
 Ld \"/Users/dereka/Desktop/Projects/MountainTanks/build/Deployment/Mountain Tanks.app/Contents/MacOS/Mountain Tanks\" normal ppc
     cd /Users/dereka/Desktop/Projects/MountainTanks
-    /usr/bin/g++-4.0 -o /Users/dereka/Desktop/Projects/MountainTanks/build/Deployment/Mountain\\ Tanks.app/Contents/MacOS/Mountain\\ Tanks -L/Users/dereka/Desktop/Projects/MountainTanks/build/Deployment -L/Users/dereka/Desktop/Projects/MountainTanks/libs -F/Users/dereka/Desktop/Projects/MountainTanks/build/Deployment -F/Users/dereka/Desktop/Projects/MountainTanks/libs -filelist /Users/dereka/Desktop/Projects/MountainTanks/build/MountainTanks.build/Deployment/Mountain\\ Tanks.build/Objects-normal/ppc/Mountain\\ Tanks.LinkFileList -framework Cocoa -framework OpenGL -lGLEW -lftgl -lfreetype -framework Ogg -framework SDL_image -framework SDL -framework Vorbis -framework OpenAL -framework OpenAL -framework Ogg -framework Vorbis -framework IOKit -framework Carbon -lnewton32 -arch ppc -prebind -mmacosx-version-min=10.3 -Wl,-dead_strip -lz" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19261 :USER "Thlayli" :DATE 3354752218 :CHANNEL "#haskell" :TITLE "fixed a few things" :CONTENTS "-- Basic Code Verification procedure
+    /usr/bin/g++-4.0 -o /Users/dereka/Desktop/Projects/MountainTanks/build/Deployment/Mountain\\ Tanks.app/Contents/MacOS/Mountain\\ Tanks -L/Users/dereka/Desktop/Projects/MountainTanks/build/Deployment -L/Users/dereka/Desktop/Projects/MountainTanks/libs -F/Users/dereka/Desktop/Projects/MountainTanks/build/Deployment -F/Users/dereka/Desktop/Projects/MountainTanks/libs -filelist /Users/dereka/Desktop/Projects/MountainTanks/build/MountainTanks.build/Deployment/Mountain\\ Tanks.build/Objects-normal/ppc/Mountain\\ Tanks.LinkFileList -framework Cocoa -framework OpenGL -lGLEW -lftgl -lfreetype -framework Ogg -framework SDL_image -framework SDL -framework Vorbis -framework OpenAL -framework OpenAL -framework Ogg -framework Vorbis -framework IOKit -framework Carbon -lnewton32 -arch ppc -prebind -mmacosx-version-min=10.3 -Wl,-dead_strip -lz" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19261 :USER "Thlayli" :DATE 3354752218 :CHANNEL "#haskell" :TITLE "fixed a few things" :CONTENTS "-- Basic Code Verification procedure
 -- Ben Watts (analysis dept. - Mod-X)
 
 
@@ -26860,7 +26860,7 @@ code5 :: Parser
 code5 = do dd <- code3
            do ddd <- code3
            do dddd <- code3
-	      return \"ce\"" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19260 :USER "Thlayli" :DATE 3354752176 :CHANNEL "#haskell" :TITLE "mod-x unfixed" :CONTENTS "-- Basic Code Verification procedure
+	      return \"ce\"" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19260 :USER "Thlayli" :DATE 3354752176 :CHANNEL "#haskell" :TITLE "mod-x unfixed" :CONTENTS "-- Basic Code Verification procedure
 -- Ben Watts (analysis dept. - Mod-X)
 
 
@@ -26922,7 +26922,7 @@ code5 :: Parser
 code5 = do dd <- code3
            do ddd <- code3
            do dddd <- code3
-	      return \"ce\"" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19259 :USER "xenon" :DATE 3354747404 :CHANNEL "#colloquy" :TITLE "custom synapse style css" :CONTENTS ".message.highlight {
+	      return \"ce\"" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19259 :USER "xenon" :DATE 3354747404 :CHANNEL "#colloquy" :TITLE "custom synapse style css" :CONTENTS ".message.highlight {
 	background-color: rgba( 140, 174, 230, 0.700 ) !important;
 }
 
@@ -26974,7 +26974,7 @@ a.member {
 .reason {
 	display: inline;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19258 :USER "Shine" :DATE 3354745978 :CHANNEL "#lisp" :TITLE "multidimensional maze creator" :CONTENTS "(defun fill-maze (maze start add value dimensions &optional (index nil))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19258 :USER "Shine" :DATE 3354745978 :CHANNEL "#lisp" :TITLE "multidimensional maze creator" :CONTENTS "(defun fill-maze (maze start add value dimensions &optional (index nil))
   (let ((max (car dimensions)))
     (if max
         (let ((rest (cdr dimensions)))
@@ -27096,7 +27096,7 @@ a.member {
   (let ((maze (create-maze '(3 3 5 4))))
     (solve-maze maze)
     (print-maze maze)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19257 :USER "gecko2" :DATE 3354742653 :CHANNEL "None" :TITLE "yaboot problem" :CONTENTS "gecko@oldmatt:~/deboot $ pdisk
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19257 :USER "gecko2" :DATE 3354742653 :CHANNEL "None" :TITLE "yaboot problem" :CONTENTS "gecko@oldmatt:~/deboot $ pdisk
 Top level command (? for help): L
 
 Partition map (with 512 byte blocks) on '/dev/rdisk1'
@@ -27179,14 +27179,14 @@ image=/boot/vmlinux
   append=\"single debug loglevel=10 acpi=debug apic lapic apm panic=30\"
 
 macosx=/dev/hda2
-gecko@oldmatt:~/deboot $ " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19256 :USER "Oompa" :DATE 3354741451 :CHANNEL "#swhack" :TITLE "Phenny Error" :CONTENTS "Traceback (most recent call last):
+gecko@oldmatt:~/deboot $ " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19256 :USER "Oompa" :DATE 3354741451 :CHANNEL "#swhack" :TITLE "Phenny Error" :CONTENTS "Traceback (most recent call last):
  File \"E:\\Applications\\Phenny\\phenny.py\", line 276, in ?
   main()
  File \"E:\\Applications\\Phenny\\phenny.py\", line 270, in main
   try: doubleFork()
  File \"E:\\Applications\\Phenny\\phenny.py\", line 207, in doubleFork
   pid = os.fork()
-AttributeErrorL 'module' object has no attribute 'fork'" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19255 :USER "pjb" :DATE 3354740939 :CHANNEL "#lisp" :TITLE "3d maze" :CONTENTS "
+AttributeErrorL 'module' object has no attribute 'fork'" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19255 :USER "pjb" :DATE 3354740939 :CHANNEL "#lisp" :TITLE "3d maze" :CONTENTS "
 (defstruct point (x 0) (y 0) (z 0))
 (defstruct segment a b) ; ==> normale at pi/2*(b-a)
 (defstruct polygon points) 
@@ -27259,7 +27259,7 @@ AttributeErrorL 'module' object has no attribute 'fork'" :ANNOTATIONS NIL) #S(MO
 
 (draw-in-3d-from-some-point-of-view
  (discreet-to-3d-coordinates (CREATE-MAZE 20 20)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19254 :USER "Pupeno" :DATE 3354740085 :CHANNEL "None" :TITLE "erlang error" :CONTENTS "77> c(\"/home/pupeno/Software/Erlang/Serlvers/src/gen_dns\", [{outdir, \"/home/pupeno/Software/Erlang/Serlvers/src/\"}]).
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19254 :USER "Pupeno" :DATE 3354740085 :CHANNEL "None" :TITLE "erlang error" :CONTENTS "77> c(\"/home/pupeno/Software/Erlang/Serlvers/src/gen_dns\", [{outdir, \"/home/pupeno/Software/Erlang/Serlvers/src/\"}]).
 /home/pupeno/Software/Erlang/Serlvers/src/gen_dns.erl:none: internal error in beam_asm;
 crash reason: {{badmatch,{error,enoent}},
                [{filename,absname,1},
@@ -27268,7 +27268,7 @@ crash reason: {{badmatch,{error,enoent}},
                 {compile,fold_comp,3},
                 {compile,internal_comp,4},
                 {compile,internal,3}]}
-error" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19253 :USER "Shine" :DATE 3354734228 :CHANNEL "#lisp" :TITLE "incrementally building sbcl.exe still doesn't work \"the party is over\"" :CONTENTS "I've added in src/runtime/gencgc.c, in gc_alloc_update_page_tables:
+error" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19253 :USER "Shine" :DATE 3354734228 :CHANNEL "#lisp" :TITLE "incrementally building sbcl.exe still doesn't work \"the party is over\"" :CONTENTS "I've added in src/runtime/gencgc.c, in gc_alloc_update_page_tables:
 
 	{
 		int dummy = 1;
@@ -27323,7 +27323,7 @@ The system is too badly corrupted or confused to continue at the Lisp
 level. If the system had been compiled with the SB-LDB feature, we'd drop
 into the LDB low-level debugger now. But there's no LDB in this build, so
 we can't really do anything but just exit, sorry.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19252 :USER "Cowmoo" :DATE 3354728262 :CHANNEL "#scheme" :TITLE "SLIME48 " :CONTENTS ";;Slime stuff for Lisp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19252 :USER "Cowmoo" :DATE 3354728262 :CHANNEL "#scheme" :TITLE "SLIME48 " :CONTENTS ";;Slime stuff for Lisp
 (add-to-list 'load-path \"~/emacs-stuff/slime/\")
 (setq inferior-lisp-program \"/usr/local/bin/openmcl\")
 (require 'slime)
@@ -27347,7 +27347,7 @@ we can't really do anything but just exit, sorry.
 	     ,@slime-lisp-implementations))))
 
 (autoload 'slime48-init-command \"slime48\"
-  \"Return a string to initialise Scheme48 running under SLIME.\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19251 :USER "segv" :DATE 3354722098 :CHANNEL "#lisp" :TITLE "pathname weidness" :CONTENTS ";; assuming *p* is a stream open to some porton some server
+  \"Return a string to initialise Scheme48 running under SLIME.\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19251 :USER "segv" :DATE 3354722098 :CHANNEL "#lisp" :TITLE "pathname weidness" :CONTENTS ";; assuming *p* is a stream open to some porton some server
 
 (pathname *p*) ==>
 
@@ -27365,7 +27365,7 @@ The value NIL is not of type PATHNAME.
   (with-pathname (pathname pathspec)
     pathname)
 
-;; what gives?" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19250 :USER "Pupeno" :DATE 3354719488 :CHANNEL "None" :TITLE "eunit error" :CONTENTS "=ERROR REPORT==== 22-Apr-2006::15:29:54 ===
+;; what gives?" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19250 :USER "Pupeno" :DATE 3354719488 :CHANNEL "None" :TITLE "eunit error" :CONTENTS "=ERROR REPORT==== 22-Apr-2006::15:29:54 ===
 Error in process <0.63.0> with exit value: {{nocatch,{module_not_found,ok}},[{eunit_data,'-list_loop/1-fun-0-',1},{eunit_data,list_loop,1},{eunit,test,3},{erl_eval,do_apply,5},{shell,exprs,6},{shell,eval_loop,3}]}
 
 ** exited: {{nocatch,{module_not_found,ok}},
@@ -27374,7 +27374,7 @@ Error in process <0.63.0> with exit value: {{nocatch,{module_not_found,ok}},[{eu
              {eunit,test,3},
              {erl_eval,do_apply,5},
              {shell,exprs,6},
-             {shell,eval_loop,3}]} **" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19249 :USER "jeroenleenarts" :DATE 3354712341 :CHANNEL "#DarwinPorts" :TITLE "Just " :CONTENTS "Jeroen:/etc/periodic/weekly jeroenleenarts$ cat 500.weekly 
+             {shell,eval_loop,3}]} **" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19249 :USER "jeroenleenarts" :DATE 3354712341 :CHANNEL "#DarwinPorts" :TITLE "Just " :CONTENTS "Jeroen:/etc/periodic/weekly jeroenleenarts$ cat 500.weekly 
 #!/bin/sh -
 #
 #       @(#)weekly      8.2 (Berkeley) 1/2/94
@@ -27447,7 +27447,7 @@ if [ -f /etc/weekly.local ]; then
     echo \"Running weekly.local:\"
     sh /etc/weekly.local
 fi
-Jeroen:/etc/periodic/weekly jeroenleenarts$ " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19248 :USER "fab23" :DATE 3354710762 :CHANNEL "#DarwinPorts" :TITLE "whatis / apropos" :CONTENTS "fabian@flashback:~$ whatis gimp
+Jeroen:/etc/periodic/weekly jeroenleenarts$ " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19248 :USER "fab23" :DATE 3354710762 :CHANNEL "#DarwinPorts" :TITLE "whatis / apropos" :CONTENTS "fabian@flashback:~$ whatis gimp
 gimp: nothing appropriate
 fabian@flashback:~$ apropos gimp
 gimpprint(3)             - High quality raster image printing library
@@ -27460,14 +27460,14 @@ gimpprint-mediasources(7) - Gimp-Print media sources
 gimpprint-mediatypes(7)  - Gimp-Print media types
 gimpprint-models(7)      - Gimp-Print printer drivers
 gimpprint-resolutions(7) - Gimp-Print print resolutions
-fabian@flashback:~$" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19247 :USER "twb" :DATE 3354705416 :CHANNEL "#emacs" :TITLE "executable-find example" :CONTENTS "(setq inferior-lisp-program
+fabian@flashback:~$" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19247 :USER "twb" :DATE 3354705416 :CHANNEL "#emacs" :TITLE "executable-find example" :CONTENTS "(setq inferior-lisp-program
       (or (and (string-match \"darwin\" system-configuration)
                (executable-find \"openmcl\"))
           (executable-find \"cmucl\")
           (executable-find \"sbcl\")
           (executable-find \"openmcl\")
           (executable-find \"clisp\")))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19246 :USER "linuxmaniac" :DATE 3354695702 :CHANNEL "None" :TITLE "patch file" :CONTENTS "Revision: ndiswrapper--dilinger--0--patch-1
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19246 :USER "linuxmaniac" :DATE 3354695702 :CHANNEL "None" :TITLE "patch file" :CONTENTS "Revision: ndiswrapper--dilinger--0--patch-1
 Archive: dilinger@voxel.net--2004-public
 Creator: Andres Salomon <dilinger@voxel.net>
 Date: Sun Nov  7 03:39:46 EST 2004
@@ -27497,7 +27497,7 @@ M  driver/Makefile
         install -m 0644 $(MODULE) $(INST_DIR)
 -       -/sbin/depmod -a $(KVERS)
 +       #-/sbin/depmod -a $(KVERS)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19245 :USER "p00ya" :DATE 3354694116 :CHANNEL "#emacs" :TITLE "lines to #emacs, April to-date 2006" :CONTENTS " % cat \\#emacs-04-2006.log |sed -e 's/[^<]\\+<[+@ ]\\([^`|_>]\\+\\).*/\\1/' |grep -v '^[0-9][0-9]:[0-9][0-9]' |grep -v 'Day changed' |sort |uniq -c |sort -g -r |head -n 50                                                          
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19245 :USER "p00ya" :DATE 3354694116 :CHANNEL "#emacs" :TITLE "lines to #emacs, April to-date 2006" :CONTENTS " % cat \\#emacs-04-2006.log |sed -e 's/[^<]\\+<[+@ ]\\([^`|_>]\\+\\).*/\\1/' |grep -v '^[0-9][0-9]:[0-9][0-9]' |grep -v 'Day changed' |sort |uniq -c |sort -g -r |head -n 50                                                          
    4479 twb
    2173 xahlee
    2142 fsbot
@@ -27548,7 +27548,7 @@ M  driver/Makefile
     121 ootput
     114 jeramey
     112 hober
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19244 :USER "hyperion" :DATE 3354685257 :CHANNEL "None" :TITLE "stuff" :CONTENTS "if ((foo) ||
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19244 :USER "hyperion" :DATE 3354685257 :CHANNEL "None" :TITLE "stuff" :CONTENTS "if ((foo) ||
         (bar) ||
         (qux))
 {
@@ -27557,7 +27557,7 @@ if ((foo)
 || (bar)
 || (qux))
 {
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19243 :USER "mtp" :DATE 3354680836 :CHANNEL "#lisp" :TITLE "count" :CONTENTS "(defun count (ls)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19243 :USER "mtp" :DATE 3354680836 :CHANNEL "#lisp" :TITLE "count" :CONTENTS "(defun count (ls)
   (setq C 0)
   (count-helper ls 0)
 )
@@ -27570,7 +27570,7 @@ if ((foo)
          ( t (count-helper (cdr ls) C))
   )
 )
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19242 :USER "monochrom" :DATE 3354679483 :CHANNEL "#haskell" :TITLE "uarray" :CONTENTS "import Data.Array.Unboxed
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19242 :USER "monochrom" :DATE 3354679483 :CHANNEL "#haskell" :TITLE "uarray" :CONTENTS "import Data.Array.Unboxed
 
 answer :: String -> Int
 answer text = sum [ x | (('A',_),x) <- assocs a ]
@@ -27580,7 +27580,7 @@ answer text = sum [ x | (('A',_),x) <- assocs a ]
 
 main = do b <- getContents
           print (answer b)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19241 :USER "kulhas" :DATE 3354675799 :CHANNEL "#svn" :TITLE "svn " :CONTENTS "1417983    0 drwxr-xr-x   9 root     root          288 Apr 22 04:25 trunk
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19241 :USER "kulhas" :DATE 3354675799 :CHANNEL "#svn" :TITLE "svn " :CONTENTS "1417983    0 drwxr-xr-x   9 root     root          288 Apr 22 04:25 trunk
 1418160    0 drwxr-xr-x   2 root     root           72 Apr 22 04:25 trunk/bin
 1418171  120 -rwxr-xr-x   1 root     root       119000 Apr 22 04:25 trunk/bin/abnf2c
 1418172    0 drwxr-xr-x   2 root     root          144 Apr 22 04:25 trunk/gen
@@ -27619,7 +27619,7 @@ main = do b <- getContents
 1418234    4 -rw-r--r--   1 root     root         1153 Apr 22 04:25 trunk/testfiles/gen/uri.flex~
 1418235    4 -rw-r--r--   1 root     root         2943 Apr 22 04:25 trunk/testfiles/uri.abnf
 1418237    4 -rw-r--r--   1 root     root         1491 Apr 22 04:25 trunk/testfiles/demo2.abnf
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19240 :USER "NiRev" :DATE 3354674339 :CHANNEL "#xemacs" :TITLE "Xemacs beta gnus toolbar working config" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19240 :USER "NiRev" :DATE 3354674339 :CHANNEL "#xemacs" :TITLE "Xemacs beta gnus toolbar working config" :CONTENTS "
 Compilation Environment and Installation Defaults:
   Source code location:              /home/kevin/xemacs-21.5
   Installation prefix:               /usr/local
@@ -27675,7 +27675,7 @@ Other Features:
   Using the new portable dumper.
   Dumping into executable.
   Compiling in support for extra debugging code.
-  Compiling in support for runtime error checking." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19239 :USER "Shine" :DATE 3354669772 :CHANNEL "#lisp" :TITLE "sbcl backtrace" :CONTENTS "#0  0x7c911231 in ntdll!DbgUiConnectToDbg () from /cygdrive/c/WINDOWS/system32/ntdll.dll
+  Compiling in support for runtime error checking." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19239 :USER "Shine" :DATE 3354669772 :CHANNEL "#lisp" :TITLE "sbcl backtrace" :CONTENTS "#0  0x7c911231 in ntdll!DbgUiConnectToDbg () from /cygdrive/c/WINDOWS/system32/ntdll.dll
 #1  0x7c9607a8 in ntdll!KiIntSystemCall () from /cygdrive/c/WINDOWS/system32/ntdll.dll
 #2  0x00000005 in ?? ()
 #3  0x00000004 in ?? ()
@@ -27685,7 +27685,7 @@ Other Features:
 #7  0xffffffff in ?? ()
 #8  0x7c91ee18 in strchr () from /cygdrive/c/WINDOWS/system32/ntdll.dll
 #9  0x7c9607c8 in ntdll!KiIntSystemCall () from /cygdrive/c/WINDOWS/system32/ntdll.dll
-#10 0x00000000 in ?? () from" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19238 :USER "waddletron2k" :DATE 3354657936 :CHANNEL "#emacs" :TITLE "my .emacs" :CONTENTS "(setq inferior-lisp-program \"/usr/bin/sbcl\")
+#10 0x00000000 in ?? () from" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19238 :USER "waddletron2k" :DATE 3354657936 :CHANNEL "#emacs" :TITLE "my .emacs" :CONTENTS "(setq inferior-lisp-program \"/usr/bin/sbcl\")
 (add-to-list 'load-path \"/usr/share/emacs/site-lisp/slime-cvs/\")
 (require 'slime)
 (slime-setup)
@@ -27694,7 +27694,7 @@ Other Features:
 (require 'ring+)
 (require 'doremi)
 (require 'doremi-cmd)
-(require 'color-theme)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19237 :USER "waddletron2k" :DATE 3354657552 :CHANNEL "#emacs" :TITLE "env/path woes?" :CONTENTS "(load \"/usr/share/emacs/site-lisp/slime-cvs/swank-loader.lisp\" :verbose t)
+(require 'color-theme)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19237 :USER "waddletron2k" :DATE 3354657552 :CHANNEL "#emacs" :TITLE "env/path woes?" :CONTENTS "(load \"/usr/share/emacs/site-lisp/slime-cvs/swank-loader.lisp\" :verbose t)
 (swank:start-server \"/tmp/slime.9592\" :external-format :iso-latin-1-unix)
 
 This is SBCL 0.9.11, an implementation of ANSI Common Lisp.
@@ -27969,7 +27969,7 @@ restarts (invokable by number or by possibly-abbreviated name):
   0: [ABORT] Exit debugger, returning to top level.
 
 ((FLET #:G178))
-0] " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19236 :USER "zedek" :DATE 3354657156 :CHANNEL "#emacs" :TITLE "rmail problem" :CONTENTS "Debugger entered--Lisp error: (wrong-type-argument arrayp nil)
+0] " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19236 :USER "zedek" :DATE 3354657156 :CHANNEL "#emacs" :TITLE "rmail problem" :CONTENTS "Debugger entered--Lisp error: (wrong-type-argument arrayp nil)
   aref(nil 0)
   rmail-desc-get-descriptor(1)
   (nth rmail-desc-attrs-index (rmail-desc-get-descriptor n))
@@ -27980,7 +27980,7 @@ restarts (invokable by number or by possibly-abbreviated name):
   rmail-new-summary(\"All\" (rmail-summary) nil)
   rmail-summary()
   call-interactively(rmail-summary)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19235 :USER "technomancy" :DATE 3354657123 :CHANNEL "#lisp" :TITLE "mcclim error" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19235 :USER "technomancy" :DATE 3354657123 :CHANNEL "#lisp" :TITLE "mcclim error" :CONTENTS "
 ; other/defsystem/defsystem.x86f written.
 ; Compilation finished in 0:00:03.
 Warning:  MAKE also exports the following symbols:
@@ -28060,13 +28060,13 @@ Source: (BREAK)
 14: (\"Foreign function call land\")
 15: (\"Foreign function call land\")
 
-0]] " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19234 :USER "technomancy" :DATE 3354656257 :CHANNEL "#emacs" :TITLE "location mapping function" :CONTENTS "(global-set-key [f6] (lambda (lat lng)
+0]] " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19234 :USER "technomancy" :DATE 3354656257 :CHANNEL "#emacs" :TITLE "location mapping function" :CONTENTS "(global-set-key [f6] (lambda (lat lng)
                        (interactive \"BLatitude: \\nBLongitude\")
                        (w3m-browse-url (concat \"http://maps.yahoo.com/maps_result?mag=12&lat=\"
                                                lat
                                                \"&lon=\"
                                                lng))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19233 :USER "Thinine" :DATE 3354650374 :CHANNEL "#webkit" :TITLE "Obj-C Problem" :CONTENTS "@interface MagicImageCache : NSObject {
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19233 :USER "Thinine" :DATE 3354650374 :CHANNEL "#webkit" :TITLE "Obj-C Problem" :CONTENTS "@interface MagicImageCache : NSObject {
     NSMutableArray *cacheArray;
     NSMutableDictionary *cacheDict;
     NSRecursiveLock *cacheLock;
@@ -28083,7 +28083,7 @@ Errors:
 error: parse error before 'NSImage'
 error: parse error before 'NSImage'
 fatal error: method definition not in @implementation context
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19232 :USER "Cale" :DATE 3354648912 :CHANNEL "#haskell" :TITLE "Fst and Snd class" :CONTENTS "{-# OPTIONS_GHC -fglasgow-exts #-}
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19232 :USER "Cale" :DATE 3354648912 :CHANNEL "#haskell" :TITLE "Fst and Snd class" :CONTENTS "{-# OPTIONS_GHC -fglasgow-exts #-}
 import Prelude hiding (fst,snd)
 
 class Fst t a | t -> a where
@@ -28104,12 +28104,12 @@ instance Fst (Assoc a b) a where
     fst (Assoc x y) = x
 
 instance Snd (Assoc a b) b where
-    snd (Assoc x y) = y" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19231 :USER "jgw" :DATE 3354648362 :CHANNEL "#opendarwin" :TITLE "everything xen" :CONTENTS "localhost login: [root@xen1 xen]# xm list
+    snd (Assoc x y) = y" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19231 :USER "jgw" :DATE 3354648362 :CHANNEL "#opendarwin" :TITLE "everything xen" :CONTENTS "localhost login: [root@xen1 xen]# xm list
 Name                              ID Mem(MiB) VCPUs State  Time(s)
 Domain-0                           0      512     2 r-----   113.3
 fctest2                            3      512     1 -b----     8.7
 fctest                             4      512     1 -b----     8.9
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19230 :USER "Thinine" :DATE 3354645732 :CHANNEL "#webkit" :TITLE "Testcase for ggaren" :CONTENTS "<html>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19230 :USER "Thinine" :DATE 3354645732 :CHANNEL "#webkit" :TITLE "Testcase for ggaren" :CONTENTS "<html>
 <head>
 <script>
 function print(message, color) 
@@ -28142,7 +28142,7 @@ function test()
 <img style=\"display:none\" id=\"img1\">
 </body>
 </html>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19229 :USER "dto" :DATE 3354644812 :CHANNEL "#emacs" :TITLE "shell snippets for downloading/installing emacs from cvs" :CONTENTS "# Download CVS emacs from savannah
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19229 :USER "dto" :DATE 3354644812 :CHANNEL "#emacs" :TITLE "shell snippets for downloading/installing emacs from cvs" :CONTENTS "# Download CVS emacs from savannah
 #
 
 cd ~
@@ -28168,7 +28168,7 @@ src/emacs -q
 # install
 
 make install
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19228 :USER "zedek" :DATE 3354641624 :CHANNEL "#emacs" :TITLE "OP'age for RCIRC" :CONTENTS "(defun-rcirc-command op (nicks)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19228 :USER "zedek" :DATE 3354641624 :CHANNEL "#emacs" :TITLE "OP'age for RCIRC" :CONTENTS "(defun-rcirc-command op (nicks)
   \"Send OP for `nicks'.
 Limitation: in its interactive form, you can only op one nick.\"
   (interactive (list (completing-read \"Op nick: \"
@@ -28202,7 +28202,7 @@ Limitation: in its interactive form, you can only de-op one nick.\")
 (define-key rcirc-mode-map (kbd \"C-c C-O\") 'rcirc-cmd-op)
 (define-key rcirc-mode-map (kbd \"C-c C-o\") 'rcirc-cmd-opme)
 (define-key rcirc-mode-map (kbd \"C-c C-d\") 'rcirc-cmd-deopme)
-(define-key rcirc-mode-map (kbd \"C-c C-D\") 'rcirc-cmd-deop)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19227 :USER "Thinine" :DATE 3354641442 :CHANNEL "#webkit" :TITLE "bug description for ggaren" :CONTENTS "Similar to 8511, window.onerror doesn't register an error listener as well as not being able to properly pass the function to window.onerror itself.
+(define-key rcirc-mode-map (kbd \"C-c C-D\") 'rcirc-cmd-deop)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19227 :USER "Thinine" :DATE 3354641442 :CHANNEL "#webkit" :TITLE "bug description for ggaren" :CONTENTS "Similar to 8511, window.onerror doesn't register an error listener as well as not being able to properly pass the function to window.onerror itself.
 
 
 Onerror references: 
@@ -28246,7 +28246,7 @@ function test()
 <div id='console'></div>
 </body>
 </html>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19226 :USER "rune_kg" :DATE 3354641319 :CHANNEL "#emacs" :TITLE "rune_kg1" :CONTENTS ";; ================================================================
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19226 :USER "rune_kg" :DATE 3354641319 :CHANNEL "#emacs" :TITLE "rune_kg1" :CONTENTS ";; ================================================================
 ;; Sample configuration file for Muse, Planner and Remember
 ;; ================================================================
 
@@ -28378,7 +28378,7 @@ function test()
 
 ;; Finish setting up remember
 (setq remember-annotation-functions planner-annotation-functions)
-(setq remember-handler-functions '(remember-planner-append))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19225 :USER "therp" :DATE 3354638956 :CHANNEL "#lisp" :TITLE "weak hash table entries in sbcl. hm?!" :CONTENTS "(defun %node-intern (ht keys entry)
+(setq remember-handler-functions '(remember-planner-append))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19225 :USER "therp" :DATE 3354638956 :CHANNEL "#lisp" :TITLE "weak hash table entries in sbcl. hm?!" :CONTENTS "(defun %node-intern (ht keys entry)
   (let ((res (gethash keys ht))
 	res-value)
     (if (or (not res)
@@ -28389,13 +28389,13 @@ function test()
 	  entry)
 	(or res-value (break \"this error must not happend\")))))
 
-but the error happens. is there a race I can't see?" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19224 :USER "toste" :DATE 3354638442 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "foo att (Action s l) val
+but the error happens. is there a race I can't see?" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19224 :USER "toste" :DATE 3354638442 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "foo att (Action s l) val
 	|isJust(find((==att).typeAttribut) l) = foo2 att (Action s l) val
 	|otherwise = (Action s l)
 	
 foo2 att (Action s [att1,att2,att3,att4,att5,att6,att7]) val
 	| (typeAttribut att1) == att = (Action s [att val,att2,att3,att4,att5,att6,att7])
-	|otherwise = (Action s [att1,att2,att3,att4,att5,att6,att7])" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19223 :USER "sbp" :DATE 3354635672 :CHANNEL "#swhack" :TITLE "Transparent Unicode File Opening" :CONTENTS ">>> f = open('interrobang.txt', 'w')
+	|otherwise = (Action s [att1,att2,att3,att4,att5,att6,att7])" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19223 :USER "sbp" :DATE 3354635672 :CHANNEL "#swhack" :TITLE "Transparent Unicode File Opening" :CONTENTS ">>> f = open('interrobang.txt', 'w')
 >>> f.write(u'\\u203D'.encode('utf-8'))
 >>> f.close()
 >>> 
@@ -28413,7 +28413,7 @@ foo2 att (Action s [att1,att2,att3,att4,att5,att6,att7]) val
 >>> 
 
 - Using Python 2.4.1
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19222 :USER "Leimy" :DATE 3354633864 :CHANNEL "#opendarwin" :TITLE "interesting x86 stack hacky code for userland threadination (doesn't work on Mac OS X x86)" :CONTENTS "#include <stdio.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19222 :USER "Leimy" :DATE 3354633864 :CHANNEL "#opendarwin" :TITLE "interesting x86 stack hacky code for userland threadination (doesn't work on Mac OS X x86)" :CONTENTS "#include <stdio.h>
 #include <stdlib.h>
 
 char stack[1048576];
@@ -28449,7 +28449,7 @@ main(int argc, char **argv)
 {
        runonstack(hello, stack+sizeof stack);
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19221 :USER "Xof" :DATE 3354633111 :CHANNEL "#lisp" :TITLE "clearing the minibuffer" :CONTENTS "              ;; nothing works :-(
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19221 :USER "Xof" :DATE 3354633111 :CHANNEL "#lisp" :TITLE "clearing the minibuffer" :CONTENTS "              ;; nothing works :-(
               #+nil
               (replace-input stream \"\")
               #+nil
@@ -28463,12 +28463,12 @@ main(int argc, char **argv)
               #+nil
               (replace-input stream \"\")
               #+nil
-              (reset-scan-pointer stream)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19220 :USER "toste" :DATE 3354630697 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "foo att (Action s l) val
+              (reset-scan-pointer stream)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19220 :USER "toste" :DATE 3354630697 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "foo att (Action s l) val
 	| isJust(find((==att).typeAttribut) l) = [((typeAttribut attr) <- val), attr |attr <- l, (typeAttribut attr) == att]
-	| otherwise = (Action s l)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19219 :USER "toste" :DATE 3354626316 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "foo = att (Action s l) val = 
+	| otherwise = (Action s l)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19219 :USER "toste" :DATE 3354626316 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "foo = att (Action s l) val = 
 	if(isJust(find((==att).typeAttribut) l))
 		then isJust(find((==att).typeAttribut) l) = val
-			else (Action s l)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19218 :USER "greyman" :DATE 3354624960 :CHANNEL "#fink" :TITLE "gettext hang" :CONTENTS "This file contains any messages produced by compilers while
+			else (Action s l)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19218 :USER "greyman" :DATE 3354624960 :CHANNEL "#fink" :TITLE "gettext hang" :CONTENTS "This file contains any messages produced by compilers while
 running configure, to aid debugging if configure makes a mistake.
 
 It was created by configure, which was
@@ -28554,7 +28554,7 @@ configure:3186: configuring in autoconf-lib-link
 configure:3303: running /bin/sh './configure' --prefix=/opt/local  '--prefix=/opt/local' '--with-included-gettext' '--mandir=/opt/local/share/man' '--cache-file=/opt/local/var/db/dports/build/_opt_local_var_db_dports_sources_rsync.rsync.darwinports.org_dpupdate_dports_devel_gettext/work/gettext-0.14.5/config.cache' '--infodir=/opt/local/share/info' '--with-libiconv-prefix=/opt/local' 'CPPFLAGS=-no-cpp-precomp' 'EMACS=/usr/bin/emacs' 'LDFLAGS=-fno-common -bind_at_load' --cache-file=/opt/local/var/db/dports/build/_opt_local_var_db_dports_sources_rsync.rsync.darwinports.org_dpupdate_dports_devel_gettext/work/gettext-0.14.5/config.cache --srcdir=.
 configure:3186: configuring in gettext-runtime
 configure:3303: running /bin/sh './configure' --prefix=/opt/local  '--prefix=/opt/local' '--with-included-gettext' '--mandir=/opt/local/share/man' '--cache-file=/opt/local/var/db/dports/build/_opt_local_var_db_dports_sources_rsync.rsync.darwinports.org_dpupdate_dports_devel_gettext/work/gettext-0.14.5/config.cache' '--infodir=/opt/local/share/info' '--with-libiconv-prefix=/opt/local' 'CPPFLAGS=-no-cpp-precomp' 'EMACS=/usr/bin/emacs' 'LDFLAGS=-fno-common -bind_at_load' --cache-file=/opt/local/var/db/dports/build/_opt_local_var_db_dports_sources_rsync.rsync.darwinports.org_dpupdate_dports_devel_gettext/work/gettext-0.14.5/config.cache --srcdir=.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19217 :USER "bauer" :DATE 3354621232 :CHANNEL "#nebula" :TITLE "Script - returning a pointer" :CONTENTS "// MohawkApp_cmds.cc
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19217 :USER "bauer" :DATE 3354621232 :CHANNEL "#nebula" :TITLE "Script - returning a pointer" :CONTENTS "// MohawkApp_cmds.cc
 //-------------------
 #include \"../inc/MohawkApp.h\"
 #include \"kernel/nkernelserver.h\"
@@ -28601,7 +28601,7 @@ file: c:\\Mohawk Mayhem\\nebula2\\trunk\\code\\nebula2\\inc\\util/nnode.h
 line: 117
 
 The crash seems to happen at cmd->Out()->SetO(cam), if I change that to n_printf(\"oseuh\") it doesn't crash. :) 
-*/" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19216 :USER "HET2" :DATE 3354619599 :CHANNEL "#emacs" :TITLE "how do i setq this variable?" :CONTENTS "ELISP> TeX-output-view-style
+*/" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19216 :USER "HET2" :DATE 3354619599 :CHANNEL "#emacs" :TITLE "how do i setq this variable?" :CONTENTS "ELISP> TeX-output-view-style
 ((\"^dvi$\"
   (\"^landscape$\" \"^pstricks$\\\\|^pst-\\\\|^psfrag$\")
   \"%(o?)dvips -t landscape %d -o && gv %f\")
@@ -28639,7 +28639,7 @@ The crash seems to happen at cmd->Out()->SetO(cam), if I change that to n_printf
  (\"^dvi$\" \"^executivepaper$\" \"%(o?)xdvi %dS -paper 7.25x10.5in %d\")
  (\"^dvi$\" \".\" \"%(o?)xdvi %dS %d\")
  (\"^pdf$\" \".\" \"xpdf %o\")
- (\"^html?$\" \".\" \"netscape %o\"))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19215 :USER "jkp" :DATE 3354615602 :CHANNEL "None" :TITLE "content array creation" :CONTENTS "//---------------------------------------------------------- 
+ (\"^html?$\" \".\" \"netscape %o\"))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19215 :USER "jkp" :DATE 3354615602 :CHANNEL "None" :TITLE "content array creation" :CONTENTS "//---------------------------------------------------------- 
 //  searchesArray 
 //---------------------------------------------------------- 
 - (NSMutableArray *) searchesArray
@@ -28667,7 +28667,7 @@ The crash seems to happen at cmd->Out()->SetO(cam), if I change that to n_printf
 		}
     }
     return searchesArray;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19214 :USER "The_Tick" :DATE 3354600137 :CHANNEL "#growl" :TITLE "evil crasherers" :CONTENTS "PID:    9488
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19214 :USER "The_Tick" :DATE 3354600137 :CHANNEL "#growl" :TITLE "evil crasherers" :CONTENTS "PID:    9488
 Thread: 0
 
 Exception:  EXC_BAD_ACCESS (0x0001)
@@ -28704,12 +28704,12 @@ Thread 0 Crashed:
 27  com.apple.AppKit         	0x93778e68 NSApplicationMain + 452
 28  com.google.GmailNotifier 	0x00002b68 0x1000 + 7016
 29  com.google.GmailNotifier 	0x00002a10 0x1000 + 6672
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19213 :USER "dbueno" :DATE 3354587117 :CHANNEL "#emacs" :TITLE "Regular expression matching question" :CONTENTS ";; why does this return nil?
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19213 :USER "dbueno" :DATE 3354587117 :CHANNEL "#emacs" :TITLE "Regular expression matching question" :CONTENTS ";; why does this return nil?
 
 (string-match \"^To\\(.\\|[\\n\\f]\\)+me@crap[.]com.*\"
 
               \"To: Stupid <aoeu@aoeu.com
-    My Name <me@crap.com>\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19212 :USER "technomancy" :DATE 3354583660 :CHANNEL "#lisp" :TITLE "sbcl error" :CONTENTS "[phil@puyo ~/bin/closure-2003-03-14]$ ./BUILD 
+    My Name <me@crap.com>\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19212 :USER "technomancy" :DATE 3354583660 :CHANNEL "#lisp" :TITLE "sbcl error" :CONTENTS "[phil@puyo ~/bin/closure-2003-03-14]$ ./BUILD 
 This is SBCL 0.9.11, an implementation of ANSI Common Lisp.
 More information about SBCL is available at <http://www.sbcl.org/>.
 
@@ -28758,7 +28758,7 @@ restarts (invokable by number or by possibly-abbreviated name):
   0: [ABORT] Exit debugger, returning to top level.
 
 (NIL)
-0] " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19211 :USER "technomancy" :DATE 3354583055 :CHANNEL "#lisp" :TITLE "error building closure" :CONTENTS "
+0] " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19211 :USER "technomancy" :DATE 3354583055 :CHANNEL "#lisp" :TITLE "error building closure" :CONTENTS "
 Type-error in KERNEL::OBJECT-NOT-TYPE-ERROR-HANDLER:
    #() is not of type (OR CONS
                           BASE-STRING
@@ -28810,13 +28810,13 @@ a host-structure or string.\"
   (DECLARE (TYPE # HOST) (TYPE # DEVICE) (TYPE # DIRECTORY) (TYPE # NAME TYPE)
    ...)
   ...)
-0] " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19208 :USER "Shine" :DATE 3354576593 :CHANNEL "None" :TITLE "SBCL crash test" :CONTENTS "(defun test-crash ()
+0] " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19208 :USER "Shine" :DATE 3354576593 :CHANNEL "None" :TITLE "SBCL crash test" :CONTENTS "(defun test-crash ()
   (loop for i from 0 to 100 do
         (format t \"test: ~a~%\" i)
         (loop for j from 0 to 1000 do
               (sb-alien::load-shared-object \"kernel32.dll\")
               (sb-alien::close-shared-objects))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19207 :USER "Shine" :DATE 3354575574 :CHANNEL "None" :TITLE "time patch" :CONTENTS "(sb-alien:load-shared-object \"kernel32.dll\")
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19207 :USER "Shine" :DATE 3354575574 :CHANNEL "None" :TITLE "time patch" :CONTENTS "(sb-alien:load-shared-object \"kernel32.dll\")
 
 
 (in-package \"SB-WIN32\")
@@ -28921,7 +28921,7 @@ a host-structure or string.\"
               (format t \"run time ~a~%\" (floor (get-internal-run-time)
                                                internal-time-units-per-second))
               (loop for j from 0 to 10000000))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19202 :USER "nman" :DATE 3354564230 :CHANNEL "None" :TITLE "noch ne chance" :CONTENTS "150 angehende Mathematiker sitzen in der Mathevorlesung.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19202 :USER "nman" :DATE 3354564230 :CHANNEL "None" :TITLE "noch ne chance" :CONTENTS "150 angehende Mathematiker sitzen in der Mathevorlesung.
 Der Prof will mal was angewandtes machen, schreibt \"10-5\" an die Tafel und holt sich einen nach vorne, um das zu loesen.
 Der Studi ueberlegt lange und meint: \"6 !\"
 Der Prof schuettelt nur den Kopf ueber soviel Dummheit und will gerade zu einer Standpauke ansetzen, doch das Auditorium ruft: \"Gib ihm noch ne Chance, gib ihm noch ne Chance!\"
@@ -28930,7 +28930,7 @@ Der Studi denkt und denkt, und schliesslich meint er: \"4 !\"
 Wieder ruft das Auditorium: \"Gib ihm noch ne Chance, gib ihm noch ne Chance!\"
 Der Prof hofft auf ein Wunder und sagt: \"Ok, aller guten Dinge sind drei. Ich will Dir noch einen Tip geben: das Ergebnis liegt zwischen 4 und 6.\"
 Der Studi zermartert sich das Gehirn, schliesslich sagt er: \"5 !\"
-Daraufhin das Auditorium: \"Gib ihm noch ne Chance, gib ihm noch ne Chance!\"" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19201 :USER "Phoenix" :DATE 3354563981 :CHANNEL "None" :TITLE "build error" :CONTENTS "c++ -o nsCanvasRenderingContext2D.o -c  -DMOZILLA_INTERNAL_API -DOSTYPE=\\\"Darwin8.6.0\\\" -DOSARCH=\\\"Darwin\\\" -DBUILD_ID=0000000000 -D_IMPL_NS_LAYOUT  -I../../../dist/include/xpcom -I../../../dist/include/string -I../../../dist/include/gfx -I../../../dist/include/layout -I../../../dist/include/widget -I../../../dist/include/dom -I../../../dist/include/js -I../../../dist/include/locale -I../../../dist/include/unicharutil -I../../../dist/include/webshell -I../../../dist/include/uriloader -I../../../dist/include/htmlparser -I../../../dist/include/necko -I../../../dist/include/view -I../../../dist/include/pref -I../../../dist/include/docshell -I../../../dist/include/xpconnect -I../../../dist/include/xuldoc -I../../../dist/include/caps -I../../../dist/include/editor -I../../../dist/include/imglib2 -I../../../dist/include/mimetype -I../../../dist/include/exthandler -I../../../dist/include/uconv -I../../../dist/include/intl -I../../../dist/include/plugin -I../../../dist/include/cairo -I../../../dist/include/libpixman -I../../../dist/include   -I../../../dist/include/content -I../../../dist/include/nspr    -I../../../dist/sdk/include -I/usr/X11R6/include   -mdynamic-no-pic  -I/usr/X11R6/include -fno-rtti -fno-exceptions -Wall -Wconversion -Wpointer-arith -Wcast-align -Woverloaded-virtual -Wsynth -Wno-ctor-dtor-privacy -Wno-non-virtual-dtor -Wno-long-long -isysroot /Developer/SDKs/MacOSX10.3.9.sdk -fpascal-strings -no-cpp-precomp -fno-common -fshort-wchar -I/Developer/SDKs/MacOSX10.3.9.sdk/Developer/Headers/FlatCarbon -pipe  -DNDEBUG -DTRIMMED -O3 -faltivec -ftree-vectorize -mcpu=7450 -mtune=7450 -mpowerpc -mpowerpc-gfxopt -I../../../dist/include/cairo -I/Developer/SDKs/MacOSX10.3.9.sdk/Developer/Headers/FlatCarbon  -I/usr/X11R6/include -DMOZILLA_CLIENT -include ../../../mozilla-config.h -Wp,-MD,.deps/nsCanvasRenderingContext2D.pp nsCanvasRenderingContext2D.cpp
+Daraufhin das Auditorium: \"Gib ihm noch ne Chance, gib ihm noch ne Chance!\"" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19201 :USER "Phoenix" :DATE 3354563981 :CHANNEL "None" :TITLE "build error" :CONTENTS "c++ -o nsCanvasRenderingContext2D.o -c  -DMOZILLA_INTERNAL_API -DOSTYPE=\\\"Darwin8.6.0\\\" -DOSARCH=\\\"Darwin\\\" -DBUILD_ID=0000000000 -D_IMPL_NS_LAYOUT  -I../../../dist/include/xpcom -I../../../dist/include/string -I../../../dist/include/gfx -I../../../dist/include/layout -I../../../dist/include/widget -I../../../dist/include/dom -I../../../dist/include/js -I../../../dist/include/locale -I../../../dist/include/unicharutil -I../../../dist/include/webshell -I../../../dist/include/uriloader -I../../../dist/include/htmlparser -I../../../dist/include/necko -I../../../dist/include/view -I../../../dist/include/pref -I../../../dist/include/docshell -I../../../dist/include/xpconnect -I../../../dist/include/xuldoc -I../../../dist/include/caps -I../../../dist/include/editor -I../../../dist/include/imglib2 -I../../../dist/include/mimetype -I../../../dist/include/exthandler -I../../../dist/include/uconv -I../../../dist/include/intl -I../../../dist/include/plugin -I../../../dist/include/cairo -I../../../dist/include/libpixman -I../../../dist/include   -I../../../dist/include/content -I../../../dist/include/nspr    -I../../../dist/sdk/include -I/usr/X11R6/include   -mdynamic-no-pic  -I/usr/X11R6/include -fno-rtti -fno-exceptions -Wall -Wconversion -Wpointer-arith -Wcast-align -Woverloaded-virtual -Wsynth -Wno-ctor-dtor-privacy -Wno-non-virtual-dtor -Wno-long-long -isysroot /Developer/SDKs/MacOSX10.3.9.sdk -fpascal-strings -no-cpp-precomp -fno-common -fshort-wchar -I/Developer/SDKs/MacOSX10.3.9.sdk/Developer/Headers/FlatCarbon -pipe  -DNDEBUG -DTRIMMED -O3 -faltivec -ftree-vectorize -mcpu=7450 -mtune=7450 -mpowerpc -mpowerpc-gfxopt -I../../../dist/include/cairo -I/Developer/SDKs/MacOSX10.3.9.sdk/Developer/Headers/FlatCarbon  -I/usr/X11R6/include -DMOZILLA_CLIENT -include ../../../mozilla-config.h -Wp,-MD,.deps/nsCanvasRenderingContext2D.pp nsCanvasRenderingContext2D.cpp
 nsCanvasRenderingContext2D.cpp: In member function 'virtual nsresult nsCanvasRenderingContext2D::Render(nsIRenderingContext*)':
 nsCanvasRenderingContext2D.cpp:856: error: invalid conversion from 'int' to 'CGImageAlphaInfo'
 nsCanvasRenderingContext2D.cpp:856: error:   initializing argument 7 of 'CGImage* CGImageCreate(size_t, size_t, size_t, size_t, size_t, CGColorSpace*, CGImageAlphaInfo, CGDataProvider*, const float*, bool, CGColorRenderingIntent)'
@@ -28943,7 +28943,7 @@ make[3]: *** [libs_tier_9] Error 2
 make[2]: *** [tier_9] Error 2
 make[1]: *** [default] Error 2
 make: *** [build] Error 2
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19200 :USER "forcer" :DATE 3354562017 :CHANNEL "None" :TITLE "Show Trailing Whitespace nur in speziellen modes" :CONTENTS ";; Sometimes, I want to see trailing whitespace
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19200 :USER "forcer" :DATE 3354562017 :CHANNEL "None" :TITLE "Show Trailing Whitespace nur in speziellen modes" :CONTENTS ";; Sometimes, I want to see trailing whitespace
 (defun fc-turn-on-show-trailing-whitespace ()
   \"Set `show-trailing-whitespace' to t.\"
   (setq show-trailing-whitespace t))
@@ -28955,7 +28955,7 @@ make: *** [build] Error 2
         emacs-lisp-mode-hook
         java-mode-hook
         c-mode-hook))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19197 :USER "nephthys" :DATE 3354560784 :CHANNEL "None" :TITLE "octave-forge problem" :CONTENTS "I hope that's what you mean...
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19197 :USER "nephthys" :DATE 3354560784 :CHANNEL "None" :TITLE "octave-forge problem" :CONTENTS "I hope that's what you mean...
 
 g++-3.3 -bundle -bundle_loader /sw/bin/octave-2.1.53 -o gf.oct galois.o galois-def.o galoisfield.o gf.o op-fil-gm.o op-gm-gm.o op-gm-m.o op-gm-s.o op-m-gm.o op-s-gm.o ov-galois.o -L/sw/lib/octave-2.1.53 -loctave -lcruft -loctinterp -framework vecLib
 ld: Undefined symbols:
@@ -28977,14 +28977,14 @@ _H5T_NATIVE_UINT_g
 _H5T_NATIVE_USHORT_g
 _H5open
 make[2]: *** [gf.oct] Error 1
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19196 :USER "ascii" :DATE 3354560137 :CHANNEL "None" :TITLE "object" :CONTENTS "	// Instantiate a XMLHTTPRequest for the mediacontroller
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19196 :USER "ascii" :DATE 3354560137 :CHANNEL "None" :TITLE "object" :CONTENTS "	// Instantiate a XMLHTTPRequest for the mediacontroller
 	var myXMLHTTPConstructor = {
 		fragmentWithContentsOfFile: \"_ZVID_MediaController.htm\",
 		loadsInto: document.getElementById('mediaController'),
 		executesFunctionOnLoad: \"_xmlhttpfinished();\"
 	}
 	var myXMLHTTPRequestObject = new ZENXMLHTTP(myXMLHTTPConstructor);
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19194 :USER "Lukhas" :DATE 3354558759 :CHANNEL "None" :TITLE "archive a message to nnarchive" :CONTENTS ";; Not my code, it just lies in my config file
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19194 :USER "Lukhas" :DATE 3354558759 :CHANNEL "None" :TITLE "archive a message to nnarchive" :CONTENTS ";; Not my code, it just lies in my config file
 
 (defun my-archive-article (&optional n)
   \"Copies one or more article(s) to a corresponding `nnml:' group, e.g.
@@ -28998,7 +28998,7 @@ more then one article.\"
           \"nnml:archives.%s\"
           (replace-regexp-in-string \"^.*:\" \"\" gnus-newsgroup-name))))
     (gnus-summary-copy-article n archive-name)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19191 :USER "bhr" :DATE 3354548976 :CHANNEL "#macdev" :TITLE "leaks, how do I read this" :CONTENTS "Process 9210: 8729 nodes malloced for 8800 KB
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19191 :USER "bhr" :DATE 3354548976 :CHANNEL "#macdev" :TITLE "leaks, how do I read this" :CONTENTS "Process 9210: 8729 nodes malloced for 8800 KB
 Process 9210: 28 leaks for 2272 total leaked bytes.
 Leak: 0x01887c00  size=512	
 	0x00000000 0x00000000 0x00000000 0x00000000 	................
@@ -29097,7 +29097,7 @@ Leak: 0x0031d6d0  size=16
 	0x00304250 0x00000002 0x00000000 0x00010001 	.0BP............
 Leak: 0x0035f4d0  size=16	
 	0x0035f660 0x0035fb90 0x00000000 0x00010001 	.5.`.5..........
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19190 :USER "JernejL" :DATE 3354544871 :CHANNEL "None" :TITLE "php stuff" :CONTENTS "serve.php:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19190 :USER "JernejL" :DATE 3354544871 :CHANNEL "None" :TITLE "php stuff" :CONTENTS "serve.php:
 
 
 
@@ -29125,7 +29125,7 @@ include.php:
 function render($str)
 {
    $pagectns .= $str;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19189 :USER "lieven" :DATE 3354532931 :CHANNEL "#lisp" :TITLE "galois code (for therp)" :CONTENTS "(in-package \"BE.WYRD.APPS.PAR\")
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19189 :USER "lieven" :DATE 3354532931 :CHANNEL "#lisp" :TITLE "galois code (for therp)" :CONTENTS "(in-package \"BE.WYRD.APPS.PAR\")
 
 (eval-when (:compile-toplevel)
 (defun generate-galois-tables ()
@@ -29274,7 +29274,7 @@ function render($str)
     result))
                                                   
                             
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19188 :USER "101" :DATE 3354528755 :CHANNEL "#lisp" :TITLE "sbcl -3 mop cache bug" :CONTENTS "ati@ed101:~$ sbcl --sysinit /dev/null --userinit /dev/null
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19188 :USER "101" :DATE 3354528755 :CHANNEL "#lisp" :TITLE "sbcl -3 mop cache bug" :CONTENTS "ati@ed101:~$ sbcl --sysinit /dev/null --userinit /dev/null
 This is SBCL 0.9.11, an implementation of ANSI Common Lisp.
 More information about SBCL is available at <http://www.sbcl.org/>.
 
@@ -29508,7 +29508,7 @@ restarts (invokable by number or by possibly-abbreviated name):
 
 0]
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19187 :USER "noss" :DATE 3354527797 :CHANNEL "None" :TITLE "popup code." :CONTENTS "function popupWindowSize(url, winname, focus, width, height)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19187 :USER "noss" :DATE 3354527797 :CHANNEL "None" :TITLE "popup code." :CONTENTS "function popupWindowSize(url, winname, focus, width, height)
 {
   var options=\"width=\"+width+\",height=\"+height+\",dependent=yes,toolbar=no,status=no,copyhistory=no,location=no,menubar=no,resizable=yes,directories=no,scrollbars=yes\";
 
@@ -29537,7 +29537,7 @@ function popupify(link)
     var link = elements[index];
     popupify(link);
   }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19186 :USER "twb" :DATE 3354527575 :CHANNEL "#emacs" :TITLE "for wy" :CONTENTS "# -*-conf-*-
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19186 :USER "twb" :DATE 3354527575 :CHANNEL "#emacs" :TITLE "for wy" :CONTENTS "# -*-conf-*-
 startup_message off
 autodetach on
 hardstatus alwayslastline \"[%C %H] %-Lw%{ WB}%50>%n%f* %t%{-}%+Lw%<\"
@@ -29562,7 +29562,7 @@ bind r   remove
 bind e   screen -t Emacs emacs -nw
 bind C   screen -t '# |Root' sudo -H -s
 bind A   screen -t Aptitude sudo -H aptitude
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19185 :USER "tom_elam" :DATE 3354526442 :CHANNEL "#lisp" :TITLE "Consistent failures of asdf-install (behind a proxy)" :CONTENTS "I am using the Debian packages for SBCL, 1:0.9.9.0-2, and for SLIME,
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19185 :USER "tom_elam" :DATE 3354526442 :CHANNEL "#lisp" :TITLE "Consistent failures of asdf-install (behind a proxy)" :CONTENTS "I am using the Debian packages for SBCL, 1:0.9.9.0-2, and for SLIME,
 1:20060306-1.
 
 
@@ -29598,7 +29598,7 @@ Backtrace:
   4: ((LABELS ASDF-INSTALL::ONE-ITER) (S-HTTP-CLIENT))
   5: (ASDF-INSTALL:INSTALL S-HTTP-CLIENT)
   6: (ASDF-INSTALL:INSTALL)
-  7: (SB-INT:EVAL-IN-LEXENV (ASDF-INSTALL:INSTALL (QUOTE S-HTTP-CLIENT)) #<NULL-LEXENV>)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19184 :USER "ayrnieu" :DATE 3354522980 :CHANNEL "None" :TITLE "comments?  idiomaticisms?" :CONTENTS "open UnixLabels;;
+  7: (SB-INT:EVAL-IN-LEXENV (ASDF-INSTALL:INSTALL (QUOTE S-HTTP-CLIENT)) #<NULL-LEXENV>)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19184 :USER "ayrnieu" :DATE 3354522980 :CHANNEL "None" :TITLE "comments?  idiomaticisms?" :CONTENTS "open UnixLabels;;
 exception Impossible;;
 
 let (client, host, port) =
@@ -29638,7 +29638,7 @@ let process (r,_,e) =
 while true do
   process (select ~read:[client] ~write:[] ~except:[] ~timeout:1024.0)
 done;;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19183 :USER "The_Tick" :DATE 3354519932 :CHANNEL "#adium" :TITLE "CGsomethingheaderfile" :CONTENTS "//
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19183 :USER "The_Tick" :DATE 3354519932 :CHANNEL "#adium" :TITLE "CGsomethingheaderfile" :CONTENTS "//
 //  GGPluginProtocol.h
 //
 //  Created by Greg Miller on 6/4/05.
@@ -29716,7 +29716,7 @@ done;;
                   fullCount:(int)fullCount;
 
 @end
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19182 :USER "xenon" :DATE 3354517964 :CHANNEL "#colloquy" :TITLE "test" :CONTENTS "test" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19181 :USER "Pseudonym" :DATE 3354510901 :CHANNEL "#haskell" :TITLE "Faster knapsack" :CONTENTS "module Knapsack where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19182 :USER "xenon" :DATE 3354517964 :CHANNEL "#colloquy" :TITLE "test" :CONTENTS "test" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19181 :USER "Pseudonym" :DATE 3354510901 :CHANNEL "#haskell" :TITLE "Faster knapsack" :CONTENTS "module Knapsack where
 
 import Data.Array
 
@@ -29728,7 +29728,7 @@ knapsack n es
         knapsack' 0
             = 0
         knapsack' i
-            = maximum (0 : [ (table ! (i - el)) + el | e <- es, i >= el ]" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19180 :USER "Lokadin" :DATE 3354510064 :CHANNEL "#haskell" :TITLE "Lambdabot Compilition output" :CONTENTS "I am using a pentium 4m 1.6ghz, so that x86, -march=pentium4
+            = maximum (0 : [ (table ! (i - el)) + el | e <- es, i >= el ]" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19180 :USER "Lokadin" :DATE 3354510064 :CHANNEL "#haskell" :TITLE "Lambdabot Compilition output" :CONTENTS "I am using a pentium 4m 1.6ghz, so that x86, -march=pentium4
 
 
 
@@ -29771,7 +29771,7 @@ make: *** [LBState.o] Error 1
 
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19179 :USER "Cale" :DATE 3354509791 :CHANNEL "#haskell" :TITLE "knapsack" :CONTENTS "data Tree a = Tip | Branch a [Tree a]
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19179 :USER "Cale" :DATE 3354509791 :CHANNEL "#haskell" :TITLE "knapsack" :CONTENTS "data Tree a = Tip | Branch a [Tree a]
     deriving (Show, Eq, Ord)
 
 instance Functor Tree where
@@ -29796,7 +29796,7 @@ knapsack' max = leaves
               . prune sorted
               . buildTree
     where sorted xs = and (zipWith (<=) xs (drop 1 xs))
-knapsack max = maximum . map sum . knapsack' max" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19178 :USER "Cale" :DATE 3354505268 :CHANNEL "#haskell" :TITLE "knapsack" :CONTENTS "knapsack items max = maximum $ do
+knapsack max = maximum . map sum . knapsack' max" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19178 :USER "Cale" :DATE 3354505268 :CHANNEL "#haskell" :TITLE "knapsack" :CONTENTS "knapsack items max = maximum $ do
     x <- items
     if x >= max
         then return 0
@@ -29812,7 +29812,7 @@ knapsack' items max = do
         else do xs <- knapsack' items (max - x)
                 return (x:xs)
 
-knapsack items = maximum . map sum . knapsack' items" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19177 :USER "nessup" :DATE 3354505144 :CHANNEL "#macdev" :TITLE "c -> obj-c" :CONTENTS "... in main.c ...
+knapsack items = maximum . map sum . knapsack' items" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19177 :USER "nessup" :DATE 3354505144 :CHANNEL "#macdev" :TITLE "c -> obj-c" :CONTENTS "... in main.c ...
 (void)lstray_loop( trayitem, clickHandler );
 
 ... in lstray-osx.m ...
@@ -29853,7 +29853,7 @@ lstray_status( struct lstray *item, int status, void *param )
 			break;
 ...
 
-47." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19176 :USER "imMute" :DATE 3354502691 :CHANNEL "#svn" :TITLE "my svn.conf" :CONTENTS "LoadModule dav_svn_module         modules/mod_dav_svn.so
+47." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19176 :USER "imMute" :DATE 3354502691 :CHANNEL "#svn" :TITLE "my svn.conf" :CONTENTS "LoadModule dav_svn_module         modules/mod_dav_svn.so
 LoadModule authz_svn_module       modules/mod_authz_svn.so
 
 <VirtualHost *:80>
@@ -29878,7 +29878,7 @@ LoadModule authz_svn_module       modules/mod_authz_svn.so
         Order allow,deny
         Allow from all
     </Directory>
-</VirtualHost>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19175 :USER "torgox" :DATE 3354501178 :CHANNEL "None" :TITLE "shunky" :CONTENTS "6715-1B0F88A80118A03C94DF5E415BAF208C-6F5C4E
+</VirtualHost>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19175 :USER "torgox" :DATE 3354501178 :CHANNEL "None" :TITLE "shunky" :CONTENTS "6715-1B0F88A80118A03C94DF5E415BAF208C-6F5C4E
 D4B55D4DCE44B6E2BE9233CE69-ZYNFW7rFlQpKj6smE
 sR1VRloRSuKU23CgzvTngGbUzCEn1v+qqOZ6nbLcs9+X
 sowXQwf3s63jJxwNse46XTqRkC8M5F4o1VLR6+ueJRX1
@@ -29888,7 +29888,7 @@ ig9b3Xf5HZlhUkVNWA861K8nTpMkN/HxNuaSs+7Rs14V
 gYMdx7wHIOw632FtKENrkgx72ErsS48fAlKB31UHaiqF
 r6opfu4bICdTGBtDRI/JSLjQ0d4CpfEob9Bzi1D5lNzh
 8gm9AAxNfN3jJ9VQP4b4wcvCSnVQa3qBQ9XLWJ+PVjPa
-KqSFU1Q5pVg1iErau9lK47P3TyX4rPLcumWFw==" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19174 :USER "Riastradh" :DATE 3354499310 :CHANNEL "#scheme" :TITLE "transactions on top of proposals (untested)" :CONTENTS "(define-record-type* transaction
+KqSFU1Q5pVg1iErau9lK47P3TyX4rPLcumWFw==" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19174 :USER "Riastradh" :DATE 3354499310 :CHANNEL "#scheme" :TITLE "transactions on top of proposals (untested)" :CONTENTS "(define-record-type* transaction
   (make-transaction original-proposal procedure continuation)
   ())
 
@@ -29918,17 +29918,17 @@ KqSFU1Q5pVg1iErau9lK47P3TyX4rPLcumWFw==" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :
 
 (define (retry transaction)
   (rollback transaction (transaction-procedure transaction)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19173 :USER "The_Tick" :DATE 3354495031 :CHANNEL "#macdev" :TITLE "why using type is bad" :CONTENTS "headliner321@core:~$ type perl
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19173 :USER "The_Tick" :DATE 3354495031 :CHANNEL "#macdev" :TITLE "why using type is bad" :CONTENTS "headliner321@core:~$ type perl
 perl is /usr/bin/perl
 headliner321@core:~$ tcsh
 > type perl
 type: Command not found.
 > which perl
 /usr/bin/perl
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19172 :USER "temp1" :DATE 3354491551 :CHANNEL "#nebula" :TITLE "mangalore runtime error" :CONTENTS "***NEBULA ASSERTION***
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19172 :USER "temp1" :DATE 3354491551 :CHANNEL "#nebula" :TITLE "mangalore runtime error" :CONTENTS "***NEBULA ASSERTION***
 expression: 0 != nNodeList::Singleton
 file: nnodelist.h
-line: 119" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19171 :USER "jammyd" :DATE 3354490021 :CHANNEL "#macdev" :TITLE "global variable issue" :CONTENTS "common.h:
+line: 119" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19171 :USER "jammyd" :DATE 3354490021 :CHANNEL "#macdev" :TITLE "global variable issue" :CONTENTS "common.h:
 
 int foo;
 
@@ -29951,7 +29951,7 @@ void createClients()
 Output is:
 
 foo = 10
-main: foo = 0" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19170 :USER "Ahruman" :DATE 3354489794 :CHANNEL "#macdev" :TITLE "thing Galaxor wants" :CONTENTS "@implementation DDApplicationDelegate
+main: foo = 0" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19170 :USER "Ahruman" :DATE 3354489794 :CHANNEL "#macdev" :TITLE "thing Galaxor wants" :CONTENTS "@implementation DDApplicationDelegate
 
 - (BOOL)applicationOpenUntitledFile:(NSApplication *)sender
 {
@@ -30000,7 +30000,7 @@ main: foo = 0" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19170 :USER "Ahruma
 	TraceExit();
 }
 
-@end" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19169 :USER "Shine" :DATE 3354488514 :CHANNEL "None" :TITLE "unix-fast-getrusage for Windows" :CONTENTS "(define-alien-type nil
+@end" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19169 :USER "Shine" :DATE 3354488514 :CHANNEL "None" :TITLE "unix-fast-getrusage for Windows" :CONTENTS "(define-alien-type nil
                    (struct FILETIME
                            (dwLowDateTime unsigned-long)
                            (dwHighDateTime unsigned-long)))
@@ -30053,7 +30053,7 @@ main: foo = 0" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19170 :USER "Ahruma
                   (+ (* 1000000 system-seconds) system-microseconds))
           (loop for j from 0 to 10000000))))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19168 :USER "technomancy" :DATE 3354488326 :CHANNEL "#emacs" :TITLE "testing lisppaste.el, sorry" :CONTENTS "(defun flickr-grab ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19168 :USER "technomancy" :DATE 3354488326 :CHANNEL "#emacs" :TITLE "testing lisppaste.el, sorry" :CONTENTS "(defun flickr-grab ()
   \"Extract the image URI from the HTML\"
   (interactive)
   (w3m-browse-url
@@ -30061,7 +30061,7 @@ main: foo = 0" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19170 :USER "Ahruma
      (save-excursion
        (re-search-backward \"src=\\\"\\\\(http://static\\\\.flickr\\\\.com/[[:digit:]]*/[[:digit:]]*\\_[[:alnum:]]*\\\\.jpg\\\\)\")
        (match-string 1)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19167 :USER "technomancy" :DATE 3354487417 :CHANNEL "#emacs" :TITLE "flickr-grab" :CONTENTS "(defun flickr-grab ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19167 :USER "technomancy" :DATE 3354487417 :CHANNEL "#emacs" :TITLE "flickr-grab" :CONTENTS "(defun flickr-grab ()
   \"Extract the image URI from the HTML\"
   (interactive)
   (shell-command 
@@ -30069,15 +30069,15 @@ main: foo = 0" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19170 :USER "Ahruma
 	   (with-current-buffer (url-retrieve-synchronously (thing-at-point 'filename))
 	     (save-excursion
 	       (re-search-forward \"src=\\\"\\\\(http://static\\\\.flickr\\\\.com/[[:digit:]]*/[[:digit:]]*\\_[[:alnum:]]*\\\\.jpg\\\\)\")
-	       (match-string 1))))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19166 :USER "marcman" :DATE 3354486556 :CHANNEL "None" :TITLE "araneida handler" :CONTENTS "(defclass main-handler (araneida:handler)                                                                                                                      
+	       (match-string 1))))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19166 :USER "marcman" :DATE 3354486556 :CHANNEL "None" :TITLE "araneida handler" :CONTENTS "(defclass main-handler (araneida:handler)                                                                                                                      
   ((hello :initform (format *trace-output* \"Initialized main-handler~%\")                                                                                       
-          )))                 " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19165 :USER "technomancy" :DATE 3354486240 :CHANNEL "#emacs" :TITLE "regular expression" :CONTENTS "(re-search-forward \"src=\\\"\\\\(http://static\\\\.flickr\\\\.com/[[:digit:]]*/[[:digit:]]*\\_[[:alnum:]]*\\\\.jpg\\\\)\")
+          )))                 " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19165 :USER "technomancy" :DATE 3354486240 :CHANNEL "#emacs" :TITLE "regular expression" :CONTENTS "(re-search-forward \"src=\\\"\\\\(http://static\\\\.flickr\\\\.com/[[:digit:]]*/[[:digit:]]*\\_[[:alnum:]]*\\\\.jpg\\\\)\")
 
 (match-string 1)
 
 <img src=\"http://static.flickr.com/1/129138279_aa5d3e6e0e.jpg?v=0\" alt=\"\" width=\"375\" height=\"500\" onload=\"show_notes_initially()\">
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19164 :USER "AlthA" :DATE 3354485713 :CHANNEL "#webkit" :TITLE "patch to webkit version detect.js" :CONTENTS "Index: WebKitSite/webdevelopers/webkit_version_xl.html
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19164 :USER "AlthA" :DATE 3354485713 :CHANNEL "#webkit" :TITLE "patch to webkit version detect.js" :CONTENTS "Index: WebKitSite/webdevelopers/webkit_version_xl.html
 ===================================================================
 --- WebKitSite/webdevelopers/webkit_version_xl.html	(revision 13954)
 +++ WebKitSite/webdevelopers/webkit_version_xl.html	(working copy)
@@ -30410,7 +30410,7 @@ Index: WebKitSite/webdevelopers/webkit_version.html
 -  </h1>
 -</body>
 -</html>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19163 :USER "antifuchs" :DATE 3354484777 :CHANNEL "#lisp" :TITLE "rpg_beirc: something like this" :CONTENTS "Index: application.lisp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19163 :USER "antifuchs" :DATE 3354484777 :CHANNEL "#lisp" :TITLE "rpg_beirc: something like this" :CONTENTS "Index: application.lisp
 ===================================================================
 RCS file: /project/beirc/cvsroot/beirc/application.lisp,v
 retrieving revision 1.76
@@ -30455,7 +30455,7 @@ cvs diff: conflicting specifications of output style
                                   (t
                                    (list 'com-say (accept 'mumble :history 'mumble :prompt nil :stream stream))))
                             (if force-restore-input-state
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19162 :USER "runelind" :DATE 3354484753 :CHANNEL "#fink" :TITLE "hellanzb" :CONTENTS "/sw/bin/hellanzb.py
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19162 :USER "runelind" :DATE 3354484753 :CHANNEL "#fink" :TITLE "hellanzb" :CONTENTS "/sw/bin/hellanzb.py
 Traceback (most recent call last):
   File \"/sw/bin/hellanzb.py\", line 14, in ?
     from Hellanzb.Core import main
@@ -30466,7 +30466,7 @@ Traceback (most recent call last):
   File \"/sw/lib/python2.4/site-packages/Hellanzb/HellaXMLRPC/__init__.py\", line 15, in ?
     from twisted.web import xmlrpc, server
 ImportError: No module named web
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19161 :USER "mgubi" :DATE 3354484473 :CHANNEL "#concatenative" :TITLE "self-modifying objc interface" :CONTENTS "USING: arrays compiler io kernel lists math namespaces objc sequences words ;
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19161 :USER "mgubi" :DATE 3354484473 :CHANNEL "#concatenative" :TITLE "self-modifying objc interface" :CONTENTS "USING: arrays compiler io kernel lists math namespaces objc sequences words ;
 
 
 IN: objc
@@ -30541,7 +30541,7 @@ DEFER: make-send-quot
         dup try-compile 
     ] if* ;
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19160 :USER "slyrus" :DATE 3354482485 :CHANNEL "#lisp" :TITLE "tinaa docs aver any-keyp error" :CONTENTS "; 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19160 :USER "slyrus" :DATE 3354482485 :CHANNEL "#lisp" :TITLE "tinaa docs aver any-keyp error" :CONTENTS "; 
 ; caught STYLE-WARNING:
 ;   These functions are undefined:
 ;     METABANG.UTILITIES::DEBUGGING-P-FN METABANG.UTILITIES:NYI METABANG.UTILITIES:PUSH-END TINAA::SYSTEM-PROPERTY
@@ -30577,7 +30577,7 @@ restarts (invokable by number or by possibly-abbreviated name):
 
 ((LAMBDA (SB-IMPL::E)) #<SB-INT:BUG {14C37971}>)
 0] 3
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19159 :USER "bwolf" :DATE 3354479903 :CHANNEL "None" :TITLE "rationalize" :CONTENTS "/* numtool.cc -- Numeric toolbox for number impls.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19159 :USER "bwolf" :DATE 3354479903 :CHANNEL "None" :TITLE "rationalize" :CONTENTS "/* numtool.cc -- Numeric toolbox for number impls.
  *
  * $Id$
  *
@@ -30801,7 +30801,7 @@ namespace zscheme {
 		return static_cast<Number_impl*>(base->pow(exponent));
 	}	
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19158 :USER "Shine" :DATE 3354474626 :CHANNEL "#lisp" :TITLE "problem with SBCL on Windows, compiled with Cygwin" :CONTENTS "* (time t)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19158 :USER "Shine" :DATE 3354474626 :CHANNEL "#lisp" :TITLE "problem with SBCL on Windows, compiled with Cygwin" :CONTENTS "* (time t)
 
 debugger invoked on a TYPE-ERROR: The value NIL is not of type NUMBER.
 
@@ -30816,12 +30816,12 @@ restarts (invokable by number or by possibly-abbreviated name):
  #<SB-ALIEN-INTERNALS:ALIEN-VALUE :SAP #X0022F3A4 :TYPE (*
                                                          (STRUCT
                                                           SB-VM::OS-CONTEXT-T-STRUCT))>
- (14 78))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19157 :USER "toast" :DATE 3354474456 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "valeurAttribut :: [Char] -> ACTION -> Maybe [Char]
+ (14 78))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19157 :USER "toast" :DATE 3354474456 :CHANNEL "#haskell" :TITLE "code" :CONTENTS "valeurAttribut :: [Char] -> ACTION -> Maybe [Char]
 
 valeurAttribut att (Action s l) =
 	case isJust(find((==att).typeAttribut) l) of
 		False -> Nothing
-		True -> Just(valAttribut(fromJust (find((==att).typeAttribut) l)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19156 :USER "vampire0" :DATE 3354473900 :CHANNEL "None" :TITLE "Test.java" :CONTENTS "public class Test {
+		True -> Just(valAttribut(fromJust (find((==att).typeAttribut) l)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19156 :USER "vampire0" :DATE 3354473900 :CHANNEL "None" :TITLE "Test.java" :CONTENTS "public class Test {
    public static void testMethod(String test) {
        System.out.println(\"void: \"+test);
    }
@@ -30835,7 +30835,7 @@ valeurAttribut att (Action s l) =
        System.out.println(\"main: \"+test);
    }
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19155 :USER "bbraun" :DATE 3354471506 :CHANNEL "#fink" :TITLE "jam + x86 + 10.4" :CONTENTS "diff -u -d -r1.2 jam.info
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19155 :USER "bbraun" :DATE 3354471506 :CHANNEL "#fink" :TITLE "jam + x86 + 10.4" :CONTENTS "diff -u -d -r1.2 jam.info
 --- jam.info    18 Apr 2006 14:34:32 -0000      1.2
 +++ jam.info    19 Apr 2006 18:42:19 -0000
 @@ -6,8 +6,13 @@
@@ -30854,7 +30854,7 @@ valeurAttribut att (Action s l) =
  <<
  DocFiles: README Jam.html Jambase.html Jamfile.html RELNOTES Porting
  Description: Just Another Make build tool
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19154 :USER "avium" :DATE 3354470559 :CHANNEL "#macdev" :TITLE "Window Not Staying On Top" :CONTENTS "//
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19154 :USER "avium" :DATE 3354470559 :CHANNEL "#macdev" :TITLE "Window Not Staying On Top" :CONTENTS "//
 //  FloatingPanel.m
 //  GesundheitInstaller
 //
@@ -30900,7 +30900,7 @@ valeurAttribut att (Action s l) =
 }
 
 @end
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19153 :USER "roy" :DATE 3354470503 :CHANNEL "#code4lib" :TITLE "getit" :CONTENTS "Functional Specification for the GET-IT Service
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19153 :USER "roy" :DATE 3354470503 :CHANNEL "#code4lib" :TITLE "getit" :CONTENTS "Functional Specification for the GET-IT Service
 Rethinking Resource Sharing Project  Interoperations Group  March 2006
 
 
@@ -30984,7 +30984,7 @@ GET-IT service objects:  the above described application components use the foll
 4.	Message-object  as-yet-to-be-defined communication regarding the request/order and tracking its status
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19152 :USER "forcer" :DATE 3354470468 :CHANNEL "#scheme" :TITLE "Explicit \"closures\" in C" :CONTENTS "(define (addn n)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19152 :USER "forcer" :DATE 3354470468 :CHANNEL "#scheme" :TITLE "Explicit \"closures\" in C" :CONTENTS "(define (addn n)
   (lambda (m)
     (+ n m)))
 
@@ -31007,12 +31007,12 @@ typedef struct {
      environment *e;
 } closure;
 // think up the remaining functions yourself :P
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19151 :USER "XAK" :DATE 3354461702 :CHANNEL "#macdev" :TITLE "keycode to applescript" :CONTENTS "   tell application \"Preview\" to activate 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19151 :USER "XAK" :DATE 3354461702 :CHANNEL "#macdev" :TITLE "keycode to applescript" :CONTENTS "   tell application \"Preview\" to activate 
    tell application \"System Events\"
          tell process \"Preview\" 
                   keystroke \"f\" using {command down, shift down}
        end tell
-end tell" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19150 :USER "zacwhite" :DATE 3354460359 :CHANNEL "#macsb" :TITLE "post-commit" :CONTENTS "#!/bin/sh
+end tell" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19150 :USER "zacwhite" :DATE 3354460359 :CHANNEL "#macsb" :TITLE "post-commit" :CONTENTS "#!/bin/sh
 
 # POST-COMMIT HOOK
 #
@@ -31051,7 +31051,7 @@ REV=\"$2\"
 $REPOS/hooks/ciabot_svn.py \"$REPOS\" \"$REV\" &
 /home/zacwhite/packages/bin/svn log --xml http://svn.zacwhite.com/cocoadevhouse/ > /home/zacwhite/audipad.com/log.xml && /usr/local/bin/perl /home/zacwhite/svn/cocoadevhouse/hooks/svn2html.pl --infile /home/zacwhite/audipad.com/log.xml > /home/zacwhite/audipad.com/log.html &
 $REPOS/hooks/msvnstats.py -o /home/zacwhite/audipad.com/development/logs/ http://svn.zacwhite.com/cocoadevhouse/ &
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19149 :USER "zacwhite" :DATE 3354457206 :CHANNEL "None" :TITLE "output" :CONTENTS "2006-04-19 09:24:42.058 Audipad[10554] INIT:MyDocument
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19149 :USER "zacwhite" :DATE 3354457206 :CHANNEL "None" :TITLE "output" :CONTENTS "2006-04-19 09:24:42.058 Audipad[10554] INIT:MyDocument
 2006-04-19 09:24:42.137 Audipad[10554] The plugin /Users/zac/Library/Application Support/SIMBL/Plugins/FScriptAnywhereSIMBL.bundle (com.kenferry.FScriptAnywhereSIMBL) is using a deprecated interface to SIMBL. Please contact the appropriate developer (not the SIMBL author) and refer them to http://culater.net/wiki/moin.cgi/CocoaReverseEngineering
 2006-04-19 09:24:42.318 Audipad[10554] INIT:MyDocument
 2006-04-19 09:24:42.392 Audipad[10554] initWithFrame
@@ -31080,12 +31080,12 @@ See /usr/include/servers/bootstrap_defs.h for the error codes.
 2006-04-19 09:36:32.318 Audipad[10716] Starting recording
 2006-04-19 09:36:36.385 Audipad[10716] Stop the recording.
 2006-04-19 09:36:36.696 Audipad[10716] Stopping recording
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19148 :USER "YGingras" :DATE 3354456263 :CHANNEL "#lisp" :TITLE "Sieve of Eratosten" :CONTENTS "(defun eratosten (n)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19148 :USER "YGingras" :DATE 3354456263 :CHANNEL "#lisp" :TITLE "Sieve of Eratosten" :CONTENTS "(defun eratosten (n)
   (let ((nums (coerce (loop for i from 0 to n collect i) 'vector))) 
     (loop for i from 2 to n do
 	  (loop for j from (* 2 i) to n by i do (setf (aref nums j) nil)))
     (remove-if-not #'identity nums)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19147 :USER "davidhouse" :DATE 3354455026 :CHANNEL "#haskell" :TITLE ":i Integral" :CONTENTS "class (Real a, Enum a) => Integral a where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19147 :USER "davidhouse" :DATE 3354455026 :CHANNEL "#haskell" :TITLE ":i Integral" :CONTENTS "class (Real a, Enum a) => Integral a where
   quot :: a -> a -> a
   rem :: a -> a -> a
   div :: a -> a -> a
@@ -31095,7 +31095,7 @@ See /usr/include/servers/bootstrap_defs.h for the error codes.
   toInteger :: a -> Integer
         -- Imported from GHC.Real
 instance Integral Integer       -- Imported from GHC.Real
-instance Integral Int   -- Imported from GHC.Real" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19146 :USER "rwlbuis" :DATE 3354438501 :CHANNEL "#webkit" :TITLE "Tref testcase" :CONTENTS "<?xml version=\"1.0\" standalone=\"no\"?>
+instance Integral Int   -- Imported from GHC.Real" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19146 :USER "rwlbuis" :DATE 3354438501 :CHANNEL "#webkit" :TITLE "Tref testcase" :CONTENTS "<?xml version=\"1.0\" standalone=\"no\"?>
 <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1 Basic//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd\">
 <svg version=\"1.1\" baseProfile=\"basic\" id=\"svg-root\" width=\"100%\" height=\"100%\" viewBox=\"0 0 480 360\"
      xmlns:xlink=\"http://www.w3.org/1999/xlink\"
@@ -31115,7 +31115,7 @@ instance Integral Int   -- Imported from GHC.Real" :ANNOTATIONS NIL) #S(MONTEZUM
     <text x=\"20\" y=\"20\" >
        <tref id=\"tref\" xlink:href=\"#tref-internal-reference-failure\"/>
     </text>
-</svg>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19145 :USER "rwlbuis" :DATE 3354437839 :CHANNEL "#webkit" :TITLE "tref testcase" :CONTENTS "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1 Basic//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd\">
+</svg>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19145 :USER "rwlbuis" :DATE 3354437839 :CHANNEL "#webkit" :TITLE "tref testcase" :CONTENTS "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1 Basic//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd\">
 <svg version=\"1.1\" baseProfile=\"basic\" id=\"svg-root\" width=\"100%\" height=\"100%\" viewBox=\"0 0 480 360\"
      xmlns:xlink=\"http://www.w3.org/1999/xlink\"
      xmlns=\"http://www.w3.org/2000/svg\" onload=\"mytest()\">
@@ -31133,7 +31133,7 @@ instance Integral Int   -- Imported from GHC.Real" :ANNOTATIONS NIL) #S(MONTEZUM
     <text x=\"20\" y=\"20\" >
        <tref id=\"tref\"/>
     </text>
-</svg>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19144 :USER "The_Tick" :DATE 3354433792 :CHANNEL "#adium" :TITLE "Modified .8x CBGaimServicePlugin.m file" :CONTENTS "/* 
+</svg>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19144 :USER "The_Tick" :DATE 3354433792 :CHANNEL "#adium" :TITLE "Modified .8x CBGaimServicePlugin.m file" :CONTENTS "/* 
  * Adium is the legal property of its developers, whose names are listed in the copyright file included
  * with this source distribution.
  * 
@@ -31221,7 +31221,7 @@ instance Integral Int   -- Imported from GHC.Real" :ANNOTATIONS NIL) #S(MONTEZUM
 }
 
 @end
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19143 :USER "gnomon" :DATE 3354422151 :CHANNEL "#scheme" :TITLE "Excerpt from Virtual Light" :CONTENTS "Excerpt from Virtual Light, by William Gibson;
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19143 :USER "gnomon" :DATE 3354422151 :CHANNEL "#scheme" :TITLE "Excerpt from Virtual Light" :CONTENTS "Excerpt from Virtual Light, by William Gibson;
 
 Explaining my comment about pneumatic roof-mounted concrete-filled orange-juice cans;
 
@@ -31252,7 +31252,7 @@ There on his knees, on the girlfriend's dusty polyester carpet, he'd watched tha
 
 Turvey moved the vise-grip handle and punched a hole the size of a fruit-juice can through the closet door. The kids were in there. They must've screamed, though Rydell couldn't remember hearing it. Rydell's lawyer later argued that he was not only deaf at this point, but in a state of sonically induced catalepsy.  Turvey's invention was only a few decibels short of what you got with a SWAT stun-grenade. But Rydell couldn't remember. He couldn't rememher shooting Kenneth Turvey in the head, either, or anything else at all until he woke up in the hospital. There was a woman there from Cops in Trouble, which had been Rydell's father's favorite show, but she said she couldn't actually talk to him until she'd spoken with his agent. Rydell said he didn't have one. She said she knew that, but one was going to call him.
 --
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19142 :USER "narftroz" :DATE 3354421691 :CHANNEL "None" :TITLE "foo" :CONTENTS " --------------------------------------------------------------------------------------------- |   # Filename                                                       Size  Download    Upload |
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19142 :USER "narftroz" :DATE 3354421691 :CHANNEL "None" :TITLE "foo" :CONTENTS " --------------------------------------------------------------------------------------------- |   # Filename                                                       Size  Download    Upload |
 |   1 24.Season.2.DVDRip.XViD-FoV                                  8.5GiB 20.6KiB/s 95.6KiB/s ||     (95.3%) ETA in 4:08:29 - 12 peers 14 seeds 4.995 dist copies - 4.1GiB up 975.5MiB dn    |
 |                                                                                             ||   2 numb3rs.218.hdtv-lol.[TvT].avi                             349.6MiB124.2KiB/s     0 B/s |
 |     (15.0%) ETA in 0:51:09 - 0 peers 14 seeds 0.140 dist copies - 0 B up 52.5MiB dn         ||                                                                                             |
@@ -31261,7 +31261,7 @@ Turvey moved the vise-grip handle and punched a hole the size of a fruit-juice c
 |     (15.2%) ETA in 0:47:30 - 10 peers 8 seeds 2.938 dist copies - 32.5MiB up 26.8MiB dn     ||                                                                                             ||                                                                                             ||                                                                                             |
 |                                                                                             ||                                                                                             |
 |                                                                                             ||                                                                 Totals:263.9KiB/s371.1KiB/s |
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19141 :USER "asdf" :DATE 3354418198 :CHANNEL "None" :TITLE "asdf" :CONTENTS "    int                  /* O - 0 = MODEM ok, -1 = MODEM bad */
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19141 :USER "asdf" :DATE 3354418198 :CHANNEL "None" :TITLE "asdf" :CONTENTS "    int                  /* O - 0 = MODEM ok, -1 = MODEM bad */
     init_modem(int fd)   /* I - Serial port file */
     {
       char buffer[255];  /* Input buffer */
@@ -31292,7 +31292,7 @@ Turvey moved the vise-grip handle and punched a hole the size of a fruit-juice c
       }
 
       return (-1);
-    }" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19140 :USER "johnsu01" :DATE 3354409193 :CHANNEL "None" :TITLE "client.conf" :CONTENTS "client
+    }" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19140 :USER "johnsu01" :DATE 3354409193 :CHANNEL "None" :TITLE "client.conf" :CONTENTS "client
 dev tun
 remote my.host.org
 
@@ -31305,7 +31305,7 @@ up /etc/openvpn/me.up
 down /etc/openvpn/me.down
 comp-lzo
 verb 9
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19139 :USER "durin42" :DATE 3354406088 :CHANNEL "None" :TITLE "hmm" :CONTENTS "[ithilien:~/Stats Test] durin% ./msvnstats.py --output-dir public_html svn://svn.adiumx.com/adium/trunk
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19139 :USER "durin42" :DATE 3354406088 :CHANNEL "None" :TITLE "hmm" :CONTENTS "[ithilien:~/Stats Test] durin% ./msvnstats.py --output-dir public_html svn://svn.adiumx.com/adium/trunk
 Will generate PIL graphs.
 getting data
 running command: \"svn -v --xml log svn://svn.adiumx.com/adium/trunk\"
@@ -31314,7 +31314,7 @@ parsing data
 zsh: killed     ./msvnstats.py --output-dir public_html svn://svn.adiumx.com/adium/trunk
 [ithilien:~/Stats Test] durin% ls                            [04/18/06  8:24PM]
 msvnstats.py*
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19138 :USER "syamajala" :DATE 3354404967 :CHANNEL "#lisp" :TITLE "asdf-install issues" :CONTENTS "component \"tbnl\" not found
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19138 :USER "syamajala" :DATE 3354404967 :CHANNEL "#lisp" :TITLE "asdf-install issues" :CONTENTS "component \"tbnl\" not found
    [Condition of type MISSING-COMPONENT]
 
 Restarts:
@@ -31378,7 +31378,7 @@ Backtrace:
  51: #<COMPILED-FUNCTION SWANK::SETUP-SERVER>
  52: #<COMPILED-FUNCTION SWANK:START-SERVER>
  53: #<SYSTEM-FUNCTION SYSTEM::READ-EVAL-PRINT> 2
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19137 :USER "dote" :DATE 3354398815 :CHANNEL "#emacs" :TITLE "Kill *vc* buffer after 2 seconds of commiting a file" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19137 :USER "dote" :DATE 3354398815 :CHANNEL "#emacs" :TITLE "Kill *vc* buffer after 2 seconds of commiting a file" :CONTENTS "
 
 ;; with this I'm getting: 
 ;; Invalid funciton \"*vc*\"
@@ -31394,13 +31394,13 @@ Backtrace:
 (add-hook 'vc-checkin-hook
 	  '(lambda()
 	    (run-at-time 2 nil 'kill-buffer *vc*)
-	    (message \"discarded of *vc* buffer\")))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19136 :USER "zedek" :DATE 3354396220 :CHANNEL "#emacs" :TITLE "tempbuf usage" :CONTENTS "(require 'tempbuf)
+	    (message \"discarded of *vc* buffer\")))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19136 :USER "zedek" :DATE 3354396220 :CHANNEL "#emacs" :TITLE "tempbuf usage" :CONTENTS "(require 'tempbuf)
 
 (add-hook 'custom-mode-hook 'turn-on-tempbuf-mode)
 (add-hook 'w3-mode-hook 'turn-on-tempbuf-mode)
 (add-hook 'Man-mode-hook 'turn-on-tempbuf-mode)
 (add-hook 'view-mode-hook 'turn-on-tempbuf-mode)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19135 :USER "Squall`" :DATE 3354395164 :CHANNEL "None" :TITLE "blah" :CONTENTS ";;;; number-guess.lisp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19135 :USER "Squall`" :DATE 3354395164 :CHANNEL "None" :TITLE "blah" :CONTENTS ";;;; number-guess.lisp
 (defun prompt-read (prompt)
   (format *query-io* \"~a: \" prompt)
   (force-output *query-io*)
@@ -31430,11 +31430,11 @@ the number is not out of range\"
 		(main-loop)
 	      (return-from main-loop))))
       (format t \"Sorry, you lose. The answer was ~d.~%\" number))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19134 :USER "zedek" :DATE 3354394908 :CHANNEL "#emacs" :TITLE "defun* usage ?" :CONTENTS "(defun* rcirc-do-notice (msg &optional (process (or process (rcirc-buffer-process)))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19134 :USER "zedek" :DATE 3354394908 :CHANNEL "#emacs" :TITLE "defun* usage ?" :CONTENTS "(defun* rcirc-do-notice (msg &optional (process (or process (rcirc-buffer-process)))
                              (target (or target rcirc-target)))
   \"Just send a notice message.\"
   (let ((sender (rcirc-nick process)))
-    (rcirc-print process sender \"NOTICE\" target msg)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19133 :USER "dote" :DATE 3354394038 :CHANNEL "None" :TITLE "Discard *vc* buffer once you commit" :CONTENTS ";; http://www.bloomington.in.us/~brutt/emacs-c-dev.html
+    (rcirc-print process sender \"NOTICE\" target msg)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19133 :USER "dote" :DATE 3354394038 :CHANNEL "None" :TITLE "Discard *vc* buffer once you commit" :CONTENTS ";; http://www.bloomington.in.us/~brutt/emacs-c-dev.html
 ;; get rid of compilation window after a successful compile
 (setq compilation-finish-function
       (lambda (buf str)
@@ -31459,7 +31459,7 @@ the number is not out of range\"
 	;; 	(run-at-time 0.5 nil 'delete-windows-on buf)
 	(message \"closing the *vc* buffer\")))
 
-;; now obviously the above dont work, so I'm trying to but ;; I'm not sure how to proceed" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19132 :USER "AlthA" :DATE 3354393949 :CHANNEL "#webkit" :TITLE "patch for MacDome to review" :CONTENTS "Index: WebKitSite/nav.inc
+;; now obviously the above dont work, so I'm trying to but ;; I'm not sure how to proceed" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19132 :USER "AlthA" :DATE 3354393949 :CHANNEL "#webkit" :TITLE "patch for MacDome to review" :CONTENTS "Index: WebKitSite/nav.inc
 ===================================================================
 --- WebKitSite/nav.inc	(revision 13954)
 +++ WebKitSite/nav.inc	(working copy)
@@ -31599,7 +31599,7 @@ Index: WebKitSite/webdevelopers/webkit_version.html
 +  </h1>
 +</body>
 +</html>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19131 :USER "klette" :DATE 3354392271 :CHANNEL "#programmering" :TITLE "php-shite" :CONTENTS "<?php
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19131 :USER "klette" :DATE 3354392271 :CHANNEL "#programmering" :TITLE "php-shite" :CONTENTS "<?php
 require_once(\"../config/config.php\");
 
 class dbMySQL
@@ -31635,7 +31635,7 @@ class dbMySQL
 	//Mer stuff ;)
 }
 
-?>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19130 :USER "davidhouse" :DATE 3354387913 :CHANNEL "#haskell" :TITLE "the new, generic zipper monad" :CONTENTS "{-# OPTIONS_GHC -fglasgow-exts #-}
+?>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19130 :USER "davidhouse" :DATE 3354387913 :CHANNEL "#haskell" :TITLE "the new, generic zipper monad" :CONTENTS "{-# OPTIONS_GHC -fglasgow-exts #-}
 module Zipper where
 
 -- A monad implementing The Zipper. 
@@ -31676,7 +31676,7 @@ putTree t = modifyTree $ const t
 
 -- get the current substructure
 getTree :: Travel (Loc c a) a
-getTree = modifyTree id -- works because modifyTree returns the 'new' tree" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19129 :USER "spiffy" :DATE 3354386979 :CHANNEL "#lisp" :TITLE "rock paper sissors" :CONTENTS "(defun make-weapon (name win)
+getTree = modifyTree id -- works because modifyTree returns the 'new' tree" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19129 :USER "spiffy" :DATE 3354386979 :CHANNEL "#lisp" :TITLE "rock paper sissors" :CONTENTS "(defun make-weapon (name win)
   \"constructs a list whos first element is the name, second the weapon it defeats\"
   `(,name ,win))
 
@@ -31750,7 +31750,7 @@ getTree = modifyTree id -- works because modifyTree returns the 'new' tree" :ANN
     (while (and (y-or-n-p \"Play another round?\")
 		(or (< *user-score* 3)(< *computer-score* 3)))
       (game-loop))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19128 :USER "fcorrao" :DATE 3354385209 :CHANNEL "#fink" :TITLE "selfupdate" :CONTENTS "[ttyp4]# fink selfupdate
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19128 :USER "fcorrao" :DATE 3354385209 :CHANNEL "#fink" :TITLE "selfupdate" :CONTENTS "[ttyp4]# fink selfupdate
 curl -f -L -O http://fink.sourceforge.net/CURRENT-FINK-10.4
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -31762,7 +31762,7 @@ Downloading the file \"CURRENT-FINK-10.4\" failed.
 (2)     Retry the same mirror
 
 How do you want to proceed? [2] 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19127 :USER "slyrus" :DATE 3354383485 :CHANNEL "#lisp" :TITLE "latex verbatim in scriptsize" :CONTENTS "\\let\\oldverbatim=\\verbatim
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19127 :USER "slyrus" :DATE 3354383485 :CHANNEL "#lisp" :TITLE "latex verbatim in scriptsize" :CONTENTS "\\let\\oldverbatim=\\verbatim
 \\renewenvironment{verbatim}{
   \\begin{scriptsize}
   \\begin{oldverbatim}
@@ -31774,7 +31774,7 @@ How do you want to proceed? [2]
   \\end{scriptsize}
 }
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19126 :USER "zedek" :DATE 3354377671 :CHANNEL "None" :TITLE "Test II" :CONTENTS "plop" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19125 :USER "zedek" :DATE 3354377558 :CHANNEL "None" :TITLE "test of lisppaste.el" :CONTENTS "Yes that works !" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19124 :USER "markd2" :DATE 3354375256 :CHANNEL "#macsb" :TITLE "controlTextDidChange - works for me" :CONTENTS "@implementation AppController
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19126 :USER "zedek" :DATE 3354377671 :CHANNEL "None" :TITLE "Test II" :CONTENTS "plop" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19125 :USER "zedek" :DATE 3354377558 :CHANNEL "None" :TITLE "test of lisppaste.el" :CONTENTS "Yes that works !" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19124 :USER "markd2" :DATE 3354375256 :CHANNEL "#macsb" :TITLE "controlTextDidChange - works for me" :CONTENTS "@implementation AppController
 
 - (void)controlTextDidChange:(NSNotification *)obj
 {
@@ -31783,7 +31783,7 @@ How do you want to proceed? [2]
 
 @end // AppController
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19123 :USER "DrMcCoy" :DATE 3354373264 :CHANNEL "#scummvm" :TITLE "valgrind" :CONTENTS "==17786== Invalid read of size 4
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19123 :USER "DrMcCoy" :DATE 3354373264 :CHANNEL "#scummvm" :TITLE "valgrind" :CONTENTS "==17786== Invalid read of size 4
 ==17786==    at 0x82F09B6: ??? (graphics/scaler/hq3x_i386.asm:474)
 ==17786==    by 0x82E0A2F: HQ3x(unsigned char const*, unsigned, unsigned char*, unsigned, int, int) (hq3x.cpp:41)
 ==17786==    by 0x804EF6B: OSystem_SDL::internUpdateScreen() (graphics.cpp:671)
@@ -31794,7 +31794,7 @@ How do you want to proceed? [2]
 ==17786==    by 0x8052F1A: scummvm_main (main.cpp:338)
 ==17786==    by 0x8050983: main (sdl.cpp:92)
 ==17786==  Address 0x846D334 is not stack'd, malloc'd or (recently) free'd
-Fatal signal: Segmentation Fault (SDL Parachute Deployed)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19122 :USER "mwh" :DATE 3354372975 :CHANNEL "#lisp" :TITLE "so how does this code look?" :CONTENTS "(in-package :cl-user)
+Fatal signal: Segmentation Fault (SDL Parachute Deployed)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19122 :USER "mwh" :DATE 3354372975 :CHANNEL "#lisp" :TITLE "so how does this code look?" :CONTENTS "(in-package :cl-user)
 
 (defvar a-string 
   \"plus ça change, plus c'est la meme chôse\")
@@ -31812,12 +31812,12 @@ Fatal signal: Segmentation Fault (SDL Parachute Deployed)" :ANNOTATIONS NIL) #S(
   (octets-to-string 
    (string-to-octets a-string :external-format :latin-1)
    :external-format :utf-8))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19121 :USER "Woo" :DATE 3354371922 :CHANNEL "#scummvm" :TITLE "Blah?" :CONTENTS "Blah!" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19120 :USER "sbp" :DATE 3354367906 :CHANNEL "#swhack" :TITLE ".htaccess snippet for slash to slashless redirect" :CONTENTS "RewriteEngine on
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19121 :USER "Woo" :DATE 3354371922 :CHANNEL "#scummvm" :TITLE "Blah?" :CONTENTS "Blah!" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19120 :USER "sbp" :DATE 3354367906 :CHANNEL "#swhack" :TITLE ".htaccess snippet for slash to slashless redirect" :CONTENTS "RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/$1.html -f [OR]
 RewriteCond %{DOCUMENT_ROOT}/$1.txt -f
 RewriteRule ^(.+)\\.(html|txt)/$ /$1 [R]
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19119 :USER "Athas" :DATE 3354367894 :CHANNEL "#ucw" :TITLE "Setup code" :CONTENTS "(defparameter *www-root* (merge-pathnames (make-pathname
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19119 :USER "Athas" :DATE 3354367894 :CHANNEL "#ucw" :TITLE "Setup code" :CONTENTS "(defparameter *www-root* (merge-pathnames (make-pathname
                                            :directory
                                            '(:relative \"lambdawiki\"))
                                           \"/var/www/localhost/htdocs/\"))
@@ -31856,7 +31856,7 @@ RewriteRule ^(.+)\\.(html|txt)/$ /$1 [R]
                               :class regexp-entry-point)))
 
 (defcomponent wiki-login ()
-  ())" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19118 :USER "forcer" :DATE 3354362559 :CHANNEL "#emacs" :TITLE "notes taking, and only notes taking..." :CONTENTS "(global-set-key (kbd \"C-c c\") 'fc-toggle-inbox)
+  ())" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19118 :USER "forcer" :DATE 3354362559 :CHANNEL "#emacs" :TITLE "notes taking, and only notes taking..." :CONTENTS "(global-set-key (kbd \"C-c c\") 'fc-toggle-inbox)
 (defun fc-toggle-inbox ()
   \"Switch to the inbox for quick notekeeping.\"
   (interactive)
@@ -31867,12 +31867,12 @@ RewriteRule ^(.+)\\.(html|txt)/$ /$1 [R]
                         (expand-file-name (buffer-file-name))))
           (bury-buffer)
         (find-file inbox)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19117 :USER "Stoerte" :DATE 3354357951 :CHANNEL "None" :TITLE "bla" :CONTENTS "(defun find-file-reread-this()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19117 :USER "Stoerte" :DATE 3354357951 :CHANNEL "None" :TITLE "bla" :CONTENTS "(defun find-file-reread-this()
 \"re-opens the file in current buffer\"
   (interactive)
   (let ((me buffer-file-name))
     (kill-buffer nil)
-    (find-file me)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19116 :USER "therp" :DATE 3354350227 :CHANNEL "#lisp" :TITLE "ASDF problems after core dumping?" :CONTENTS "ASDF problems after core dumping?
+    (find-file me)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19116 :USER "therp" :DATE 3354350227 :CHANNEL "#lisp" :TITLE "ASDF problems after core dumping?" :CONTENTS "ASDF problems after core dumping?
 
 $ sbcl --core /usr/lib/sbcl/sbcl-dist.core                                                                                         
 This is SBCL 0.9.11, an implementation of ANSI Common Lisp.
@@ -31923,7 +31923,7 @@ restarts (invokable by number or by possibly-abbreviated name):
 * sb-ext:*module-provider-functions*
 
 (ASDF::MODULE-PROVIDE-ASDF SB-IMPL::MODULE-PROVIDE-CONTRIB)
-* " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19115 :USER "jake1" :DATE 3354346858 :CHANNEL "#fink" :TITLE "ps ax" :CONTENTS "Jakes-Powerbook:~ admin$ ps ax
+* " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19115 :USER "jake1" :DATE 3354346858 :CHANNEL "#fink" :TITLE "ps ax" :CONTENTS "Jakes-Powerbook:~ admin$ ps ax
   PID  TT  STAT      TIME COMMAND
     1  ??  S<s    0:12.38 /sbin/launchd
    23  ??  Ss     0:00.97 /sbin/dynamic_pager -F /private/var/vm/swapfile
@@ -31985,7 +31985,7 @@ restarts (invokable by number or by possibly-abbreviated name):
 25493  p1  S+     0:00.17 /usr/bin/perl -w /sw/lib/fink/mirror/postinstall.pl
 22505  p2  Ss     0:00.02 login -pf admin
 22506  p2  S      0:00.04 -bash
-25540  p2  R+     0:00.01 ps ax" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19114 :USER "ayrnieu" :DATE 3354346112 :CHANNEL "None" :TITLE "gen_irc screenshot" :CONTENTS "Angst: {{user,\"buu\",\"i=buu\",\"ded430-deb-175-30.netsonic.net\"},                          {ctcp,action},
+25540  p2  R+     0:00.01 ps ax" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19114 :USER "ayrnieu" :DATE 3354346112 :CHANNEL "None" :TITLE "gen_irc screenshot" :CONTENTS "Angst: {{user,\"buu\",\"i=buu\",\"ded430-deb-175-30.netsonic.net\"},                          {ctcp,action},
         [{channel,\"#perl\"},\"applies glue to angst bot\"]}
 meep.                                                                           (demonview@sagacity)33> A1 ! {command,{part,\"#perl\"}}.                          meep.
 {command,{part,\"#perl\"}}
@@ -32007,7 +32007,7 @@ Angst: {{user,\"Russell__\",\"n=Russell\",\"60-234-130-11.bitstream.orcon.net.nz
 meep.                   
 Angst: {{user,\"myarray\",\"n=user\",\"httpcraft/advocacy/myarray\"},quit,[[]]}
 meep.                   
-(demonview@sagacity)34> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19113 :USER "jake1" :DATE 3354345478 :CHANNEL "#fink" :TITLE "Output building xorg" :CONTENTS "Jakes-Powerbook:~ admin$ fink install xorgInformation about 2379 packages read in 1 seconds.
+(demonview@sagacity)34> " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19113 :USER "jake1" :DATE 3354345478 :CHANNEL "#fink" :TITLE "Output building xorg" :CONTENTS "Jakes-Powerbook:~ admin$ fink install xorgInformation about 2379 packages read in 1 seconds.
 The following package will be installed or updated:
  xorg
 The following additional package will be installed:
@@ -32042,7 +32042,7 @@ Failed: buildlock failure
 
 
 End of Output
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19112 :USER "ayrnieu" :DATE 3354345318 :CHANNEL "None" :TITLE "gen_irc.erl" :CONTENTS "-module(gen_irc).
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19112 :USER "ayrnieu" :DATE 3354345318 :CHANNEL "None" :TITLE "gen_irc.erl" :CONTENTS "-module(gen_irc).
 -version(\"0.1\").
 -author(\"Julian Fondren <ayrnieu@gmail.com>\").
 -copyright(\"Copyright (C) 2006 Julian Fondren\").
@@ -32187,7 +32187,7 @@ chomp_(S) -> S.
 lowercase([C|T]) when C =< $Z, C >= $A -> [C-$A+$a|lowercase(T)];
 lowercase([C|T]) -> [C|lowercase(T)];
 lowercase([]) -> [].
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19111 :USER "peyt" :DATE 3354343708 :CHANNEL "#scheme" :TITLE "(ackermann 4 1) in Chicken, compiled vs. interpreted" :CONTENTS "pete@tweek [18/Apr 14:12:32] pts/13 !21 ~/src/scheme $ cat ack.scm
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19111 :USER "peyt" :DATE 3354343708 :CHANNEL "#scheme" :TITLE "(ackermann 4 1) in Chicken, compiled vs. interpreted" :CONTENTS "pete@tweek [18/Apr 14:12:32] pts/13 !21 ~/src/scheme $ cat ack.scm
 #!/usr/bin/csi -script
 
 (define (ack m n)
@@ -32206,7 +32206,7 @@ compiled...
 interpreted...
 65533
 ./ack.scm  3314.92s user 50.58s system 98% cpu 56:42.00 total
-pete@tweek [18/Apr 15:10:15] pts/13 !23 ~/src/scheme $" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19110 :USER "othermaciej" :DATE 3354339716 :CHANNEL "#webkit" :TITLE "moving some code from ObjC to C++" :CONTENTS "Index: ChangeLog
+pete@tweek [18/Apr 15:10:15] pts/13 !23 ~/src/scheme $" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19110 :USER "othermaciej" :DATE 3354339716 :CHANNEL "#webkit" :TITLE "moving some code from ObjC to C++" :CONTENTS "Index: ChangeLog
 ===================================================================
 --- ChangeLog	(revision 13951)
 +++ ChangeLog	(working copy)
@@ -32870,7 +32870,7 @@ Index: page/Frame.cpp
 +
 +
  } // namespace WebCore
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19109 :USER "flaxal" :DATE 3354336727 :CHANNEL "None" :TITLE "legal struct?" :CONTENTS "// test.h
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19109 :USER "flaxal" :DATE 3354336727 :CHANNEL "None" :TITLE "legal struct?" :CONTENTS "// test.h
 
 #include <iostream>
 using namespace std;
@@ -32906,7 +32906,7 @@ int main () {
   delete t;
   return 0;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19108 :USER "two small trees" :DATE 3354332034 :CHANNEL "#webkit" :TITLE "svn diff" :CONTENTS "tree1 -
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19108 :USER "two small trees" :DATE 3354332034 :CHANNEL "#webkit" :TITLE "svn diff" :CONTENTS "tree1 -
 % time svn st
 ?      public/images/listings_old
 svn st  0.12s user 0.54s system 9% cpu 7.039 total
@@ -32918,7 +32918,7 @@ tree 2 -
 svn diff  0.07s user 0.32s system 17% cpu 2.259 total
 % time svn st
 svn st  0.08s user 0.15s system 13% cpu 1.747 total
-% " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19107 :USER "luis" :DATE 3354330976 :CHANNEL "#lisp" :TITLE "#;" :CONTENTS "CL-USER> (set-dispatch-macro-character
+% " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19107 :USER "luis" :DATE 3354330976 :CHANNEL "#lisp" :TITLE "#;" :CONTENTS "CL-USER> (set-dispatch-macro-character
           #\\# #\\;
           (lambda (stream c1 c2)
             (declare (ignore c1 c2))
@@ -32929,7 +32929,7 @@ svn st  0.08s user 0.15s system 13% cpu 1.747 total
 #<FUNCTION (LAMBDA (STREAM C1 C2)) {1207DB7D}>
 CL-USER> #;fooooo
 ; No value
-CL-USER> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19106 :USER "erg" :DATE 3354324336 :CHANNEL "#concatenative" :TITLE "runtime cycle counting with rdtsc (works on x86)" :CONTENTS "native/factor.h:
+CL-USER> " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19106 :USER "erg" :DATE 3354324336 :CHANNEL "#concatenative" :TITLE "runtime cycle counting with rdtsc (works on x86)" :CONTENTS "native/factor.h:
 #define rdtscll(val) \\
          __asm__ __volatile__ (\"rdtsc\" : \"=A\" (val))
 
@@ -33136,7 +33136,7 @@ word: \"3drop\", 136 elapsed
 word: \"r>\", 136 elapsed
 word: \"r>\", 96 elapsed
 word: \"r>\", 96 elapsed
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19105 :USER "erg" :DATE 3354324307 :CHANNEL "None" :TITLE "runtime cycle counting with rdtsc (works on x86)" :CONTENTS "native/factor.h:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19105 :USER "erg" :DATE 3354324307 :CHANNEL "None" :TITLE "runtime cycle counting with rdtsc (works on x86)" :CONTENTS "native/factor.h:
 #define rdtscll(val) \\
          __asm__ __volatile__ (\"rdtsc\" : \"=A\" (val))
 
@@ -33343,7 +33343,7 @@ word: \"3drop\", 136 elapsed
 word: \"r>\", 136 elapsed
 word: \"r>\", 96 elapsed
 word: \"r>\", 96 elapsed
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19104 :USER "foof" :DATE 3354323573 :CHANNEL "#scheme" :TITLE "T losing on ack" :CONTENTS "$ ./t-sparc -h 52428800
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19104 :USER "foof" :DATE 3354323573 :CHANNEL "#scheme" :TITLE "T losing on ack" :CONTENTS "$ ./t-sparc -h 52428800
 52428800 bytes per heap, 131071 bytes reserved
 T 3.1 (13) SPARC/UNIX  Copyright (C) 1989 Yale University
 Could not find full path name for ./t-sparc
@@ -33357,12 +33357,12 @@ T Top level
 ;no value
 > (time (ack 4 1))
 Bus Error (core dumped)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19103 :USER "pmazer" :DATE 3354316481 :CHANNEL "#lisp" :TITLE "Pmazer's problem" :CONTENTS "(defun majority-value (class)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19103 :USER "pmazer" :DATE 3354316481 :CHANNEL "#lisp" :TITLE "Pmazer's problem" :CONTENTS "(defun majority-value (class)
   (let ((values '(0 0)))
     (loop for x in class
 	 do (setf (nth (if x 1 0) values) (+ (nth (if x 1 0) values) 1))
 	 do (print values))
-    (if (> (first values) (second values)) t nil)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19102 :USER "Balooga" :DATE 3354313067 :CHANNEL "#lisp" :TITLE "CFFI Wrapper question" :CONTENTS "(defcfun (\"rmNodeSetTranslateVector\" set-node-position) :int
+    (if (> (first values) (second values)) t nil)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19102 :USER "Balooga" :DATE 3354313067 :CHANNEL "#lisp" :TITLE "CFFI Wrapper question" :CONTENTS "(defcfun (\"rmNodeSetTranslateVector\" set-node-position) :int
   (toModify :pointer)
   (newVector RMvertex3D))
 
@@ -33388,13 +33388,13 @@ Restarts:
 Backtrace:
   0: CONDITIONS::CONDITIONS-ERROR (:INVISIBLEP T FLI:FOREIGN-TYPE-ERROR (:EXPECTED-TYPE :POINTER :DATUM #S(LISPBUILDER-OPENRM::VERTEX :X 0.0 :Y 0.0 :Z 0.0)))
   1: LISPBUILDER-OPENRM::|%cffi-foreign-function/SET-NODE-POSITION| (#<Pointer to type :VOID = #x0DD60110> #S(LISPBUILDER-OPENRM::VERTEX :X 0.0 :Y 0.0 :Z 0.0))
-  2: LISPBUILDER-OPENRM::SET-NODE-POSITION NIL" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19101 :USER "teranex" :DATE 3354312357 :CHANNEL "#jedit" :TITLE "ical time corrector" :CONTENTS "Date dat = DateFormat.parse(_1);
+  2: LISPBUILDER-OPENRM::SET-NODE-POSITION NIL" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19101 :USER "teranex" :DATE 3354312357 :CHANNEL "#jedit" :TITLE "ical time corrector" :CONTENTS "Date dat = DateFormat.parse(_1);
 Calendar cal = new GregorianCalendar();
 cal.setTime(dat);
 cal.add(Calendar.HOUR_OF_DAY, 14);
 SimpleDateFormat sdf = new SimpleDateFormat(\"yyyyMMddTHHmmss\");
 StringBuffer sb = new StringBuffer();
-return sdf.format(cal.getTime(), sb, null).toString() + \"Z\";" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19100 :USER "hotblack23" :DATE 3354310023 :CHANNEL "#scheme" :TITLE "problem with procedures in alists" :CONTENTS "(define (get-test pathinfo request response)
+return sdf.format(cal.getTime(), sb, null).toString() + \"Z\";" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19100 :USER "hotblack23" :DATE 3354310023 :CHANNEL "#scheme" :TITLE "problem with procedures in alists" :CONTENTS "(define (get-test pathinfo request response)
   (display pathinfo))
 
 (define (post-test pathinfo request response)
@@ -33430,7 +33430,7 @@ return sdf.format(cal.getTime(), sb, null).toString() + \"Z\";" :ANNOTATIONS NIL
 ; => Error: attempt to apply non-procedure 'get-test'.
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19099 :USER "speth" :DATE 3354307913 :CHANNEL "#webkit" :TITLE "insert-div-010-diffs.txt" :CONTENTS "--- /Users/speth/Projects/apple/WebKit/WebKit/LayoutTests/editing/inserting/insert-div-010-expected.txt	2006-04-14 01:22:17.000000000 -0700
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19099 :USER "speth" :DATE 3354307913 :CHANNEL "#webkit" :TITLE "insert-div-010-diffs.txt" :CONTENTS "--- /Users/speth/Projects/apple/WebKit/WebKit/LayoutTests/editing/inserting/insert-div-010-expected.txt	2006-04-14 01:22:17.000000000 -0700
 +++ /tmp/layout-test-results/editing/inserting/insert-div-010-actual.txt	2006-04-17 12:06:49.000000000 -0700
 @@ -1,7 +1,7 @@
  EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of BODY > HTML > #document to 5 of BODY > HTML > #document
@@ -33447,9 +33447,9 @@ return sdf.format(cal.getTime(), sb, null).toString() + \"Z\";" :ANNOTATIONS NIL
            text run at (0,0) width 12: \"x\"
 +        RenderBR {BR} at (12,22) size 0x0
  caret: position 0 of child 0 {#text} of child 2 {DIV} of child 1 {BODY} of child 0 {HTML} of document
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19098 :USER "Ahmed" :DATE 3354307742 :CHANNEL "#dylan" :TITLE "Ahmed" :CONTENTS "Here it is possible 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19098 :USER "Ahmed" :DATE 3354307742 :CHANNEL "#dylan" :TITLE "Ahmed" :CONTENTS "Here it is possible 
 <a href=\"http://mywebpage.netscape.com/free1ringtones/free-sprint-ringtones.html\">Free Sprint Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-nextel-ringtones.html\">Free Nextel Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-mp3-ringtones.html\">Free Mp3 Ringtones</a> <a href=\"http://mywebpage.netscape.com/free1ringtones/free-cell-phone-ringtones.html\">Free Cell Phone Ringtones</a> 
-[url=http://mywebpage.netscape.com/free1ringtones/free-motorola-ringtones.html]Free Motorola Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-cingular-ringtones.html]Free Cingular Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-polyphonic-ringtones.html]Free Polyphonic Ringtones[/url]" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19097 :USER "AlthA" :DATE 3354307079 :CHANNEL "#webkit" :TITLE "wp-config patch for ggaren" :CONTENTS "Index: WebKitSite/blog/wp-config.php
+[url=http://mywebpage.netscape.com/free1ringtones/free-motorola-ringtones.html]Free Motorola Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-cingular-ringtones.html]Free Cingular Ringtones[/url] [url=http://mywebpage.netscape.com/free1ringtones/free-polyphonic-ringtones.html]Free Polyphonic Ringtones[/url]" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19097 :USER "AlthA" :DATE 3354307079 :CHANNEL "#webkit" :TITLE "wp-config patch for ggaren" :CONTENTS "Index: WebKitSite/blog/wp-config.php
 ===================================================================
 --- WebKitSite/blog/wp-config.php	(revision 13895)
 +++ WebKitSite/blog/wp-config.php	(working copy)
@@ -33500,7 +33500,7 @@ return sdf.format(cal.getTime(), sb, null).toString() + \"Z\";" :ANNOTATIONS NIL
 \\ No newline at end of file
 +?>
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19096 :USER "vik" :DATE 3354305328 :CHANNEL "None" :TITLE "something" :CONTENTS "sub process_file {
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19096 :USER "vik" :DATE 3354305328 :CHANNEL "None" :TITLE "something" :CONTENTS "sub process_file {
   &get_the_lock;
   if ($USE_LOGGING == 1 && $MODE eq \"VOTE\"){
     $SYSTIME=&sys_date;
@@ -33537,7 +33537,7 @@ return sdf.format(cal.getTime(), sb, null).toString() + \"Z\";" :ANNOTATIONS NIL
       print IY \"$toshow:$questions{$toshow}:$titles{$toshow}:\\n\";
     }
     close(IY);
-  " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19095 :USER "Riastradh" :DATE 3354303863 :CHANNEL "#emacs" :TITLE "add-one-shot-hook" :CONTENTS "(defun add-one-shot-hook (hook function &optional append local)
+  " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19095 :USER "Riastradh" :DATE 3354303863 :CHANNEL "#emacs" :TITLE "add-one-shot-hook" :CONTENTS "(defun add-one-shot-hook (hook function &optional append local)
   (let ((wrapper-symbol (make-symbol \"ONE-SHOT-HOOK-WRAPPER\"))
         (function-symbol (make-symbol \"ONE-SHOT-HOOK-FUNCTION\")))
     (fset function-symbol function)
@@ -33545,7 +33545,7 @@ return sdf.format(cal.getTime(), sb, null).toString() + \"Z\";" :ANNOTATIONS NIL
                             (,function-symbol)
                             (remove-hook ',hook ',wrapper-symbol ,local)))
     (add-hook hook wrapper-symbol append local)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19094 :USER "Leimy" :DATE 3354303722 :CHANNEL "#opendarwin" :TITLE "fibonacci memoized" :CONTENTS "#include <stdio.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19094 :USER "Leimy" :DATE 3354303722 :CHANNEL "#opendarwin" :TITLE "fibonacci memoized" :CONTENTS "#include <stdio.h>
 #include <sys/time.h>
 
 int slowfib (int n)
@@ -33604,7 +33604,7 @@ int main (int argc, char ** argv)
 
 	return 0;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19093 :USER "Cale" :DATE 3354301646 :CHANNEL "None" :TITLE "corrected." :CONTENTS "#include <stdio.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19093 :USER "Cale" :DATE 3354301646 :CHANNEL "None" :TITLE "corrected." :CONTENTS "#include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <math.h>
@@ -33628,7 +33628,7 @@ int getint() {
     str[i] = '\\0';
     return atoi(str); 
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19092 :USER "Cale" :DATE 3354301602 :CHANNEL "None" :TITLE "corrected." :CONTENTS "#include <stdio.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19092 :USER "Cale" :DATE 3354301602 :CHANNEL "None" :TITLE "corrected." :CONTENTS "#include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <math.h>
@@ -33652,7 +33652,7 @@ int getint() {
     str[i] = '\\0';
 	return atoi(str); 
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19091 :USER "osqulda" :DATE 3354300302 :CHANNEL "#haskell" :TITLE "dist" :CONTENTS "{-# OPTIONS -fglasgow-exts #-}
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19091 :USER "osqulda" :DATE 3354300302 :CHANNEL "#haskell" :TITLE "dist" :CONTENTS "{-# OPTIONS -fglasgow-exts #-}
 module L8c where
 
   newtype Comp m n a = MkComp (m (n a))
@@ -33677,7 +33677,7 @@ module L8c where
   -- every monad distributes over itself 
   instance (Monad m) => Dist (Comp m m) where
      dist = id
-~               " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19090 :USER "edwin" :DATE 3354297703 :CHANNEL "#scheme" :TITLE "How's this look for a bidi-pipe in Scheme48?" :CONTENTS ";;; receiving posix-i/o posix-processes i/o silly
+~               " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19090 :USER "edwin" :DATE 3354297703 :CHANNEL "#scheme" :TITLE "How's this look for a bidi-pipe in Scheme48?" :CONTENTS ";;; receiving posix-i/o posix-processes i/o silly
 
 (define (filter-through program-name text . arguments)
   (receive (source-input-port source-output-port)
@@ -33705,7 +33705,7 @@ module L8c where
     (if (eof-object? char)
         (reverse-list->string input)
         (loop (cons char input) (read-char p)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19089 :USER "forcer" :DATE 3354296216 :CHANNEL "#scheme" :TITLE "bidi popen in s48" :CONTENTS "; ,open posix srfi-8 features
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19089 :USER "forcer" :DATE 3354296216 :CHANNEL "#scheme" :TITLE "bidi popen in s48" :CONTENTS "; ,open posix srfi-8 features
 
 (define (popen program . args)
   (receive (in1 out1)
@@ -33726,7 +33726,7 @@ module L8c where
 
 > (receive (pid in out) (popen \"cat\") (display \"foo\" out) (close-output-port out) (read in))
 'foo
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19088 :USER "Synopsis" :DATE 3354294264 :CHANNEL "#fpc" :TITLE "ld redirection " :CONTENTS "ld can't redirect stdout/stderr correctly either. See the lines with <-- where the stdout is cutoff and the stderr is shown first before the stdout is finished.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19088 :USER "Synopsis" :DATE 3354294264 :CHANNEL "#fpc" :TITLE "ld redirection " :CONTENTS "ld can't redirect stdout/stderr correctly either. See the lines with <-- where the stdout is cutoff and the stderr is shown first before the stdout is finished.
 
 (D:\\fpc\\rtl\\units\\i386-win32\\libimpsystem.a)system1s0.o
 (D:\\fpc\\rtl\\units\\i386-win32\\libimpsystem.a)system1s0.o
@@ -33762,7 +33762,7 @@ D:\\fpc\\rtl\\units\\i386-win32\\libimpsystem.a(system3s0.o):system.pp:(.idata$7
 em.a)system1s0.o   <---
 (D:\\fpc\\rtl\\units\\i386-win32\\libimpsystem.a)system1s0.o
 (D:\\fpc\\rtl\\units\\i386-win32\\libimpsystem.a)system3s0.o
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19087 :USER "luc" :DATE 3354293594 :CHANNEL "#dylan" :TITLE "d2c trace" :CONTENTS "#0  0xffffe410 in __kernel_vsyscall ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19087 :USER "luc" :DATE 3354293594 :CHANNEL "#dylan" :TITLE "d2c trace" :CONTENTS "#0  0xffffe410 in __kernel_vsyscall ()
 #1  0xb6ce89a1 in raise () from /lib/tls/i686/cmov/libc.so.6
 #2  0xb6cea2b9 in abort () from /lib/tls/i686/cmov/libc.so.6
 #3  0xb759c446 in compiler_baseZutilsZinvoke_debugger_METH ()
@@ -33811,7 +33811,7 @@ em.a)system1s0.o   <---
    from /usr/local/lib/dylan/2.5.0pre3/x86-linux-gcc/libdylan-dylan.so.0
 #33 0xb6e6fbe4 in real_main () from /usr/local/lib/dylan/2.5.0pre3/x86-linux-gcc/libruntime.so.0
 #34 0x08188945 in main ()
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19086 :USER "wchogg" :DATE 3354291180 :CHANNEL "#haskell" :TITLE "How can I reduce the memory used?" :CONTENTS "import Random
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19086 :USER "wchogg" :DATE 3354291180 :CHANNEL "#haskell" :TITLE "How can I reduce the memory used?" :CONTENTS "import Random
 import Monad
 
 checkArea f coordinates= if f coordinates then 1 else 0
@@ -33828,7 +33828,7 @@ test n = do
 	 let area = 4*(fromIntegral thing)/(fromIntegral n)::Double
 	 print area
 
-main = test 1000000" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19085 :USER "zedek" :DATE 3354289611 :CHANNEL "None" :TITLE "fifo hacks" :CONTENTS "(defparameter *stumpwm-input-fifo* nil                                                                           
+main = test 1000000" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19085 :USER "zedek" :DATE 3354289611 :CHANNEL "None" :TITLE "fifo hacks" :CONTENTS "(defparameter *stumpwm-input-fifo* nil                                                                           
   \"This is a fifo used to send commands to stumpwm.\")                                                            
                                                                                                                  
 (setf *stumpwm-input-fifo* \"/tmp/stum\")                                                                          
@@ -33852,7 +33852,7 @@ main = test 1000000" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19085 :USER "
  (read-fifo3 \"/tmp/stum\")                                                                                        
  )                                                                                                               
                                                                                                                  
-;;(setf *internal-loop-hook* '(show-echo))       " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19084 :USER "Leimy" :DATE 3354289199 :CHANNEL "#opendarwin" :TITLE "erlang ring... don't read if you're trying to do this assignment :)" :CONTENTS "-module(ring).
+;;(setf *internal-loop-hook* '(show-echo))       " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19084 :USER "Leimy" :DATE 3354289199 :CHANNEL "#opendarwin" :TITLE "erlang ring... don't read if you're trying to do this assignment :)" :CONTENTS "-module(ring).
 -export([start/2, doit/2]).
 
 % Entry point... creates the first process that creates the others in
@@ -33902,7 +33902,7 @@ worker(Neighbor, M) ->
 			Neighbor ! {Pid}
 	end,
 	worker(Neighbor, M-1).
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19083 :USER "tcr" :DATE 3354282724 :CHANNEL "#lisp" :TITLE "compiling latest SWANK with flags (speed 0) (safety 3) (debug 3) w/ SBCL 0.9.11" :CONTENTS "; file: /usr/share/common-lisp/source/swank/swank.lisp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19083 :USER "tcr" :DATE 3354282724 :CHANNEL "#lisp" :TITLE "compiling latest SWANK with flags (speed 0) (safety 3) (debug 3) w/ SBCL 0.9.11" :CONTENTS "; file: /usr/share/common-lisp/source/swank/swank.lisp
 ; in: DEFMETHOD MENU-CHOICES-FOR-PRESENTATION (PATHNAME)
 ;     (DEFMETHOD SWANK::MENU-CHOICES-FOR-PRESENTATION
 ;              ((SWANK::OB PATHNAME))
@@ -33965,7 +33965,7 @@ restarts (invokable by number or by possibly-abbreviated name):
   4:            Skip to toplevel READ/EVAL/PRINT loop.
   5: [QUIT    ] Quit SBCL (calling #'QUIT, killing the process).
 
-((LAMBDA (SB-IMPL::E)) #<ASDF:COMPILE-FAILED {C4A6421}>)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19082 :USER "zacwhite" :DATE 3354281488 :CHANNEL "None" :TITLE "CIA thing." :CONTENTS "<message>
+((LAMBDA (SB-IMPL::E)) #<ASDF:COMPILE-FAILED {C4A6421}>)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19082 :USER "zacwhite" :DATE 3354281488 :CHANNEL "None" :TITLE "CIA thing." :CONTENTS "<message>
 	<generator>
 		<name>Python Subversion client for CIA</name>
 		<version>1.18</version>
@@ -33984,7 +33984,7 @@ restarts (invokable by number or by possibly-abbreviated name):
 			</files>
 		</commit>
 	</body>
-</message>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19081 :USER "davidhouse" :DATE 3354267897 :CHANNEL "#haskell" :TITLE "finished traverser monad" :CONTENTS "data Cxt a = Top
+</message>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19081 :USER "davidhouse" :DATE 3354267897 :CHANNEL "#haskell" :TITLE "finished traverser monad" :CONTENTS "data Cxt a = Top
            | L (Cxt a) (Tree a)
            | R (Tree a) (Cxt a)
   deriving (Show)
@@ -34031,10 +34031,10 @@ leftLeftRight = do
 {-
 *Tree> t `traverse` leftLeftRight
 Leaf 2
--}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19080 :USER "isomer" :DATE 3354255326 :CHANNEL "#lisp" :TITLE "miserable emacs indentation" :CONTENTS "(defun make-comparison-lists (fields)
+-}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19080 :USER "isomer" :DATE 3354255326 :CHANNEL "#lisp" :TITLE "miserable emacs indentation" :CONTENTS "(defun make-comparison-lists (fields)
   (loop while fields collecting (make-comparison-expr (pop
 													   fields) (pop fields))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19079 :USER "dmiles" :DATE 3354253374 :CHANNEL "#lisp" :TITLE "trying to make a CL catch in Sublisp" :CONTENTS "(defmacro catch (tag &body body)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19079 :USER "dmiles" :DATE 3354253374 :CHANNEL "#lisp" :TITLE "trying to make a CL catch in Sublisp" :CONTENTS "(defmacro catch (tag &body body)
       (ret 
        `(clet ((*thrown* :UNTHROWN) (*result* :UNEVALED))
              (print (list 'eval (cons 'catch (cons ',tag  ',body))))
@@ -34043,9 +34043,9 @@ Leaf 2
              (pcond 
                ((equal *result* :UNEVALED) (values *thrown*))
                ((equal *thrown* :UNTHROWN) *result*)
-               (t *result*)))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19078 :USER "MONKEYS" :DATE 3354252796 :CHANNEL "##concurrency" :TITLE "cow" :CONTENTS "paste? I feel pasty.
+               (t *result*)))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19078 :USER "MONKEYS" :DATE 3354252796 :CHANNEL "##concurrency" :TITLE "cow" :CONTENTS "paste? I feel pasty.
 
-What is this paste stuff anyway?" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19077 :USER "_sev" :DATE 3354247841 :CHANNEL "#scummvm" :TITLE "test" :CONTENTS "test" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19076 :USER "twb" :DATE 3354245428 :CHANNEL "#emacs" :TITLE "translate" :CONTENTS "$ apt-cache policy translate
+What is this paste stuff anyway?" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19077 :USER "_sev" :DATE 3354247841 :CHANNEL "#scummvm" :TITLE "test" :CONTENTS "test" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19076 :USER "twb" :DATE 3354245428 :CHANNEL "#emacs" :TITLE "translate" :CONTENTS "$ apt-cache policy translate
 translate:
   Installed: (none)
   Candidate: 0.6-6
@@ -34056,7 +34056,7 @@ translate:
         300 http://archive.ubuntu.com dapper/universe Packages
      0.6-6 0
         990 http://archive.ubuntu.com breezy/universe Packages
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19075 :USER "slyrus" :DATE 3354233852 :CHANNEL "#lisp" :TITLE "stupid macro question" :CONTENTS "granted, I'm missing some clem details here, but is there a way to make this (calling clem::element-type on the metaclass) work in order to figure out the element type of my matrix?
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19075 :USER "slyrus" :DATE 3354233852 :CHANNEL "#lisp" :TITLE "stupid macro question" :CONTENTS "granted, I'm missing some clem details here, but is there a way to make this (calling clem::element-type on the metaclass) work in order to figure out the element type of my matrix?
 
 I've got:
 
@@ -34092,7 +34092,7 @@ I can drop
 in place of double-float and everything is happy (as long as I'm passing in a matrix with the same element type as q), but i can't do so with x (an arg to the macro).
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19074 :USER "EspenG" :DATE 3354233532 :CHANNEL "#programmering" :TITLE "Find primes up to up to the number n" :CONTENTS "(define prime?-helper
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19074 :USER "EspenG" :DATE 3354233532 :CHANNEL "#programmering" :TITLE "Find primes up to up to the number n" :CONTENTS "(define prime?-helper
   (lambda (the-number small-primes)
     (cond
       ((zero? the-number) #f)
@@ -34120,7 +34120,7 @@ in place of double-float and everything is happy (as long as I'm passing in a ma
 
 (define find-primes
   (lambda (n)
-    (find-primes-helper n 1)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19073 :USER "dmiles" :DATE 3354231428 :CHANNEL "#lisp" :TITLE "sublp" :CONTENTS ";;Saved into a file called common_lisp.lisp
+    (find-primes-helper n 1)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19073 :USER "dmiles" :DATE 3354231428 :CHANNEL "#lisp" :TITLE "sublp" :CONTENTS ";;Saved into a file called common_lisp.lisp
 
 ;; Save the original defmacro: should actually be (macro-function 'defmacro)
 
@@ -34946,7 +34946,7 @@ Call:
 (prolog-assertz '(|:-| (\"member\" ?item (?x . ?rest))  (\"member\" ?item ?rest)) *prologMt*)
 
 ;;(load \"prolog_machine.lisp\")
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19072 :USER "guest_" :DATE 3354228785 :CHANNEL "#lisp" :TITLE "tinywm.lisp" :CONTENTS "(shadow 'char-width)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19072 :USER "guest_" :DATE 3354228785 :CHANNEL "#lisp" :TITLE "tinywm.lisp" :CONTENTS "(shadow 'char-width)
 (use-package :xlib)
 (defparameter *mods*    '(:mod-1))
 (defparameter *move*    1)
@@ -35023,7 +35023,7 @@ gethostname(3) - is used instead.\"
         (ungrab-button root button :modifiers *mods*))
       (close-display display))))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19071 :USER "luis" :DATE 3354228208 :CHANNEL "#lisp" :TITLE "open-default-display" :CONTENTS "(defun open-default-display (&optional display-name)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19071 :USER "luis" :DATE 3354228208 :CHANNEL "#lisp" :TITLE "open-default-display" :CONTENTS "(defun open-default-display (&optional display-name)
   \"Open a connection to DISPLAY-NAME if supplied, or to the appropriate
 default display as given by GET-DEFAULT-DISPLAY otherwise.
 
@@ -35038,7 +35038,7 @@ gethostname(3) - is used instead.\"
       (get-default-display display-name)
     (declare (ignore screen))
     (open-display host :display display :protocol protocol)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19070 :USER "slyrus" :DATE 3354227186 :CHANNEL "#lisp" :TITLE "carbon/sbcl demo code" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19070 :USER "slyrus" :DATE 3354227186 :CHANNEL "#lisp" :TITLE "carbon/sbcl demo code" :CONTENTS "
 (in-package :carbon-ffi-test)
 
 (defun do-test ()
@@ -35071,7 +35071,7 @@ gethostname(3) - is used instead.\"
           (gcc-xml-ffi::free-alien-string mstr)
           (gcc-xml-ffi::free-alien-string mstr2))))))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19069 :USER "dan_b" :DATE 3354224851 :CHANNEL "#lisp" :TITLE "more initargs for object instantiation: comments?" :CONTENTS ":; cvs diff -u swank.lisp 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19069 :USER "dan_b" :DATE 3354224851 :CHANNEL "#lisp" :TITLE "more initargs for object instantiation: comments?" :CONTENTS ":; cvs diff -u swank.lisp 
 Index: swank.lisp
 ===================================================================
 RCS file: /project/slime/cvsroot/slime/swank.lisp,v
@@ -35094,7 +35094,7 @@ diff -u -r1.375 swank.lisp
                                    initialize-instance-keywords)
                            allow-other-keys-p
                            (list class-name-form)))))))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19068 :USER "abisen" :DATE 3354223602 :CHANNEL "#macdev" :TITLE "simple app" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19068 :USER "abisen" :DATE 3354223602 :CHANNEL "#macdev" :TITLE "simple app" :CONTENTS "
 #include \"mpi.h\"
 
 #include <iostream>
@@ -35105,7 +35105,7 @@ int main (int argc, char *argv[]) {
         MPI::Finalize();
 
     return 0;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19067 :USER "abisen" :DATE 3354223505 :CHANNEL "#macdev" :TITLE "Link Errors" :CONTENTS "Tool:0: collect2: ld returned 1 exit status
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19067 :USER "abisen" :DATE 3354223505 :CHANNEL "#macdev" :TITLE "Link Errors" :CONTENTS "Tool:0: collect2: ld returned 1 exit status
 Tool:0: _MPI_Wtime
 Tool:0: _MPI_Wtick
 Tool:0: _MPI_Win_wait
@@ -35298,7 +35298,7 @@ Tool:0: _MPI_Add_error_class
 Tool:0: _MPI_Accumulate
 Tool:0: _MPI_Abort
 Tool:0: _MPI_Info_set
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19066 :USER "AlthA" :DATE 3354222238 :CHANNEL "#webkit" :TITLE "second small patch for maciej" :CONTENTS "Index: WebKitSite/quality/lifecycle.html
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19066 :USER "AlthA" :DATE 3354222238 :CHANNEL "#webkit" :TITLE "second small patch for maciej" :CONTENTS "Index: WebKitSite/quality/lifecycle.html
 ===================================================================
 --- WebKitSite/quality/lifecycle.html	(revision 13885)
 +++ WebKitSite/quality/lifecycle.html	(working copy)
@@ -35326,7 +35326,7 @@ Index: WebKitSite/quality/reporting.html
  </div>
  <div id=\"shiira_bug\" style=\"display: none;\">
      <strong>Note:</strong> <br>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19065 :USER "AlthA" :DATE 3354221342 :CHANNEL "#webkit" :TITLE "contact info patch for maciej" :CONTENTS "Index: WebKitSite/contact.html
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19065 :USER "AlthA" :DATE 3354221342 :CHANNEL "#webkit" :TITLE "contact info patch for maciej" :CONTENTS "Index: WebKitSite/contact.html
 ===================================================================
 --- WebKitSite/contact.html	(revision 13885)
 +++ WebKitSite/contact.html	(working copy)
@@ -35363,7 +35363,7 @@ Index: WebKitSite/quality/reporting.html
 -?>
 \\ No newline at end of file
 +?>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19064 :USER "pjb" :DATE 3354218889 :CHANNEL "#lisp" :TITLE "script to compile clisp on linux" :CONTENTS "#!/bin/bash
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19064 :USER "pjb" :DATE 3354218889 :CHANNEL "#lisp" :TITLE "script to compile clisp on linux" :CONTENTS "#!/bin/bash
 version=$(awk -F= '/PACKAGE_VERSION=/{print substr($2,2,index($2,\" \")-2);}' ./src/configure)
 rm -rf /tmp/clisp-${version}-build/
 time ./configure \\
@@ -35386,7 +35386,7 @@ time ./configure \\
      --build /tmp/clisp-${version}-build \\
      --install
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19063 :USER "noroute" :DATE 3354214673 :CHANNEL "#emacs" :TITLE "autocompile" :CONTENTS "(defun autocompile nil
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19063 :USER "noroute" :DATE 3354214673 :CHANNEL "#emacs" :TITLE "autocompile" :CONTENTS "(defun autocompile nil
   \"recompile neccessary files\"
   (interactive)
   (require 'bytecomp)
@@ -35396,7 +35396,7 @@ time ./configure \\
    ((string= (file-name-directory buffer-file-name) my-config-dir)
     ((byte-compile-file buffer-file-name)
      (byte-compile-file my-dotemacs)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19062 :USER "Shine" :DATE 3354213674 :CHANNEL "#lisp" :TITLE "make-array :initial-element question" :CONTENTS "; I understand this
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19062 :USER "Shine" :DATE 3354213674 :CHANNEL "#lisp" :TITLE "make-array :initial-element question" :CONTENTS "; I understand this
 
 > (defparameter foo (make-array 2 :initial-element '(2)))
 FOO
@@ -35418,8 +35418,8 @@ FOO
 
 > (aref foo 1)
 NIL
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19061 :USER "sev" :DATE 3354206870 :CHANNEL "#scummvm" :TITLE "Theme warnings" :CONTENTS "WARNING: Can not find theme config file 'modern.ini'!
-WARNING: Could not initialize your preferred theme, falling back to classic style!" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19060 :USER "davidhouse" :DATE 3354206627 :CHANNEL "#haskell" :TITLE "revTree" :CONTENTS "module Tree where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19061 :USER "sev" :DATE 3354206870 :CHANNEL "#scummvm" :TITLE "Theme warnings" :CONTENTS "WARNING: Can not find theme config file 'modern.ini'!
+WARNING: Could not initialize your preferred theme, falling back to classic style!" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19060 :USER "davidhouse" :DATE 3354206627 :CHANNEL "#haskell" :TITLE "revTree" :CONTENTS "module Tree where
 
 data Tree a = Leaf a | Branch (Tree a) (Tree a) deriving (Show, Eq)
 
@@ -35431,11 +35431,11 @@ revTree (Branch xs ys) = Branch (revTree ys) (revTree xs)
 {-
 > revTree $ Branch (Leaf 1) (Branch (Branch (Leaf 2) (Leaf 3)) (Leaf 4))
 Branch (Branch (Leaf 4) (Branch (Leaf 3) (Leaf 2))) (Leaf 1)
--}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19059 :USER "Shine" :DATE 3354203524 :CHANNEL "None" :TITLE "boring C" :CONTENTS "INTLIST *tmp = ints;
+-}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19059 :USER "Shine" :DATE 3354203524 :CHANNEL "None" :TITLE "boring C" :CONTENTS "INTLIST *tmp = ints;
 ints = (INTLIST *) calloc(1, sizeof(INTLIST));
 ints->i = edge;
 ints->next = tmp;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19058 :USER "asdf" :DATE 3354202744 :CHANNEL "None" :TITLE "Lisp-Coder writing C?" :CONTENTS "static void *
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19058 :USER "asdf" :DATE 3354202744 :CHANNEL "None" :TITLE "Lisp-Coder writing C?" :CONTENTS "static void *
 lisp_merge_config (apr_pool_t * pool, void * base_cfg, void * add_cfg)
 {
   return
@@ -35444,7 +35444,7 @@ lisp_merge_config (apr_pool_t * pool, void * base_cfg, void * add_cfg)
 	       : (SERVER_SPECIFIED_P (CFG (base_cfg)))
 	            ? (copy_lisp_cfg (pool, base_cfg))
 		         : (default_lisp_cfg (pool)));
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19057 :USER "therp_zivi" :DATE 3354199728 :CHANNEL "None" :TITLE "nxclient fixer" :CONTENTS "Index: debian.eclass
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19057 :USER "therp_zivi" :DATE 3354199728 :CHANNEL "None" :TITLE "nxclient fixer" :CONTENTS "Index: debian.eclass
 ===================================================================
 --- debian.eclass       (revision 63)
 +++ debian.eclass       (working copy)
@@ -35467,7 +35467,7 @@ lisp_merge_config (apr_pool_t * pool, void * base_cfg, void * add_cfg)
                         ;;
                 *)
                         unpack ${x}
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19056 :USER "nikodemus" :DATE 3354194623 :CHANNEL "#lisp" :TITLE "what does SBCL know about CONS?" :CONTENTS ";;; Next this'll move from SYMBOL-PLIST to SYMBOL-INFO
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19056 :USER "nikodemus" :DATE 3354194623 :CHANNEL "#lisp" :TITLE "what does SBCL know about CONS?" :CONTENTS ";;; Next this'll move from SYMBOL-PLIST to SYMBOL-INFO
 * (symbol-plist 'cons)
 (:TYPE
  (:BUILTIN #<SB-KERNEL:CONS-TYPE CONS>
@@ -35494,7 +35494,7 @@ lisp_merge_config (apr_pool_t * pool, void * base_cfg, void * add_cfg)
   :FUNCTION
   :DEFINITION
   #<FDEFINITION object for CONS>))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19055 :USER "real" :DATE 3354177093 :CHANNEL "None" :TITLE "PacmanMöchtegernWegfinder" :CONTENTS "#include \"stdafx.h\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19055 :USER "real" :DATE 3354177093 :CHANNEL "None" :TITLE "PacmanMöchtegernWegfinder" :CONTENTS "#include \"stdafx.h\"
 #include <iostream>
   
 
@@ -35612,7 +35612,7 @@ void cplayer::draw()
 				cout << endl;
 			}
 
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19054 :USER "ayrnieu" :DATE 3354175568 :CHANNEL "None" :TITLE "gen_irc.erl" :CONTENTS "-module(gen_irc).
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19054 :USER "ayrnieu" :DATE 3354175568 :CHANNEL "None" :TITLE "gen_irc.erl" :CONTENTS "-module(gen_irc).
 -version(\"0.1\").
 -author(\"Julian Fondren <ayrnieu@gmail.com>\").
 -copyright(\"Copyright (C) 2006 Julian Fondren\").
@@ -35728,7 +35728,7 @@ boolopt(Os, O, Default) ->
 chomp(S) -> lists:reverse(chomp_(lists:reverse(S))).
 chomp_([$\\n|T]) -> chomp_(T);
 chomp_([$\\r|T]) -> chomp_(T);
-chomp_(S) -> S." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19053 :USER "Wengero" :DATE 3354158204 :CHANNEL "#adium" :TITLE "Crashy crashy:2" :CONTENTS "Date/Time:      2006-04-15 23:37:17.550 -0400
+chomp_(S) -> S." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19053 :USER "Wengero" :DATE 3354158204 :CHANNEL "#adium" :TITLE "Crashy crashy:2" :CONTENTS "Date/Time:      2006-04-15 23:37:17.550 -0400
 OS Version:     10.4.6 (Build 8I127)
 Report Version: 4
 
@@ -36159,7 +36159,7 @@ Binary Images Description:
 0x98933000 - 0x9893dfff libverify.dylib 	/System/Library/Frameworks/JavaVM.framework/Versions/1.4.2/Libraries/libverify.dylib
 0x9a03d000 - 0x9a046fff libnet.jnilib 	/System/Library/Frameworks/JavaVM.framework/Versions/1.4.2/Libraries/libnet.jnilib
 0x9a087000 - 0x9a092fff libzip.jnilib 	/System/Library/Frameworks/JavaVM.framework/Versions/1.4.2/Libraries/libzip.jnilib
-0xc0000000 - 0xc000efff com.growl.growlwithinstallerframework 0.7.3	/Applications/Adium.app/Contents/Frameworks/Growl-WithInstaller.framework/Versions/A/Growl-WithInstaller" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19052 :USER "darin" :DATE 3354155565 :CHANNEL "#webkit" :TITLE "possible fix for Windows build" :CONTENTS "Index: Scripts/install-win-extras
+0xc0000000 - 0xc000efff com.growl.growlwithinstallerframework 0.7.3	/Applications/Adium.app/Contents/Frameworks/Growl-WithInstaller.framework/Versions/A/Growl-WithInstaller" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19052 :USER "darin" :DATE 3354155565 :CHANNEL "#webkit" :TITLE "possible fix for Windows build" :CONTENTS "Index: Scripts/install-win-extras
 ===================================================================
 --- Scripts/install-win-extras	(revision 13877)
 +++ Scripts/install-win-extras	(working copy)
@@ -36200,7 +36200,7 @@ Binary Images Description:
      print \"\\nInstalling zlib-1.2.3.win32.zip...\\n\";
      `unzip zlib-1.2.3.win32.zip`;
      `rm -rf ../zlib`;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19051 :USER "drewc" :DATE 3354153143 :CHANNEL "#lisp" :TITLE "Trivial SMTP" :CONTENTS ";;; USAGE: (trivial-smtp:send-mail :to \"drewc@tech.coop\" :message \"TEST MESSAGE\")
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19051 :USER "drewc" :DATE 3354153143 :CHANNEL "#lisp" :TITLE "Trivial SMTP" :CONTENTS ";;; USAGE: (trivial-smtp:send-mail :to \"drewc@tech.coop\" :message \"TEST MESSAGE\")
 
 ;; expects *smtp-server* to hold a hostname or ip address as a string, or use :server
 
@@ -36656,7 +36656,7 @@ Binary Images Description:
 				 ;; otherwise we don't know
 				 t))
 			    (t t)))
-	(close sock :abort t)))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19050 :USER "Wengero" :DATE 3354152368 :CHANNEL "#adium" :TITLE "Crashy crashy" :CONTENTS "Date/Time:      2006-04-15 22:01:14.906 -0400
+	(close sock :abort t)))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19050 :USER "Wengero" :DATE 3354152368 :CHANNEL "#adium" :TITLE "Crashy crashy" :CONTENTS "Date/Time:      2006-04-15 22:01:14.906 -0400
 OS Version:     10.4.6 (Build 8I127)
 Report Version: 4
 
@@ -37105,7 +37105,7 @@ Binary Images Description:
 0x98933000 - 0x9893dfff libverify.dylib 	/System/Library/Frameworks/JavaVM.framework/Versions/1.4.2/Libraries/libverify.dylib
 0x9a03d000 - 0x9a046fff libnet.jnilib 	/System/Library/Frameworks/JavaVM.framework/Versions/1.4.2/Libraries/libnet.jnilib
 0x9a087000 - 0x9a092fff libzip.jnilib 	/System/Library/Frameworks/JavaVM.framework/Versions/1.4.2/Libraries/libzip.jnilib
-0xc0000000 - 0xc000efff com.growl.growlwithinstallerframework 0.7.3	/Applications/Adium.app/Contents/Frameworks/Growl-WithInstaller.framework/Versions/A/Growl-WithInstaller" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19049 :USER "othermaciej" :DATE 3354150561 :CHANNEL "#webkit" :TITLE "opcode rename" :CONTENTS "Index: internal.cpp
+0xc0000000 - 0xc000efff com.growl.growlwithinstallerframework 0.7.3	/Applications/Adium.app/Contents/Frameworks/Growl-WithInstaller.framework/Versions/A/Growl-WithInstaller" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19049 :USER "othermaciej" :DATE 3354150561 :CHANNEL "#webkit" :TITLE "opcode rename" :CONTENTS "Index: internal.cpp
 ===================================================================
 --- internal.cpp	(revision 13877)
 +++ internal.cpp	(working copy)
@@ -37613,10 +37613,10 @@ Index: TreeCode.cpp
                  if (forInNode->lexpr->isResolveNode())
                      interpreterState = ForInNodeResolveNodeExecuteState;
                  else if (forInNode->lexpr->isDotAccessorNode())
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19048 :USER "thrice`" :DATE 3354142482 :CHANNEL "None" :TITLE "gnome" :CONTENTS "eval `dbus-launch --sh-syntax --exit-with-session`
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19048 :USER "thrice`" :DATE 3354142482 :CHANNEL "None" :TITLE "gnome" :CONTENTS "eval `dbus-launch --sh-syntax --exit-with-session`
 export DBUS_SESSION_BUS_ADDRESS
 export DBUS_SESSION_BUS_PID
-exec gnome-session" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19047 :USER "technomancy" :DATE 3354141481 :CHANNEL "#lisp" :TITLE "lisp installations" :CONTENTS "[phil@memex ~]$ sudo apt-get install clisp
+exec gnome-session" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19047 :USER "technomancy" :DATE 3354141481 :CHANNEL "#lisp" :TITLE "lisp installations" :CONTENTS "[phil@memex ~]$ sudo apt-get install clisp
 Reading package lists... Done
 Building dependency tree... Done
 Suggested packages:
@@ -37654,7 +37654,7 @@ ensure_space: failed to validate 268431360 bytes at 0x70000000
 
 [phil@memex ~]$ clisp
 /usr/lib/clisp/base/lisp.run: operating system error during load of initialization file `/usr/lib/clisp/base/lispinit.mem'
-[spvw_memfile.d:927] errno = ENOENT: No such file or directory." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19046 :USER "theCore" :DATE 3354141479 :CHANNEL "#linux-quebec" :TITLE "Pour ceux qui sont curieux" :CONTENTS "(define (sqrt x)
+[spvw_memfile.d:927] errno = ENOENT: No such file or directory." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19046 :USER "theCore" :DATE 3354141479 :CHANNEL "#linux-quebec" :TITLE "Pour ceux qui sont curieux" :CONTENTS "(define (sqrt x)
   (newton (lambda (y) (- x (square y)))
 	  1))
 
@@ -37688,7 +37688,7 @@ ensure_space: failed to validate 268431360 bytes at 0x70000000
 
 (define (square x) (* x x))
 (define dx 0.0000001)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19045 :USER "malsyned__" :DATE 3354139171 :CHANNEL "#lisp" :TITLE "My sbclrc" :CONTENTS "(defpackage #:dl-custom
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19045 :USER "malsyned__" :DATE 3354139171 :CHANNEL "#lisp" :TITLE "My sbclrc" :CONTENTS "(defpackage #:dl-custom
   (:export #:*load-linedit*))
 
 (defvar dl-custom:*load-linedit* nil)
@@ -37709,15 +37709,15 @@ ensure_space: failed to validate 268431360 bytes at 0x70000000
   (linedit:install-repl :wrap-current t
                         :eof-quits t
                         :eof-prompt nil))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19044 :USER "tmh" :DATE 3354138991 :CHANNEL "#emacs" :TITLE "alist from 2 lists" :CONTENTS "(defun lists->alist (list-a list-b)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19044 :USER "tmh" :DATE 3354138991 :CHANNEL "#emacs" :TITLE "alist from 2 lists" :CONTENTS "(defun lists->alist (list-a list-b)
   \"Return an associated list created from 2 lists.\"
   (cond ((null list-a) nil)
 	((null list-b) nil)
 	(t (cons (cons (car list-a) (car list-b))
 		 (lists->alist (cdr list-a) (cdr list-b))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19043 :USER "Xach" :DATE 3354137296 :CHANNEL "#lisp" :TITLE "naggum quip" :CONTENTS "> >     ... it's just that in C++ and the like, you don't trust _anybody_,
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19043 :USER "Xach" :DATE 3354137296 :CHANNEL "#lisp" :TITLE "naggum quip" :CONTENTS "> >     ... it's just that in C++ and the like, you don't trust _anybody_,
 > >     and in CLOS you basically trust everybody.  the practical result
-> >     is that thieves and bums use C++ and nice people use CLOS. " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19042 :USER "graphite" :DATE 3354136599 :CHANNEL "#macdev" :TITLE "toolbar/search" :CONTENTS "- (void) _setup
+> >     is that thieves and bums use C++ and nice people use CLOS. " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19042 :USER "graphite" :DATE 3354136599 :CHANNEL "#macdev" :TITLE "toolbar/search" :CONTENTS "- (void) _setup
 {
     //Make sure sfSearch is created;
     sfSearch = [[NSSearchField alloc] initWithFrame:NSMakeRect(20, 0, 185, 22)];
@@ -37747,7 +37747,7 @@ ensure_space: failed to validate 268431360 bytes at 0x70000000
 		// Create a menu to hold recent searches
 ...
     }
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19041 :USER "Shine" :DATE 3354132498 :CHANNEL "#lisp" :TITLE "add-special-free-action, see this, too: http://article.gmane.org/gmane.lisp.lispworks.general/2730" :CONTENTS "(defclass foo () ())
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19041 :USER "Shine" :DATE 3354132498 :CHANNEL "#lisp" :TITLE "add-special-free-action, see this, too: http://article.gmane.org/gmane.lisp.lispworks.general/2730" :CONTENTS "(defclass foo () ())
 (defparameter *obj* (make-instance 'foo))
 (defun bar (obj) (format t \"~a\" obj))
 (hcl:add-special-free-action 'bar)
@@ -37755,7 +37755,7 @@ ensure_space: failed to validate 268431360 bytes at 0x70000000
 (setq *obj* nil)
 (hcl:mark-and-sweep 3)
 (hcl:mark-and-sweep 3)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19040 :USER "vik" :DATE 3354131812 :CHANNEL "None" :TITLE "perl" :CONTENTS " @pairs=split(/&/,$temp);
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19040 :USER "vik" :DATE 3354131812 :CHANNEL "None" :TITLE "perl" :CONTENTS " @pairs=split(/&/,$temp);
   foreach $item(@pairs)
    {
     ($key,$content)=split(/=/,$item,2);
@@ -37767,7 +37767,7 @@ ensure_space: failed to validate 268431360 bytes at 0x70000000
     $content=~s/\\015/ /gs;
     $fields{$key}=$content;
    }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19039 :USER "luis" :DATE 3354130748 :CHANNEL "#lisp" :TITLE "MORE GARBAGE" :CONTENTS "CL-USER 50 > (defclass foo () ())
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19039 :USER "luis" :DATE 3354130748 :CHANNEL "#lisp" :TITLE "MORE GARBAGE" :CONTENTS "CL-USER 50 > (defclass foo () ())
 #<STANDARD-CLASS FOO 100849BB>
 
 CL-USER 51 > (defparameter *obj* (make-instance 'foo))
@@ -37790,14 +37790,14 @@ CL-USER 56 > (hcl:mark-and-sweep 3)
 11125768
 11413856
 
-CL-USER 57 > " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19038 :USER "xgp" :DATE 3354123515 :CHANNEL "#emacs" :TITLE "elisp bug" :CONTENTS "(defmacro create-let (n)
+CL-USER 57 > " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19038 :USER "xgp" :DATE 3354123515 :CHANNEL "#emacs" :TITLE "elisp bug" :CONTENTS "(defmacro create-let (n)
   (let ((i 0)
 	list)
     `(let ,(progn (while (< i n)
 		    (setq list (cons (intern (concat \"v\" (number-to-string i))) list)
 			  i (1+ i)))
 		  list)
-       (message \"hello\"))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19037 :USER "Xach" :DATE 3354121353 :CHANNEL "#lisp" :TITLE "short example" :CONTENTS "(defgeneric funkify (thing))
+       (message \"hello\"))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19037 :USER "Xach" :DATE 3354121353 :CHANNEL "#lisp" :TITLE "short example" :CONTENTS "(defgeneric funkify (thing))
   
 (defmacro funky (name)
   `(progn
@@ -37812,7 +37812,7 @@ CL-USER 57 > " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19038 :USER "xgp" :
 (hint: For more precise location, try *BREAK-ON-SIGNALS*.)
 can't find type for presumed class TOWN in
 SB-PCL::PARAMETER-SPECIALIZER-DECLARATION-IN-DEFMETHOD.
-|#" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19036 :USER "Overturn" :DATE 3354117793 :CHANNEL "#scheme" :TITLE "cipher" :CONTENTS "(define [printchar->integer char]
+|#" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19036 :USER "Overturn" :DATE 3354117793 :CHANNEL "#scheme" :TITLE "cipher" :CONTENTS "(define [printchar->integer char]
   (- (char->integer char) 32))
 
 (define [integer->printchar code]
@@ -37839,7 +37839,7 @@ SB-PCL::PARAMETER-SPECIALIZER-DECLARATION-IN-DEFMETHOD.
 
 (define [encipher sms key]
    (string (integer->printchar (+ (first (sms-numeric sms)) (first (key-numeric key))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19035 :USER "EspenG" :DATE 3354117767 :CHANNEL "None" :TITLE "PI to 801 desimals" :CONTENTS "(define pow
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19035 :USER "EspenG" :DATE 3354117767 :CHANNEL "None" :TITLE "PI to 801 desimals" :CONTENTS "(define pow
   (lambda (n m)
     (cond
       ((zero? m) 1)
@@ -37852,7 +37852,7 @@ SB-PCL::PARAMETER-SPECIALIZER-DECLARATION-IN-DEFMETHOD.
       (else (+ 1 (* (/ m (+ (* 2 m) 1)) (find-pi (sub1 n) (add1 m))))))))
 
 
-(* 2 (find-pi 4000 1))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19034 :USER "Stoerte" :DATE 3354116198 :CHANNEL "#emacs" :TITLE "gismo's idea" :CONTENTS "(require 'man)
+(* 2 (find-pi 4000 1))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19034 :USER "Stoerte" :DATE 3354116198 :CHANNEL "#emacs" :TITLE "gismo's idea" :CONTENTS "(require 'man)
 (defun man-preview ()
   \"preview current buffer with `man'.
 
@@ -37869,7 +37869,7 @@ that tis located in a direcotry called manX/ -- where X is manpage's class.\"
   (man (substring 
         (file-name-nondirectory 
          (buffer-file-name)) 0 -2)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19033 :USER "sev" :DATE 3354113633 :CHANNEL "#scummvm" :TITLE "Piece of important code" :CONTENTS "	double res;
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19033 :USER "sev" :DATE 3354113633 :CHANNEL "#scummvm" :TITLE "Piece of important code" :CONTENTS "	double res;
 
 	res = (1.0 - args[1] * 2.9411764e-4 * 5.3050399e-2) * args[0] * 1.2360656e-1 +
 		args[1] * 1.1764706e-2 + 46;
@@ -37879,12 +37879,12 @@ that tis located in a direcotry called manX/ -- where X is manpage's class.\"
 	writeScummVar(109, (int32)res);
 
 	return 1;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19032 :USER "delvinj" :DATE 3354111404 :CHANNEL "#jedit" :TITLE "tabbed pane padding" :CONTENTS "UIManager.put(\"TabbedPane.tabAreaInsets\", new   InsetsUIResource(3,0,0,0));
-UIManager.put(\"TabbedPane.tabInsets\", new InsetsUIResource(8,8,0,8));" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19031 :USER "gismo" :DATE 3354110330 :CHANNEL "#emacs" :TITLE "`preview-manual-page'" :CONTENTS "(defun preview-manual-page ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19032 :USER "delvinj" :DATE 3354111404 :CHANNEL "#jedit" :TITLE "tabbed pane padding" :CONTENTS "UIManager.put(\"TabbedPane.tabAreaInsets\", new   InsetsUIResource(3,0,0,0));
+UIManager.put(\"TabbedPane.tabInsets\", new InsetsUIResource(8,8,0,8));" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19031 :USER "gismo" :DATE 3354110330 :CHANNEL "#emacs" :TITLE "`preview-manual-page'" :CONTENTS "(defun preview-manual-page ()
   \"Display the current buffer using the `man' function.\"
   (interactive)
   (man buffer-file-name))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19030 :USER "AngryLuke" :DATE 3354104472 :CHANNEL "#macdev" :TITLE "dumb code" :CONTENTS "-(void)showReleaseNotes:(NSArray*)versions fromVersion:(NSString*)currentVersion
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19030 :USER "AngryLuke" :DATE 3354104472 :CHANNEL "#macdev" :TITLE "dumb code" :CONTENTS "-(void)showReleaseNotes:(NSArray*)versions fromVersion:(NSString*)currentVersion
 {
 	if (!versions or !currentVersion)
 		return;
@@ -37954,7 +37954,7 @@ UIManager.put(\"TabbedPane.tabInsets\", new InsetsUIResource(8,8,0,8));" :ANNOTA
 	
 	[versionString release];
 	[page release];
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19029 :USER "joneskoo" :DATE 3354102104 :CHANNEL "None" :TITLE "Another backtrace of VLC" :CONTENTS "Program received signal EXC_BAD_ACCESS, Could not access memory.
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19029 :USER "joneskoo" :DATE 3354102104 :CHANNEL "None" :TITLE "Another backtrace of VLC" :CONTENTS "Program received signal EXC_BAD_ACCESS, Could not access memory.
 Reason: KERN_PROTECTION_FAILURE at address: 0x000002dc
 0x11d54139 in gldGetString ()
 (gdb) bt
@@ -38011,11 +38011,11 @@ Reason: KERN_PROTECTION_FAILURE at address: 0x000002dc
 (gdb)                            
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19028 :USER "zedek" :DATE 3354100901 :CHANNEL "#lisp" :TITLE "fails on clisp" :CONTENTS "(let ((fifo-name \"/tmp/stum\"))                                                                          
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19028 :USER "zedek" :DATE 3354100901 :CHANNEL "#lisp" :TITLE "fails on clisp" :CONTENTS "(let ((fifo-name \"/tmp/stum\"))                                                                          
            (setq fifo (open fifo-name :direction :io                                                             
                              :if-exists :append)))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19027 :USER "hell_lord" :DATE 3354097302 :CHANNEL "#scheme" :TITLE "some random functions for practice" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19027 :USER "hell_lord" :DATE 3354097302 :CHANNEL "#scheme" :TITLE "some random functions for practice" :CONTENTS "
 ; Is it an atom?
 ;
 (define atom? (lambda (x) (not (list? x))))
@@ -38063,7 +38063,7 @@ Reason: KERN_PROTECTION_FAILURE at address: 0x000002dc
 ; ((1 2) (1 2) (3 4) (3 4) (5 6) (5 6))
 ; ((2 1) (4 3) (6 5))
 ; eherz@blackfort $ 
-;" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19026 :USER "asari" :DATE 3354095181 :CHANNEL "#fink" :TITLE "link fails " :CONTENTS "/bin/sh ../libtool --mode=link c++  -D__GNU_LIBRARY__ -L/sw/lib -o libtinysvm.la -rpath 
+;" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19026 :USER "asari" :DATE 3354095181 :CHANNEL "#fink" :TITLE "link fails " :CONTENTS "/bin/sh ../libtool --mode=link c++  -D__GNU_LIBRARY__ -L/sw/lib -o libtinysvm.la -rpath 
 /sw/lib -no-undefined -version-info 3:0:2 getopt.lo getopt1.lo param.lo classifier.lo q_
 matrix.lo base_example.lo example.lo model.lo oneclass_solver.lo svm_solver.lo svr_solve
 r.lo qp_solver.lo  -lm -lm
@@ -38085,7 +38085,7 @@ __ZTVN10__cxxabiv117__class_type_infoE
 ___cxa_pure_virtual
 __ZTVN10__cxxabiv120__si_class_type_infoE
 /usr/bin/libtool: internal link edit command failed
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19025 :USER "Shine" :DATE 3354086689 :CHANNEL "#lisp" :TITLE "cl-opengl: glu tesselation doesn't work" :CONTENTS "(in-package #:glu)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19025 :USER "Shine" :DATE 3354086689 :CHANNEL "#lisp" :TITLE "cl-opengl: glu tesselation doesn't work" :CONTENTS "(in-package #:glu)
 
 (defcenum tess-enum
   (:tess-begin #x100100)
@@ -38157,7 +38157,7 @@ __ZTVN10__cxxabiv120__si_class_type_infoE
               (glu::tess-vertex tess-obj old-coords (null-pointer))))
       (glu::tess-end-contour tess-obj)
       (glu::tess-end-polygon tess-obj))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19024 :USER "sontek" :DATE 3354086213 :CHANNEL "#lisp" :TITLE "my apt-cache search" :CONTENTS "sontek@synapse:~$ sudo apt-cache search sbcl
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19024 :USER "sontek" :DATE 3354086213 :CHANNEL "#lisp" :TITLE "my apt-cache search" :CONTENTS "sontek@synapse:~$ sudo apt-cache search sbcl
 sontek@synapse:~$ sudo apt-cache search lisp
 auctex - An integrated environment for writing TeX/LaTeX documents
 calc - An advanced calculator and mathematical tool for Emacs.
@@ -38168,7 +38168,7 @@ pymacs - interface between Emacs Lisp and Python  [dummy package]
 pymacs-elisp - emacsen lisp modules for pymacs
 python-mode - Emacs-lisp python-mode and doctest-mode for the Python language
 python2.4-pymacs - interface between Emacs Lisp and Python [built for python2.4]
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19023 :USER "aspect" :DATE 3354085222 :CHANNEL "#scheme" :TITLE "box & pointers" :CONTENTS "(list 1 2)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19023 :USER "aspect" :DATE 3354085222 :CHANNEL "#scheme" :TITLE "box & pointers" :CONTENTS "(list 1 2)
 '(1 2)
 (cons 1 (cons 2 '())
 '(1 . (2))
@@ -38195,13 +38195,13 @@ python2.4-pymacs - interface between Emacs Lisp and Python [built for python2.4]
 ; +---+---+  +---+---+
 ; | 1 | ---->| 2 | 3 |
 ; +---+---+  +---+---+
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19022 :USER "interferon" :DATE 3354082318 :CHANNEL "#lisp" :TITLE "why does this give a n \" is not a character output stream\" error?" :CONTENTS "(with-open-file (s (app-path \"dev-notes\") :direction :output
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19022 :USER "interferon" :DATE 3354082318 :CHANNEL "#lisp" :TITLE "why does this give a n \" is not a character output stream\" error?" :CONTENTS "(with-open-file (s (app-path \"dev-notes\") :direction :output
 			 :if-exists :supersede :if-does-not-exist :create)
-	(write-string notes s))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19021 :USER "sontek" :DATE 3354081484 :CHANNEL "#lisp" :TITLE "lisp wont run" :CONTENTS "(defun show-quares(start end)
+	(write-string notes s))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19021 :USER "sontek" :DATE 3354081484 :CHANNEL "#lisp" :TITLE "lisp wont run" :CONTENTS "(defun show-quares(start end)
    (do ((i start (+ i 1)))
        ((> i end))
       (format t \"~A ~A~%\" i (* i i))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19020 :USER "hell_lord" :DATE 3354081094 :CHANNEL "#scheme" :TITLE "updated firsts" :CONTENTS "#!/usr/bin/guile -s
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19020 :USER "hell_lord" :DATE 3354081094 :CHANNEL "#scheme" :TITLE "updated firsts" :CONTENTS "#!/usr/bin/guile -s
 !#
 
 ; Given a list of s-expressions form another list
@@ -38214,7 +38214,7 @@ python2.4-pymacs - interface between Emacs Lisp and Python [built for python2.4]
 
 (display (firsts '(1 2 3 4 5)))
 ;(newline)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19019 :USER "hell_lord" :DATE 3354080023 :CHANNEL "#scheme" :TITLE "crappy code" :CONTENTS "#!/usr/bin/guile -s
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19019 :USER "hell_lord" :DATE 3354080023 :CHANNEL "#scheme" :TITLE "crappy code" :CONTENTS "#!/usr/bin/guile -s
 !#
 
 ; Given a list of s-expressions form another list
@@ -38236,7 +38236,7 @@ python2.4-pymacs - interface between Emacs Lisp and Python [built for python2.4]
 
 (dispall (firsts '(1 2 3 4 5)))
 (newline)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19018 :USER "luis" :DATE 3354079865 :CHANNEL "#lisp" :TITLE "GC fun" :CONTENTS "[2]> (defvar *wh* (make-hash-table :test 'eq :weak :key))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19018 :USER "luis" :DATE 3354079865 :CHANNEL "#lisp" :TITLE "GC fun" :CONTENTS "[2]> (defvar *wh* (make-hash-table :test 'eq :weak :key))
 *WH*
 [3]> (let ((obj (copy-seq \"xpto\")))
        (setf (gethash obj *wh*) (list 1 2 3))
@@ -38250,9 +38250,9 @@ Permanently allocated: 104032 bytes.
 Currently in use: 2747808 bytes.
 Free space: 620832 bytes.
 Segmentation fault
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19017 :USER "twb" :DATE 3354078803 :CHANNEL "#emacs" :TITLE "count-words" :CONTENTS "(defun count-words (beg end)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19017 :USER "twb" :DATE 3354078803 :CHANNEL "#emacs" :TITLE "count-words" :CONTENTS "(defun count-words (beg end)
   (interactive \"r\")
-  (message (format \"%d\" (count-matches \"\\\\>\" beg end))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19016 :USER "bradbev" :DATE 3354076573 :CHANNEL "#lisp" :TITLE "vectors" :CONTENTS "(defclass vector3 ()
+  (message (format \"%d\" (count-matches \"\\\\>\" beg end))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19016 :USER "bradbev" :DATE 3354076573 :CHANNEL "#lisp" :TITLE "vectors" :CONTENTS "(defclass vector3 ()
  ((data         :initarg :data :accessor data-of)
   (offset       :initarg :offset :accessor offset-of)))
 
@@ -38283,7 +38283,7 @@ Segmentation fault
   (flet ((sym (post) (intern (format nil \"~A.~A\" vec post))))
     `(multiple-value-bind (,(sym \"X\") ,(sym \"Y\") ,(sym \"Z\")) (vec-unbox ,vec)
           ,@body
-          (vec-box ,vec ,(sym \"X\") ,(sym \"Y\") ,(sym \"Z\")))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19015 :USER "berg" :DATE 3354074749 :CHANNEL "None" :TITLE "brute01" :CONTENTS "maxSum = sum(a, i, j)
+          (vec-box ,vec ,(sym \"X\") ,(sym \"Y\") ,(sym \"Z\")))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19015 :USER "berg" :DATE 3354074749 :CHANNEL "None" :TITLE "brute01" :CONTENTS "maxSum = sum(a, i, j)
 foreach x in i to j increment 1
 	foreach y in x to j increment 1
 		tsum = sum(a, x, y)
@@ -38291,7 +38291,7 @@ foreach x in i to j increment 1
 				maxSum = tsum
 
 print maxSum
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19014 :USER "vik" :DATE 3354073493 :CHANNEL "None" :TITLE "gl" :CONTENTS "#ifndef PHYSICS
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19014 :USER "vik" :DATE 3354073493 :CHANNEL "None" :TITLE "gl" :CONTENTS "#ifndef PHYSICS
 #define PHYSICS
 
 #include \"vec.h\"
@@ -38622,7 +38622,7 @@ public:
 
 
 #endif
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19013 :USER "zacwhite" :DATE 3354071093 :CHANNEL "None" :TITLE "bytes > NSString" :CONTENTS "+ (NSString *)bytesToString:(long)numBytes{
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19013 :USER "zacwhite" :DATE 3354071093 :CHANNEL "None" :TITLE "bytes > NSString" :CONTENTS "+ (NSString *)bytesToString:(long)numBytes{
     double result = (double)numBytes;
     int level = 0;
     while((int)(result / 1024) > 0){
@@ -38663,7 +38663,7 @@ public:
 	    postFix = [[NSString alloc] initWithString:@\"b\"];
     }
     return [NSString stringWithFormat:@\"%.2f %@\", result, [postFix autorelease]];
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19012 :USER "Z4rd0Z" :DATE 3354068983 :CHANNEL "#lisp" :TITLE "character #\\# in a string or stream" :CONTENTS "I want to ignore lines of a file beginning with \"#\", but I discovered I couldn't read #\\# from a string, like so:
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19012 :USER "Z4rd0Z" :DATE 3354068983 :CHANNEL "#lisp" :TITLE "character #\\# in a string or stream" :CONTENTS "I want to ignore lines of a file beginning with \"#\", but I discovered I couldn't read #\\# from a string, like so:
 
 (read-from-string \"#Zsfjsldfjlkj\" nil nil :start 0 :end 1)
 
@@ -38674,7 +38674,7 @@ but I can read it from a stream:
     (if (not (eq (read-char st2) #\\#))
          (do something))))
 
-Does this seem overly verbose for such a simple task?" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19011 :USER "pjb" :DATE 3354065686 :CHANNEL "#emacs" :TITLE "indent keeping region" :CONTENTS "
+Does this seem overly verbose for such a simple task?" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19011 :USER "pjb" :DATE 3354065686 :CHANNEL "#emacs" :TITLE "indent keeping region" :CONTENTS "
 (defun force-indent-region-left (start end)
   (interactive \"r\")
   (setf mark-even-if-inactive t)
@@ -38712,14 +38712,14 @@ Does this seem overly verbose for such a simple task?" :ANNOTATIONS NIL) #S(MONT
 
 (global-set-key (kbd \"<f7>\") (function force-indent-region-left))
 (global-set-key (kbd \"<f8>\") (function indent-region-right))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19010 :USER "luis" :DATE 3354061398 :CHANNEL "#lisp" :TITLE "my garbage collector is on strike" :CONTENTS "CL-USER> (progn (finalize \"xpto\" (lambda () (write-line \"I am garbage!\"))) nil)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19010 :USER "luis" :DATE 3354061398 :CHANNEL "#lisp" :TITLE "my garbage collector is on strike" :CONTENTS "CL-USER> (progn (finalize \"xpto\" (lambda () (write-line \"I am garbage!\"))) nil)
 NIL
 CL-USER> (gc :full t)
 NIL
 CL-USER> (gc :full t)
 NIL
 CL-USER> (gc :full t)
-NIL" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19009 :USER "wallop" :DATE 3354061289 :CHANNEL "#lisp" :TITLE "mutual recursive functions in different packages" :CONTENTS ";; load.lisp
+NIL" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19009 :USER "wallop" :DATE 3354061289 :CHANNEL "#lisp" :TITLE "mutual recursive functions in different packages" :CONTENTS ";; load.lisp
 
 (load \"packages\")
 (load \"a\")
@@ -38766,13 +38766,13 @@ Backtrace:
   2: (SB-FASL::LOAD-AS-SOURCE #<SB-SYS:FD-STREAM for \"file /home/josh/src/test/lisp_stuff/bidirectional/a.lisp\" {B866599}> NIL NIL)
   3: (SB-FASL::INTERNAL-LOAD #P\"/home/josh/src/test/lisp_stuff/bidirectional/a.lisp\" #P\"/home/josh/src/test/lisp_stuff/bidirectional/a.lisp\" :ERROR NIL NIL :SOURCE :DEFAULT)
   4: (LOAD \"/home/josh/src/test/lisp_stuff/bidirectional/a\")
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19008 :USER "noss" :DATE 3354059710 :CHANNEL "#erlang" :TITLE "the problem section" :CONTENTS "chatprotocol(Socket, Server) ->
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19008 :USER "noss" :DATE 3354059710 :CHANNEL "#erlang" :TITLE "the problem section" :CONTENTS "chatprotocol(Socket, Server) ->
   case gen_tcp:controlling_process(Socket, self()) of
     ok ->
       chatprotocol(Socket, Server, []);
     Other ->
       Other
-  end." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19007 :USER "Shine" :DATE 3354056722 :CHANNEL "#lisp" :TITLE "old lispbuilder-opengl 2D sample ported to cl-opengl with SDL" :CONTENTS "(defpackage #:opengl-2d
+  end." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19007 :USER "Shine" :DATE 3354056722 :CHANNEL "#lisp" :TITLE "old lispbuilder-opengl 2D sample ported to cl-opengl with SDL" :CONTENTS "(defpackage #:opengl-2d
   (:use :lispbuilder-regex :lispbuilder-lexer :cl))
 
 (in-package #:opengl-2d)
@@ -38919,7 +38919,7 @@ Backtrace:
        (sdl::push-quitevent))
       (:idle             
        (draw-screen)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19006 :USER "joneskoo" :DATE 3354053483 :CHANNEL "None" :TITLE "VLC SIGPIPE" :CONTENTS "[00000536] main input debug: stream out mode -> no decoder thread
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19006 :USER "joneskoo" :DATE 3354053483 :CHANNEL "None" :TITLE "VLC SIGPIPE" :CONTENTS "[00000536] main input debug: stream out mode -> no decoder thread
 [00000536] main input debug: starting in synch mode
 [00000536] main input debug: `/Users/joneskoo/Desktop/Ayreon/Flight of the Migrator/04 - Ayreon - To The Quasar.flac' successfully opened
 [00000551] flacdec decoder debug: decode STREAMINFO
@@ -38960,7 +38960,7 @@ Program received signal SIGPIPE, Broken pipe.
 #13 0x000612be in AddIntfInternal (i_object=0, psz_module=0x0, b_block=1, b_play=1, i_options=0, ppsz_options=0x0) at libvlc.c:1946
 #14 0x00002de7 in main (i_argc=4, ppsz_argv=0xbffffaf8) at src/vlc.c:109
 (gdb) 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19005 :USER "joneskoo" :DATE 3354053469 :CHANNEL "None" :TITLE "VLC crash" :CONTENTS "[00000536] main input debug: stream out mode -> no decoder thread
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19005 :USER "joneskoo" :DATE 3354053469 :CHANNEL "None" :TITLE "VLC crash" :CONTENTS "[00000536] main input debug: stream out mode -> no decoder thread
 [00000536] main input debug: starting in synch mode
 [00000536] main input debug: `/Users/joneskoo/Desktop/Ayreon/Flight of the Migrator/04 - Ayreon - To The Quasar.flac' successfully opened
 [00000551] flacdec decoder debug: decode STREAMINFO
@@ -39001,7 +39001,7 @@ Program received signal SIGPIPE, Broken pipe.
 #13 0x000612be in AddIntfInternal (i_object=0, psz_module=0x0, b_block=1, b_play=1, i_options=0, ppsz_options=0x0) at libvlc.c:1946
 #14 0x00002de7 in main (i_argc=4, ppsz_argv=0xbffffaf8) at src/vlc.c:109
 (gdb) 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19004 :USER "Riastradh" :DATE 3354049972 :CHANNEL "#lisp" :TITLE "cffi failures" :CONTENTS " CFFI-TESTS::CALLBACKS.UNSIGNED-LONG
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19004 :USER "Riastradh" :DATE 3354049972 :CHANNEL "#lisp" :TITLE "cffi failures" :CONTENTS " CFFI-TESTS::CALLBACKS.UNSIGNED-LONG
 Test CFFI-TESTS::CALLBACKS.LONG-LONG failed
 Form: (CFFI-TESTS::EXPECT-LONG-LONG-SUM (CFFI:CALLBACK CFFI-TESTS::SUM-LONG-LONG))
 Expected value: 1
@@ -39044,7 +39044,7 @@ Test CFFI-TESTS::DEREF.NONCONST.LONG-LONG failed
 Form: (LET ((TYPE :LONG-LONG)) (CFFI:WITH-FOREIGN-OBJECT (CFFI-TESTS::P TYPE) (SETF (CFFI:MEM-REF CFFI-TESTS::P TYPE) -9223372036854775807) (CFFI:MEM-REF CFFI-TESTS::P TYPE)))
 Expected value: -9223372036854775807
 Actual value: #<TYPE-ERROR #x86897AE>.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19003 :USER "pireau" :DATE 3354049103 :CHANNEL "#linux-quebec" :TITLE "doubly.c" :CONTENTS "typedef struct {
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19003 :USER "pireau" :DATE 3354049103 :CHANNEL "#linux-quebec" :TITLE "doubly.c" :CONTENTS "typedef struct {
         int value;
         struct node *next;
         struct node *prev;
@@ -39073,7 +39073,7 @@ node * doubly_search(node *root, int value)
                 }
         }
         return node_return;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19002 :USER "CFThetized" :DATE 3354049086 :CHANNEL "#macdev" :TITLE "GetFileSize" :CONTENTS "//------------------------------------------------------------------------------------UInt32 TFile::GetFileSize()
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19002 :USER "CFThetized" :DATE 3354049086 :CHANNEL "#macdev" :TITLE "GetFileSize" :CONTENTS "//------------------------------------------------------------------------------------UInt32 TFile::GetFileSize()
 {
 	FSCatalogInfoBitmap whichInfo = kFSCatInfoNodeFlags | kFSCatInfoDataSizes;
 	FSCatalogInfo catalogInfo;
@@ -39089,7 +39089,7 @@ node * doubly_search(node *root, int value)
 	}
 	return fileSize;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19001 :USER "fe[nl]ix" :DATE 3354047951 :CHANNEL "#lisp" :TITLE "possible asdf bug" :CONTENTS "If I have a source tree that looks like this:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19001 :USER "fe[nl]ix" :DATE 3354047951 :CHANNEL "#lisp" :TITLE "possible asdf bug" :CONTENTS "If I have a source tree that looks like this:
 
 test/
   test.asd
@@ -39148,7 +39148,7 @@ error finding source: The source file no longer exists:
 the error still happens is instead of (\"../foo\") I have
 (\"foo\" :pathname \"../\") or (\"foo\" :pathname \"../foo\")
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 19000 :USER "moe" :DATE 3354047536 :CHANNEL "None" :TITLE "t" :CONTENTS "(require-extension numbers)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 19000 :USER "moe" :DATE 3354047536 :CHANNEL "None" :TITLE "t" :CONTENTS "(require-extension numbers)
 (use vector-lib srfi-1)
 
 (define shift arithmetic-shift)
@@ -39234,7 +39234,7 @@ the error still happens is instead of (\"../foo\") I have
 	    (loop (+ i 8)))))))
 
   (isaac ctx))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18999 :USER "moe" :DATE 3354047512 :CHANNEL "None" :TITLE "t" :CONTENTS "(require-extension numbers)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18999 :USER "moe" :DATE 3354047512 :CHANNEL "None" :TITLE "t" :CONTENTS "(require-extension numbers)
 (use vector-lib srfi-1)
 
 (define shift arithmetic-shift)
@@ -39320,7 +39320,7 @@ the error still happens is instead of (\"../foo\") I have
 	    (loop (+ i 8)))))))
 
   (isaac ctx))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18998 :USER "BetaTEST" :DATE 3354047246 :CHANNEL "#haskell" :TITLE "tail recursion with accumulator kills GHCi" :CONTENTS "m :: Integer -> Integer
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18998 :USER "BetaTEST" :DATE 3354047246 :CHANNEL "#haskell" :TITLE "tail recursion with accumulator kills GHCi" :CONTENTS "m :: Integer -> Integer
 m 1 = 1
 m x = x - m (x `div` 2)
 
@@ -39335,7 +39335,7 @@ mm x = f ((-x) `div` 2) x
 mm 1000 works ok
 mm 10000 dies (memory exhausted)
 
-What's wrong with mm?" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18997 :USER "jsnell" :DATE 3354046207 :CHANNEL "#lisp" :TITLE "code for lemonodor" :CONTENTS "ldb (23:32) :/tmp> du -sh /tmp/a
+What's wrong with mm?" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18997 :USER "jsnell" :DATE 3354046207 :CHANNEL "#lisp" :TITLE "code for lemonodor" :CONTENTS "ldb (23:32) :/tmp> du -sh /tmp/a
 257M    /tmp/a
 ldb (23:32) :/tmp> sbcl   
 This is SBCL 0.9.10.14, an implementation of ANSI Common Lisp.
@@ -39383,7 +39383,7 @@ Breakdown for dynamic space:
   269,540,456 bytes for    31,016 simple-base-string objects.
   26,425,224 bytes for   882,437 other objects.
   295,965,680 bytes for   913,453 dynamic objects (space total.)
-*" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18996 :USER "mrbob" :DATE 3354042952 :CHANNEL "#adium" :TITLE "googletalk" :CONTENTS " Save a chat, and more...
+*" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18996 :USER "mrbob" :DATE 3354042952 :CHANNEL "#adium" :TITLE "googletalk" :CONTENTS " Save a chat, and more...
 We have some exciting changes in store for Gmail and Google Talk this week. If you haven't seen the latest changes you Gmail, you can read about them on Jon's post to the Google Blog. The features will be appearing in Gmail accounts starting today.
 
 With these changes you can chat directly from the Gmail interface. Just click on the chat button next to your friend's name and you'll be IMing just like in Google Talk. No need to switch away from Gmail, it just happens right in the same place. Give it a shot!
@@ -39395,7 +39395,7 @@ But, just saving wouldn't be good enough. Chat histories are a lot more useful i
 We hope you find both these changes useful.
 
 Bob Day
-Software Engineer" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18995 :USER "paulproteus|jhu" :DATE 3354042671 :CHANNEL "#lisp" :TITLE "original tim" :CONTENTS "
+Software Engineer" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18995 :USER "paulproteus|jhu" :DATE 3354042671 :CHANNEL "#lisp" :TITLE "original tim" :CONTENTS "
 (defun contents-of-file (pathname)
   \"Returns a string with the entire contents of the specified file.\"
   (with-open-file (in pathname)
@@ -39407,7 +39407,7 @@ Software Engineer" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18995 :USER "pa
                      (read-sequence buffer in :start bytes-read)))
       buffer)))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18994 :USER "paulproteus|jhu" :DATE 3354041896 :CHANNEL "#lisp" :TITLE "what I had suspected" :CONTENTS "* Argh! gc_find_freeish_pages failed (restart_page), nbytes=268419088.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18994 :USER "paulproteus|jhu" :DATE 3354041896 :CHANNEL "#lisp" :TITLE "what I had suspected" :CONTENTS "* Argh! gc_find_freeish_pages failed (restart_page), nbytes=268419088.
    Gen Boxed Unboxed LB   LUB  !move  Alloc  Waste   Trig    WP  GCs Mem-age
    0:    48     0     0     0     0   184152 12456  2000000    0   0  0.0000
    1:  1002   220    46 41745  1005 176061864 119384  2000000  811   0  0.2934
@@ -39426,7 +39426,7 @@ into the LDB low-level debugger now. But there's no LDB in this build, so
 we can't really do anything but just exit, sorry.
 
 Process inferior-lisp exited abnormally with code 1
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18993 :USER "v0|d" :DATE 3354034315 :CHANNEL "None" :TITLE "form example" :CONTENTS "(in-package :portal-base)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18993 :USER "v0|d" :DATE 3354034315 :CHANNEL "None" :TITLE "form example" :CONTENTS "(in-package :portal-base)
 
 (defcomponent my-form (ajax-widget-component)
   ((form-data :accessor form-data
@@ -39472,7 +39472,7 @@ Process inferior-lisp exited abnormally with code 1
 (defmethod render ((self my-window))
   (<:as-html \"Ajax Test window #4 - Forms\")
   (render (core-form self)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18992 :USER "joneskoo" :DATE 3354032187 :CHANNEL "None" :TITLE "VLC backtrace" :CONTENTS "[00000550] main input debug: `/Users/joneskoo/Desktop/Ayreon/Flight of the Migrator/09 - Ayreon - The New Migrator.flac' successfully opened
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18992 :USER "joneskoo" :DATE 3354032187 :CHANNEL "None" :TITLE "VLC backtrace" :CONTENTS "[00000550] main input debug: `/Users/joneskoo/Desktop/Ayreon/Flight of the Migrator/09 - Ayreon - The New Migrator.flac' successfully opened
 [00000555] flacdec decoder debug: decode STREAMINFO
 [00000555] flacdec decoder debug: channels:2 samplerate:44100 bitspersamples:16
 [00000555] flacdec decoder debug: STREAMINFO decoded
@@ -39547,7 +39547,7 @@ Reason: KERN_PROTECTION_FAILURE at address: 0x00000084
 #3  0x00003708 in RunInterface (p_intf=0x1d57da0) at interface/interface.c:392
 #4  0x90024a27 in _pthread_body ()
 (gdb) 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18991 :USER "mvilleneuve" :DATE 3354030510 :CHANNEL "#lisp" :TITLE "replace-substring" :CONTENTS "(defun replace-substring (string sub1 sub2)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18991 :USER "mvilleneuve" :DATE 3354030510 :CHANNEL "#lisp" :TITLE "replace-substring" :CONTENTS "(defun replace-substring (string sub1 sub2)
   (with-output-to-string (out)
     (loop as index1 = 0 then (+ index2 (length sub1))
           as index2 = (search sub1 string :start2 index1)
@@ -39556,7 +39556,7 @@ Reason: KERN_PROTECTION_FAILURE at address: 0x00000084
                (princ (subseq string index1 index2) out)
                (when index2 (princ sub2 out)))
           finally (princ (subseq string index1) out))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18990 :USER "lemonodor" :DATE 3354030278 :CHANNEL "#lisp" :TITLE "search-and-replace" :CONTENTS ";; You can tell I wrote this over 10 years ago because everything I did then was recursive.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18990 :USER "lemonodor" :DATE 3354030278 :CHANNEL "#lisp" :TITLE "search-and-replace" :CONTENTS ";; You can tell I wrote this over 10 years ago because everything I did then was recursive.
 
 (defun search-and-replace (sequence search replace-seq)
   (let ((pos (search search sequence)))
@@ -39569,12 +39569,12 @@ Reason: KERN_PROTECTION_FAILURE at address: 0x00000084
        (search-and-replace (subseq sequence (+ pos (length search)))
                            search
                            replace-seq)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18989 :USER "dmacks" :DATE 3354027280 :CHANNEL "#fink" :TITLE "configure tests" :CONTENTS "checking whether you have Empanadas de carne criolla... Super!
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18989 :USER "dmacks" :DATE 3354027280 :CHANNEL "#fink" :TITLE "configure tests" :CONTENTS "checking whether you have Empanadas de carne criolla... Super!
 checking whether you have Empanadas de verdura... Cool!
 checking whether you have Empanadas de jamon y queso... Buenichimo!
 checking whether you have Empanadas de carne picante... Yeah!
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18988 :USER "bhr" :DATE 3354026494 :CHANNEL "#macdev" :TITLE "FSMakeFSRefUnicode crashes" :CONTENTS "BOOL CheckCreateOutputFileStub(CFURLRef url) {
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18988 :USER "bhr" :DATE 3354026494 :CHANNEL "#macdev" :TITLE "FSMakeFSRefUnicode crashes" :CONTENTS "BOOL CheckCreateOutputFileStub(CFURLRef url) {
   
   FSRef fsRef, newfsRef;
   BOOL ret = false;
@@ -39604,7 +39604,7 @@ checking whether you have Empanadas de carne picante... Yeah!
   
   } 
   return ret;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18987 :USER "ohub" :DATE 3354025185 :CHANNEL "None" :TITLE "Hidden hash-table" :CONTENTS "(defmacro define-object-type (name)
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18987 :USER "ohub" :DATE 3354025185 :CHANNEL "None" :TITLE "Hidden hash-table" :CONTENTS "(defmacro define-object-type (name)
   (let ((hash-table (gensym)))
     `(let ((,hash-table (make-hash-table :test #'equal)))
        (defun ,(intern (format nil \"GET~a\" (symbol-name name))) (name)
@@ -39613,7 +39613,7 @@ checking whether you have Empanadas de carne picante... Yeah!
          (setf (gethash name ,hash-table) value))
        (defsetf ,(intern (format nil \"GET~a\" (symbol-name name)))
                 ,(intern (format nil \"SETF-~a\" (symbol-name name)))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18986 :USER "gdv" :DATE 3354021793 :CHANNEL "None" :TITLE "VLC backtrace - to reproduce: press and hold command-f (full screen) on OS X." :CONTENTS "OS X up to date, VLC from trunk-intel-20060414-0051.dmg. Takes about 30 seconds to crash by holding command-f. Sometimes it crashes sooner, sometimes later.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18986 :USER "gdv" :DATE 3354021793 :CHANNEL "None" :TITLE "VLC backtrace - to reproduce: press and hold command-f (full screen) on OS X." :CONTENTS "OS X up to date, VLC from trunk-intel-20060414-0051.dmg. Takes about 30 seconds to crash by holding command-f. Sometimes it crashes sooner, sometimes later.
 
 Program received signal EXC_BAD_ACCESS, Could not access memory.
 Reason: KERN_PROTECTION_FAILURE at address: 0x00000084
@@ -39636,15 +39636,15 @@ Reason: KERN_PROTECTION_FAILURE at address: 0x00000084
 #14 0x000610ee in AddIntfInternal (i_object=0, psz_module=0x0, b_block=1, b_play=1, i_options=0, ppsz_options=0x0) at libvlc.c:1946
 #15 0x00002c27 in main (i_argc=1, ppsz_argv=0xbffffb34) at src/vlc.c:109
 (gdb) 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18985 :USER "lnostdal" :DATE 3354017613 :CHANNEL "#programmering" :TITLE "ackerman-thing from c.l.l." :CONTENTS "SWTests> (ackermann1 4 2)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18985 :USER "lnostdal" :DATE 3354017613 :CHANNEL "#programmering" :TITLE "ackerman-thing from c.l.l." :CONTENTS "SWTests> (ackermann1 4 2)
 2003529930406846464979072351560255750447825475569751419265016973710894059556311453089506130880933348101038234342907263181822949382118812668869506364761547029165041871916351587966347219442930927982084309104855990570159318959639524863372367203002916969592156108764948889254090805911457037675208500206671563702366126359747144807111774815880914135742720967190151836282560618091458852699826141425030123391108273603843767876449043205960379124490905707560314035076162562476031863793126484703743782954975613770981604614413308692118102485959152380195331030292162800160568670105651646750568038741529463842244845292537361442533614373729088303794601274724958414864915930647252015155693922628180691650796381064132275307267143998158508811292628901134237782705567421080070065283963322155077831214288551675554073345107213112427399562982719769150054883905223804357045848197956393157853510018992000024141963706813559840464039472194016069517690156119726982337890017641517190051133466306898140219383481435426387306539552969691388024158161859561100640362119796101859534802787167200122604642492385111393400464351623867567078745259464670903886547743483217897012764455529409092021959585751622973333576159552394885297579954028471943529913543763705986928913757153740001986394332464890052543106629669165243419174691389632476560289415199775477703138064781342309596190960654591300890188887588084733625956065444888501447335706058817090162108499714529568344061979690565469813631162053579369791403236328496233046421066136200220175787851857409162050489711781820400187282939943446186224328009837323764931814789848119452713007440220765680910376203999203492023906626264491909167985461515778839060397720759279378852241294301017458086862263369284725851403039615558564330385450688652213114813638408384778263790459607186876728509763471271988890680478243230394718650525660978150729861141430305816927924971409161059417185352275887504477592218301158780701975535722241400019548102005661773589781499532325208589753463547007786690406429016763808161740550405117670093673202804549339027992491867306539931640720492238474815280619166900933805732120816350707634351669869625020969023162859350071874190579161241536897514808261904847946571736601005892476655445840838334790544144817684255327207315586349347605137419779525190365032198020108764738368682531025183377533908861426184800374008082238104076468878471647552945326947661700424461063311238021134588694532200116564076327023074292426051582811070387018345324567635625951430032037432740780879056283663406965030844225855967039271869461158513793386475699748568670079823960604393478850861649260304945061743412365828352144806726676841807083754862211408236579802961200027441324438432402331257403545019352428776430880232850855886089962774458164680857875115807014743763867976955049991643998284357290415378143438847303484261903388841494031366139854257635577105335580206622185577060082551288893332226436281984838613239570676191409638533832374343758830859233722284644287996245605476932428998432652677378373173288063210753211238680604674708428051166488709084770291208161104912555598322366244868556651402684641209694982590565519216188104341226838996283071654868525536914850299539675503954938371853405900096187489473992880432496373165753803673586710175783994818471798498246948060532081996066183434012476096639519778021441199752546704080608499344178256285092726523709898651539462193004607364507926212975917698293892367015170992091531567814439791248475706237804600009918293321306880570046591458387208088016887445835557926258465124763087148566313528934166117490617526671492672176128330845273936469244582892571388877839056300482483799839692029222215486145902373478222682521639957440801727144146179559226175083889020074169926238300282286249284182671243405751424188569994272331606998712986882771820617214453142574944015066139463169197629181506579745526236191224848063890033669074365989226349564114665503062965960199720636202603521917776740668777463549375318899587866282125469797102065747232721372918144666659421872003474508942830911535189271114287108376159222380276605327823351661555149369375778466670145717971901227117812780450240026384758788339396817962950690798817121690686929538248529830023476068454114178139110648560236549754227497231007615131870024053910510913817843721791422528587432098524957878034683703337818421444017138688124249984418618129271198533315382567321870421530631197748535214670955334626336610864667332292409879849256691109516143618601548909740241913509623043612196128165950518666022030715613684732364660868905014263913906515063908199378852318365059897299125404479443425166774299659811849233151555272883274028352688442408752811283289980625912673699546247341543333500147231430612750390307397135252069338173843322950701049061867539433130784798015655130384758155685236218010419650255596181934986315913233036096461905990236112681196023441843363334594927631946101716652913823717182394299216272538461776065694542297877071383198817036964588689811863210976900355735884624464835706291453052757101278872027965364479724025405448132748391794128826423835171949197209797145936887537198729130831738033911016128547415377377715951728084111627597186384924222802373441925469991983672192131287035585307966942713416391033882754318613643490100943197409047331014476299861725424423355612237435715825933382804986243892498222780715951762757847109475119033482241412025182688713728193104253478196128440176479531505057110722974314569915223451643121848657575786528197564843508958384722923534559464521215831657751471298708225909292655638836651120681943836904116252668710044560243704200663709001941185557160472044643696932850060046928140507119069261393993902735534545567470314903886022024639948260501762431969305640666366626090207048887438898907498152865444381862917382901051820869936382661868303915273264581286782806601337500096593364625146091723180312930347877421234679118454791311109897794648216922505629399956793483801699157439700537542134485874586856047286751065423341893839099110586465595113646061055156838541217459801807133163612573079611168343863767667307354583494789788316330129240800836356825939157113130978030516441716682518346573675934198084958947940983292500086389778563494693212473426103062713745077286156922596628573857905533240641849018451328284632709269753830867308409142247659474439973348130810986399417379789657010687026734161967196591599588537834822988270125605842365589539690306474965584147981310997157542043256395776070485100881578291408250777738559790129129407309462785944505859412273194812753225152324801503466519048228961406646890305102510916237770448486230229488966711380555607956620732449373374027836767300203011615227008921843515652121379215748206859356920790214502277133099987729459596952817044582181956080965811702798062669891205061560742325686842271306295009864421853470810407128917646906550836129916694778023822502789667843489199409657361704586786242554006942516693979292624714524945408858422726153755260071904336329196375777502176005195800693847635789586878489536872122898557806826518192703632099480155874455575175312736471421295536494084385586615208012115079075068553344489258693283859653013272046970694571546959353658571788894862333292465202735853188533370948455403336565356988172582528918056635488363743793348411845580168331827676834646291995605513470039147876808640322629616641560667508153710646723108461964247537490553744805318226002710216400980584497526023035640038083472053149941172965736785066421400842696497103241919182121213206939769143923368374709228267738708132236680086924703491586840991153098315412063566123187504305467536983230827966457417620806593177265685841681837966106144963432544111706941700222657817358351259821080769101961052229263879745049019254311900620561906577452416191913187533984049343976823310298465893318373015809592522829206820862230332585280119266496314441316442773003237792274712330696417149945532261035475145631290668854345426869788447742981777493710117614651624183616680254815296335308490849943006763654806102940094693750609845588558043970485914449584445079978497045583550685408745163316464118083123079704389849190506587586425810738422420591191941674182490452700288263983057950057341711487031187142834184499153456702915280104485145176055306971441761368582384102787659324662689978418319620312262421177391477208004883578333569204533935953254564897028558589735505751235129536540502842081022785248776603574246366673148680279486052445782673626230852978265057114624846595914210278122788941448163994973881884622768244851622051817076722169863265701654316919742651230041757329904473537672536845792754365412826553581858046840069367718605020070547247548400805530424951854495267247261347318174742180078574693465447136036975884118029408039616746946288540679172138601225419503819704538417268006398820656328792839582708510919958839448297775647152026132871089526163417707151642899487953564854553553148754978134009964854498635824847690590033116961303766127923464323129706628411307427046202032013368350385425360313636763575212604707425311209233402837482949453104727418969287275572027615272268283376741393425652653283068469997597097750005560889932685025049212884068274139881631540456490350775871680074055685724021758685439053228133770707415830756269628316955687424060527726485853050611356384851965918968649596335568216975437621430778665934730450164822432964891270709898076676625671517269062058815549666382573829274182082278960684488222983394816670984039024283514306813767253460126007269262969468672750794346190439996618979611928750519442356402644303271737341591281496056168353988188569484045342311424613559925272330064881627466723523751234311893442118885085079358163848994487544756331689213869675574302737953785262542329024881047181939037220666894702204258836895840939998453560948869946833852579675161882159410981624918741813364726965123980677561947912557957446471427868624053750576104204267149366084980238274680575982591331006919941904651906531171908926077949119217946407355129633864523035673345588033313197080365457184791550432654899559705862888286866606618021882248602144999973122164138170653480175510438406624412822803616648904257377640956326482825258407669045608439490325290526337532316509087681336614242398309530806549661879381949120033919489494065132398816642080088395554942237096734840072642705701165089075196155370186264797456381187856175457113400473810762763014953309735174180655479112660938034311378532532883533352024934365979129341284854970946826329075830193072665337782559314331110963848053940859283988907796210479847919686876539987477095912788727475874439806779824968278272200926449944559380414608770641941810440758269805688038949654616587983904660587645341810289907194293021774519976104495043196841503455514044820928933378657363052830619990077748726922998608279053171691876578860908941817057993404890218441559791092676862796597583952483926734883634745651687016166240642424241228961118010615682342539392180052483454723779219911228595914191877491793823340010078128326506710281781396029120914720100947878752551263372884222353869490067927664511634758101193875319657242121476038284774774571704578610417385747911301908583877890152334343013005282797038580359815182929600305682612091950943737325454171056383887047528950563961029843641360935641632589408137981511693338619797339821670761004607980096016024823096943043806956620123213650140549586250615282588033022908385812478469315720323233601899469437647726721879376826431828382603564520699468630216048874528424363593558622333506235945002890558581611275341783750455936126130852640828051213873177490200249552738734585956405160830583053770732533971552620444705429573538361113677523169972740292941674204423248113875075631319078272188864053374694213842169928862940479635305150560788126366206497231257579019598873041195626227343728900516561111094111745277965482790471250581999077498063821559376885546498822938985408291325129076478386322494781016753491693489288104203015610283386143827378160946341335383578340765314321417150655877547820252454780657301342277470616744241968952613164274104695474621483756288299771804186785084546965619150908695874251184435837306590951460980451247409411373899927822492983367796011015387096129749705566301637307202750734759922943792393824427421186158236161317886392553095117188421298508307238259729144142251579403883011359083331651858234967221259621812507058113759495525022747274674369887131926670769299199084467161228738858457584622726573330753735572823951616964175198675012681745429323738294143824814377139861906716657572945807804820559511881687188075212971832636442155336787751274766940790117057509819575084563565217389544179875074523854455200133572033332379895074393905312918212255259833790909463630202185353848854825062897715616963860712382771725621313460549401770413581731931763370136332252819127547191443450920711848838366818174263342949611870091503049165339464763717766439120798347494627397822171502090670190302469762151278521956142070806461631373236517853976292092025500288962012970141379640038055734949269073535145961208674796547733692958773628635660143767964038430796864138563447801328261284589184898528048048844180821639423974014362903481665458114454366460032490618763039502356402044530748210241366895196644221339200757479128683805175150634662569391937740283512075666260829890491877287833852178522792045771846965855278790447562192663992008409302075673925363735628390829817577902153202106409617373283598494066652141198183810884515459772895164572131897797907491941013148368544639616904607030107596818933741217575988165127000761262789169510406315857637534787420070222051070891257612361658026806815858499852631465878086616800733264676830206391697203064894405628195406190685242003053463156621891327309069687353181641094514288036605995220248248886711554429104721929134248346438705368508648749099178812670565665387191049721820042371492740164460943459845392536706132210616533085662021188968234005752675486101476993688738209584552211571923479686888160853631615862880150395949418529489227074410828207169303387818084936204018255222271010985653444817207470756019245915599431072949578197878590578940052540122867517142511184356437184053563024181225473266093302710397968091064939272722683035410467632591355279683837705019855234621222858410557119921731717969804339317707750755627056047831779844447637560254637033369247114220815519973691371975163241302748712199863404548248524570118553342675264715978310731245663429805221455494156252724028915333354349341217862037007260315279870771872491234494477147909520734761385425485311552773301030342476835865496093722324007154518129732692081058424090557725645803681462234493189708138897143299831347617799679712453782310703739151473878692119187566700319321281896803322696594459286210607438827416919465162267632540665070881071030394178860564893769816734159025925194611823642945652669372203155504700213598846292758012527715422016629954863130324912311029627923723899766416803497141226527931907636326136814145516376656559839788489381733082668779901962886932296597379951931621187215455287394170243669885593888793316744533363119541518404088283815193421234122820030950313341050704760159987985472529190665222479319715440331794836837373220821885773341623856441380700541913530245943913502554531886454796252260251762928374330465102361057583514550739443339610216229675461415781127197001738611494279501411253280621254775810512972088465263158094806633687670147310733540717710876615935856814098212967730759197382973441445256688770855324570888958320993823432102718224114763732791357568615421252849657903335093152776925505845644010552192644505312073756287744998163646332835816140330175813967359427327690448920361880386754955751806890058532927201493923500525845146706982628548257883267398735220457228239290207144822219885587102896991935873074277815159757620764023951243860202032596596250212578349957710085626386118233813318509014686577064010676278617583772772895892746039403930337271873850536912957126715066896688493880885142943609962012966759079225082275313812849851526902931700263136328942095797577959327635531162066753488651317323872438748063513314512644889967589828812925480076425186586490241111127301357197181381602583178506932244007998656635371544088454866393181708395735780799059730839094881804060935959190907473960904410150516321749681412100765719177483767355751000733616922386537429079457803200042337452807566153042929014495780629634138383551783599764708851349004856973697965238695845994595592090709058956891451141412684505462117945026611750166928260250950770778211950432617383223562437601776799362796099368975191394965033358507155418436456852616674243688920371037495328425927131610537834980740739158633817967658425258036737206469351248652238481341663808061505704829059890696451936440018597120425723007316410009916987524260377362177763430621616744884930810929901009517974541564251204822086714586849255132444266777127863728211331536224301091824391243380214046242223349153559516890816288487989988273630445372432174280215755777967021666317047969728172483392841015642274507271779269399929740308072770395013581545142494049026536105825409373114653104943382484379718606937214444600826798002471229489405761853892203425608302697052876621377373594394224114707074072902725461307358541745691419446487624357682397065703184168467540733466346293673983620004041400714054277632480132742202685393698869787607009590048684650626771363070979821006557285101306601010780633743344773073478653881742681230743766066643312775356466578603715192922768440458273283243808212841218776132042460464900801054731426749260826922155637405486241717031027919996942645620955619816454547662045022411449404749349832206807191352767986747813458203859570413466177937228534940031631599544093684089572533438702986717829770373332806801764639502090023941931499115009105276821119510999063166150311585582835582607179410052528583611369961303442790173811787412061288182062023263849861515656451230047792967563618345768105043341769543067538041113928553792529241347339481050532025708728186307291158911335942014761872664291564036371927602306283840650425441742335464549987055318726887926424102147363698625463747159744354943443899730051742525110877357886390946812096673428152585919924857640488055071329814299359911463239919113959926752576359007446572810191805841807342227734721397723218231771716916400108826112549093361186780575722391018186168549108500885272274374212086524852372456248697662245384819298671129452945515497030585919307198497105414181636968976131126744027009648667545934567059936995464500558921628047976365686133316563907395703272034389175415267500915011198856872708848195531676931681272892143031376818016445477367518353497857924276463354162433601125960252109501612264110346083465648235597934274056868849224458745493776752120324703803035491157544831295275891939893680876327685438769557694881422844311998595700727521393176837831770339130423060958999137314684569010422095161967070506420256733873446115655276175992727151877660010238944760539789516945708802728736225121076224091810066700883474737605156285533943565843756271241244457651663064085939507947550920463932245202535463634444791755661725962187199279186575490857852950012840229035061514937310107009446151011613712423761426722541732055959202782129325725947146417224977321316381845326555279604270541871496236585252458648933254145062642337885651464670604298564781968461593663288954299780722542264790400616019751975007460545150060291806638271497016110987951336633771378434416194053121445291855180136575558667615019373029691932076120009255065081583275508499340768797252369987023567931026804136745718956641431852679054717169962990363015545645090044802789055701968328313630718997699153166679208958768572290600915472919636381673596673959975710326015571920237348580521128117458610065152598883843114511894880552129145775699146577530041384717124577965048175856395072895337539755822087777506072339445587895905719156733
-SWTests> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18984 :USER "ZabaQ" :DATE 3354017231 :CHANNEL "#lisp" :TITLE "How should I setf an image pixel?" :CONTENTS "
+SWTests> " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18984 :USER "ZabaQ" :DATE 3354017231 :CHANNEL "#lisp" :TITLE "How should I setf an image pixel?" :CONTENTS "
 (defmethod image-pixel ((image image) x y)
   (aref (image-pixels image) y x))
 
 (defmethod (setf image-pixel) (x y pixel image)
   (setf (aref (image-pixels image) y x) pixel))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18983 :USER "ddfreyne" :DATE 3354015004 :CHANNEL "#macdev" :TITLE "Checking whether two points are horiz/vert adjacent" :CONTENTS "/*
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18983 :USER "ddfreyne" :DATE 3354015004 :CHANNEL "#macdev" :TITLE "Checking whether two points are horiz/vert adjacent" :CONTENTS "/*
  * Given two coordinates (x1,y1) and (x2,y2).
  * Need to check whether either the x'es or the y's differ by one (not both).
  * The implementation below works, but I'm wondering whether there's a more elegant way (faster/cleaner/...).
@@ -39666,7 +39666,7 @@ else if(y1 == y2)
 }
 
 return false;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18982 :USER "abc" :DATE 3354012772 :CHANNEL "None" :TITLE "abc" :CONTENTS "ufo:~$ cat bin/fplay 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18982 :USER "abc" :DATE 3354012772 :CHANNEL "None" :TITLE "abc" :CONTENTS "ufo:~$ cat bin/fplay 
 #!/usr/bin/perl
 $arg = shift;
 sub search_dir($) {
@@ -39682,7 +39682,7 @@ search_dir(\"/home/ftp/pub/music\");
 
 ufo:~$ fplay r.e.m
 Playing ./R.E.M/2003_-_In_Time_-_The_Best_Of_R.E.M._(1988-2003)/CD1/R.E.M._-_15_-_All_The_Right_Friends.mp3.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18981 :USER "boredzo" :DATE 3354009634 :CHANNEL "#adium" :TITLE "Wonky Bindings crash" :CONTENTS "Thread 0:
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18981 :USER "boredzo" :DATE 3354009634 :CHANNEL "#adium" :TITLE "Wonky Bindings crash" :CONTENTS "Thread 0:
 0   com.apple.ExceptionHandling 	0x963b00c4 NSExceptionHandlerUncaughtSignalHandler + 24
 1   libSystem.B.dylib           	0x9012c84c _sigtramp + 96
 2   <<00000000>> 	0x00000006 0 + 6
@@ -39713,7 +39713,7 @@ Playing ./R.E.M/2003_-_In_Time_-_The_Best_Of_R.E.M._(1988-2003)/CD1/R.E.M._-_15_
 27  com.apple.AppKit            	0x93779e68 NSApplicationMain + 452
 28  com.adiumX.adiumX           	0x0000236c start + 404
 29  com.adiumX.adiumX           	0x00002214 start + 60
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18980 :USER "ofri" :DATE 3354006735 :CHANNEL "#adium" :TITLE "runloop in another thread" :CONTENTS "//Set up the thread, create our libezv instance, and pass the proxy for it back to the calling thread
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18980 :USER "ofri" :DATE 3354006735 :CHANNEL "#adium" :TITLE "runloop in another thread" :CONTENTS "//Set up the thread, create our libezv instance, and pass the proxy for it back to the calling thread
 - (void)finishBonjourThreadPreparation:(id)ezvClient {
 	threadAutoreleasePool = [[NSAutoreleasePool alloc] init];
 	
@@ -39761,7 +39761,7 @@ Playing ./R.E.M/2003_-_In_Time_-_The_Best_Of_R.E.M._(1988-2003)/CD1/R.E.M._-_15_
 	
 	//Let CKAbstractAccountImp do it's stuff
 	[super sessionManagerWillDestroySession:sessionManager];
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18979 :USER "ayrnieu" :DATE 3354004398 :CHANNEL "None" :TITLE "gen_irc.erl" :CONTENTS "-module(gen_irc).
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18979 :USER "ayrnieu" :DATE 3354004398 :CHANNEL "None" :TITLE "gen_irc.erl" :CONTENTS "-module(gen_irc).
 -compile(export_all).
 
 connect(Server, Options) ->
@@ -39824,7 +39824,7 @@ loop(true, S, P) ->
     end.
 
 parse(_) -> \"Implement me!\".
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18978 :USER "antifuchs" :DATE 3353998283 :CHANNEL "#lisp" :TITLE "experimental slime patch for emacs-cvs workingness" :CONTENTS "use together with (setf swank::*swank-debug-p* nil) in .swank.lisp.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18978 :USER "antifuchs" :DATE 3353998283 :CHANNEL "#lisp" :TITLE "experimental slime patch for emacs-cvs workingness" :CONTENTS "use together with (setf swank::*swank-debug-p* nil) in .swank.lisp.
 
 
 Index: swank-sbcl.lisp
@@ -39854,7 +39854,7 @@ diff -u -r1.153 swank-sbcl.lisp
      (sb-sys:add-fd-handler fd :input (lambda (_) 
                                         _
                                         (funcall fn)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18977 :USER "ct16k" :DATE 3353997307 :CHANNEL "#haskell" :TITLE "too much imperative thinking" :CONTENTS "readSort::IO [Integer]
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18977 :USER "ct16k" :DATE 3353997307 :CHANNEL "#haskell" :TITLE "too much imperative thinking" :CONTENTS "readSort::IO [Integer]
 readSort = do
  xs<-words (read getLine)
  n<-length xs
@@ -39863,7 +39863,7 @@ readSort = do
  if (l==n) then
   ys<-ys++readSort
  return (sort ys)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18976 :USER "aspect" :DATE 3353996569 :CHANNEL "#scheme" :TITLE "let-defaults WFM" :CONTENTS "(define-syntax let-defaults
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18976 :USER "aspect" :DATE 3353996569 :CHANNEL "#scheme" :TITLE "let-defaults WFM" :CONTENTS "(define-syntax let-defaults
   (syntax-rules ()
     ((_ REST ((TERM DEFAULT) ...)
         STMT
@@ -39884,7 +39884,7 @@ readSort = do
     (list a b c d e)))
 
 (display (fancy 2 3 `(d (-1 -2 -3)) `(c 4))) (newline)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18975 :USER "pireau" :DATE 3353994856 :CHANNEL "#linux-quebec" :TITLE "stack.c" :CONTENTS "#include <stdio.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18975 :USER "pireau" :DATE 3353994856 :CHANNEL "#linux-quebec" :TITLE "stack.c" :CONTENTS "#include <stdio.h>
 #include \"stack.h\"
 
 int main(void)
@@ -39926,7 +39926,7 @@ char stack_pop(stack *s)
     c_ret = *s->stack_ptr;
 
     return c_ret;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18974 :USER "pireau" :DATE 3353994818 :CHANNEL "#linux-quebec" :TITLE "stack.h" :CONTENTS "#ifndef STAK_H
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18974 :USER "pireau" :DATE 3353994818 :CHANNEL "#linux-quebec" :TITLE "stack.h" :CONTENTS "#ifndef STAK_H
 #define STACK_H
 
 typedef struct
@@ -39939,7 +39939,7 @@ typedef struct
 char stack_pop(stack *);
 void stack_push(stack *, char);
 
-#endif" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18973 :USER "gnomon" :DATE 3353988464 :CHANNEL "#scheme" :TITLE "Erlang-style bit syntax proposal" :CONTENTS ";; This is a total hand-wavey hack, intended only as an example
+#endif" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18973 :USER "gnomon" :DATE 3353988464 :CHANNEL "#scheme" :TITLE "Erlang-style bit syntax proposal" :CONTENTS ";; This is a total hand-wavey hack, intended only as an example
 ;; of a syntax form which could be used to emulate the bit syntax
 ;; of Erlang. It's not intended as any kind of serious proposal,
 ;; but rather put forth as one would put a ten-gallon hat on a
@@ -39953,7 +39953,7 @@ void stack_push(stack *, char);
   (assemble-fixnum (foo 16) (baz 2)))
 
 ;; 00000011111111111111112222222233 -> 111111111111111133
-;; (the former is a pattern example, not a literal value)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18972 :USER "aquanaut" :DATE 3353988173 :CHANNEL "#scheme" :TITLE "accepting tcp sessions" :CONTENTS "(define l (tcp-listen 3030))
+;; (the former is a pattern example, not a literal value)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18972 :USER "aquanaut" :DATE 3353988173 :CHANNEL "#scheme" :TITLE "accepting tcp sessions" :CONTENTS "(define l (tcp-listen 3030))
 (define portz '())
 
 (define accept-initiator 
@@ -39966,7 +39966,7 @@ void stack_push(stack *, char);
             (set! port-list (cons (cons r w) port-list)))))
     (accept-initiator listener port-list))) ;; Is recursiong ok here? Do I need to sleep?
 
-(define listening-thread (thread (accept-initiator l portz))) ;; it seem listening-thread is never set" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18971 :USER "gzl" :DATE 3353987616 :CHANNEL "#fink" :TITLE "libgettext failure" :CONTENTS "The following 40 additional packages will be installed:
+(define listening-thread (thread (accept-initiator l portz))) ;; it seem listening-thread is never set" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18971 :USER "gzl" :DATE 3353987616 :CHANNEL "#fink" :TITLE "libgettext failure" :CONTENTS "The following 40 additional packages will be installed:
  atk1 atk1-shlibs docbook-dsssl-nwalsh docbook-dtd docbook-xsl glib2 glib2-dev glib2-shlibs
  gtk+2 gtk+2-dev gtk+2-shlibs gtk-doc html-parser-pm586 intltool libgettext3-dev libglade2
  libglade2-shlibs libtool14 libtool14-shlibs libwww-pm586 libxml2 libxml2-bin
@@ -39987,7 +39987,7 @@ dpkg: regarding .../libgettext3-dev_0.14.5-1_darwin-powerpc.deb containing libge
 Errors were encountered while processing:
  /sw/fink/dists/unstable/main/binary-darwin-powerpc/base/libgettext3-dev_0.14.5-1_darwin-powerpc.deb
 ### execution of /sw/bin/dpkg-lockwait failed, exit code 1
-Failed: can't install package libgettext3-dev-0.14.5-1" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18970 :USER "myavuzselim" :DATE 3353981303 :CHANNEL "None" :TITLE "keymappings" :CONTENTS "Suppose that:
+Failed: can't install package libgettext3-dev-0.14.5-1" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18970 :USER "myavuzselim" :DATE 3353981303 :CHANNEL "None" :TITLE "keymappings" :CONTENTS "Suppose that:
 
 '[' = <alt-gr> <X>
 'ù' = <Y>
@@ -40009,7 +40009,7 @@ I want to swap '[' and 'ù', but '%' and '^' should not change. Thus:
 If I use the next xmodmap script, '[' gets <Y>, but '%' doesn't work anymore:
 
 keycode <Y> = bracketleft
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18969 :USER "dmacks" :DATE 3353981059 :CHANNEL "#fink" :TITLE "key differences of my swi-prolog.info" :CONTENTS "BuildDepends: readline5, libncursesw5, gmp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18969 :USER "dmacks" :DATE 3353981059 :CHANNEL "#fink" :TITLE "key differences of my swi-prolog.info" :CONTENTS "BuildDepends: readline5, libncursesw5, gmp
 Depends: readline5-shlibs, libncursesw5-shlibs, gmp-shlibs
 
 PatchScript: <<
@@ -40020,7 +40020,7 @@ PatchScript: <<
 InstallScript: make install DESTDIR=%d
 
 DocFiles: ANNOUNCE COPYING ChangeLog PORTING README
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18968 :USER "ruro" :DATE 3353980784 :CHANNEL "#scheme" :TITLE "attempting caesar cipher" :CONTENTS "(define [encipher text-string cipher-string]
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18968 :USER "ruro" :DATE 3353980784 :CHANNEL "#scheme" :TITLE "attempting caesar cipher" :CONTENTS "(define [encipher text-string cipher-string]
   (define cipher-chars (map printchar->integer (string->list cipher-string)))
   (define cipher-size (- (length cipher-chars) 1))
   (define current-char 0)
@@ -40049,7 +40049,7 @@ DocFiles: ANNOUNCE COPYING ChangeLog PORTING README
 (define [integer->printchar code]
   (integer->char (+ code 32)))
 
-(encipher \"string\" \"cipher\")" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18967 :USER "kimji" :DATE 3353980500 :CHANNEL "#lisp" :TITLE "this SHOULDN'T bug me" :CONTENTS "(defclass foo ()
+(encipher \"string\" \"cipher\")" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18967 :USER "kimji" :DATE 3353980500 :CHANNEL "#lisp" :TITLE "this SHOULDN'T bug me" :CONTENTS "(defclass foo ()
   ((slot :accessor foo-slot)))
 
 (foo-slot (make-instance 'foo))
@@ -40062,7 +40062,7 @@ Restarts:
   0: [ABORT] Return to Top-Level.
 
 Debug  (type H for help)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18966 :USER "tmh" :DATE 3353980375 :CHANNEL "#emacs" :TITLE "Parse Numeric Data" :CONTENTS ";;; Return the nth line of text from the buffer.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18966 :USER "tmh" :DATE 3353980375 :CHANNEL "#emacs" :TITLE "Parse Numeric Data" :CONTENTS ";;; Return the nth line of text from the buffer.
 (defun fta-get-line (line-number)
   \"Return the line of text from the buffer.\"
   (if (and (>= line-number 1)
@@ -40101,9 +40101,9 @@ Debug  (type H for help)
 	     (fta-parse-data (fta-strip-comments
 			      (fta-get-line (1+ line)) \"#\")
 			     \"\\\\s-\\+\"))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18965 :USER "CFThetized" :DATE 3353971840 :CHANNEL "#macdev" :TITLE "MYOB Update?" :CONTENTS "Installed the new program from the CD.  Went to their web site and download 2 updates.  Ran the default installers and what do I end up with? .. a nested mess.  
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18965 :USER "CFThetized" :DATE 3353971840 :CHANNEL "#macdev" :TITLE "MYOB Update?" :CONTENTS "Installed the new program from the CD.  Went to their web site and download 2 updates.  Ran the default installers and what do I end up with? .. a nested mess.  
 
-/Users/Accounting/MYOB\\ AccountEdge\\ 2006\\ \\(v6\\)/AccountEdge.app/Contents/MacOS/AccountEdge.app/Contents/MacOS/AccountEdge.app/Contents/MacOS/AccountEdge" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18964 :USER "slyrus" :DATE 3353966689 :CHANNEL "None" :TITLE "ugly code printing" :CONTENTS "e.g. is there a way to do better than this:
+/Users/Accounting/MYOB\\ AccountEdge\\ 2006\\ \\(v6\\)/AccountEdge.app/Contents/MacOS/AccountEdge.app/Contents/MacOS/AccountEdge.app/Contents/MacOS/AccountEdge" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18964 :USER "slyrus" :DATE 3353966689 :CHANNEL "None" :TITLE "ugly code printing" :CONTENTS "e.g. is there a way to do better than this:
 
 (let ((transform
        (clem:make-affine-transformation :x-scale
@@ -40119,7 +40119,7 @@ Debug  (type H for help)
                                         :x-shift
                                         40
                                         :y-shift
-                                        40)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18963 :USER "bitwize" :DATE 3353966247 :CHANNEL "#scheme" :TITLE "R5RS letrec*" :CONTENTS "(define-syntax letrec*
+                                        40)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18963 :USER "bitwize" :DATE 3353966247 :CHANNEL "#scheme" :TITLE "R5RS letrec*" :CONTENTS "(define-syntax letrec*
   (syntax-rules ()
     ((letrec* ()
               body1 ...)
@@ -40138,7 +40138,7 @@ Debug  (type H for help)
        (letrec* ((name2 value2) ...)
                 body1 ...)))))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18962 :USER "naerbnic" :DATE 3353964405 :CHANNEL "None" :TITLE "CFFI Problem" :CONTENTS "(defctype display-id :pointer :translate-p t)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18962 :USER "naerbnic" :DATE 3353964405 :CHANNEL "None" :TITLE "CFFI Problem" :CONTENTS "(defctype display-id :pointer :translate-p t)
 
 (defclass display-id ()
   ((ptr :initarg :pointer)))
@@ -40167,7 +40167,7 @@ Debug  (type H for help)
 	(funcall fun num-displays disps tmp)
 	(assert (= (mem-ref tmp :int) num-displays))
 	(loop for i from 0 to (1- num-displays)
-	      collect (mem-ref disps 'display-id i)))))) ;; Returns a mac-ptr here" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18961 :USER "aptiva" :DATE 3353963216 :CHANNEL "#macdev" :TITLE "linker problem" :CONTENTS " /usr/bin/gcc-4.0 -o /Users/aptiva/Desktop/Forritun/Build/Radionregtest.build/Release/Radionregtest.build/Objects-normal/i386/Radionregtest -L/Users/aptiva/Desktop/Radionregtest/build/Release -F/Users/aptiva/Desktop/Radionregtest/build/Release -filelist /Users/aptiva/Desktop/Forritun/Build/Radionregtest.build/Release/Radionregtest.build/Objects-normal/i386/Radionregtest.LinkFileList -framework Cocoa -framework Carbon -framework QuartzCore -lssl -arch i386 -mmacosx-version-min=10.4 -isysroot /Developer/SDKs/MacOSX10.4u.sdk
+	      collect (mem-ref disps 'display-id i)))))) ;; Returns a mac-ptr here" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18961 :USER "aptiva" :DATE 3353963216 :CHANNEL "#macdev" :TITLE "linker problem" :CONTENTS " /usr/bin/gcc-4.0 -o /Users/aptiva/Desktop/Forritun/Build/Radionregtest.build/Release/Radionregtest.build/Objects-normal/i386/Radionregtest -L/Users/aptiva/Desktop/Radionregtest/build/Release -F/Users/aptiva/Desktop/Radionregtest/build/Release -filelist /Users/aptiva/Desktop/Forritun/Build/Radionregtest.build/Release/Radionregtest.build/Objects-normal/i386/Radionregtest.LinkFileList -framework Cocoa -framework Carbon -framework QuartzCore -lssl -arch i386 -mmacosx-version-min=10.4 -isysroot /Developer/SDKs/MacOSX10.4u.sdk
 /usr/bin/ld: Undefined symbols:
 _BN_dec2bn
 _BN_hex2bn
@@ -40178,7 +40178,7 @@ _SHA1_Init
 _SHA1_Update
 collect2: ld returned 1 exit status
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18960 :USER "ayrnieu" :DATE 3353954933 :CHANNEL "None" :TITLE "irc_lib.erl and irc.erl" :CONTENTS "-module(irc_lib).
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18960 :USER "ayrnieu" :DATE 3353954933 :CHANNEL "None" :TITLE "irc_lib.erl and irc.erl" :CONTENTS "-module(irc_lib).
 -compile(export_all).
 
 connect(Server) ->
@@ -40203,7 +40203,7 @@ join(IRC, Channel) ->         raw(IRC, \"JOIN \" ++ Channel).
 part(IRC, Channel) ->         raw(IRC, \"PART \" ++ Channel).
 quit(IRC) ->                  raw(IRC, \"QUIT\").
 quit(IRC, Text) ->            raw(IRC, \"QUIT :\" ++ Text).
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18959 :USER "hennk" :DATE 3353953715 :CHANNEL "#fink" :TITLE "what type of license is this?" :CONTENTS "ctypes license
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18959 :USER "hennk" :DATE 3353953715 :CHANNEL "#fink" :TITLE "what type of license is this?" :CONTENTS "ctypes license
 
   Copyright (c) 2000, 2001, 2002, 2003, 2004, 2005, 2006 Thomas Heller
 
@@ -40249,7 +40249,7 @@ libffi license
   ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
   CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18958 :USER "justing" :DATE 3353952080 :CHANNEL "#webkit" :TITLE "8337 test" :CONTENTS "<script>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18958 :USER "justing" :DATE 3353952080 :CHANNEL "#webkit" :TITLE "8337 test" :CONTENTS "<script>
 function runTest() {
     var e = document.getElementById(\"div\");
     var s = window.getSelection();
@@ -40272,7 +40272,7 @@ function runTest() {
 </div>
 
 </body>
-</html>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18957 :USER "lichtblau" :DATE 3353951699 :CHANNEL "#lisp" :TITLE "gcc.exe: no input files" :CONTENTS "//entering make-target-1.sh
+</html>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18957 :USER "lichtblau" :DATE 3353951699 :CHANNEL "#lisp" :TITLE "gcc.exe: no input files" :CONTENTS "//entering make-target-1.sh
 //building runtime system and symbol table file
 make: Entering directory `/home/admin/sbcl5/src/runtime'
 rm -f *.[do] sbcl.exe sbcl.nm sbcl.h core *.tmp
@@ -40319,7 +40319,7 @@ gcc -g -Wall -O3 -mno-cygwin -I.  -c -o alloc.o alloc.c
 gcc.exe: no input files
 make: *** [alloc.o] Error 1
 make: Leaving directory `/home/admin/sbcl5/src/runtime'
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18956 :USER "ayrnieu" :DATE 3353951498 :CHANNEL "None" :TITLE "irc.erl" :CONTENTS "-module(irc).
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18956 :USER "ayrnieu" :DATE 3353951498 :CHANNEL "None" :TITLE "irc.erl" :CONTENTS "-module(irc).
 -compile(export_all).
 
 start(Nick, Server, User, Name) ->
@@ -40356,7 +40356,7 @@ handle(Pid, S) -> Pid ! {handle, server, S}.
 takeline(S) -> takeline(S,[]).
 takeline(\"\\r\\n\" ++ Rem, Acc) -> {lists:reverse(Acc), Rem};
 takeline([H|T], Acc) -> takeline(T, [H|Acc]);
-takeline([],_) -> noline." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18955 :USER "ayrnieu" :DATE 3353951493 :CHANNEL "None" :TITLE "irc_lib.erl" :CONTENTS "module(irc_lib).
+takeline([],_) -> noline." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18955 :USER "ayrnieu" :DATE 3353951493 :CHANNEL "None" :TITLE "irc_lib.erl" :CONTENTS "module(irc_lib).
 -compile(export_all).
 
 connect(Server) ->
@@ -40380,7 +40380,7 @@ me(IRC, Who, Text) ->         ctcp(IRC, Who, \"ACTION\", Text).
 join(IRC, Channel) ->         raw(IRC, \"JOIN \" ++ Channel).
 part(IRC, Channel) ->         raw(IRC, \"PART \" ++ Channel).
 quit(IRC) ->                  raw(IRC, \"QUIT\").
-quit(IRC, Text) ->            raw(IRC, \"QUIT :\" ++ Text)." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18954 :USER "lbjay" :DATE 3353947186 :CHANNEL "#code4lib" :TITLE "MARC::File::XML::close()" :CONTENTS "sub close {
+quit(IRC, Text) ->            raw(IRC, \"QUIT :\" ++ Text)." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18954 :USER "lbjay" :DATE 3353947186 :CHANNEL "#code4lib" :TITLE "MARC::File::XML::close()" :CONTENTS "sub close {
     return( 1 );
     my $self = shift;
     if ( $self->{ fh } ) {
@@ -40391,7 +40391,7 @@ quit(IRC, Text) ->            raw(IRC, \"QUIT :\" ++ Text)." :ANNOTATIONS NIL) #
     }
     return( 1 );
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18953 :USER "Saulzar" :DATE 3353945532 :CHANNEL "#haskell" :TITLE "Most beautiful fibonacci" :CONTENTS "module Main where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18953 :USER "Saulzar" :DATE 3353945532 :CHANNEL "#haskell" :TITLE "Most beautiful fibonacci" :CONTENTS "module Main where
 import Control.Monad
 import Data.IORef
 
@@ -40457,7 +40457,7 @@ main = do
         fib n2 x
         tmp16  <-  (readIORef x)
         print tmp16
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18952 :USER "ruro" :DATE 3353941285 :CHANNEL "#scheme" :TITLE "attempting to learn :(" :CONTENTS "(define [word-count word-string]
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18952 :USER "ruro" :DATE 3353941285 :CHANNEL "#scheme" :TITLE "attempting to learn :(" :CONTENTS "(define [word-count word-string]
   ; transform passed \"word-string\" into character list
   (define word-count-char-array (string->list word-string))
   ; define size of list
@@ -40480,7 +40480,7 @@ main = do
                 ((set! num-words (+ num-words 1))
                  (word-count-loop (- list-position 1) (char->integer (list-ref word-count-char-array list-position)))))))) 
   (word-count-loop list-position-start previous-start-char)
-  )" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18951 :USER "luis" :DATE 3353940496 :CHANNEL "#lisp" :TITLE "example" :CONTENTS "CL-USER> (defun f () 'f)
+  )" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18951 :USER "luis" :DATE 3353940496 :CHANNEL "#lisp" :TITLE "example" :CONTENTS "CL-USER> (defun f () 'f)
 F
 CL-USER> (defvar *foo* (lambda () (f)))
 *FOO*
@@ -40489,7 +40489,7 @@ F
 CL-USER> (defun f () 'g)
 F
 CL-USER> (funcall *foo*)
-G" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18950 :USER "paulproteus" :DATE 3353939282 :CHANNEL "#lisp" :TITLE "Seems to return a number, not T or NIL" :CONTENTS "
+G" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18950 :USER "paulproteus" :DATE 3353939282 :CHANNEL "#lisp" :TITLE "Seems to return a number, not T or NIL" :CONTENTS "
 (defmethod ask ((dt neighbor-decider) event)
   (with-slots 
    (pos-memory neg-memory) dt
@@ -40502,7 +40502,7 @@ G" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18950 :USER "paulproteus" :DATE
      ;; whichever is less, pick that
      ;; which is to say, if pos is less, be T
      ;; else, be NIL
-     (< best-pos best-neg))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18949 :USER "edwin" :DATE 3353937426 :CHANNEL "#scheme" :TITLE "LET-KEYS: Riastradh-compliant edition" :CONTENTS ";;; EXAMPLES
+     (< best-pos best-neg))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18949 :USER "edwin" :DATE 3353937426 :CHANNEL "#scheme" :TITLE "LET-KEYS: Riastradh-compliant edition" :CONTENTS ";;; EXAMPLES
 
 (define employee-alist '((fname . \"Yosemite\")
                          (lname . \"Sam\")))
@@ -40568,7 +40568,7 @@ G" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18950 :USER "paulproteus" :DATE
   (if (table? c)
       table-accessor
       alist-accessor))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18948 :USER "^self" :DATE 3353935845 :CHANNEL "None" :TITLE "some code, dammit!" :CONTENTS "(remove-if-not #'(lambda (buffer)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18948 :USER "^self" :DATE 3353935845 :CHANNEL "None" :TITLE "some code, dammit!" :CONTENTS "(remove-if-not #'(lambda (buffer)
                    (buffer-file-name buffer))
                (buffer-list))
 
@@ -40598,11 +40598,11 @@ sTo: \")
           (goto-char (point-min))
           (while (search-forward from-string nil t)
             (replace-match to-string nil t))
-          (save-buffer))))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18947 :USER "nome" :DATE 3353935831 :CHANNEL "#emacs" :TITLE "iff" :CONTENTS "(defun iff (a b)
+          (save-buffer))))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18947 :USER "nome" :DATE 3353935831 :CHANNEL "#emacs" :TITLE "iff" :CONTENTS "(defun iff (a b)
   (not (not (eq (not (not a)) (not (not b))))))
 
 (list (iff t nil) (iff nil t) (iff t t) (iff nil nil)) ;==> (nil nil t t)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18946 :USER "ig" :DATE 3353931312 :CHANNEL "#lisp" :TITLE "undefined variables" :CONTENTS "(defun chess-table-web-dump (table &optional (size 64) last-move)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18946 :USER "ig" :DATE 3353931312 :CHANNEL "#lisp" :TITLE "undefined variables" :CONTENTS "(defun chess-table-web-dump (table &optional (size 64) last-move)
   (declare (special size table last-move))
   (let* ((t2 (coerce table 'list))
          (i 0)
@@ -40652,7 +40652,7 @@ Warnings I get all the time:
 ; Warning: This variable is undefined:
 ;   COLOR
 ; ;
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18945 :USER "ZabaQ" :DATE 3353930858 :CHANNEL "#lisp" :TITLE "climacs warnings" :CONTENTS "; 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18945 :USER "ZabaQ" :DATE 3353930858 :CHANNEL "#lisp" :TITLE "climacs warnings" :CONTENTS "; 
 ; caught WARNING:
 ;   undefined variable: CLIMACS-SLIDEMACS-EDITOR::*PICTURE-CACHE*
 
@@ -40689,7 +40689,7 @@ TOR::SLIDEMACS-GUI-SYNTAX
 ;   caught 9 STYLE-WARNING conditions
 ;   printed 10 notes
 NIL
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18944 :USER "lnostdal" :DATE 3353930077 :CHANNEL "#programmering" :TITLE "multiple SW-servers" :CONTENTS "LoadModule lisp_module        /usr/lib/apache2/modules/mod_lisp2.so
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18944 :USER "lnostdal" :DATE 3353930077 :CHANNEL "#programmering" :TITLE "multiple SW-servers" :CONTENTS "LoadModule lisp_module        /usr/lib/apache2/modules/mod_lisp2.so
 
 <Location /sw>
   LispServer 127.0.0.1 6123 \"SymbolicWeb1\"
@@ -40701,18 +40701,18 @@ NIL
   SetHandler lisp-handler
 </Location>
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18943 :USER "petekaz" :DATE 3353930025 :CHANNEL "#scheme" :TITLE "compose" :CONTENTS "(define (compose fn . fns)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18943 :USER "petekaz" :DATE 3353930025 :CHANNEL "#scheme" :TITLE "compose" :CONTENTS "(define (compose fn . fns)
   (lambda (arg)
     (if (null? fns)
         (fn arg)
         (fn ((compose fns) arg)))))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18942 :USER "yogan" :DATE 3353924666 :CHANNEL "None" :TITLE "nmap result of lynxhome.homelinux.org" :CONTENTS "root@donnergurgler /etc/apache2/sites-available >> nmap -sS lynxhome.homelinux.org
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18942 :USER "yogan" :DATE 3353924666 :CHANNEL "None" :TITLE "nmap result of lynxhome.homelinux.org" :CONTENTS "root@donnergurgler /etc/apache2/sites-available >> nmap -sS lynxhome.homelinux.org
 
 Starting nmap 3.81 ( http://www.insecure.org/nmap/ ) at 2006-04-13 12:46 CEST
 All 1663 scanned ports on port-195-158-170-206.dynamic.qsc.de (195.158.170.206) are: filtered
 
-Nmap finished: 1 IP address (1 host up) scanned in 35.437 seconds" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18941 :USER "etatoby" :DATE 3353917027 :CHANNEL "#lisp" :TITLE "unreachable? are you sure, sbcl?" :CONTENTS "(defun split (poly) ;generic (clockwise) polygon -> list of convex polygons
+Nmap finished: 1 IP address (1 host up) scanned in 35.437 seconds" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18941 :USER "etatoby" :DATE 3353917027 :CHANNEL "#lisp" :TITLE "unreachable? are you sure, sbcl?" :CONTENTS "(defun split (poly) ;generic (clockwise) polygon -> list of convex polygons
   (let ((concaves (concave-vertices poly)))
     (unless concaves 
       (return-from split (list poly))) ;trivial case, return a list of 1 convex poly
@@ -40737,7 +40737,7 @@ Nmap finished: 1 IP address (1 host up) scanned in 35.437 seconds" :ANNOTATIONS 
 ; ==>
 ;   \"This should not happen\"
 ; 
-; note: deleting unreachable code" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18940 :USER "roconnor" :DATE 3353910935 :CHANNEL "None" :TITLE "Theorem L" :CONTENTS "Require Import Eqdep_dec.
+; note: deleting unreachable code" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18940 :USER "roconnor" :DATE 3353910935 :CHANNEL "None" :TITLE "Theorem L" :CONTENTS "Require Import Eqdep_dec.
 Require Import Peano_dec.
 
 Inductive T : nat -> Set :=
@@ -40758,11 +40758,11 @@ apply K_dec_set.
 apply eq_nat_dec.
 simpl.
 reflexivity.
-Qed." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18939 :USER "Z4rd0Z" :DATE 3353910305 :CHANNEL "#lisp" :TITLE "shouldn't this work?" :CONTENTS "(with-open-file (s \"/etc/passwd\")
+Qed." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18939 :USER "Z4rd0Z" :DATE 3353910305 :CHANNEL "#lisp" :TITLE "shouldn't this work?" :CONTENTS "(with-open-file (s \"/etc/passwd\")
 	   (do ((l (read-line s nil)
 		   (read-line s nil)))
 	       ((null l))
-	     (split-sequence:split-sequence #\\: l)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18938 :USER "int-e" :DATE 3353910195 :CHANNEL "#haskell" :TITLE "positive Integer to String conversion" :CONTENTS "{-# OPTIONS_GHC -O -cpp -fglasgow-exts #-}
+	     (split-sequence:split-sequence #\\: l)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18938 :USER "int-e" :DATE 3353910195 :CHANNEL "#haskell" :TITLE "positive Integer to String conversion" :CONTENTS "{-# OPTIONS_GHC -O -cpp -fglasgow-exts #-}
 -- new implementation of GHC.Num.jtos
 
 module JtoSnew (jtos) where
@@ -40863,7 +40863,7 @@ jtos n cs
              c@(C# _) -> jblock' (d - 1) q (c : cs)
         where
         (q, r) = n `quotRemInt` 10
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18937 :USER "X" :DATE 3353905758 :CHANNEL "None" :TITLE "X" :CONTENTS "(= list (fn (first . rest)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18937 :USER "X" :DATE 3353905758 :CHANNEL "None" :TITLE "X" :CONTENTS "(= list (fn (first . rest)
 	    (cons first rest)))
 
 (= eval-cons
@@ -40897,7 +40897,7 @@ jtos n cs
   (+ x 1))
 
 (pr (inc 41))                 ; Outputs 42.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18936 :USER "pjb" :DATE 3353905517 :CHANNEL "#emacs" :TITLE "regexp no case" :CONTENTS "(defun pjb-regexp-nocase-region (start end)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18936 :USER "pjb" :DATE 3353905517 :CHANNEL "#emacs" :TITLE "regexp no case" :CONTENTS "(defun pjb-regexp-nocase-region (start end)
   (interactive \"r\")
   (let* ( (s (string-to-vector (buffer-substring start end)))
          (l (length s))
@@ -40915,7 +40915,7 @@ jtos n cs
       ) ;;while
     (delete-region start end)
     (insert (apply 'concat (nreverse r)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18935 :USER "X" :DATE 3353903963 :CHANNEL "None" :TITLE "X" :CONTENTS "(defpackage \"MECHANUS-LISP\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18935 :USER "X" :DATE 3353903963 :CHANNEL "None" :TITLE "X" :CONTENTS "(defpackage \"MECHANUS-LISP\"
   (:use \"COMMON-LISP\"))
 
 (defpackage \"MECHANUS-LISP-USER\"
@@ -41073,7 +41073,7 @@ jtos n cs
 	   ,@(loop :for form :in forms
 		   ;:collect `(getcall 'pr *toplevel* (getcall 'eval *toplevel* ',form *toplevel*)))))))
 		   :collect `(getcall 'eval *toplevel* ',form *toplevel*))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18934 :USER "matt" :DATE 3353901922 :CHANNEL "None" :TITLE "pluralization?" :CONTENTS " NameError in Recipes#show
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18934 :USER "matt" :DATE 3353901922 :CHANNEL "None" :TITLE "pluralization?" :CONTENTS " NameError in Recipes#show
 
 Showing app/views/recipes/show.rhtml where line #3 raised:
 
@@ -41109,14 +41109,14 @@ flash: !ruby/hash:ActionController::Flash::FlashHash {}
 
 Response
 Headers: {\"cookie\"=>[], \"Cache-Control\"=>\"no-cache\"}
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18933 :USER "RyanT5000" :DATE 3353900772 :CHANNEL "#haskell" :TITLE "Setup.lhs output" :CONTENTS "$ runhaskell Setup.lhs build
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18933 :USER "RyanT5000" :DATE 3353900772 :CHANNEL "#haskell" :TITLE "Setup.lhs output" :CONTENTS "$ runhaskell Setup.lhs build
 Preprocessing library SDL-0.2.0...
 Building SDL-0.2.0...
 Chasing modules from: Graphics.UI.SDL,Graphics.UI.SDL.CPUInfo,Graphics.UI.SDL.General,Graphics.UI.SDL.Video,Graphics.UI.SDL.WindowManagement,Graphics.UI.SDL.Audio,Graphics.UI.SDL.AudioSpec,Graphics.UI.SDL.Events,Graphics.UI.SDL.Time,Graphics.UI.SDL.Keysym,Graphics.UI.SDL.Color,Graphics.UI.SDL.RWOps,Graphics.UI.SDL.Types,Graphics.UI.SDL.Rect,Graphics.UI.SDL.Utilities,Graphics.UI.SDL.Version,Graphics.UI.SDL.Joystick
 
 This application has requested the Runtime to terminate it in an unusual way.
 Please contact the application's support team for more information.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18932 :USER "imajes" :DATE 3353899377 :CHANNEL "#webkit" :TITLE "3 lines of html?" :CONTENTS "<SPAN class=\"Apple-style-span\" style=\"border-collapse: separate; border-spacing: 0px 0px; color: rgb(0, 0, 0); font-family: Lucida Grande; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: auto; -khtml-text-decorations-in-effect: none; text-indent: 0px; -apple-text-size-adjust: auto; text-transform: none; orphans: 2; white-space: normal; widows: 2; word-spacing: 0px; \"><SPAN class=\"Apple-style-span\" style=\"border-collapse: separate; border-spacing: 0px 0px; color: rgb(0, 0, 0); font-family: Lucida Grande; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: auto; -khtml-text-decorations-in-effect: none; text-indent: 0px; -apple-text-size-adjust: auto; text-transform: none; orphans: 2; white-space: normal; widows: 2; word-spacing: 0px; \"><P style=\"margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Lucida Grande; min-height: 15.0px\">--<BR></P><P style=\"margin: 0.0px 0.0px 12.0px 0.0px\"><FONT class=\"Apple-style-span\" color=\"#002269\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(0, 34, 105); font-family: Calibri; \"><B style=\"color: rgb(0, 34, 105); font-family: Calibri; font-size: 10px; font-weight: bold; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 34, 105); font-family: Calibri; font-size: 10px; font-weight: bold; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 34, 105); font-family: Calibri; font-size: 10px; font-weight: bold; \">James Cox,</SPAN></SPAN><BR style=\"color: rgb(0, 34, 105); font-family: Calibri; font-size: 10px; font-weight: bold; \"></B></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#808080\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(128, 128, 128); font-family: Calibri; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \">Internet Consultant</SPAN></SPAN><BR style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#808080\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(128, 128, 128); font-family: Calibri; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \">t: 000000000 e: </SPAN></SPAN></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#000099\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px; text-decoration: underline;; color: rgb(0, 0, 153); font-family: Calibri; -khtml-text-decorations-in-effect: underline; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 0, 153); font-family: Calibri; font-size: 10px; -khtml-text-decorations-in-effect: underline; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 0, 153); font-family: Calibri; font-size: 10px; -khtml-text-decorations-in-effect: underline; \"><A href=\"mailto:james@imajes.info\">james@imajes.info</A></SPAN></SPAN></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#808080\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(128, 128, 128); font-family: Calibri; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"> w: </SPAN></SPAN></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#000099\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px; text-decoration: underline;; color: rgb(0, 0, 153); font-family: Calibri; -khtml-text-decorations-in-effect: underline; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 0, 153); font-family: Calibri; font-size: 10px; -khtml-text-decorations-in-effect: underline; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 0, 153); font-family: Calibri; font-size: 10px; -khtml-text-decorations-in-effect: underline; \"><A href=\"http://www.imajes.info\">http://www.imajes.info</A></SPAN></SPAN></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#808080\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(128, 128, 128); font-family: Calibri; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \">/</SPAN></SPAN></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#808080\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(128, 128, 128); font-family: Calibri; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \">=A0</SPAN></SPAN></SPAN></FONT></P><BR class=\"Apple-interchange-newline\"></SPAN></SPAN> </DIV><BR></DIV>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18931 :USER "X" :DATE 3353898913 :CHANNEL "None" :TITLE "X" :CONTENTS "(defpackage \"MECHANUS-LISP\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18932 :USER "imajes" :DATE 3353899377 :CHANNEL "#webkit" :TITLE "3 lines of html?" :CONTENTS "<SPAN class=\"Apple-style-span\" style=\"border-collapse: separate; border-spacing: 0px 0px; color: rgb(0, 0, 0); font-family: Lucida Grande; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: auto; -khtml-text-decorations-in-effect: none; text-indent: 0px; -apple-text-size-adjust: auto; text-transform: none; orphans: 2; white-space: normal; widows: 2; word-spacing: 0px; \"><SPAN class=\"Apple-style-span\" style=\"border-collapse: separate; border-spacing: 0px 0px; color: rgb(0, 0, 0); font-family: Lucida Grande; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: auto; -khtml-text-decorations-in-effect: none; text-indent: 0px; -apple-text-size-adjust: auto; text-transform: none; orphans: 2; white-space: normal; widows: 2; word-spacing: 0px; \"><P style=\"margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Lucida Grande; min-height: 15.0px\">--<BR></P><P style=\"margin: 0.0px 0.0px 12.0px 0.0px\"><FONT class=\"Apple-style-span\" color=\"#002269\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(0, 34, 105); font-family: Calibri; \"><B style=\"color: rgb(0, 34, 105); font-family: Calibri; font-size: 10px; font-weight: bold; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 34, 105); font-family: Calibri; font-size: 10px; font-weight: bold; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 34, 105); font-family: Calibri; font-size: 10px; font-weight: bold; \">James Cox,</SPAN></SPAN><BR style=\"color: rgb(0, 34, 105); font-family: Calibri; font-size: 10px; font-weight: bold; \"></B></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#808080\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(128, 128, 128); font-family: Calibri; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \">Internet Consultant</SPAN></SPAN><BR style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#808080\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(128, 128, 128); font-family: Calibri; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \">t: 000000000 e: </SPAN></SPAN></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#000099\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px; text-decoration: underline;; color: rgb(0, 0, 153); font-family: Calibri; -khtml-text-decorations-in-effect: underline; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 0, 153); font-family: Calibri; font-size: 10px; -khtml-text-decorations-in-effect: underline; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 0, 153); font-family: Calibri; font-size: 10px; -khtml-text-decorations-in-effect: underline; \"><A href=\"mailto:james@imajes.info\">james@imajes.info</A></SPAN></SPAN></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#808080\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(128, 128, 128); font-family: Calibri; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"> w: </SPAN></SPAN></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#000099\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px; text-decoration: underline;; color: rgb(0, 0, 153); font-family: Calibri; -khtml-text-decorations-in-effect: underline; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 0, 153); font-family: Calibri; font-size: 10px; -khtml-text-decorations-in-effect: underline; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(0, 0, 153); font-family: Calibri; font-size: 10px; -khtml-text-decorations-in-effect: underline; \"><A href=\"http://www.imajes.info\">http://www.imajes.info</A></SPAN></SPAN></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#808080\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(128, 128, 128); font-family: Calibri; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \">/</SPAN></SPAN></SPAN></FONT><FONT class=\"Apple-style-span\" color=\"#808080\" face=\"Calibri\" size=\"2\"><SPAN class=\"Apple-style-span\" style=\"font-size: 10px;; color: rgb(128, 128, 128); font-family: Calibri; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \"><SPAN class=\"Apple-style-span\" style=\"color: rgb(128, 128, 128); font-family: Calibri; font-size: 10px; \">=A0</SPAN></SPAN></SPAN></FONT></P><BR class=\"Apple-interchange-newline\"></SPAN></SPAN> </DIV><BR></DIV>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18931 :USER "X" :DATE 3353898913 :CHANNEL "None" :TITLE "X" :CONTENTS "(defpackage \"MECHANUS-LISP\"
   (:use \"COMMON-LISP\"))
 
 (defpackage \"MECHANUS-LISP-USER\"
@@ -41282,7 +41282,7 @@ Please contact the application's support team for more information.
 	   ,@(loop :for form :in forms
 		   ;:collect `(getcall 'pr *toplevel* (getcall 'eval *toplevel* ',form *toplevel*)))))))
 		   :collect `(getcall 'eval *toplevel* ',form *toplevel*))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18930 :USER "X" :DATE 3353898891 :CHANNEL "None" :TITLE "X" :CONTENTS "(defpackage \"MECHANUS-LISP\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18930 :USER "X" :DATE 3353898891 :CHANNEL "None" :TITLE "X" :CONTENTS "(defpackage \"MECHANUS-LISP\"
   (:use \"COMMON-LISP\"))
 
 (defpackage \"MECHANUS-LISP-USER\"
@@ -41448,7 +41448,7 @@ Please contact the application's support team for more information.
 	   ,@(loop :for form :in forms
 		   ;:collect `(getcall 'pr *toplevel* (getcall 'eval *toplevel* ',form *toplevel*)))))))
 		   :collect `(getcall 'eval *toplevel* ',form *toplevel*))))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18929 :USER "edw" :DATE 3353897807 :CHANNEL "#scheme" :TITLE "LET-KEYS: TNG" :CONTENTS "(define employee-alist '((fname . \"Yosemite\")
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18929 :USER "edw" :DATE 3353897807 :CHANNEL "#scheme" :TITLE "LET-KEYS: TNG" :CONTENTS "(define employee-alist '((fname . \"Yosemite\")
                          (lname . \"Sam\")))
 
 (define employee-table
@@ -41498,7 +41498,7 @@ Please contact the application's support team for more information.
                    (error (string-append \"key \"
                                          (symbol->string 'k1)
                                          \" not found\")))))
-       (let-keys-primitive c accessor (k2 ...) e1 e2 ...)))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18928 :USER "ssen" :DATE 3353896932 :CHANNEL "#opendarwin" :TITLE "mail" :CONTENTS "I certainly hope you are not pointing a finger at me. I pay for what I have and have told absolutely no-one to do otherwise. As a matter of fact, I made it clear that decompiling is illegal and the guy who dropped me an email is the one whom suggested downloading from torrent sites, so I hope you are not aiming tat crap at me. Thanks." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18927 :USER "wchogg" :DATE 3353893078 :CHANNEL "#haskell" :TITLE "What'd I do wrong?" :CONTENTS "If I do this operation with the code below, I get this error.
+       (let-keys-primitive c accessor (k2 ...) e1 e2 ...)))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18928 :USER "ssen" :DATE 3353896932 :CHANNEL "#opendarwin" :TITLE "mail" :CONTENTS "I certainly hope you are not pointing a finger at me. I pay for what I have and have told absolutely no-one to do otherwise. As a matter of fact, I made it clear that decompiling is illegal and the guy who dropped me an email is the one whom suggested downloading from torrent sites, so I hope you are not aiming tat crap at me. Thanks." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18927 :USER "wchogg" :DATE 3353893078 :CHANNEL "#haskell" :TITLE "What'd I do wrong?" :CONTENTS "If I do this operation with the code below, I get this error.
 10 <*> (vector 10 [0..9]) 
 
     No instance for (MatrixProduct a (Vec b) c)
@@ -41517,7 +41517,7 @@ class MatrixProduct a b c | a b -> c where
     (<*>) :: a -> b -> c
 instance (Num a) => MatrixProduct a (Vec a) (Vec a) where
     (<*>) num (Vec a s) = Vec (fmap (*num) a) s
-vector n elms = Vec (array (0,n-1) $ zip [0..n-1] elms) n" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18926 :USER "_Steve_" :DATE 3353889317 :CHANNEL "#macdev" :TITLE "applescript" :CONTENTS "tell application \"Terminal\"
+vector n elms = Vec (array (0,n-1) $ zip [0..n-1] elms) n" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18926 :USER "_Steve_" :DATE 3353889317 :CHANNEL "#macdev" :TITLE "applescript" :CONTENTS "tell application \"Terminal\"
 	activate
 	set winCount to count of windows
 	if not winCount = 0 then
@@ -41537,7 +41537,7 @@ vector n elms = Vec (array (0,n-1) $ zip [0..n-1] elms) n" :ANNOTATIONS NIL) #S(
 			return false
 		end try
 	end if
-end tell" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18925 :USER "othermaciej" :DATE 3353889109 :CHANNEL "#webkit" :TITLE "patch for ggaren" :CONTENTS "Index: kjs/testkjs.cpp
+end tell" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18925 :USER "othermaciej" :DATE 3353889109 :CHANNEL "#webkit" :TITLE "patch for ggaren" :CONTENTS "Index: kjs/testkjs.cpp
 ===================================================================
 --- kjs/testkjs.cpp	(revision 13824)
 +++ kjs/testkjs.cpp	(working copy)
@@ -41660,7 +41660,7 @@ end tell" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18925 :USER "othermaciej
    if (success)
      fprintf(stderr, \"OK.\\n\");
    
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18924 :USER "dusk" :DATE 3353888551 :CHANNEL "None" :TITLE "breakout" :CONTENTS ";; Alexander Annese and Kyle Obernautervaunhenfunkr
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18924 :USER "dusk" :DATE 3353888551 :CHANNEL "None" :TITLE "breakout" :CONTENTS ";; Alexander Annese and Kyle Obernautervaunhenfunkr
 ;; FINAL PROJECT
 ;; BREAKOUT
 
@@ -41876,7 +41876,7 @@ end tell" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18925 :USER "othermaciej
 (big-bang WIDTH HEIGHT GRAIN BREAKOUT)
 (on-redraw draw-world)
 (on-tick-event tock)
-(on-key-event move-paddle)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18923 :USER "v0|d" :DATE 3353880674 :CHANNEL "None" :TITLE "as drew said: a hairy macro" :CONTENTS "(defmacro defserver-callback (name args &body body)
+(on-key-event move-paddle)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18923 :USER "v0|d" :DATE 3353880674 :CHANNEL "None" :TITLE "as drew said: a hairy macro" :CONTENTS "(defmacro defserver-callback (name args &body body)
   `(progn
      (defaction ,name ,args ,@body)
      (defmethod ,(callback-name name) ,args
@@ -41921,7 +41921,7 @@ end tell" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18925 :USER "othermaciej
 (DJ_DEBUG \"calling server action\")
 (SERVER.IO.LOAD-COMPONENT ,ACTION-ID)
 (DJ_DEBUG                                                      \"server action ended.\")                                                     (RETURN FALSE)))))
-              ~%)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18922 :USER "leimy" :DATE 3353880305 :CHANNEL "#opendarwin" :TITLE "coins.cpp" :CONTENTS "#include <cstdio>
+              ~%)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18922 :USER "leimy" :DATE 3353880305 :CHANNEL "#opendarwin" :TITLE "coins.cpp" :CONTENTS "#include <cstdio>
 
 // Forward declare the \"First denomination\" class
 template <int koc>
@@ -41978,7 +41978,7 @@ int main ()
 {
   printf(\"%d\\n\", CountChange<100>::res);
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18921 :USER "shorner" :DATE 3353876375 :CHANNEL "None" :TITLE "vimrc" :CONTENTS "\" vim: set ts=8 sw=8 sts=8 et tw=80 :
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18921 :USER "shorner" :DATE 3353876375 :CHANNEL "None" :TITLE "vimrc" :CONTENTS "\" vim: set ts=8 sw=8 sts=8 et tw=80 :
 
 \" Extra terminal things
 if ($TERM == \"rxvt-unicode\") && (&termencoding == \"\")
@@ -42564,7 +42564,7 @@ if !exists(\"autocommands_loaded\")
                 autocmd BufNewFile,BufRead *.sh setlocal sw=4 sts=4 et tw=80
         endif
 endif
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18920 :USER "ofri" :DATE 3353876360 :CHANNEL "#chatkit" :TITLE "site error" :CONTENTS "Internal Server Error
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18920 :USER "ofri" :DATE 3353876360 :CHANNEL "#chatkit" :TITLE "site error" :CONTENTS "Internal Server Error
 
 The server encountered an internal error or misconfiguration and was unable to complete your request.
 
@@ -42572,7 +42572,7 @@ Please contact the server administrator, support@23i.net and inform them of the 
 
 More information about this error may be available in the server error log.
 
-Apache/2.0.55 (Unix) mod_ssl/2.0.55 OpenSSL/0.9.8a DAV/2 SVN/1.3.1 mod_python/3.2.8 Python/2.4 Server at chatkit.net Port 80" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18919 :USER "stephen Horner" :DATE 3353874570 :CHANNEL "None" :TITLE "foo bar shell fucked" :CONTENTS "
+Apache/2.0.55 (Unix) mod_ssl/2.0.55 OpenSSL/0.9.8a DAV/2 SVN/1.3.1 mod_python/3.2.8 Python/2.4 Server at chatkit.net Port 80" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18919 :USER "stephen Horner" :DATE 3353874570 :CHANNEL "None" :TITLE "foo bar shell fucked" :CONTENTS "
 [ -f /etc/profile.d/bash-completion ] && . /etc/profile.d/bash-completion
 
 [ -d ${HOME}/svn ] && export SVNDIR=${HOME}/svn
@@ -42973,7 +42973,7 @@ svnew() {
 
 set -o noclobber
 return 0
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18918 :USER "schwatoo" :DATE 3353873973 :CHANNEL "#macsb" :TITLE "hacking drop highlighting" :CONTENTS "#import \"NSTableView_PrivateMethods.h\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18918 :USER "schwatoo" :DATE 3353873973 :CHANNEL "#macsb" :TITLE "hacking drop highlighting" :CONTENTS "#import \"NSTableView_PrivateMethods.h\"
 
 @implementation CSpecialTableView
 
@@ -42985,9 +42985,9 @@ NSRect theRowRect = [self rectOfRow:inRow];
 }
 
 @end
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18917 :USER "sbp" :DATE 3353873487 :CHANNEL "#swhack" :TITLE "Testing, Testing, 1, 2, 3" :CONTENTS "Am I banned yet? Guess not.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18916 :USER "heh" :DATE 3353873034 :CHANNEL "#swhack" :TITLE "heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh" :CONTENTS "heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18915 :USER "xenon" :DATE 3353872521 :CHANNEL "#colloquy" :TITLE "Example Buddy List" :CONTENTS "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18917 :USER "sbp" :DATE 3353873487 :CHANNEL "#swhack" :TITLE "Testing, Testing, 1, 2, 3" :CONTENTS "Am I banned yet? Guess not.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18916 :USER "heh" :DATE 3353873034 :CHANNEL "#swhack" :TITLE "heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh" :CONTENTS "heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh heh
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18915 :USER "xenon" :DATE 3353872521 :CHANNEL "#colloquy" :TITLE "Example Buddy List" :CONTENTS "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
 <plist version=\"1.0\">
 <array>
@@ -43020,7 +43020,7 @@ NSRect theRowRect = [self rectOfRow:inRow];
 	</dict>
 </array>
 </plist>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18914 :USER "etatoby" :DATE 3353872497 :CHANNEL "#lisp" :TITLE "segment intersection" :CONTENTS "(defun segments-intersect-p (xa ya xb yb xc yc xd yd)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18914 :USER "etatoby" :DATE 3353872497 :CHANNEL "#lisp" :TITLE "segment intersection" :CONTENTS "(defun segments-intersect-p (xa ya xb yb xc yc xd yd)
   \"True if segment AB properly intersects CD (in a non-vertex point).
    False if the segments are disjoint.
    Undefined in case of tangent, vertex in common, collinear, etc.\"
@@ -43045,7 +43045,7 @@ NSRect theRowRect = [self rectOfRow:inRow];
 (deftest segint-2 (segments-intersect-p 0 1 2 1  1 0 1 2) t) ;+ shaped
 (deftest segint-3 (segments-intersect-p 0 0 3 1  1 1 3 0) t) ;random crossing
 (deftest segint-4 (segments-intersect-p 0 0 3 1  0 1 3 2) nil) ;parallel
-(deftest segint-5 (segments-intersect-p 0 0 3 1  0 1 2 1) nil) ;random disjoint" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18913 :USER "Xach" :DATE 3353871456 :CHANNEL "#lisp" :TITLE "screw gethostbyname()!" :CONTENTS "DNS> (cl-dig \"news.com\" :type :mx :server #(192 168 1 2))
+(deftest segint-5 (segments-intersect-p 0 0 3 1  0 1 2 1) nil) ;random disjoint" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18913 :USER "Xach" :DATE 3353871456 :CHANNEL "#lisp" :TITLE "screw gethostbyname()!" :CONTENTS "DNS> (cl-dig \"news.com\" :type :mx :server #(192 168 1 2))
 ;;; Got a response (length=182) from #(192 168 1 2):53
 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id 20174
 ;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 3, ADDITIONAL: 3
@@ -43070,7 +43070,7 @@ ns.cnet.com.            68009   IN      A       3639574026
 ns2.cnet.com.           68009   IN      A       3457155143
 ns3.cnet.com.           68009   IN      A       3639572549
 
-NIL" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18912 :USER "dusk" :DATE 3353871023 :CHANNEL "#scheme" :TITLE "reflect" :CONTENTS ";; Alexander Annese and Kyle Obernautervaunhenfunkr
+NIL" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18912 :USER "dusk" :DATE 3353871023 :CHANNEL "#scheme" :TITLE "reflect" :CONTENTS ";; Alexander Annese and Kyle Obernautervaunhenfunkr
 ;; FINAL PROJECT
 ;; BREAKOUT
 
@@ -43313,7 +43313,7 @@ NIL" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18912 :USER "dusk" :DATE 3353
 (on-redraw draw-world)
 (on-tick-event tock)
 (on-key-event move-paddle)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18911 :USER "sijmen" :DATE 3353870200 :CHANNEL "#svn" :TITLE "this\" which is a \"listing" :CONTENTS "sijmen@minas:/svn/bbs$ ls -l
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18911 :USER "sijmen" :DATE 3353870200 :CHANNEL "#svn" :TITLE "this\" which is a \"listing" :CONTENTS "sijmen@minas:/svn/bbs$ ls -l
 total 9
 drwxrwxr-x  2 sijmen bbs  80 2006-04-11 15:26 conf
 drwxrwxr-x  2 sijmen bbs  48 2006-04-11 15:26 dav
@@ -43321,7 +43321,7 @@ drwxrwxr-x  2 sijmen bbs 472 2006-04-11 15:26 db
 -rwxrwxr-x  1 sijmen bbs   2 2006-04-11 15:26 format
 drwxrwxr-x  2 sijmen bbs 232 2006-04-11 15:26 hooks
 drwxrwxr-x  2 sijmen bbs 104 2006-04-11 15:26 locks
--rwxrwxr-x  1 sijmen bbs 379 2006-04-11 15:26 README.txt" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18910 :USER "jack-" :DATE 3353868519 :CHANNEL "#fink" :TITLE "wanna try kxdocker?" :CONTENTS "(File: /sw/fink/dists/local/main/finkinfo/kxdocker.info)
+-rwxrwxr-x  1 sijmen bbs 379 2006-04-11 15:26 README.txt" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18910 :USER "jack-" :DATE 3353868519 :CHANNEL "#fink" :TITLE "wanna try kxdocker?" :CONTENTS "(File: /sw/fink/dists/local/main/finkinfo/kxdocker.info)
 
 Package: kxdocker
 Version: 1.1.3a
@@ -43338,7 +43338,7 @@ ConfigureParams: --with-qt-includes=%{p}/include/qt --with-extra-libs=%{p}/lib
 DocFiles: AUTHORS COPYING INSTALL README TODO
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18909 :USER "dsalo" :DATE 3353862518 :CHANNEL "#code4lib" :TITLE "nmap output" :CONTENTS "PORT     STATE    SERVICE
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18909 :USER "dsalo" :DATE 3353862518 :CHANNEL "#code4lib" :TITLE "nmap output" :CONTENTS "PORT     STATE    SERVICE
 22/tcp   open     ssh
 25/tcp   filtered smtp
 53/tcp   open     domain
@@ -43364,7 +43364,7 @@ DocFiles: AUTHORS COPYING INSTALL README TODO
 4444/tcp filtered krb524
 6346/tcp filtered gnutella
 6667/tcp filtered irc
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18908 :USER "robcaSSon" :DATE 3353861663 :CHANNEL "#code4lib" :TITLE "proxy.lib self scan" :CONTENTS "Starting nmap 3.81 ( http://www.insecure.org/nmap/ ) at 2006-04-12 08:13 EDT
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18908 :USER "robcaSSon" :DATE 3353861663 :CHANNEL "#code4lib" :TITLE "proxy.lib self scan" :CONTENTS "Starting nmap 3.81 ( http://www.insecure.org/nmap/ ) at 2006-04-12 08:13 EDT
 Interesting ports on 134.53.24.2:
 (The 1635 ports scanned but not shown below are in state: closed)
 PORT STATE SERVICE
@@ -43395,7 +43395,7 @@ PORT STATE SERVICE
 3531/tcp filtered peerenabler
 4444/tcp filtered krb524
 4899/tcp filtered radmin
-6346/tcp filtered gnutella" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18907 :USER "Cale" :DATE 3353861615 :CHANNEL "None" :TITLE "document" :CONTENTS "\\documentclass[12pt]{article}
+6346/tcp filtered gnutella" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18907 :USER "Cale" :DATE 3353861615 :CHANNEL "None" :TITLE "document" :CONTENTS "\\documentclass[12pt]{article}
 \\usepackage{amssymb}
 \\usepackage{verbatim}
 \\newenvironment{code}{\\footnotesize\\verbatim}{\\endverbatim\\normalsize}
@@ -43577,7 +43577,7 @@ out any one of the coefficients will make as much of $C_4$ as possible
 available to us. If it's a coset of size $d$, and $4 | d$, then we will
 get a copy of $C_4$, and if $2 | d$, a copy of $C_2$.
 
-\\end{document}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18906 :USER "robcaSSon" :DATE 3353861579 :CHANNEL "#code4lib" :TITLE "proxy.lib port scan" :CONTENTS "PORT     STATE    SERVICE
+\\end{document}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18906 :USER "robcaSSon" :DATE 3353861579 :CHANNEL "#code4lib" :TITLE "proxy.lib port scan" :CONTENTS "PORT     STATE    SERVICE
 22/tcp   open     ssh
 25/tcp   filtered smtp
 53/tcp   open     domain
@@ -43607,7 +43607,7 @@ get a copy of $C_4$, and if $2 | d$, a copy of $C_2$.
 4444/tcp filtered krb524
 4899/tcp filtered radmin
 6346/tcp filtered gnutella
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18905 :USER "dsalo" :DATE 3353856120 :CHANNEL "#code4lib" :TITLE "Telnet response" :CONTENTS "HTTP/1.0 400 Bad Request
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18905 :USER "dsalo" :DATE 3353856120 :CHANNEL "#code4lib" :TITLE "Telnet response" :CONTENTS "HTTP/1.0 400 Bad Request
 Server: squid/2.5.STABLE9
 Mime-Version: 1.0
 Date: Wed, 12 Apr 2006 15:44:55 GMT
@@ -43661,12 +43661,12 @@ Some aspect of the HTTP Request is invalid.  Possible problems:
 Generated Wed, 12 Apr 2006 15:44:55 GMT by watson.lib.muohio.edu (squid/2.5.STABLE9)
 </ADDRESS>
 </BODY></HTML>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18904 :USER "tholbroo" :DATE 3353856014 :CHANNEL "#code4lib" :TITLE "telnet connection" :CONTENTS "hs72259-2:~ tholbroo$ telnet proxy.lib.muohio.edu 3128
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18904 :USER "tholbroo" :DATE 3353856014 :CHANNEL "#code4lib" :TITLE "telnet connection" :CONTENTS "hs72259-2:~ tholbroo$ telnet proxy.lib.muohio.edu 3128
 Trying 134.53.24.2...
 Connected to proxy.lib.muohio.edu.
 Escape character is '^]'.
 GET /testing
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18903 :USER "forcer" :DATE 3353853586 :CHANNEL "#scheme" :TITLE "SET! and DEFINE" :CONTENTS "(set! fnord 5)   ; Error, FNORD doesn't exist
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18903 :USER "forcer" :DATE 3353853586 :CHANNEL "#scheme" :TITLE "SET! and DEFINE" :CONTENTS "(set! fnord 5)   ; Error, FNORD doesn't exist
 (define fnord 5) ; Now fnord exists,
 (set! fnord 23)  ; so we can midify it
 (define fnord 8) ; We can also re-define it. This is the only case
@@ -43685,7 +43685,7 @@ GET /testing
   (letrec ((fnord 23))  ; FNORD is shadowed, not modified
     (set! kallisti 5)   ; KALLISTI is modified
     (list fnord kallisti)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18902 :USER "jfm3" :DATE 3353851562 :CHANNEL "#emacs" :TITLE "gnus splitting done right?" :CONTENTS "(setq nnmail-split-methods 'nnmail-split-fancy)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18902 :USER "jfm3" :DATE 3353851562 :CHANNEL "#emacs" :TITLE "gnus splitting done right?" :CONTENTS "(setq nnmail-split-methods 'nnmail-split-fancy)
 (setq nnmail-split-fancy
       `(| (,(rx (and \"x-spam-\" (or \"flag\" \"status\"))) \"yes\" \"junk\")
 	  (\"subject\"
@@ -43695,20 +43695,20 @@ GET /testing
 			 \"studioelectronics\" \"cgs_synth\" \"BML\")
 		     \"]\")) \"sound technology\")
 	  \"incoming\"))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18901 :USER "Nando" :DATE 3353849560 :CHANNEL "#macsb" :TITLE "XPaths/Query issues" :CONTENTS "NSString *newQuery = [NSString stringWithFormat:@\"for $p in //picture/@fullsize \\
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18901 :USER "Nando" :DATE 3353849560 :CHANNEL "#macsb" :TITLE "XPaths/Query issues" :CONTENTS "NSString *newQuery = [NSString stringWithFormat:@\"for $p in //picture/@fullsize \\
 	where starts-with($p/text(), \\\"%@\\\") \\
-	return $p\", term];" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18900 :USER "sad0ur" :DATE 3353847541 :CHANNEL "None" :TITLE "monad use" :CONTENTS "((>>= listM fooM) '(1 2 3)
+	return $p\", term];" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18900 :USER "sad0ur" :DATE 3353847541 :CHANNEL "None" :TITLE "monad use" :CONTENTS "((>>= listM fooM) '(1 2 3)
                   (let ((return (return-of fooM)))
                    (lambda (x-from-list)
                      (return x-from-list))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18899 :USER "forcer" :DATE 3353839053 :CHANNEL "#scheme" :TITLE "Request to shoot yourself in the foot by redefining lambda" :CONTENTS "(let-syntax ((real-lambda (syntax-rules ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18899 :USER "forcer" :DATE 3353839053 :CHANNEL "#scheme" :TITLE "Request to shoot yourself in the foot by redefining lambda" :CONTENTS "(let-syntax ((real-lambda (syntax-rules ()
                             ((my-lambda formals ...)
                              (lambda formals ...)))))
   (let-syntax ((lambda (syntax-rules ()
                          ((lambda formal body ...)
                           (real-lambda (formal) body ...)))))
     ((lambda x x) 1)))
-=> 1" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18898 :USER "MDS" :DATE 3353838335 :CHANNEL "#fpc" :TITLE "gtk tree store" :CONTENTS "program test;
+=> 1" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18898 :USER "MDS" :DATE 3353838335 :CHANNEL "#fpc" :TITLE "gtk tree store" :CONTENTS "program test;
 {$mode objfpc}{$H+}
 uses glib2, gtk2, gdk2pixbuf;
 
@@ -43774,7 +43774,7 @@ ERROR WHEN I EXEC
 
 (odm:4110): Gtk-CRITICAL **: gtk_tree_store_set: assertion `GTK_IS_TREE_STORE (tree_store)' failed
 
-for each item" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18897 :USER "piftik" :DATE 3353833825 :CHANNEL "#programmering" :TITLE "zabbix" :CONTENTS "./configure
+for each item" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18897 :USER "piftik" :DATE 3353833825 :CHANNEL "#programmering" :TITLE "zabbix" :CONTENTS "./configure
 
 -------------------------------------
 
@@ -43811,7 +43811,7 @@ In file included from conftest.c:79:
 
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18896 :USER "twb" :DATE 3353829439 :CHANNEL "#emacs" :TITLE "macro /= function" :CONTENTS "*** Welcome to IELM ***  Type (describe-mode) for help.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18896 :USER "twb" :DATE 3353829439 :CHANNEL "#emacs" :TITLE "macro /= function" :CONTENTS "*** Welcome to IELM ***  Type (describe-mode) for help.
 ELISP> (defmacro m-id (x) x)
 m-id
 ELISP> (mapcar 'm-id '(1 2 3 4))
@@ -43821,7 +43821,7 @@ f-id
 ELISP> (mapcar 'f-id '(1 2 3 4))
 (1 2 3 4)
 
-ELISP> " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18895 :USER "RyanT5000" :DATE 3353819455 :CHANNEL "#haskell" :TITLE "Stuff" :CONTENTS "-----------------------------------------------------------------------------------------
+ELISP> " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18895 :USER "RyanT5000" :DATE 3353819455 :CHANNEL "#haskell" :TITLE "Stuff" :CONTENTS "-----------------------------------------------------------------------------------------
 {-| Module      : Main
     Copyright   : Graviton Studios 2006
     License     : All Rights Reserved
@@ -43967,7 +43967,7 @@ onKey rgRef (GLUT.Char x) state _ _ = do
 	s = case state of
 		GLUT.Up -> Up
 		GLUT.Down -> Down
-onKey _ _ _ _ _ = return ()" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18894 :USER "DAmon" :DATE 3353819119 :CHANNEL "#lisp" :TITLE "test" :CONTENTS "test" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18893 :USER "ggaren" :DATE 3353818664 :CHANNEL "#webkit" :TITLE "minor jsc cleanup" :CONTENTS "Index: ChangeLog
+onKey _ _ _ _ _ = return ()" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18894 :USER "DAmon" :DATE 3353819119 :CHANNEL "#lisp" :TITLE "test" :CONTENTS "test" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18893 :USER "ggaren" :DATE 3353818664 :CHANNEL "#webkit" :TITLE "minor jsc cleanup" :CONTENTS "Index: ChangeLog
 ===================================================================
 --- ChangeLog	(revision 13824)
 +++ ChangeLog	(working copy)
@@ -44048,7 +44048,7 @@ Index: kjs/object_object.cpp
 +    return construct(exec, args);
  }
  
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18892 :USER "bradbev" :DATE 3353816952 :CHANNEL "#lisp" :TITLE "Displaced arrays" :CONTENTS "(defun test ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18892 :USER "bradbev" :DATE 3353816952 :CHANNEL "#lisp" :TITLE "Displaced arrays" :CONTENTS "(defun test ()
   (declare (optimize (speed 3)))
   (let* ((base (make-array 2 :element-type 'float :initial-contents #(1.0 2.0)))
          (a    (make-array 1 :displaced-to base))
@@ -44095,7 +44095,7 @@ SBCL output
 ; compilation unit finished
 ;   printed 4 notes
 STYLE-WARNING: redefining TEST in DEFUN
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18891 :USER "brown" :DATE 3353816532 :CHANNEL "#lisp" :TITLE "segv.c" :CONTENTS "#include <stdio.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18891 :USER "brown" :DATE 3353816532 :CHANNEL "#lisp" :TITLE "segv.c" :CONTENTS "#include <stdio.h>
 #include <signal.h>
 #include <unistd.h>
 
@@ -44133,7 +44133,7 @@ int main()
   return 0;
 }
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18890 :USER "leGeddy" :DATE 3353815000 :CHANNEL "#linux-quebec" :TITLE "logitech merde" :CONTENTS "http://logitech-en-amr.custhelp.com/cgi-bin/logitech_en_amr.cfg/php/enduser/std_adp.php?p_faqid=72&p_created=1083959151&p_sid=GtOJ_O4i&p_lva=&p_sp=cF9zcmNoPTEmcF9zb3J0X2J5PSZwX2dyaWRzb3J0PSZwX3Jvd19jbnQ9MSZwX3Byb2RzPTg0NCw4NDYsODU3JnBfY2F0cz0mcF9wdj0zLjg1NyZwX2N2PSZwX3NlYXJjaF90eXBlPWFuc3dlcnMuc2VhcmNoX25sJnBfcGFnZT0xJnBfc2VhcmNoX3RleHQ9bGludXg*&p_li=&p_topview=1" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18889 :USER "slyrus" :DATE 3353814244 :CHANNEL "#lisp" :TITLE "pthreads stack exerciser" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18890 :USER "leGeddy" :DATE 3353815000 :CHANNEL "#linux-quebec" :TITLE "logitech merde" :CONTENTS "http://logitech-en-amr.custhelp.com/cgi-bin/logitech_en_amr.cfg/php/enduser/std_adp.php?p_faqid=72&p_created=1083959151&p_sid=GtOJ_O4i&p_lva=&p_sp=cF9zcmNoPTEmcF9zb3J0X2J5PSZwX2dyaWRzb3J0PSZwX3Jvd19jbnQ9MSZwX3Byb2RzPTg0NCw4NDYsODU3JnBfY2F0cz0mcF9wdj0zLjg1NyZwX2N2PSZwX3NlYXJjaF90eXBlPWFuc3dlcnMuc2VhcmNoX25sJnBfcGFnZT0xJnBfc2VhcmNoX3RleHQ9bGludXg*&p_li=&p_topview=1" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18889 :USER "slyrus" :DATE 3353814244 :CHANNEL "#lisp" :TITLE "pthreads stack exerciser" :CONTENTS "
 #include <limits.h>
 #include <pthread.h>
 #include <stdlib.h>
@@ -44213,7 +44213,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18888 :USER "RyanT5000" :DATE 3353811244 :CHANNEL "#haskell" :TITLE "Type Issue" :CONTENTS "data Vector a = Vector3 a a a
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18888 :USER "RyanT5000" :DATE 3353811244 :CHANNEL "#haskell" :TITLE "Type Issue" :CONTENTS "data Vector a = Vector3 a a a
 	
 data Scene a = Triangle (Vector a) (Vector a) (Vector a)
 	| Rotated a (Vector a) (Scene a)
@@ -44324,7 +44324,7 @@ src/Main.hs(124,10):
     In the call (run rg DrawFrameStimulus)
     In the second argument of `($)', namely `run rg DrawFrameStimulus'
     In the expression: render $ (run rg DrawFrameStimulus)
--}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18887 :USER "twb" :DATE 3353809409 :CHANNEL "#emacs" :TITLE "fnord" :CONTENTS "Bored? Lonely? Hate having to make a decision?
+-}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18887 :USER "twb" :DATE 3353809409 :CHANNEL "#emacs" :TITLE "fnord" :CONTENTS "Bored? Lonely? Hate having to make a decision?
 Then why not HOLD A MEETING!
 You get to
    see other people,
@@ -44337,7 +44337,7 @@ You get to
 What could be better than that?!?
 
 MEETINGS - the practical alternative to work!
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18886 :USER "sorahn" :DATE 3353806333 :CHANNEL "#macdev" :TITLE "sleep/wake remote" :CONTENTS "set foobar to do shell script \"pmset -g| awk '/displaysleep/ { print $2 }'\"
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18886 :USER "sorahn" :DATE 3353806333 :CHANNEL "#macdev" :TITLE "sleep/wake remote" :CONTENTS "set foobar to do shell script \"pmset -g| awk '/displaysleep/ { print $2 }'\"
 do shell script \"sleep 80\"
 if (foobar = \"30\") then
 	do shell script (\"pmset displaysleep 1\") password ¬
@@ -44349,7 +44349,7 @@ else
 	do shell script (\"/Users/me/Scripts/update_activity\")
 	do shell script (\"pmset displaysleep 30\") password ¬
 		\"pass\" with administrator privileges
-end if" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18885 :USER "proton" :DATE 3353805734 :CHANNEL "#macdev" :TITLE "UpdateSystemActivity" :CONTENTS "Stick me in update_activity.c
+end if" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18885 :USER "proton" :DATE 3353805734 :CHANNEL "#macdev" :TITLE "UpdateSystemActivity" :CONTENTS "Stick me in update_activity.c
 #include <Carbon/Carbon.h>
 
 int main (int argc, char *argv[])
@@ -44360,7 +44360,7 @@ int main (int argc, char *argv[])
 
 Compile me using:
 gcc -o update_activity update_activity.c -framework Carbon
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18884 :USER "imajes" :DATE 3353804965 :CHANNEL "#svn" :TITLE "compile error" :CONTENTS "% make install
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18884 :USER "imajes" :DATE 3353804965 :CHANNEL "#svn" :TITLE "compile error" :CONTENTS "% make install
 ------ making install in apr
 make[1]: Entering directory `/root/subversion-1.3.1/apr'
 /bin/sh /root/subversion-1.3.1/apr/libtool --silent --mode=link gcc -g -O2 -pthread -DHAVE_CONFIG_H -DLINUX=2 -D_REENTRANT -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -D_SVID_SOURCE -D_GNU_SOURCE -I./include -I../include -version-info 9:7:9 -o libapr-0.la -rpath /usr/local/apr/lib strings/*.lo passwd/*.lo tables/*.lo file_io/unix/*.lo network_io/unix/*.lo threadproc/unix/*.lo misc/unix/*.lo locks/unix/*.lo time/unix/*.lo mmap/unix/*.lo shmem/unix/*.lo user/unix/*.lo memory/unix/*.lo atomic/unix/*.lo poll/unix/*.lo support/unix/*.lo dso/unix/*.lo -lrt -lm -lcrypt -lnsl -lpthread -ldl
@@ -44368,7 +44368,7 @@ libtool: link: `strings/*.lo' is not a valid libtool object
 make[1]: *** [libapr-0.la] Error 1
 make[1]: Leaving directory `/root/subversion-1.3.1/apr'
 make: *** [external-install] Error 1
-% " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18883 :USER "blub" :DATE 3353800252 :CHANNEL "#squeak" :TITLE "blaa" :CONTENTS "Bei WG311(T) gibt es verschiedene Treiber-Versionen zum Thema \"Super-G\"-Modus. Die \"ohne T\" geht max. mit 54 MBit/s, die \"mit T\" sehe ich mit 108. - Rat-1: Den letzten + richtigen Treiber verwenden. Dies nur deshalb, weil mir etwas mit einem \"Idle-Timeout\" untergekommen ist.
+% " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18883 :USER "blub" :DATE 3353800252 :CHANNEL "#squeak" :TITLE "blaa" :CONTENTS "Bei WG311(T) gibt es verschiedene Treiber-Versionen zum Thema \"Super-G\"-Modus. Die \"ohne T\" geht max. mit 54 MBit/s, die \"mit T\" sehe ich mit 108. - Rat-1: Den letzten + richtigen Treiber verwenden. Dies nur deshalb, weil mir etwas mit einem \"Idle-Timeout\" untergekommen ist.
 
 
 Mein Favorit: Beim Stöbern gab es stets Probleme mit dem Super-G-Modus. Ansatz: Das Rating _manuell_ von 108 MBit/s niedriger einstellen, zumindest versuchsweise, zB. auf 11 MBit/s.
@@ -44382,7 +44382,7 @@ _____________
 
 http://www.netgear.de/download/katalog/05/wireless05.pdf p.54
 http://www.netgear.de/download/katalog/05/netzwerkadapter05.pdf
-http://www.netgear.de/download/katalog/05/router05.pdf" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18882 :USER "dan_b" :DATE 3353798720 :CHANNEL "#lisp" :TITLE "a poor ripoff of perl's Text::Template" :CONTENTS "
+http://www.netgear.de/download/katalog/05/router05.pdf" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18882 :USER "dan_b" :DATE 3353798720 :CHANNEL "#lisp" :TITLE "a poor ripoff of perl's Text::Template" :CONTENTS "
 #|
 Here Is The Documentation:
 
@@ -44414,7 +44414,7 @@ arg, the contents of which are available to the delimited expressions
 in the special variable *ARGS*.  See also *TEMPLATE* and *STREAM*
 
 |#
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18881 :USER "dan_b" :DATE 3353798697 :CHANNEL "None" :TITLE "a poor ripoff of perl's Text::Template" :CONTENTS "
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18881 :USER "dan_b" :DATE 3353798697 :CHANNEL "None" :TITLE "a poor ripoff of perl's Text::Template" :CONTENTS "
 #|
 Here Is The Documentation:
 
@@ -44446,7 +44446,7 @@ arg, the contents of which are available to the delimited expressions
 in the special variable *ARGS*.  See also *TEMPLATE* and *STREAM*
 
 |#
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18880 :USER "RyanT5000" :DATE 3353794828 :CHANNEL "#haskell" :TITLE "Undo Data Structure" :CONTENTS "class Diff d where
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18880 :USER "RyanT5000" :DATE 3353794828 :CHANNEL "#haskell" :TITLE "Undo Data Structure" :CONTENTS "class Diff d where
 	mutate :: d -> m -> (m, d)
 	
 data Diff d => Transition m d = Transition {
@@ -44455,7 +44455,7 @@ data Diff d => Transition m d = Transition {
 	}
 	
 type Node m d = Either (Transition m d) (m)
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18879 :USER "forcer" :DATE 3353793859 :CHANNEL "#scheme" :TITLE "LET-KEYS" :CONTENTS "(define-syntax let-keys
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18879 :USER "forcer" :DATE 3353793859 :CHANNEL "#scheme" :TITLE "LET-KEYS" :CONTENTS "(define-syntax let-keys
   (syntax-rules ()
     ((let-keys ?alist (?bindings ...)
        ?body ...)
@@ -44487,7 +44487,7 @@ type Node m d = Either (Transition m d) (m)
                                    '?name)))))
        (let-keys ?alist (?rest ...)
          ?body ...)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18878 :USER "AngryLuke" :DATE 3353793434 :CHANNEL "#webkit" :TITLE "Your Mom Enjoys fuzzy focus boxes" :CONTENTS "<html>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18878 :USER "AngryLuke" :DATE 3353793434 :CHANNEL "#webkit" :TITLE "Your Mom Enjoys fuzzy focus boxes" :CONTENTS "<html>
 <body>
 <div id=\"killSafari\">
 <table>
@@ -44502,7 +44502,7 @@ document.getElementById('killSafari').innerHTML = \"test\";
 </table>
 </div>
 </body>
-</html>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18877 :USER "rsinger" :DATE 3353792661 :CHANNEL "#code4lib" :TITLE "Poorly formatted HTML" :CONTENTS "<TR>
+</html>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18877 :USER "rsinger" :DATE 3353792661 :CHANNEL "#code4lib" :TITLE "Poorly formatted HTML" :CONTENTS "<TR>
 <INPUT TYPE=HIDDEN NAME=HID VALUE=752834><TD ALIGN=LEFT ROWSPAN=2 nowrap>
 <INPUT TYPE=CHECKBOX NAME=CHK VALUE=752834> <A HREF=\"/cgi-bin/Pwebrecon.cgi?v1=5&ti=1,5&FT=%2Bjournal&CNT=25%20records%20per%20page&PID=5813&SEQ=20060411160601&SID=1\"
 ><font size=\"4\"><b>5</b></font></A>
@@ -44534,7 +44534,7 @@ document.getElementById('killSafari').innerHTML = \"test\";
 </TABLE>
 
 </TD>
-</TR>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18876 :USER "rudy" :DATE 3353791236 :CHANNEL "None" :TITLE "prefs" :CONTENTS "/*
+</TR>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18876 :USER "rudy" :DATE 3353791236 :CHANNEL "None" :TITLE "prefs" :CONTENTS "/*
 	readPreferences
 */
 
@@ -44595,7 +44595,7 @@ static pascal void writePreferences (void)
 
 	CFPreferencesAppSynchronize(GTP);
 
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18875 :USER "dog4" :DATE 3353791082 :CHANNEL "#macdev" :TITLE "save dialog" :CONTENTS "std::string MacXApplication::DoSaveFileDialog(void)
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18875 :USER "dog4" :DATE 3353791082 :CHANNEL "#macdev" :TITLE "save dialog" :CONTENTS "std::string MacXApplication::DoSaveFileDialog(void)
 {
 	std::string path = \"\";
 	
@@ -44654,7 +44654,7 @@ static pascal void writePreferences (void)
 
 	return path;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18874 :USER "snu" :DATE 3353786600 :CHANNEL "#macdev" :TITLE "works for me" :CONTENTS "#include <Foundation/Foundation.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18874 :USER "snu" :DATE 3353786600 :CHANNEL "#macdev" :TITLE "works for me" :CONTENTS "#include <Foundation/Foundation.h>
 
 int main(int argc, char *argv[]) {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -44665,7 +44665,7 @@ int main(int argc, char *argv[]) {
 	NSLog(@\"%lf\", [bar doubleValue]);
 	[pool release];
 	return 0;
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18873 :USER "fuzz" :DATE 3353786580 :CHANNEL "#svn" :TITLE "output-of-merge" :CONTENTS "fuzz@fuzz:~/tmp/backup-error-messages > svn -r 2354:2692 merge $SVN/iquer.net/src/. .
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18873 :USER "fuzz" :DATE 3353786580 :CHANNEL "#svn" :TITLE "output-of-merge" :CONTENTS "fuzz@fuzz:~/tmp/backup-error-messages > svn -r 2354:2692 merge $SVN/iquer.net/src/. .
 U    Admintool-Services-Cmdline/sbin/iqadm-service-restarter.pl
 U    perl-Admintool-Lite/t/10_i18n.t
 U    perl-Admintool-Lite/MANIFEST
@@ -45130,9 +45130,9 @@ U    Admintool-XML-RPC-Server/usr/sbin/xrd.pl
 U    SQL-Helper/lib/SQL/Helper.pm
 U    Web-Form/lib/Web/Form.pm
 fuzz@fuzz:~/tmp/backup-error-messages >
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18872 :USER "phenny" :DATE 3353786066 :CHANNEL "None" :TITLE "Further Messages for d8uv" :CONTENTS "d8uv: 09 Apr 17:33Z <bancus> ask d8uv ... what?
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18872 :USER "phenny" :DATE 3353786066 :CHANNEL "None" :TITLE "Further Messages for d8uv" :CONTENTS "d8uv: 09 Apr 17:33Z <bancus> ask d8uv ... what?
 d8uv: 17:59Z <sbp> tell d8uv that numbers and letters are fun
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18871 :USER "MacDome" :DATE 3353783645 :CHANNEL "#webkit" :TITLE "review for andersca" :CONTENTS "Index: ChangeLog
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18871 :USER "MacDome" :DATE 3353783645 :CHANNEL "#webkit" :TITLE "review for andersca" :CONTENTS "Index: ChangeLog
 ===================================================================
 --- ChangeLog	(revision 13822)
 +++ ChangeLog	(working copy)
@@ -45173,7 +45173,7 @@ Index: quality/testing.html
 -?>
 \\ No newline at end of file
 +?>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18870 :USER "bd2" :DATE 3353782616 :CHANNEL "None" :TITLE "expl" :CONTENTS "#include <stdio.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18870 :USER "bd2" :DATE 3353782616 :CHANNEL "None" :TITLE "expl" :CONTENTS "#include <stdio.h>
 
 int f1() {
         return printf(\"f1\\n\");
@@ -45191,7 +45191,7 @@ int main() {
         funcs[1]();
         return 0;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18869 :USER "akh" :DATE 3353780950 :CHANNEL "#fink" :TITLE "get on DBUS" :CONTENTS "...
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18869 :USER "akh" :DATE 3353780950 :CHANNEL "#fink" :TITLE "get on DBUS" :CONTENTS "...
 g++ -dynamiclib -single_module  -o .libs/libdbus-qt-1.1.0.0.dylib  .libs/dbus-qthread.o .libs/message.o .libs/connection.o .libs/integrator.o .libs/server.o  -L/sw/lib /sw/lib/libdbus-1.dylib  -install_name  /sw/lib/libdbus-qt-1.1.dylib -Wl,-compatibility_version -Wl,2 -Wl,-current_version -Wl,2.0
 ld: Undefined symbols:
 __Z6qDebugPKcz
@@ -45278,7 +45278,7 @@ _static_QUType_Null
 _static_QUType_int
 /usr/bin/libtool: internal link edit command failed
 make: *** [libdbus-qt-1.la] Error 1
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18868 :USER "Xof" :DATE 3353778035 :CHANNEL "#lisp" :TITLE "interested in the *inferior-lisp* results from this" :CONTENTS "(defun slime-init-command (port-filename coding-system)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18868 :USER "Xof" :DATE 3353778035 :CHANNEL "#lisp" :TITLE "interested in the *inferior-lisp* results from this" :CONTENTS "(defun slime-init-command (port-filename coding-system)
   \"Return a string to initialize Lisp.\"
   (let ((loader (if (file-name-absolute-p slime-backend)
                     slime-backend
@@ -45288,7 +45288,7 @@ make: *** [libdbus-qt-1.la] Error 1
             `(trace file-write-date probe-file)
             `(load ,loader :verbose t)
             `(swank:start-server ,port-filename :external-format ,encoding))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18867 :USER "Dmitry" :DATE 3353773653 :CHANNEL "#muse" :TITLE "Cycling Online Store" :CONTENTS "Cycling Online Store - you have conceived repair, you should cut a tree, you need something to saw, then this site for you!" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18866 :USER "zozozo" :DATE 3353766698 :CHANNEL "#scheme" :TITLE "tree depth" :CONTENTS "hey all
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18867 :USER "Dmitry" :DATE 3353773653 :CHANNEL "#muse" :TITLE "Cycling Online Store" :CONTENTS "Cycling Online Store - you have conceived repair, you should cut a tree, you need something to saw, then this site for you!" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18866 :USER "zozozo" :DATE 3353766698 :CHANNEL "#scheme" :TITLE "tree depth" :CONTENTS "hey all
 
 i am trying to compute the sum of the depths of all nodes in a tree
 
@@ -45309,7 +45309,7 @@ the depth of a root is 1
               ((and (not(null? (tree->left t))) (null? (tree->right t))
        (+ 1(+ 1(tree-depth-sum-iter (tree->left t) (+ sum 1))))))
                      ((and (null? (tree->left t)) (null? (tree->right t))
-        (+ 1 sum) ))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18865 :USER "pjb   " :DATE 3353766386 :CHANNEL "#emacs" :TITLE "delete-region-and-yank" :CONTENTS "(defun delete-region-and-yank (&optional arg)
+        (+ 1 sum) ))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18865 :USER "pjb   " :DATE 3353766386 :CHANNEL "#emacs" :TITLE "delete-region-and-yank" :CONTENTS "(defun delete-region-and-yank (&optional arg)
   \"Deletes region if mark is active and yanks the last kill.
 Always replaces the region with the yank, whether the region was
 selected via keyboard or mouse.  Also works for normal
@@ -45325,7 +45325,7 @@ yank even with ARGS (thus it can be mapped to \\C-y)\"
       (yank arg)
       (yank)))
 
-      " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18864 :USER "Xach" :DATE 3353763200 :CHANNEL "#lisp" :TITLE "get-host-entry-in-thread" :CONTENTS "(defun get-host-entry-in-thread (name)
+      " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18864 :USER "Xach" :DATE 3353763200 :CHANNEL "#lisp" :TITLE "get-host-entry-in-thread" :CONTENTS "(defun get-host-entry-in-thread (name)
   (let ((mutex (sb-thread:make-mutex))
         (queue (sb-thread:make-waitqueue))
         result error)
@@ -45347,7 +45347,7 @@ yank even with ARGS (thus it can be mapped to \\C-y)\"
        (sb-thread:condition-wait queue mutex)))
     (if error
         (error error)
-        result)))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18863 :USER "forcer" :DATE 3353758341 :CHANNEL "#scheme" :TITLE "Very clear, but horribly inefficient version ;-)" :CONTENTS "(define (gnomon a b)
+        result)))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18863 :USER "forcer" :DATE 3353758341 :CHANNEL "#scheme" :TITLE "Very clear, but horribly inefficient version ;-)" :CONTENTS "(define (gnomon a b)
   (let ((l (sort-list (append a b) <)))
     (reverse (fold (lambda (item lis)
                      (if (= item (car lis))
@@ -45367,7 +45367,7 @@ yank even with ARGS (thus it can be mapped to \\C-y)\"
                  lis
                  (cons item lis)))
            (list (car l))
-           (cdr l)))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18862 :USER "SomeGuy" :DATE 3353758180 :CHANNEL "#lisp" :TITLE "Lost newbie" :CONTENTS "; Why is this giving this error with GNU CLISP?
+           (cdr l)))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18862 :USER "SomeGuy" :DATE 3353758180 :CHANNEL "#lisp" :TITLE "Lost newbie" :CONTENTS "; Why is this giving this error with GNU CLISP?
 ; I hope you don't mind it looking so much like crap
 ;
 ; It's supposed to pull a piece out of a string and cons add it to the *keys-to-spider* list.
@@ -45422,7 +45422,7 @@ yank even with ARGS (thus it can be mapped to \\C-y)\"
          .do (*keys-to-spider* = (remove-if (search key
                                                     *spidered-keys*)
                                             *keys-to-spider*)))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18861 :USER "acon" :DATE 3353757786 :CHANNEL "#scheme" :TITLE "merge" :CONTENTS "(define (merge a b) 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18861 :USER "acon" :DATE 3353757786 :CHANNEL "#scheme" :TITLE "merge" :CONTENTS "(define (merge a b) 
   (cond ((null? a) 
          b) 
         ((null? b) 
@@ -45432,7 +45432,7 @@ yank even with ARGS (thus it can be mapped to \\C-y)\"
         ((< (car a) (car b)) 
          (cons (car a) (merge (cdr a) b))) 
         ((< (car b) (car a)) 
-         (cons (car b) (merge a (cdr b))))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18860 :USER "antifuchs" :DATE 3353755441 :CHANNEL "#lisp" :TITLE "hopefully portable commit.sh script for sbcl" :CONTENTS "#!/bin/sh -e
+         (cons (car b) (merge a (cdr b))))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18860 :USER "antifuchs" :DATE 3353755441 :CHANNEL "#lisp" :TITLE "hopefully portable commit.sh script for sbcl" :CONTENTS "#!/bin/sh -e
 
 ## commit to the SBCL repository, with error checks.
 ## Written in 2006 by Andreas Fuchs <asf@boinkor.net>
@@ -45516,7 +45516,7 @@ fi
 # first version.lisp-expr
 cvs commit -F \"$MSGFILE\" -l .
 # Now the rest of the changes.
-cvs commit -F \"$MSGFILE\" . " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18859 :USER "anonymous" :DATE 3353751480 :CHANNEL "#scheme" :TITLE "Worst EXPT ever" :CONTENTS ";; Constraint: the use of multiplication
+cvs commit -F \"$MSGFILE\" . " :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18859 :USER "anonymous" :DATE 3353751480 :CHANNEL "#scheme" :TITLE "Worst EXPT ever" :CONTENTS ";; Constraint: the use of multiplication
 ;; and the built-in EXPT are forbidden.
 
 (define (expt-hack x y)
@@ -45532,7 +45532,7 @@ cvs commit -F \"$MSGFILE\" . " :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 188
           (else
            (mult x (expt-hack x (- yabs 1)))))))
 
-;; I really don't want my name associated with this bile." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18858 :USER "MacDome" :DATE 3353748658 :CHANNEL "#webkit" :TITLE "misc small changes for 2% win on ibench" :CONTENTS "Index: kxmlcore/Vector.h
+;; I really don't want my name associated with this bile." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18858 :USER "MacDome" :DATE 3353748658 :CHANNEL "#webkit" :TITLE "misc small changes for 2% win on ibench" :CONTENTS "Index: kxmlcore/Vector.h
 ===================================================================
 --- kxmlcore/Vector.h	(revision 13807)
 +++ kxmlcore/Vector.h	(working copy)
@@ -45674,11 +45674,11 @@ Index: kjs/TreeCode.cpp
                  
                  break;
              }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18857 :USER "MinnowTaur" :DATE 3353748334 :CHANNEL "#lisp" :TITLE "Which do you get? Try Cping the innards into your REPL and compare" :CONTENTS "(defun test-eval-2 ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18857 :USER "MinnowTaur" :DATE 3353748334 :CHANNEL "#lisp" :TITLE "Which do you get? Try Cping the innards into your REPL and compare" :CONTENTS "(defun test-eval-2 ()
   (if (eql (read-from-string \"c d e f\") 'c)
       (format t \"~A is equal~%\" (read-from-string \"c d e f\"))
     (format t \"~A is not equal~%\" (read-from-string \"c d e f\"))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18856 :USER "torgox" :DATE 3353747819 :CHANNEL "None" :TITLE "ccrdrcdrc" :CONTENTS "use strict;
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18856 :USER "torgox" :DATE 3353747819 :CHANNEL "None" :TITLE "ccrdrcdrc" :CONTENTS "use strict;
 use warnings;
 
 foreach my $power ( 2,3,4) {
@@ -45690,7 +45690,7 @@ foreach my $power ( 2,3,4) {
     my $ps = join ' ', map \"bearray $_ get\", split '', reverse $bin;
     printf \"/$name  {$ps}!\\n\";
   }
-}" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18855 :USER "Arcainus" :DATE 3353746445 :CHANNEL "#svn" :TITLE "configs" :CONTENTS "[root@binary sparky]# cat conf/authz
+}" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18855 :USER "Arcainus" :DATE 3353746445 :CHANNEL "#svn" :TITLE "configs" :CONTENTS "[root@binary sparky]# cat conf/authz
 ### This file is an example authorization file for svnserve.
 ### Its format is identical to that of mod_authz_svn authorization
 ### files.
@@ -45801,7 +45801,7 @@ authz-db = authz
 
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18854 :USER "DeFoRMiTy" :DATE 3353746294 :CHANNEL "#macdev" :TITLE "NSString" :CONTENTS "#import <Foundation/Foundation.h>
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18854 :USER "DeFoRMiTy" :DATE 3353746294 :CHANNEL "#macdev" :TITLE "NSString" :CONTENTS "#import <Foundation/Foundation.h>
 
 int main (int argc, const char * argv[]) 
 {
@@ -45825,7 +45825,7 @@ int main (int argc, const char * argv[])
     [pool release];
     return 0;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18853 :USER "xgp" :DATE 3353739995 :CHANNEL "#emacs" :TITLE "casi" :CONTENTS "(defvar xgp-casi-left-PAREN-old nil
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18853 :USER "xgp" :DATE 3353739995 :CHANNEL "#emacs" :TITLE "casi" :CONTENTS "(defvar xgp-casi-left-PAREN-old nil
   \"Command used to input \\\"(\\\"\")
 (make-variable-buffer-local 'xgp-casi-left-PAREN-old)
 
@@ -45919,7 +45919,7 @@ If the previous style is GNU as well, do nothing.\"
   (save-excursion
     (goto-char (point-min))
     (while (re-search-forward \"[ \\t]+$\" nil t)
-      (replace-match \"\" nil nil))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18852 :USER "othermaciej" :DATE 3353734695 :CHANNEL "#webkit" :TITLE "sample change for MacDome" :CONTENTS "@@ -1342,16 +1361,7 @@
+      (replace-match \"\" nil nil))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18852 :USER "othermaciej" :DATE 3353734695 :CHANNEL "#webkit" :TITLE "sample change for MacDome" :CONTENTS "@@ -1342,16 +1361,7 @@
  
              case BitOperNodeEvaluateState:
              {
@@ -45948,7 +45948,7 @@ If the previous style is GNU as well, do nothing.\"
 +                evaluateNext(interpreter, static_cast<ExprNode*>(currentNode)->m_next.get());
 +                goto evaluate_next_continue;
              }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18851 :USER "xgp" :DATE 3353733773 :CHANNEL "#emacs" :TITLE "calling functions" :CONTENTS "(defun xgp-casi2-space ()  
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18851 :USER "xgp" :DATE 3353733773 :CHANNEL "#emacs" :TITLE "calling functions" :CONTENTS "(defun xgp-casi2-space ()  
   \"Inserting a space.
 In BSD style, if inputing is after closing a brace list, move point back to previous line.\"
   (interactive)
@@ -45960,7 +45960,7 @@ In BSD style, if inputing is after closing a brace list, move point back to prev
 		 (delete-region s (point))
 		 (funcall old-spc-cmd ?\\ ))
 	     (funcall old-spc-cmd ?\\ )))
-	  (t (funcall old-spc-cmd ?\\ )))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18850 :USER "mlo" :DATE 3353730071 :CHANNEL "#scheme" :TITLE "kp" :CONTENTS "15" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18849 :USER "nessup" :DATE 3353729014 :CHANNEL "#macdev" :TITLE "none" :CONTENTS "lstray_t *
+	  (t (funcall old-spc-cmd ?\\ )))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18850 :USER "mlo" :DATE 3353730071 :CHANNEL "#scheme" :TITLE "kp" :CONTENTS "15" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18849 :USER "nessup" :DATE 3353729014 :CHANNEL "#macdev" :TITLE "none" :CONTENTS "lstray_t *
 lstray_set( )
 {
 	lstray_t *trayItem = malloc( sizeof(lstray_t) );
@@ -45989,7 +45989,7 @@ lstray_set( )
 Runtime errors:
 2006-04-10 21:21:10.220 livestatus[868] *** _NSAutoreleaseNoPool(): Object 0x314810 of class NSPathStore2 autoreleased with no pool in place - just leaking
 2006-04-10 21:21:10.221 livestatus[868] *** _NSAutoreleaseNoPool(): Object 0x324c90 of class NSCFString autoreleased with no pool in place - just leaking
-<insert more useless runtime errors here>" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18848 :USER "RyanT5000" :DATE 3353726197 :CHANNEL "#haskell" :TITLE "Typing error" :CONTENTS "data Vector a = Vector3 a a a
+<insert more useless runtime errors here>" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18848 :USER "RyanT5000" :DATE 3353726197 :CHANNEL "#haskell" :TITLE "Typing error" :CONTENTS "data Vector a = Vector3 a a a
 	
 data Scene a = Triangle (Vector a) (Vector a) (Vector a)
 	| Rotated a (Vector a) (Scene a)
@@ -46012,7 +46012,7 @@ src/Main.hs(86,58):
       Inferred type: a
     In the first argument of `Rotated', namely `angle'
     In the call (Rotated angle vector (composite childview obj))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18847 :USER "MinnowTaur" :DATE 3353723093 :CHANNEL "#lisp" :TITLE "CMUCL ansi spec violation?" :CONTENTS "(read-from-string \"3 2 1\" :start 3)" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18846 :USER "RyanT5000" :DATE 3353722932 :CHANNEL "#haskell" :TITLE "Skin class" :CONTENTS "	
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18847 :USER "MinnowTaur" :DATE 3353723093 :CHANNEL "#lisp" :TITLE "CMUCL ansi spec violation?" :CONTENTS "(read-from-string \"3 2 1\" :start 3)" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18846 :USER "RyanT5000" :DATE 3353722932 :CHANNEL "#haskell" :TITLE "Skin class" :CONTENTS "	
 data Scene a = Triangle (Vector a) (Vector a) (Vector a)
 	| Rotated a (Vector a) (Scene a)
 	| Translated (Vector a) (Scene a)
@@ -46038,7 +46038,7 @@ data Num angle => AKRState angle childstate = AKRState angle childstate
 
 instance Skin (ArrowKeyRotator subSkin) where
 	composite (ArrowKeyRotator skin) obj (AKRState angle childstate) = Rotated angle (Vector3 1 0 0) (composite skin obj childstate)
---update not written yet" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18845 :USER "bpt" :DATE 3353716420 :CHANNEL "#scheme" :TITLE "NETWORK-TESTS error" :CONTENTS "> ,load-package network-tests
+--update not written yet" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18845 :USER "bpt" :DATE 3353716420 :CHANNEL "#scheme" :TITLE "NETWORK-TESTS error" :CONTENTS "> ,load-package network-tests
 
 Error: vm-exception
        (cdr '())
@@ -46161,7 +46161,7 @@ Error: vm-exception
 1 network-constants: d
 Can't go down from a non-continuation.
 1 network-constants: 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18844 :USER "_deepfire" :DATE 3353715540 :CHANNEL "#lisp" :TITLE "unhelpful SBCL error message" :CONTENTS "I think that the error message emitted by SBCL as a reaction to entering
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18844 :USER "_deepfire" :DATE 3353715540 :CHANNEL "#lisp" :TITLE "unhelpful SBCL error message" :CONTENTS "I think that the error message emitted by SBCL as a reaction to entering
 the following CFFI callback is a bit too obscure:
 
 the callback:
@@ -46177,7 +46177,7 @@ debugger invoked on a SIMPLE-ERROR in thread
   The value NIL is not of type SB-SYS:SYSTEM-AREA-POINTER.
 
 In fact, even walking the debug stack is not much more suggestive of the cause.
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18843 :USER "_deepfire" :DATE 3353714177 :CHANNEL "#lisp" :TITLE "CFFI return value requirement" :CONTENTS "(defcallback cb
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18843 :USER "_deepfire" :DATE 3353714177 :CHANNEL "#lisp" :TITLE "CFFI return value requirement" :CONTENTS "(defcallback cb
     :pointer ((u :pointer) (avatar :uint32) (address :string) (host-id :pointer))
     (values nil))
 
@@ -46197,7 +46197,7 @@ debugger invoked on a SIMPLE-ERROR in thread
   The value NIL is not of type SB-SYS:SYSTEM-AREA-POINTER.
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18842 :USER "technomancy" :DATE 3353713417 :CHANNEL "#emacs" :TITLE "test paste" :CONTENTS ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18842 :USER "technomancy" :DATE 3353713417 :CHANNEL "#emacs" :TITLE "test paste" :CONTENTS ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;     key bindings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -46266,7 +46266,7 @@ debugger invoked on a SIMPLE-ERROR in thread
 (global-set-key [f11] 'ri)
 
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18841 :USER "pmdboi" :DATE 3353713004 :CHANNEL "None" :TITLE "sudoku solver" :CONTENTS ";; sudoku.lisp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18841 :USER "pmdboi" :DATE 3353713004 :CHANNEL "None" :TITLE "sudoku solver" :CONTENTS ";; sudoku.lisp
 ;;
 ;; Implements a sudoku solver. To use, just set the known elements of the
 ;; sudoku board (by using \"(setf (cell i j) n)\" repeatedly) and run \"(solve)\"
@@ -46340,7 +46340,7 @@ debugger invoked on a SIMPLE-ERROR in thread
 
 (defun solve ()
   (do-cell 0 0))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18840 :USER "pmdboi" :DATE 3353712576 :CHANNEL "None" :TITLE "basic interpreter" :CONTENTS "(defparameter *expr-hash-table* (make-hash-table :test #'eql))
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18840 :USER "pmdboi" :DATE 3353712576 :CHANNEL "None" :TITLE "basic interpreter" :CONTENTS "(defparameter *expr-hash-table* (make-hash-table :test #'eql))
 
 (defmacro install-tag-handler ((tag &rest args) &rest action)
   `(setf (gethash ',tag *expr-hash-table*)
@@ -46355,7 +46355,7 @@ debugger invoked on a SIMPLE-ERROR in thread
 
 (install-tag-handler (+ a b) (+ (evaluate a) (evaluate b)))
 (install-tag-handler (* a b) (* (evaluate a) (evaluate b)))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18839 :USER "dog4" :DATE 3353711214 :CHANNEL "None" :TITLE "navs" :CONTENTS "	if (is_fullscreen)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18839 :USER "dog4" :DATE 3353711214 :CHANNEL "None" :TITLE "navs" :CONTENTS "	if (is_fullscreen)
 	{
 		PrintToConsole(\"fulllllasdf\");
 		status = CreateWindowGroup(kWindowGroupAttrLayerTogether, &winGroupRef);
@@ -46365,7 +46365,7 @@ debugger invoked on a SIMPLE-ERROR in thread
 	//	winGroupRef = GetWindowGroupOfClass ( kMovableModalWindowClass );
 	//	SendWindowGroupBehind ( dispWindowGroup, GetWindowGroupOfClass ( kFloatingWindowClass ) );
 	}
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18838 :USER "Tao`" :DATE 3353707976 :CHANNEL "#macdev" :TITLE "passing NSString by reference to void**" :CONTENTS "Hi this is the method signature(pardon the TitleCaps):
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18838 :USER "Tao`" :DATE 3353707976 :CHANNEL "#macdev" :TITLE "passing NSString by reference to void**" :CONTENTS "Hi this is the method signature(pardon the TitleCaps):
 
 - (long)Render:(NSString *)Reference Language:(NSString *)Language Style:(NSString *)Style Result:(void**)Result
 
@@ -46376,7 +46376,7 @@ resultCode = [dtmWrapper Render:@\"wltkhebsyn.14.3.1.2\" Language:@\"en\" Style:
 
 inside the method, how do I get the data that is represented in the (void**)Result variable? a plain cast does not work.
 
-Mike" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18837 :USER "Tao`" :DATE 3353707976 :CHANNEL "#macdev" :TITLE "passing NSString by reference to void**" :CONTENTS "Hi this is the method signature(pardon the TitleCaps):
+Mike" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18837 :USER "Tao`" :DATE 3353707976 :CHANNEL "#macdev" :TITLE "passing NSString by reference to void**" :CONTENTS "Hi this is the method signature(pardon the TitleCaps):
 
 - (long)Render:(NSString *)Reference Language:(NSString *)Language Style:(NSString *)Style Result:(void**)Result
 
@@ -46387,7 +46387,7 @@ resultCode = [dtmWrapper Render:@\"wltkhebsyn.14.3.1.2\" Language:@\"en\" Style:
 
 inside the method, how do I get the data that is represented in the (void**)Result variable? a plain cast does not work.
 
-Mike" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18836 :USER "jcoan" :DATE 3353703828 :CHANNEL "#scheme" :TITLE "neilv's email" :CONTENTS "This seems like a useful feature, and I recall wondering myself why
+Mike" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18836 :USER "jcoan" :DATE 3353703828 :CHANNEL "#scheme" :TITLE "neilv's email" :CONTENTS "This seems like a useful feature, and I recall wondering myself why
 RnRS \"cond\" had \"=>\" yet \"case\" did not.
 
 I suspect the distinction involved reduced-sugar diet: getting the value
@@ -46402,7 +46402,7 @@ forms.
 
 I'd like to be informed by the original wisdom for why \"case\" didn't
 have a \"=>\" in the first place.  Does anyone know the RnRS rationale?
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18835 :USER "thrice`" :DATE 3353703118 :CHANNEL "None" :TITLE "gmpc" :CONTENTS "# Description: gnome client for mpd (music player daemon)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18835 :USER "thrice`" :DATE 3353703118 :CHANNEL "None" :TITLE "gmpc" :CONTENTS "# Description: gnome client for mpd (music player daemon)
 # URL:         http://www.musicpd.org/?page=gmpc
 # Maintainer:  Han Boetes <han@mijncomputer.nl>
 # Packager:    Andrew Brouwers <abrouwers@gmail.com>
@@ -46423,7 +46423,7 @@ build()
     make install DESTDIR=$PKG
     rm -rf $PKG/usr/share/locale/
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18834 :USER "thrice`" :DATE 3353703051 :CHANNEL "None" :TITLE "libmpd" :CONTENTS "name=libmpd
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18834 :USER "thrice`" :DATE 3353703051 :CHANNEL "None" :TITLE "libmpd" :CONTENTS "name=libmpd
 version=0.12.0
 release=1
 source=(http://download.qballcow.nl/programs/gmpc-0.13/$name-$version.tar.gz)
@@ -46433,9 +46433,9 @@ build() {
   make
   make DESTDIR=$PKG install
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18833 :USER "gherrit" :DATE 3353702939 :CHANNEL "#macdev" :TITLE "Problematic NSPredicate" :CONTENTS "// fiirst half of this works, up until && (ANY blah...
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18833 :USER "gherrit" :DATE 3353702939 :CHANNEL "#macdev" :TITLE "Problematic NSPredicate" :CONTENTS "// fiirst half of this works, up until && (ANY blah...
 // Not sure why the ANY is erroring
-topicFilter = [NSPredicate predicateWithFormat: @\"!(topics[SIZE] == 0) && (ALL %@ IN topics) && (ANY cardSides.sideText contains[cd] %@)\", filters, [searchField stringValue]];" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18832 :USER "lnostdal" :DATE 3353702275 :CHANNEL "#programmering" :TITLE "SymbolicWeb, AJAX (html-template)" :CONTENTS "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+topicFilter = [NSPredicate predicateWithFormat: @\"!(topics[SIZE] == 0) && (ALL %@ IN topics) && (ANY cardSides.sideText contains[cd] %@)\", filters, [searchField stringValue]];" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18832 :USER "lnostdal" :DATE 3353702275 :CHANNEL "#programmering" :TITLE "SymbolicWeb, AJAX (html-template)" :CONTENTS "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <!DOCTYPE html 
      PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
      \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
@@ -46465,7 +46465,7 @@ topicFilter = [NSPredicate predicateWithFormat: @\"!(topics[SIZE] == 0) && (ALL 
     
 </body>
 </html>
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18831 :USER "rwlbuis" :DATE 3353701088 :CHANNEL "#webkit" :TITLE "Possible fix for svg invalidation problems (for instance bug 6946)" :CONTENTS "Index: WebCore/kcanvas/RenderPath.cpp
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18831 :USER "rwlbuis" :DATE 3353701088 :CHANNEL "#webkit" :TITLE "Possible fix for svg invalidation problems (for instance bug 6946)" :CONTENTS "Index: WebCore/kcanvas/RenderPath.cpp
 ===================================================================
 --- WebCore/kcanvas/RenderPath.cpp      (revision 13754)
 +++ WebCore/kcanvas/RenderPath.cpp      (working copy)
@@ -46481,7 +46481,7 @@ topicFilter = [NSPredicate predicateWithFormat: @\"!(topics[SIZE] == 0) && (ALL 
 +        d->fillBBox = unionRect(d->fillBBox, path()->boundingBox());
  }
  
- KCanvasPath* RenderPath::path() const" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18830 :USER "hyatt" :DATE 3353700977 :CHANNEL "#webkit" :TITLE "Make outline clipping precise when WebCore sets a clip (e.g., via overflow or the 'clip' css property)" :CONTENTS "Index: WebKit/WebCoreSupport/WebGraphicsBridge.m
+ KCanvasPath* RenderPath::path() const" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18830 :USER "hyatt" :DATE 3353700977 :CHANNEL "#webkit" :TITLE "Make outline clipping precise when WebCore sets a clip (e.g., via overflow or the 'clip' css property)" :CONTENTS "Index: WebKit/WebCoreSupport/WebGraphicsBridge.m
 ===================================================================
 --- WebKit/WebCoreSupport/WebGraphicsBridge.m	(revision 13725)
 +++ WebKit/WebCoreSupport/WebGraphicsBridge.m	(working copy)
@@ -46654,7 +46654,7 @@ Index: WebCore/rendering/RenderLayer.cpp
      if (paintDirtyRect == clipRect)
          return;
      p->restore();
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18829 :USER "MDS" :DATE 3353700611 :CHANNEL "#fpc" :TITLE "record" :CONTENTS "type
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18829 :USER "MDS" :DATE 3353700611 :CHANNEL "#fpc" :TITLE "record" :CONTENTS "type
  TreeItem = ^_TreeItem;
  _TreeItem = record
    pix:Pgchar;
@@ -46677,9 +46677,9 @@ const
    (pix:'';lbl:'All groups';children:allgroups),
    (pix:'';lbl:'Filters';children:filters),
    (pix:'';lbl:'History';children:NULL),
-   (pix:'';lbl:'Recycle Bin';children:NULL));" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18828 :USER "jjkola" :DATE 3353699612 :CHANNEL "#lisp" :TITLE "weird error when calling time-function in Windows" :CONTENTS "* (time (print \"Hello World!\"))
+   (pix:'';lbl:'Recycle Bin';children:NULL));" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18828 :USER "jjkola" :DATE 3353699612 :CHANNEL "#lisp" :TITLE "weird error when calling time-function in Windows" :CONTENTS "* (time (print \"Hello World!\"))
 
-debugger invoked on a TYPE-ERROR: The value NIL is not of type NUMBER." :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18827 :USER "interferon" :DATE 3353697293 :CHANNEL "None" :TITLE "silly" :CONTENTS "(defgeneric process-irc-command (command conn &rest args))
+debugger invoked on a TYPE-ERROR: The value NIL is not of type NUMBER." :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18827 :USER "interferon" :DATE 3353697293 :CHANNEL "None" :TITLE "silly" :CONTENTS "(defgeneric process-irc-command (command conn &rest args))
 
 (defmethod line-received ((conn irc-connection) line)
   (let* ((words (split-sequence #\\Space line))
@@ -46690,13 +46690,13 @@ debugger invoked on a TYPE-ERROR: The value NIL is not of type NUMBER." :ANNOTAT
 (defmethod process-irc-command ((commmand (eql 'foo)) (conn irc-connection)
 				&rest args))
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18826 :USER "forcer" :DATE 3353696430 :CHANNEL "#scsh" :TITLE "WFM" :CONTENTS "#!/usr/bin/scsh \\
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18826 :USER "forcer" :DATE 3353696430 :CHANNEL "#scsh" :TITLE "WFM" :CONTENTS "#!/usr/bin/scsh \\
 -o sort -s
 !#
 
 (display \"Content-type: text/plain\\n\\n\")
 (display (sort-list '(\"one\" \"two\" \"three\") string>))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18825 :USER "antifuchs" :DATE 3353694043 :CHANNEL "#lisp" :TITLE "backtrace from trying to run beirc in the gtkairo backend" :CONTENTS "Can't decode NaN or infinity: #<DOUBLE-FLOAT quiet NaN>.
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18825 :USER "antifuchs" :DATE 3353694043 :CHANNEL "#lisp" :TITLE "backtrace from trying to run beirc in the gtkairo backend" :CONTENTS "Can't decode NaN or infinity: #<DOUBLE-FLOAT quiet NaN>.
    [Condition of type SIMPLE-ERROR]
 
 Restarts:
@@ -46748,7 +46748,7 @@ Backtrace:
  41: (\"foreign function: funcall0\")
  42: (\"foreign function: new_thread_trampoline\")
  43: (\"foreign function: #xB7FBFCED\")
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18824 :USER "lovelace" :DATE 3353693752 :CHANNEL "None" :TITLE "getBundleExecutable" :CONTENTS "std::string cmFindProgramCommand::GetBundleExecutable(std::string bundlePath)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18824 :USER "lovelace" :DATE 3353693752 :CHANNEL "None" :TITLE "getBundleExecutable" :CONTENTS "std::string cmFindProgramCommand::GetBundleExecutable(std::string bundlePath)
 {
   std::string executable = \"\";
 
@@ -46795,7 +46795,7 @@ Backtrace:
 
   return executable;
 }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18823 :USER "josh" :DATE 3353689699 :CHANNEL "None" :TITLE "interface shtuff" :CONTENTS "c++ -o nsCocoaWindow.o -c  -DMOZILLA_INTERNAL_API -DOSTYPE=\\\"Darwin8.6.1\\\" -DOSARCH=\\\"Darwin\\\" -DBUILD_ID=0000000000 -I/Developer/Headers/FlatCarbon -I/Users/josh/src/ff_cocoa_debug/mozilla/widget/src/cocoa/../xpwidgets -I/Users/josh/src/ff_cocoa_debug/mozilla/widget/src/cocoa/../mac -I/System/Library/Frameworks/Carbon.Framework/Headers -I/System/Library/Frameworks/Cocoa.Framework/Headers  -I../../../dist/include/xpcom -I../../../dist/include/gfx -I../../../dist/include/string -I../../../dist/include/uconv -I../../../dist/include/dom -I../../../dist/include/webshell -I../../../dist/include/docshell -I../../../dist/include/plugin -I../../../dist/include/content -I../../../dist/include/layout -I../../../dist/include/view -I../../../dist/include/xul -I../../../dist/include/necko -I../../../dist/include/nkcache -I../../../dist/include/locale -I../../../dist/include/pref -I../../../dist/include/intl -I../../../dist/include/mimetype -I../../../dist/include/unicharutil -I../../../dist/include/exthandler -I../../../dist/include/appshell -I../../../dist/include   -I../../../dist/include/widget -I../../../dist/include/nspr    -I../../../dist/sdk/include    -fPIC   -fno-rtti -fno-exceptions -Wall -Wconversion -Wpointer-arith -Wcast-align -Woverloaded-virtual -Wsynth -Wno-ctor-dtor-privacy -Wno-non-virtual-dtor -Wno-long-long -fpascal-strings -no-cpp-precomp -fno-common -fshort-wchar -I/Developer/Headers/FlatCarbon -pipe  -DDEBUG -D_DEBUG -DDEBUG_josh -DTRACING -g -DUSE_COCOA    -DMOZILLA_CLIENT -include ../../../mozilla-config.h -Wp,-MD,.deps/nsCocoaWindow.pp /Users/josh/src/ff_cocoa_debug/mozilla/widget/src/cocoa/nsCocoaWindow.mm
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18823 :USER "josh" :DATE 3353689699 :CHANNEL "None" :TITLE "interface shtuff" :CONTENTS "c++ -o nsCocoaWindow.o -c  -DMOZILLA_INTERNAL_API -DOSTYPE=\\\"Darwin8.6.1\\\" -DOSARCH=\\\"Darwin\\\" -DBUILD_ID=0000000000 -I/Developer/Headers/FlatCarbon -I/Users/josh/src/ff_cocoa_debug/mozilla/widget/src/cocoa/../xpwidgets -I/Users/josh/src/ff_cocoa_debug/mozilla/widget/src/cocoa/../mac -I/System/Library/Frameworks/Carbon.Framework/Headers -I/System/Library/Frameworks/Cocoa.Framework/Headers  -I../../../dist/include/xpcom -I../../../dist/include/gfx -I../../../dist/include/string -I../../../dist/include/uconv -I../../../dist/include/dom -I../../../dist/include/webshell -I../../../dist/include/docshell -I../../../dist/include/plugin -I../../../dist/include/content -I../../../dist/include/layout -I../../../dist/include/view -I../../../dist/include/xul -I../../../dist/include/necko -I../../../dist/include/nkcache -I../../../dist/include/locale -I../../../dist/include/pref -I../../../dist/include/intl -I../../../dist/include/mimetype -I../../../dist/include/unicharutil -I../../../dist/include/exthandler -I../../../dist/include/appshell -I../../../dist/include   -I../../../dist/include/widget -I../../../dist/include/nspr    -I../../../dist/sdk/include    -fPIC   -fno-rtti -fno-exceptions -Wall -Wconversion -Wpointer-arith -Wcast-align -Woverloaded-virtual -Wsynth -Wno-ctor-dtor-privacy -Wno-non-virtual-dtor -Wno-long-long -fpascal-strings -no-cpp-precomp -fno-common -fshort-wchar -I/Developer/Headers/FlatCarbon -pipe  -DDEBUG -D_DEBUG -DDEBUG_josh -DTRACING -g -DUSE_COCOA    -DMOZILLA_CLIENT -include ../../../mozilla-config.h -Wp,-MD,.deps/nsCocoaWindow.pp /Users/josh/src/ff_cocoa_debug/mozilla/widget/src/cocoa/nsCocoaWindow.mm
 /Users/josh/src/ff_cocoa_debug/mozilla/widget/src/cocoa/nsCocoaWindow.mm: In member function 'virtual nsresult nsCocoaWindow::QueryInterface(const nsIID&, void**)':
 /Users/josh/src/ff_cocoa_debug/mozilla/widget/src/cocoa/nsCocoaWindow.mm:74: error: 'nsPIWidgetMac' was not declared in this scope
 /Users/josh/src/ff_cocoa_debug/mozilla/widget/src/cocoa/nsCocoaWindow.mm:74: error: template argument 1 is invalid
@@ -46813,7 +46813,7 @@ make[1]: *** [libs] Error 2
 make[1]: Leaving directory `/Users/josh/src/ff_cocoa_debug/mozilla/ff_debug_objdir/widget'
 make: *** [all] Error 2
 make: Leaving directory `/Users/josh/src/ff_cocoa_debug/mozilla/ff_debug_objdir/widget'
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18822 :USER "zenspider" :DATE 3353689426 :CHANNEL "None" :TITLE "wtf" :CONTENTS "(defun expand-parse (name l &optional str pos)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18822 :USER "zenspider" :DATE 3353689426 :CHANNEL "None" :TITLE "wtf" :CONTENTS "(defun expand-parse (name l &optional str pos)
   (cond
    ((null l) (list name str pos))
    ((equal 'p (car l)) (expand-parse name (cdr l) str (cons (length str) pos)))
@@ -46825,7 +46825,7 @@ make: Leaving directory `/Users/josh/src/ff_cocoa_debug/mozilla/ff_debug_objdir/
 (blah '(\"shebang\" (\"#!/usr/local/bin/ruby) -w\\n\\n\"))) ; good
 
 (blah '(\"tst\" (\"class Test\" p \" < Test::Unit::TestCase\\n  def setup\\n    \" p \"\\n  end\\n\\n  def test_\" p \"\\n    \" p \"\\n  end\\nend\"))) ; throws because stack too deep - wtf
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18821 :USER "dozer" :DATE 3353687257 :CHANNEL "#haskell" :TITLE "trouble with id" :CONTENTS "module OwlAst
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18821 :USER "dozer" :DATE 3353687257 :CHANNEL "#haskell" :TITLE "trouble with id" :CONTENTS "module OwlAst
     where
 
 import List
@@ -46871,7 +46871,7 @@ data Individual
       annotations :: [annotation],
       types :: [description],
       values :: [value] }
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18820 :USER "antifuchs" :DATE 3353686674 :CHANNEL "#lisp" :TITLE "readtime-conditionals: all that I could think of off the top of my head." :CONTENTS "(cl:defpackage #:readtime-conditionals
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18820 :USER "antifuchs" :DATE 3353686674 :CHANNEL "#lisp" :TITLE "readtime-conditionals: all that I could think of off the top of my head." :CONTENTS "(cl:defpackage #:readtime-conditionals
   (:nicknames #:rc)
   (:use #:cl)
   (:export #:read-if #:read-if-symbol-in-package #:read-if-fbound #:read-if-bound))
@@ -46900,7 +46900,7 @@ data Individual
 
 
 (defun read-if-bound (name package &key (exportedp nil))
-  (read-if-symbol-in-package name package :exportedp exportedp :test #'boundp))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18819 :USER "init65" :DATE 3353683630 :CHANNEL "#macdev" :TITLE "non working code" :CONTENTS "tell application \"Finder\"
+  (read-if-symbol-in-package name package :exportedp exportedp :test #'boundp))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18819 :USER "init65" :DATE 3353683630 :CHANNEL "#macdev" :TITLE "non working code" :CONTENTS "tell application \"Finder\"
 	set sels to selection
 end tell
 
@@ -46921,7 +46921,7 @@ repeat with sel in sels
 	on error error_message
 		display dialog error_message
 	end try
-end repeat" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18818 :USER "DhruvK" :DATE 3353683565 :CHANNEL "#adium" :TITLE "crashlog" :CONTENTS "**********
+end repeat" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18818 :USER "DhruvK" :DATE 3353683565 :CHANNEL "#adium" :TITLE "crashlog" :CONTENTS "**********
 
 Host Name:      Quicksilver
 Date/Time:      2006-04-10 10:46:47.004 -0500
@@ -47227,7 +47227,7 @@ Binary Images Description:
 0x9bbae000 - 0x9bbbafff libzip.jnilib 	/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Libraries/libzip.jnilib
 0xc0000000 - 0xc000efff com.growl.growlwithinstallerframework 0.7.3	/Users/dhruvk/adium/build/Deployment/Adium.app/Contents/Frameworks/Growl-WithInstaller.framework/Versions/A/Growl-WithInstaller
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18817 :USER "turbo24prg" :DATE 3353679591 :CHANNEL "#dylan" :TITLE "Really a required keyword?!" :CONTENTS "define method make-registration (#key username :: <string>, password :: <string>)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18817 :USER "turbo24prg" :DATE 3353679591 :CHANNEL "#dylan" :TITLE "Really a required keyword?!" :CONTENTS "define method make-registration (#key username :: <string>, password :: <string>)
  => (iq :: <iq>);
 [...]
 end method make-registration;
@@ -47238,7 +47238,7 @@ end method make-registration;
                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   Error: Required keyword password missing in call of make-registration{}
 .
-bogus call w/ next?" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18816 :USER "quasi" :DATE 3353675581 :CHANNEL "#lisp" :TITLE "this works nicely" :CONTENTS "(defun memcached-get (key &key ((:ip ip) *memcached-server-ip*) ((:port port) *memcached-server-port*))
+bogus call w/ next?" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18816 :USER "quasi" :DATE 3353675581 :CHANNEL "#lisp" :TITLE "this works nicely" :CONTENTS "(defun memcached-get (key &key ((:ip ip) *memcached-server-ip*) ((:port port) *memcached-server-port*))
   \"Retrive value for key from memcached server.
    key => is the key by which data is stored in memcached
    ip  => is the ip of the memcached server
@@ -47252,7 +47252,7 @@ bogus call w/ next?" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18816 :USER "
 	     (seq (make-string len)))
 	 (read-sequence seq s)
 	 (read-line s nil nil)
-	 seq)))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18815 :USER "lnostdal" :DATE 3353675349 :CHANNEL "#programmering" :TITLE "sources.list" :CONTENTS "
+	 seq)))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18815 :USER "lnostdal" :DATE 3353675349 :CHANNEL "#programmering" :TITLE "sources.list" :CONTENTS "
 deb http://no.archive.ubuntu.com/ubuntu breezy main multiverse restricted universe
 deb-src http://no.archive.ubuntu.com/ubuntu breezy main multiverse restricted universe
 
@@ -47265,7 +47265,7 @@ deb-src http://no.archive.ubuntu.com/ubuntu breezy-security main multiverse rest
 deb http://no.archive.ubuntu.com/ubuntu breezy-backports main multiverse restricted universe
 deb-src http://no.archive.ubuntu.com/ubuntu breezy-backports main multiverse restricted universe
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18814 :USER "quasi" :DATE 3353674909 :CHANNEL "#lisp" :TITLE "(further) corrected stream question" :CONTENTS "(defun memcached-stats ()
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18814 :USER "quasi" :DATE 3353674909 :CHANNEL "#lisp" :TITLE "(further) corrected stream question" :CONTENTS "(defun memcached-stats ()
   (with-open-stream (s (trivial-sockets:open-stream \"127.0.0.1\" 11211))
     (format s \"stats~%\")
     (force-output s)
@@ -47288,7 +47288,7 @@ works
        (unless l (return))
        (princ l stream) (finish-output stream)))))
 
-doesnt work" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18813 :USER "quasi" :DATE 3353674440 :CHANNEL "#lisp" :TITLE "corrected stream question" :CONTENTS "(defun get-memcache-stats ()
+doesnt work" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18813 :USER "quasi" :DATE 3353674440 :CHANNEL "#lisp" :TITLE "corrected stream question" :CONTENTS "(defun get-memcache-stats ()
   (with-open-stream (s (trivial-socket:open-stream ip port))
     (format s \"command\")
     (force-output s)
@@ -47315,7 +47315,7 @@ this when used like
 (with-output-to-string (s)
   (get-memcache-stats s))
 returns \"no value\"
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18812 :USER "quasi" :DATE 3353673472 :CHANNEL "#lisp" :TITLE "stream question" :CONTENTS "(defun get-memcache-stats () 
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18812 :USER "quasi" :DATE 3353673472 :CHANNEL "#lisp" :TITLE "stream question" :CONTENTS "(defun get-memcache-stats () 
   (with-open-stream (s (trivial-socket:open-stream ip port)
   (format s \"command\")
   (force-output s)
@@ -47342,7 +47342,7 @@ this when used like
   (get-memcache-stats s))
 returns \"no value\"
 
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18811 :USER "xgp" :DATE 3353672807 :CHANNEL "#emacs" :TITLE "custom lookup" :CONTENTS "(defun xgp-casi2-lookup-key (key)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18811 :USER "xgp" :DATE 3353672807 :CHANNEL "#emacs" :TITLE "custom lookup" :CONTENTS "(defun xgp-casi2-lookup-key (key)
   (or (if overriding-terminal-local-map
 	  (lookup-key overriding-terminal-local-map key)
 	(if overriding-local-map
@@ -47372,7 +47372,7 @@ returns \"no value\"
 				       (setq map (cdr map))
 				       (if (setq val (lookup-key map key))
 					   t)))
-    val))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18810 :USER "Athas" :DATE 3353672543 :CHANNEL "None" :TITLE "find-optional-argument-values" :CONTENTS "(defun find-optional-argument-values (arglist provided-args &optional
+    val))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18810 :USER "Athas" :DATE 3353672543 :CHANNEL "None" :TITLE "find-optional-argument-values" :CONTENTS "(defun find-optional-argument-values (arglist provided-args &optional
                                       (split-arglist
                                        (split-lambda-list-on-keywords
                                         arglist)))
@@ -47418,7 +47418,7 @@ returns \"no value\"
                      for (keyword value) on keyword-args-values by #'cddr
                      if (keywordp keyword)
                      collect (cons (intern (symbol-name keyword))
-                                   value))))))))" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18809 :USER "Mitja" :DATE 3353669919 :CHANNEL "#emacs" :TITLE ".emacs" :CONTENTS "(setq inferior-lisp-program \"/usr/local/bin/sbcl\")
+                                   value))))))))" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18809 :USER "Mitja" :DATE 3353669919 :CHANNEL "#emacs" :TITLE ".emacs" :CONTENTS "(setq inferior-lisp-program \"/usr/local/bin/sbcl\")
 (add-to-list 'load-path \"/home/mitja/slime\")
 (require 'slime)
 (slime-setup)
@@ -47446,7 +47446,7 @@ returns \"no value\"
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(minibuffer-prompt ((t (:foreground \"white\")))))
-" :ANNOTATIONS NIL) #S(MONTEZUMA::PASTE :NUMBER 18808 :USER "antifuchs" :DATE 3353667846 :CHANNEL "#lisp" :TITLE "gna. nested errors with sbcl 0.9.11.26 and slime" :CONTENTS "(load \"/home/asf/dl/cvs/slime/swank-loader.lisp\" :verbose t)
+" :ANNOTATIONS NIL) #S(PASTE-SEARCH::PASTE :NUMBER 18808 :USER "antifuchs" :DATE 3353667846 :CHANNEL "#lisp" :TITLE "gna. nested errors with sbcl 0.9.11.26 and slime" :CONTENTS "(load \"/home/asf/dl/cvs/slime/swank-loader.lisp\" :verbose t)
 (swank:start-server \"/tmp/slime.5435\" :external-format :iso-latin-1-unix)
 
 STYLE-WARNING:
