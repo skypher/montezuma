@@ -58,7 +58,6 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
 (defmethod add-clause  ((self boolean-query) clause)
   (when (> (length (clauses self)) (max-clause-count self))
     (error 'too-many-clauses-error))
-  
   (vector-push-extend clause (clauses self)))
 
 (defmethod create-weight ((self boolean-query) searcher)

@@ -10,7 +10,7 @@
              :documentation "If true, documents documents which _do not_ match this sub-query will _not_ match the boolean query.")
    (prohibited :initform nil :reader prohibited? :writer prohibited
                :documentation "If true, documents documents which _do_ match this sub-query will _not_ match the boolean query.")
-   (occur :initform :should :accessor occur :initarg :occur
+   (occur :initform :should-occur :accessor occur :initarg :occur
           :documentation "See BooleanQuery::Occur for values for this attribute.")))
 
 (defmethod initialize-instance :after ((self boolean-clause) &key)
