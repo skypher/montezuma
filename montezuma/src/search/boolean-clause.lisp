@@ -18,7 +18,7 @@
 
 (defmethod print-object ((self boolean-clause) stream)
   (print-unreadable-object (self stream :type T)
-    (format stream "~A: ~A" (occur self) (query self))))
+    (format stream "~_~W ~_~W" (occur self) (query self))))
 
 (defmethod (setf occur) :after (value (self boolean-clause))
   (set-fields self value))

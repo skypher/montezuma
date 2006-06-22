@@ -11,10 +11,19 @@
 
 (defmethod print-object ((self phrase-query) stream)
   (print-unreadable-object (self stream :type T)
-    (format stream "field:~S terms: " (field self))
-    (dosequence (term (terms self) :index i)
-      (let ((position (aref (positions self) i)))
-	(format stream "~S:~S " (term-text term) position)))))
+    (pprint-logical-block (stream '(1 2))
+      (format stream "field: ~S " (field self))
+      (pprint-newline :fill stream)
+      (format stream "terms: [")
+      (pprint-logical-block (stream (coerce (terms self) 'list))
+	(pprint-exit-if-list-exhausted)
+	(loop as term = (pprint-pop)
+	      for i = 0 then (+ i 1)
+	      do (format stream "~A:~S" (term-text term) (aref (positions self) i))
+	      (pprint-exit-if-list-exhausted)
+	      (write-char #\space stream)
+	      (pprint-newline :fill stream)))
+      (format stream "]"))))
 
 
 (defgeneric add-term-to-query (phrase-query term &optional position pos-inc))
