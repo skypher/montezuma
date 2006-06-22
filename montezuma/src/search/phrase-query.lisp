@@ -42,6 +42,10 @@
    (query-norm)
    (value :initform nil :reader value)))
 
+(defmethod print-object ((self phrase-weight) stream)
+  (print-unreadable-object (self stream :type T :identity T)
+    (format stream "query: ~S" (query self))))
+
 (defmethod initialize-instance :after ((self phrase-weight) &key searcher)
   (with-slots (similarity idf query) self
     (setf similarity (similarity-implementation query searcher))

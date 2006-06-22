@@ -26,6 +26,9 @@
    (pq)
    (freq :accessor freq)))
 
+(defmethod print-object ((self phrase-scorer) stream)
+  (print-unreadable-object (self stream :identity T :type T)
+    (format stream "weight: ~S" (slot-value self 'weight))))
 
 (defmethod initialize-instance :after ((self phrase-scorer) &key term-positions positions)
   (with-slots (value first last pq weight) self
