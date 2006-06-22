@@ -20,7 +20,16 @@
 
 (defmethod print-object ((self boolean-query) stream)
   (print-unreadable-object (self stream :type T)
-    (format stream "~:_with ~W clauses: ~:_~<~W~:>" (length (clauses self)) (coerce (clauses self) 'list))))
+    (format stream "with ~S clauses: " (length (clauses self)))
+    (pprint-newline :linear stream)
+    (pprint-logical-block (stream (coerce (clauses self) 'list))
+      (pprint-exit-if-list-exhausted)
+      (loop as clause = (pprint-pop)
+	    do
+	    (format stream "~W" clause)
+	    (pprint-exit-if-list-exhausted)
+	    (write-char #\space stream)
+	    (pprint-newline :linear stream)))))
 
 (define-condition too-many-clauses-error (error)
                   ()

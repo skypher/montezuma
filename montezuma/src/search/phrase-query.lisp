@@ -11,6 +11,7 @@
 
 (defmethod print-object ((self phrase-query) stream)
   (print-unreadable-object (self stream :type T)
+    (pprint-newline :linear stream)
     (pprint-logical-block (stream '(1 2))
       (format stream "field: ~S " (field self))
       (pprint-newline :fill stream)
