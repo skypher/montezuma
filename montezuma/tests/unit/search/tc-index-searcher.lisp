@@ -124,7 +124,8 @@
 	 (add-query bq tq1 :must-occur)
 	 (add-query bq tq2 :should-occur)
 	 (add-query bq tq3 :should-occur)
-	 (check-hits (fixture-var 'is) bq '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17)))))
+	 (check-hits (fixture-var 'is) bq '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17))))))
+  (:testfun test-boolean-query-with-must-not-and-phrase
    ;; Trying to tickle ticket:3
    (let ((sub-query-1 (make-instance 'boolean-query))
 	 (sub-query-2 (make-instance 'boolean-query))
