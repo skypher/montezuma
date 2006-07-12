@@ -124,7 +124,27 @@
 	 (add-query bq tq1 :must-occur)
 	 (add-query bq tq2 :should-occur)
 	 (add-query bq tq3 :should-occur)
-	 (check-hits (fixture-var 'is) bq '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17))))))
+	 (check-hits (fixture-var 'is) bq '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17)))))
+   ;; Trying to tickle ticket:3
+   (let ((sub-query-1 (make-instance 'boolean-query))
+	 (sub-query-2 (make-instance 'boolean-query))
+	 (query (make-instance 'boolean-query)))
+     (add-query sub-query-1 (make-instance 'term-query
+					   :term (make-term "field" "word1"))
+		:should-occur)
+     (add-query sub-query-2 (make-instance 'term-query
+					   :term (make-term "field" "word1"))
+		:should-occur)
+     (add-query sub-query-2 (make-instance 'term-query
+					   :term (make-term "field" "word1"))
+		:should-occur)
+     (let ((pq (make-instance 'phrase-query)))
+       (add-term-to-query pq (make-term "field" "word1"))
+       (add-term-to-query pq (make-term "field" "word3"))
+       (add-query sub-query-2 pq :should-occur))
+     (add-query query sub-query-1 :should-occur)
+     (add-query query sub-query-2 :must-not-occur)
+     (check-hits (fixture-var 'is) query '(0 1 2 3 4 5 6 7 8 9 10 11 12 13))))
   (:testfun test-phrase-query
    (let ((pq (make-instance 'phrase-query))
 	 (t1 (make-term "field" "quick"))
@@ -159,10 +179,10 @@
      (add-term-to-query pq t1)
      (add-term-to-query pq t2)
      (let ((bq (make-instance 'boolean-query)))
-       (add-query bq pq :must-not-occur)
        (add-query bq (make-instance 'term-query
 				    :term (make-term "field" "word1"))
 		  :should-occur)
+       (add-query bq pq :must-not-occur)
        (check-hits (fixture-var 'is) bq '(0 2 3 4 5 6 7 9 10 11 12 13 14 15 16)))))
   (:testfun test-range-query
    (let ((rq (make-instance 'range-query
