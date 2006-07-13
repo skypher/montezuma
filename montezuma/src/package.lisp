@@ -33,6 +33,7 @@
   (:export 
    #:make-fs-directory
    #:standard-analyzer
+   #:whitespace-analyzer
    #:index-writer
    #:document
    #:add-field
@@ -73,6 +74,8 @@
    #:commit
    #:flush
    #:delete
+
+   #:document-value
 
    #:token-image
    #:all-tokens

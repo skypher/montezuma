@@ -64,7 +64,7 @@
 (defgeneric document-field (document name))
 
 (defmethod document-field ((self document) name)
-  (car (document-fields self (string name))))
+  (car (document-fields self name)))
 
 (defgeneric document-fields (document name))
 
@@ -84,11 +84,24 @@
 
 (defgeneric document-values (document name))
 
-(defmethod document-values ((self document) name)
-  (let ((fields (remove-if #'field-binary-p (document-fields self name))))
+(defmethod document-values ((document document) name)
+  (let ((fields (remove-if #'field-binary-p (document-fields document name))))
     (if fields
 	(format nil "~{~A~^ ~}" (mapcar #'field-data fields))
 	nil)))
+
+(defgeneric document-value (document field-name))
+
+(defmethod document-value ((document document) field-name)
+  (field-data (document-field document field-name)))
+
+(defgeneric (setf document-value) (value document field-name))
+
+(defmethod (setf document-value) (value (document document) field-name)
+  (let ((field (document-field document field-name)))
+    (if field
+	(setf (field-data field) value)
+	(add-field document (make-field field-name value)))))
 
 (defgeneric (setf document-values) (value document field-name))
 
@@ -97,5 +110,3 @@
     (if field
 	(setf (field-data field) value)
 	(add-field document (make-field field-name value)))))
-
-
