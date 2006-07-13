@@ -255,3 +255,7 @@ Deleting documents is similar to updating them:
   (montezuma:delete-document *index* "title:\"Programming Lips\"")
 }}}
 
+
+=== Onward ===
+
+For a complete example of using Montezuma to index and retrieve real information, see the file `tests/corpora/pastes-1000/paste-search.lisp`.
