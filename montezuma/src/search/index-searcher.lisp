@@ -1,4 +1,4 @@
-(in-package montezuma)
+(in-package #:montezuma)
 
 (defclass index-searcher ()
   ((similarity :accessor similarity :initarg :similarity)

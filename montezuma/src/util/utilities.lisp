@@ -1,4 +1,4 @@
-(in-package montezuma)
+(in-package #:montezuma)
 
 (declaim (inline length-1-list-p))
 (defun length-1-list-p (x) 

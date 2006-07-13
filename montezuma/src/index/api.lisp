@@ -1,4 +1,4 @@
-(in-package montezuma)
+(in-package #:montezuma)
 
 #+Ignore
 ;; defined in store's api

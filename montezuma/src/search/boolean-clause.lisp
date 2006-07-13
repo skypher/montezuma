@@ -1,4 +1,4 @@
-(in-package montezuma)
+(in-package #:montezuma)
 
 ;;?? equality testing in ruby (cf. eql?)
 ;;?? alias :== eql?

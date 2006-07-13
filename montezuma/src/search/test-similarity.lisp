@@ -1,2 +1,2 @@
-(in-package montezuma)
+(in-package #:montezuma)
 

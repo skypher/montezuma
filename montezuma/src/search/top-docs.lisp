@@ -1,4 +1,4 @@
-(in-package montezuma)
+(in-package #:montezuma)
 
 (defclass top-docs ()
   ((score-docs :accessor score-docs :initarg :score-docs

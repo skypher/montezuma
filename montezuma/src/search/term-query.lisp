@@ -1,4 +1,4 @@
-(in-package montezuma)
+(in-package #:montezuma)
 
 (defclass term-query (query)
   ((term :reader term :initarg :term)))

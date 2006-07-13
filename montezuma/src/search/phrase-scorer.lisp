@@ -1,4 +1,4 @@
-(in-package montezuma)
+(in-package #:montezuma)
 
 ;;?? FIXME: explain, to-s
 

@@ -1,4 +1,4 @@
-(in-package montezuma)
+(in-package #:montezuma)
 
 (defparameter +max-docs+ #x7FFFFFF)
 

@@ -1,4 +1,4 @@
-(in-package montezuma)
+(in-package #:montezuma)
 
 (defgeneric length-norm (similarity field num-terms)
   (:documentation ""))

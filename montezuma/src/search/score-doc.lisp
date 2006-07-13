@@ -1,4 +1,4 @@
-(in-package montezuma)
+(in-package #:montezuma)
 
 ;;?? what does the % do here?
 ;;       "#{@doc} -> %0.2f" % @score
