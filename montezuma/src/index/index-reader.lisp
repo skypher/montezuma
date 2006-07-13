@@ -126,9 +126,9 @@
     (eql (segment-infos-read-current-version directory)
 	 (version segment-infos))))
 
-(defgeneric delete (index-reader doc-number))
+(defgeneric delete-document (index-reader doc-number))
 
-(defmethod delete ((self index-reader) doc-num)
+(defmethod delete-document ((self index-reader) doc-num)
   (do-delete self doc-num)
   (setf (slot-value self 'has-changes-p) T))
 
@@ -141,7 +141,7 @@
 	(let ((n 0))
 	  (unwind-protect
 	       (while (next? docs)
-		 (delete self (doc docs))
+		 (delete-document self (doc docs))
 		 (incf n))
 	    (close docs))
 	  n))))

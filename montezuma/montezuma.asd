@@ -1,6 +1,16 @@
 ;;; ------------------------------------------------- -*- Mode: LISP -*-
+;;; Montezuma -- A text search engine based on Ferret/Lucene.
+;;;
+;;; Copyright 2006 John Wiseman
+;;; jjwiseman@yahoo.com
+;;; 2006-07-13
+;;;
+;;; Licensed under the MIT license--see the accompanying LICENSE.txt
+;;; file.
+;;;
+;;; ASDF system definition.
 
-(in-package :asdf)
+(in-package #:asdf)
 
 (defsystem #:montezuma
     :name "Montezuma"
@@ -11,6 +21,7 @@
     :description "Montezuma is a port of the Lucene text search engine library."
     :long-description "Montezuma is a port of the Ferret text search engine library, which is itself a port of the Lucene engine."
     :depends-on ("cl-ppcre" "cl-fad")
+    ;; All source is under the src directory.
     :pathname (make-pathname :directory '(:relative "src"))
     :components
     ((:file "package")
@@ -125,13 +136,14 @@
   (oos 'load-op '#:montezuma-tests)
   (oos 'test-op '#:montezuma-tests :force t))
 
-(defmethod operation-done-p ((o asdf:test-op) (c (eql (find-system '#:montezuma))))
+(defmethod operation-done-p ((o test-op) (c (eql (find-system '#:montezuma))))
   (declare (ignore o) (ignore c))
-  (values nil))
+  NIL)
 
 
 
 (defsystem #:montezuma-tests
+  :description "Tests for Montezuma."
   :depends-on (#:montezuma)
   :components
   ((:module "tests"
@@ -190,12 +202,12 @@
 				      (:file "tc-index"))
 			 :depends-on ("tests"))))))))
 
-(defmethod perform ((o asdf:test-op) (c (eql (find-system '#:montezuma-tests))))
-  (declare (ignore o) (ignore c))
+(defmethod perform ((o test-op) (c (eql (find-system '#:montezuma-tests))))
+  (declare (ignore o))
   (or (funcall (intern (symbol-name '#:run-tests)
                        (find-package '#:montezuma)))
-      (error "test-op failed")))
+      (error "test-op on ~S failed." c)))
 
 (defmethod operation-done-p ((o test-op) (c (eql (find-system '#:montezuma-tests))))
   (declare (ignore o) (ignore c))
-  (values nil))
+  NIL)

@@ -229,14 +229,14 @@
 	  (T
 	   (get-document reader id)))))
 
-(defmethod delete ((self index) id)
+(defmethod delete-document ((self index) id)
   (let ((reader (reader self)))
     (let ((count (cond ((stringp id)
 			(delete-docs-with-term reader (make-term "id" id)))
 		       ((typep id 'term)
 			(delete-docs-with-term reader id))
 		       ((integerp id)
-			(delete reader id))
+			(delete-document reader id))
 		       (T
 			(error "Can't delete for id ~S" id)))))
       (when (slot-value self 'auto-flush-p)
@@ -252,7 +252,7 @@
     (search-each searcher query
 		 #'(lambda (doc score)
 		     (declare (ignore score))
-		     (delete reader doc)))
+		     (delete-document reader doc)))
     (when (slot-value self 'auto-flush-p)
       (flush self))))
 
@@ -286,7 +286,7 @@
 		   (T
 		    (setf (document-values document (get-index-option options :default-field))
 			  (string new-val))))
-	     (delete reader id)
+	     (delete-document reader id)
 	     (let ((writer (writer self)))
 	       (add-document-to-index-writer writer document))))
 	  (T
@@ -317,7 +317,7 @@
 			      (setf (document-values document (get-index-option (slot-value self 'options) :default-field))
 				    (string new-val))))
 		       (push document docs-to-add)
-		       (delete reader id))))
+		       (delete-document reader id))))
     (let ((writer (writer self)))
       (dolist (doc (reverse docs-to-add))
 	(add-document-to-index-writer writer doc))

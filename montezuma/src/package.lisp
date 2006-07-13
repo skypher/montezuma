@@ -27,7 +27,7 @@
 (defpackage #:montezuma
   (:shadow #:directory #:read-byte #:write-byte #:write-string 
 	   #:close #:delete-file #:rename-file #:count #:search
-	   #:merge #:file-length #:read #:write #:delete #:optimize
+	   #:merge #:file-length #:read #:write #:optimize
 	   #:sort)
   (:use #:common-lisp #:montezuma.parser)
   (:export 
@@ -64,7 +64,12 @@
    #:document-field
    #:term-query
    #:index-searcher
-   
+
+   #:query-update
+   #:query-delete
+   #:delete-document
+   #:update
+
    #:commit
    #:flush
    #:delete

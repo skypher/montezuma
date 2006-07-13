@@ -65,7 +65,7 @@
   (with-slots (num-docs has-deletions-p) self
     (setf num-docs -1)
     (with-sub-reader (sub-reader start) self n
-      (delete sub-reader start))
+      (delete-document sub-reader start))
     (setf has-deletions-p T)))
 
 (defmethod do-undelete-all ((self multi-reader))
