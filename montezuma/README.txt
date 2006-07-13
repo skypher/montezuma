@@ -39,7 +39,7 @@ And ASDF to load it:
   (asdf:oos 'asdf:load-op '#:montezuma)
 
 
-* Testing
+** Testing
 
 Once Montezuma has been loaded, you can run the unit tests if you
 like:
@@ -47,7 +47,12 @@ like:
   (asdf:oos 'asdf:test-op '#:montezuma)
 
 
-* Use
+** Use
 
 See the TUTORIAL.TXT file for more information on how to use
 Montezuma.
+
+
+** Acknowledgements
+
+Thanks to Dave Balmain, Gary King and Peter Seibel.
