@@ -52,6 +52,9 @@ like:
 See the TUTORIAL.TXT file for more information on how to use
 Montezuma.
 
+The Montezuma project page at http://projects.heavymeta.org/montezuma/
+should have the latest information about Montezuma.
+
 
 ** Acknowledgements
 
