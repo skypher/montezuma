@@ -59,7 +59,7 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
 (defgeneric add-query (boolean-query query occur)
   (:documentation ""))
 
-(defmethod add-query ((self boolean-query) query occur)
+(defmethod add-query ((self boolean-query) (query query) occur)
   (add-clause self (make-instance 'boolean-clause :query query :occur occur)))
 
 (defgeneric add-clause  (boolean-query clause))

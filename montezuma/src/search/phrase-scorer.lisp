@@ -50,10 +50,10 @@
 (defmethod next? ((self phrase-scorer))
   (cond ((first-time-p self)
          (init self)
-         (setf (first-time-p self) nil))
+         (setf (first-time-p self) NIL))
         ((more-p self)
          (setf (more-p self) (next? (last-index self)))))
-  (values (do-next self)))
+  (do-next self))
 
 (defmethod do-next ((self phrase-scorer))
   (while (more-p self)
@@ -69,9 +69,9 @@
 	  ;; no match so trigger further scanning
 	  (setf (more-p self) (next? (last-index self)))
 	  ;; found a match
-	  (return-from do-next t))))
+	  (return-from do-next T))))
   ;; no more matches
-  (values nil))
+  NIL)
 
 (defmethod each ((self phrase-scorer) fn)
   (let ((pp (slot-value self 'first)))
@@ -93,8 +93,7 @@
   (when (more-p self) 
     ;;?? fixme: better name
     (do-sort self))
-  
-  (values (do-next self)))
+  (do-next self))
 
 (defmethod init ((self phrase-scorer))
   (block nil (each self (lambda (pp) (unless (and (and (more-p self) T) (next? pp)) (return)))))
