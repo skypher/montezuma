@@ -16,7 +16,7 @@
     :name "Montezuma"
     :author "John Wiseman <jjwiseman@yahoo.com>"
     :maintainer "John Wiseman <jjwiseman@yahoo.com>"
-    :version "0.1"
+    :version "0.1.1"
     :licence "MIT"
     :description "Montezuma is a port of the Lucene text search engine library."
     :long-description "Montezuma is a port of the Ferret text search engine library, which is itself a port of the Lucene engine."
