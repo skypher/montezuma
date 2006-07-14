@@ -118,13 +118,13 @@ field. We could type something like;
 
 {{{
   ;; Doesn't work yet, spans haven't been implemented.
-  (montezuma:search-each *index* "date:(>=20050905) *:adipocere *:gullet"
+  (montezuma:search-each *index* "date:(>=20050905) adipocere gullet"
     #'(lambda (doc score)
         (format T "~&Document ~S found with score of ~S." doc score)))
 
   ;; What you can do is this, which will find all documents from
   ;; September containing "adipocere" or "gullet":
-  (montezuma:search-each *index* "date:200509* *:adipocere *:gullet"
+  (montezuma:search-each *index* "date:200509* adipocere gullet"
     #'(lambda (doc score)
         (format T "~&Document ~S found with score of ~S." doc score)))
 }}}
