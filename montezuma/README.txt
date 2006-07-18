@@ -57,4 +57,9 @@ should have the latest information about Montezuma.
 
 ** Acknowledgements
 
-Thanks to Dave Balmain, Gary King and Peter Seibel.
+Thanks to Dave Balmain, Gary King, Peter Seibel (for his META-inspired
+parser), Xach Beane (for the heap implementation from his TIMER
+library[1]) and Franz. Inc. (for their Porter stemmer[2]).
+
+[2] http://www.xach.com/lisp/timer/doc.html
+[3] http://www.lispwire.com/entry-text-porter-word-stemmer-des
