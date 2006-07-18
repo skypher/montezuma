@@ -7,7 +7,6 @@ Montezuma is a text search engine library for Lisp based on the Ferret
 library[1] for Ruby, which is itself based on the Lucene library[2]
 for Java.
 
-
 [1] http://ferret.davebalmain.com/trac
 [2] http://lucene.apache.org/
 
