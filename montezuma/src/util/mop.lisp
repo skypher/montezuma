@@ -7,11 +7,13 @@
 (defun class-slots (class)
   #+(or digitool openmcl) (ccl:class-slots class)
   #+sbcl (sb-mop:class-slots class)
+  #+cmu (mop:class-slots class)
   #+allegro (mop:class-slots class))
   
 (defun slot-definition-name (slot-defn)
   #+(or digitool openmcl) (ccl:slot-definition-name slot-defn)
   #+sbcl (sb-mop:slot-definition-name slot-defn)
+  #+cmu (mop:slot-definition-name slot-defn)
   #+allegro (mop:slot-definition-name slot-defn))
 
 
@@ -28,9 +30,10 @@
 (defmethod clone-object ((object T))
   (let ((copy (allocate-instance (class-of object))))
     (loop for slot in (class-slots (class-of object))
-       when (slot-boundp object (slot-definition-name slot))
-       do (setf (slot-value copy (slot-definition-name slot))
-		(slot-value object (slot-definition-name slot))))
+	 do (let ((slot-name (slot-definition-name slot)))
+	      (when (slot-boundp object slot-name)
+		(setf (slot-value copy slot-name)
+		      (slot-value object slot-name)))))
     copy))
 
 (defmethod initialize-copy (self o)
