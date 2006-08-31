@@ -8,37 +8,52 @@
 ;; be returned with hits on the document.
 
 (defclass field ()
-  ((name :initarg :name :reader field-name)
-   (data :initarg :data :accessor field-data)
-   (boost :initarg :boost 
-          :accessor boost
-          :initform 1.0)
-   (stored-p :initarg :stored-p
-             :accessor field-stored-p
-             :initform nil)
-   (indexed-p :initarg :indexed-p :accessor field-indexed-p
-              :initform t)
-   (tokenized-p :initarg :tokenized-p 
-                :accessor field-tokenized-p
-                :initform t)
-   (binary-p :initarg :binary-p 
-             :accessor field-binary-p
-             :initform nil)
-   (compressed-p :initarg :compressed-p
-                 :accessor field-compressed-p
-                 :initform nil)
-   (store-term-vector-p :initarg :store-term-vector-p 
-                        :accessor field-store-term-vector-p
-                        :initform nil)
-   (store-positions-p :initarg :store-positions-p 
-                      :accessor field-store-positions-p
-                      :initform nil)
-   (store-offsets-p :initarg :store-offsets-p 
-                    :accessor field-store-offsets-p
-                    :initform nil)
-   (omit-norms-p :initarg :omit-norms-p 
-                 :accessor field-omit-norms-p
-                 :initform nil)))
+  ((name
+    :initarg :name
+    :reader field-name)
+   (data
+    :initarg :data
+    :accessor field-data)
+   (boost
+    :initarg :boost 
+    :accessor boost
+    :initform 1.0)
+   (stored-p
+    :initarg :stored-p
+    :accessor field-stored-p
+    :initform NIL)
+   (indexed-p
+    :initarg :indexed-p
+    :accessor field-indexed-p
+    :initform T)
+   (tokenized-p
+    :initarg :tokenized-p 
+    :accessor field-tokenized-p
+    :initform T)
+   (binary-p
+    :initarg :binary-p 
+    :accessor field-binary-p
+    :initform NIL)
+   (compressed-p
+    :initarg :compressed-p
+    :accessor field-compressed-p
+    :initform NIL)
+   (store-term-vector-p
+    :initarg :store-term-vector-p 
+    :accessor field-store-term-vector-p
+    :initform NIL)
+   (store-positions-p
+    :initarg :store-positions-p 
+    :accessor field-store-positions-p
+    :initform NIL)
+   (store-offsets-p
+    :initarg :store-offsets-p 
+    :accessor field-store-offsets-p
+    :initform NIL)
+   (omit-norms-p
+    :initarg :omit-norms-p 
+    :accessor field-omit-norms-p
+    :initform NIL)))
 
 (defmethod print-object ((self field) stream)
   (print-unreadable-object (self stream :type T :identity T)
@@ -86,7 +101,7 @@
   (setf (field-store-offsets-p self) (and (member store-term-vector '(:with-offsets :with-positions-offsets)) T))
   store-term-vector)
 
-(defun make-field (name value &key (stored T) (index :untokenized) (store-term-vector NIL) (binary-p NIL) (boost 1.0))
+(defun make-field (name value &key (stored T) (index :tokenized) (store-term-vector NIL) (binary-p NIL) (boost 1.0))
   (check-type index (member NIL :tokenized :untokenized :no-norms))
   (check-type stored (member NIL T :compress))
   (check-type store-term-vector (member NIL T :with-positions :with-offsets :with-positions-offsets))
