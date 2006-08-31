@@ -3,11 +3,11 @@
 (defclass analyzer ()
   ())
 
-(defgeneric token-stream (tokenizer field string))
+(defgeneric token-stream (tokenizer field string-or-stream))
 
-(defmethod token-stream ((self analyzer) field string)
+(defmethod token-stream ((self analyzer) field string-or-stream)
   (declare (ignore field))
-  (make-instance 'lowercase-tokenizer :input string))
+  (make-instance 'lowercase-tokenizer :input string-or-stream))
 
 (defgeneric position-increment-gap (analyzer field-name))
 
@@ -27,9 +27,9 @@
 (defclass whitespace-analyzer (analyzer)
   ())
 
-(defmethod token-stream ((self whitespace-analyzer) field string)
+(defmethod token-stream ((self whitespace-analyzer) field string-or-stream)
   (declare (ignore field))
-  (make-instance 'whitespace-tokenizer :input string))
+  (make-instance 'whitespace-tokenizer :input string-or-stream))
 
 
 (defparameter *english-stop-words*
@@ -44,30 +44,30 @@
   (:default-initargs 
    :stop-words *english-stop-words*))
 
-(defmethod token-stream ((self stop-analyzer) field string)
+(defmethod token-stream ((self stop-analyzer) field string-or-stream)
   (declare (ignore field))
   (with-slots (stop-words) self
     (make-instance 'stop-filter
-		   :input (make-instance 'lowercase-tokenizer :input string)
+		   :input (make-instance 'lowercase-tokenizer :input string-or-stream)
 		   :stop-set stop-words)))
 
 
 (defclass standard-analyzer (stop-analyzer)
   ())
 
-(defmethod token-stream ((self standard-analyzer) field string)
+(defmethod token-stream ((self standard-analyzer) field string-or-stream)
   (declare (ignore field))
   (make-instance 'stop-filter
 		 :input (make-instance 'lowercase-filter
 				       :input (make-instance 'standard-tokenizer
-							     :input string))))
+							     :input string-or-stream))))
 
 
 (defclass per-field-analyzer-wrapper (analyzer)
   ((default-analyzer :initarg :default-analyzer)
    (analyzers :initform (make-hash-table :test #'equal))))
 
-(defmethod token-stream ((self per-field-analyzer-wrapper) field string)
+(defmethod token-stream ((self per-field-analyzer-wrapper) field string-or-stream)
   (with-slots (analyzers default-analyzer) self
     (let ((analyzer (gethash field analyzers default-analyzer)))
-      (token-stream analyzer field string))))
+      (token-stream analyzer field string-or-stream))))

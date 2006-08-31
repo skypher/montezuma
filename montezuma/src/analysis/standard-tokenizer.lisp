@@ -35,15 +35,18 @@
 		  (hasdigit "\\w*\\d\\w*"))
 	      (let ((re (concatenate 'string
 				     alpha "+"
-				     "(('" alpha "+)+"
-				     "|\\.(" alpha "\\.)+"
-				     "|(@|\\&)\\w+([-.]\\w+)*"
+				     "(?:(?:'" alpha "+)+"
+				     "|\\.(?:" alpha "\\.)+"
+				     "|(?:@|\\&)\\w+(?:[-.]\\w+)*"
 				     ")"
-				     "|\\w+(([\\-._]\\w+)*\\@\\w+([-.]\\w+)+"
-				     "|" p hasdigit "(" p "\\w+" p hasdigit ")*(" p "\\w+)?"
-				     "|(\\.\\w+)+"
+				     "|\\w+(?:(?:[\\-._]\\w+)*\\@\\w+(?:[-.]\\w+)+"
+;;				     "|(?=.*@)\\w+(([\\-._]\\w+)*@\\w+([-.]\\w+)+"
+				     "|" p hasdigit "(?:" p "\\w+" p hasdigit ")*(?:" p "\\w+)?"
+				     "|(?:\\.\\w+)+"
 				     "|)")))
-		(cl-ppcre:create-scanner re)))))))
+		(cl-ppcre:create-scanner re)
+		;;re
+		))))))
 
 
 (defparameter *dot-regexp* (cl-ppcre:create-scanner '(:sequence ".")))
