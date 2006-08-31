@@ -8,12 +8,14 @@
   #+(or digitool openmcl) (ccl:class-slots class)
   #+sbcl (sb-mop:class-slots class)
   #+cmu (mop:class-slots class)
+  #+lispworks (clos:class-slots class)
   #+allegro (mop:class-slots class))
   
 (defun slot-definition-name (slot-defn)
   #+(or digitool openmcl) (ccl:slot-definition-name slot-defn)
   #+sbcl (sb-mop:slot-definition-name slot-defn)
   #+cmu (mop:slot-definition-name slot-defn)
+  #+lispworks (clos:slot-definition-name slot-defn)
   #+allegro (mop:slot-definition-name slot-defn))
 
 
