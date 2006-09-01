@@ -3,7 +3,7 @@
 (defclass analyzer ()
   ())
 
-(defgeneric token-stream (tokenizer field string-or-stream))
+(defgeneric token-stream (analyzer field string-or-stream))
 
 (defmethod token-stream ((self analyzer) field string-or-stream)
   (declare (ignore field))
