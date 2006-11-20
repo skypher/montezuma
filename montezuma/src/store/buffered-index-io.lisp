@@ -1,7 +1,7 @@
 (in-package #:montezuma)
 
 
-(defparameter *default-buffer-size* 128)
+(defparameter *default-buffer-size* 1024)
 
 
 (defclass buffered-index-output (index-output)
