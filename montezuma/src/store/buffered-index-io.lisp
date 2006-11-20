@@ -50,9 +50,10 @@
 
 (defmethod flush ((self buffered-index-output))
   (with-slots (buffer buffer-position buffer-start) self
-    (flush-buffer self buffer buffer-position)
-    (incf buffer-start buffer-position)
-    (setf buffer-position 0)))
+    (when (> buffer-position 0)
+      (flush-buffer self buffer buffer-position)
+      (incf buffer-start buffer-position)
+      (setf buffer-position 0))))
 
 (defmethod close ((self buffered-index-output))
   (flush self))
