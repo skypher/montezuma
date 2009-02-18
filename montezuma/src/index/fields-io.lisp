@@ -63,7 +63,7 @@
 			  (let ((b (make-array (read-vint fields-stream))))
 			    (read-bytes fields-stream b 0 (length b))
 			    (setf data (bytes-to-string (uncompress b)))))
-			(setf data (read-string fields-stream)))
+                        (setf data (read-string fields-stream)))
 		    (let ((stv (if (field-store-term-vector-p fi)
 				   (cond ((and (field-store-positions-p fi)
 					       (field-store-offsets-p fi))

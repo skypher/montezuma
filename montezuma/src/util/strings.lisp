@@ -3,19 +3,15 @@
 (defun bytes-to-string (sequence &key (start 0) (end (length sequence)))
   "Converts a sequence of bytes (unsigned-byte 8) to a string using
    the implementation's default character encoding."
-  (let ((s (make-string (- end start))))
-    (dotimes (i (- end start))
-      (setf (char s i) (code-char (elt sequence (+ i start)))))
-    s))
+   (let ((s (coerce (subseq sequence start end) '(vector (unsigned-byte 8)))))
+     (babel:octets-to-string s)))
 
 
 (defun string-to-bytes (string &key (start 0) (end (length string)))
   "Converts a string to a sequence of bytes (unsigned-byte 8) using
    the implementation's default character encoding."
-  (let ((s (make-array (list (- end start)))))
-    (dotimes (i (- end start))
-      (setf (elt s i) (char-code (char string (+ i start)))))
-    s))
+   (let ((s (subseq string start end)))
+     (babel:string-to-octets s)))
 
 
 (defun string-compare (s1 s2  &key (start1 0) (end1 (length s1)) (start2 0) (end2 (length s2)))

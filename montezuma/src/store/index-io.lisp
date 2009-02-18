@@ -95,12 +95,12 @@
   (write-long self i))
 
 (defmethod write-string ((self index-output) s)
-  (write-vint self (length s))
   (let ((chars (string-to-bytes s)))
-  (write-chars self chars 0 (length chars))))
+    (write-vint self (length chars))
+    (write-chars self chars 0 (length chars))))
 
 (defmethod write-chars ((self index-output) buffer start length)
-  (dotimes (i length)
+  (dotimes (i length length)
     (write-byte self (aref buffer (+ i start)))))
 
 
