@@ -1,0 +1,51 @@
+[initial revision
+yoni@rabkins.net**20081005205031] 
+[First indexer that can avoid the nasty 2000 bug
+Yoni Rabkin <yoni@rabkins.net>**20081008220857] 
+[first release ready version
+Yoni Rabkin <yoni@rabkins.net>**20081009182309] 
+[adde README and COPYING
+Yoni Rabkin <yoni@rabkins.net>**20081009182804] 
+[skip over files which we can't decode
+Yoni Rabkin <yoni@rabkins.net>**20081009210832] 
+[add searchfiles.lisp
+Yoni Rabkin <yoni@rabkins.net>**20081010110350] 
+[expland quicksearch to give prettier results
+Yoni Rabkin <yoni@rabkins.net>**20081010113338] 
+[return the total number of results
+Yoni Rabkin <yoni@rabkins.net>**20081010142329] 
+[cleanup
+Yoni Rabkin <yoni@rabkins.net>**20081013185954] 
+[minor cleanup
+Yoni Rabkin <yoni@rabkins.net>**20081013202603] 
+[indexfiles.lisp: (index-docs) don't tokenize paths.
+Yoni Rabkin <yoni@rabkins.net>**20081014135739] 
+[montezuma-indexfiles.asd: fix bug. include searchfiles.lisp.
+Yoni Rabkin <yoni@rabkins.net>**20081014135808] 
+[searchfiles.lisp: (quicksearch) interface cleanup and document show
+Yoni Rabkin <yoni@rabkins.net>**20081017181700
+ 
+     * clean the keyword interface by removing
+       *default-quicksearch-field*
+       
+     * Added the `showdoc' keyword to optionally print each document
+       found.
+] 
+[Reformat and add "Known Issues" section.
+Yoni Rabkin <yoni@rabkins.net>**20081027140515] 
+[Streamline code, and stop storing documents.
+Yoni Rabkin <yoni@rabkins.net>**20081027140552] 
+[Remove code that got in here by mistake.
+Yoni Rabkin <yoni@rabkins.net>**20081027140649] 
+[Rename *default-quicksearch-field* to *default-field*, remove *count*.
+Yoni Rabkin <yoni@rabkins.net>**20081027140725] 
+[Update documentation.
+Yoni Rabkin <yoni@rabkins.net>**20081101125914] 
+[whitespace cleanup
+Yoni Rabkin <yoni@rabkins.net>**20081101125933] 
+[Remove excessive function calls.
+Yoni Rabkin <yoni@rabkins.net>**20081101130044
+ 
+ Please note that is not done for performacen reasons, but purely
+ stylistic reasons instead.
+] 

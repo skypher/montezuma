@@ -1,0 +1,42 @@
+-*- text -*-
+
+Description:
+
+	montezuma-indexfiles is software to help index a directory
+	tree of files using the Montezuma Common Lisp search
+	engine. It is analogous to the "IndexFiles" application which
+	comes with the Lucene search engine distribution.
+
+	Here is an example of how you can index all of the files in
+	the directory starting at "/home/you/src/emacs/":
+
+        (index-directory-tree "/home/you/src/emacs/" 
+                              :index-dir "/home/you/index/")
+
+	Here is a more verbose example of how you can index all of the
+	files with a "txt" extension in the directory tree starting at
+	"/home/you/src/emacs/", while merging index files every 100
+	documents:
+
+        (let ((*accept-function* #'accept-docs-by-ext)
+              (*accept-ext-list* '("txt")))
+          (index-directory-tree "/home/you/src/emacs/" 
+                                :index-dir "/home/you/index/"
+                                :merge-factor 100
+                                :min-merge-docs 100))
+
+	There is a quick way to check the resulting index using the
+	aptly named "quicksearch" function:
+
+	(quicksearch "+where +wally")
+	
+Known issues:
+
+	The code isn't portable.
+
+License:
+
+	The software is copyright 2008 Yoni Rabkin under the terms of
+	the GNU GPL version 3. The author believes that the GNU GPL
+	works as planned and as expected in a Lisp environment. If you
+	have questions about the license, contact the author.
