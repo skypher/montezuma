@@ -37,3 +37,10 @@
       (test term-buffer-read-1 (text tb) "John Wiseman" #'string=)
       (test term-buffer-read-2 (term-text (term tb)) "John Wiseman" #'string=)
       (test term-buffer-read-3 (field tb) "Writer" #'string=))))
+
+(deftestfun test-term-buffer-merge
+  (let ((i (make-instance 'index)))
+    (dotimes (j 333) ; induce term merging process
+      (add-document-to-index i "über")
+      (add-document-to-index i '((id . 0)("test"))))))
+
