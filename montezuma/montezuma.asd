@@ -152,7 +152,8 @@
 	  :components ((:file "tests")
 		       (:module "util"
 			 :components ((:file "tc-priority-queue")
-				      (:file "tc-tables"))
+				      (:file "tc-tables")
+                                      (:file "strings"))
 			 :depends-on ("tests"))
 		       (:module "store"
 			 :components ((:file "tc-store")
