@@ -13,8 +13,8 @@ default character encoding.
 
 NB: START and END denote bounds for the final octet vector,
 not for STRING."
-   (let ((s (babel:string-to-octets s)))
-     (subseq s start (or end (length s)))))
+  (let ((s (babel:string-to-octets string)))
+    (subseq s start (or end (length s)))))
 
 
 (defun string-compare (s1 s2  &key (start1 0) (end1 (length s1)) (start2 0) (end2 (length s2)))
