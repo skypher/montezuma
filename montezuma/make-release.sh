@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=0.1.3a
+VERSION=0.1.3
 NAME="montezuma-$VERSION"
 
 rm -rf docs lucene-in-action clean*

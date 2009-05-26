@@ -14,10 +14,10 @@
 
 (defsystem #:montezuma
     :name "Montezuma"
-    :author "John Wiseman <jjwiseman@yahoo.com>"
-    :maintainer "John Wiseman <jjwiseman@yahoo.com>"
-    :version "0.1.1"
-    :licence "MIT"
+    :author "John Wiseman <jjwiseman@yahoo.com> et al."
+    :maintainer "Leslie P. Polzer <polzer@gnu.org>"
+    :version "0.1.3"
+    :licence "MIT/Expat"
     :description "Montezuma is a port of the Lucene text search engine library."
     :long-description "Montezuma is a port of the Ferret text search engine library, which is itself a port of the Lucene engine."
     :depends-on (#:cl-ppcre #:cl-fad #:babel)
@@ -155,6 +155,9 @@
 				      (:file "tc-tables")
                                       (:file "strings"))
 			 :depends-on ("tests"))
+                       (:module "regression"
+                                :components ((:file "tc-m2k"))
+                         :depends-on ("tests"))
 		       (:module "store"
 			 :components ((:file "tc-store")
 				      (:file "tc-ram-store")
