@@ -196,7 +196,7 @@
 		  (make-instance 'req-excl-scorer
 				 :req-scorer required-counting-sum-scorer
 				 :excl-scorer (make-instance 'disjunction-sum-scorer
-							     :scorer prohibited-scorers)))))
+							     :sub-scorers prohibited-scorers)))))
 	  ((= (length optional-scorers) 1)
 	   (make-counting-sum-scorer3 self
 				      required-counting-sum-scorer

@@ -182,7 +182,8 @@
 			 :depends-on ("tests"))
                        (:module "search"
                          :components ((:file "tc-similarity")
-				      (:file "tc-index-searcher"))
+				      (:file "tc-index-searcher")
+				      (:file "tc-boolean-subscorer"))
                          :depends-on ("tests"))
 		       (:module "query-parser"
 			 :components ((:file "tc-query-parser"))
