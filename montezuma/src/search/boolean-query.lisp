@@ -152,8 +152,7 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
 	(query (query self)))
     (dosequence (weight (weights self) :index i)
       (let ((clause (elt (clauses query) i)))
-	(unless (prohibited? clause)
-	  (incf sum (sum-of-squared-weights weight)))))
+	(incf sum (sum-of-squared-weights weight))))
     (setf sum (* sum (boost query) (boost query)))))
 
 (defmethod normalize-weight ((self boolean-weight) norm)
@@ -161,8 +160,7 @@ coord_disabled:: disables Similarity#coord(int,int) in scoring.
     (setf norm (* norm (boost query)))
     (dosequence (weight (weights self) :index i)
       (let ((clause (elt (clauses query) i)))
-	(unless (prohibited? clause)
-	  (normalize-weight weight norm))))))
+	(normalize-weight weight norm)))))
 
   #|
         norm *= @query.boost()
