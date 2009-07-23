@@ -144,7 +144,7 @@
 
 (defsystem #:montezuma-tests
   :description "Tests for Montezuma."
-  :depends-on (#:montezuma)
+  :depends-on (#:montezuma #:trivial-timeout)
   :components
   ((:module "tests"
      :components

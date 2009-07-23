@@ -235,6 +235,11 @@
       (let ((wq (make-instance 'wildcard-query
 			       :term term)))
 	(check-hits (fixture-var 'is) wq '(4 16)))))
+  (:testfun test-plenty-of-underscores
+    (trivial-timeout:with-timeout (5)
+      (search-each (make-instance 'montezuma:index) "john.______________________________________________________"
+                   #'(lambda (doc score)
+                       (format t "~&Document ~S found with score of ~S." doc score)))))
   #||
   (:testfun test-multi-phrase-query
    (let ((t11 (make-term "field" "quick"))
