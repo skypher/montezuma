@@ -58,15 +58,11 @@
           (setf writer (init-writer NIL))))
       (finish))))
 
-
 (defun all-articles ()
-  (let ((files '()))
-    (cl-fad:walk-directory *archive-path*
-			   #'(lambda (path)
-			       (when (string= (pathname-type path) "txt")
-				 (push path files))))
-    (reverse files)))
-
+  (remove-if-not (lambda (path)
+                   (or (string= (pathname-type path) "txt")
+                       (string= (pathname-type path) "sgm")))
+                 (fad:list-directory *archive-path*)))
 
 (defun runit ()
   (format T "~&------------------------------------------------------------~%")
@@ -82,5 +78,3 @@
 	    (let ((duration (/ (- (get-internal-run-time) start) internal-time-units-per-second)))
 	      (format T "~&~s  Secs: ~,2F  Docs: ~S" i duration num-indexed)
 	      (push duration times))))))))
-
-  
