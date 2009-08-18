@@ -148,6 +148,9 @@
   (ensure-writer-open self)
   (slot-value self 'writer))
 
+(defmethod document-count ((self index))
+  (with-slots (writer) self
+    (document-count writer)))
 
 (defgeneric add-document-to-index (index doc &optional analyzer))
 
