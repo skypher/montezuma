@@ -26,34 +26,37 @@
 (defun build-index (file-list max-to-index increment store-p)
   (let ((writer (init-writer T))
 	(docs-so-far 0))
-    (dolist (file file-list)
-      (with-open-file (in file :direction :input :external-format :latin-1)
-	(let ((title (read-line in)))
-	  (assert title)
-	  (let ((doc (make-instance 'montezuma:document))
-		(body (montezuma::stream-contents in)))
-	    (montezuma:add-field doc (montezuma:make-field :title title
-							   :index :tokenized
-							   :stored store-p
-							   :store-term-vector store-p))
-	    (montezuma:add-field doc (montezuma:make-field :body body
-							   :index :tokenized
-							   :stored store-p
-							   :store-term-vector store-p))
-	    (montezuma:add-document-to-index writer doc))))
-      (incf docs-so-far)
-      (when (zerop (mod docs-so-far 1000))
-	(format T ".")
-	(force-output))
-      (when (>= docs-so-far max-to-index)
-	(return-from build-index nil))
-      (when (and increment (> increment 0) (zerop (mod docs-so-far increment)))
-	(montezuma:close writer)
-	(setf writer (init-writer NIL))))
-    (let ((num-indexed (montezuma::document-count writer)))
-      (montezuma:optimize writer)
-      (montezuma:close writer)
-      num-indexed)))
+    (flet ((finish ()
+             (let ((num-indexed (montezuma::document-count writer)))
+               (montezuma:optimize writer)
+               (montezuma:close writer)
+               (return-from build-index num-indexed))))
+      (dolist (file file-list)
+        (with-open-file (in file :direction :input :external-format :latin-1)
+          (let ((title (read-line in)))
+            (assert title)
+            (let ((doc (make-instance 'montezuma:document))
+                  (body (montezuma::stream-contents in)))
+              (montezuma:add-field doc (montezuma:make-field :title title
+                                                             :index :tokenized
+                                                             :stored store-p
+                                                             :store-term-vector store-p))
+              (montezuma:add-field doc (montezuma:make-field :body body
+                                                             :index :tokenized
+                                                             :stored store-p
+                                                             :store-term-vector store-p))
+              (montezuma:add-document-to-index writer doc))))
+        (incf docs-so-far)
+        (when (zerop (mod docs-so-far 1000))
+          (format T ".")
+          (force-output))
+        (when (>= docs-so-far max-to-index)
+          (format t "max reached~%")
+          (finish))
+        (when (and increment (> increment 0) (zerop (mod docs-so-far increment)))
+          (montezuma:close writer)
+          (setf writer (init-writer NIL))))
+      (finish))))
 
 
 (defun all-articles ()
