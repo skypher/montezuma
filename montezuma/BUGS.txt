@@ -1,4 +1,1 @@
-* Certain complicated queries can cause an error.
-
-See <http://projects.heavymeta.org/montezuma/ticket/3> for details.
-
+No known bugs at this time.
