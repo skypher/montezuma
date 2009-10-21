@@ -136,10 +136,10 @@
   ;; FIXME: handle errors better?
   (close-document self)
   (with-slots (tvx tvd tvf) self
-    (close tvx)
-    (close tvd)
-    (close tvf)))
-
+    (when tvx
+      (close tvx)
+      (close tvd)
+      (close tvf))))
 
 (defgeneric write-field (term-vectors-writer))
 
@@ -158,14 +158,17 @@
       (let ((last-term-text ""))
 	(dotimes (i (length terms))
 	  (let* ((term (aref terms i))
-		 (start (or (mismatch last-term-text (term-text term))
-			    (min (length last-term-text) (length (term-text term)))))
-		 (length (- (length (term-text term)) start)))
-	    (write-vint tvf start)
-	    (write-vint tvf length)
-	    (write-chars tvf (string-to-bytes (term-text term)) start length)
+		 (term-text (term-text term))
+		 (term-octets (string-to-bytes term-text))
+		 (last-term-octets (string-to-bytes last-term-text))
+		 (start-octets (or (mismatch last-term-octets term-octets)
+				   (min (length last-term-octets) (length term-octets))))
+		 (length-octets (- (length term-octets) start-octets)))
+	    (write-vint tvf start-octets)
+	    (write-vint tvf length-octets)
+	    (write-chars tvf term-octets start-octets length-octets)
 	    (write-vint tvf (freq term))
-	    (setf last-term-text (term-text term))
+	    (setf last-term-text term-text)
 
 	    (when store-positions
 	      (unless (positions term)
@@ -213,7 +216,7 @@
 				       :store-positions store-position
 				       :store-offsets store-offset))))
 
-	    
+
 
 
 (defclass tv-term ()
@@ -250,9 +253,10 @@
 (defmethod close ((self term-vectors-reader))
   ;; FIXME handle errors?
   (with-slots (tvx tvd tvf) self
-    (close tvx)
-    (close tvd)
-    (close tvf)))
+    (when tvx
+      (close tvx)
+      (close tvd)
+      (close tvf))))
 
 (defgeneric get-field-term-vector (term-vectors-reader doc-num field))
 

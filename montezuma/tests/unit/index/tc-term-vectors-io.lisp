@@ -40,6 +40,35 @@
 		  (test term-vector-io-add-fields-8 (aref (aref (positions tv) 1) 1) 4)
 		  (test term-vector-io-add-fields-9 (aref (aref (offsets tv) 1) 1) (t 11 16) #'term-vector-offset-info=)
 		  (close tv-r))))
+    (:testfun test-term-vector-io-add-fields-bmp
+	      (let ((text1 "תורה1")
+		    (text2 "תורה2"))
+		(let ((tv-w (make-instance 'term-vectors-writer
+					   :directory (fixture-var 'dir)
+					   :segment "_test"
+					   :field-infos (fixture-var 'fis))))
+		  (open-document tv-w)
+		  (test term-vector-io-add-fields-bmp-1 (and (document-open-p tv-w) T) T)
+		  (open-field tv-w "field1")
+		  (add-term-to-term-vectors-writer tv-w text1 1 :positions #(1) :offsets (vector (t 0 4)))
+		  (add-term-to-term-vectors-writer tv-w text2 2 :positions #(3 4) :offsets (vector (t 5 10) (t 11 16)))
+		  (close-field tv-w)
+		  (close-document tv-w)
+		  (close tv-w))
+		(let ((tv-r (make-instance 'term-vectors-reader
+					   :directory (fixture-var 'dir)
+					   :segment "_test"
+					   :field-infos (fixture-var 'fis))))
+		  (test term-vector-io-add-fields-bmp-2 (size tv-r) 1)
+		  (let ((tv (get-field-term-vector tv-r 0 "field1")))
+		    (test term-vector-io-add-fields-bmp-3 (size tv) 2)
+		    (test term-vector-io-add-fields-bmp-4 (aref (terms tv) 0) text1 #'string=)
+		    (test term-vector-io-add-fields-bmp-5 (aref (term-frequencies tv) 0) 1)
+		    (test term-vector-io-add-fields-bmp-6 (aref (aref (positions tv) 1) 0) 3)
+		    (test term-vector-io-add-fields-bmp-7 (aref (aref (offsets tv) 1) 0) (t 5 10) #'term-vector-offset-info=)
+		    (test term-vector-io-add-fields-bmp-8 (aref (aref (positions tv) 1) 1) 4)
+		    (test term-vector-io-add-fields-bmp-9 (aref (aref (offsets tv) 1) 1) (t 11 16) #'term-vector-offset-info=)
+		    (close tv-r)))))
     (:testfun test-term-vector-io-add-documents
 	      (let ((tvs1
 		     (list
@@ -104,5 +133,11 @@
 		    (test term-vector-io-add-documents-18 (aref (terms tv) 0) "word3" #'string=))
 		  (let ((tv (get-field-term-vector tv-r 1 "field1")))
 		    (test term-vector-io-add-documents-19 (size tv) 2)
-		    (test term-vector-io-add-documents-20 (aref (terms tv) 0) "word1" #'string=)))))))
+		    (test term-vector-io-add-documents-20 (aref (terms tv) 0) "word1" #'string=)))))
+    (:testfun test-term-vector-io-close-rw
+	      (test term-vector-io-close-nil-reader
+		    (close (make-instance 'term-vectors-reader
+					  :directory (make-instance 'ram-directory)
+					  :segment "doesnotexist")) nil))))
+
 
