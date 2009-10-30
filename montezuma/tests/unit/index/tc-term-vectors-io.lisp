@@ -33,8 +33,6 @@
 		(test term-vector-io-add-fields-2 (size tv-r) 1)
 		(let ((tv (get-field-term-vector tv-r 0 "field1")))
 		  (test term-vector-io-add-fields-3 (size tv) 2)
-                  (pprint (babel:string-to-octets (aref (terms tv) 0)))
-                  (pprint (aref (terms tv) 0))
 		  (test term-vector-io-add-fields-4 (aref (terms tv) 0) "text1" #'string=)
 		  (test term-vector-io-add-fields-5 (aref (term-frequencies tv) 0) 1)
 		  (test term-vector-io-add-fields-6 (aref (aref (positions tv) 1) 0) 3)
@@ -99,7 +97,6 @@
 		    (test test-term-vector-io-add-fields-overflow-buffer-7 (aref (aref (offsets tv) 1) 0) (t 5 10) #'term-vector-offset-info=)
 		    (test test-term-vector-io-add-fields-overflow-buffer-8 (aref (aref (positions tv) 1) 1) 4)
 		    (test test-term-vector-io-add-fields-overflow-buffer-9 (aref (aref (offsets tv) 1) 1) (t 11 16) #'term-vector-offset-info=)
-                    (pprint (babel:string-to-octets (aref (terms tv) 1)))
 		    (test test-term-vector-io-add-fields-overflow-buffer-10 (aref (terms tv) 1) text2 #'string=)
 		    (close tv-r)))))
     (:testfun test-term-vector-io-add-documents
