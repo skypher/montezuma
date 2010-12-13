@@ -116,7 +116,8 @@
     (setf file (open path
 		     :direction :output
 		     :element-type '(unsigned-byte 8)
-		     :if-exists :supersede))))
+		     :if-exists :supersede
+                     #+ccl :sharing #+ccl :external))))
 
 (defmethod close :after ((self fs-index-output))
   (with-slots (file) self
@@ -139,7 +140,8 @@
 (defmethod initialize-instance :after ((self fs-index-input) &key path)
   (when path
     (with-slots (file size) self
-      (setf file (open path :direction :input :element-type '(unsigned-byte 8)))
+      (setf file (open path :direction :input :element-type '(unsigned-byte 8)
+                             #+ccl :sharing #+ccl :external))
       (setf size (cl:file-length file)))))
 
 (defmethod close ((self fs-index-input))
