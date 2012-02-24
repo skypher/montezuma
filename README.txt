@@ -33,14 +33,9 @@ function and one to SLOT-DEFINITION-NAME.
 
 ** Installation and Loading
 
-You can use ASDF-INSTALL to install Montezuma:
+You can use Quicklisp to install and load Montezuma:
 
-  (asdf-install:install '#:montezuma)
-
-And ASDF to load it:
-
-  (asdf:oos 'asdf:load-op '#:montezuma)
-
+  (ql:quickload 'montezuma)
 
 ** Testing
 
