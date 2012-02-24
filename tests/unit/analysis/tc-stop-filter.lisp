@@ -17,7 +17,7 @@
 (defparameter *word-file-path* (montezuma.asd-relative
                                  (make-pathname :name "wordfile" :type nil
                                                 :defaults
-                                                (make-pathname :directory '(:relative "tests/unit/analysis/data")))))
+                                                (make-pathname :directory '(:relative "tests" "unit" "analysis" "data")))))
 
 
 (deftestfun test-stop-filter
