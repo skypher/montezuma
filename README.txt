@@ -1,5 +1,9 @@
-Copyright 2006 John Wiseman <jjwiseman@yahoo.com>
-7/13/2006
+Portions copyright 2006 John Wiseman <jjwiseman@yahoo.com>
+See the revision log for more information on authors and contributors.
+
+Montezuma is maintained by Leslie P. Polzer <polzer@gnu.org>
+and Yoni Rabkin <yonirabkin@gmail.com>
+
 
 ** Introduction
 
@@ -13,8 +17,8 @@ for Java.
 
 ** Requirements
 
-Montezuma has been tested with SBCL 0.9.12 (OS X/PPC), SBCL 0.9.13
-(Linux/x86) OpenMCL 1.0 (OS X/PPC) and ACL 8.0 (OS X/PPC).
+Montezuma 1.0 has been tested with SBCL 1.0.55 (Linux/x86) and CCL 1.6-r14469M
+(Linux x86).
 
 Montezuma requires the CL-PPCRE[1] and CL-FAD[2] libraries.
 
@@ -48,11 +52,10 @@ like:
 
 ** Use
 
-See the TUTORIAL.TXT file for more information on how to use
-Montezuma.
+See TUTORIAL.TXT for more information on how to use Montezuma.
 
-The Montezuma project page at http://projects.heavymeta.org/montezuma/
-should have the latest information about Montezuma.
+The Montezuma project page at http://code.google.com/p/montezuma/
+contains the latest information about Montezuma.
 
 
 ** Acknowledgements
@@ -63,3 +66,4 @@ library[1]) and Franz. Inc. (for their Porter stemmer[2]).
 
 [2] http://www.xach.com/lisp/timer/doc.html
 [3] http://www.lispwire.com/entry-text-porter-word-stemmer-des
+
