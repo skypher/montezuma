@@ -57,10 +57,12 @@
 
 (defmethod token-stream ((self standard-analyzer) field string-or-stream)
   (declare (ignore field))
-  (make-instance 'stop-filter
-		 :input (make-instance 'lowercase-filter
-				       :input (make-instance 'standard-tokenizer
-							     :input string-or-stream))))
+  (with-slots (stop-words) self
+    (make-instance 'stop-filter
+		   :input (make-instance 'lowercase-filter
+					 :input (make-instance 'standard-tokenizer
+							       :input string-or-stream))
+		   :stop-set stop-words)))
 
 
 (defclass per-field-analyzer-wrapper (analyzer)
