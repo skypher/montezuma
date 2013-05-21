@@ -52,7 +52,6 @@
    #:optimize
    #:make-term
    #:max-doc
-   #:search
    #:weight
    #:scorer
    #:reader 
@@ -84,4 +83,5 @@
 
    #:boolean-query
    #:boolean-clause
-   #:add-query))
+   #:add-query 
+   #:match-all-query))
