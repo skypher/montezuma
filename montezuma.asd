@@ -91,6 +91,7 @@
 			       (:file "wildcard-term-enum" :depends-on ("filtered-term-enum"))
 			       (:file "phrase-query" :depends-on ("query"))
 			       (:file "range-query" :depends-on ("query"))
+				   (:file "match-all-query" :depends-on ("query"))
 			       (:file "top-docs" :depends-on ("api"))
 			       (:file "index-searcher" :depends-on ("api"))
 			       ;;                           (:file "sort" :depends-on ("api" "sort-field"))
