@@ -1,13 +1,5 @@
 (in-package #:montezuma)
 
-(defclass sort-field ()
-  ((name :initform nil :initarg :name)
-   (parser :initarg :parser)
-   (comparator :reader comparator :initarg :comparator)
-   (reverse-p :initform nil :reader reverse-p))
-  (:default-initargs
-   :parser #'string))
-
 (defclass sort-type ()
   ((name :initform nil :initarg :name)
    (parser :initarg :parser)
