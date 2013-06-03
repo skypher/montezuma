@@ -1,8 +1,11 @@
 # A Developer's Quick Introduction to Montezuma
 
-(Based on the [Ferret tutorial](http://ferret.davebalmain.com/api/files/TUTORIAL.html) by Dave Balmain.)
+(Based on the [Ferret
+tutorial](http://ferret.davebalmain.com/api/files/TUTORIAL.html) by Dave
+Balmain.)
 
-The simplest way to use Montezuma is through the `montezuma:index` class.  Start by loading the Montezuma system:
+The simplest way to use Montezuma is through the `montezuma:index` class.  Start
+by loading the Montezuma system:
 
 
     (asdf:oos 'asdf:load-op '#:montezuma)
@@ -20,7 +23,10 @@ To create a persistent index:
     (defparameter *index* (make-instance 'montezuma:index
                                          :path "/path/to/index"))
 
-Both of these methods create new indexes with the `standard-analyzer`. an analyzer is what you use to divide the input data up into tokens which you can search for later. If you'd like to use a different analyzer you can specify it here, eg:
+Both of these methods create new indexes with the `standard-analyzer`. An
+analyzer is what you use to divide the input data up into tokens which you can
+search for later. If you'd like to use a different analyzer you can specify it
+here, eg:
 
     (defparameter *index* (make-instance 'montezuma:index
                                          :path "/path/to/index"
@@ -31,24 +37,37 @@ For more options when creating an index refer to the `index` class.
 
 ## Adding Documents
 
-To add a document you can simply add a string. This will store the string in the `""` (i.e. empty string) field (unless you specify the default field when you create the index).
+To add a document you can simply add a string. This will store the string in the
+`""` (i.e. empty string) field (unless you specify the default field when you
+create the index).
 
     (montezuma:add-document-to-index *index* "This is a new document to be indexed")
   
-But these are pretty simple documents. If this is all you want to index you could probably just use simple-search. So let's give our documents some fields:
+But these are pretty simple documents. If this is all you want to index you
+could probably just use simple-search. So let's give our documents some fields:
 
     (montezuma:add-document-to-index *index* '(("title" . "Programming Ruby")
                                                ("content" . "blah blah blah")))
     (montezuma:add-document-to-index *index* '(("title" . "Programming Lisp")
                                                ("content" . "yada yada yada")))
 
-Or if you are indexing data stored in a database, you'll probably want to store the ID (this example assumes you have some kind of database object in ROW, with ID, TITLE and DATE accessors):
+Or if you are indexing data stored in a database, you'll probably want to store
+the ID (this example assumes you have some kind of database object in ROW, with
+ID, TITLE and DATE accessors):
 
     (montezuma:add-document-to-index *index* `(("id"    . ,(id row))
                                                ("title" . ,(title row))
                                                ("date"  . ,(date row))))
 
-The methods above will store all of the input data as well tokenizing and indexing it. Sometimes we won't want to tokenize (divide the string into tokens) the data. For example, we might want to leave the title as a complete string and only allow searches for that complete string. Sometimes we won't want to store the data as it's already stored in the database so it'll be a waste to store it in the index. Or perhaps we are doing without a database and using Montezuma to store all of our data, in which case we might not want to index it. For example, if we are storing images in the index, we won't want to index them. All of this can be done using Montezuma's document class.  e.g.,
+The methods above will store all of the input data as well tokenizing and
+indexing it. Sometimes we won't want to tokenize (divide the string into tokens)
+the data. For example, we might want to leave the title as a complete string and
+only allow searches for that complete string. Sometimes we won't want to store
+the data as it's already stored in the database so it'll be a waste to store it
+in the index. Or perhaps we are doing without a database and using Montezuma to
+store all of our data, in which case we might not want to index it. For example,
+if we are storing images in the index, we won't want to index them. All of this
+can be done using Montezuma's document class.  e.g.,
 
     ;; Assume ROW is an object with reader methods ID, TITLE, DATA and
     ;; IMAGE.
@@ -59,18 +78,26 @@ The methods above will store all of the input data as well tokenizing and indexi
           (montezuma:add-field doc (montezuma:make-field "image" (image row) :stored T   :index NIL))
           (montezuma:add-document-to-index *index* doc))
 
-You can also compress the data that you are storing or store term vectors with the data. Read more about this in the documentation for Montezuma's `field` class.
+You can also compress the data that you are storing or store term vectors with
+the data. Read more about this in the documentation for Montezuma's `field`
+class.
 
 
 ## Searching
 
-Now that we have data in our index, how do we actually use this index to search the data? The index class offers two search methods, `search` and `search-each`. The first method returns a `top-docs` object.  The second we'll show here. Lets say we wanted to find all documents with the phrase "quick brown fox" in the content field. We'd write
+Now that we have data in our index, how do we actually use this index to search
+the data? The index class offers two search methods, `search` and `search-each`.
+The first method returns a `top-docs` object.  The second we'll show here. Lets
+say we wanted to find all documents with the phrase "quick brown fox" in the
+content field. We'd write:
 
     (montezuma:search-each *index* "content:\"quick brown fox\""
                            #'(lambda (doc score)
                                (format T "~&Document ~S found with score of ~S." doc score)))
 
-What if we want to find all documents entered on or after 5th of September, 2005 with the words "adipocere" or "gullet" in any field. We could type something like:
+What if we want to find all documents entered on or after 5th of September, 2005
+with the words "adipocere" or "gullet" in any field. We could type something
+like:
 
     ;; Doesn't work yet, spans haven't been implemented.
     (montezuma:search-each *index* "date:(>=20050905) adipocere gullet"
@@ -83,23 +110,30 @@ What if we want to find all documents entered on or after 5th of September, 2005
       #'(lambda (doc score)
           (format T "~&Document ~S found with score of ~S." doc score)))
 
-Montezuma has quite a complex query language. To find out more about Montezuma's query language, see the `query-parser` class.
+Montezuma has quite a complex query language. To find out more about Montezuma's
+query language, see the `query-parser` class.
 
 
 ## Accessing Documents
 
-You may have noticed that when we run a search we only get the document number back. By itself this isn't much use to us. Getting the data from the index is very straightforward. For example if we want the "title" field from the 3rd document:
+You may have noticed that when we run a search we only get the document number
+back. By itself this isn't much use to us. Getting the data from the index is
+very straightforward. For example if we want the "title" field from the 3rd
+document:
 
     (montezuma:document-value (montezuma:get-document *index* 2) "title")
 
 NOTE: documents are indexed from 0.
 
-The default field is an empty string when you use the simple string document so to access those strings you'll have type:
+The default field is an empty string when you use the simple string document so
+to access those strings you'll have type:
 
     (montezuma:add-document-to-index *index* "This is a document")
     (montezuma:document-value (montezuma:get-document *index* 0) "")
 
-Let's go back to the database example above. If we store all of our documents with an ID then we can access that field using the ID. As long as we called our ID field "id" we can do this:
+Let's go back to the database example above. If we store all of our documents
+with an ID then we can access that field using the ID. As long as we called our
+ID field "id" we can do this:
 
     (let ((id "89721347"))
       (montezuma:document-value (montezuma:get-document *index* id) "title"))
@@ -109,12 +143,21 @@ If however we called our id field "key" we'll have to do this:
     (let ((id (make-term "key" "89721347")))
       (document-value (get-document *index* id) "title"))
 
-Pretty simple huh? You should note though that if there are more then one document with the same id or key then only the first one will be returned so it is probably better that you ensure the key is unique somehow (Montezuma cannot do that for you).
+Pretty simple huh? You should note though that if there are more then one
+document with the same id or key then only the first one will be returned so it
+is probably better that you ensure the key is unique somehow (Montezuma cannot
+do that for you).
 
 
 ## Modifying and Deleting Documents
 
-What if we want to change the data in the index. Montezuma doesn't actually let you change the data once it is in the index. But you can delete documents so the standard way to modify data is to delete it and re-add it again with the modifications made. It is important to note that when doing this the documents will get a new document number so you should be careful not to use a document number after the document has been deleted. Here is an example of modifying a document:
+What if we want to change the data in the index. Montezuma doesn't actually let
+you change the data once it is in the index. But you can delete documents so the
+standard way to modify data is to delete it and re-add it again with the
+modifications made. It is important to note that when doing this the documents
+will get a new document number so you should be careful not to use a document
+number after the document has been deleted. Here is an example of modifying a
+document:
 
     ;; Add a document to the index.
     (montezuma:add-document-to-index *index* '(("title" . "Programming Lips")
@@ -131,7 +174,8 @@ What if we want to change the data in the index. Montezuma doesn't actually let 
           (setf (montezuma:document-value doc "title") "Programming Lisp")
           (montezuma:add-document-to-index *index* doc))))
     
-Note that if more than one document in the index has the title "Programming Lips", only one of them will be updated.
+Note that if more than one document in the index has the title "Programming
+Lips", only one of them will be updated.
 
 Another way of doing the same thing:
 
@@ -150,7 +194,8 @@ And another way, but one which causes all matching documents to be updated:
     (montezuma:query-update *index* "title:\"Programming Lips\""
     			'(("title" . "Programming Lisp")))
     
-And if we know the ID of the document we want to update, and it's stored in the field named "id":
+And if we know the ID of the document we want to update, and it's stored in the
+field named "id":
 
     ;; Modify the document with ID "123".
     (montezuma:update *index* "123" '(("title" . "Programming Lisp")))
@@ -174,4 +219,5 @@ Deleting documents is similar to updating them:
 
 ## Onward
 
-For a complete example of using Montezuma to index and retrieve real information, see the file `tests/corpora/pastes-1000/paste-search.lisp`.
+For a complete example of using Montezuma to index and retrieve real
+information, see the file `tests/corpora/pastes-1000/paste-search.lisp`.
