@@ -14,7 +14,9 @@
 
 (defmethod print-object ((self segment-merge-info) stream)
   (print-unreadable-object (self stream :type T :identity T)
-    (format stream "term-buffer: ~S base: ~S" (term-buffer self) (base self))))
+    (format stream "term-buffer: ~S base: ~S"
+            (ignore-slot-unbound (term-buffer self))
+            (ignore-slot-unbound (base self)))))
 
 (defmethod positions ((self segment-merge-info))
   (with-slots (postings reader) self

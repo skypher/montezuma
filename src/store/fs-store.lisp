@@ -159,9 +159,11 @@
     (let ((position (pos self)))
       (when (not (= position (file-position file)))
 	(file-position file position)))
-    (let ((num-bytes-read (read-sequence b file :start offset :end (+ offset length))))
-      (unless (= num-bytes-read length)
-	(error "End of file error while reading ~S" file))))
+    (let* ((end (+ offset length))
+           (position (read-sequence b file :start offset :end end)))
+      (unless (= position end)
+	(error "End of file error while reading ~S~%   Got to ~d of ~d"
+               file position end))))
   (values))
 
 (defmethod seek-internal ((self fs-index-input) pos)

@@ -52,7 +52,11 @@
 	(string> (term-text t1) (term-text t2))
 	(string> f1 f2))))
 
-(defgeneric to-string (term))
+(defgeneric to-string (term &optional stream)
+  (:method ((it null) &optional stream)
+    (format stream "NIL")))
 
-(defmethod to-string ((self term))
-  (format nil "~A:~A" (term-field self) (term-text self)))
+(defmethod to-string ((self term) &optional stream)
+  (format stream "~A:~A"
+          (ignore-slot-unbound (term-field self))
+          (ignore-slot-unbound (term-text self))))

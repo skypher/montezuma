@@ -13,7 +13,7 @@
 
 (defmethod print-object ((self term-info) stream)
   (print-unreadable-object (self stream :identity T :type T)
-    (with-slots (doc-freq freq-pointer prox-pointer skip-offset) self
+    (with-slots-ignoring-unbound (doc-freq freq-pointer prox-pointer skip-offset) self
       (format stream "df=~S:fp=~S:pp=~S:so=~S"
 	      doc-freq
 	      freq-pointer

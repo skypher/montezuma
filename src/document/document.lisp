@@ -6,7 +6,7 @@
 
 (defmethod print-object ((self document) stream)
   (print-unreadable-object (self stream :type T :identity T)
-    (with-slots (fields) self
+    (with-slots-ignoring-unbound (fields) self
       (let ((field-names (table-keys fields)))
 	(format stream "~{~A~^ ~}" (reverse field-names))))))
 

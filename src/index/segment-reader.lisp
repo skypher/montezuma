@@ -19,7 +19,7 @@
 
 (defmethod print-object ((self segment-reader) stream)
   (print-unreadable-object (self stream :type T :identity T)
-    (with-slots (segment deleted-docs field-infos) self
+    (with-slots-ignoring-unbound (segment deleted-docs field-infos) self
       (format stream "~S (~S docs, ~S deleted docs, ~S field infos)"
 	      segment (num-docs self) (length deleted-docs) (size field-infos)))))
 

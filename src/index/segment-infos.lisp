@@ -7,7 +7,7 @@
 
 (defmethod print-object ((self segment-info) stream)
   (print-unreadable-object (self stream :type T :identity T)
-    (format stream "~S" (segment-info-name self))))
+    (format stream "~S" (ignore-slot-unbound (segment-info-name self)))))
 
 (defgeneric segment-info= (segment-info other))
 
@@ -46,7 +46,7 @@
 
 (defmethod print-object ((self segment-infos) stream)
   (print-unreadable-object (self stream :type T :identity T)
-    (let ((elements (slot-value self 'elements)))
+    (let ((elements (ignore-slot-unbound (slot-value self 'elements))))
     (format stream "~S segment-infos: ~S" (length elements) elements))))
 
 (defgeneric clear (segment-infos))

@@ -9,12 +9,11 @@
 
 (defmethod print-object ((self term-buffer) stream)
   (print-unreadable-object (self stream :type T :identity T)
-    (with-slots (field text-buf text-length) self
+    (with-slots-ignoring-unbound (field text-buf text-length) self
       (format stream "field:~S text:~S"
-	      field 
-	      (if (not (< text-length 0))
-		  (subseq text-buf 0 text-length)
-		  nil)))))
+	      field
+              (unless (< (or text-length -1) 0)
+                (subseq text-buf 0 text-length))))))
 
 (defmethod initialize-copy :after ((self term-buffer) other)
   (set-from-term-buffer self other))
