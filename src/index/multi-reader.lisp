@@ -233,8 +233,8 @@
 
 (defmethod print-object ((self multi-term-doc-enum) stream)
   (print-unreadable-object (self stream :type T)
-    (let ((term (term self)))
-      (format stream "~S:~S" (term-field term) (term-text term)))))
+    (to-string (ignore-slot-unbound (term self))
+               stream)))
 
 (defmethod initialize-instance :after ((self multi-term-doc-enum) &key)
   (with-slots (reader-term-docs readers) self

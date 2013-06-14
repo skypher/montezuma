@@ -9,7 +9,7 @@
 
 (defmethod print-object ((self segment-term-vector) stream)
   (print-unreadable-object (self stream :identity T :type T)
-    (with-slots (field terms term-frequencies positions offsets) self
+    (with-slots-ignoring-unbound (field terms term-frequencies positions offsets) self
       (format stream "field:~S terms:~S term-freqs:~S positions:~S offsets:~S"
 	      field terms term-frequencies positions offsets))))
 

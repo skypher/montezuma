@@ -18,3 +18,16 @@
 (defun parse-float (string)
   (with-standard-io-syntax
     (read-from-string string)))
+
+(defmacro ignore-slot-unbound (&body body)
+  "Returns nil instead of throwing slot unboundedness"
+  `(handler-case (progn ,@body) (unbound-slot ())))
+
+(defmacro with-slots-ignoring-unbound ( names obj &body body)
+  (let ((s-obj (gensym "OBJ")))
+    (flet ((make-binding (name)
+             `(,name (ignore-slot-unbound (slot-value ,s-obj ',name)))))
+      `(let ((,s-obj ,obj))
+        (symbol-macrolet
+            ,(mapcar #'make-binding names)
+          ,@body)))))

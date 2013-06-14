@@ -244,7 +244,7 @@
 
 (defmethod print-object ((self posting) stream)
   (print-unreadable-object (self stream :type T :identity T)
-    (with-slots (term freq positions offsets) self
+    (with-slots-ignoring-unbound (term freq positions offsets) self
       (format stream "term: ~S freq: ~S positions: ~S offsets: ~S"
 	      term freq positions offsets))))
 	    

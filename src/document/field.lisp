@@ -57,8 +57,9 @@
 
 (defmethod print-object ((self field) stream)
   (print-unreadable-object (self stream :type T :identity T)
-    (with-slots (name data stored-p compressed-p  indexed-p tokenized-p store-term-vector-p
-		      store-offsets-p store-positions-p omit-norms-p binary-p) self
+    (with-slots-ignoring-unbound
+        (name data stored-p compressed-p  indexed-p tokenized-p store-term-vector-p
+              store-offsets-p store-positions-p omit-norms-p binary-p) self
       (when stored-p
 	(format stream "stored")
 	(if compressed-p
